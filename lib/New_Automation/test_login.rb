@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'selenium-webdriver'
-require 'test/unit'
+require 'test-unit'
 
 class ExampleTestCase < Test::Unit::TestCase
  

@@ -2,5 +2,7 @@ source 'https://rubygems.org'
 
 # Specify your gem's dependencies in New_Automation.gemspec
 gemspec
-
+gem 'rake', '0.8.7'
+gem 'selenium-webdriver'
+gem 'test-unit'
 # gem 'New_Automation'
