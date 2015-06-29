@@ -5,4 +5,5 @@ gemspec
 gem 'rake', '0.8.7'
 gem 'selenium-webdriver'
 gem 'test-unit'
+gem 'ci_reporter'
 # gem 'New_Automation'
