@@ -6,7 +6,18 @@ class ExampleTestCase < Test::Unit::TestCase
  
 # Starting browser before each test
 def setup
-    @browser = Selenium::WebDriver.for :firefox
+    
+    case $browserName
+        when "firefox"
+            @browser = Selenium::WebDriver.for :firefox
+        when "chrome"
+            @browser = Selenium::WebDriver.for :chrome
+        when "safari"
+            @browser = Selenium::WebDriver.for :safari
+        else
+            puts "ERROR: Wrong browser name!!"
+    end
+
     @browser.get "https://qa.zola.com"
     @wait = Selenium::WebDriver::Wait.new(:timeout => 15)
 end

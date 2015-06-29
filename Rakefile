@@ -5,6 +5,6 @@ require 'rubygems'
 #require 'ci/reporter/rake/test_unit' # use this if you're using Test::Unit
 
 task :default do
-  cd 'lib'
-  ruby 'New_Automation.rb'
+  #cd 'lib'
+  #ruby 'New_Automation.rb'
 end

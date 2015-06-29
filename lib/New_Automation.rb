@@ -1,5 +1,4 @@
-require './New_Automation/test_login'
+#Global scope
+$browserName = ARGV[0]
 
-#module NewAutomation
-  # Your code goes here...
-#end
+require './New_Automation/test_login'
