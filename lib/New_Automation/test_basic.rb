@@ -1,32 +1,33 @@
 require 'rubygems'
 require 'selenium-webdriver'
 require 'test-unit'
+require_relative 'test_sign_up.rb'
 
-class ExampleTestCase < Test::Unit::TestCase
+class TestBasic < Test::Unit::TestCase
  
 # Starting browser before each test
 def setup
     
     case $browserName
         when "firefox"
-            @browser = Selenium::WebDriver.for :firefox
+            $browser = Selenium::WebDriver.for :firefox
         when "chrome"
-            @browser = Selenium::WebDriver.for :chrome
+            $browser = Selenium::WebDriver.for :chrome
         when "safari"
-            @browser = Selenium::WebDriver.for :safari
+            $browser = Selenium::WebDriver.for :safari
         when "IE"
-            @browser = Selenium::WebDriver.for :internet_explorer
+            $browser = Selenium::WebDriver.for :internet_explorer
         else
             puts "ERROR: Wrong browser name!!"
     end
 
-    @browser.get "https://qa.zola.com"
-    @wait = Selenium::WebDriver::Wait.new(:timeout => 15)
+    $browser.get "https://qa.zola.com"
+    $wait = Selenium::WebDriver::Wait.new(:timeout => 15)
 end
  
 # Closing browser after each test 
 def teardown
-    @browser.quit
+    $browser.quit
 end
 
 end
