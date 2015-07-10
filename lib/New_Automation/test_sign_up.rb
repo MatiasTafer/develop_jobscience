@@ -22,6 +22,7 @@ def test_login_ok
     }
 end
 
+#Creates a new account
 def test_create_account_ok
 	$browser.find_element(:id, "signupLink").click 
 	assert $wait.until {
