@@ -14,6 +14,8 @@ def setup
             @browser = Selenium::WebDriver.for :chrome
         when "safari"
             @browser = Selenium::WebDriver.for :safari
+        when "IE"
+            @browser = Selenium::WebDriver.for :internet_explorer
         else
             puts "ERROR: Wrong browser name!!"
     end
