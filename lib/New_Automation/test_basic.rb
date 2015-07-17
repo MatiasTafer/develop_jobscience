@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'selenium-webdriver'
 require 'test-unit'
-require_relative 'test_sign_up.rb'
 
 class TestBasic < Test::Unit::TestCase
  
