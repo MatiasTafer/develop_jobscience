@@ -6,21 +6,22 @@ require 'test-unit'
 require 'securerandom'
 
 class TestSignUp < TestBasic
- 
+
 # Check that login link is there
-def login_link_existence
-    assert @wait.until {
+def sign_up_link_existence
+    assert $wait.until {
         $browser.find_element(:id, "signupLink").displayed?
     }
 end
  
 # Checking the modal appears 
-def test_login_ok
+def test_sign_up_ok
     $browser.find_element(:id, "signupLink").click   
     assert $wait.until {
         $browser.find_element(:xpath => ".//*[@class='btn btn-primary btn-lg btn-block']").displayed?
     }
-end
+end 
+
 
 #Creates a new account
 def test_create_account_ok
