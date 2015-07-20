@@ -4,4 +4,4 @@ $browser
 $wait
 
 require './New_Automation/test_login'
-require './New_Automation/test_sign_up'
+#require './New_Automation/test_sign_up'
