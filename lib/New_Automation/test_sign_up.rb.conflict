@@ -6,6 +6,10 @@ require 'test-unit'
 require 'securerandom'
 
 class TestSignUp < TestBasic
+<<<<<<< HEAD
+ 
+=======
+>>>>>>> bc623da65ff6cc620bf9e12e24beedb7cb4ca8d1
 
 # Check that login link is there
 def sign_up_link_existence
@@ -21,7 +25,8 @@ def test_sign_up_ok
     assert $wait.until {
         $browser.find_element(:xpath => ".//*[@class='btn btn-primary btn-lg btn-block']").displayed?
     }
-end
+end 
+
 
 #Creates a new account
 def test_create_account_ok
@@ -37,4 +42,16 @@ def test_create_account_ok
     }
 end
 
+=begin
+#Try to create an account with an invalid email address
+def test_invalid_email_address
+    $browser.find_element(:id, "signupLink").click
+    assert $wait.until {
+        $browser.find_element(:xpath => ".//*[@class='btn btn-primary btn-lg btn-block']").displayed?
+    }
+    newEmail = "test.com"
+    
+end
+
+=end
 end
