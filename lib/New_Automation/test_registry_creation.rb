@@ -44,7 +44,7 @@ class TestRegistryCreation < TestBasic
     
   end
 
-=begin  
+  
   #Create your registry leaving your First Name blank
   def test_your_name_blank
     
@@ -352,5 +352,4 @@ class TestRegistryCreation < TestBasic
       $browser.find_element(:id => Create_Registry_Modal::ERROR_MESSAGE_URL_ID).text == Create_Registry_Modal::ERROR_MESSAGE_URL_EXISTING
     }
   end
-=end
 end
