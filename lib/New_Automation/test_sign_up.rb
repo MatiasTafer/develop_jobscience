@@ -7,13 +7,15 @@ require 'securerandom'
 
 class TestSignUp < TestBasic
  
+
 # Check that login link is there
 def login_link_existence
     assert @wait.until {
         $browser.find_element(:id, "signupLink").displayed?
     }
 end
- 
+
+
 # Checking the modal appears 
 def test_login_ok
     $browser.find_element(:id, "signupLink").click   
@@ -29,9 +31,23 @@ def test_create_account_ok
         $browser.find_element(:xpath => ".//*[@class='btn btn-primary btn-lg btn-block']").displayed?
     }
 	TestSignUpUtilities.create_user_ok
+	
+	
 	assert $wait.until {
         $browser.find_element(:id, "new-registry-form").displayed?
     }
 end
 
+=begin
+#Try to create an account with an invalid email address
+def test_invalid_email_address
+    $browser.find_element(:id, "signupLink").click
+    assert $wait.until {
+        $browser.find_element(:xpath => ".//*[@class='btn btn-primary btn-lg btn-block']").displayed?
+    }
+    newEmail = "test.com"
+    
+end
+
+=end
 end
