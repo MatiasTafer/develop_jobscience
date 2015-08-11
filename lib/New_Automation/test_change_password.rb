@@ -6,6 +6,7 @@ require_relative './pages/home_page.rb'
 require_relative './pages/login_modal.rb'
 require_relative './pages/account_info_page.rb'
 
+#change the password
 def change_password (currentPassword, newPassword, verifyPassword)
         $wait.until{
             $browser.find_element(:id, AccountInfoPage::CHANGE_PASSWORD_LINK_ID).displayed?
