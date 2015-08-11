@@ -21,18 +21,18 @@ class Common
     #click on signup link
     $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
     assert $wait.until {
-        $browser.find_element(:xpath => Signup_Modal::START_BUTTON).displayed?
+        $browser.find_element(:xpath => SignupModal::START_BUTTON).displayed?
     }
     #types email and pass
     newEmail = generate_email("test")
-    $browser.find_element(:xpath => Signup_Modal::EMAIL_FIELD).send_keys newEmail
-    $browser.find_element(:xpath => Signup_Modal::PASS_FIELD).send_keys "test1234"
+    $browser.find_element(:xpath => SignupModal::EMAIL_FIELD).send_keys newEmail
+    $browser.find_element(:xpath => SignupModal::PASS_FIELD).send_keys "test1234"
     assert $wait.until {
-      $browser.find_element(:xpath => Signup_Modal::GLYPHICON_EMAIL).displayed?
-      $browser.find_element(:xpath => Signup_Modal::GLYPHICON_PASS).displayed?
+      $browser.find_element(:xpath => SignupModal::GLYPHICON_EMAIL).displayed?
+      $browser.find_element(:xpath => SignupModal::GLYPHICON_PASS).displayed?
     }
     #clicks on START YOUR REGISTRY BUTTON
-    $browser.find_element(:xpath => Signup_Modal::START_BUTTON).click
+    $browser.find_element(:xpath => SignupModal::START_BUTTON).click
     
     assert $wait.until{
       $browser.find_element(:xpath=> CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
@@ -65,6 +65,16 @@ class Common
     assert $wait.until{
       $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).displayed?
     }
+  end
+  
+  def login (userEmail, password)
+    $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
+        $wait.until{
+            $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
+        }
+        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'    
+        $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test1234'
+        $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
   end
   
 end
