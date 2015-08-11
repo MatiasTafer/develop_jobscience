@@ -10,5 +10,7 @@ class LoginModal
   MISMATCH_MESSAGE_XPATH = ".//*[@class='form-message-block text-center text-danger']"
   PASSWORD_ERROR_MESSAGE_XPATH = ".//*[@ng-show='isPasswordInvalid()']"
   EMAIL_ERROR_MESSAGE_XPATH = ".//*[@ng-show='isEmailInvalid()']"
-  
+  MISMATCH_MESSAGE_TEXT = 'Invalid username or password'
+  PASSWORD_ERROR_MESSAGE_TEXT = 'Please enter your password.'
+  EMAIL_ERROR_MESSAGE_TEXT = 'Please enter a valid email address.'
 end
