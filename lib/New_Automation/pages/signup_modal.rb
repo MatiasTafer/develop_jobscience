@@ -1,4 +1,4 @@
-class Signup_Modal
+class SignupModal
   
   EMAIL_FIELD     = "//*[@class='form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required']"
   PASS_FIELD      = ".//*[@class='form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-minlength']"

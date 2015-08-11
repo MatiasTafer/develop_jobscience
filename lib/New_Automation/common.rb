@@ -3,16 +3,18 @@ require 'rubygems'
 require 'selenium-webdriver'
 require 'test-unit'
 require 'securerandom'
-require_relative 'home_page.rb'
-require_relative 'signup_modal.rb'
-require_relative 'login_modal.rb'
-require_relative 'create_registry_modal.rb'
+require_relative './pages/home_page.rb'
+require_relative './pages/signup_modal.rb'
+require_relative './pages/login_modal.rb'
+require_relative './pages/create_registry_modal.rb'
 
 class Common
   
   USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"
   USER_NO_REGISTRY_PASS     = "test1234"
   URL_EXISTING              = "homerandmarge"
+  
+  
   
   #Creates a new account without registry
   def self.create_user_no_registry
@@ -33,30 +35,32 @@ class Common
     $browser.find_element(:xpath => Signup_Modal::START_BUTTON).click
     
     assert $wait.until{
-      $browser.find_element(:xpath=> Create_Registry_Modal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath=> CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
     }
   end
   
+  #Generates an email
   def self.generate_email(name)
     randomString = SecureRandom.hex.gsub('-','')
     name+"@"+randomString+".com"
   end
   
+  #Generates a url
   def self.generate_url
     SecureRandom.hex.gsub('-','')
   end
   
-  
+  #Login using an existing user without registry
   def self.login_no_registry
     #click on login
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until {
-        $browser.find_element(:xpath => Login_Modal::LOGIN_BUTTON).displayed?
+        $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).displayed?
     }
     #types email and pass
-    $browser.find_element(:xpath => Login_Modal::EMAIL_FIELD).send_keys USER_NO_REGISTRY_EMAIL
-    $browser.find_element(:xpath => Login_Modal::PASS_FIELD).send_keys USER_NO_REGISTRY_PASS
-    $browser.find_element(:xpath => Login_Modal::LOGIN_BUTTON).click
+    $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys USER_NO_REGISTRY_EMAIL
+    $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys USER_NO_REGISTRY_PASS
+    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).click
     
     assert $wait.until{
       $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).displayed?

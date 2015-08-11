@@ -1,4 +1,4 @@
-class Create_Registry_Modal
+class CreateRegistryModal
   
   #Your Info
   FIRST_NAME_ID = "your-first"
