@@ -21,7 +21,7 @@ def setup
     end
 
     $browser.get "https://qa.zola.com"
-    $wait = Selenium::WebDriver::Wait.new(:timeout => 15)
+    $wait = Selenium::WebDriver::Wait.new(:timeout => 20)
 end
  
 # Closing browser after each test 

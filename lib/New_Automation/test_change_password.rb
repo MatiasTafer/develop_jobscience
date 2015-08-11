@@ -33,7 +33,7 @@ class TestChangePassword < TestBasic
         $wait.until{
             $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
         }
-        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'      
+        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'    
         $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test1234'
         $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
         $wait.until {
