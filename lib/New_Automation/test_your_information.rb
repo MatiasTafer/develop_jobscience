@@ -36,13 +36,7 @@ class TestYourInformation < TestBasic
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
-        $wait.until{
-            $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
-        }
-        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'      
-        $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test1234'
-        $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+        Common.login Common::USER_CHANGE_PASSWORD_EMAIL Common::USER_CHANGE_PASSWORD_PASS
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
@@ -51,13 +45,13 @@ class TestYourInformation < TestBasic
         $wait.until {
             $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).displayed?
         }
-        assert $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text == 'Account information updated.'
+        assert $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text == AccountInfoPage::INFORMATION_CHANGED_SUCCESSFULLY_TEXT
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         check_current_information 'George', 'Johnson', 'testing@gmail.com'
-        change_your_information 'John', 'Smith', 'oktanatesting@gmail.com'
+        change_your_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         }

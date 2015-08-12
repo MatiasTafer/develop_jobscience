@@ -9,5 +9,5 @@ $wait
 require './New_Automation/test_change_password'
 
 #not ready yet
-#require './New_Automation/test_your_information'
+require './New_Automation/test_your_information'
 #require './New_Automation/test_sign_up'

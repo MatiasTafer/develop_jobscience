@@ -6,6 +6,7 @@ class AccountInfoPage
   FIRST_NAME_FIELD_XPATH = ".//*[@name='first_name']"
   LAST_NAME_FIELD_XPATH = ".//*[@name='last_name']"
   MESSAGE_ID = "humaneMessage"
+  INFORMATION_CHANGED_SUCCESSFULLY_TEXT = 'Account information updated.'
   
   #CHANGE PASSWORD
   CHANGE_PASSWORD_LINK_ID       = "changePasswordLink"
@@ -13,6 +14,7 @@ class AccountInfoPage
   NEW_PASSWORD_FIELD_XPATH      = "//*[@name='new_password']"
   VERIFY_PASSWORD_FIELD_XPATH   = "//*[@name='verify_password']"
   SAVE_CHANGES_BUTTON_XPATH     = "//*[@class='button teal big']"
+  
   #error messages
   NEW_PASSWORD_ERROR_ID       = "change-pw-form-new_password"
   VERIFY_PASSWORD_ERROR_ID    = "change-pw-form-verify_password"
