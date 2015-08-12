@@ -2,8 +2,9 @@ require_relative 'test_basic.rb'
 require 'rubygems'
 require 'selenium-webdriver'
 require 'test-unit'
-require './pages/account_info_page.rb'
-require './pages/login_modal.rb'
+require_relative "common.rb"
+require_relative './pages/account_info_page.rb'
+require_relative './pages/login_modal.rb'
 
 def change_your_information (name, surname, email)
     assert $wait.until{
@@ -36,7 +37,7 @@ class TestYourInformation < TestBasic
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        Common.login Common::USER_CHANGE_PASSWORD_EMAIL Common::USER_CHANGE_PASSWORD_PASS
+        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
@@ -57,116 +58,133 @@ class TestYourInformation < TestBasic
         }
     end
 
-=begin
+    
+    #Tries to change the email address to one with the dot missing
     def test_email_without_dot
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
-        $wait.until{
-            $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
-        }
-        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'      
-        $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test1234'
-        $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information 'John', 'Smith', 'oktanatesting@gmailcom'
+        change_your_information 'George', 'Johnson', 'oktanatesting@gmailcom'
+        $wait.until {
+            $browser.find_element(:id => AccountInfoPage::EMAIL_ERROR_ID).displayed?
+        }
+        assert $browser.find_element(:id, AccountInfoPage::EMAIL_ERROR_ID).text == AccountInfoPage::INVALID_EMAIL_ERROR_TEXT
+        $wait.until {
+            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+        }
+        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
+        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
     end 
-
 
     def test_email_without_at_sign
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
-        $wait.until{
-            $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
-        }
-        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'      
-        $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test1234'
-        $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information 'John', 'Smith', 'oktanatestinggmail.com'
+        change_your_information 'George', 'Johnson', 'oktanatestinggmail.com'
+        $wait.until {
+            $browser.find_element(:id => AccountInfoPage::EMAIL_ERROR_ID).displayed?
+        }
+        assert $browser.find_element(:id, AccountInfoPage::EMAIL_ERROR_ID).text == AccountInfoPage::INVALID_EMAIL_ERROR_TEXT
+        $wait.until {
+            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+        }
+        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
+        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
     end
 
     def test_blank_name
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
-        $wait.until{
-            $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
-        }
-        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'      
-        $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test1234'
-        $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information '', 'Smith', 'oktanatesting@gmail.com'
-    end 
+        change_your_information '', 'Johnson', Common::USER_CHANGE_PASSWORD_EMAIL
+        $wait.until {
+            $browser.find_element(:id => AccountInfoPage::FIRST_NAME_ERROR_ID).displayed?
+        }
+        assert $browser.find_element(:id, AccountInfoPage::FIRST_NAME_ERROR_ID).text == AccountInfoPage::BLANK_FIELD_ERROR_TEXT
+        $wait.until {
+            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+        }
+        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
+        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
+    end
 
     def test_blank_surname
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
-        $wait.until{
-            $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
-        }
-        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'      
-        $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test1234'
-        $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information 'John', '', 'oktanatesting@gmail.com'
-    end 
+        change_your_information 'George', '', Common::USER_CHANGE_PASSWORD_EMAIL
+        $wait.until {
+            $browser.find_element(:id => AccountInfoPage::LAST_NAME_ERROR_ID).displayed?
+        }
+        assert $browser.find_element(:id, AccountInfoPage::LAST_NAME_ERROR_ID).text == AccountInfoPage::BLANK_FIELD_ERROR_TEXT
+        $wait.until {
+            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+        }
+        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
+        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
+    end
+
 
     def test_blank_email
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
-        $wait.until{
-            $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
-        }
-        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'      
-        $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test1234'
-        $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information 'John', 'Smith', ''
+        change_your_information 'George', 'Johnson', ''
+        $wait.until {
+            $browser.find_element(:id => AccountInfoPage::EMAIL_ERROR_ID).displayed?
+        }
+        assert $browser.find_element(:id, AccountInfoPage::EMAIL_ERROR_ID).text == AccountInfoPage::BLANK_FIELD_ERROR_TEXT
+        $wait.until {
+            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+        }
+        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
+        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
     end
-
 
     def test_email_account_already_used
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
-        $wait.until{
-            $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
-        }
-        $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys 'oktanatesting@gmail.com'      
-        $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test1234'
-        $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information 'George', 'Johnson', 'complete@test.com'        
+        change_your_information 'George', 'Johnson', 'complete@test.com'
+        $wait.until {
+            $browser.find_element(:id => AccountInfoPage::MESSAGE_ID).displayed?
+        }
+        assert $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text == AccountInfoPage::EMAIL_EXISTS_ERROR_TEXT
+        $wait.until {
+            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+        }
+        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
+        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL        
     end
-=end
     
 end

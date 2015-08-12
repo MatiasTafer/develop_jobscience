@@ -8,6 +8,7 @@ require_relative './pages/home_page.rb'
 require_relative './pages/signup_modal.rb'
 require_relative './pages/login_modal.rb'
 require_relative './pages/create_registry_modal.rb'
+
 class Common
   
   USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"

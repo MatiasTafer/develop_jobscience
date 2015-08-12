@@ -6,7 +6,6 @@ class AccountInfoPage
   FIRST_NAME_FIELD_XPATH = ".//*[@name='first_name']"
   LAST_NAME_FIELD_XPATH = ".//*[@name='last_name']"
   MESSAGE_ID = "humaneMessage"
-  INFORMATION_CHANGED_SUCCESSFULLY_TEXT = 'Account information updated.'
   
   #CHANGE PASSWORD
   CHANGE_PASSWORD_LINK_ID       = "changePasswordLink"
@@ -15,7 +14,7 @@ class AccountInfoPage
   VERIFY_PASSWORD_FIELD_XPATH   = "//*[@name='verify_password']"
   SAVE_CHANGES_BUTTON_XPATH     = "//*[@class='button teal big']"
   
-  #error messages
+  #Change Password error messages
   NEW_PASSWORD_ERROR_ID       = "change-pw-form-new_password"
   VERIFY_PASSWORD_ERROR_ID    = "change-pw-form-verify_password"
   MISMATCH_MESSAGE_XPATH      = ".//*[@class='form-message-block text-center text-danger']"
@@ -24,6 +23,15 @@ class AccountInfoPage
   VERIFY_PASSWORD_ERROR_TEXT  = 'Your passwords do not match.'
   CURRENT_PASSWORD_ERROR_TEXT = 'Invalid current password'
   CHANGE_PASSWORD_SUCCESSFULLY_TEXT = 'Password changed.'
+  
+  #Your Information error messages
+  FIRST_NAME_ERROR_ID = 'account-info-form-first_name'
+  LAST_NAME_ERROR_ID = 'account-info-form-last_name'  
+  EMAIL_ERROR_ID = 'account-info-form-email'
+  INFORMATION_CHANGED_SUCCESSFULLY_TEXT = 'Account information updated.'
+  BLANK_FIELD_ERROR_TEXT = 'This field is required.'
+  INVALID_EMAIL_ERROR_TEXT = 'Please enter a valid email address.'
+  EMAIL_EXISTS_ERROR_TEXT = 'Could not update account information. Please try again.'
   
   #ORDERS YOU'VE PLACED
   
