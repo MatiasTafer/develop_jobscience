@@ -21,6 +21,7 @@ class AccountInfoPage
   MISMATCH_MESSAGE_TEXT       = 'Invalid username or password'
   VERIFY_PASSWORD_ERROR_TEXT  = 'Your passwords do not match.'
   CURRENT_PASSWORD_ERROR_TEXT = 'Invalid current password'
+  CHANGE_PASSWORD_SUCCESSFULLY_TEXT = 'Password changed.'
   
   #ORDERS YOU'VE PLACED
   

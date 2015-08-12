@@ -35,11 +35,11 @@ class TestChangePassword < TestBasic
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-    change_password 'test1234', 'test12345', 'test12345'
+    change_password Common::USER_CHANGE_PASSWORD_PASS, Common::USER_CHANGE_PASSWORD_PASS2, Common::USER_CHANGE_PASSWORD_PASS2
     $wait.until{
       $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).displayed?
     }
-    assert $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text == 'Password changed.'
+    assert $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text == AccountInfoPage::CHANGE_PASSWORD_SUCCESSFULLY_TEXT
     $wait.until {
       $browser.execute_script("return document.readyState;") == "complete"
     }
@@ -59,10 +59,10 @@ class TestChangePassword < TestBasic
     Common.login(Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS2)
     assert $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-        }
+    }
     #Change the password to the original one
     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-    change_password 'test12345', 'test1234', 'test1234'
+    change_password Common::USER_CHANGE_PASSWORD_PASS2, Common::USER_CHANGE_PASSWORD_PASS, Common::USER_CHANGE_PASSWORD_PASS
     $wait.until {
       $browser.execute_script("return document.readyState;") == "complete"
     }
