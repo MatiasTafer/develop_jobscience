@@ -19,7 +19,7 @@ class CreateRegistryModal
   
   #Buttons
   SKIP_ID = "skip"
-  CREATE_REGISTRY_CLASS = ".//*[@class='button teal big']"
+  BUTTON_CREATE_REGISTRY_XPATH = ".//*[@class='button teal big']"
   
   #error messages
   ERROR_MESSAGE_YOUR_NAME_ID    = "your-first-error"

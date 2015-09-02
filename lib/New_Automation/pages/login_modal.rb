@@ -13,4 +13,9 @@ class LoginModal
   MISMATCH_MESSAGE_TEXT = 'Invalid username or password'
   PASSWORD_ERROR_MESSAGE_TEXT = 'Please enter your password.'
   EMAIL_ERROR_MESSAGE_TEXT = 'Please enter a valid email address.'
+  
+  TEST_USER_EMAIL = 'testuser@testuser.com'
+  TEST_USER_PASSWORD = 'testtest'
+  TEST_USER_EMAIL2 = 'tito@tito.com'
+  TEST_USER_PASSWORD2 = 'testtest'
 end

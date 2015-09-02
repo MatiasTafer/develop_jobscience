@@ -30,7 +30,7 @@ class TestRegistryCreation < TestBasic
     $browser.find_element(:id => CreateRegistryModal::URL_ID).send_keys url
     $browser.find_element(:id => CreateRegistryModal::DATE_ID).send_keys "11/20/2015"
     
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     assert $wait.until{
       $browser.find_element(:xpath => CreateRegistryModal::WELCOME_SKIP_LINK).displayed?
@@ -53,7 +53,7 @@ class TestRegistryCreation < TestBasic
     #clicks on start your registry
     $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).click
     assert $wait.until{
-      $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
     
     #leaves the field first name empty and completes the other fields
@@ -68,7 +68,7 @@ class TestRegistryCreation < TestBasic
     $browser.find_element(:id => CreateRegistryModal::DATE_ID).send_keys "11/20/2015"
     
     #clicks on create registry button
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     #checks error message displayed
     assert $wait.until{
@@ -86,7 +86,7 @@ class TestRegistryCreation < TestBasic
     #clicks on start your registry
     $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).click
     assert $wait.until{
-      $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
     
     #leaves the field last name empty and completes the other fields
@@ -101,7 +101,7 @@ class TestRegistryCreation < TestBasic
     $browser.find_element(:id => CreateRegistryModal::DATE_ID).send_keys "11/20/2015"
     
     #clicks on create registry button
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     #checks error message displayed
     assert $wait.until{
@@ -120,7 +120,7 @@ class TestRegistryCreation < TestBasic
     #clicks on start your registry
     $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).click
     assert $wait.until{
-      $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
     
     #leaves the field last name empty and completes the other fields
@@ -135,7 +135,7 @@ class TestRegistryCreation < TestBasic
     $browser.find_element(:id => CreateRegistryModal::DATE_ID).send_keys "11/20/2015"
     
     #clicks on create registry button
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     #checks error message displayed
     assert $wait.until{
@@ -154,7 +154,7 @@ class TestRegistryCreation < TestBasic
     #clicks on start your registry
     $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).click
     assert $wait.until{
-      $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
     
     #leaves the field fiancee's name of empty and completes the other fields
@@ -169,7 +169,7 @@ class TestRegistryCreation < TestBasic
     $browser.find_element(:id => CreateRegistryModal::DATE_ID).send_keys "11/20/2015"
     
     #clicks on create registry button
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     #checks error message displayed
     assert $wait.until{
@@ -188,7 +188,7 @@ class TestRegistryCreation < TestBasic
     #clicks on start your registry
     $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).click
     assert $wait.until{
-      $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
     
     #leaves the fiancee's first name empty and completes the other fields
@@ -203,7 +203,7 @@ class TestRegistryCreation < TestBasic
     $browser.find_element(:id => CreateRegistryModal::DATE_ID).send_keys "11/20/2015"
     
     #clicks on create registry button
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     #checks error message displayed
     assert $wait.until{
@@ -223,7 +223,7 @@ class TestRegistryCreation < TestBasic
     #clicks on start your registry
     $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).click
     assert $wait.until{
-      $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
     
     #leaves the fiancee's type unspecified
@@ -238,7 +238,7 @@ class TestRegistryCreation < TestBasic
     $browser.find_element(:id => CreateRegistryModal::DATE_ID).send_keys "11/20/2015"
     
     #clicks on create registry button
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     #checks error message displayed
     assert $wait.until{
@@ -256,7 +256,7 @@ class TestRegistryCreation < TestBasic
     #clicks on start your registry
     $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).click
     assert $wait.until{
-      $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
     
     #completes required fields on sections "your info" and "your partner"
@@ -272,7 +272,7 @@ class TestRegistryCreation < TestBasic
     $browser.find_element(:id => CreateRegistryModal::URL_ID).send_keys url
     
     #clicks on create registry button
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     #checks error message displayed
     assert $wait.until{
@@ -290,7 +290,7 @@ class TestRegistryCreation < TestBasic
     #clicks on start your registry
     $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).click
     assert $wait.until{
-      $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
     
     #completes required fields on sections "your info" and "your partner"
@@ -307,7 +307,7 @@ class TestRegistryCreation < TestBasic
     #enters the wedding date
     $browser.find_element(:id => CreateRegistryModal::DATE_ID).send_keys "11/20/2015"
     #clicks on create registry button
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     #checks error message displayed
     assert $wait.until{
@@ -325,7 +325,7 @@ class TestRegistryCreation < TestBasic
     #clicks on start your registry
     $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).click
     assert $wait.until{
-      $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
     
     #completes required fields on sections "your info" and "your partner"
@@ -343,7 +343,7 @@ class TestRegistryCreation < TestBasic
     #enters the wedding date
     $browser.find_element(:id => CreateRegistryModal::DATE_ID).send_keys "11/20/2015"
     #clicks on create registry button
-    $browser.find_element(:xpath => CreateRegistryModal::CREATE_REGISTRY_CLASS).click
+    $browser.find_element(:xpath => CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).click
     
     #checks error message displayed
     assert $wait.until{

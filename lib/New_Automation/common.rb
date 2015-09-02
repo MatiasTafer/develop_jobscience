@@ -25,21 +25,21 @@ class Common
     #click on signup link
     $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
     assert $wait.until {
-        $browser.find_element(:xpath => SignupModal::START_BUTTON).displayed?
+        $browser.find_element(:xpath => SignupModal::BUTTON_SUBMIT_XPATH).displayed?
     }
     #types email and pass
     newEmail = generate_email("test")
-    $browser.find_element(:xpath => SignupModal::EMAIL_FIELD).send_keys newEmail
-    $browser.find_element(:xpath => SignupModal::PASS_FIELD).send_keys "test1234"
+    $browser.find_element(:xpath => SignupModal::EMAIL_TEXTBOX_XPATH).send_keys newEmail
+    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys "test1234"
     assert $wait.until {
-      $browser.find_element(:xpath => SignupModal::GLYPHICON_EMAIL).displayed?
-      $browser.find_element(:xpath => SignupModal::GLYPHICON_PASS).displayed?
+      $browser.find_element(:xpath => SignupModal::GLYPHICON_EMAIL_XPATH).displayed?
+      $browser.find_element(:xpath => SignupModal::GLYPHICON_PASS_XPATH).displayed?
     }
     #clicks on START YOUR REGISTRY BUTTON
-    $browser.find_element(:xpath => SignupModal::START_BUTTON).click
+    $browser.find_element(:xpath => SignupModal::BUTTON_SUBMIT_XPATH).click
 
     assert $wait.until{
-      $browser.find_element(:xpath=> CreateRegistryModal::CREATE_REGISTRY_CLASS).displayed?
+      $browser.find_element(:xpath=> CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
   end
 
@@ -52,6 +52,11 @@ class Common
   #Generates a url
   def self.generate_url
     SecureRandom.hex.gsub('-','')
+  end
+  
+   #Generate a Zip Code  
+  def self.generate_zipcode
+    SecureRandom.random_number(99999)
   end
 
   #Login using an existing user without registry
@@ -73,6 +78,7 @@ class Common
 
   #Login using the provided user email and password
   def self.login (userEmail, password)
+    $browser.get "https://qa.zola.com/shop"
     $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
     $wait.until{
       $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
@@ -95,5 +101,13 @@ class Common
     $wait.until{
             $browser.find_element(:id, HomePage::LOGIN_LINK_ID).displayed?
         }
+  end
+  
+  #Selects the option from a Select element
+  # selectElement: dropdown element
+  # optionText: string option to be selected from the dropdown
+  def self.selectOption(selectElement, optionText)
+    select = Selenium::WebDriver::Support::Select.new(selectElement)
+    select.select_by(:text, optionText)
   end
 end

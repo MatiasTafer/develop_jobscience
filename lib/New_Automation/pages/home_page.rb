@@ -8,4 +8,63 @@ class HomePage
   MY_ACCOUNT_LINK_XPATH = ".//*[@class='dropdown dropdown-hover with-arrow']//*[@href='/account/info']"
   LOG_OUT_LINK_ID = "account-menu-logout"
   
+  REGISTRY_SETTINGS_ID = "your-registry-menu-registry-settings"
+  
+  VISIBLE_REGISTRY_XPATH = ".//*[@class='button red medium publish-registry-button']"
+  FIND_REGISTRY_BUTTON_XPATH = ".//*[@class='button primary big']"
+  ADD_WEDDING_WEB_BUTTON_XPATH = ".//*[@class='button medium primary full-width share-link']"
+  
+  #FOOTER LINKS
+  
+  EMAIL_FOOTER_LINK_XPATH = "(.//*[@class='cta-detail'])[1]"
+  EDIT_REGISTRY_LINK_XPATH = "(.//*[@class='cta-detail'])[3]"
+  FIND_REGISTRY_LINK_XPATH = "(.//*[@class='cta-detail'])[4]"
+  DOWNLOAD_APPS_XPATH = "(.//*[@class='cta-detail'])[5]"
+  REGISTRY_BENEFITS_ID = "footerLinkBenefits"
+  ZOLA_SHOP_ID = "footerLinkShop"
+  ABOUT_ZOLA_ID ="footerLinkAbout"
+  PRESS_ID = "footerLinkPress"
+  JOBS_ID = "footerLinkJobs"
+  BLOG_ID = "FooterLinkBlog"
+  FAQS_ID = "footerLinkFAQ"
+  ORDER_STATUS_ID = "footerLinkOrderStatus"
+  TWITTER_XPATH = ".//*[@class='social-icon twitter-lg']"
+  FACEBOOK_XPATH = ".//*[@class='social-icon facebook-lg']"
+  PINTEREST_XPATH = ".//*[@class='social-icon pinterest-lg']"
+  INSTAGRAM_XPATH = ".//*[@class='social-icon instagram-lg']"
+  GOOGLE_PLUS_XPATH = ".//*[@class='social-icon googleplus-lg']"
+  TERMS_SERVICE_ID = "footerLinkTermsOfService"
+  PRIVACY_POLICY_ID = "footerLinkPrivacyPolicy"
+  
+  #URL LINK CONTROL
+  
+  REGISTRY_URL = "https://qa.zola.com/registry/juanandjulisa/edit"
+  FIND_REGISTRY_URL = "https://qa.zola.com/find-registry"
+  DOWNLOAD_APPS_URL = "https://qa.zola.com/simplify"
+  REGISTRY_BENEFITS_URL = "https://qa.zola.com/registry/benefits"
+  ZOLA_SHOP_URL = "https://qa.zola.com/shop/"
+  ABOUT_ZOLA_URL = "https://qa.zola.com/about/index"
+  PRESS_URL = "https://qa.zola.com/about/press"
+  JOBS_URL = "https://qa.zola.com/about/jobs"
+  BLOG_URL = "http://blog.zola.com/"
+  FAQS_URL = "https://qa.zola.com/help"
+  ORDER_STATUS_URL = "https://qa.zola.com/account/orders"
+  TWITTER_URL = "https://twitter.com/zolaregistry"
+  FACEBOOK_URL = "https://www.facebook.com/zolaregistry"
+  PINTEREST_URL = "https://www.pinterest.com/zolaregistry/"
+  INSTAGRAM_URL = "https://instagram.com/zolaregistry/"
+  GOOGLE_PLUS_URL = "https://plus.google.com/116442943345722651304/about"
+  TERMS_SERVICE_URL = "https://qa.zola.com/terms"
+  PRIVACY_POLICY_URL = "https://qa.zola.com/privacy"
+
+  
+  #EXTRA URL
+  
+  MARKETING_SERVICE_URL = "http://stage.zola.com:9000/marketing_service_terms"
+  VENDOR_TERMS_URL = " http://stage.zola.com:9000/vendor_terms"
+  
+  MARKETING_SERVICE_TEXT_XPATH = ".//*[@class='title']"
+  MARKETING_SERVICE_TEXT_WORDS = "Marketing Service Terms"
+  VENDOR_TERMS_TEXT_XPATH = ".//*[@class='title']"
+  VENDOR_TERMS_TEXT_WORDS = "Supplemental Vendor Terms and Conditions"
 end
