@@ -23,10 +23,8 @@ class TestFooterLinks < TestBasic
   end
 =end
 
+  #TEST : FOOTER - REGISTRY LINK (TC1432)
   def test_RegistryLink
-    
-    #TEST : FOOTER - REGISTRY LINK (TC1432)
-    
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
       $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).displayed?
@@ -39,12 +37,10 @@ class TestFooterLinks < TestBasic
     }
     $browser.find_element(:xpath => HomePage::EDIT_REGISTRY_LINK_XPATH).click    
     $browser.current_url == HomePage::REGISTRY_URL
-    
   end
 
-  def test_FindLink
-    
-    #TEST : FOOTER - FIND LINK (TC1433)
+  #TEST : FOOTER - FIND LINK (TC1433)
+  def test_FindLink  
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -61,9 +57,8 @@ class TestFooterLinks < TestBasic
     
   end
 
+  #TEST : FOOTER - APPS LINK (TC1434)
   def test_AppsLink
-    
-    #TEST : FOOTER - APPS LINK (TC1434)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -80,9 +75,8 @@ class TestFooterLinks < TestBasic
     
   end
 
-  def test_RegistryBenefitsLink
-    
-    #TEST : REGISTRY BENEFITS LINK (TC1435)
+  #TEST : REGISTRY BENEFITS LINK (TC1435)
+  def test_RegistryBenefitsLink  
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -99,9 +93,8 @@ class TestFooterLinks < TestBasic
     
   end
 
+  #TEST : ZOLA SHOP LINK (TC1436)
   def test_ZolaShopLink
-    
-    #TEST : ZOLA SHOP LINK (TC1436)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -118,9 +111,8 @@ class TestFooterLinks < TestBasic
     
   end
 
+  #TEST : FOOTER - ABOUT ZOLA LINK (TC1437)
   def test_AboutZolaLink
-    
-    #TEST : FOOTER - ABOUT ZOLA LINK (TC1437)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -137,9 +129,8 @@ class TestFooterLinks < TestBasic
     
   end
 
-  def test_PressLink
-    
-    #TEST : FOOTER - PRESS LINK (TC1438)
+  #TEST : FOOTER - PRESS LINK (TC1438)
+  def test_PressLink  
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -156,9 +147,8 @@ class TestFooterLinks < TestBasic
     
   end
 
+  #TEST : FOOTER - JOBS LINK (TC1439)
   def test_JobsLink
-    
-    #TEST : FOOTER - JOBS LINK (TC1439)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -175,10 +165,9 @@ class TestFooterLinks < TestBasic
     
   end
 
+  #TEST : FOOTER - BLOG LINK (TC1440)
   def test_BlogLink
-    
-    #TEST : FOOTER - BLOG LINK (TC1440)
-    
+      
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
       $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).displayed?
@@ -194,9 +183,8 @@ class TestFooterLinks < TestBasic
     
   end
 
+  #TEST : FOOTER - FAQS LINK (TC1441)
   def test_FaqsLink
-    
-    #TEST : FOOTER - FAQS LINK (TC1441)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -213,9 +201,8 @@ class TestFooterLinks < TestBasic
     
   end
 
+  #TEST : FOOTER - ORDER STATUS LINK (TC1442)
   def test_OrderStatusLink
-    
-    #TEST : FOOTER - ORDER STATUS LINK (TC1442)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -232,9 +219,8 @@ class TestFooterLinks < TestBasic
     
   end
   
+  #TEST : FOOTER - TWITTER LINK (TC1443)
   def test_TwitterLink
-    
-    #TEST : FOOTER - TWITTER LINK (TC1443)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -250,10 +236,9 @@ class TestFooterLinks < TestBasic
     $browser.current_url == HomePage::TWITTER_URL
     
   end
-
+  
+  #TEST : FOOTER - FACEBOOK LINK (TC1444)
   def test_FacebookLink
-    
-    #TEST : FOOTER - FACEBOOK LINK (TC1444)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -269,10 +254,9 @@ class TestFooterLinks < TestBasic
     $browser.current_url == HomePage::FACEBOOK_URL
     
   end
-
+  
+  #TEST : FOOTER - PINTEREST LINK (TC1445)
   def test_PinterestLink
-    
-    #TEST : FOOTER - PINTEREST LINK (TC1445)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -288,10 +272,9 @@ class TestFooterLinks < TestBasic
     $browser.current_url == HomePage::PINTEREST_URL
     
   end
-
+  
+  #TEST : FOOTER INSTAGRAM LINK (TC1446)
   def test_InstagramLink
-    
-    #TEST : FOOTER INSTAGRAM LINK (TC1446)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -308,9 +291,8 @@ class TestFooterLinks < TestBasic
     
   end
   
+  #TEST : FOOTER - GOOGLE PLUS LINK (TC1447)
   def test_GooglePLusLink
-    
-    #TEST : FOOTER - GOOGLE PLUS LINK (TC1447)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -326,10 +308,9 @@ class TestFooterLinks < TestBasic
     $browser.current_url == HomePage::GOOGLE_PLUS_URL
     
   end
-
+  
+  #TEST : FOOTER - TERMS OF SERVICE LINK (TC1448)
   def test_ServiceTermsLink
-    
-    #TEST : FOOTER - TERMS OF SERVICE LINK (TC1448)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -346,9 +327,8 @@ class TestFooterLinks < TestBasic
     
   end
   
+  #TEST : FOOTER - PRIVACY POLICY LINK (TC1449)
   def test_PrivacyPolicyLink
-    
-    #TEST : FOOTER - PRIVACY POLICY LINK (TC1449)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -364,10 +344,9 @@ class TestFooterLinks < TestBasic
     $browser.current_url == HomePage::PRIVACY_POLICY_URL
     
   end
-
+  
+  #TEST : MARKETING SERVICE TERMS (TC1450)
   def test_MarketingServiceLink
-    
-    #TEST : MARKETING SERVICE TERMS (TC1450)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
@@ -386,10 +365,9 @@ class TestFooterLinks < TestBasic
    }
     
   end
-
+  
+  #TEST : VENDOR TERMS (TC1451)
   def test_VendorTermsLink
-    
-    #TEST : VENDOR TERMS (TC1451)
     
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     assert $wait.until{
