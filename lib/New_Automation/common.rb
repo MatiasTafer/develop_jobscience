@@ -103,10 +103,10 @@ class Common
         }
   end
   
-  #Selects the option from a Select element
+  #Selects the option from a Select element, by Text
   # selectElement: dropdown element
   # optionText: string option to be selected from the dropdown
-  def self.selectOption(selectElement, optionText)
+  def self.selectByText(selectElement, optionText)
     select = Selenium::WebDriver::Support::Select.new(selectElement)
     select.select_by(:text, optionText)
   end

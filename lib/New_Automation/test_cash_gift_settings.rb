@@ -51,11 +51,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -91,11 +91,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -124,11 +124,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -156,11 +156,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -188,11 +188,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::BANK_NAME_ID).send_keys CashGiftSettings::NAME
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -220,11 +220,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::BANK_NAME_ID).send_keys CashGiftSettings::NAME
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -254,9 +254,9 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -285,10 +285,10 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -317,10 +317,10 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -349,10 +349,10 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -381,10 +381,10 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -413,11 +413,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -447,11 +447,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -482,11 +482,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -517,11 +517,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -552,11 +552,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -587,11 +587,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -622,11 +622,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -657,11 +657,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::SHORT_ACCOUNT_NUMBER
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -672,7 +672,7 @@ class TestCashGiftSettings < TestBasic
     }
     
   end
-  
+
   #TEST : ADD A BANK ACCOUNT WITH A FUTURE DATE AS DATE OF BIRTH (TC1487)
   def test_WrongFutureBirthDate
     
@@ -692,10 +692,10 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::ZIP_CODE
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
     $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::WRONG_YEAR_BIRTH
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
@@ -727,11 +727,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::LARGE_ZIPCODE_NUMBER
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     
@@ -762,11 +762,11 @@ class TestCashGiftSettings < TestBasic
     $browser.find_element(:id => CashGiftSettings::STREET_ADDRESS_ID).send_keys CashGiftSettings::STREET_ADDRESS
     $browser.find_element(:id => CashGiftSettings::APT_ADDRESS_ID).send_keys CashGiftSettings::APT_ADDRESS
     $browser.find_element(:id => CashGiftSettings::CITY_ADDRESS_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::STATE_ADDRESS_ID).send_keys CashGiftSettings::STATE
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::STATE_ADDRESS_ID), CashGiftSettings::STATE)
     $browser.find_element(:id => CashGiftSettings::ZIP_CODE_ID).send_keys CashGiftSettings::CITY
-    $browser.find_element(:id => CashGiftSettings::MONTH_BIRTH_ID).send_keys CashGiftSettings::MONTH_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::DAY_BIRTH_ID).send_keys CashGiftSettings::DAY_OF_BIRTH
-    $browser.find_element(:id => CashGiftSettings::YEAR_BIRTH_ID).send_keys CashGiftSettings::YEAR_OF_BIRTH
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::MONTH_BIRTH_ID), CashGiftSettings::MONTH_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::DAY_BIRTH_ID), CashGiftSettings::DAY_OF_BIRTH)
+    Common.selectByText($browser.find_element(:id, CashGiftSettings::YEAR_BIRTH_ID), CashGiftSettings::YEAR_OF_BIRTH)
     
     $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).click
     

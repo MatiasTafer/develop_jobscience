@@ -436,7 +436,7 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH).clear
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).clear
     $browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH).clear
-    Common.selectOption($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), "")  
+    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), "")  
     $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).clear
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).clear
   end
