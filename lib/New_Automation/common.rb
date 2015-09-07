@@ -18,6 +18,8 @@ class Common
   USER_CHANGE_PASSWORD_PASS = "test1234"
   USER_CHANGE_PASSWORD_PASS2= "test12345"
   USER_CHANGE_PASSWORD_SHORT= "test"
+  USER_NAME_CART ="holahola@hotmail.com"
+  USER_PASSWORD_CART ="holahola"
   
   
   #Creates a new account without registry
