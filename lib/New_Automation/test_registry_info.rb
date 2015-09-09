@@ -11,7 +11,7 @@ require_relative './pages/account_settings_page.rb'
 class TestRegistryinfo < TestBasic
 
   #SUCCESSFULLY CHANGE REGISTRY INFO (TC1557)
-  def test_SuccessfulyRegistry
+  def test_SuccessfulyChangeRegistryInfo
      
     #Login
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)

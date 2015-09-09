@@ -8,6 +8,7 @@ require_relative './pages/home_page.rb'
 require_relative './pages/signup_modal.rb'
 require_relative './pages/login_modal.rb'
 require_relative './pages/create_registry_modal.rb'
+require_relative './pages/shop_page.rb'
 
 class Common
   
@@ -111,5 +112,75 @@ class Common
   def self.selectByText(selectElement, optionText)
     select = Selenium::WebDriver::Support::Select.new(selectElement)
     select.select_by(:text, optionText)
+  end
+  
+  #Adds items to your cart
+  def self.add_items_to_cart
+
+    #Click on SHOP at home page
+    $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).click
+    assert $wait.until{
+      $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).displayed?
+    }
+    #Click on SHOP NOW at Shop page
+    $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).click
+    
+    #Click on the first gift at Starter Collections page
+    assert $wait.until{
+       $browser.find_element(:xpath => Collection::BUILD_YOUR_BAR_TEXT_XPATH).displayed?
+     }
+    $browser.action.move_to($browser.find_element(:xpath => Collection::COLLECTION_GIFT_XPATH)).perform
+    $browser.find_element(:xpath => Collection::COLLECTION_GIFT_XPATH).click
+
+    #Click on the button ADD TO CART at pdp modal
+    assert $wait.until{
+      $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
+    
+    #Click on the button CONTINUE SHOPPING at cart modal
+    assert $wait.until{
+      $browser.find_element(:xpath => CartModal::BUTTON_CONTINUE_SHOPPING_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => CartModal::BUTTON_CONTINUE_SHOPPING_XPATH).click
+    
+    #Click on the second gift at Starter Collections page
+    assert $wait.until{
+       $browser.find_element(:xpath => Collection::COLLECTION_GIFT2_XPATH).displayed?
+     }
+    $browser.action.move_to($browser.find_element(:xpath => Collection::COLLECTION_GIFT2_XPATH)).perform
+    $browser.find_element(:xpath => Collection::COLLECTION_GIFT2_XPATH).click
+    
+    #Click on the button ADD TO CART at pdp modal
+    assert $wait.until {
+      $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
+    #Click on CONTINUE SHOPPING at cart modal
+    assert $wait.until{
+      $browser.find_element(:xpath => CartModal::BUTTON_CONTINUE_SHOPPING_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => CartModal::BUTTON_CONTINUE_SHOPPING_XPATH).click 
+    
+  end
+  
+  #Remove items from your cart
+  #You already clicked in cart
+  def self.remove_items_cart
+    #Get all Remove links in the cart
+    presentElements = $browser.find_elements(:xpath => CartModal::ALL_REMOVE_LINKS_XPATH)
+    #While there are more Remove links than 0, I keep removing items
+    while (presentElements.size>0)
+      #Save the number of Remove links
+      cartSize= presentElements.size
+      #Clicks on the first Remove link
+      presentElements[0].click
+      #Waits until the number of Remove links is less than before
+      $wait.until {
+        $browser.find_elements(:xpath => CartModal::ALL_REMOVE_LINKS_XPATH).size < cartSize
+      }
+      #Obtains again all the Remove links in the cart
+      presentElements = $browser.find_elements(:xpath => CartModal::ALL_REMOVE_LINKS_XPATH)
+    end
   end
 end

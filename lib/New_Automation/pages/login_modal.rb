@@ -18,4 +18,8 @@ class LoginModal
   TEST_USER_PASSWORD = 'testtest'
   TEST_USER_EMAIL2 = 'tito@tito.com'
   TEST_USER_PASSWORD2 = 'testtest'
+  
+  #Info used by test_cart.rb 
+  OTHER_USER_TEXT = "testtesttest@test.com"
+  OTHER_USER_PASSWORD_TEXT = "tester1234"
 end

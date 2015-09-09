@@ -37,7 +37,7 @@ def test_DeactivateRegistry
     #Checks if the registry was deactivated
     $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_LINK_XPATH).click
     assert $wait.until{
-      $browser.find_element(:xpath => HomePage::VISIBLE_REGISTRY_XPATH).displayed?  
+      $browser.find_element(:xpath => HomePage::MAKE_IT_VISIBLE_BUTTON).displayed?  
     }
     url = $browser.current_url
     $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
@@ -60,9 +60,9 @@ def test_DeactivateRegistry
     #Activate the registry
     Common.login(LoginModal::TEST_USER_EMAIL2, LoginModal::TEST_USER_PASSWORD2)
     assert $wait.until{
-      $browser.find_element(:xpath => HomePage::VISIBLE_REGISTRY_XPATH).displayed?
+      $browser.find_element(:xpath => HomePage::MAKE_IT_VISIBLE_BUTTON).displayed?
     }
-    $browser.find_element(:xpath => HomePage::VISIBLE_REGISTRY_XPATH).click
+    $browser.find_element(:xpath => HomePage::MAKE_IT_VISIBLE_BUTTON).click
    
     assert $wait.until{
       $browser.find_element(:xpath => HomePage::ADD_WEDDING_WEB_BUTTON_XPATH).displayed?

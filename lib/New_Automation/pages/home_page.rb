@@ -1,17 +1,32 @@
 
 class HomePage
   
+  #TOP LINKS
   SIGNUP_LINK_ID  = "signupLink"
   LOGIN_LINK_ID   = "loginLink"
   START_YOUR_REGISTRY_LINK_ID = "createRegistryLink"
   REGISTRY_EDIT_URL = "https://qa.zola.com/registry"
   MY_ACCOUNT_LINK_XPATH = ".//*[@class='dropdown dropdown-hover with-arrow']//*[@href='/account/info']"
+  CART_BUTTON_ID = "openCartLink"
+  
+  #Account sub-menu
+  REGISTRY_SETTINGS_ID = "your-registry-menu-registry-settings"
   LOG_OUT_LINK_ID = "account-menu-logout"
   
-  REGISTRY_SETTINGS_ID = "your-registry-menu-registry-settings"
   
-  VISIBLE_REGISTRY_XPATH = ".//*[@class='button red medium publish-registry-button']"
+  #HEADER LINKS
+  HOME_SHOP_XPATH= ".//*[@id='header']//*[@href='/shop']"
+  
+
+  LOGO_ZOLA_XPATH = "(.//*[@class='logo'])[1]"
+  
+  #BODY
+  MAKE_IT_VISIBLE_BUTTON = ".//*[@class='button red medium publish-registry-button']"
+  
+  #this button is from page "looking for a registry?"
   FIND_REGISTRY_BUTTON_XPATH = ".//*[@class='button primary big']"
+  
+  #button displayed in a congratulation modal after you make a registry public
   ADD_WEDDING_WEB_BUTTON_XPATH = ".//*[@class='button medium primary full-width share-link']"
   
   #FOOTER LINKS
@@ -57,7 +72,6 @@ class HomePage
   TERMS_SERVICE_URL = "https://qa.zola.com/terms"
   PRIVACY_POLICY_URL = "https://qa.zola.com/privacy"
 
-  
   #EXTRA URL
   
   MARKETING_SERVICE_URL = "http://stage.zola.com:9000/marketing_service_terms"
