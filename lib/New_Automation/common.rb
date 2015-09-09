@@ -113,7 +113,14 @@ class Common
     select = Selenium::WebDriver::Support::Select.new(selectElement)
     select.select_by(:text, optionText)
   end
-  
+
+  #Selects the option from a Select element, by Text
+  # selectElement: dropdown element
+  def self.get_selected_option_text(selectElement)
+    select = Selenium::WebDriver::Support::Select.new(selectElement)
+    selected_optionText = select.selected_options[0].text
+  end
+    
   #Adds items to your cart
   def self.add_items_to_cart
 

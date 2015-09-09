@@ -63,8 +63,7 @@ class TestShippingInfo < TestBasic
     assert_equal($browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH)["value"], ShippingInfoPage::STREET_2)
     assert_equal($browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH)["value"], ShippingInfoPage::APTO_2)
     assert_equal($browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH)["value"], ShippingInfoPage::CITY_2)
-    #assert_equal($browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID).first_selected_option.text, ShippingInfoPage::STATE_2)
-    #MARTIN BAZZANO
+    assert_equal(Common.get_selected_option_text($browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID)), ShippingInfoPage::STATE_2)
     assert_equal($browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH)["value"], ShippingInfoPage::ZIPCODE_2)
     assert_equal($browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH)["value"], ShippingInfoPage::PHONE_2)
 
