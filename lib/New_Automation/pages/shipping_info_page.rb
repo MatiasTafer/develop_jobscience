@@ -39,7 +39,7 @@ class ShippingInfoPage
   STREET_2 = 'Central Street 222'
   APTO_2 = '17'
   CITY_2 = 'Delta'
-  STATE_2 = 'CO'
+  STATE_2 = 'Colorado'
   ZIPCODE_2 = '81416'
   PHONE_2 = '9999999999'
   
