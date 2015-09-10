@@ -6,6 +6,7 @@ require_relative './pages/home_page.rb'
 require_relative './pages/login_modal.rb'
 require_relative 'common.rb'
 
+#Suite: Login
 class TestLogin < TestBasic
 
   # Check that login link is there

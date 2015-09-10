@@ -23,6 +23,7 @@ class ShippingInfoPage
   PHONE_ERROR_XPATH = ".//*[@for='shippingPhone']"
   STATE_ERROR_XPATH = ".//*[@for='shipping-state']"
   OK_MESSAGE_XPATH = ".//*[@class='humane humane-zola-success humane-animate']"
+  ERROR_FIELD_REQUIRED = "This field is required."
   
   #HARDCODED DATA
   FIRST_NAME = 'Antonio'
@@ -30,7 +31,7 @@ class ShippingInfoPage
   STREET = '18 de julio'
   APTO = '5'
   CITY = 'Reno'
-  STATE = 'NN'
+  STATE = 'Nevada'
   ZIPCODE = '89501'
   PHONE = '5555555555'
   

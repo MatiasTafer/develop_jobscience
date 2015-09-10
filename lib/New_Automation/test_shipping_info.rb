@@ -12,7 +12,6 @@ require_relative './pages/registry_settings_page.rb'
 require_relative './pages/shipping_info_page.rb'
 
 
-
 class TestShippingInfo < TestBasic
 
 #Successfully change a value on shipping information  
@@ -84,7 +83,7 @@ class TestShippingInfo < TestBasic
       $browser.find_element(:xpath => ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
     }
   end
-=begin
+
   #No name at shipping information
   def test_NoNameShippingInfo
     #Preconditions: must be logged in
@@ -111,6 +110,7 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH).send_keys ShippingInfoPage::STREET
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).send_keys ShippingInfoPage::APTO
     $browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH).send_keys ShippingInfoPage::CITY
+    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), ShippingInfoPage::STATE)
     $browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID).send_keys ShippingInfoPage::STATE
     $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).send_keys ShippingInfoPage::ZIPCODE
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).send_keys ShippingInfoPage::PHONE
@@ -147,7 +147,7 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH).send_keys ShippingInfoPage::STREET
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).send_keys ShippingInfoPage::APTO
     $browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH).send_keys ShippingInfoPage::CITY
-    $browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID).send_keys ShippingInfoPage::STATE
+    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), ShippingInfoPage::STATE)
     $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).send_keys ShippingInfoPage::ZIPCODE
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).send_keys ShippingInfoPage::PHONE
     #clicks on button save changes
@@ -184,7 +184,7 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::LAST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::LAST_NAME
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).send_keys ShippingInfoPage::APTO
     $browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH).send_keys ShippingInfoPage::CITY
-    $browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID).send_keys ShippingInfoPage::STATE
+    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), ShippingInfoPage::STATE)
     $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).send_keys ShippingInfoPage::ZIPCODE
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).send_keys ShippingInfoPage::PHONE
     
@@ -221,7 +221,7 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::LAST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::LAST_NAME
     $browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH).send_keys ShippingInfoPage::STREET
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).send_keys ShippingInfoPage::APTO
-    $browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID).send_keys ShippingInfoPage::STATE
+    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), ShippingInfoPage::STATE)
     $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).send_keys ShippingInfoPage::ZIPCODE
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).send_keys ShippingInfoPage::PHONE
     #clicks on save changes button
@@ -229,6 +229,7 @@ class TestShippingInfo < TestBasic
     #verify error message is displayed
     assert $wait.until{
       $browser.find_element(:xpath => ShippingInfoPage::CITY_ERROR_XPATH).displayed?
+      $browser.find_element(:xpath => ShippingInfoPage::CITY_ERROR_XPATH).text == ShippingInfoPage::ERROR_FIELD_REQUIRED
     }
   end
 
@@ -259,14 +260,14 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH).send_keys ShippingInfoPage::STREET
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).send_keys ShippingInfoPage::APTO
     $browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH).send_keys ShippingInfoPage::CITY
-    $browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID).send_keys ShippingInfoPage::STATE
+    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), ShippingInfoPage::STATE)
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).send_keys ShippingInfoPage::PHONE
     #clicks on button Save Changes
     $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).click
     #verify error message is displayed
     assert $wait.until{
       $browser.find_element(:id => ShippingInfoPage::ZIP_CODE_ERROR_ID).displayed?
-      #TODO: add error message text
+      $browser.find_element(:id => ShippingInfoPage::ZIP_CODE_ERROR_ID).text == ShippingInfoPage::ERROR_FIELD_REQUIRED
     }
   end
 
@@ -298,7 +299,7 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH).send_keys ShippingInfoPage::STREET
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).send_keys ShippingInfoPage::APTO
     $browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH).send_keys ShippingInfoPage::CITY
-    $browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID).send_keys ShippingInfoPage::STATE
+    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), ShippingInfoPage::STATE)
     $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).send_keys '77de'
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).send_keys ShippingInfoPage::PHONE
     #clicks on Save changes button
@@ -336,16 +337,17 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH).send_keys ShippingInfoPage::STREET
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).send_keys ShippingInfoPage::APTO
     $browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH).send_keys ShippingInfoPage::CITY
-    $browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID).send_keys ShippingInfoPage::STATE
+    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), ShippingInfoPage::STATE)
     $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).send_keys ShippingInfoPage::ZIPCODE
     #clicks on button save
     $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).click
     #verify error message is displayed
     assert $wait.until{
       $browser.find_element(:xpath => ShippingInfoPage::PHONE_ERROR_XPATH).displayed?
+      $browser.find_element(:xpath => ShippingInfoPage::PHONE_ERROR_XPATH).text == ShippingInfoPage::ERROR_FIELD_REQUIRED
     }
   end
-
+=end
   #Add a non allowed zip code
   def test_UseInvalidZipCode
     #Preconditions: be logged in
@@ -367,15 +369,14 @@ class TestShippingInfo < TestBasic
     }
     #enters an invalid zip code
     cleanFields
-    zipCode = Common.generate_zipcode
-    $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).send_keys zipCode
+    $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).send_keys '09999'
     #completes the fields with some values
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME
     $browser.find_element(:xpath => ShippingInfoPage::LAST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::LAST_NAME
     $browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH).send_keys ShippingInfoPage::STREET
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).send_keys ShippingInfoPage::APTO
     $browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH).send_keys ShippingInfoPage::CITY
-    $browser.find_element(:id => ShippingInfoPage::STATE_SELECT_ID).send_keys ShippingInfoPage::STATE
+    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), ShippingInfoPage::STATE)
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).send_keys ShippingInfoPage::PHONE
     #click on button save changes
     $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).click
@@ -385,7 +386,7 @@ class TestShippingInfo < TestBasic
     }
     #clicks on error message
     $browser.find_element(:xpath => ShippingInfoPage::ZIP_CODE_WRONG_XPATH).click
-    #checks that 
+    #checks that the zip code was added
     assert $wait.until{
       $browser.find_element(:xpath => ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
     }
@@ -428,7 +429,7 @@ class TestShippingInfo < TestBasic
       $browser.find_element(:xpath => ShippingInfoPage::STATE_ERROR_XPATH).displayed?
     }
   end
-=end
+
   #Cleans the values on the fields
   def cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).clear

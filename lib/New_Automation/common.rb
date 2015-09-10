@@ -57,7 +57,7 @@ class Common
     SecureRandom.hex.gsub('-','')
   end
   
-   #Generate a Zip Code  
+  #Generate a Zip Code  
   def self.generate_zipcode
     SecureRandom.random_number(99999)
   end
@@ -109,15 +109,15 @@ class Common
   #Selects the option from a Select element, by Text
   # selectElement: dropdown element
   # optionText: string option to be selected from the dropdown
-  def self.selectByText(selectElement, optionText)
-    select = Selenium::WebDriver::Support::Select.new(selectElement)
+  def self.selectByText(dropdown, optionText)
+    select = Selenium::WebDriver::Support::Select.new(dropdown)
     select.select_by(:text, optionText)
   end
 
   #Selects the option from a Select element, by Text
   # selectElement: dropdown element
-  def self.get_selected_option_text(selectElement)
-    select = Selenium::WebDriver::Support::Select.new(selectElement)
+  def self.get_selected_option_text(dropdown)
+    select = Selenium::WebDriver::Support::Select.new(dropdown)
     selected_optionText = select.selected_options[0].text
   end
     
