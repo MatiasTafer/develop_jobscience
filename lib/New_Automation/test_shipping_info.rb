@@ -347,7 +347,7 @@ class TestShippingInfo < TestBasic
       $browser.find_element(:xpath => ShippingInfoPage::PHONE_ERROR_XPATH).text == ShippingInfoPage::ERROR_FIELD_REQUIRED
     }
   end
-=end
+
   #Add a non allowed zip code
   def test_UseInvalidZipCode
     #Preconditions: be logged in
