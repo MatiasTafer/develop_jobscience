@@ -1,6 +1,6 @@
 class Pdp
 
-ADDTOCART_BUTTON_XPATH = ".//*[@id='ng-app']/body/div[9]/div/div/div/div[1]/div[2]/div[3]/div[2]/button"
+MODAL_ADDTOCART_BUTTON_XPATH = ".//*[@class='modal-body']//*[@ng-click='addToCart()']"
 BUY_NOW_BUTTON_ID = "addToCartButton"
 ERROR_DIF_REGISTRY_MESS_ID = "humaneMessage"
 

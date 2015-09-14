@@ -14,8 +14,7 @@ class CartModal
   SECOND_ITEM_NAME_XPATH = "(.//*[@class='product-name'])[2]"
   FIRST_ITEM_QUANTITY_XPATH= "(.//*[@class='short quantity-p'])[1]"
   SECOND_ITEM_QUANTITY_XPATH= "(.//*[@class='short quantity-p'])[2]"
-  ITEM_NAME_ID = "cartProductName_fortstandard_crest_bottleopener3_4"
-  ITEM_TWO_NAME_ID = "cartProductName_wpdesign_masonshakerset"
+
   #Remove Item
   REMOVE_LINK_XPATH = "(.//*[@class='remove-p'])[1]"   
 
