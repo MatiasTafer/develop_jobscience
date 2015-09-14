@@ -1011,7 +1011,7 @@ class NewSignup < TestBasic
 
 
   #CREATE AN ACCOUNT LEAVING THE PASSWORD BLANK (TC1582)
-  def test_EmailBlank
+  def test_PasswordBlank
     
     #STEP 1
     $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
