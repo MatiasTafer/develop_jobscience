@@ -11,6 +11,7 @@ class HomePage
   
   #Account sub-menu
   REGISTRY_SETTINGS_ID = "your-registry-menu-registry-settings"
+  REGISTRY_SETTINGS_LINK_ID = "registrySettingsLink"
   LOG_OUT_LINK_ID = "account-menu-logout"
   
   
@@ -53,6 +54,7 @@ class HomePage
   
   #URL LINK CONTROL
   
+  HOME_URL = "https://qa.zola.com"
   REGISTRY_URL = "https://qa.zola.com/registry/juanandjulisa/edit"
   FIND_REGISTRY_URL = "https://qa.zola.com/find-registry"
   DOWNLOAD_APPS_URL = "https://qa.zola.com/simplify"

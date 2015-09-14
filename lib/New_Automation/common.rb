@@ -21,6 +21,8 @@ class Common
   USER_CHANGE_PASSWORD_SHORT= "test"
   USER_NAME_CART ="holahola@hotmail.com"
   USER_PASSWORD_CART ="holahola"
+  USER_GROUP_GIFT_EMAIL = "testgroupgift@gmail.com"
+  USER_GROUP_GIFT_PASSWORD = "1password"
   
   
   #Creates a new account without registry
@@ -171,6 +173,9 @@ class Common
     
   end
   
+  
+  
+  
   #Remove items from your cart
   #You already clicked in cart
   def self.remove_items_cart
@@ -190,4 +195,11 @@ class Common
       presentElements = $browser.find_elements(:xpath => CartModal::ALL_REMOVE_LINKS_XPATH)
     end
   end
+  
+  
+  
+  
+  
+  
+  
 end

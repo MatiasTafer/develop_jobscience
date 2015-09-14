@@ -17,6 +17,9 @@ class AccountSettingsPage
   #Button 
   SAVE_BUTTON_XPATH = ".//*[@type='submit']"
   
+  #Links
+  SHIPPING_INFORMATION_LINK_ID = "shippingInformationLink"
+  
   #Hardcode info
   FIRST_NAME_TEXT = "Carlos"
   LAST_NAME_TEXT = "Aguiar"
