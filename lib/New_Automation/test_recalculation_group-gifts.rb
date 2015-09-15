@@ -83,38 +83,43 @@ class TestRecalculationGroupGifts < TestBasic
   
   #TC1067 TOGGLE ADDRESS BETWEEN NEW YORK AND NON NEW YORK
   def test_toggle_ny_non_ny
-    #me logueo
+    #Log in
     login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    #voy a browser gift page
+    #Go to browse gift url
     $browser.get HomePage::ZOLA_SHOP_URL
     $wait.until{
       $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).displayed?
     }
-    #agrego un gift al registry
+    #Add gift to registry
     $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).click
     $wait.until{
       $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).displayed?
     }
     $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).click
-    #voy a registry page
+    #Go to registry
     $browser.get HomePage::HOME_URL
-    #clickeo sobre el primer gift
+    #Select the first gift on registry page
     $wait.until{
       $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).displayed?
     }
-    #convierto el gifst a groupgift ##### hasta aca llega falla en el 110
+    #Convert gift to group gift
     $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).click
     $wait.until{
-      $browser.find_element(:id, Pdp::ADDTOCART_BUTTON_XPATH).displayed?
+      $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
     }
     $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
-    assert $wait.until{
-      $browser.find_element(:xpath, Pdp::SAVE_CHANGE_BUTTON_ID).displayed?
+    $wait.until{
+      $browser.find_element(:xpath, Pdp::ENABLE_GROUP_GIFT_CHECKBOX_XPATH).displayed?
     }
-    
+    $browser.find_element(:xpath, Pdp::ENABLE_GROUP_GIFT_CHECKBOX_XPATH).click
+    #Save changes
+    $browser.find_element(:xpath, Pdp::SAVE_CHANGE_BUTTON_XPATH).click
+    assert $wait.until {
+      $browser.find_element(:id, RegistryPage::CHANGE_SAVED_MESSAGE_ID).displayed?
+    }
   end
     
  

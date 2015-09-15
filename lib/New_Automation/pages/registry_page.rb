@@ -8,4 +8,5 @@ class RegistryPage
   PRODUCT_QUANTITY_BUTTON_PROOF_ID = "quick_addCart_acaciaware_s4calabashbwl"
   OTHER_REGISTRY_CART_XPATH = ".//*[@class='cart']"
   FIRST_PRODUCT_XPATH = "(.//*[@class='contain-link'])[1]"
+  CHANGE_SAVED_MESSAGE_ID ="humaneMessage"
 end
