@@ -52,7 +52,7 @@ class Common
     name+"@"+randomString+".com"
   end
 
-  #Generates a url
+  #Generates an url
   def self.generate_url
     SecureRandom.hex.gsub('-','')
   end
