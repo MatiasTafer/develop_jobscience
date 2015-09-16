@@ -156,6 +156,8 @@ class TestRecalculationGroupGifts < TestBasic
        $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).click
        $wait.until{
          $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_MESSAGE_ID).displayed?
+         $browser.get HomePage::HOME_URL
+         $browser.find_element(:id, RegistryPage::YOUR_REGISTRY_LINK_ID).displayed?
        }
        #Save the first and the last item on registry to continue iteration
        firstGiftRegistry = $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH) 
