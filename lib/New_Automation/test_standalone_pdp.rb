@@ -164,7 +164,7 @@ class TestStandalonePdp < TestBasic
 
 #--------------------------------------  TESTS  -------------------------------------------------------
 
- 
+
   #STANDALONE PRODUCT DETAILS PAGE WHEN LOGGED IN (TC1492)
   def test_GoodStandalonePage
     #Login
@@ -656,7 +656,6 @@ class TestStandalonePdp < TestBasic
     #Delete the item
     deleteRecentItem()
   end
-  
   
 =begin
   #Waiting for new signup definetely enable
