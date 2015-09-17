@@ -15,9 +15,9 @@ class HomePage
   
   
   #HEADER LINKS
-  HOME_SHOP_XPATH= ".//*[@id='header']//*[@href='/shop']"
-  
-
+  HOME_SHOP_XPATH = "(.//*[@href='/shop'])[1]"
+  REGISTRY_LINK_XPATH = "(.//*[@href='/registry/oliviaandfitz/edit'])[2]"  
+  BLOG_LINK_XPATH = "(.//*[@href='http://blog.zola.com/'])[2]"
   LOGO_ZOLA_XPATH = "(.//*[@class='logo'])[1]"
   
   #BODY

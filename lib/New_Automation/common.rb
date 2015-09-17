@@ -190,4 +190,5 @@ class Common
       presentElements = $browser.find_elements(:xpath => CartModal::ALL_REMOVE_LINKS_XPATH)
     end
   end
+  
 end
