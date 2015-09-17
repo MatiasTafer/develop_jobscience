@@ -1,4 +1,5 @@
 class Pdp
+<<<<<<< HEAD
   
   #ERROR MESSAGES
   
@@ -28,6 +29,7 @@ class Pdp
   #BUTTONS
   ADD_REGISTRY_XPATH = ".//*[@class='btn btn-primary']"
   ADDTOCART_BUTTON_XPATH = ".//*[@class='btn btn-secondary btn-xs-block']"
+  MODAL_ADDTOCART_BUTTON_XPATH = ".//*[@class='modal-body']//*[@ng-click='addToCart()']"
   BUY_NOW_BUTTON_ID = "addToCartButton"
   GO_TO_REGISTRY_BUTTON_XPATH = ".//*[@class='btn btn-success']"
   ADD_COLLECTION_DROPDOWN_XPATH = ".//*[@class='btn btn-primary dropdown-toggle']"
