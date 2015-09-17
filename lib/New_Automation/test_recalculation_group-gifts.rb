@@ -412,91 +412,96 @@ class TestRecalculationGroupGifts < TestBasic
 
 
 
+  #TC1085 TOGGLE ADDRESS BETWEEN NEW YORK AND NON NEW YORK NO GROUP GIFT
+
 
    
     
     
-    #METHOD TO DELETE ALL ITEMS ON REGISTRY (necesita tener al menos un elemento en el registro despues lo voy a mejorar para que fucione si no hay nada ademas para correrlo tiene que estar parado en el rgistro hay que cambiarlo para que valla al home registry cuando arranque)
+    #METHOD TO DELETE ALL ITEMS ON REGISTRY 
     def clean_registry
-     #Save the first and the last item on registry
-     firstGiftRegistry = $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH) 
-     lastGiftRegistry = $browser.find_element(:xpath, RegistryPage::LAST_PRODUCT_XPATH)
-     #If the registry have only one item
-      if (firstGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID) == lastGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID)) then
-         $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).click
-         $wait.until{
-           $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
-         }
-         $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
-         $wait.until{
-           $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).displayed?
-         }
-           $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).click
-         $wait.until{
-           $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).displayed?
-         }
-           $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).click
-         $wait.until{
-           $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_MESSAGE_ID).displayed?
-         }
-       #Else eliminate all instances of items 
-       else
-          #Delete all elements on registry 
-           while (firstGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID) != lastGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID) ) do
-              $wait.until{
-                $browser.find_element(:id, RegistryPage::YOUR_REGISTRY_LINK_ID).displayed?
-              }
-              $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).click
-              $wait.until{
-                $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
-              }
-              $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
-              $wait.until{
-                $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).displayed?
-              }
-              $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).click
-              $wait.until{
-                $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).displayed?
-              }
-              $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).click
-              $wait.until{
-                $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_MESSAGE_ID).displayed?
-                $browser.get HomePage::HOME_URL
-                $browser.find_element(:id, RegistryPage::YOUR_REGISTRY_LINK_ID).displayed?
-              }
-              #Save the first and the last item on registry to continue iteration
-              firstGiftRegistry = $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH) 
-              lastGiftRegistry = $browser.find_element(:xpath, RegistryPage::LAST_PRODUCT_XPATH)
-              #If the first item on registry is equal to the last then deletes it and stops the iteration
-              if (firstGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID) == lastGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID)) then
-                  $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).click
-                  $wait.until{
-                    $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
-                  }
-                  $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
-                  $wait.until{
-                    $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).displayed?
-                  }
-                  $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).click
-                  $wait.until{
-                    $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).displayed?
-                  }
-                  $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).click
-                  $wait.until{
-                    $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_MESSAGE_ID).displayed?
-                  }
-                  break
-              #Else save the new first item to delete in next iteration  
-              else
-              $wait.until{
-                $browser.find_element(:id, RegistryPage::YOUR_REGISTRY_LINK_ID).displayed?
-              }
-              firstGiftRegistry = $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH)
-              lastGiftRegistry = $browser.find_element(:xpath, RegistryPage::LAST_PRODUCT_XPATH)
-              end   
-           end
-         end   
-       end
+    quantityItems = $browser.find_elements(:xpath, RegistryPage::QUANTITY_OF_ITEMS_IN_REGISTRY_XPATH)
+    if ( quantityItems.size > 0) then
+      #Save the first and the last item on registry
+      firstGiftRegistry = $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH) 
+      lastGiftRegistry = $browser.find_element(:xpath, RegistryPage::LAST_PRODUCT_XPATH)
+      #If the registry have only one item
+        if (firstGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID) == lastGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID)) then
+          $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).click
+          $wait.until{
+            $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
+          }
+          $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
+          $wait.until{
+            $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).displayed?
+          }
+            $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).click
+          $wait.until{
+            $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).displayed?
+          }
+            $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).click
+          $wait.until{
+            $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_MESSAGE_ID).displayed?
+          }
+        #Else eliminate all instances of items 
+        else
+            #Delete all elements on registry 
+            while (firstGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID) != lastGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID) ) do
+                $wait.until{
+                  $browser.find_element(:id, RegistryPage::YOUR_REGISTRY_LINK_ID).displayed?
+                }
+                $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).click
+                $wait.until{
+                  $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
+                }
+                $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
+                $wait.until{
+                  $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).displayed?
+                }
+                $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).click
+                $wait.until{
+                  $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).displayed?
+                }
+                $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).click
+                $wait.until{
+                  $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_MESSAGE_ID).displayed?
+                  $browser.get HomePage::HOME_URL
+                  $browser.find_element(:id, RegistryPage::YOUR_REGISTRY_LINK_ID).displayed?
+                }
+                #Save the first and the last item on registry to continue iteration
+                firstGiftRegistry = $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH) 
+                lastGiftRegistry = $browser.find_element(:xpath, RegistryPage::LAST_PRODUCT_XPATH)
+                #If the first item on registry is equal to the last then deletes it and stops the iteration
+                if (firstGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID) == lastGiftRegistry.attribute(RegistryPage::GIFT_ATTRIBUTE_ID)) then
+                    $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).click
+                    $wait.until{
+                      $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
+                    }
+                    $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
+                    $wait.until{
+                      $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).displayed?
+                    }
+                    $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).click
+                    $wait.until{
+                      $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).displayed?
+                    }
+                    $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).click
+                    $wait.until{
+                      $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_MESSAGE_ID).displayed?
+                    }
+                    break
+                #Else save the new first item to delete in next iteration  
+                else
+                $wait.until{
+                  $browser.find_element(:id, RegistryPage::YOUR_REGISTRY_LINK_ID).displayed?
+                }
+                firstGiftRegistry = $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH)
+                lastGiftRegistry = $browser.find_element(:xpath, RegistryPage::LAST_PRODUCT_XPATH)
+                end   
+            end
+          end   
+      end
+      end
  
    
 

@@ -9,6 +9,7 @@ class RegistryPage
   OTHER_REGISTRY_CART_XPATH = ".//*[@class='cart']"
   FIRST_PRODUCT_XPATH = "((.//*[@id='collection-results']//*[@class='single-item single-product editable'])[1])//*[@class='item-top']//*[@class='contain-link']"
   LAST_PRODUCT_XPATH = "((.//*[@id='collection-results']//*[@class='single-item single-product editable'])[last()])//*[@class='item-top']//*[@class='contain-link']"
+  QUANTITY_OF_ITEMS_IN_REGISTRY_XPATH = "((.//*[@id='collection-results']//*[@class='single-item single-product editable']))//*[@class='item-top']//*[@class='contain-link']"
   CHANGE_SAVED_MESSAGE_ID ="humaneMessage"
   YOUR_REGISTRY_LINK_ID = "registrySettingsLink"
   GIFT_ATTRIBUTE_ID = "data-collection-item-id"
