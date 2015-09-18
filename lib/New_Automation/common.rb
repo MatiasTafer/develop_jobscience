@@ -21,8 +21,11 @@ class Common
   USER_CHANGE_PASSWORD_SHORT= "test"
   USER_NAME_CART ="holahola@hotmail.com"
   USER_PASSWORD_CART ="holahola"
+  #Users and password for test: "test_recalculation_group-gift"
   USER_GROUP_GIFT_EMAIL = "testgroupgift@gmail.com"
   USER_GROUP_GIFT_PASSWORD = "1password"
+  
+  
   
   
   #Creates a new account without registry

@@ -76,7 +76,7 @@ class TestRecalculationGroupGifts < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).click
   end
   
-=begin  
+=begin 
   #TC1067 TOGGLE ADDRESS BETWEEN NEW YORK AND NON NEW YORK
   def test_toggle_ny_non_ny
     #Log in
@@ -472,14 +472,14 @@ class TestRecalculationGroupGifts < TestBasic
     }
   end
 
-=end
 
 
 
 
-   #TC1071 TOGGLE ADDRESS BETWEEN NON NEW YORK AND NEW YORK ADRESSES
+
+   #TC1071 TOGGLE ADDRESS BETWEEN NON NEW YORK AND NEW YORK ADRESSES NO GROUP GIFT
    def test_not_group_gift_ny_non_ny
-     #Log in
+    #Log in
     login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
@@ -536,6 +536,261 @@ class TestRecalculationGroupGifts < TestBasic
       $browser.find_element(:xpath, ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
     }
    end
+    
+  
+   
+   
+   #TC1072 TOGGLE ADDRESS BETWEEN NON NEW YORK AND NON NEW YORK NO GROUP GIFT
+   def test_not_group_gift_non_ny_non_ny
+    #Log in
+    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
+    $wait.until{
+      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
+    #Eliminate all items in registry
+    clean_registry
+    #Go to Shipping information page
+    $wait.until{
+      $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).displayed?
+    }
+    $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
+    }
+    #Change shipping information to New York
+    change_shipping_information_not_ny
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
+    }
+    #Go to browse gift url
+    $wait.until{
+      $browser.get HomePage::ZOLA_SHOP_URL
+    }
+    $wait.until{
+      $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).displayed?
+    }
+    #Add gift to registry
+    $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).click
+    #Go to Shipping information page
+    $wait.until{
+      $browser.get HomePage::HOME_URL
+      $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).displayed?
+    }
+    $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
+    }
+    #Change shipping information to non New York address
+    change_shipping_information_not_ny
+    #Verify Adjustment group gift modal not appears
+    assert $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
+    } 
+   end
+   
+   
+   #TC1084 TOGGLE ADDRESS BETWEEN NEW YORK AND NEW YORK ADRESSES NO GROUP GIFT
+   def test_not_group_gift_ny_ny
+    #Log in
+    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
+    $wait.until{
+      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
+    #Eliminate all items in registry
+    clean_registry
+    #Go to Shipping information page
+    $wait.until{
+      $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).displayed?
+    }
+    $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
+    }
+    #Change shipping information to New York
+    change_shipping_information_ny
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
+    }
+    #Go to browse gift url
+    $wait.until{
+      $browser.get HomePage::ZOLA_SHOP_URL
+    }
+    $wait.until{
+      $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).displayed?
+    }
+    #Add gift to registry
+    $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).click
+    #Go to Shipping information page
+    $wait.until{
+      $browser.get HomePage::HOME_URL
+      $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).displayed?
+    }
+    $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
+    }
+    #Change shipping information to non New York address
+    change_shipping_information_ny
+    #Verify Adjustment group gift modal not appears
+    assert $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
+    }
+   end
+    
+   
+=end   
+   
+   
+   #TC1073 DELETE GROUP GIFT NEW YORK AND NON NEW YORK ADDRESS
+   def test_delete_group_gift_ny_non_ny
+   #Log in
+    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
+    $wait.until{
+      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
+    #Eliminate all items in registry
+    clean_registry
+    #Go to Shipping information page
+    $wait.until{
+      $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).displayed?
+    }
+    $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
+    }
+    #Change shipping information to New York
+    change_shipping_information_ny
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
+    }
+    #Agregar 2 group gift al registro (punto 4 de la libreta)
+    for i in 0..1
+      #Go to browse gift url
+      $wait.until{
+        $browser.get HomePage::ZOLA_SHOP_URL
+      }
+      $wait.until{
+        $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).displayed?
+      }
+      #Add gift to registry
+      $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).click
+      $wait.until{
+        $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).displayed?
+      }
+      $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).click
+      #Go to registry
+      $browser.get HomePage::HOME_URL
+      #Select the first gift on registry page
+      $wait.until{
+        $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).displayed?
+      }
+    end
+    #Convert firs gift to group gift
+    $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, Pdp::ENABLE_GROUP_GIFT_CHECKBOX_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, Pdp::ENABLE_GROUP_GIFT_CHECKBOX_XPATH).click
+    #Save changes
+    $browser.find_element(:xpath, Pdp::SAVE_CHANGE_BUTTON_XPATH).click
+    $wait.until {
+      $browser.find_element(:id, RegistryPage::CHANGE_SAVED_MESSAGE_ID).displayed?
+      $browser.find_element(:xpath, RegistryPage::LAST_PRODUCT_XPATH).displayed?
+    }
+    #Convert second gift to group gift
+    $browser.find_element(:xpath, RegistryPage::LAST_PRODUCT_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, Pdp::ENABLE_GROUP_GIFT_CHECKBOX_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, Pdp::ENABLE_GROUP_GIFT_CHECKBOX_XPATH).click
+    #Save changes
+    $browser.find_element(:xpath, Pdp::SAVE_CHANGE_BUTTON_XPATH).click
+    $wait.until {
+      $browser.find_element(:id, RegistryPage::CHANGE_SAVED_MESSAGE_ID).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).displayed?
+    }
+    #Tomo el nombre del primer elemento del registro
+    firstGiftRegistryName = $browser.find_element(:xpath, RegistryPage::NAME_OF_FIRST_ITEM_IN_REGISTRY_XPATH).text
+    #Delete the first item on registry
+    $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, Pdp::DELETE_GIFT_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).displayed?
+    }
+    $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_BUTTON_ID).click
+    $wait.until{
+      $browser.find_element(:id, RemoveItemConfirmModal::REMOVE_ITEM_MESSAGE_ID).displayed?
+      $browser.get HomePage::HOME_URL
+    }
+    #Go to Shipping information page
+    $wait.until{
+      $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).displayed?
+    }
+    $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, RegistrySettingsPage::SHIPPING_INFO_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
+    }
+    #Change Shipping information to non New York
+    change_shipping_information_not_ny
+    $wait.until {
+      $browser.find_element(:xpath, AdjustmentGroupGift::OKAY_GOT_IT_BUTTON_XPATH).displayed?
+    }
+    #Verify if the deleted product does not appear on modal
+    assert $wait.until {
+      $browser.find_element(:xpath, AdjustmentGroupGift::NAME_FIRST_GROUP_GIFT_XPATH).text != firstGiftRegistryName 
+    }
+   end
+   
+   
     
     
     
