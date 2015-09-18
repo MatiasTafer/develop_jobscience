@@ -15,7 +15,7 @@ class Pdp
   #PRODUCT DETAILS
   QUANTITY_BOX_XPATH = ".//*[@name='quantity']"
   SELECT_SIZE_XPATH = ".//*[@ng-change = 'resolveSku()']"
-  SIZE_OPTION_ONE_XPATH = ".//*[@value='string:queen']"
+  SIZE_OPTION_ONE_XPATH = ".//*[@ng-change='resolveSku()']"
   SIZE_OPTION_TWO_XPATH = ".//*[@value='string:46 in.']"
   COLOR_DESCRIPTION_XPATH = ".//*[@class='swatch-label value-label']"
   COLOR_OPTION_XPATH = ".//*[@class='swatch']"

@@ -18,7 +18,7 @@ require_relative './pages/new_signup_page.rb'
 
 class TestStandalonePdp < TestBasic
   
-#-----------------------------  ACCESSESORIES METHODS  --------------------------------------------
+#-----------------------------  ACCESSORIES METHODS  --------------------------------------------
 
   #Method to go to an item modal
   #Tests (TC1492), (TC1493), (TC1494), (TC1495 STEPS 1,2,3), (TC1496), (TC1500), (TC1503), (TC1506) and (TC1507)
@@ -42,6 +42,25 @@ class TestStandalonePdp < TestBasic
     }
   end
   
+  #Find an item that has size options 
+  def findSpecificSizeElement(xpath)
+    way = xpath.slice(0..36)
+    $browser.action.move_to($browser.find_element(:xpath => way)).perform
+    $wait.until{
+      $browser.find_element(:xpath => way + "//*[@class='quickview-inputs-wrapper']").displayed?
+    }
+    array = $browser.find_elements(:xpath => xpath)
+    found = array.size > 0
+    return found
+  end
+  
+  #Find an item that has color options
+  def findSpecificColorElement(xpath)
+    array = $browser.find_elements(:xpath => xpath)
+    found = array.size > 0
+    return found
+  end
+  
 
   #Method to go to an item, which you can choose it color, modal
   #Tests (TC1499), (TC1502) and (TC1505)
@@ -62,7 +81,19 @@ class TestStandalonePdp < TestBasic
     $wait.until{
       $browser.find_element(:xpath => BedroomCategoryPage::ITEM_WITH_COLOR_XPATH).displayed?
     }
-    $browser.find_element(:xpath => BedroomCategoryPage::ITEM_WITH_COLOR_XPATH).click
+    aux = 1;
+    @@find = false   
+    while(@@find == false)
+      @@find = true;
+      way = "(.//*[@class='col-xs-6 col-sm-4'])[#{aux}]//*[@class='hidden-xs text-center']"
+      @@find = findSpecificColorElement(way)   
+      if @@find == true
+        way = way.slice(0..36)
+      end
+      aux = aux + 1
+    end
+    
+    $browser.find_element(:xpath => way + "/div/a").click
     $wait.until{
       $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
     }
@@ -88,10 +119,22 @@ class TestStandalonePdp < TestBasic
     $wait.until{
       $browser.find_element(:xpath => BedroomCategoryPage::ITEM_WITH_SIZE_XPATH).displayed?
     }
-    $browser.find_element(:xpath => BedroomCategoryPage::ITEM_WITH_SIZE_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
-    }
+    aux = 1;
+    @@find = false   
+    while(@@find == false)
+      @@find = true;
+      way = "(.//*[@class='col-xs-6 col-sm-4'])[#{aux}]//*[@sku-selector='']"
+      @@find = findSpecificSizeElement(way)   
+      
+      if @@find == true
+        way = way.slice(0..36)
+      end
+      aux = aux + 1
+    end
+     $browser.find_element(:xpath => way + "/div/a").click
+     $wait.until{
+          $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
+     }  
   end
   
   
@@ -119,15 +162,15 @@ class TestStandalonePdp < TestBasic
   end
   
   
-  #Method to iterate throw all items in registry and compare their names with the one passed as parameter, and once getted goes to the item modal
+  #Method to iterate throw all items in registry and compare their names with the one passed as parameter, and once it finds the item, it goes to the item modal
   #Tests (TC1501), (TC1502), (TC1503) and (TC1506)
   def searchAndGoToModal(nameSelected)  
     #This section of code iterates throw all items name on registry to compare them with the one taken on the PDP until found the indicated
     flag = false
     counter = 1
     while flag == false do
-      elemento = "(.//*[@class='item-body with-bottom']/h5)[#{counter}]"
-      nameOnRegistry = $browser.find_element(:xpath => elemento).text
+      element = "(.//*[@class='item-body with-bottom']/h5)[#{counter}]"
+      nameOnRegistry = $browser.find_element(:xpath => element).text
       if nameOnRegistry == nameSelected
         flag = true
       end
@@ -135,8 +178,8 @@ class TestStandalonePdp < TestBasic
     end
     assert_equal(nameOnRegistry, nameSelected)
     #Once found the item goes to the product modal so it can compare 
-    elemento["/h5"] = "/a"
-    $browser.find_element(:xpath => elemento).click
+    element["/h5"] = "/a"
+    $browser.find_element(:xpath => element).click
     $wait.until{
       $browser.find_element(:id => Pdp::BUY_NOW_BUTTON_ID).displayed?
     } 
@@ -164,7 +207,6 @@ class TestStandalonePdp < TestBasic
 
 #--------------------------------------  TESTS  -------------------------------------------------------
 
-
   #STANDALONE PRODUCT DETAILS PAGE WHEN LOGGED IN (TC1492)
   def test_GoodStandalonePage
     #Login
@@ -173,7 +215,6 @@ class TestStandalonePdp < TestBasic
     goToItemModal()
     #Get the product name and price to compare with the same information from the pdp
     prodModalName = $browser.find_element(:xpath =>Pdp::PRODUCT_NAME_DIV_XPATH).text
-    puts prodModalName
     prodModalPrice = $browser.find_element(:xpath => Pdp::PRODUCT_PRICE_DIV_XPATH).text
     #Open a new tab with the taken url.
     newTabURL()
@@ -237,7 +278,7 @@ class TestStandalonePdp < TestBasic
     #Open new tab with taken url.
     newTabURL()
     brand = $browser.find_element(:xpath => Pdp::BRAND_LINK_XPATH).text
-    #Obtein the brand section of the text to compare it.
+    #Obtain the brand section of the text to compare it.
     brandName = brand.slice(0..brand.length-3)
     downBrandName = brandName.downcase
     #Click on Brand link
@@ -255,7 +296,7 @@ class TestStandalonePdp < TestBasic
     #Open new tab with taken url.
     newTabURL()
     brand = $browser.find_element(:xpath => Pdp::BRAND_LINK_XPATH).text
-    #Obtein the brand section of the text to compare it.
+    #Obtain the brand section of the text to compare it.
     brandName = brand.slice(0..brand.length-3)
     downBrandName = brandName.downcase
     #Click on "See all" link
@@ -352,9 +393,12 @@ class TestStandalonePdp < TestBasic
       $browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).displayed?
     }
     #Select size from the dropdown list
-    $browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).find_element(:xpath => Pdp::SIZE_OPTION_TWO_XPATH).click
+    #$browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).find_element(:xpath => Pdp::SIZE_OPTION_TWO_XPATH).click
+    path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+    #Select a value from the size dropdown list
+    Common.selectByText(path, 1)
     #Save the size value to be selected on the pdp
-    sizeSelected = $browser.find_element(:xpath => Pdp::SIZE_OPTION_TWO_XPATH).text
+    sizeSelected = Common.get_selected_option_text(path)
     $wait.until{
       $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
     }  
@@ -387,7 +431,9 @@ class TestStandalonePdp < TestBasic
     $browser.find_element(:xpath => Pdp::COLOR_OPTION_XPATH).click
     textSelected = $browser.find_element(:xpath => Pdp::COLOR_TEXT_SELECTED_XPATH).text
     #Select a size from the dropdown list
-    $browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH).click
+    path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+    #Select a value from the size dropdown list
+    Common.selectByText(path, 1)    
     $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
     #Advance from "procede to checkout/continue shopping" modal to the cart
     $wait.until{
@@ -436,7 +482,7 @@ class TestStandalonePdp < TestBasic
     assert_equal("3", quantityOnCart)
   end
 
-  
+
   #ADD A PRODUCT THAT HAS AN ATTRIBUTE (E.G.SIZE) TO YOUR REGISTRY PAGE (TC1501)
     #A USER who has REGISTRY is needed for this test
   def test_AddItemWithSizeToReg
@@ -450,10 +496,11 @@ class TestStandalonePdp < TestBasic
     $wait.until{
       $browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).displayed?
     }
-    #Select a size from the dropdown list
-    $browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).find_element(:xpath => Pdp::SIZE_OPTION_TWO_XPATH).click
-    #Save the size value to be selected on the pdp
-    sizeSelected = $browser.find_element(:xpath => Pdp::SIZE_OPTION_TWO_XPATH).text
+    path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+    #Select a value from the size dropdown list
+    Common.selectByText(path, 1)
+    #Save the size and name of the selected item
+    sizeSelected = Common.get_selected_option_text(path) 
     nameSelected = $browser.find_element(:xpath => Pdp::PRODUCT_NAME_XPATH).text
     #Add the item to the registry
     $browser.find_element(:xpath => Pdp::ADD_REGISTRY_XPATH).click
@@ -472,7 +519,7 @@ class TestStandalonePdp < TestBasic
     deleteRecentItem()   
   end
 
- 
+
   #ADD A PRODUCT THAT HAS COLOR SWATCHES TO YOUR REGISTRY HOMEPAGE (TC1502)
     #A USER who has REGISTRY is needed for this test
   def test_AddItemWithColorToReg
@@ -490,7 +537,9 @@ class TestStandalonePdp < TestBasic
     colorSelected = $browser.find_element(:xpath => Pdp::COLOR_TEXT_SELECTED_XPATH).text
     nameSelected = $browser.find_element(:xpath => Pdp::PRODUCT_NAME_XPATH).text
     #Select a size from the dropdown list
-    $browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH).click
+    path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+    #Select a value from the size dropdown list
+    Common.selectByText(path, 1) 
     #Add to the registry
     $browser.find_element(:xpath => Pdp::ADD_REGISTRY_XPATH).click
     $wait.until{
@@ -536,7 +585,7 @@ class TestStandalonePdp < TestBasic
     quantity = quantity.slice(quantity.length-1..quantity.length)
     assert_equal(quantity, "3")
     
-    #Delte the item
+    #Delete the item
     deleteRecentItem()
   end
 
@@ -552,11 +601,12 @@ class TestStandalonePdp < TestBasic
     newTabURL()
     $wait.until{
       $browser.find_element(:xpath => Pdp::QUANTITY_BOX_XPATH).displayed?
-    }
-    #Select a size from the dropdown list
-    $browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).find_element(:xpath => Pdp::SIZE_OPTION_TWO_XPATH).click
-    #Save the size value selected on the pdp
-    sizeSelected = $browser.find_element(:xpath => Pdp::SIZE_OPTION_TWO_XPATH).text
+    }    
+    path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+    #Select a value from the size dropdown list
+    Common.selectByText(path, 1)
+    #Save the size and name of the selected item
+    sizeSelected = Common.get_selected_option_text(path) 
     nameSelected = $browser.find_element(:xpath => Pdp::PRODUCT_NAME_XPATH).text
     #Add the new item to a collection and go to see it on the registry
     $browser.find_element(:xpath => Pdp::ADD_COLLECTION_DROPDOWN_XPATH).click
@@ -597,7 +647,10 @@ class TestStandalonePdp < TestBasic
     colorSelected = $browser.find_element(:xpath => Pdp::COLOR_TEXT_SELECTED_XPATH).text
     nameSelected = $browser.find_element(:xpath => Pdp::PRODUCT_NAME_XPATH).text
     #Select a size from the dropdown list
-    $browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH).click
+    path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+    #Select a value from the size dropdown list
+    Common.selectByText(path, 1) 
+
     #Add item to a collection and go to see it on the registry
     $browser.find_element(:xpath => Pdp::ADD_COLLECTION_DROPDOWN_XPATH).click
     $wait.until{
@@ -656,10 +709,10 @@ class TestStandalonePdp < TestBasic
     #Delete the item
     deleteRecentItem()
   end
-  
+
   
 =begin
-  #Waiting for new signup definetely enable
+  #Waiting for new signup definitely enable
 
   #TRY TO ADD A PRODUCT TO YOUR REGISTRY WHILE NOT LOGGED IN (TC1507)
   def test_NotLoggedAddToReg

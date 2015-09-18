@@ -111,7 +111,7 @@ class Common
   # optionText: string option to be selected from the dropdown
   def self.selectByText(dropdown, optionText)
     select = Selenium::WebDriver::Support::Select.new(dropdown)
-    select.select_by(:text, optionText)
+    select.select_by(:index, optionText)
   end
 
   #Selects the option from a Select element, by Text
