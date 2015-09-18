@@ -15,4 +15,5 @@ class RegistryPage
   YOUR_REGISTRY_LINK_ID = "registrySettingsLink"
   GIFT_ATTRIBUTE_ID = "data-collection-item-id"
   
+  
 end
