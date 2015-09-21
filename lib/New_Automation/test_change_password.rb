@@ -30,12 +30,12 @@ class TestChangePassword < TestBasic
   # Change the password successfully
   def test_change_password_successfully
     
-    Common.login(Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS)
+    Common.login(Common::USER1_EMAIL, Common::USER1_PASS)
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-    change_password Common::USER_CHANGE_PASSWORD_PASS, Common::USER_CHANGE_PASSWORD_PASS2, Common::USER_CHANGE_PASSWORD_PASS2
+    change_password Common::USER1_PASS, Common::USER_CHANGE_PASSWORD_PASS, Common::USER_CHANGE_PASSWORD_PASS
     $wait.until{
       $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).displayed?
     }
@@ -56,13 +56,13 @@ class TestChangePassword < TestBasic
             $browser.find_element(:id, HomePage::LOGIN_LINK_ID).displayed?
         }
     #Log in with your new password
-    Common.login(Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS2)
+    Common.login(Common::USER1_EMAIL, Common::USER_CHANGE_PASSWORD_PASS)
     assert $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     #Change the password to the original one
     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-    change_password Common::USER_CHANGE_PASSWORD_PASS2, Common::USER_CHANGE_PASSWORD_PASS, Common::USER_CHANGE_PASSWORD_PASS
+    change_password Common::USER_CHANGE_PASSWORD_PASS, Common::USER1_PASS, Common::USER1_PASS
     $wait.until {
       $browser.execute_script("return document.readyState;") == "complete"
     }
@@ -70,12 +70,12 @@ class TestChangePassword < TestBasic
 
   # Trying to change the password to one with less than 8 characters
   def test_password_too_short
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+    Common.login Common::USER1_EMAIL, Common::USER1_PASS
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-    change_password Common::USER_CHANGE_PASSWORD_PASS, Common::USER_CHANGE_PASSWORD_SHORT, Common::USER_CHANGE_PASSWORD_SHORT
+    change_password Common::USER1_PASS, Common::USER_CHANGE_PASSWORD_SHORT, Common::USER_CHANGE_PASSWORD_SHORT
     $wait.until{
       $browser.find_element(:id, AccountInfoPage::NEW_PASSWORD_ERROR_ID).displayed?
     }
@@ -83,7 +83,7 @@ class TestChangePassword < TestBasic
     #Log out
     Common.logout
     #Try to log in with the password you tried to change to
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_SHORT
+    Common.login Common::USER1_EMAIL, Common::USER_CHANGE_PASSWORD_SHORT
     $wait.until {
       $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).displayed?
     }
@@ -92,12 +92,12 @@ class TestChangePassword < TestBasic
 
   # Trying to change the password but with the verification not matching
   def test_confirmation_not_matching
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+    Common.login Common::USER1_EMAIL, Common::USER1_PASS
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-    change_password Common::USER_CHANGE_PASSWORD_PASS, Common::USER_CHANGE_PASSWORD_PASS2, 'test123456'
+    change_password Common::USER1_PASS, Common::USER_CHANGE_PASSWORD_PASS, 'test123456'
     $wait.until{
       $browser.find_element(:id, AccountInfoPage::VERIFY_PASSWORD_ERROR_ID).displayed?
     }
@@ -105,7 +105,7 @@ class TestChangePassword < TestBasic
     #Log out
     Common.logout
     #Try to log in with the password you tried to change to
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS2
+    Common.login Common::USER1_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
     $wait.until {
       $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).displayed?
     }
@@ -115,7 +115,7 @@ class TestChangePassword < TestBasic
     assert $wait.until{
             $browser.find_element(:id, HomePage::LOGIN_LINK_ID).displayed?
         }
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, 'test123456'
+    Common.login Common::USER1_EMAIL, 'test123456'
     $wait.until {
       $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).displayed?
     }
@@ -124,12 +124,12 @@ class TestChangePassword < TestBasic
 
   #Try to change your password providing a wrong current password
   def test_wrong_current_password
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+    Common.login Common::USER1_EMAIL, Common::USER1_PASS
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-    change_password 'test123456', Common::USER_CHANGE_PASSWORD_PASS2, Common::USER_CHANGE_PASSWORD_PASS2
+    change_password 'test123456', Common::USER_CHANGE_PASSWORD_PASS, Common::USER_CHANGE_PASSWORD_PASS
     $wait.until{
       $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).displayed?
     }
@@ -137,7 +137,7 @@ class TestChangePassword < TestBasic
     #Log out
     Common.logout
     #Try to log in with the password you tried to change to
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS2
+    Common.login Common::USER1_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
     $wait.until {
       $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).displayed?
     }
