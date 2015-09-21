@@ -51,7 +51,7 @@ class TestRecalculationGroupGifts < TestBasic
   
   
  #CHANGE SHIPPING INFORMATION TO NEW YORK 
- def change_shipping_information_ny ####Tested
+ def change_shipping_information_ny
     #clean fields and complete the shipping information with new values
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRS_NAME_3
@@ -68,7 +68,7 @@ class TestRecalculationGroupGifts < TestBasic
   
   
   #CHANGE SHIPPING INFORMATION TO NON NEW YORK
-  def change_shipping_information_not_ny #####tested
+  def change_shipping_information_not_ny 
     #Clean fields and complete the shipping information with new values
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME_2
