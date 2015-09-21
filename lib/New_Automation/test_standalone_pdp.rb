@@ -14,6 +14,7 @@ require_relative './pages/collection_page.rb'
 require_relative './pages/edit_item_modal.rb'
 require_relative './pages/remove_item_confirmation_modal.rb'
 require_relative './pages/new_signup_page.rb'
+require_relative './pages/brand_page.rb'
 
 
 class TestStandalonePdp < TestBasic
@@ -149,19 +150,6 @@ class TestStandalonePdp < TestBasic
   end
   
   
-  #Method to get the last URL section(brand) of the brand page
-  #Tests (TC 1495 STEP 1 and 2)
-  def getBrand
-    url = $browser.current_url
-    urlBrand = url.split("/").last
-    if(urlBrand.index("-") != nil)
-      lastURL = urlBrand.split("-")
-      urlBrand = lastURL[0] + " " + lastURL[lastURL.length-1]
-    end
-    return urlBrand
-  end
-  
-  
   #Method to iterate throw all items in registry and compare their names with the one passed as parameter, and once it finds the item, it goes to the item modal
   #Tests (TC1501), (TC1502), (TC1503) and (TC1506)
   def searchAndGoToModal(nameSelected)  
@@ -284,7 +272,8 @@ class TestStandalonePdp < TestBasic
     #Click on Brand link
     $browser.find_element(:xpath => Pdp::BRAND_LINK_XPATH).click
     #Get the current url lastword(brand)
-    urlBrand = getBrand()
+    urlBrand = $browser.find_element(:xpath => BrandPage::BRAND_NAME_DIV_XPATH).text
+    urlBrand = urlBrand.downcase
     assert_equal(downBrandName, urlBrand)
   end
 
@@ -302,7 +291,8 @@ class TestStandalonePdp < TestBasic
     #Click on "See all" link
     $browser.find_element(:xpath => Pdp::SEE_ALL_LINK_XPATH).click
     #Get the current url lastword(brand)
-    urlBrand = getBrand()
+    urlBrand = $browser.find_element(:xpath => BrandPage::BRAND_NAME_DIV_XPATH).text
+    urlBrand = urlBrand.downcase
     assert_equal(downBrandName, urlBrand) 
   end
 
