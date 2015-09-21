@@ -396,7 +396,7 @@ class TestStandalonePdp < TestBasic
     #$browser.find_element(:xpath => Pdp::SELECT_SIZE_XPATH).find_element(:xpath => Pdp::SIZE_OPTION_TWO_XPATH).click
     path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
     #Select a value from the size dropdown list
-    Common.selectByText(path, 1)
+    Common.selectByIndex(path, 1)
     #Save the size value to be selected on the pdp
     sizeSelected = Common.get_selected_option_text(path)
     $wait.until{
@@ -433,7 +433,7 @@ class TestStandalonePdp < TestBasic
     #Select a size from the dropdown list
     path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
     #Select a value from the size dropdown list
-    Common.selectByText(path, 1)    
+    Common.selectByIndex(path, 1)    
     $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
     #Advance from "procede to checkout/continue shopping" modal to the cart
     $wait.until{
@@ -498,7 +498,7 @@ class TestStandalonePdp < TestBasic
     }
     path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
     #Select a value from the size dropdown list
-    Common.selectByText(path, 1)
+    Common.selectByIndex(path, 1)
     #Save the size and name of the selected item
     sizeSelected = Common.get_selected_option_text(path) 
     nameSelected = $browser.find_element(:xpath => Pdp::PRODUCT_NAME_XPATH).text
@@ -539,7 +539,7 @@ class TestStandalonePdp < TestBasic
     #Select a size from the dropdown list
     path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
     #Select a value from the size dropdown list
-    Common.selectByText(path, 1) 
+    Common.selectByIndex(path, 1) 
     #Add to the registry
     $browser.find_element(:xpath => Pdp::ADD_REGISTRY_XPATH).click
     $wait.until{
@@ -604,7 +604,7 @@ class TestStandalonePdp < TestBasic
     }    
     path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
     #Select a value from the size dropdown list
-    Common.selectByText(path, 1)
+    Common.selectByIndex(path, 1)
     #Save the size and name of the selected item
     sizeSelected = Common.get_selected_option_text(path) 
     nameSelected = $browser.find_element(:xpath => Pdp::PRODUCT_NAME_XPATH).text
@@ -649,7 +649,7 @@ class TestStandalonePdp < TestBasic
     #Select a size from the dropdown list
     path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
     #Select a value from the size dropdown list
-    Common.selectByText(path, 1) 
+    Common.selectByIndex(path, 1) 
 
     #Add item to a collection and go to see it on the registry
     $browser.find_element(:xpath => Pdp::ADD_COLLECTION_DROPDOWN_XPATH).click
