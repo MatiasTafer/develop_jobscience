@@ -1017,6 +1017,9 @@ class TestRecalculationGroupGifts < TestBasic
     }
     #Unmark all fulfilled gifts on registry
     unmark_all_fulfilled_items
+    $wait.until{
+      $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).displayed?
+    }
    end
    
    
@@ -1132,6 +1135,9 @@ class TestRecalculationGroupGifts < TestBasic
     }
     #Unmark all fulfilled gifts on registry
     unmark_all_fulfilled_items
+    $wait.until{
+      $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).displayed?
+    }
    end
    
    
@@ -1142,8 +1148,9 @@ class TestRecalculationGroupGifts < TestBasic
     #I move through each item
     for itemPosition in 0..quantityItems.size-1
       $wait.until{
+         $browser.find_element(:xpath, RegistryPage::FIRST_PRODUCT_XPATH).displayed?
          quantityItems[itemPosition].click
-         $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed? 
+         $browser.find_element(:xpath, Pdp::EDIT_GIFT_BUTTON_XPATH).displayed?     
       }
       #If the element is fulfilled
       if ($browser.find_elements(:xpath, Pdp::FULFILLED_BUTTON_GREY_XPATH).size == 1) then
@@ -1172,7 +1179,7 @@ class TestRecalculationGroupGifts < TestBasic
       end
     end
    end
-   
+    
    
     #METHOD TO DELETE ALL ITEMS ON REGISTRY 
     def clean_registry
