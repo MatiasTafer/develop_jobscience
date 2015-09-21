@@ -12,6 +12,11 @@ require_relative './pages/shop_page.rb'
 
 class Common
   
+  #NEW USERS
+  USER1_EMAIL = "user1@automation.com"
+  USER1_PASS  = "test1234"
+  
+  
   USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"
   USER_NO_REGISTRY_PASS     = "test1234"
   URL_EXISTING              = "homerandmarge"
