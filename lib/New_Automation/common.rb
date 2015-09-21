@@ -15,14 +15,14 @@ class Common
   #NEW USERS
   USER1_EMAIL = "user1@automation.com"
   USER1_PASS  = "test1234"
+  USER_CHANGE_PASSWORD_PASS= "test12345"
   
   
   USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"
   USER_NO_REGISTRY_PASS     = "test1234"
   URL_EXISTING              = "homerandmarge"
   USER_CHANGE_PASSWORD_EMAIL= "oktanatesting@gmail.com"
-  USER_CHANGE_PASSWORD_PASS = "test1234"
-  USER_CHANGE_PASSWORD_PASS2= "test12345"
+  
   USER_CHANGE_PASSWORD_SHORT= "test"
   USER_NAME_CART ="holahola@hotmail.com"
   USER_PASSWORD_CART ="holahola"
