@@ -27,7 +27,7 @@ class TestLogin < TestBasic
   # Logging in and logging out correctly
   def test_login_logout_ok
     #Login
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+    Common.login Common::USER1_EMAIL, Common::USER1_PASS
     assert $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
@@ -53,7 +53,7 @@ class TestLogin < TestBasic
 
   # Trying to log in with a registered user but using a wrong password
   def test_login_wrong_password
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, 'wrongpassword'
+    Common.login Common::USER1_EMAIL, 'wrongpassword'
     $wait.until {
       $browser.find_element(:xpath => LoginModal::MISMATCH_MESSAGE_XPATH).displayed?
     }
@@ -62,7 +62,7 @@ class TestLogin < TestBasic
 
   # Trying to log in with a registered user but leaving the password field blank
   def test_login_blank_password
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, ''
+    Common.login Common::USER1_EMAIL, ''
     $wait.until {
       $browser.find_element(:xpath => LoginModal::PASSWORD_ERROR_MESSAGE_XPATH).displayed?
     }
@@ -71,7 +71,7 @@ class TestLogin < TestBasic
 
   # Trying to log in leaving the username field blank
   def test_login_blank_username
-    Common.login '', Common::USER_CHANGE_PASSWORD_PASS
+    Common.login '', Common::USER1_PASS
     $wait.until {
       $browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).displayed?
     }

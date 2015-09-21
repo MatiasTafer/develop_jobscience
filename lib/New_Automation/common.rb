@@ -12,6 +12,11 @@ require_relative './pages/shop_page.rb'
 
 class Common
   
+  #NEW USERS
+  USER1_EMAIL = "user1@automation.com"
+  USER1_PASS  = "test1234"
+  
+  
   USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"
   USER_NO_REGISTRY_PASS     = "test1234"
   URL_EXISTING              = "homerandmarge"
@@ -27,21 +32,21 @@ class Common
   def self.create_user_no_registry
     #click on signup link
     $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
-    assert $wait.until {
+    $wait.until {
         $browser.find_element(:xpath => SignupModal::BUTTON_SUBMIT_XPATH).displayed?
     }
     #types email and pass
     newEmail = generate_email("test")
     $browser.find_element(:xpath => SignupModal::EMAIL_TEXTBOX_XPATH).send_keys newEmail
     $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys "test1234"
-    assert $wait.until {
+    $wait.until {
       $browser.find_element(:xpath => SignupModal::GLYPHICON_EMAIL_XPATH).displayed?
       $browser.find_element(:xpath => SignupModal::GLYPHICON_PASS_XPATH).displayed?
     }
     #clicks on START YOUR REGISTRY BUTTON
     $browser.find_element(:xpath => SignupModal::BUTTON_SUBMIT_XPATH).click
 
-    assert $wait.until{
+    $wait.until{
       $browser.find_element(:xpath=> CreateRegistryModal::BUTTON_CREATE_REGISTRY_XPATH).displayed?
     }
   end
@@ -66,7 +71,7 @@ class Common
   def self.login_no_registry
     #click on login
     $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
-    assert $wait.until {
+    $wait.until {
         $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).displayed?
     }
     #types email and pass
@@ -74,7 +79,7 @@ class Common
     $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys USER_NO_REGISTRY_PASS
     $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).click
 
-    assert $wait.until{
+    $wait.until{
       $browser.find_element(:id => HomePage::START_YOUR_REGISTRY_LINK_ID).displayed?
     }
   end
@@ -103,7 +108,7 @@ class Common
     $browser.find_element(:id, HomePage::LOG_OUT_LINK_ID).click
     $wait.until{
             $browser.find_element(:id, HomePage::LOGIN_LINK_ID).displayed?
-        }
+    }
   end
   
   #Selects the option from a Select element, by Text
@@ -126,49 +131,46 @@ class Common
 
     #Click on SHOP at home page
     $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).click
-    assert $wait.until{
+    $wait.until{
       $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).displayed?
     }
     #Click on SHOP NOW at Shop page
     $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).click
     
     #Click on the first gift at Starter Collections page
-    assert $wait.until{
-       $browser.find_element(:xpath => Collection::BUILD_YOUR_BAR_TEXT_XPATH).displayed?
-     }
-    $browser.action.move_to($browser.find_element(:xpath => Collection::COLLECTION_GIFT_XPATH)).perform
+    $wait.until{
+       $browser.find_element(:xpath => Collection::COLLECTION_GIFT_XPATH).displayed?
+    }    
     $browser.find_element(:xpath => Collection::COLLECTION_GIFT_XPATH).click
 
     #Click on the button ADD TO CART at pdp modal
-    assert $wait.until{
-      $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
+    $wait.until{
+      $browser.find_element(:xpath => Pdp::MODAL_ADDTOCART_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
+    $browser.find_element(:xpath => Pdp::MODAL_ADDTOCART_BUTTON_XPATH).click
     
     #Click on the button CONTINUE SHOPPING at cart modal
-    assert $wait.until{
+    $wait.until{
       $browser.find_element(:xpath => CartModal::BUTTON_CONTINUE_SHOPPING_XPATH).displayed?
     }
     $browser.find_element(:xpath => CartModal::BUTTON_CONTINUE_SHOPPING_XPATH).click
     
     #Click on the second gift at Starter Collections page
-    assert $wait.until{
+    $wait.until{
        $browser.find_element(:xpath => Collection::COLLECTION_GIFT2_XPATH).displayed?
-     }
-    $browser.action.move_to($browser.find_element(:xpath => Collection::COLLECTION_GIFT2_XPATH)).perform
+    }
     $browser.find_element(:xpath => Collection::COLLECTION_GIFT2_XPATH).click
     
     #Click on the button ADD TO CART at pdp modal
-    assert $wait.until {
-      $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
+    $wait.until {
+      $browser.find_element(:xpath => Pdp::MODAL_ADDTOCART_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
+    $browser.find_element(:xpath => Pdp::MODAL_ADDTOCART_BUTTON_XPATH).click
     #Click on CONTINUE SHOPPING at cart modal
-    assert $wait.until{
+    $wait.until{
       $browser.find_element(:xpath => CartModal::BUTTON_CONTINUE_SHOPPING_XPATH).displayed?
     }
-    $browser.find_element(:xpath => CartModal::BUTTON_CONTINUE_SHOPPING_XPATH).click 
-    
+    $browser.find_element(:xpath => CartModal::BUTTON_CONTINUE_SHOPPING_XPATH).click     
   end
   
   #Remove items from your cart

@@ -17,7 +17,7 @@ class NewSignup < TestBasic
 
   def test_SuccessfullySignup
     
-    #STEP 1 
+    #STEP 1
     $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
@@ -133,8 +133,8 @@ class NewSignup < TestBasic
     }
   end
 
-  #SIGN UP CHOOSING IF YOU'RE BRIDE OR GROOM (TC1567)
-  def test_NoWeddingDate
+  #SIGN UP WITHOUT CHOOSING IF YOU'RE BRIDE OR GROOM (TC1567)
+  def test_NoChossingBrideGroom
     
     #STEP 1 
     $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
@@ -258,7 +258,7 @@ class NewSignup < TestBasic
   end
   
   #SELECT GUESTS "SKIP, I'LL DO IT LATER" (TC1571)
-  def test_NoWeddingDate
+  def test_SkipDoLater
     
     #STEP 1
     $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
@@ -1011,7 +1011,7 @@ class NewSignup < TestBasic
 
 
   #CREATE AN ACCOUNT LEAVING THE PASSWORD BLANK (TC1582)
-  def test_EmailBlank
+  def test_PasswordBlank
     
     #STEP 1
     $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
