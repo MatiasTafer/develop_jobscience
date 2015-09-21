@@ -174,7 +174,7 @@ class TestStandalonePdp < TestBasic
       if nameOnRegistry == nameSelected
         flag = true
       end
-      counter += counter
+      counter += 1
     end
     assert_equal(nameOnRegistry, nameSelected)
     #Once found the item goes to the product modal so it can compare 
