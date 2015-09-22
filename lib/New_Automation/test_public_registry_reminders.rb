@@ -34,6 +34,7 @@ class TestPublicRegistryReminders < TestBasic
   end
   
   
+  #TC1128 MAKE IT VISIBLE TO GUESTS WITH SAVED SHIPPING ADDRESS
   
   
   
