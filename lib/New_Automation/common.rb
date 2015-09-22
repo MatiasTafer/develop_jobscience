@@ -24,6 +24,10 @@ class Common
   #Users and password for test: "test_recalculation_group-gift"
   USER_GROUP_GIFT_EMAIL = "testgroupgift@gmail.com"
   USER_GROUP_GIFT_PASSWORD = "1password"
+  #User and password for test: "test_public_registry_reminders"
+  USER2_EMAIL = "oktanatesting@gmail.com"
+  USER3_EMAIL = "martinds@oktana.io"
+  USER23_password = "test1234"
   
   
   
