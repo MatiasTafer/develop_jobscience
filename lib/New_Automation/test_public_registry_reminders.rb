@@ -10,8 +10,12 @@ require_relative './pages/make_registry_visible_modal.rb'
 require_relative './pages/shipping_info_modal.rb'
 require_relative './pages/home_page.rb'
 
-
 class TestPublicRegistryReminders < TestBasic
+  
+  #To run the test you need an acount with:
+          #Invisible registry to guests
+          #Registry must be at least 7 days old
+          #Your shipping address information must not be saved
   
   #TC1128 MAKE IT VISIBLE TO GUESTS WITH NOT SAVED SHIPPING ADDRESS
   def test_visible_to_guests_not_address
@@ -33,5 +37,4 @@ class TestPublicRegistryReminders < TestBasic
       $browser.find_element(:id, ShippingInfoModal::FIRST_NAME_FIELD_ID).displayed?
     }
   end
-  
 end
