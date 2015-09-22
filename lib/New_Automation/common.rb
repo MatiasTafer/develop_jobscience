@@ -23,7 +23,6 @@ class Common
   USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"
   USER_NO_REGISTRY_PASS     = "test1234"
   URL_EXISTING              = "homerandmarge"
-  USER_CHANGE_PASSWORD_EMAIL= "oktanatesting@gmail.com"
   
   USER_CHANGE_PASSWORD_SHORT= "test"
   USER_NAME_CART ="holahola@hotmail.com"
@@ -88,7 +87,7 @@ class Common
 
   #Login using the provided user email and password
   def self.login (userEmail, password)
-    $browser.get "https://qa.zola.com/shop"
+    #$browser.get "https://qa.zola.com/shop"
     $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
     $wait.until{
       $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?

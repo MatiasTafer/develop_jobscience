@@ -19,7 +19,7 @@ def change_your_information (name, surname, email)
     $wait.until {
         $browser.execute_script("return document.readyState;") == "complete"
     }
-    $browser.find_element(:xpath => AccountInfoPage::SAVE_CHANGES_BUTTON_XPATH).click 
+    $browser.find_element(:xpath => AccountInfoPage::SAVE_CHANGES_BUTTON_XPATH).click
 end
 
 def check_current_information (name, surname, email)
@@ -37,7 +37,7 @@ class TestYourInformation < TestBasic
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+        Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
@@ -52,24 +52,23 @@ class TestYourInformation < TestBasic
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         check_current_information 'George', 'Johnson', 'testing@gmail.com'
-        change_your_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
+        change_your_information 'Gregory', 'McGregor', Common::USER1_EMAIL
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         }
     end
-
-    
+=begin    
     #Tries to change the email address to one with the dot missing
     def test_email_without_dot
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+        Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information 'George', 'Johnson', 'oktanatesting@gmailcom'
+        change_your_information 'George', 'Johnson', 'testing@gmailcom'
         $wait.until {
             $browser.find_element(:id => AccountInfoPage::EMAIL_ERROR_ID).displayed?
         }
@@ -78,19 +77,19 @@ class TestYourInformation < TestBasic
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
+        check_current_information 'Gregory', 'McGregor', Common::USER1_EMAIL
     end 
 
     def test_email_without_at_sign
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+        Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information 'George', 'Johnson', 'oktanatestinggmail.com'
+        change_your_information 'George', 'Johnson', 'testinggmail.com'
         $wait.until {
             $browser.find_element(:id => AccountInfoPage::EMAIL_ERROR_ID).displayed?
         }
@@ -99,19 +98,19 @@ class TestYourInformation < TestBasic
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
+        check_current_information 'Gregory', 'McGregor', Common::USER1_EMAIL
     end
 
     def test_blank_name
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+        Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information '', 'Johnson', Common::USER_CHANGE_PASSWORD_EMAIL
+        change_your_information '', 'Johnson', Common::USER1_EMAIL
         $wait.until {
             $browser.find_element(:id => AccountInfoPage::FIRST_NAME_ERROR_ID).displayed?
         }
@@ -120,19 +119,19 @@ class TestYourInformation < TestBasic
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
+        check_current_information 'Gregory', 'McGregor', Common::USER1_EMAIL
     end
 
     def test_blank_surname
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+        Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        change_your_information 'George', '', Common::USER_CHANGE_PASSWORD_EMAIL
+        change_your_information 'George', '', Common::USER1_EMAIL
         $wait.until {
             $browser.find_element(:id => AccountInfoPage::LAST_NAME_ERROR_ID).displayed?
         }
@@ -141,7 +140,7 @@ class TestYourInformation < TestBasic
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
+        check_current_information 'Gregory', 'McGregor', Common::USER1_EMAIL
     end
 
 
@@ -149,7 +148,7 @@ class TestYourInformation < TestBasic
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+        Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
@@ -163,14 +162,14 @@ class TestYourInformation < TestBasic
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL
+        check_current_information 'Gregory', 'McGregor', Common::USER1_EMAIL
     end
 
     def test_email_account_already_used
         $wait.until {
             $browser.execute_script("return document.readyState;") == "complete"
         } 
-        Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
+        Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
@@ -184,7 +183,7 @@ class TestYourInformation < TestBasic
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
-        check_current_information 'John', 'Smith', Common::USER_CHANGE_PASSWORD_EMAIL        
+        check_current_information 'Gregory', 'McGregor', Common::USER1_EMAIL        
     end
-    
+=end
 end
