@@ -13,9 +13,9 @@ require_relative './pages/home_page.rb'
 class TestPublicRegistryReminders < TestBasic
   
   #To run the test you need an acount with:
-          #Invisible registry to guests
-          #Registry must be at least 7 days old
-          #Your shipping address information must not be saved
+          #Invisible registry to guests.
+          #Registry must be at least 7 days old.
+          #Your shipping address information must not be saved.
   
   #TC1128 MAKE IT VISIBLE TO GUESTS WITH NOT SAVED SHIPPING ADDRESS
   def test_visible_to_guests_not_address
