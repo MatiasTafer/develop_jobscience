@@ -14,8 +14,10 @@ class Common
   
   #NEW USERS
   USER1_EMAIL = "user1@automation.com"
-  USER1_PASS  = "test1234"
-  USER_CHANGE_PASSWORD_PASS= "test12345"
+  GLOBAL_PASSWORD  = "test1234"
+  
+  USER_CHANGE_PASSWORD_EMAIL  = "user_change_password@automation.com"
+  USER_CHANGE_PASSWORD_PASS   = "test12345"
   
   
   USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"
