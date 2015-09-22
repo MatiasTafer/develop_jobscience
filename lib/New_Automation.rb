@@ -4,6 +4,7 @@ $browser
 $wait
 
 
+#require './New_Automation/test_forgot_password'
 require './New_Automation/test_standalone_pdp'
 #require './New_Automation/test_login'
 #require './New_Automation/test_registry_creation'

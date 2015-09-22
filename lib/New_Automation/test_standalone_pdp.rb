@@ -8,7 +8,7 @@ require_relative 'common.rb'
 
 require_relative './pages/pdp_page.rb'
 require_relative './pages/bedroom_category_page.rb'
-require_relative './pages/proceede_to_checkout_modal.rb'
+require_relative './pages/proceed_to_checkout_modal.rb'
 require_relative './pages/cart_modal.rb'
 require_relative './pages/collection_page.rb'
 require_relative './pages/edit_item_modal.rb'
@@ -19,12 +19,12 @@ require_relative './pages/brand_page.rb'
 
 class TestStandalonePdp < TestBasic
   
-#-----------------------------  ACCESSORIES METHODS  --------------------------------------------
+#-----------------------------  ACCESSORY METHODS  --------------------------------------------
 
   #Method to go to an item modal
   #Tests (TC1492), (TC1493), (TC1494), (TC1495 STEPS 1,2,3), (TC1496), (TC1500), (TC1503), (TC1506) and (TC1507)
   def goToItemModal
-    #Go to Collection/Build your bar page
+    #Go to Collection/easy-entertaining
     $wait.until{
       $browser.find_element(:xpath => HomePage::TWITTER_XPATH).displayed?
     }   
@@ -63,10 +63,10 @@ class TestStandalonePdp < TestBasic
   end
   
 
-  #Method to go to an item, which you can choose it color, modal
+  #Method to go to an item, which you can choose its color, modal
   #Tests (TC1499), (TC1502) and (TC1505)
   def goToItemWithcolorModal 
-    #Go to Collection/Build your bar page
+    #Go to Collection/easy-entertaining
     $wait.until{
       $browser.find_element(:xpath => HomePage::TWITTER_XPATH).displayed?
     }
@@ -101,10 +101,10 @@ class TestStandalonePdp < TestBasic
   end
   
   
-  #Method to go to an item, which you can choose it size, modal
+  #Method to go to an item, which you can choose its size, modal
   #Tests (TC1498), (TC1501) and (TC1504)
   def goToItemWithSizeModal
-    #Go to Collection/Build your bar page
+    #Go to Collection/easy-entertaining
     $wait.until{
       $browser.find_element(:xpath => HomePage::TWITTER_XPATH).displayed?
     }
@@ -150,7 +150,7 @@ class TestStandalonePdp < TestBasic
   end
   
   
-  #Method to iterate throw all items in registry and compare their names with the one passed as parameter, and once it finds the item, it goes to the item modal
+  #Method to iterate through all items in registry and compare their names with the one passed as parameter, and once it finds the item, it goes to the item modal
   #Tests (TC1501), (TC1502), (TC1503) and (TC1506)
   def searchAndGoToModal(nameSelected)  
     #This section of code iterates throw all items name on registry to compare them with the one taken on the PDP until found the indicated
@@ -394,9 +394,9 @@ class TestStandalonePdp < TestBasic
     }  
     $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
     $wait.until{
-      $browser.find_element(:xpath => ProcedeToCheckOutModal::PROCEEDE_TO_CHECKOUT_BUTTON_XPATH).displayed?
+      $browser.find_element(:xpath => ProceedToCheckOutModal::PROCEED_TO_CHECKOUT_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath => ProcedeToCheckOutModal::PROCEEDE_TO_CHECKOUT_BUTTON_XPATH).click
+    $browser.find_element(:xpath => ProceedToCheckOutModal::PROCEED_TO_CHECKOUT_BUTTON_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => CartModal::BUTTON_CHECKOUTNOW_XPATH).displayed?
     }
@@ -420,20 +420,22 @@ class TestStandalonePdp < TestBasic
     #Select a color and get the color name
     $browser.find_element(:xpath => Pdp::COLOR_OPTION_XPATH).click
     textSelected = $browser.find_element(:xpath => Pdp::COLOR_TEXT_SELECTED_XPATH).text
-    #Select a size from the dropdown list
-    path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
-    #Select a value from the size dropdown list
-    Common.selectByIndex(path, 1)    
+    if $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH).displayed? != false
+      #Select a size from the dropdown list
+      path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+      #Select a value from the size dropdown list
+      Common.selectByIndex(path, 1)
+    end    
     $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
     #Advance from "procede to checkout/continue shopping" modal to the cart
     $wait.until{
-      $browser.find_element(:xpath => ProcedeToCheckOutModal::PROCEEDE_TO_CHECKOUT_BUTTON_XPATH).displayed?
+      $browser.find_element(:xpath => ProceedToCheckOutModal::PROCEED_TO_CHECKOUT_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath => ProcedeToCheckOutModal::PROCEEDE_TO_CHECKOUT_BUTTON_XPATH).click
+    $browser.find_element(:xpath => ProceedToCheckOutModal::PROCEED_TO_CHECKOUT_BUTTON_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => CartModal::BUTTON_CHECKOUTNOW_XPATH).displayed?
     }
-    #This section of code is use to select the color section of the item displayed on the cart; because not always appears at the same position 
+    #This section of code is used to select the color section of the item displayed on the cart; because not always appears at the same position 
     color = $browser.find_element(:xpath => CartModal::ITEM_COLOR_SELECTED_XPATH).text
     if color.index("Color:") != nil
        colorInCart = $browser.find_element(:xpath => CartModal::ITEM_COLOR_SELECTED_XPATH).text
@@ -460,9 +462,9 @@ class TestStandalonePdp < TestBasic
     $browser.find_element(:xpath => Pdp::QUANTITY_BOX_XPATH).send_keys "3"
     $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
     $wait.until{
-      $browser.find_element(:xpath => ProcedeToCheckOutModal::PROCEEDE_TO_CHECKOUT_BUTTON_XPATH).displayed?
+      $browser.find_element(:xpath => ProceedToCheckOutModal::PROCEED_TO_CHECKOUT_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath => ProcedeToCheckOutModal::PROCEEDE_TO_CHECKOUT_BUTTON_XPATH).click
+    $browser.find_element(:xpath => ProceedToCheckOutModal::PROCEED_TO_CHECKOUT_BUTTON_XPATH).click
     $wait.until{
       $browser.find_element(:id => CartModal::CHECK_OUT_BUTTON_ID).displayed?
     }
@@ -526,10 +528,12 @@ class TestStandalonePdp < TestBasic
     $browser.find_element(:xpath => Pdp::COLOR_OPTION_XPATH).click
     colorSelected = $browser.find_element(:xpath => Pdp::COLOR_TEXT_SELECTED_XPATH).text
     nameSelected = $browser.find_element(:xpath => Pdp::PRODUCT_NAME_XPATH).text
-    #Select a size from the dropdown list
-    path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
-    #Select a value from the size dropdown list
-    Common.selectByIndex(path, 1) 
+    if $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH).displayed? != false
+      #Select a size from the dropdown list
+      path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+      #Select a value from the size dropdown list
+      Common.selectByIndex(path, 1)
+    end   
     #Add to the registry
     $browser.find_element(:xpath => Pdp::ADD_REGISTRY_XPATH).click
     $wait.until{
@@ -545,7 +549,7 @@ class TestStandalonePdp < TestBasic
     #Delete item added
     deleteRecentItem()
   end
- 
+
 
   #ADD A PRODUCT TO YOUR REGISTRY HOMEPAGE AFTER CHANGING ITS QUANTITY (TC1503)
     #A USER who has REGISTRY is needed for this test
@@ -587,7 +591,7 @@ class TestStandalonePdp < TestBasic
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)  
     #Go to an item modal
     goToItemWithSizeModal()
-    #Copy the item modal URL and pate it on a new tab
+    #Copy the item modal URL and paste it on a new tab
     newTabURL()
     $wait.until{
       $browser.find_element(:xpath => Pdp::QUANTITY_BOX_XPATH).displayed?
@@ -610,6 +614,23 @@ class TestStandalonePdp < TestBasic
     $browser.find_element(:xpath => Pdp::GO_TO_REGISTRY_BUTTON_XPATH).click
     #Search for the new item on the registry
     searchAndGoToModal(nameSelected)
+    #Go to the item edit modal to look if the item is associated with a collection
+    $browser.find_element(:xpath => Pdp::EDIT_ITEM_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => EditItemModal::DELETE_ITEM_BUTTON_XPATH).displayed?
+    }
+    pass = $browser.find_element(:xpath => "(.//*[@data-placeholder='Choose a Collection'])[3]")
+    #Look the collection name if it's correct and if the item is really associated with a collection 
+    collection = Common.get_selected_option_text(pass)
+    puts collection
+    #If the item it's associated with a collection can't be a coincidence in this two lines above.
+    assert_not_equal(collection, "Feature on main page")
+    assert_not_equal(collection, "My collection")
+    
+    $browser.find_element(:xpath => EditItemModal::CANCEL_EDIT_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:id => Pdp::BUY_NOW_BUTTON_ID).displayed?
+    } 
     #Compare sizes
     size = $browser.find_element(:xpath => Pdp::PRODUCT_SIZE_REGISTRY_MODAL_XPATH).text
     size = size.downcase
@@ -652,7 +673,24 @@ class TestStandalonePdp < TestBasic
     }
     $browser.find_element(:xpath => Pdp::GO_TO_REGISTRY_BUTTON_XPATH).click
     #Search for the new item on the registry
-    searchAndGoToModal(nameSelected)   
+    searchAndGoToModal(nameSelected)  
+     #Go to the item edit modal to look if the item is associated with a collection
+    $browser.find_element(:xpath => Pdp::EDIT_ITEM_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => EditItemModal::DELETE_ITEM_BUTTON_XPATH).displayed?
+    }
+    pass = $browser.find_element(:xpath => "(.//*[@data-placeholder='Choose a Collection'])[3]")
+    #Look the collection name if it's correct and if the item is really associated with a collection 
+    collection = Common.get_selected_option_text(pass)
+    puts collection
+    #If the item it's associated with a collection can't be a coincidence in this two lines above.
+    assert_not_equal(collection, "Feature on main page")
+    assert_not_equal(collection, "My collection")
+    
+    $browser.find_element(:xpath => EditItemModal::CANCEL_EDIT_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:id => Pdp::BUY_NOW_BUTTON_ID).displayed?
+    }  
     #Compare colors
     color = $browser.find_element(:xpath => Pdp::PRODUCT_COLOR_REGISTRY_MODAL_XPATH).text
     assert_equal(color, colorSelected)
@@ -689,8 +727,25 @@ class TestStandalonePdp < TestBasic
       $browser.find_element(:xpath => Pdp::GO_TO_REGISTRY_BUTTON_XPATH).displayed?
     }
     $browser.find_element(:xpath => Pdp::GO_TO_REGISTRY_BUTTON_XPATH).click
-    #Serech for the new item on the registry
+    #Search for the new item on the registry
     searchAndGoToModal(nameSelected)
+     #Go to the item edit modal to look if the item is associated with a collection
+    $browser.find_element(:xpath => Pdp::EDIT_ITEM_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => EditItemModal::DELETE_ITEM_BUTTON_XPATH).displayed?
+    }
+    pass = $browser.find_element(:xpath => "(.//*[@data-placeholder='Choose a Collection'])[3]")
+    #Look the collection name if it's correct and if the item is really associated with a collection 
+    collection = Common.get_selected_option_text(pass)
+    puts collection
+    #If the item it's associated with a collection can't be a coincidence in this two lines above.
+    assert_not_equal(collection, "Feature on main page")
+    assert_not_equal(collection, "My collection")
+    
+    $browser.find_element(:xpath => EditItemModal::CANCEL_EDIT_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:id => Pdp::BUY_NOW_BUTTON_ID).displayed?
+    } 
     #Compare quantity
     quantity = $browser.find_element(:id => Pdp::QUANTITY_NEEDED_ID).text
     quantity = quantity.slice(quantity.length-1..quantity.length)

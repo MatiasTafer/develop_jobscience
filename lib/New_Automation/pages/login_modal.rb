@@ -5,6 +5,7 @@ class LoginModal
   PASSWORD_FIELD_XPATH = ".//*[@name='password']"
   LOGIN_BUTTON_XPATH  = "//*[@type='submit']"
   CLOSE_MODAL_XPATH = ".//*[@class='modal-close']"
+  FORGOT_PASSWORD_LINK_XPATH = ".//*[@class='help-block text-right small']/a"
   
   #error messages
   MISMATCH_MESSAGE_XPATH = ".//*[@class='form-message-block text-center text-danger']"

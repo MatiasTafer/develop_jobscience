@@ -127,6 +127,7 @@ class Common
   def self.get_selected_option_text(dropdown)
     select = Selenium::WebDriver::Support::Select.new(dropdown)
     selected_optionText = select.selected_options[0].text
+    return selected_optionText
   end
     
   #Adds items to your cart
