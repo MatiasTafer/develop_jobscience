@@ -207,7 +207,7 @@ class Common
   #Then, it waits for jQuery because Selenium runs fast and makes queries to jQuery before it has had a chance to load into the page
   def self.wait_to_load
     $wait.until {
-      $browser.execute_script("return document.readyState == 'complete';")
+      $browser.execute_script("return document.readyState;") == "complete"
       $browser.execute_script("return window.jQuery != undefined && jQuery.active === 0")
     }
   end
