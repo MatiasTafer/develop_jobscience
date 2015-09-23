@@ -15,6 +15,8 @@ class RegistryPage
   YOUR_REGISTRY_LINK_ID = "registrySettingsLink"
   GIFT_ATTRIBUTE_ID = "data-collection-item-id"
   NEW_COLLECTION_BUTTON_XPATH = ".//*[@class='new-collection-wrapper top']//*[@class='button medium secondary tooltip-plain tooltipstered']"
+  ALL_COLLECTIONS_IN_REGISTRY_XPATH = ".//*[@class='collection-header collection']"
+  EDIT_COLLECTION_BUTTON_XPATH = ".//*[@class='collection-header collection']//*[@class='collection-actions']//*[@class='edit-link']"
   
   
 end

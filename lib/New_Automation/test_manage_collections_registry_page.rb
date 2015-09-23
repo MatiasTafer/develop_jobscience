@@ -9,12 +9,13 @@ require_relative 'common.rb'
 require_relative './pages/registry_page.rb'
 require_relative './pages/create_gift_collection_modal.rb'
 require_relative './pages/choose_image_to_collection_modal.rb'
+require_relative './pages/edit_collection_modal.rb'
 
 
 
 
 class ManegeCollectionRegistry < TestBasic
-  
+   
   #TC578 CREATE A NEW REGISTRY COLLECTION WITHOUT NAME
   def test_collection_without_name
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
@@ -81,6 +82,50 @@ class ManegeCollectionRegistry < TestBasic
   end
   
   
+  #TC1488 SUCCESSFULLY CREATE A NEW REGISTRY COLLECTION UPLOADING A PHOTO (dejar para el final)
+
+  
+  
+  #TC1489 EDIT REGISTRY COLLECTION LEAVING THE NAME FIELD BLANK
+  def test_edit_collection_name_blank
+    Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
+    $wait.until {
+      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
+    #Go to registry page
+    $browser.get HomePage::HOME_URL
+    $wait.until{
+      $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+    }
+    quantityCollections = $browser.find_elements(:xpath, RegistryPage::ALL_COLLECTIONS_IN_REGISTRY_XPATH)
+    if (quantityCollections.size > 0) then
+      $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).displayed?
+      }
+      $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).clear
+      $browser.find_element(:xpath, EditCollection::SAVE_COLLECTION_BUTTON_XPATH).click
+      assert $wait.until{
+        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).displayed?
+        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).text == EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_TEXT
+      }
+    else
+      create_gift_collection(CreateGiftCollection::COLLECTION_NAME_TEXT, CreateGiftCollection::DESCRIPTION_TEXT)
+      $wait.until {
+        $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+      }
+      $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).displayed?
+      }
+      $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).clear
+      $browser.find_element(:xpath, EditCollection::SAVE_COLLECTION_BUTTON_XPATH).click
+      assert $wait.until{
+        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).displayed?
+        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).text == EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_TEXT
+      }  
+    end
+  end
   
   
   
@@ -89,6 +134,26 @@ class ManegeCollectionRegistry < TestBasic
   
   
   
+  
+  #METHOD TO CREATE ONE GIFT COLLECTION (must be on registry page and have at least one gift)
+  def create_gift_collection (name, description)
+    $wait.until {
+      $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).click
+    $wait.until {
+      $browser.find_element(:id, CreateGiftCollection::COLLECTION_NAME_FIELD_ID).displayed?
+    }
+    #Complete field to create a new collection
+    $browser.find_element(:id, CreateGiftCollection::COLLECTION_NAME_FIELD_ID).send_keys name
+    $browser.find_element(:xpath, CreateGiftCollection::DESCRIPTION_FIELD_XPATH).send_keys description
+    #Click on Create Collection button
+    $browser.find_element(:xpath, CreateGiftCollection::CREATE_COLLECTION_BUTTON_XPATH).click
+    #Verify if "Added colection" message appears
+    $wait.until {
+      $browser.find_element(:id, CreateGiftCollection::COLLECTION_ADDED_MESSAGE_ID).displayed?
+    }
+  end
   
   
   
