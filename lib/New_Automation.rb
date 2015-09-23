@@ -16,4 +16,6 @@ $wait
 #DEPRECATED BECAUSE A NEW SIGNUP FLOW WAS MADE
 #require './New_Automation/test_sign_up'
 #require './New_Automation/test_recalculation_group-gifts'
-require './New_Automation/test_public_registry_reminders'
+#require './New_Automation/test_public_registry_reminders'
+require './New_Automation/test_manage_collections_registry_page'
+

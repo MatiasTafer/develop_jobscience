@@ -14,6 +14,7 @@ class RegistryPage
   CHANGE_SAVED_MESSAGE_ID ="humaneMessage"
   YOUR_REGISTRY_LINK_ID = "registrySettingsLink"
   GIFT_ATTRIBUTE_ID = "data-collection-item-id"
+  NEW_COLLECTION_BUTTON_XPATH = ".//*[@class='new-collection-wrapper top']//*[@class='button medium secondary tooltip-plain tooltipstered']"
   
   
 end

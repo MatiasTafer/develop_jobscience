@@ -28,6 +28,9 @@ class Common
   USER2_EMAIL = "oktanatesting@gmail.com"
   USER3_EMAIL = "martinds@oktana.io"
   USER23_password = "test1234"
+  #User and password for test: "test_manage_collections_registry_page"
+  USER4_EMAIL = "user4@gmail.com"
+  USER4_PASSWORD = "test1234"
   
   
   
