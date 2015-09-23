@@ -4,7 +4,7 @@ require 'test-unit'
 
 class TestBasic < Test::Unit::TestCase
  
-# Starting browser before each test
+ # Starting browser before each test
 def setup
     
     case $browserName

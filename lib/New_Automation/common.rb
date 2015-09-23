@@ -120,13 +120,21 @@ class Common
     select.select_by(:text, optionText)
   end
 
+  #Selects the option from a Select element, by Index
+  # selectElement: dropdown element
+  # index: index number to be selected from the dropdown
+  def self.selectByIndex(dropdown, index)
+    select = Selenium::WebDriver::Support::Select.new(dropdown)
+    select.select_by(:index, index)
+  end
+
   #Selects the option from a Select element, by Text
   # selectElement: dropdown element
   def self.get_selected_option_text(dropdown)
     select = Selenium::WebDriver::Support::Select.new(dropdown)
     selected_optionText = select.selected_options[0].text
   end
-    
+  
   #Adds items to your cart
   def self.add_items_to_cart
 
@@ -192,5 +200,15 @@ class Common
       #Obtains again all the Remove links in the cart
       presentElements = $browser.find_elements(:xpath => CartModal::ALL_REMOVE_LINKS_XPATH)
     end
+  end
+  
+  #This method was created because some wait problems were found using Chrome
+  #First it waits to the document and all sub-resources have finished loading
+  #Then, it waits for jQuery because Selenium runs fast and makes queries to jQuery before it has had a chance to load into the page
+  def self.wait_to_load
+    $wait.until {
+      $browser.execute_script("return document.readyState == 'complete';")
+      $browser.execute_script("return window.jQuery != undefined && jQuery.active === 0")
+    }
   end
 end

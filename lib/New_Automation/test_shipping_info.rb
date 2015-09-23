@@ -5,7 +5,6 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-
 require_relative './pages/home_page.rb'
 require_relative './pages/login_modal.rb'
 require_relative './pages/registry_settings_page.rb'
@@ -17,23 +16,12 @@ class TestShippingInfo < TestBasic
 #Successfully change a value on shipping information  
   def test_successfully_change_values
     #Preconditions: must be logged in
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
-    assert $wait.until{
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
+    $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    #must be on shipping info page
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    assert $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    #Go to shipping info page
+    goToShippingInformation
     #cleans fields and complete the shipping information with new values
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME_2
@@ -46,6 +34,8 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).send_keys ShippingInfoPage::PHONE_2
     #clicks on button save changes
     $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).click
+    Common.wait_to_load
+   
     #verify ok message is displayed
     assert $wait.until{
       $browser.find_element(:xpath => ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
@@ -53,9 +43,7 @@ class TestShippingInfo < TestBasic
     
     #verify data was changed
     $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    assert $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    Common.wait_to_load
     $browser.get "https://qa.zola.com/registry/juanandjulisa/settings/shipping"
     assert_equal($browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH)["value"], ShippingInfoPage::FIRST_NAME_2)
     assert_equal($browser.find_element(:xpath => ShippingInfoPage::LAST_NAME_TEXTBOX_XPATH)["value"], ShippingInfoPage::LAST_NAME_2)
@@ -87,23 +75,12 @@ class TestShippingInfo < TestBasic
   #No name at shipping information
   def test_NoNameShippingInfo
     #Preconditions: must be logged in
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
-    assert $wait.until{
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
+    $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    #must be on shipping information
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    #Go to shipping information
+    goToShippingInformation
     #cleans fields and completes shipping information leaving the first name empty
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::LAST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::LAST_NAME
@@ -125,22 +102,12 @@ class TestShippingInfo < TestBasic
   #No last name at shipping information
   def test_NoLastNameShippingInfo
     #Preconditions: must be logged in
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    #Go to Shipping Information
+    goToShippingInformation
     #cleans fields and completes shipping address information leaving the last name empty
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME
@@ -161,23 +128,12 @@ class TestShippingInfo < TestBasic
   #No street address at shipping information
   def test_NoStreetShippingInfo
     #Preconditions: must be logged in
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    #must be on Registry Settings page
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    assert $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    assert $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    #Must be on Shipping Information
+    goToShippingInformation
     #cleans fields and complete shipping information leaving street address
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME
@@ -198,23 +154,12 @@ class TestShippingInfo < TestBasic
   #No city at shipping information
   def test_NoCityShippingInfo
     #Preconditions: must be logged in
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    #must be on registry settings page
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    #Go to Shipping Information
+    goToShippingInformation
     #clean fiels and complete shipping information leaving the city field empty
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME
@@ -236,23 +181,12 @@ class TestShippingInfo < TestBasic
   #No zip code at shipping information
   def test_NoZipCodeShippingInfo
     #Preconditions: must be logged in
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    #must be on Registry Settings page
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    #Go to Shipping Information
+    goToShippingInformation
     #cleans fields and enter all information, but the zip code
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME
@@ -274,24 +208,12 @@ class TestShippingInfo < TestBasic
   #Use and invalid zip code
   def test_WrongZipCode
     #Preconditions: must be logged in
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     #must be on registry settings page
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    #clicks on shipping information
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    goToShippingInformation
     #cleans and complete fields using an invalid zip code
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME
@@ -314,22 +236,12 @@ class TestShippingInfo < TestBasic
   #No phone at shipping information
   def test_NoPhoneShippingInfo
     #Preconditions: must be logged in
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    #Go to Shipping Information page
+    goToShippingInformation
     #clean and enter values on the fields
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME
@@ -347,26 +259,16 @@ class TestShippingInfo < TestBasic
       $browser.find_element(:xpath => ShippingInfoPage::PHONE_ERROR_XPATH).text == ShippingInfoPage::ERROR_FIELD_REQUIRED
     }
   end
-=end
+
   #Add a non allowed zip code
   def test_UseInvalidZipCode
     #Preconditions: be logged in
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    #Go to Shipping Information page
+    goToShippingInformation
     #enters an invalid zip code
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).send_keys '09999'
@@ -395,24 +297,12 @@ class TestShippingInfo < TestBasic
   #No State at shipping information
   def test_NoStateShippingInfo
     #Preconditions: Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    #Go to Registry Settings
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
-    }
-    #Clicks on Shipping Information
-    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).displayed?
-    }
+    #Go to Shipping Information
+    goToShippingInformation
     #Enter all the shipping information but the state
     cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).send_keys ShippingInfoPage::FIRST_NAME
@@ -430,6 +320,20 @@ class TestShippingInfo < TestBasic
     }
   end
 
+  #Go to shipping information page
+  def goToShippingInformation
+    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
+    $wait.until{
+      $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
+    }
+    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
+    $wait.until{
+      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).click
+    Common.wait_to_load
+  end
+
   #Cleans the values on the fields
   def cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).clear
@@ -437,7 +341,7 @@ class TestShippingInfo < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::STREET_ADDRESS_TEXTBOX_XPATH).clear
     $browser.find_element(:xpath => ShippingInfoPage::APTO_TEXTBOX_XPATH).clear
     $browser.find_element(:xpath => ShippingInfoPage::CITY_TEXTBOX_XPATH).clear
-    Common.selectByText($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), "")  
+    Common.selectByIndex($browser.find_element(:id, ShippingInfoPage::STATE_SELECT_ID), '0')
     $browser.find_element(:xpath => ShippingInfoPage::ZIPCODE_TEXTBOX_XPATH).clear
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).clear
   end
