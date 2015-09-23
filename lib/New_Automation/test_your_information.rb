@@ -30,7 +30,6 @@ class TestYourInformation < TestBasic
    
     #Updates your information successfully
     def test_01change_information_correctly
-      puts "test_change_information_correctly"
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
@@ -57,7 +56,6 @@ class TestYourInformation < TestBasic
 
     #Tries to change the email address to one with the dot missing
     def test_email_without_dot
-      puts "test_email_without_dot"
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
@@ -78,7 +76,6 @@ class TestYourInformation < TestBasic
 
     #UTry to update your information without at sign 
     def test_email_without_at_sign
-      puts "test_email_without_at_sign"
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
@@ -99,7 +96,6 @@ class TestYourInformation < TestBasic
     
     #Try to update your information leaving the first name blank
     def test_blank_name
-      puts "test_blank_name"
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
@@ -120,7 +116,6 @@ class TestYourInformation < TestBasic
 
     #Try to update your information leaving last name blank
     def test_blank_surname
-        puts "test_blank_surname"
         #Login 
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
@@ -141,7 +136,6 @@ class TestYourInformation < TestBasic
  
     #Try to update your information leaving the email field blank
     def test_blank_email
-      puts "test_blank_email"
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
@@ -162,7 +156,6 @@ class TestYourInformation < TestBasic
 
     #Try to update your information using an existing email account
     def test_email_account_already_used
-      puts "test_email_account_already_used"
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {

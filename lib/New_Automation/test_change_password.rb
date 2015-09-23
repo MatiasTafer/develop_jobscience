@@ -19,9 +19,7 @@ def change_password (currentPassword, newPassword, verifyPassword)
   $browser.find_element(:xpath, AccountInfoPage::CURRENT_PASSWORD_FIELD_XPATH).send_keys currentPassword
   $browser.find_element(:xpath, AccountInfoPage::NEW_PASSWORD_FIELD_XPATH).send_keys newPassword
   $browser.find_element(:xpath, AccountInfoPage::VERIFY_PASSWORD_FIELD_XPATH).send_keys verifyPassword
-  $wait.until {
-    $browser.execute_script("return document.readyState;") == "complete"
-  }
+  Common.wait_to_load
   $browser.find_element(:xpath => AccountInfoPage::SAVE_CHANGES_BUTTON_XPATH).click
 end
 
@@ -40,9 +38,7 @@ class TestChangePassword < TestBasic
       $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).displayed?
     }
     assert $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text == AccountInfoPage::CHANGE_PASSWORD_SUCCESSFULLY_TEXT
-    $wait.until {
-      $browser.execute_script("return document.readyState;") == "complete"
-    }
+    Common.wait_to_load
     #Log out
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
@@ -63,9 +59,7 @@ class TestChangePassword < TestBasic
     #Change the password to the original one
     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
     change_password Common::USER_CHANGE_PASSWORD_PASS, Common::GLOBAL_PASSWORD, Common::GLOBAL_PASSWORD
-    $wait.until {
-      $browser.execute_script("return document.readyState;") == "complete"
-    }
+    Common.wait_to_load
   end
 
   # Trying to change the password to one with less than 8 characters
