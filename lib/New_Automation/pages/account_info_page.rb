@@ -1,6 +1,7 @@
 class AccountInfoPage
   
   #YOUR INFORMATION
+  YOUR_INFORMATION_LINK_ID = "yourInformationLink"
   EMAIL_FIELD_XPATH = ".//*[@name='email']"
   PASSWORD_FIELD_XPATH = ".//*[@name='password']"
   FIRST_NAME_FIELD_XPATH = ".//*[@name='first_name']"

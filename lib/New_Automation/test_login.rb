@@ -27,7 +27,7 @@ class TestLogin < TestBasic
   # Logging in and logging out correctly
   def test_login_logout_ok
     #Login
-    Common.login Common::USER1_EMAIL, Common::USER1_PASS
+    Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
     assert $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
         }
@@ -71,7 +71,7 @@ class TestLogin < TestBasic
 
   # Trying to log in leaving the username field blank
   def test_login_blank_username
-    Common.login '', Common::USER1_PASS
+    Common.login '', Common::GLOBAL_PASSWORD
     $wait.until {
       $browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).displayed?
     }

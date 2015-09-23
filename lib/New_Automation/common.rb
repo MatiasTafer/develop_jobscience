@@ -14,14 +14,15 @@ class Common
   
   #NEW USERS
   USER1_EMAIL = "user1@automation.com"
-  USER1_PASS  = "test1234"
-  USER_CHANGE_PASSWORD_PASS= "test12345"
+  GLOBAL_PASSWORD  = "test1234"
+  
+  USER_CHANGE_PASSWORD_EMAIL  = "user_change_password@automation.com"
+  USER_CHANGE_PASSWORD_PASS   = "test12345"
   
   
   USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"
   USER_NO_REGISTRY_PASS     = "test1234"
   URL_EXISTING              = "homerandmarge"
-  USER_CHANGE_PASSWORD_EMAIL= "oktanatesting@gmail.com"
   
   USER_CHANGE_PASSWORD_SHORT= "test"
   USER_NAME_CART ="holahola@hotmail.com"
@@ -86,7 +87,7 @@ class Common
 
   #Login using the provided user email and password
   def self.login (userEmail, password)
-    $browser.get "https://qa.zola.com/shop"
+    #$browser.get "https://qa.zola.com/shop"
     $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
     $wait.until{
       $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
@@ -119,13 +120,21 @@ class Common
     select.select_by(:text, optionText)
   end
 
+  #Selects the option from a Select element, by Index
+  # selectElement: dropdown element
+  # index: index number to be selected from the dropdown
+  def self.selectByIndex(dropdown, index)
+    select = Selenium::WebDriver::Support::Select.new(dropdown)
+    select.select_by(:index, index)
+  end
+
   #Selects the option from a Select element, by Text
   # selectElement: dropdown element
   def self.get_selected_option_text(dropdown)
     select = Selenium::WebDriver::Support::Select.new(dropdown)
     selected_optionText = select.selected_options[0].text
   end
-    
+  
   #Adds items to your cart
   def self.add_items_to_cart
 
@@ -191,5 +200,15 @@ class Common
       #Obtains again all the Remove links in the cart
       presentElements = $browser.find_elements(:xpath => CartModal::ALL_REMOVE_LINKS_XPATH)
     end
+  end
+  
+  #This method was created because some wait problems were found using Chrome
+  #First it waits to the document and all sub-resources have finished loading
+  #Then, it waits for jQuery because Selenium runs fast and makes queries to jQuery before it has had a chance to load into the page
+  def self.wait_to_load
+    $wait.until {
+      $browser.execute_script("return document.readyState;") == "complete"
+      $browser.execute_script("return window.jQuery != undefined && jQuery.active === 0")
+    }
   end
 end
