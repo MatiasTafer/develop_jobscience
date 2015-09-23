@@ -53,7 +53,6 @@ class HomePage
   
   #URL LINK CONTROL
   
-  REGISTRY_URL = "https://qa.zola.com/registry/juanandjulisa/edit"
   FIND_REGISTRY_URL = "https://qa.zola.com/find-registry"
   DOWNLOAD_APPS_URL = "https://qa.zola.com/simplify"
   REGISTRY_BENEFITS_URL = "https://qa.zola.com/registry/benefits"
