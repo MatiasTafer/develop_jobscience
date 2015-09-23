@@ -15,7 +15,7 @@ require_relative './pages/edit_collection_modal.rb'
 
 
 class ManegeCollectionRegistry < TestBasic
-   
+
   #TC578 CREATE A NEW REGISTRY COLLECTION WITHOUT NAME
   def test_collection_without_name
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
@@ -98,18 +98,85 @@ class ManegeCollectionRegistry < TestBasic
       $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
     quantityCollections = $browser.find_elements(:xpath, RegistryPage::ALL_COLLECTIONS_IN_REGISTRY_XPATH)
+    # if registry have or haven't collection previusly created
+    if (quantityCollections.size > 0) then
+      #Click on edit collection link
+      $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).displayed?
+      }
+      #Clear Collection name field
+      $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).clear
+      #Save the changes
+      $browser.find_element(:xpath, EditCollection::SAVE_COLLECTION_BUTTON_XPATH).click
+      #verify if the message error appears
+      assert $wait.until{
+        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).displayed?
+        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).text == EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_TEXT
+      }
+    else
+      #Create a new collection
+      create_gift_collection(CreateGiftCollection::COLLECTION_NAME_TEXT, CreateGiftCollection::DESCRIPTION_TEXT)
+      $wait.until {
+        $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+      }
+      #Click on edit collection link
+      $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).displayed?
+      }
+      #Clear Collection name field
+      $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).clear
+      #Save the changes
+      $browser.find_element(:xpath, EditCollection::SAVE_COLLECTION_BUTTON_XPATH).click
+      #verify if the message error appears
+      assert $wait.until{
+        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).displayed?
+        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).text == EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_TEXT
+      }  
+    end
+  end
+  
+
+  #TC1490 EDIT A REGISTRY COLLECTION CHANGING THE IMAGE TO ONE OF THE ZOLA PHOTOS
+  def test_edit_collection_using_zola_photo
+    Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
+    $wait.until {
+      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
+    #Go to registry page
+    $browser.get HomePage::HOME_URL
+    $wait.until{
+      $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+    }
+    quantityCollections = $browser.find_elements(:xpath, RegistryPage::ALL_COLLECTIONS_IN_REGISTRY_XPATH)
     if (quantityCollections.size > 0) then
       $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).click
       $wait.until {
         $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).displayed?
       }
       $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).clear
+      $browser.find_element(:xpath, EditCollection::DESCRIPTION_FIELD_XPATH).clear
+      $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).send_keys  EditCollection::COLLECTION_NAME_TEXT_2
+      $browser.find_element(:xpath, EditCollection::DESCRIPTION_FIELD_XPATH).send_keys  EditCollection::DESCRIPTION_TEXT_2
+      #Click on Edit Image link
+      $browser.find_element(:xpath, CreateGiftCollection::EDIT_IMAGE_LINK_XPATH).click
+      $wait.until {
+        $browser.find_element(:xpath, ChooseImageToCollection::FIRST_PHOTO_XPATH).displayed?
+      }
+      #Choose one photo
+      $browser.find_element(:xpath, ChooseImageToCollection::SECOND_PHOTO_XPATH).click
+      $wait.until {
+      $browser.find_element(:id, CreateGiftCollection::COLLECTION_NAME_FIELD_ID).displayed?
+      }
       $browser.find_element(:xpath, EditCollection::SAVE_COLLECTION_BUTTON_XPATH).click
-      assert $wait.until{
-        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).displayed?
-        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).text == EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_TEXT
+      #Verify if collection saved message appears
+      assert $wait.until {
+        $browser.find_element(:id, EditCollection::COLLECTION_SAVED_MESSAGE_ID).displayed?
+        $browser.find_element(:id, EditCollection::COLLECTION_SAVED_MESSAGE_ID).text == EditCollection::COLLECTION_SAVED_MESSAGE_TEXT
       }
     else
+      #Create a new collection
       create_gift_collection(CreateGiftCollection::COLLECTION_NAME_TEXT, CreateGiftCollection::DESCRIPTION_TEXT)
       $wait.until {
         $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
@@ -119,19 +186,29 @@ class ManegeCollectionRegistry < TestBasic
         $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).displayed?
       }
       $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).clear
+      $browser.find_element(:xpath, EditCollection::DESCRIPTION_FIELD_XPATH).clear
+      $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).send_keys  EditCollection::COLLECTION_NAME_TEXT_2
+      $browser.find_element(:xpath, EditCollection::DESCRIPTION_FIELD_XPATH).send_keys  EditCollection::DESCRIPTION_TEXT_2
+      #Click on Edit Image link
+      $browser.find_element(:xpath, CreateGiftCollection::EDIT_IMAGE_LINK_XPATH).click
+      $wait.until {
+        $browser.find_element(:xpath, ChooseImageToCollection::FIRST_PHOTO_XPATH).displayed?
+      }
+      #Choose one photo
+      $browser.find_element(:xpath, ChooseImageToCollection::SECOND_PHOTO_XPATH).click
+      $wait.until {
+      $browser.find_element(:id, CreateGiftCollection::COLLECTION_NAME_FIELD_ID).displayed?
+      }
       $browser.find_element(:xpath, EditCollection::SAVE_COLLECTION_BUTTON_XPATH).click
-      assert $wait.until{
-        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).displayed?
-        $browser.find_element(:id, EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_ID).text == EditCollection::PLEASE_ENTER_COLLECTION_NAME_ERROR_TEXT
-      }  
+      #Verify if collection saved message appears
+      assert $wait.until {
+        $browser.find_element(:id, EditCollection::COLLECTION_SAVED_MESSAGE_ID).displayed?
+        $browser.find_element(:id, EditCollection::COLLECTION_SAVED_MESSAGE_ID).text == EditCollection::COLLECTION_SAVED_MESSAGE_TEXT
+      }
     end
   end
   
-  
-  
-  
-  
-  
+  #TC1491 EDIT A REGISTRY COLLECTION CHANGING THE IMAGE TO AN UPLOADED PHOTO
   
   
   

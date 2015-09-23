@@ -12,9 +12,11 @@ class EditCollection
   
   COLLECTION_NAME_TEXT = "Colection Test"
   DESCRIPTION_TEXT = "Description of the colection test"
+  COLLECTION_NAME_TEXT_2 = "Colection Test 2"
+  DESCRIPTION_TEXT_2 = "Description of the colection test 2"
   
-  COLLECTION_ADDED_MESSAGE_ID = "humaneMessage"
-  COLLECTION_ADDED_MESSAGE_TEXT = "Collection Added"
+  COLLECTION_SAVED_MESSAGE_ID = "humaneMessage"
+  COLLECTION_SAVED_MESSAGE_TEXT = "Collection Saved"
   
   
   
