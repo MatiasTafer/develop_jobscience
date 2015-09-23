@@ -153,7 +153,7 @@ class TestStandalonePdp < TestBasic
   #Method to iterate through all items in registry and compare their names with the one passed as parameter, and once it finds the item, it goes to the item modal
   #Tests (TC1501), (TC1502), (TC1503) and (TC1506)
   def searchAndGoToModal(nameSelected)  
-    #This section of code iterates throw all items name on registry to compare them with the one taken on the PDP until found the indicated
+    #This section of code iterates through all items name on registry to compare them with the one taken on the PDP until found the indicated
     flag = false
     counter = 1
     while flag == false do
@@ -271,10 +271,13 @@ class TestStandalonePdp < TestBasic
     downBrandName = brandName.downcase
     #Click on Brand link
     $browser.find_element(:xpath => Pdp::BRAND_LINK_XPATH).click
-    #Get the current url lastword(brand)
-    urlBrand = $browser.find_element(:xpath => BrandPage::BRAND_NAME_DIV_XPATH).text
-    urlBrand = urlBrand.downcase
-    assert_equal(downBrandName, urlBrand)
+    #Compares with the name of the brand at the brand page
+    $wait.until{
+      $browser.find_element(:xpath => BrandPage::BRAND_NAME_DIV_XPATH).displayed?
+    }
+    brand = $browser.find_element(:xpath => BrandPage::BRAND_NAME_DIV_XPATH).text
+    brand = brand.downcase
+    assert_equal(downBrandName, brand)
   end
 
 
@@ -290,10 +293,13 @@ class TestStandalonePdp < TestBasic
     downBrandName = brandName.downcase
     #Click on "See all" link
     $browser.find_element(:xpath => Pdp::SEE_ALL_LINK_XPATH).click
-    #Get the current url lastword(brand)
-    urlBrand = $browser.find_element(:xpath => BrandPage::BRAND_NAME_DIV_XPATH).text
-    urlBrand = urlBrand.downcase
-    assert_equal(downBrandName, urlBrand) 
+    #Compares with the name of the brand at the brand page
+    $wait.until{
+      $browser.find_element(:xpath => BrandPage::BRAND_NAME_DIV_XPATH).displayed?
+    }
+    brand = $browser.find_element(:xpath => BrandPage::BRAND_NAME_DIV_XPATH).text
+    brand = brand.downcase
+    assert_equal(downBrandName, brand) 
   end
 
 
@@ -427,7 +433,7 @@ class TestStandalonePdp < TestBasic
       Common.selectByIndex(path, 1)
     end    
     $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).click
-    #Advance from "procede to checkout/continue shopping" modal to the cart
+    #Advance from "proceed to checkout/continue shopping" modal to the cart
     $wait.until{
       $browser.find_element(:xpath => ProceedToCheckOutModal::PROCEED_TO_CHECKOUT_BUTTON_XPATH).displayed?
     }
@@ -528,7 +534,8 @@ class TestStandalonePdp < TestBasic
     $browser.find_element(:xpath => Pdp::COLOR_OPTION_XPATH).click
     colorSelected = $browser.find_element(:xpath => Pdp::COLOR_TEXT_SELECTED_XPATH).text
     nameSelected = $browser.find_element(:xpath => Pdp::PRODUCT_NAME_XPATH).text
-    if $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH).displayed? != false
+    array = $browser.find_elements(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+    if array.size>0
       #Select a size from the dropdown list
       path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
       #Select a value from the size dropdown list
@@ -622,10 +629,8 @@ class TestStandalonePdp < TestBasic
     pass = $browser.find_element(:xpath => "(.//*[@data-placeholder='Choose a Collection'])[3]")
     #Look the collection name if it's correct and if the item is really associated with a collection 
     collection = Common.get_selected_option_text(pass)
-    puts collection
     #If the item it's associated with a collection can't be a coincidence in this two lines above.
-    assert_not_equal(collection, "Feature on main page")
-    assert_not_equal(collection, "My collection")
+    assert_not_equal(collection, "Feature On Main Page")
     
     $browser.find_element(:xpath => EditItemModal::CANCEL_EDIT_BUTTON_XPATH).click
     $wait.until{
@@ -657,11 +662,13 @@ class TestStandalonePdp < TestBasic
     $browser.find_element(:xpath => Pdp::COLOR_OPTION_XPATH).click
     colorSelected = $browser.find_element(:xpath => Pdp::COLOR_TEXT_SELECTED_XPATH).text
     nameSelected = $browser.find_element(:xpath => Pdp::PRODUCT_NAME_XPATH).text
-    #Select a size from the dropdown list
-    path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
-    #Select a value from the size dropdown list
-    Common.selectByIndex(path, 1) 
-
+    array = $browser.find_elements(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+    if array.size>0
+      #Select a size from the dropdown list
+      path = $browser.find_element(:xpath => Pdp::SIZE_OPTION_ONE_XPATH)
+      #Select a value from the size dropdown list
+      Common.selectByIndex(path, 1) 
+    end
     #Add item to a collection and go to see it on the registry
     $browser.find_element(:xpath => Pdp::ADD_COLLECTION_DROPDOWN_XPATH).click
     $wait.until{
@@ -682,10 +689,8 @@ class TestStandalonePdp < TestBasic
     pass = $browser.find_element(:xpath => "(.//*[@data-placeholder='Choose a Collection'])[3]")
     #Look the collection name if it's correct and if the item is really associated with a collection 
     collection = Common.get_selected_option_text(pass)
-    puts collection
     #If the item it's associated with a collection can't be a coincidence in this two lines above.
-    assert_not_equal(collection, "Feature on main page")
-    assert_not_equal(collection, "My collection")
+    assert_not_equal(collection, "Feature On Main Page")
     
     $browser.find_element(:xpath => EditItemModal::CANCEL_EDIT_BUTTON_XPATH).click
     $wait.until{
@@ -737,10 +742,8 @@ class TestStandalonePdp < TestBasic
     pass = $browser.find_element(:xpath => "(.//*[@data-placeholder='Choose a Collection'])[3]")
     #Look the collection name if it's correct and if the item is really associated with a collection 
     collection = Common.get_selected_option_text(pass)
-    puts collection
     #If the item it's associated with a collection can't be a coincidence in this two lines above.
-    assert_not_equal(collection, "Feature on main page")
-    assert_not_equal(collection, "My collection")
+    assert_not_equal(collection, "Feature On Main Page")
     
     $browser.find_element(:xpath => EditItemModal::CANCEL_EDIT_BUTTON_XPATH).click
     $wait.until{

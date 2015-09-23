@@ -1,3 +1,3 @@
 class BrandPage
-  BRAND_NAME_DIV_XPATH = ".//*[@class='header header-left']//*[@class='brand-name']"
+  BRAND_NAME_DIV_XPATH = ".//*[@class='brand-header']//*[@class='brand-name']"
 end
