@@ -10,14 +10,17 @@ require_relative './pages/registry_page.rb'
 require_relative './pages/create_gift_collection_modal.rb'
 require_relative './pages/choose_image_to_collection_modal.rb'
 require_relative './pages/edit_collection_modal.rb'
+require_relative './pages/delete_collection_confirmation_modal.rb'
 
 
 
 
 class ManegeCollectionRegistry < TestBasic
+  
 
   #TC578 CREATE A NEW REGISTRY COLLECTION WITHOUT NAME
   def test_collection_without_name
+    #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
@@ -45,6 +48,7 @@ class ManegeCollectionRegistry < TestBasic
   
   #TC579 SUCCESSFULLY CREATE A NEW REGISTRY COLLECTION USING ONE OF THE ZOLA PHOTOS
   def test_collection_create_using_zola_photos
+    #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
@@ -88,6 +92,7 @@ class ManegeCollectionRegistry < TestBasic
   
   #TC1489 EDIT REGISTRY COLLECTION LEAVING THE NAME FIELD BLANK
   def test_edit_collection_name_blank
+    #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
@@ -140,6 +145,7 @@ class ManegeCollectionRegistry < TestBasic
 
   #TC1490 EDIT A REGISTRY COLLECTION CHANGING THE IMAGE TO ONE OF THE ZOLA PHOTOS
   def test_edit_collection_using_zola_photo
+    #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
@@ -150,6 +156,7 @@ class ManegeCollectionRegistry < TestBasic
       $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
     quantityCollections = $browser.find_elements(:xpath, RegistryPage::ALL_COLLECTIONS_IN_REGISTRY_XPATH)
+    # if registry have or haven't collection previusly created
     if (quantityCollections.size > 0) then
       $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).click
       $wait.until {
@@ -208,7 +215,71 @@ class ManegeCollectionRegistry < TestBasic
     end
   end
   
-  #TC1491 EDIT A REGISTRY COLLECTION CHANGING THE IMAGE TO AN UPLOADED PHOTO
+  #TC1491 EDIT A REGISTRY COLLECTION CHANGING THE IMAGE TO AN UPLOADED PHOTO (lo dejo para el final)
+  
+  
+  
+
+  
+  #TC1592 EDIT A REGISTRY COLLECTION DELETING IT
+  def test_edit_collection_deleting_it
+    #Login
+    Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
+    $wait.until {
+      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
+    #Go to registry page
+    $browser.get HomePage::HOME_URL
+    $wait.until{
+      $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+    }
+    quantityCollections = $browser.find_elements(:xpath, RegistryPage::ALL_COLLECTIONS_IN_REGISTRY_XPATH)
+    # if registry have or haven't collection previusly created
+    if (quantityCollections.size > 0) then
+      #Click on edit collection button
+      $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).displayed?
+      }
+      #click on delete collection button
+      $browser.find_element(:xpath, EditCollection::DELETE_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_ID).displayed?
+      }
+      #Click on delete collection button on confirmation modal
+      $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_ID).click
+      #Verify if deleted collection message appears
+      assert $wait.until {
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).displayed?
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).text == DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_TEXT
+      }
+    else  
+      #Create a new collection
+      create_gift_collection(CreateGiftCollection::COLLECTION_NAME_TEXT, CreateGiftCollection::DESCRIPTION_TEXT)
+      $wait.until {
+        $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+      }
+      $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, EditCollection::COLLECTION_NAME_FIELD_ID).displayed?
+      }
+      #click on delete collection button
+      $browser.find_element(:xpath, EditCollection::DELETE_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_ID).displayed?
+      }
+      #Click on delete collection button on confirmation modal
+      $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_ID).click
+      #Verify if deleted collection message appears
+      assert $wait.until {
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).displayed?
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).text == DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_TEXT
+      }
+    end
+  end
+  
+  
+  
   
   
   
@@ -231,7 +302,7 @@ class ManegeCollectionRegistry < TestBasic
       $browser.find_element(:id, CreateGiftCollection::COLLECTION_ADDED_MESSAGE_ID).displayed?
     }
   end
-  
+    
   
   
   

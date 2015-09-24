@@ -5,6 +5,7 @@ class EditCollection
   EDIT_IMAGE_LINK_XPATH = ".//*[@class='modal-content']//*[@class='collection-form']//*[@class='photo-controls']//*[@class='photo-wrapper']//*[@class='edit-icon']"
   SAVE_COLLECTION_BUTTON_XPATH = ".//*[@class='modal-content']//*[@class='collection-form']//*[@class='block modal-actions']//*[@class='row-fluid']//*[@class='action-group right']//*[@class='button primary medium']"
   CANCEL_BUTTON_XPATH = ".//*[@class='modal-content']//*[@class='collection-form']//*[@class='block modal-actions']//*[@class='row-fluid']//*[@class='action-group right']//*[@class='button medium tertiary close-modal']"
+  DELETE_BUTTON_XPATH = ".//*[@class='modal-content']//*[@class='collection-form']//*[@class='block modal-actions']//*[@class='row-fluid']//*[@class='action-group right']//*[@class='button medium secondary remove-item']"
   
   PLEASE_ENTER_COLLECTION_NAME_ERROR_ID = "newCollectionNameFromRegistry-error"
   PLEASE_ENTER_COLLECTION_NAME_ERROR_TEXT = "Please enter a collection name."
