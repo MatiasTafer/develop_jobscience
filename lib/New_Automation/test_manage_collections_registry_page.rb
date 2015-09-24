@@ -217,7 +217,7 @@ class ManegeCollectionRegistry < TestBasic
   
   #TC1491 EDIT A REGISTRY COLLECTION CHANGING THE IMAGE TO AN UPLOADED PHOTO (lo dejo para el final)
   
-  
+
   
 
   
@@ -244,10 +244,10 @@ class ManegeCollectionRegistry < TestBasic
       #click on delete collection button
       $browser.find_element(:xpath, EditCollection::DELETE_BUTTON_XPATH).click
       $wait.until {
-        $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_ID).displayed?
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_BUTTON_ID).displayed?
       }
       #Click on delete collection button on confirmation modal
-      $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_ID).click
+      $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_BUTTON_ID).click
       #Verify if deleted collection message appears
       assert $wait.until {
         $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).displayed?
@@ -266,10 +266,10 @@ class ManegeCollectionRegistry < TestBasic
       #click on delete collection button
       $browser.find_element(:xpath, EditCollection::DELETE_BUTTON_XPATH).click
       $wait.until {
-        $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_ID).displayed?
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_BUTTON_ID).displayed?
       }
       #Click on delete collection button on confirmation modal
-      $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_ID).click
+      $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_BUTTON_ID).click
       #Verify if deleted collection message appears
       assert $wait.until {
         $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).displayed?
@@ -278,7 +278,54 @@ class ManegeCollectionRegistry < TestBasic
     end
   end
   
+
   
+  
+ 
+  #TC1591 DELETE REGISTRY COLLECTION
+  def test_delete_registry_collection
+    #Login
+    Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
+    $wait.until {
+      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
+    #Go to registry page
+    $browser.get HomePage::HOME_URL
+    $wait.until{
+      $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+    }
+    quantityCollections = $browser.find_elements(:xpath, RegistryPage::ALL_COLLECTIONS_IN_REGISTRY_XPATH)
+    # if registry have or haven't collection previusly created
+    if (quantityCollections.size > 0) then
+      #Click on delete collection button
+      $browser.find_element(:xpath, RegistryPage::DELETE_COLLECTION_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_BUTTON_ID).displayed?
+      }
+      $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_BUTTON_ID).click
+      assert $wait.until{
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).displayed?
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).text == DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_TEXT
+      }
+    else  
+      create_gift_collection(CreateGiftCollection::COLLECTION_NAME_TEXT, CreateGiftCollection::DESCRIPTION_TEXT)
+      $wait.until {
+        $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+      }
+      #Click on delete collection button
+      $browser.find_element(:xpath, RegistryPage::DELETE_COLLECTION_BUTTON_XPATH).click
+      $wait.until {
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_BUTTON_ID).displayed?
+      }
+      $browser.find_element(:id, DeleteCollectionConfirmation::DELETE_COLLECTION_BUTTON_ID).click
+      assert $wait.until{
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).displayed?
+        $browser.find_element(:id, DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_ID).text == DeleteCollectionConfirmation::DELETED_COLLECTION_MESSAGE_TEXT
+      }
+    end
+  end
+  
+
   
   
   
