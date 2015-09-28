@@ -14,12 +14,13 @@ require_relative './pages/delete_collection_confirmation_modal.rb'
 require_relative './pages/registry_settings_page.rb'
 require_relative './pages/design_option_page.rb'
 
-
-
+#To run the test you need an acount:
+    # With registry
+    #With least one gift on registry
+    #Acount default : Common (User:USER4_EMAIL , Password: USER4_PASSWORD)
 
 
 class ManegeCollectionRegistry < TestBasic
-
 
 
   #TC578 CREATE A NEW REGISTRY COLLECTION WITHOUT NAME
@@ -318,8 +319,6 @@ class ManegeCollectionRegistry < TestBasic
   end
 
 
-
-  
   #TC1590 REORDER REGISTRY COLLECTIONS SINGLE PAGE LAYOUT
   def test_reorder_registry_collections_single_layout
     #Login
@@ -368,6 +367,7 @@ class ManegeCollectionRegistry < TestBasic
     }
   end
   
+  
   #METHOD TO CREATE ONE GIFT COLLECTION (must be on registry page and have at least one gift)
   def create_gift_collection (name, description)
     $wait.until {
@@ -387,14 +387,4 @@ class ManegeCollectionRegistry < TestBasic
       $browser.find_element(:id, CreateGiftCollection::COLLECTION_ADDED_MESSAGE_ID).displayed?
     }
   end
-    
-  
-  
-  
-  
-  
-  
-  
-  
-  
 end
