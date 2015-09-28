@@ -11,12 +11,16 @@ require_relative './pages/create_gift_collection_modal.rb'
 require_relative './pages/choose_image_to_collection_modal.rb'
 require_relative './pages/edit_collection_modal.rb'
 require_relative './pages/delete_collection_confirmation_modal.rb'
+require_relative './pages/registry_settings_page.rb'
+require_relative './pages/design_option_page.rb'
+
 
 
 
 
 class ManegeCollectionRegistry < TestBasic
-  
+
+
 
   #TC578 CREATE A NEW REGISTRY COLLECTION WITHOUT NAME
   def test_collection_without_name
@@ -84,11 +88,7 @@ class ManegeCollectionRegistry < TestBasic
       $browser.find_element(:id, CreateGiftCollection::COLLECTION_ADDED_MESSAGE_ID).text == CreateGiftCollection::COLLECTION_ADDED_MESSAGE_TEXT  
     }  
   end
-  
-  
-  #TC1488 SUCCESSFULLY CREATE A NEW REGISTRY COLLECTION UPLOADING A PHOTO (dejar para el final)
-
-  
+   
   
   #TC1489 EDIT REGISTRY COLLECTION LEAVING THE NAME FIELD BLANK
   def test_edit_collection_name_blank
@@ -215,11 +215,6 @@ class ManegeCollectionRegistry < TestBasic
     end
   end
   
-  #TC1491 EDIT A REGISTRY COLLECTION CHANGING THE IMAGE TO AN UPLOADED PHOTO (lo dejo para el final)
-  
-
-  
-
   
   #TC1592 EDIT A REGISTRY COLLECTION DELETING IT
   def test_edit_collection_deleting_it
@@ -277,11 +272,8 @@ class ManegeCollectionRegistry < TestBasic
       }
     end
   end
-  
 
   
-  
- 
   #TC1591 DELETE REGISTRY COLLECTION
   def test_delete_registry_collection
     #Login
@@ -324,11 +316,57 @@ class ManegeCollectionRegistry < TestBasic
       }
     end
   end
-  
+
+
 
   
-  
-  
+  #TC1590 REORDER REGISTRY COLLECTIONS SINGLE PAGE LAYOUT
+  def test_reorder_registry_collections_single_layout
+    #Login
+    Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
+    $wait.until {
+      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
+    #Go to registry page
+    $browser.get HomePage::HOME_URL
+    $wait.until{
+      $browser.find_element(:xpath, RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+    }
+    numberOfCollections = $browser.find_elements(:xpath, RegistryPage::GROUP_OF_COLLECTIONS_XPATH)
+    #if registry have less than 3 collections add one collection
+    if (numberOfCollections.size < 3) then
+       for i in 0..2
+       numberOfCollections = $browser.find_elements(:xpath, RegistryPage::GROUP_OF_COLLECTIONS_XPATH)  
+       create_gift_collection(CreateGiftCollection::COLLECTION_NAME_TEXT, CreateGiftCollection::DESCRIPTION_TEXT)
+       $browser.get HomePage::HOME_URL
+       end
+    end
+    #Click on first collection
+    $browser.find_element(:xpath, RegistryPage::FIRST_COLLECTION_IN_GROUP_XPATH).click
+    #Verify the corect buttons appears
+    assert $wait.until {
+      $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).enabled?
+      $browser.find_element(:xpath, RegistryPage::MOVE_DOWN_COLLECTION_BUTTON_XPATH).enabled?
+      $browser.find_element(:xpath, RegistryPage::DELETE_COLLECTION_BUTTON_XPATH).enabled?
+    }
+    #Click on second collection
+    $browser.find_element(:xpath, RegistryPage::SECOND_COLLECTION_IN_GROUP_XPATH).click
+    #Verify the correct buttons appears
+    assert $wait.until {
+      $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).enabled?
+      $browser.find_element(:xpath, RegistryPage::MOVE_DOWN_COLLECTION_BUTTON_XPATH).enabled?
+      $browser.find_element(:xpath, RegistryPage::MOVE_UP_COLLECTION_BUTTON_XPATH).enabled?
+      $browser.find_element(:xpath, RegistryPage::DELETE_COLLECTION_BUTTON_XPATH).enabled?
+    }
+    #Click on last collection
+    $browser.find_element(:xpath, RegistryPage::FIRST_COLLECTION_IN_GROUP_XPATH).click
+    #Verify the correct buttons appears
+    assert $wait.until {
+      $browser.find_element(:xpath, RegistryPage::EDIT_COLLECTION_BUTTON_XPATH).enabled?
+      $browser.find_element(:xpath, RegistryPage::MOVE_UP_COLLECTION_BUTTON_XPATH).enabled?
+      $browser.find_element(:xpath, RegistryPage::DELETE_COLLECTION_BUTTON_XPATH).enabled?
+    }
+  end
   
   #METHOD TO CREATE ONE GIFT COLLECTION (must be on registry page and have at least one gift)
   def create_gift_collection (name, description)

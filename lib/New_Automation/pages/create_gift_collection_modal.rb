@@ -10,7 +10,7 @@ class CreateGiftCollection
   PLEASE_ENTER_COLLECTION_NAME_ERROR_TEXT = "Please enter a collection name."
   
   
-  COLLECTION_NAME_TEXT = "Colection Test"
+  COLLECTION_NAME_TEXT = SecureRandom.hex(6)
   DESCRIPTION_TEXT = "Description of the colection test"
   
   COLLECTION_ADDED_MESSAGE_ID = "humaneMessage"

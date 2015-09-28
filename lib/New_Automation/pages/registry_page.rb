@@ -16,8 +16,34 @@ class RegistryPage
   GIFT_ATTRIBUTE_ID = "data-collection-item-id"
   NEW_COLLECTION_BUTTON_XPATH = ".//*[@class='new-collection-wrapper top']//*[@class='button medium secondary tooltip-plain tooltipstered']"
   ALL_COLLECTIONS_IN_REGISTRY_XPATH = ".//*[@class='collection-header collection']"
+  SETTINGS_LINK_ID = "registrySettingsLink"
+   
+  
+ 
+ 
+ 
+  #Action button of collections
   EDIT_COLLECTION_BUTTON_XPATH = ".//*[@class='collection-header collection']//*[@class='collection-actions']//*[@class='edit-link']"
   DELETE_COLLECTION_BUTTON_XPATH =".//*[@class='collection-header collection']//*[@class='collection-actions']//*[@class='remove-collection']"
+  MOVE_UP_COLLECTION_BUTTON_XPATH = ".//*[@class='icon icon-arrow-up']"
+  MOVE_DOWN_COLLECTION_BUTTON_XPATH = ".//*[@class='icon icon-arrow-down']"
+  
+  
+  
+  
+  
+  GROUP_OF_COLLECTIONS_XPATH = ".//*[@class='collection-header collection']"
+  FIRST_COLLECTION_IN_GROUP_XPATH = "(.//*[@class='collection-header collection'])[1]"
+  SECOND_COLLECTION_IN_GROUP_XPATH = "(.//*[@class='collection-header collection'])[2]"
+  LAST_COLLECTION_IN_GROUP_XPATH = "(.//*[@class='collection-header collection'])[last()]"
+  
+  
+  
+  
+  #ALL_COLLECTIONS_IN_FOLDER_LAYOUT_XPATH = ".//*[@class='collection-tile']//*[@class='item-actions']//*[@class='move-item']"
+  #FIRST_ITEM_COLLECTION_IN_FOLDER_LAYOUT_XPATH = "(.//*[@class='collection-tile']//*[@class='item-actions']//*[@class='move-item'])[1]"
+  #LAST_ITEM_COLLECTION_IN_FOLDER_LAYOUT_XPATH = "(.//*[@class='collection-tile']//*[@class='item-actions']//*[@class='move-item'])[last()]"
+ 
   
   
 end
