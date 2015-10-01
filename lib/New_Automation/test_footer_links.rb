@@ -111,7 +111,8 @@ class TestFooterLinks < TestBasic
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.find_element(:id => HomePage::BLOG_ID).click
-    $browser.switch_to.window($browser.window_handles.last)    
+    $browser.switch_to.window($browser.window_handles.last)
+    Common::wait_to_load   
     assert_equal($browser.current_url, HomePage::BLOG_URL)
   end
 
@@ -141,8 +142,12 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:xpath => HomePage::TWITTER_XPATH).click 
-    $browser.switch_to.window($browser.window_handles.last)   
+    $browser.find_element(:xpath => HomePage::TWITTER_XPATH).click
+    $wait.until{
+      $browser.window_handles.size > 1
+      } 
+    $browser.switch_to.window($browser.window_handles.last)
+    Common::wait_to_load
     assert_equal($browser.current_url, HomePage::TWITTER_URL)
   end
 
@@ -152,8 +157,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:xpath => HomePage::FACEBOOK_XPATH).click  
-    $browser.switch_to.window($browser.window_handles.last)  
+    $browser.find_element(:xpath => HomePage::FACEBOOK_XPATH).click 
+    $wait.until{
+      $browser.window_handles.size > 1
+    } 
+    $browser.switch_to.window($browser.window_handles.last)
     assert_equal($browser.current_url, HomePage::FACEBOOK_URL)
   end
   
@@ -163,8 +171,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:xpath => HomePage::PINTEREST_XPATH).click  
-    $browser.switch_to.window($browser.window_handles.last)  
+    $browser.find_element(:xpath => HomePage::PINTEREST_XPATH).click
+    $wait.until{
+      $browser.window_handles.size > 1
+      }   
+    $browser.switch_to.window($browser.window_handles.last)
     assert_equal($browser.current_url, HomePage::PINTEREST_URL)
   end
 
@@ -175,7 +186,10 @@ class TestFooterLinks < TestBasic
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.find_element(:xpath => HomePage::INSTAGRAM_XPATH).click
-    $browser.switch_to.window($browser.window_handles.last)   
+    $wait.until{
+      $browser.window_handles.size > 1
+      } 
+    $browser.switch_to.window($browser.window_handles.last) 
     assert_equal($browser.current_url, HomePage::INSTAGRAM_URL)
   end
   
@@ -186,7 +200,10 @@ class TestFooterLinks < TestBasic
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.find_element(:xpath => HomePage::GOOGLE_PLUS_XPATH).click
-    $browser.switch_to.window($browser.window_handles.last)   
+    $wait.until{
+      $browser.window_handles.size > 1
+    } 
+    $browser.switch_to.window($browser.window_handles.last)
     assert_equal($browser.current_url, HomePage::GOOGLE_PLUS_URL)
   end
 
