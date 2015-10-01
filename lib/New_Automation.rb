@@ -4,7 +4,7 @@ $browser
 $wait
 
 
-#require './New_Automation/test_login'
+require './New_Automation/test_login'
 #require './New_Automation/test_registry_creation'
 #require './New_Automation/test_change_password'
 #require './New_Automation/test_your_information'
