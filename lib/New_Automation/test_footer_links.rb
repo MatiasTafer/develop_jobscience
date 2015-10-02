@@ -70,7 +70,8 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::ZOLA_SHOP_ID).click    
+    $browser.find_element(:id => HomePage::ZOLA_SHOP_ID).click
+    Common.wait_to_load   
     assert_equal($browser.current_url, HomePage::ZOLA_SHOP_URL)
   end
 
