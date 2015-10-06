@@ -163,6 +163,7 @@ class TestFooterLinks < TestBasic
       $browser.window_handles.size > 1
     } 
     $browser.switch_to.window($browser.window_handles.last)
+    Common::wait_to_load
     assert_equal($browser.current_url, HomePage::FACEBOOK_URL)
   end
   
@@ -177,6 +178,7 @@ class TestFooterLinks < TestBasic
       $browser.window_handles.size > 1
       }   
     $browser.switch_to.window($browser.window_handles.last)
+    Common::wait_to_load
     assert_equal($browser.current_url, HomePage::PINTEREST_URL)
   end
 
@@ -191,6 +193,7 @@ class TestFooterLinks < TestBasic
       $browser.window_handles.size > 1
       } 
     $browser.switch_to.window($browser.window_handles.last) 
+    Common::wait_to_load
     assert_equal($browser.current_url, HomePage::INSTAGRAM_URL)
   end
   
@@ -205,6 +208,7 @@ class TestFooterLinks < TestBasic
       $browser.window_handles.size > 1
     } 
     $browser.switch_to.window($browser.window_handles.last)
+    Common::wait_to_load
     assert_equal($browser.current_url, HomePage::GOOGLE_PLUS_URL)
   end
 
