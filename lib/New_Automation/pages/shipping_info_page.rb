@@ -44,6 +44,15 @@ class ShippingInfoPage
   ZIPCODE_2 = '81416'
   PHONE_2 = '9999999999'
   
+  FIRS_NAME_3 = "Donald"
+  LAST_NAME_3 = "Trump"
+  STREET_3 = "Central Street 333"
+  APTO_3 = "11"
+  CITY_3 = "Bronx"
+  STATE_3 = "New York"
+  ZIPCODE_3 = "10451"
+  PHONE_3 = "5555555555"
+  
   #USER
   USER_EMAIL = 'testtesttest@test.com'
   USER_PASSWORD = 'tester1234'
