@@ -3,8 +3,11 @@ $browserName = ARGV[0]
 $browser
 $wait
 
-#require './New_Automation/test_login'
+require './New_Automation/test_login'
 require './New_Automation/test_change_password'
+require './New_Automation/test_your_information'
+
+
 
 #require './New_Automation/test_cart'
 #require './New_Automation/test_product_modal'
@@ -12,7 +15,6 @@ require './New_Automation/test_change_password'
 #require './New_Automation/test_standalone_pdp'
 #require './New_Automation/test_registry_creation'
 #require './New_Automation/test_change_password'
-#require './New_Automation/test_your_information'
 #require './New_Automation/test_shipping_info'
 #require './New_Automation/test_registry_settings'
 #require './New_Automation/test_footer_links'

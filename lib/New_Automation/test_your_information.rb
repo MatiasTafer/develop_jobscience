@@ -174,5 +174,5 @@ class TestYourInformation < TestBasic
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         check_current_information 'Gregory', 'McGregor', Common::USER1_EMAIL        
     end
-    
+
 end
