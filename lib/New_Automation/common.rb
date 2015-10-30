@@ -1,4 +1,4 @@
-include Test::Unit::Assertions
+  include Test::Unit::Assertions
 require 'rubygems'
 require 'selenium-webdriver'
 require 'test-unit'
@@ -131,7 +131,7 @@ class Common
     select = Selenium::WebDriver::Support::Select.new(dropdown)
     select.select_by(:text, optionText)
   end
-
+  
   #Selects the option from a Select element, by Index
   # selectElement: dropdown element
   # index: index number to be selected from the dropdown
@@ -145,6 +145,7 @@ class Common
   def self.get_selected_option_text(dropdown)
     select = Selenium::WebDriver::Support::Select.new(dropdown)
     selected_optionText = select.selected_options[0].text
+    return selected_optionText
   end
   
   #Adds items to your cart
@@ -163,7 +164,6 @@ class Common
        $browser.find_element(:xpath => Collection::COLLECTION_GIFT_XPATH).displayed?
     }    
     $browser.find_element(:xpath => Collection::COLLECTION_GIFT_XPATH).click
-
     #Click on the button ADD TO CART at pdp modal
     $wait.until{
       $browser.find_element(:xpath => Pdp::MODAL_ADDTOCART_BUTTON_XPATH).displayed?
@@ -217,6 +217,7 @@ class Common
     end
   end
   
+
   #This method was created because some wait problems were found using Chrome
   #First it waits to the document and all sub-resources have finished loading
   #Then, it waits for jQuery because Selenium runs fast and makes queries to jQuery before it has had a chance to load into the page
@@ -225,5 +226,93 @@ class Common
       $browser.execute_script("return document.readyState;") == "complete"
       $browser.execute_script("return window.jQuery != undefined && jQuery.active === 0")
     }
+  end
+  
+  #Method to go to an item, which you can choose its size, modal
+  #Tests (TC1498), (TC1501) and (TC1504)
+  def self.goToItemWithSizeModal
+    #Go to Collection/easy-entertaining
+    $wait.until{
+      $browser.find_element(:xpath => HomePage::TWITTER_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).displayed?
+    }
+    $browser.action.move_to($browser.find_element(:xpath => Shop::HOME_LINK_XPATH)).perform
+    $wait.until{
+      $browser.find_element(:xpath => Shop::BEDROOM_FURNITURE_LINK_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => Shop::BEDROOM_FURNITURE_LINK_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => BedroomCategoryPage::ITEM_WITH_SIZE_XPATH).displayed?
+    }
+    aux = -1;
+    @@find = false   
+    while(@@find == false)
+      @@find = true;
+      way = "(.//*[@class='col-xs-6 col-sm-4'])[#{aux}]//*[@class='quickview-inputs-wrapper']//*[@ng-change='zoSkuSelector.handleChange()']"
+      @@find = findSpecificSizeElement(way)   
+      if @@find == true
+        way = way.slice(0..37)
+      end
+      aux = aux + 1
+    end
+     $browser.find_element(:xpath => way + "/div/a").click
+     $wait.until{
+          $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
+     }  
+  end
+  
+  #Find an item that has size options 
+  def self.findSpecificSizeElement(xpath)
+    array = $browser.find_elements(:xpath => xpath)
+    found = array.size > 0
+    return found
+  end
+  
+  #Method to go to an item, which you can choose its color, modal
+  #Tests (TC1499), (TC1502) and (TC1505)
+  def self.goToItemWithcolorModal 
+    #Go to Collection/easy-entertaining
+    $wait.until{
+      $browser.find_element(:xpath => HomePage::TWITTER_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).displayed?
+    }
+    $browser.action.move_to($browser.find_element(:xpath => Shop::HOME_LINK_XPATH)).perform
+    $wait.until{
+      $browser.find_element(:xpath => Shop::BEDROOM_FURNITURE_LINK_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => Shop::BEDROOM_FURNITURE_LINK_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => BedroomCategoryPage::CATEGORY_TITLE_DIV_XPATH).displayed?
+    }
+    aux = 1;
+    @@find = false   
+    while(@@find == false)
+      @@find = true;
+      way = "(.//*[@class='col-xs-6 col-sm-4'])[#{aux}]//*[@class='swatches hidden-xs']"
+      @@find = findSpecificColorElement(way)   
+      if @@find == true
+        way = way.slice(0..37)
+      end
+      aux = aux + 1
+    end
+    
+    $browser.find_element(:xpath => way + "/div/a").click
+    $wait.until{
+      $browser.find_element(:xpath => Pdp::ADDTOCART_BUTTON_XPATH).displayed?
+    }
+  end
+  
+   
+  #Find an item that has color options
+  def self.findSpecificColorElement(xpath)
+    array = $browser.find_elements(:xpath => xpath)
+    found = array.size > 0
+    return found
   end
 end
