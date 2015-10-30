@@ -5,6 +5,7 @@ class LoginModal
   PASSWORD_FIELD_XPATH = ".//*[@name='password']"
   LOGIN_BUTTON_XPATH  = "//*[@type='submit']"
   CLOSE_MODAL_XPATH = ".//*[@class='modal-close']"
+  FORGOT_PASSWORD_LINK_XPATH = ".//*[@class='help-block text-right small']/a"
   
   #error messages
   MISMATCH_MESSAGE_XPATH = ".//*[@class='form-message-block text-center text-danger']"
@@ -20,6 +21,7 @@ class LoginModal
   TEST_USER_PASSWORD2 = 'testtest'
   
   #Info used by test_cart.rb 
-  OTHER_USER_TEXT = "testtesttest@test.com"
-  OTHER_USER_PASSWORD_TEXT = "tester1234"
+  
+  OTHER_USER_TEXT = "modernZola@gmail.com"
+  OTHER_USER_PASSWORD_TEXT = "modernZola"
 end

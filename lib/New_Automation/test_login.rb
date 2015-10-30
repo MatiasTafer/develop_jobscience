@@ -95,5 +95,4 @@ class TestLogin < TestBasic
     }
     assert $browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).text == LoginModal::EMAIL_ERROR_MESSAGE_TEXT
   end
-
 end

@@ -11,17 +11,20 @@ class HomePage
   
   #Account sub-menu
   REGISTRY_SETTINGS_ID = "your-registry-menu-registry-settings"
+  REGISTRY_SETTINGS_LINK_ID = "registrySettingsLink"
   LOG_OUT_LINK_ID = "account-menu-logout"
   
   
   #HEADER LINKS
-  HOME_SHOP_XPATH= ".//*[@id='header']//*[@href='/shop']"
-  
-
+  HOME_SHOP_XPATH = "(.//*[@href='/shop'])[1]"
+  REGISTRY_LINK_XPATH = "(.//*[@href='/registry/oliviaandfitz/edit'])[2]"  
+  BLOG_LINK_XPATH = "(.//*[@href='http://blog.zola.com/'])[2]"
   LOGO_ZOLA_XPATH = "(.//*[@class='logo'])[1]"
+  REGISTRY_UNIVERSAL_BUTTON_XPATH = "(.//*[@target='_self'])[1]"
   
   #BODY
   MAKE_IT_VISIBLE_BUTTON = ".//*[@class='button red medium publish-registry-button']"
+  COUPLE_NAME_DIV_ID = "editRegistryTitle"
   
   #this button is from page "looking for a registry?"
   FIND_REGISTRY_BUTTON_XPATH = ".//*[@class='button primary big']"
@@ -53,6 +56,8 @@ class HomePage
   
   #URL LINK CONTROL
   
+  HOME_URL = "https://qa.zola.com"
+  REGISTRY_URL = "https://qa.zola.com/registry/juanandjulisa/edit"
   FIND_REGISTRY_URL = "https://qa.zola.com/find-registry"
   DOWNLOAD_APPS_URL = "https://qa.zola.com/simplify"
   REGISTRY_BENEFITS_URL = "https://qa.zola.com/registry/benefits"
