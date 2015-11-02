@@ -12,16 +12,15 @@ require_relative './pages/new_signup_page.rb'
 
 class NewSignup < TestBasic
  
- 
+
 #SUCCESSFULLY NEW SIGN UP (TC1565)
 
   def test_SuccessfullySignup
     
+    #STEP 1
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
     #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
     $browser.get("https://qa.zola.com/signup/step1")
-    
-    #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -113,7 +112,9 @@ class NewSignup < TestBasic
   def test_NoFirstorLastName
     
     #STEP 1 
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -140,7 +141,9 @@ class NewSignup < TestBasic
   def test_NoChossingBrideGroom
     
     #STEP 1 
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -163,8 +166,10 @@ class NewSignup < TestBasic
   #SIGN UP USING ONLY YOUR PARTNER'S FIRST OR LAST NAME (TC1568)
   def test_NoPartnerFirstorLastName
     
-    #STEP 1 
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #STEP 1
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1") 
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -191,7 +196,9 @@ class NewSignup < TestBasic
   def test_NoPartnerWeddingDate
     
     #STEP 1 
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -213,14 +220,16 @@ class NewSignup < TestBasic
 
   
   #SIGN UP WITHOUT SPECIFYING WEDDING DATE OR CHOOSING "HAVEN'T DECIDED YET" (TC1570)
-=begin  
-  This test will check that if no wedding date is selected and the ckeckbox "Haven't decided yet" isn't checked, the "Next" button will be disable.
-  Also checks that if you enter an invalid value in date field, the "Next" button continue disabled and an error message is displayed.
-=end
+
+  #This test will check that if no wedding date is selected and the ckeckbox "Haven't decided yet" isn't checked, the "Next" button will be disable.
+  #Also checks that if you enter an invalid value in date field, the "Next" button continue disabled and an error message is displayed.
+
   def test_NoWeddingDate
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -264,7 +273,9 @@ class NewSignup < TestBasic
   def test_SkipDoLater
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -303,7 +314,7 @@ class NewSignup < TestBasic
       $browser.find_element(:id => NewSignupPage::COUPLE_PHOTO_ID).displayed?
     }
   end
-  
+ 
 =begin
   #CANCEL SELECTED PHOTO (TC1572)
   #PENDING METHOD
@@ -311,10 +322,13 @@ class NewSignup < TestBasic
   end
 =end
 
+
   #SELECT PHOTO "SKIP, I'LL DO IT LATER"(TC1573)
   def test_PhotoSkipIllDoItLater
      #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -366,7 +380,9 @@ class NewSignup < TestBasic
   def test_UrlFieldBlank
     
      #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -427,7 +443,9 @@ class NewSignup < TestBasic
   def test_AlreadyUsedUrl
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -489,7 +507,9 @@ class NewSignup < TestBasic
   def test_CheckPreviousButtons
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -587,7 +607,9 @@ class NewSignup < TestBasic
   def test_InvalidEmail
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -671,7 +693,9 @@ class NewSignup < TestBasic
   def test_DotMissingEmail
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -755,7 +779,9 @@ class NewSignup < TestBasic
   def test_EmailAlreadyUsed
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -825,7 +851,7 @@ class NewSignup < TestBasic
     }
     
     #Complete Email field with an already used email address and the password field
-    $browser.find_element(:xpath => NewSignupPage::EMAIL_TEXTBOX_XPATH).send_keys NewSignupPage::ALREADY_USED_EMAIL
+    $browser.find_element(:xpath => NewSignupPage::EMAIL_TEXTBOX_XPATH).send_keys Common::USER1_EMAIL
     $browser.find_element(:xpath => NewSignupPage::PASSWORD_TEXTBOX_XPATH).send_keys NewSignupPage::PASSWORD_TEXT
     assert $wait.until{
       $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_DISABLE_XPATH).displayed?
@@ -834,12 +860,14 @@ class NewSignup < TestBasic
     }
   end 
 
-
+  
   #CREATE AN ACCOUNT WITH AN INVALID PASSWORD (TC1580)
   def test_InvalidPassword
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -927,7 +955,9 @@ class NewSignup < TestBasic
   def test_EmailBlank
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
@@ -1017,7 +1047,9 @@ class NewSignup < TestBasic
   def test_PasswordBlank
     
     #STEP 1
-    $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #$browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT

@@ -86,6 +86,4 @@ class NewSignupPage
           #WRONG INFO
           INVALID_EMAIL = "emailemail.com"
           DOT_MISSING_EMAIL = "email@emailcom"
-          ALREADY_USED_EMAIL = "email@email.com"
-     
 end
