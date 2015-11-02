@@ -176,8 +176,8 @@ class NewSignup < TestBasic
     
     #Complete all fields 
     $browser.find_element(:xpath => NewSignupPage::YOUR_FIRST_LAST_NAME_XPATH).send_keys NewSignupPage::FIRST_NAME_TEXT
-    $browser.find_element(:xpath => NewSignupPage::YOUR_WEDDING_ROL_XPATH).click
     $browser.find_element(:xpath => NewSignupPage::PARTNER_FIRST_LAST_NAME_XPATH).send_keys NewSignupPage::NAME_ONLY
+    $browser.find_element(:xpath => NewSignupPage::YOUR_WEDDING_ROL_XPATH).click
     $browser.find_element(:xpath => NewSignupPage::PARTNER_WEDDING_ROL_XPATH).click
     
     #Click "NEXT" button
