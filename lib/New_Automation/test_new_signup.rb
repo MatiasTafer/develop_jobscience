@@ -17,6 +17,9 @@ class NewSignup < TestBasic
 
   def test_SuccessfullySignup
     
+    #THIS IS TEMPORARY UNTIL NEW SIGNUP IS NOT RELEASED ON STAGE
+    $browser.get("https://qa.zola.com/signup/step1")
+    
     #STEP 1
     $browser.find_element(:id => HomePage::SIGNUP_LINK_ID).click
     $wait.until{
@@ -24,7 +27,7 @@ class NewSignup < TestBasic
       $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).text == NewSignupPage::FIRST_STEP_PAGE_DIV_TEXT
     }
     
-    #Complete all fields 
+    #Complete all fields
     $browser.find_element(:xpath => NewSignupPage::YOUR_FIRST_LAST_NAME_XPATH).send_keys NewSignupPage::FIRST_NAME_TEXT
     $browser.find_element(:xpath => NewSignupPage::YOUR_WEDDING_ROL_XPATH).click
     $browser.find_element(:xpath => NewSignupPage::PARTNER_FIRST_LAST_NAME_XPATH).send_keys NewSignupPage::PARTNER_NAME_TEXT
