@@ -61,7 +61,7 @@ class HomePage
   FIND_REGISTRY_URL = "https://qa.zola.com/find-registry"
   DOWNLOAD_APPS_URL = "https://qa.zola.com/simplify"
   REGISTRY_BENEFITS_URL = "https://qa.zola.com/registry/benefits"
-  ZOLA_SHOP_URL = "https://qa.zola.com/shop/"
+  ZOLA_SHOP_URL = "https://qa.zola.com/shop/index"
   ABOUT_ZOLA_URL = "https://qa.zola.com/about/index"
   PRESS_URL = "https://qa.zola.com/about/press"
   JOBS_URL = "https://qa.zola.com/about/jobs"
@@ -71,18 +71,18 @@ class HomePage
   TWITTER_URL = "https://twitter.com/zolaregistry"
   FACEBOOK_URL = "https://www.facebook.com/zolaregistry"
   PINTEREST_URL = "https://www.pinterest.com/zolaregistry/"
-  INSTAGRAM_URL = "https://instagram.com/zolaregistry/"
+  INSTAGRAM_URL = "http://instagram.com/zolaregistry/"
   GOOGLE_PLUS_URL = "https://plus.google.com/116442943345722651304/about"
   TERMS_SERVICE_URL = "https://qa.zola.com/terms"
   PRIVACY_POLICY_URL = "https://qa.zola.com/privacy"
 
   #EXTRA URL
   
-  MARKETING_SERVICE_URL = "http://stage.zola.com:9000/marketing_service_terms"
-  VENDOR_TERMS_URL = " http://stage.zola.com:9000/vendor_terms"
+  MARKETING_SERVICE_URL = "https://qa.zola.com/marketing_service_terms"
+  VENDOR_TERMS_URL = "https://qa.zola.com/vendor_terms"
   
   MARKETING_SERVICE_TEXT_XPATH = ".//*[@class='title']"
   MARKETING_SERVICE_TEXT_WORDS = "Marketing Service Terms"
-  VENDOR_TERMS_TEXT_XPATH = ".//*[@class='title']"
+  VENDOR_TERMS_TEXT_XPATH = ".//*[@class='page-header']"
   VENDOR_TERMS_TEXT_WORDS = "Supplemental Vendor Terms and Conditions"
 end

@@ -70,8 +70,7 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::ZOLA_SHOP_ID).click
-    Common.wait_to_load   
+    $browser.find_element(:id => HomePage::ZOLA_SHOP_ID).click 
     assert_equal($browser.current_url, HomePage::ZOLA_SHOP_URL)
   end
 
@@ -112,8 +111,11 @@ class TestFooterLinks < TestBasic
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.find_element(:id => HomePage::BLOG_ID).click
-    $browser.switch_to.window($browser.window_handles.last)
-    Common::wait_to_load   
+    $wait.until{
+      $browser.window_handles.size > 1
+    } 
+    newWindow= $browser.window_handles[1] 
+    $browser.switch_to.window(newWindow)
     assert_equal($browser.current_url, HomePage::BLOG_URL)
   end
 
@@ -146,9 +148,9 @@ class TestFooterLinks < TestBasic
     $browser.find_element(:xpath => HomePage::TWITTER_XPATH).click
     $wait.until{
       $browser.window_handles.size > 1
-      } 
-    $browser.switch_to.window($browser.window_handles.last)
-    Common::wait_to_load
+    } 
+    newWindow= $browser.window_handles[1] 
+    $browser.switch_to.window(newWindow)    
     assert_equal($browser.current_url, HomePage::TWITTER_URL)
   end
 
@@ -162,8 +164,8 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.window_handles.size > 1
     } 
-    $browser.switch_to.window($browser.window_handles.last)
-    Common::wait_to_load
+    newWindow= $browser.window_handles[1] 
+    $browser.switch_to.window(newWindow)    
     assert_equal($browser.current_url, HomePage::FACEBOOK_URL)
   end
   
@@ -177,8 +179,8 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.window_handles.size > 1
       }   
-    $browser.switch_to.window($browser.window_handles.last)
-    Common::wait_to_load
+    newWindow= $browser.window_handles[1] 
+    $browser.switch_to.window(newWindow)
     assert_equal($browser.current_url, HomePage::PINTEREST_URL)
   end
 
@@ -191,12 +193,12 @@ class TestFooterLinks < TestBasic
     $browser.find_element(:xpath => HomePage::INSTAGRAM_XPATH).click
     $wait.until{
       $browser.window_handles.size > 1
-      } 
-    $browser.switch_to.window($browser.window_handles.last) 
-    Common::wait_to_load
+    }
+    newWindow= $browser.window_handles[1] 
+    $browser.switch_to.window(newWindow)
     assert_equal($browser.current_url, HomePage::INSTAGRAM_URL)
   end
-  
+
   #TEST : FOOTER - GOOGLE PLUS LINK (TC1447)
   def test_GooglePLusLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
@@ -207,8 +209,8 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.window_handles.size > 1
     } 
-    $browser.switch_to.window($browser.window_handles.last)
-    Common::wait_to_load
+    newWindow= $browser.window_handles[1] 
+    $browser.switch_to.window(newWindow)    
     assert_equal($browser.current_url, HomePage::GOOGLE_PLUS_URL)
   end
 
@@ -240,10 +242,10 @@ class TestFooterLinks < TestBasic
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.get HomePage::MARKETING_SERVICE_URL
-    assert $wait.until{
-     $browser.find_element(:xpath => HomePage::MARKETING_SERVICE_TEXT_XPATH).displayed?
-     $browser.find_element(:xpath => HomePage::MARKETING_SERVICE_TEXT_XPATH).text == HomePage::MARKETING_SERVICE_TEXT_WORDS
+    $wait.until{
+     $browser.find_element(:xpath => HomePage::MARKETING_SERVICE_TEXT_XPATH).displayed?     
     }
+    assert_equal($browser.find_element(:xpath => HomePage::MARKETING_SERVICE_TEXT_XPATH).text, HomePage::MARKETING_SERVICE_TEXT_WORDS)
   end
   
   #TEST : VENDOR TERMS (TC1451)
@@ -253,9 +255,10 @@ class TestFooterLinks < TestBasic
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
     $browser.get HomePage::VENDOR_TERMS_URL
-    assert $wait.until{
-     $browser.find_element(:xpath => HomePage::VENDOR_TERMS_TEXT_XPATH).displayed?
-     $browser.find_element(:xpath => HomePage::VENDOR_TERMS_TEXT_XPATH).text == HomePage::VENDOR_TERMS_TEXT_WORDS
+    $wait.until{
+     $browser.find_element(:xpath => HomePage::VENDOR_TERMS_TEXT_XPATH).displayed?     
     }
+    assert_equal($browser.find_element(:xpath => HomePage::VENDOR_TERMS_TEXT_XPATH).text, HomePage::VENDOR_TERMS_TEXT_WORDS)
   end
+
 end
