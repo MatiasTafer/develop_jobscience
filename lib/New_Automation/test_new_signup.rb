@@ -12,7 +12,6 @@ require_relative './pages/new_signup_page.rb'
 
 class NewSignup < TestBasic
  
-
 #SUCCESSFULLY NEW SIGN UP (TC1565)
 
   def test_SuccessfullySignup
@@ -177,8 +176,8 @@ class NewSignup < TestBasic
     
     #Complete all fields 
     $browser.find_element(:xpath => NewSignupPage::YOUR_FIRST_LAST_NAME_XPATH).send_keys NewSignupPage::FIRST_NAME_TEXT
-    $browser.find_element(:xpath => NewSignupPage::YOUR_WEDDING_ROL_XPATH).click
     $browser.find_element(:xpath => NewSignupPage::PARTNER_FIRST_LAST_NAME_XPATH).send_keys NewSignupPage::NAME_ONLY
+    $browser.find_element(:xpath => NewSignupPage::YOUR_WEDDING_ROL_XPATH).click
     $browser.find_element(:xpath => NewSignupPage::PARTNER_WEDDING_ROL_XPATH).click
     
     #Click "NEXT" button
@@ -773,7 +772,6 @@ class NewSignup < TestBasic
       $browser.find_element(:xpath => NewSignupPage::EMAIL_ERROR_XPATH).text == NewSignupPage::EMAIL_ERROR_TEXT
     }
   end 
-
 
   #CREATE AN ACCOUNT WITH AN EMAIL ADDRESS ALREADY USED BY ZOLA ACCOUNT (TC1579)
   def test_EmailAlreadyUsed
