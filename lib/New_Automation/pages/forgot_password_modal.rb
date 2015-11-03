@@ -6,9 +6,6 @@ class ForgotPasswordModal
   #BUTTON
   SUBMIT_BUTTON_XPATH = ".//*[@type='submit']"
   
-  #DATA
-  NOT_REGISTERED_EMAIL = "notregistered@notregistered.com"
-  
   #ERROR MESSAGE
   ERROR_MESSAGE_XPATH = ".//*[@class='form-message-block text-center text-danger']"
   ERROR_MESSAGE_TEXT = "Oops! We couldn't find that email address."

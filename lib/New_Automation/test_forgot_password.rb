@@ -24,7 +24,7 @@ class ForgotPasswordTest < TestBasic
       $browser.find_element(:xpath => ForgotPasswordModal::EMAIL_TEXTBOX_XPATH).displayed?
     }
     #Once on forgot password modal, complete the email textbox with a not registered email
-    $browser.find_element(:xpath => ForgotPasswordModal::EMAIL_TEXTBOX_XPATH).send_keys ForgotPasswordModal::NOT_REGISTERED_EMAIL
+    $browser.find_element(:xpath => ForgotPasswordModal::EMAIL_TEXTBOX_XPATH).send_keys "notregistered@notregistered.com"
     $browser.find_element(:xpath => ForgotPasswordModal::SUBMIT_BUTTON_XPATH).click
     assert $wait.until{
       $browser.find_element(:xpath => ForgotPasswordModal::ERROR_MESSAGE_XPATH).displayed?

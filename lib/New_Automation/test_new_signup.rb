@@ -90,6 +90,7 @@ class NewSignup < TestBasic
     #Complete fields 
     $browser.find_element(:xpath => NewSignupPage::EMAIL_TEXTBOX_XPATH).send_keys Common.generate_email(NewSignupPage::GENERATE_EMAIL)
     $browser.find_element(:xpath => NewSignupPage::PASSWORD_TEXTBOX_XPATH).send_keys NewSignupPage::PASSWORD_TEXT
+    Common.wait_to_load
     
     #Check they are completed
     $wait.until{
@@ -127,8 +128,9 @@ class NewSignup < TestBasic
     
     #Click "NEXT" button
     $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_XPATH).click
+    Common.wait_to_load
     
-    #Check that "Next" button is displayed disable, and the message error is displayed properly
+    #Check that "Next" button is displayed disabled, and the message error is displayed properly
     assert $wait.until{
       $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_DISABLE_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::NAME_ERROR_XPATH).displayed?
@@ -182,7 +184,8 @@ class NewSignup < TestBasic
     
     #Click "NEXT" button
     $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_XPATH).click
-     
+    Common.wait_to_load
+    
     #Check that "Next" button is displayed disable, and the message error is displayed properly
     assert $wait.until{
       $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_DISABLE_XPATH).displayed?
@@ -260,6 +263,7 @@ class NewSignup < TestBasic
     
     #Click on div to shoot the error message
     $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH ).click
+    Common.wait_to_load
     
     #Check the error message and the "Next" button disable
     assert $wait.until{
@@ -680,6 +684,8 @@ class NewSignup < TestBasic
     #Complete Email field with a @ missing email and the password field
     $browser.find_element(:xpath => NewSignupPage::EMAIL_TEXTBOX_XPATH).send_keys NewSignupPage::INVALID_EMAIL
     $browser.find_element(:xpath => NewSignupPage::PASSWORD_TEXTBOX_XPATH).send_keys NewSignupPage::PASSWORD_TEXT
+    Common.wait_to_load
+    
     assert $wait.until{
       $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_DISABLE_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::EMAIL_ERROR_XPATH).displayed?
@@ -766,6 +772,7 @@ class NewSignup < TestBasic
     #Complete Email field with a dot missing email and the password field
     $browser.find_element(:xpath => NewSignupPage::EMAIL_TEXTBOX_XPATH).send_keys NewSignupPage::DOT_MISSING_EMAIL
     $browser.find_element(:xpath => NewSignupPage::PASSWORD_TEXTBOX_XPATH).send_keys NewSignupPage::PASSWORD_TEXT
+    Common.wait_to_load
     assert $wait.until{
       $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_DISABLE_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::EMAIL_ERROR_XPATH).displayed?
@@ -851,6 +858,7 @@ class NewSignup < TestBasic
     #Complete Email field with an already used email address and the password field
     $browser.find_element(:xpath => NewSignupPage::EMAIL_TEXTBOX_XPATH).send_keys Common::USER1_EMAIL
     $browser.find_element(:xpath => NewSignupPage::PASSWORD_TEXTBOX_XPATH).send_keys NewSignupPage::PASSWORD_TEXT
+    Common.wait_to_load
     assert $wait.until{
       $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_DISABLE_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::EMAIL_ERROR_XPATH).displayed?
@@ -941,6 +949,8 @@ class NewSignup < TestBasic
     
     #Click on this page div to make the error message get fired
     $browser.find_element(:xpath => NewSignupPage::PAGE_DIV_XPATH).click
+    Common.wait_to_load
+    
     assert $wait.until{
       $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_DISABLE_XPATH).displayed?
       $browser.find_element(:xpath => NewSignupPage::EMAIL_ERROR_XPATH).displayed?
@@ -1019,18 +1029,20 @@ class NewSignup < TestBasic
     
     #Click on "Next" button  
     $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_XPATH).click
+    Common.wait_to_load
     
     $wait.until{
       $browser.find_element(:xpath => NewSignupPage::EMAIL_TEXTBOX_XPATH).displayed?
     }
     
-    #Complete the email field to claer then so the error message is fired
+    #Complete the email field to clean then so the error message is fired
     $browser.find_element(:xpath => NewSignupPage::EMAIL_TEXTBOX_XPATH).send_keys Common.generate_email(NewSignupPage::GENERATE_EMAIL)
     
     $browser.find_element(:xpath => NewSignupPage::PASSWORD_TEXTBOX_XPATH).send_keys NewSignupPage::PASSWORD_TEXT
     
     #Clean the email field  
     $browser.find_element(:xpath => NewSignupPage::EMAIL_TEXTBOX_XPATH).clear
+    Common.wait_to_load
     
     assert $wait.until{
       $browser.find_element(:xpath => NewSignupPage::NEXT_STEP_BUTTON_DISABLE_XPATH).displayed?
