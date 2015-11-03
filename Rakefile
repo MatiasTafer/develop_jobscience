@@ -1,7 +1,7 @@
 require "bundler/gem_tasks"
 require 'rubygems'
-require 'ci/reporter/rake/test_unit'
-
+require 'test/unit'
+gem 'ci_reporter'
 
 task :default do
   #cd 'lib'
