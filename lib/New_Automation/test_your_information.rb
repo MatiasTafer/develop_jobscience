@@ -16,6 +16,7 @@ def change_your_information (name, surname, email)
     $browser.find_element(:xpath, AccountInfoPage::LAST_NAME_FIELD_XPATH).send_keys surname
     $browser.find_element(:xpath, AccountInfoPage::EMAIL_FIELD_XPATH).clear
     $browser.find_element(:xpath, AccountInfoPage::EMAIL_FIELD_XPATH).send_keys email
+    Common.wait_to_load
     $browser.find_element(:xpath => AccountInfoPage::SAVE_CHANGES_BUTTON_XPATH).click
 end
 
@@ -53,7 +54,7 @@ class TestYourInformation < TestBasic
         }
         assert $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text == AccountInfoPage::INFORMATION_CHANGED_SUCCESSFULLY_TEXT
     end
-
+  
     #Tries to change the email address to one with the dot missing
     def test_email_without_dot
         #Login
@@ -174,5 +175,4 @@ class TestYourInformation < TestBasic
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         check_current_information 'Gregory', 'McGregor', Common::USER1_EMAIL        
     end
-
 end
