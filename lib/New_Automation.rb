@@ -10,7 +10,6 @@ require './New_Automation/test_shipping_info'
 require './New_Automation/test_new_signup'
 require './New_Automation/test_footer_links'
 
-
 #require './New_Automation/test_cart'
 #require './New_Automation/test_product_modal'
 #require './New_Automation/test_forgot_password'
