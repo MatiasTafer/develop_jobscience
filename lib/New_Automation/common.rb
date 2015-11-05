@@ -19,28 +19,28 @@ class Common
   USER_CHANGE_PASSWORD_EMAIL  = "user_change_password@automation.com"
   USER_CHANGE_PASSWORD_PASS   = "test12345"
   
-  
   USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"
   USER_NO_REGISTRY_PASS     = "test1234"
   URL_EXISTING              = "homerandmarge"
   
+  #User used to test: "test_registry_settings"
+  USER2_EMAIL = "user2@automation.com"
+  
+  #--------------
+  
+  
   USER_CHANGE_PASSWORD_SHORT= "test"
-  USER_NAME_CART ="holahola@hotmail.com"
-  USER_PASSWORD_CART ="holahola"
   #Users and password for test: "test_recalculation_group-gift"
   USER_GROUP_GIFT_EMAIL = "testgroupgift@gmail.com"
   USER_GROUP_GIFT_PASSWORD = "1password"
   #User and password for test: "test_public_registry_reminders"
-  USER2_EMAIL = "oktanatesting@gmail.com"
+  #USER2_EMAIL = "oktanatesting@gmail.com"
   USER3_EMAIL = "martinds@oktana.io"
   USER23_password = "test1234"
   #User and password for test: "test_manage_collections_registry_page"
   USER4_EMAIL = "user4@gmail.com"
   USER4_PASSWORD = "test1234"
-  
-  
-  
-  
+    
   #Creates a new account without registry
   def self.create_user_no_registry
     #click on signup link
