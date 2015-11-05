@@ -9,7 +9,7 @@ $wait
 #require './New_Automation/test_your_information'
 #require './New_Automation/test_shipping_info'
 require './New_Automation/test_new_signup'
-r#equire './New_Automation/test_footer_links'
+#require './New_Automation/test_footer_links'
 
 #require './New_Automation/test_cart'
 #require './New_Automation/test_product_modal'
