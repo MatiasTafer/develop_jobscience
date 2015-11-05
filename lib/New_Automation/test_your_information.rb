@@ -30,7 +30,7 @@ end
 class TestYourInformation < TestBasic
    
     #Updates your information successfully
-    def test_01change_information_correctly
+    def test_change_information_correctly
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
         $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?

@@ -32,11 +32,11 @@ class TestCashGiftSettings < TestBasic
     end  
 =end
 
-   #Test cases TC715 and TC1483 add a successfully bank account and remove it
+  #Test cases TC715 and TC1483 add a successfully bank account and remove it
   def test_SuccessfullyAddRemoveAccount
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -77,7 +77,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveRoutingNumBlank
  
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -109,7 +109,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveAccountNumBlank
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).click
     $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
@@ -142,7 +142,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveNameBlank
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -174,7 +174,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveStreetAddressBlank
 
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -206,7 +206,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveCityBlank
 
     #Login 
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -238,7 +238,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveStateBlank
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -270,7 +270,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveZipCodeBlank
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -302,7 +302,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveDateOfBirthMonthBlank
 
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -334,7 +334,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveDateOfBirthDayBlank
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -366,7 +366,7 @@ class TestCashGiftSettings < TestBasic
   def test_LeaveDateOfBirthYearBlank
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -398,7 +398,7 @@ class TestCashGiftSettings < TestBasic
   def test_ShorterRoutingNum
 
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -432,7 +432,7 @@ class TestCashGiftSettings < TestBasic
   def test_LargerRoutingNum
 
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -467,7 +467,7 @@ class TestCashGiftSettings < TestBasic
   def test_NonNumericRoutingNum
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -502,7 +502,7 @@ class TestCashGiftSettings < TestBasic
   def test_AccountLessThreeDigits
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -537,7 +537,7 @@ class TestCashGiftSettings < TestBasic
   def test_AccountLargerSeventeenDigits
 
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -572,7 +572,7 @@ class TestCashGiftSettings < TestBasic
   def test_NonNumericAccountNum
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -607,7 +607,7 @@ class TestCashGiftSettings < TestBasic
   def test_OneWordBankName
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -642,7 +642,7 @@ class TestCashGiftSettings < TestBasic
   def test_LessFiveNumZipCode
 
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     assert $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -677,7 +677,7 @@ class TestCashGiftSettings < TestBasic
   def test_WrongFutureBirthDate
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -712,7 +712,7 @@ class TestCashGiftSettings < TestBasic
   def test_MoreFiveNumZipCode
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -747,7 +747,7 @@ class TestCashGiftSettings < TestBasic
   def test_NonNumericZipCode
     
     #Login
-    Common.login(LoginModal::TEST_USER_EMAIL, LoginModal::TEST_USER_PASSWORD)
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
