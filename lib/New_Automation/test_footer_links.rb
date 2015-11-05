@@ -196,7 +196,8 @@ class TestFooterLinks < TestBasic
     }
     newWindow= $browser.window_handles[1] 
     $browser.switch_to.window(newWindow)
-    assert_equal($browser.current_url, HomePage::INSTAGRAM_URL)
+    assert($browser.current_url.eql?(HomePage::INSTAGRAM_URL1) || $browser.current_url.eql?(HomePage::INSTAGRAM_URL2))
+    puts $browser.current_url
   end
 
   #TEST : FOOTER - GOOGLE PLUS LINK (TC1447)
