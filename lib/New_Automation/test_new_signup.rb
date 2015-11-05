@@ -2,13 +2,9 @@ require 'rubygems'
 require 'selenium-webdriver'
 require 'test-unit'
 require 'securerandom'
-
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-
 require_relative './pages/new_signup_page.rb'
-
-
 
 class NewSignup < TestBasic
 
