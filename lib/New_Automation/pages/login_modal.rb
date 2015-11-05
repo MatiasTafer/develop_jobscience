@@ -14,12 +14,4 @@ class LoginModal
   MISMATCH_MESSAGE_TEXT = 'Invalid username or password'
   PASSWORD_ERROR_MESSAGE_TEXT = 'Please enter your password.'
   EMAIL_ERROR_MESSAGE_TEXT = 'Please enter a valid email address.'
-  
-  TEST_USER_EMAIL = 'testuser@testuser.com'
-  TEST_USER_PASSWORD = 'testtest'
-  
-  #Info used by test_cart.rb 
-  
-  OTHER_USER_TEXT = "modernZola@gmail.com"
-  OTHER_USER_PASSWORD_TEXT = "modernZola"
 end
