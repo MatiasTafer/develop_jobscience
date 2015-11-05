@@ -77,6 +77,14 @@ class HomePage
   TERMS_SERVICE_URL = "https://qa.zola.com/terms"
   PRIVACY_POLICY_URL = "https://qa.zola.com/privacy"
 
+  #ITEMS FROM OTHER PAGES
+  TWITTER_PROFILE_IMAGE_XPATH = ".//*[@class='ProfileAvatar']"
+  FACEBOOK_PROFILE_IMAGE_XPATH = ".//*[@class='profilePic img']"
+  GOOGLE_PLUS_PROFILE_IMAGE_XPATH = ".//*[@class='dkb photo']"
+  INSTAGRAM_PROFILE_IMAGE_XPATH = ".//*[@class='-cx-PRIVATE-ProfilePage__avatar']"
+  PINTEREST_PROFILE_IMAGE_XPATH = ".//*[@class='profileImage']"
+  BLOG_HEADER_ID = "site-header"
+  
   #EXTRA URL
   
   MARKETING_SERVICE_URL = "https://qa.zola.com/marketing_service_terms"

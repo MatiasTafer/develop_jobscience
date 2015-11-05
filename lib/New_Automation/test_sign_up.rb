@@ -21,7 +21,7 @@ class TestSignup < TestBasic
     }
     newEmail = Common.generate_email('test')
     $browser.find_element(:xpath => SignupModal::EMAIL_TEXTBOX_XPATH).send_keys newEmail
-    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys 'password'
+    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys Common::GLOBAL_PASSWORD
     assert $wait.until{
      $browser.find_element(:xpath => SignupModal::GLYPHICON_EMAIL_XPATH).displayed?
      $browser.find_element(:xpath => SignupModal::GLYPHICON_PASS_XPATH).displayed?
@@ -40,7 +40,7 @@ class TestSignup < TestBasic
     }
 
     $browser.find_element(:xpath => SignupModal::EMAIL_TEXTBOX_XPATH).send_keys 'emailtest.com'
-    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys 'password'
+    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath => SignupModal::BUTTON_SUBMIT_XPATH).click
     assert $wait.until{
       $browser.find_element(:xpath => SignupModal::ERROR_MESSAGE_XPATH).displayed?
@@ -48,7 +48,7 @@ class TestSignup < TestBasic
     }
   end
 
-  def test_invalidEmail
+  def test_invalidEmailNoDot
     
     #TEST : CREATE AN ACCOUNT WITH AN INCORRECT EMAIL ADDRESS (DOT MISSING) (TC549)
 
@@ -58,7 +58,7 @@ class TestSignup < TestBasic
     }
 
     $browser.find_element(:xpath => SignupModal::EMAIL_TEXTBOX_XPATH).send_keys 'email@testcom'
-    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys 'password'
+    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath => SignupModal::BUTTON_SUBMIT_XPATH).click
     assert $wait.until{
       $browser.find_element(:xpath => SignupModal::ERROR_MESSAGE_XPATH).displayed?
@@ -74,8 +74,8 @@ class TestSignup < TestBasic
     assert $wait.until{
       $browser.find_element(:xpath => SignupModal::BUTTON_SUBMIT_XPATH).displayed?
     }
-    $browser.find_element(:xpath => SignupModal::EMAIL_TEXTBOX_XPATH).send_keys 'testtesttest@test.com'
-    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys 'tester1234'
+    $browser.find_element(:xpath => SignupModal::EMAIL_TEXTBOX_XPATH).send_keys Common::USER1_EMAIL
+    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath => SignupModal::BUTTON_SUBMIT_XPATH).click
     assert $wait.until{
       $browser.find_element(:xpath => SignupModal::ERROR_MESSAGE_XPATH).displayed?
