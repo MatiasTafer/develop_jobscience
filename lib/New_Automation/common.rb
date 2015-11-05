@@ -24,9 +24,21 @@ class Common
   URL_EXISTING              = "homerandmarge"
   
   #User used to test: "test_registry_settings"
+  #this suite uses this user to deactivate a registry
   USER2_EMAIL = "user2@automation.com"
   
-  #--------------
+  
+  
+  
+  #--------------pending merge users
+  
+  TEST_USER_EMAIL = 'testuser@testuser.com'
+  TEST_USER_PASSWORD = 'testtest'
+  
+  #Info used by test_cart.rb 
+  
+  OTHER_USER_TEXT = "modernZola@gmail.com"
+  OTHER_USER_PASSWORD_TEXT = "modernZola"
   
   
   USER_CHANGE_PASSWORD_SHORT= "test"

@@ -25,17 +25,17 @@ def test_DeactivateRegistry
     }
     $browser.find_element(:id, HomePage::REGISTRY_SETTINGS_ID).click
     $wait.until{
-      $browser.find_element(:xpath => RegistrySettingPage::SHIPPING_INFO_XPATH).displayed?
+      $browser.find_element(:xpath => RegistrySettingsPage::SHIPPING_INFO_XPATH).displayed?
     }
     #Clicks on Deactivate checkbox
-    $browser.find_element(:id => RegistrySettingPage::REGISTRY_DEACTIVATE_ID).click
+    $browser.find_element(:id => RegistrySettingsPage::REGISTRY_DEACTIVATE_ID).click
     #Clicks on Save Changes
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_CHANGE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_CHANGE_BUTTON_XPATH).click
     assert $wait.until{
-      $browser.find_element(:xpath => RegistrySettingPage::OK_MESSAGE_XPATH).displayed?
+      $browser.find_element(:xpath => RegistrySettingsPage::OK_MESSAGE_XPATH).displayed?
     }
     #Checks if the registry was deactivated
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_LINK_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_LINK_XPATH).click
     assert $wait.until{
       $browser.find_element(:xpath => HomePage::MAKE_IT_VISIBLE_BUTTON).displayed?  
     }
@@ -68,6 +68,7 @@ def test_DeactivateRegistry
       $browser.find_element(:xpath => HomePage::ADD_WEDDING_WEB_BUTTON_XPATH).displayed?
     }
   end
+
   
   #SUCCESSFULLY CHANGE REGISTRY INFO (TC1557)
   def test_SuccessfulyChangeRegistryInfo
@@ -82,64 +83,64 @@ def test_DeactivateRegistry
     goToRegistryInfo
     
     #Get the original values in order to make a rollback
-    originalFirstName = $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).attribute('value')
-    originalLastName = $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).attribute('value')
-    originalPartnerFirstName = $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).attribute('value')
-    originalPartnerLastName = $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).attribute('value')
-    originalWeddingDate = $browser.find_element(:id => RegistrySettingPage::WEDDING_DATE_ID).attribute('value')
-    originalTitle = $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).attribute('value')
-    originalGreeting = $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).attribute('value')
+    originalFirstName = $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).attribute('value')
+    originalLastName = $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).attribute('value')
+    originalPartnerFirstName = $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).attribute('value')
+    originalPartnerLastName = $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).attribute('value')
+    originalWeddingDate = $browser.find_element(:id => RegistrySettingsPage::WEDDING_DATE_ID).attribute('value')
+    originalTitle = $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).attribute('value')
+    originalGreeting = $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).attribute('value')
     
     #Clean all fields
     cleanFields
     
     #Complete the fields with the new info 
-    $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingPage::FIRST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingPage::LAST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingPage::PARTNER_FIRST_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingPage::PARTNER_LAST_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingsPage::FIRST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingsPage::LAST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_FIRST_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_LAST_TEXT
     if originalWeddingDate == ""
-      #$browser.find_element(:id => RegistrySettingPage::NO_DECIDED_WEDDING_ID).click
-      $browser.find_element(:id => RegistrySettingPage::WEDDING_DATE_ID).send_keys RegistrySettingPage::DATE_TEXT
+      #$browser.find_element(:id => RegistrySettingsPage::NO_DECIDED_WEDDING_ID).click
+      $browser.find_element(:id => RegistrySettingsPage::WEDDING_DATE_ID).send_keys RegistrySettingsPage::DATE_TEXT
     else
-      $browser.find_element(:id => RegistrySettingPage::NO_DECIDED_WEDDING_ID).click
-      #$browser.find_element(:id => RegistrySettingPage::WEDDING_DATE_ID).clear
-      #$browser.find_element(:id => RegistrySettingPage::WEDDING_DATE_ID).send_keys RegistrySettingPage::DATE_TEXT
+      $browser.find_element(:id => RegistrySettingsPage::NO_DECIDED_WEDDING_ID).click
+      #$browser.find_element(:id => RegistrySettingsPage::WEDDING_DATE_ID).clear
+      #$browser.find_element(:id => RegistrySettingsPage::WEDDING_DATE_ID).send_keys RegistrySettingsPage::DATE_TEXT
     end
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingPage::TITLE_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingPage::GREETING_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingsPage::TITLE_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingsPage::GREETING_TEXT
     
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_BUTTON_XPATH).click
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::OK_MESSAGE_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::OK_MESSAGE_ID).displayed?
     }
 
     #Reload the page
     $browser.navigate.refresh
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::REGISTRY_SETTINGS_BUTTON_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::REGISTRY_SETTINGS_BUTTON_ID).displayed?
     }
-    nomComp = $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).attribute('value')
-    lastNomComp = $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).attribute('value')
-    prtNomComp = $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).attribute('value')
-    prtLastNomComp = $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).attribute('value')
-    weddComp = $browser.find_element(:id => RegistrySettingPage::WEDDING_DATE_ID).attribute('value')
-    titleComp = $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).attribute('value')
-    greetingComp = $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).attribute('value')
+    nomComp = $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).attribute('value')
+    lastNomComp = $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).attribute('value')
+    prtNomComp = $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).attribute('value')
+    prtLastNomComp = $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).attribute('value')
+    weddComp = $browser.find_element(:id => RegistrySettingsPage::WEDDING_DATE_ID).attribute('value')
+    titleComp = $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).attribute('value')
+    greetingComp = $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).attribute('value')
 
     #Compares if the new values were saved correctly
-    assert_equal(nomComp, RegistrySettingPage::FIRST_NAME_TEXT)
-    assert_equal(lastNomComp, RegistrySettingPage::LAST_NAME_TEXT)
-    assert_equal(prtNomComp, RegistrySettingPage::PARTNER_FIRST_TEXT)
-    assert_equal(prtLastNomComp, RegistrySettingPage::PARTNER_LAST_TEXT)
+    assert_equal(nomComp, RegistrySettingsPage::FIRST_NAME_TEXT)
+    assert_equal(lastNomComp, RegistrySettingsPage::LAST_NAME_TEXT)
+    assert_equal(prtNomComp, RegistrySettingsPage::PARTNER_FIRST_TEXT)
+    assert_equal(prtLastNomComp, RegistrySettingsPage::PARTNER_LAST_TEXT)
     if weddComp == ""
-      assert_equal($browser.find_element(:id => RegistrySettingPage::NO_DECIDED_WEDDING_ID).attribute('checked'), "true")
+      assert_equal($browser.find_element(:id => RegistrySettingsPage::NO_DECIDED_WEDDING_ID).attribute('checked'), "true")
     else
-      assert_equal(weddComp, RegistrySettingPage::DATE_TEXT)
+      assert_equal(weddComp, RegistrySettingsPage::DATE_TEXT)
     end
     
-    assert_equal(titleComp, RegistrySettingPage::TITLE_TEXT)
-    assert_equal(greetingComp, RegistrySettingPage::GREETING_TEXT)
+    assert_equal(titleComp, RegistrySettingsPage::TITLE_TEXT)
+    assert_equal(greetingComp, RegistrySettingsPage::GREETING_TEXT)
     
 #------------------------------------- Rollback to original values --------------------------------------------------
 
@@ -147,22 +148,22 @@ def test_DeactivateRegistry
     cleanFields
     
     #Complete the fields with the OLD info 
-    $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).send_keys originalFirstName
-    $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).send_keys originalLastName
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).send_keys originalPartnerFirstName
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).send_keys originalPartnerLastName    
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).send_keys originalFirstName
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).send_keys originalLastName
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).send_keys originalPartnerFirstName
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).send_keys originalPartnerLastName    
     if originalWeddingDate == ""
-      $browser.find_element(:id => RegistrySettingPage::NO_DECIDED_WEDDING_ID).click
+      $browser.find_element(:id => RegistrySettingsPage::NO_DECIDED_WEDDING_ID).click
     else
-      $browser.find_element(:id => RegistrySettingPage::WEDDING_DATE_ID).send_keys originalWeddingDate
+      $browser.find_element(:id => RegistrySettingsPage::WEDDING_DATE_ID).send_keys originalWeddingDate
     end
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).send_keys originalTitle
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).send_keys originalGreeting
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).send_keys originalTitle
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).send_keys originalGreeting
     
     #Saves the changes
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_BUTTON_XPATH).click
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::OK_MESSAGE_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::OK_MESSAGE_ID).displayed?
     }
   end
 
@@ -182,19 +183,19 @@ def test_DeactivateRegistry
     cleanFields
     
     #Complete the fields with the new info leaving the first name empty
-    $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingPage::LAST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingPage::PARTNER_FIRST_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingPage::PARTNER_LAST_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingPage::TITLE_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingPage::GREETING_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingsPage::LAST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_FIRST_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_LAST_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingsPage::TITLE_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingsPage::GREETING_TEXT
     
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_BUTTON_XPATH).click
     
     #Verify error message displayed
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::YOUR_INFO_FIRST_ERROR_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::YOUR_INFO_FIRST_ERROR_ID).displayed?
     }
-    assert_equal($browser.find_element(:id => RegistrySettingPage::YOUR_INFO_FIRST_ERROR_ID).text, RegistrySettingPage::YOUR_INFO_ERROR_MESSAGE)
+    assert_equal($browser.find_element(:id => RegistrySettingsPage::YOUR_INFO_FIRST_ERROR_ID).text, RegistrySettingsPage::YOUR_INFO_ERROR_MESSAGE)
   end
 
   #NO LAST NAME AT REGISTRY INFO (TC1559)
@@ -213,19 +214,19 @@ def test_DeactivateRegistry
     cleanFields
     
     #Complete the fields with the new info leaving the last name empty
-    $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingPage::FIRST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingPage::PARTNER_FIRST_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingPage::PARTNER_LAST_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingPage::TITLE_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingPage::GREETING_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingsPage::FIRST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_FIRST_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_LAST_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingsPage::TITLE_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingsPage::GREETING_TEXT
     
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_BUTTON_XPATH).click
     
     #Look for error message
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::YOUR_INFO_LAST_ERROR_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::YOUR_INFO_LAST_ERROR_ID).displayed?
     }
-    assert_equal($browser.find_element(:id => RegistrySettingPage::YOUR_INFO_LAST_ERROR_ID).text, RegistrySettingPage::YOUR_INFO_ERROR_MESSAGE)
+    assert_equal($browser.find_element(:id => RegistrySettingsPage::YOUR_INFO_LAST_ERROR_ID).text, RegistrySettingsPage::YOUR_INFO_ERROR_MESSAGE)
   end
 
   #NO PARTNER FIRST NAME AT REGISTRY INFO (TC1560)
@@ -244,19 +245,19 @@ def test_DeactivateRegistry
     cleanFields
     
     #Complete the fields with the new info leaving the partner first name empty
-    $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingPage::FIRST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingPage::LAST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingPage::PARTNER_LAST_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingPage::TITLE_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingPage::GREETING_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingsPage::FIRST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingsPage::LAST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_LAST_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingsPage::TITLE_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingsPage::GREETING_TEXT
     
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_BUTTON_XPATH).click
     
     #Look for error message
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::PARTNER_INFO_FIRST_ERROR_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::PARTNER_INFO_FIRST_ERROR_ID).displayed?
     }
-    assert_equal($browser.find_element(:id => RegistrySettingPage::PARTNER_INFO_FIRST_ERROR_ID).text, RegistrySettingPage::PARTNER_ERROR_MESSAGE)
+    assert_equal($browser.find_element(:id => RegistrySettingsPage::PARTNER_INFO_FIRST_ERROR_ID).text, RegistrySettingsPage::PARTNER_ERROR_MESSAGE)
   end
 
   #NO PARTNER LAST NAME AT REGISTRY INFO (TC1561)
@@ -275,19 +276,19 @@ def test_DeactivateRegistry
     cleanFields
     
     #Complete the fields with the new info leaving the partner last name empty
-    $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingPage::FIRST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingPage::LAST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingPage::PARTNER_FIRST_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingPage::TITLE_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingPage::GREETING_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingsPage::FIRST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingsPage::LAST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_FIRST_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingsPage::TITLE_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingsPage::GREETING_TEXT
     
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_BUTTON_XPATH).click
     
     #Look for error message
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::PARTNER_INFO_LAST_ERROR_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::PARTNER_INFO_LAST_ERROR_ID).displayed?
     }
-    assert_equal($browser.find_element(:id => RegistrySettingPage::PARTNER_INFO_LAST_ERROR_ID).text, RegistrySettingPage::PARTNER_ERROR_MESSAGE)
+    assert_equal($browser.find_element(:id => RegistrySettingsPage::PARTNER_INFO_LAST_ERROR_ID).text, RegistrySettingsPage::PARTNER_ERROR_MESSAGE)
   end
 
   #NO WEDDING DATE INFO SELECTED (TC1562)
@@ -306,21 +307,21 @@ def test_DeactivateRegistry
     cleanFields
     
     #Complete the fields with the new info leaving the wedding date empty
-    $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingPage::FIRST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingPage::LAST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingPage::PARTNER_FIRST_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingPage::PARTNER_LAST_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingPage::TITLE_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingPage::GREETING_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingsPage::FIRST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingsPage::LAST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_FIRST_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_LAST_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingsPage::TITLE_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingsPage::GREETING_TEXT
     
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_BUTTON_XPATH).click
     
     #Look for error message
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::WEDDING_ERROR_ID).displayed?
-      $browser.find_element(:id => RegistrySettingPage::WEDDING_CALENDAR_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::WEDDING_ERROR_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::WEDDING_CALENDAR_ID).displayed?
     }
-    assert_equal($browser.find_element(:id => RegistrySettingPage::WEDDING_ERROR_ID).text, RegistrySettingPage::WEDDING_ERROR_MESSAGE)
+    assert_equal($browser.find_element(:id => RegistrySettingsPage::WEDDING_ERROR_ID).text, RegistrySettingsPage::WEDDING_ERROR_MESSAGE)
   end
 
   #ENTER INVALID WEDDING DATE (TC1563)
@@ -339,22 +340,22 @@ def test_DeactivateRegistry
     cleanFields
     
     #Complete the fields with the new info using an invalid date
-    $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingPage::FIRST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingPage::LAST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingPage::PARTNER_FIRST_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingPage::PARTNER_LAST_TEXT
-    $browser.find_element(:id => RegistrySettingPage::WEDDING_DATE_ID).send_keys RegistrySettingPage::WEDDING_INVALID_DATE
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingPage::TITLE_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingPage::GREETING_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingsPage::FIRST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingsPage::LAST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_FIRST_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_LAST_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::WEDDING_DATE_ID).send_keys RegistrySettingsPage::WEDDING_INVALID_DATE
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).send_keys RegistrySettingsPage::TITLE_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingsPage::GREETING_TEXT
     
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_BUTTON_XPATH).click
     
     #Look for error message
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::WEDDING_ERROR_ID).displayed?
-      $browser.find_element(:id => RegistrySettingPage::WEDDING_CALENDAR_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::WEDDING_ERROR_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::WEDDING_CALENDAR_ID).displayed?
     }
-    assert_equal($browser.find_element(:id => RegistrySettingPage::WEDDING_ERROR_ID).text, RegistrySettingPage::WEDDING_INVALID_MESSAGE)
+    assert_equal($browser.find_element(:id => RegistrySettingsPage::WEDDING_ERROR_ID).text, RegistrySettingsPage::WEDDING_INVALID_MESSAGE)
   end
   
   #NO REGISTRY TITLE (TC1564)
@@ -373,19 +374,19 @@ def test_DeactivateRegistry
     cleanFields
     
     #Complete the fields with the new info leaving the title empty
-    $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingPage::FIRST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingPage::LAST_NAME_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingPage::PARTNER_FIRST_TEXT
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingPage::PARTNER_LAST_TEXT
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingPage::GREETING_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).send_keys RegistrySettingsPage::FIRST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).send_keys RegistrySettingsPage::LAST_NAME_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_FIRST_TEXT
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).send_keys RegistrySettingsPage::PARTNER_LAST_TEXT
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).send_keys RegistrySettingsPage::GREETING_TEXT
     
-    $browser.find_element(:xpath => RegistrySettingPage::SAVE_BUTTON_XPATH).click
+    $browser.find_element(:xpath => RegistrySettingsPage::SAVE_BUTTON_XPATH).click
     
     #Look for error message
     assert $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::REGISTRY_TITLE_ERROR_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::REGISTRY_TITLE_ERROR_ID).displayed?
     }
-    assert_equal($browser.find_element(:id => RegistrySettingPage::REGISTRY_TITLE_ERROR_ID).text, RegistrySettingPage::REGISTRY_TITLE_ERROR_MESSAGE)
+    assert_equal($browser.find_element(:id => RegistrySettingsPage::REGISTRY_TITLE_ERROR_ID).text, RegistrySettingsPage::REGISTRY_TITLE_ERROR_MESSAGE)
   end
 
   #Goes to Registry Settings page
@@ -394,24 +395,24 @@ def test_DeactivateRegistry
     $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
 
     $wait.until{
-      $browser.find_element(:id => RegistrySettingPage::REGISTRY_SETTINGS_BUTTON_ID).displayed?
+      $browser.find_element(:id => RegistrySettingsPage::REGISTRY_SETTINGS_BUTTON_ID).displayed?
     }
   end
 
   #Cleans all fields
   def cleanFields
-    $browser.find_element(:id => RegistrySettingPage::YOUR_FIRST_NAME_ID).clear
-    $browser.find_element(:id => RegistrySettingPage::YOUR_LAST_NAME_ID).clear
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_FIRST_NAME_ID).clear
-    $browser.find_element(:id => RegistrySettingPage::PARTNER_LAST_NAME_ID).clear
-    if $browser.find_element(:id => RegistrySettingPage::WEDDING_DATE_ID).attribute('value') == ""
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_FIRST_NAME_ID).clear
+    $browser.find_element(:id => RegistrySettingsPage::YOUR_LAST_NAME_ID).clear
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_FIRST_NAME_ID).clear
+    $browser.find_element(:id => RegistrySettingsPage::PARTNER_LAST_NAME_ID).clear
+    if $browser.find_element(:id => RegistrySettingsPage::WEDDING_DATE_ID).attribute('value') == ""
       #deselect checkbox if it is already checked
-      $browser.find_element(:id => RegistrySettingPage::NO_DECIDED_WEDDING_ID).click
+      $browser.find_element(:id => RegistrySettingsPage::NO_DECIDED_WEDDING_ID).click
     else
-      $browser.find_element(:id => RegistrySettingPage::WEDDING_DATE_ID).clear
+      $browser.find_element(:id => RegistrySettingsPage::WEDDING_DATE_ID).clear
     end
     
-    $browser.find_element(:xpath => RegistrySettingPage::REGISTRY_TITLE_XPATH).clear
-    $browser.find_element(:xpath => RegistrySettingPage::WELCOME_GREETING_XPATH).clear
+    $browser.find_element(:xpath => RegistrySettingsPage::REGISTRY_TITLE_XPATH).clear
+    $browser.find_element(:xpath => RegistrySettingsPage::WELCOME_GREETING_XPATH).clear
   end
 end
