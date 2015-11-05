@@ -40,7 +40,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:xpath => HomePage::FIND_REGISTRY_LINK_XPATH).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:xpath => HomePage::FIND_REGISTRY_LINK_XPATH).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }   
     assert_equal($browser.current_url, HomePage::FIND_REGISTRY_URL)
   end
 
@@ -50,7 +54,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:xpath => HomePage::DOWNLOAD_APPS_XPATH).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:xpath => HomePage::DOWNLOAD_APPS_XPATH).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }   
     assert_equal($browser.current_url, HomePage::DOWNLOAD_APPS_URL)
   end
 
@@ -60,7 +68,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::REGISTRY_BENEFITS_ID).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:id => HomePage::REGISTRY_BENEFITS_ID).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }   
     assert_equal($browser.current_url, HomePage::REGISTRY_BENEFITS_URL)
   end
 
@@ -70,7 +82,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::ZOLA_SHOP_ID).click 
+    registryURL = $browser.current_url
+    $browser.find_element(:id => HomePage::ZOLA_SHOP_ID).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }
     assert_equal($browser.current_url, HomePage::ZOLA_SHOP_URL)
   end
 
@@ -80,7 +96,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::ABOUT_ZOLA_ID).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:id => HomePage::ABOUT_ZOLA_ID).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }    
     assert_equal($browser.current_url, HomePage::ABOUT_ZOLA_URL)
   end
 
@@ -90,7 +110,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::PRESS_ID).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:id => HomePage::PRESS_ID).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }    
     assert_equal($browser.current_url, HomePage::PRESS_URL)
   end
 
@@ -100,7 +124,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::JOBS_ID).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:id => HomePage::JOBS_ID).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }   
     assert_equal($browser.current_url, HomePage::JOBS_URL)
   end
 
@@ -116,6 +144,9 @@ class TestFooterLinks < TestBasic
     } 
     newWindow= $browser.window_handles[1] 
     $browser.switch_to.window(newWindow)
+    $wait.until{
+      $browser.find_element(:id => HomePage::BLOG_HEADER_ID).displayed?
+    }
     assert_equal($browser.current_url, HomePage::BLOG_URL)
   end
 
@@ -125,7 +156,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::FAQS_ID).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:id => HomePage::FAQS_ID).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }       
     assert_equal($browser.current_url, HomePage::FAQS_URL)
   end
 
@@ -135,9 +170,14 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::ORDER_STATUS_ID).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:id => HomePage::ORDER_STATUS_ID).click
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }    
     assert_equal($browser.current_url, HomePage::ORDER_STATUS_URL)
   end
+
   
   #TEST : FOOTER - TWITTER LINK (TC1443)
   def test_TwitterLink
@@ -150,7 +190,10 @@ class TestFooterLinks < TestBasic
       $browser.window_handles.size > 1
     } 
     newWindow= $browser.window_handles[1] 
-    $browser.switch_to.window(newWindow)    
+    $browser.switch_to.window(newWindow)
+    $wait.until{
+      $browser.find_element(:xpath => HomePage::TWITTER_PROFILE_IMAGE_XPATH).displayed?
+    }    
     assert_equal($browser.current_url, HomePage::TWITTER_URL)
   end
 
@@ -165,7 +208,10 @@ class TestFooterLinks < TestBasic
       $browser.window_handles.size > 1
     } 
     newWindow= $browser.window_handles[1] 
-    $browser.switch_to.window(newWindow)    
+    $browser.switch_to.window(newWindow)
+    $wait.until{
+      $browser.find_element(:xpath => HomePage::FACEBOOK_PROFILE_IMAGE_XPATH).displayed?
+    }   
     assert_equal($browser.current_url, HomePage::FACEBOOK_URL)
   end
   
@@ -181,6 +227,9 @@ class TestFooterLinks < TestBasic
       }   
     newWindow= $browser.window_handles[1] 
     $browser.switch_to.window(newWindow)
+    $wait.until{
+      $browser.find_element(:xpath => HomePage::PINTEREST_PROFILE_IMAGE_XPATH).displayed?
+    }
     assert_equal($browser.current_url, HomePage::PINTEREST_URL)
   end
 
@@ -196,8 +245,10 @@ class TestFooterLinks < TestBasic
     }
     newWindow= $browser.window_handles[1] 
     $browser.switch_to.window(newWindow)
+    $wait.until{
+      $browser.find_element(:xpath => HomePage::INSTAGRAM_PROFILE_IMAGE_XPATH).displayed?
+    }
     assert($browser.current_url.eql?(HomePage::INSTAGRAM_URL1) || $browser.current_url.eql?(HomePage::INSTAGRAM_URL2))
-    puts $browser.current_url
   end
 
   #TEST : FOOTER - GOOGLE PLUS LINK (TC1447)
@@ -210,8 +261,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.window_handles.size > 1
     } 
-    newWindow= $browser.window_handles[1] 
-    $browser.switch_to.window(newWindow)    
+    newWindow= $browser.window_handles[1]
+    $browser.switch_to.window(newWindow)
+    $wait.until{
+      $browser.find_element(:xpath => HomePage::GOOGLE_PLUS_PROFILE_IMAGE_XPATH).displayed?
+    }    
     assert_equal($browser.current_url, HomePage::GOOGLE_PLUS_URL)
   end
 
@@ -221,7 +275,11 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::TERMS_SERVICE_ID).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:id => HomePage::TERMS_SERVICE_ID).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }    
     assert_equal($browser.current_url, HomePage::TERMS_SERVICE_URL)
   end
   
@@ -231,14 +289,17 @@ class TestFooterLinks < TestBasic
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
-    $browser.find_element(:id => HomePage::PRIVACY_POLICY_ID).click    
+    registryURL = $browser.current_url
+    $browser.find_element(:id => HomePage::PRIVACY_POLICY_ID).click  
+    $wait.until{
+      !$browser.current_url.eql?(registryURL)
+    }    
     assert_equal($browser.current_url, HomePage::PRIVACY_POLICY_URL)
   end
 
   #TEST : MARKETING SERVICE TERMS (TC1450)
   def test_MarketingServiceLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::LOGIN_LINK_ID).click
     $wait.until{
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
