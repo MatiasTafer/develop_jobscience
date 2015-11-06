@@ -27,11 +27,23 @@ class PromotionPageTest < TestBasic
   }
   end
   
+  #TC775 SUCCESSFULLY CREATE ACCOUNT
+  def test_create_account
+    go_to_promotion_page
+    $browser.find_element(:id, PromotionPage::EMAIL_FIELD_ID).send_keys Common::generate_email("username")
+    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys Common::GLOBAL_PASSWORD
+    $browser.find_element(:xpath, PromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
+    #Verify if https://qa.zola.com/registry/new appears  
+    assert $wait.until {
+      $browser.find_element(:xpath, RegistryPromotionModal::CREATE_REGISTRY_BUTTON_XPATH).displayed?
+    }   
+  end
+  
   #TC770 EMPTY EMAIL
   def test_empty_email
     go_to_old_promotion_page
     #Complete only password field
-    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys PromotionPage::PASSWORD
+    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath, PromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
     #Verify if error message appears
     assert $wait.until {
@@ -44,8 +56,8 @@ class PromotionPageTest < TestBasic
   def test_invalid_email
     go_to_promotion_page
     #Complete fields
-    $browser.find_element(:id, PromotionPage::EMAIL_FIELD_ID).send_keys PromotionPage::EMAIL_INVALID
-    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys PromotionPage::PASSWORD
+    $browser.find_element(:id, PromotionPage::EMAIL_FIELD_ID).send_keys "test.com"
+    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath, PromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
     #Verify error message 
     assert $wait.until{
@@ -58,8 +70,8 @@ class PromotionPageTest < TestBasic
     def test_already_taken_email
     go_to_promotion_page
     #Complete fields
-    $browser.find_element(:id, PromotionPage::EMAIL_FIELD_ID).send_keys Common::USER_EMAIL
-    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys PromotionPage::PASSWORD
+    $browser.find_element(:id, PromotionPage::EMAIL_FIELD_ID).send_keys Common::USER1_EMAIL
+    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath, PromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
     #Verify error message 
     assert $wait.until {
@@ -86,7 +98,7 @@ class PromotionPageTest < TestBasic
     go_to_promotion_page
     #Complete email and password with less than 8 characters
     $browser.find_element(:id, PromotionPage::EMAIL_FIELD_ID).send_keys Common::generate_email("username")
-    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys PromotionPage::PASSWORD_SHORT
+    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys "test"
     $browser.find_element(:xpath, PromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
     #Verify error message
     assert $wait.until {
@@ -95,32 +107,39 @@ class PromotionPageTest < TestBasic
     }
   end
 
-  #TC775 SUCCESSFULLY CREATE ACCOUNT
-  def test_create_account
-    go_to_promotion_page
-    $browser.find_element(:id, PromotionPage::EMAIL_FIELD_ID).send_keys Common::generate_email("username")
-    $browser.find_element(:id, PromotionPage::PASSWORD_FIELD_ID).send_keys PromotionPage::PASSWORD
-    $browser.find_element(:xpath, PromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
-    #Verify if https://qa.zola.com/registry/new appears  
-    assert $wait.until {
-      $browser.find_element(:xpath, RegistryPromotionModal::CREATE_REGISTRY_BUTTON_XPATH).displayed?
-    }   
-  end
-
-  #TC1114 CREATE ACCOUNT WHEN YOU ARE LOGGED IN
+  #TC1114 TRY TO CREATE ACCOUNT WHEN YOU ARE LOGGED IN
   def test_logged_in   
-    Common.log_in
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
+    $wait.until {
+      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
     $browser.get "https://qa.zola.com/promotion/smp"
     assert $wait.until{
       $browser.find_element(:xpath, PromotionPage::GO_TO_ZOLA_BUTTON_XPATH).displayed?
     }  
+  end
+  #END NEW PROMOTION PAGE TESTS
+
+  
+  #BEGIN OLD PROMOTION PAGE TESTS
+  
+  #TC1120 SUCCESSFULLY CREATE ACCOUNT IN OLD PROMOTION PAGE
+  def test_create_account_old_page
+    go_to_old_promotion_page
+    $browser.find_element(:id, OldPromotionPage::EMAIL_FIELD_ID).send_keys Common::generate_email("username")
+    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys Common::GLOBAL_PASSWORD
+    $browser.find_element(:xpath, OldPromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
+    #Verify if https://qa.zola.com/registry/new appears  
+    assert $wait.until {
+      $browser.find_element(:xpath, RegistryPromotionModal::CREATE_REGISTRY_BUTTON_XPATH).displayed?
+    } 
   end
     
   #TC1115 EMPTY EMAIL ON OLD PROMOTION PAGE
   def test_empty_email_old_page
     go_to_old_promotion_page
     #Complete only password field
-    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys OldPromotionPage::PASSWORD
+    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath, OldPromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
     #Verify if error message appears
     assert $wait.until {
@@ -133,8 +152,8 @@ class PromotionPageTest < TestBasic
   def test_invalid_email_old_page
     go_to_old_promotion_page
     #Complete field with invalid email
-    $browser.find_element(:id, OldPromotionPage::EMAIL_FIELD_ID).send_keys OldPromotionPage::EMAIL_INVALID
-    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys OldPromotionPage::PASSWORD
+    $browser.find_element(:id, OldPromotionPage::EMAIL_FIELD_ID).send_keys "test@testcom"
+    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath, OldPromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
     #Verify if error message appears 
     assert $wait.until {
@@ -147,8 +166,8 @@ class PromotionPageTest < TestBasic
   def test_already_taken_email_old
     go_to_old_promotion_page
     #Complete fields
-    $browser.find_element(:id, OldPromotionPage::EMAIL_FIELD_ID).send_keys Common::USER_EMAIL
-    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys OldPromotionPage::PASSWORD
+    $browser.find_element(:id, OldPromotionPage::EMAIL_FIELD_ID).send_keys Common::USER1_EMAIL
+    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath, OldPromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
     #Verify if error message appears 
     assert $wait.until {
@@ -175,7 +194,7 @@ class PromotionPageTest < TestBasic
     go_to_old_promotion_page
     #Complete email and password with less than 8 characters
     $browser.find_element(:id, OldPromotionPage::EMAIL_FIELD_ID).send_keys Common::generate_email("username")
-    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys OldPromotionPage::PASSWORD_SHORT
+    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys "test"
     $browser.find_element(:xpath, OldPromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
     #Verify error message
     assert $wait.until {
@@ -184,24 +203,16 @@ class PromotionPageTest < TestBasic
     }
   end
 
-  #TC1120 SUCCESSFULLY CREATE ACCOUNT IN OLD PROMOTION PAGE
-  def test_create_account_old_page
-    go_to_old_promotion_page
-    $browser.find_element(:id, OldPromotionPage::EMAIL_FIELD_ID).send_keys Common::generate_email("username")
-    $browser.find_element(:id, OldPromotionPage::PASSWORD_FIELD_ID).send_keys OldPromotionPage::PASSWORD
-    $browser.find_element(:xpath, OldPromotionPage::CREATE_YOUR_FREE_REGISTRY_BUTTON_XPATH).click
-    #Verify if https://qa.zola.com/registry/new appears  
-    assert $wait.until {
-      $browser.find_element(:xpath, RegistryPromotionModal::CREATE_REGISTRY_BUTTON_XPATH).displayed?
-    } 
-  end
-
-  #TC1121 CREATE ACCOUNT WHEN YOU ARE LOGGED IN OLD PROMOTION PAGE
+  #TC1121 TRY TO CREATE ACCOUNT WHEN YOU ARE LOGGED IN OLD PROMOTION PAGE
   def test_logged_in_old_page
-    Common.log_in
+    Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
+    $wait.until {
+      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
     $browser.get "https://qa.zola.com/promotion/smp?variation=a"
     assert $wait.until{
       $browser.find_element(:xpath, OldPromotionPage::GO_TO_ZOLA_BUTTON_XPATH).displayed?
     }  
   end
+
 end
