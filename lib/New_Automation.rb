@@ -2,7 +2,7 @@
 $browserName = ARGV[0]
 $browser
 $wait
-=begin
+
 require './New_Automation/test_login'
 require './New_Automation/test_change_password'
 require './New_Automation/test_your_information'
@@ -13,7 +13,6 @@ require './New_Automation/test_forgot_password'
 require './New_Automation/test_registry_settings'
 require './New_Automation/test_sign_up'
 require './New_Automation/test_sign_up'
-=end
 require './New_Automation/test_cash_gift_settings'
 require './New_Automation/test_promotion_pages.rb'
 
