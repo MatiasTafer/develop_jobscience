@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'Zola_Web/version'
+require 'New_Automation/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "Zola_Automation"
-  spec.version       = ZolaAutomation::VERSION
+  spec.name          = "New_Automation"
+  spec.version       = NewAutomation::VERSION
   spec.authors       = ["TODO: Write your name"]
   spec.email         = ["TODO: Write your email address"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
