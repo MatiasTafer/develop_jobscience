@@ -20,22 +20,9 @@ require_relative './pages/adjustments_group_gift_modal.rb'
 #To run the test you need an acount:
               # With registry
               # If it has gifts, these doesn't be fulfilled
-              # Account default: Common (User:USER_GROUP_GIFT_EMAIL, Password: USER_GROUP_GIFT_PASSWORD)
+              # Account default: Common (User:USER_GROUP_GIFT_EMAIL
 
 class TestRecalculationGroupGifts < TestBasic
-  
-  
-  #LOGIN USING THE PROVIDED USER EMAIL AND PASSWORD
-  def login (userEmail, password)
-    $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys userEmail
-    $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys password
-    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
-  end
-  
   
   #CLEANS THE VALUES ON THE FIELDS ON SHIPPING INFORMATION
   def cleanFields
@@ -66,7 +53,6 @@ class TestRecalculationGroupGifts < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).click
  end
   
-  
   #CHANGE SHIPPING INFORMATION TO NON NEW YORK
   def change_shipping_information_not_ny 
     #Clean fields and complete the shipping information with new values
@@ -81,13 +67,17 @@ class TestRecalculationGroupGifts < TestBasic
     $browser.find_element(:xpath => ShippingInfoPage::PHONE_TEXTBOX_XPATH).send_keys ShippingInfoPage::PHONE_2
     #Clicks on button save changes
     $browser.find_element(:xpath => ShippingInfoPage::BUTTON_SAVE_CHANGES_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, ShippingInfoPage::OK_MESSAGE_XPATH).displayed?
+    }
+    sleep(10)
   end
 
 
   #TC1067 TOGGLE ADDRESS BETWEEN NEW YORK AND NON NEW YORK
   def test_toggle_ny_non_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
+    Common::login(Common::USER_GROUP_GIFT_EMAIL, Common::GLOBAL_PASSWORD)
     $wait.until{
       $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
@@ -107,19 +97,12 @@ class TestRecalculationGroupGifts < TestBasic
     }
     #Change Shipping information to New York address
     change_shipping_information_ny 
-    #Go to browse gift url
+    #Go to an item of shop
+    $browser.get "https://qa.zola.com/shop/product/zwiesel_bostonshaker?skuId=52530d51e4b0c506977e4707&collectionItemId=5277d4d6e4b01c5fab32eb85"
     $wait.until{
-      $browser.get HomePage::ZOLA_SHOP_URL
+      $browser.find_element(:xpath, Pdp::ADD_REGISTRY_XPATH).displayed?
     }
-    $wait.until{
-      $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).displayed?
-    }
-    #Add gift to registry
-    $browser.find_element(:xpath, Collection::COLLECTION_GIFT_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).displayed?
-    }
-    $browser.find_element(:xpath, Pdp::ADD_TO_REGISTRY_BUTTON_XPATH).click
+    $browser.find_element(:xpath, Pdp::ADD_REGISTRY_XPATH).click
     #Go to registry
     $browser.get HomePage::HOME_URL
     #Select the first gift on registry page
@@ -162,7 +145,7 @@ class TestRecalculationGroupGifts < TestBasic
     }
   end
  
- 
+=begin 
   #TC1068 TOGGLE ADDRESS BETWEEN NON-NY AND NEW YORK ADDRESSES
   def test_toggle_non_ny_ny
     #Log in
@@ -1179,7 +1162,7 @@ class TestRecalculationGroupGifts < TestBasic
       end
     end
    end
-    
+=end    
    
     #METHOD TO DELETE ALL ITEMS ON REGISTRY 
     def clean_registry

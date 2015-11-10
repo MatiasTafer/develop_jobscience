@@ -28,6 +28,20 @@ class Common
   USER2_EMAIL = "user2@automation.com"
   
   
+  #TEST PUBLIC REGISTRY REMINDERS
+  #This account must have:
+  # => registry NOT public 
+  # => registry must be at least 7 days old
+  # => no shipping address information
+  USER_PUBLIC_REGISTRY_REMINDER = "user_public_registry_reminders@automation.com"
+  #AUXILIAR USER: MUST NOT BE USED AFTER THE USER_PUBLIC_REGISTRY_REMINDER HAS 7 DAYS OLD
+  AUX_USER = "martinds@oktana.io"
+  
+  #TEST RECALCULATION GROUP GIFT
+  #This account must have:
+  # => public registry
+  # => if it has gifts, it doesn't be fulfilled
+  USER_GROUP_GIFT_EMAIL = "test_recalculation_group_gift@automation.com"
   
   
   #--------------pending merge users
@@ -42,13 +56,7 @@ class Common
   
   
   USER_CHANGE_PASSWORD_SHORT= "test"
-  #Users and password for test: "test_recalculation_group-gift"
-  USER_GROUP_GIFT_EMAIL = "testgroupgift@gmail.com"
-  USER_GROUP_GIFT_PASSWORD = "1password"
-  #User and password for test: "test_public_registry_reminders"
-  #USER2_EMAIL = "oktanatesting@gmail.com"
-  USER3_EMAIL = "martinds@oktana.io"
-  USER23_password = "test1234"
+  
   #User and password for test: "test_manage_collections_registry_page"
   USER4_EMAIL = "user4@gmail.com"
   USER4_PASSWORD = "test1234"

@@ -42,7 +42,7 @@ MARK_AS_FULLFIELD_CHECKBOX_XPATH = "(.//*[@class='field-wrapper checkbox-wrapper
   ITEM_NAME_ID = "product-modal-name"
   
   #BUTTONS
-  ADD_REGISTRY_XPATH = ".//*[@class='col-xs-12 col-sm-6 col-xl-5 col-xl-double-gutter']//*[@class='btn btn-primary']"
+  ADD_REGISTRY_XPATH = "//*[@class='btn btn-primary']"
   ADDTOCART_BUTTON_XPATH = ".//*[@class='btn btn-secondary btn-xs-block']"
   MODAL_ADDTOCART_BUTTON_XPATH = ".//*[@class='btn btn-secondary btn-xs-block']"
   BUY_NOW_BUTTON_ID = "addToCartButton"

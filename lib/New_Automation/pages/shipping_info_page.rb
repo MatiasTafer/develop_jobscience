@@ -11,7 +11,7 @@ class ShippingInfoPage
   ZIPCODE_TEXTBOX_XPATH = ".//*[@name='shipping_address.shipping_zip']"
   PHONE_TEXTBOX_XPATH = ".//*[@name='shipping_phone']"
   
-  #ERROR MESSAGES
+  #MESSAGES
   
   FIRST_NAME_ERROR_XPATH = ".//*[@for='shippingFirstName']"
   LAST_NAME_ERROR_XPATH = ".//*[@for='shippingLastName']"

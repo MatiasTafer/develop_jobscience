@@ -13,7 +13,7 @@ require_relative './pages/home_page.rb'
 class TestPublicRegistryReminders < TestBasic
   
   #To run the test you need an acount with:
-          #Invisible registry to guests.
+          #Registry NOT public
           #Registry must be at least 7 days old.
           #Your shipping address information must not be saved.
   
