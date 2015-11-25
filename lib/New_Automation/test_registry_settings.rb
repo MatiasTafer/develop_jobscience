@@ -167,7 +167,7 @@ def test_DeactivateRegistry
     }
   end
 
-=begin
+
   #NO FIRST NAME AT REGISTRY INFO (TC1558)
   def test_NoFirstName
     
@@ -389,7 +389,7 @@ def test_DeactivateRegistry
     }
     assert_equal($browser.find_element(:id => RegistrySettingsPage::REGISTRY_TITLE_ERROR_ID).text, RegistrySettingsPage::REGISTRY_TITLE_ERROR_MESSAGE)
   end
-=end
+
   #Goes to Registry Settings page
   def goToRegistryInfo
     $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
