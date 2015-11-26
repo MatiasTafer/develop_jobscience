@@ -1,3 +1,6 @@
+require 'ci/reporter/rake/test_unit_loader'
+require 'test-unit' 
+
 #Global scope
 $browserName = ARGV[0]
 $browser
