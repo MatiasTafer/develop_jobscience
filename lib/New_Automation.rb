@@ -16,7 +16,7 @@ require './New_Automation/test_forgot_password'
 #require './New_Automation/test_registry_settings'
 #require './New_Automation/test_sign_up'
 #require './New_Automation/test_cash_gift_settings'
-r#equire './New_Automation/test_promotion_pages.rb'
+#require './New_Automation/test_promotion_pages.rb'
 
 #require './New_Automation/test_cart'
 #require './New_Automation/test_product_modal'
