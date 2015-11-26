@@ -5,6 +5,5 @@ require 'ci/reporter/rake/test_unit'
 
 task :test => 'ci:setup:testunit' do  
   cd 'lib'
-  rm 'test'
   ruby 'New_Automation.rb ' 'firefox'  
 end
