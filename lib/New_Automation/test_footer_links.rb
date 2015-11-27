@@ -246,7 +246,7 @@ class TestFooterLinks < TestBasic
     newWindow= $browser.window_handles[1] 
     $browser.switch_to.window(newWindow)
     $wait.until{
-      $browser.find_element(:xpath => HomePage::INSTAGRAM_PROFILE_IMAGE_XPATH).displayed?
+      $browser.find_element(:xpath => HomePage::INSTAGRAM_ACCOUNT_NAME_XPATH).displayed?
     }
     assert($browser.current_url.eql?(HomePage::INSTAGRAM_URL1) || $browser.current_url.eql?(HomePage::INSTAGRAM_URL2))
   end
