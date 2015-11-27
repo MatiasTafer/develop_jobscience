@@ -5,6 +5,8 @@ require 'test-unit'
 $browserName = ARGV[0]
 $browser
 $wait
+http = Net::HTTP.new(@host, @port)
+http.read_timeout = 300
 
 require './New_Automation/test_login'
 require './New_Automation/test_change_password'
