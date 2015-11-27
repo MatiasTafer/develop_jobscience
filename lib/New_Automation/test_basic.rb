@@ -21,6 +21,9 @@ def setup
     end
 
     $browser.get "https://qa.zola.com"
+    $browser.manage.timeouts.implicit_wait = 300
+    $browser.manage.timeouts.script_timeout = 300
+    $browser.manage.timeouts.page_load = 300    
     $wait = Selenium::WebDriver::Wait.new(:timeout => 20)
 end
  
