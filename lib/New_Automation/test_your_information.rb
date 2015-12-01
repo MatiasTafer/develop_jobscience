@@ -32,9 +32,6 @@ class TestYourInformation < TestBasic
     #Updates your information successfully
     def test_change_information_correctly
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
-        $wait.until {
-            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-        }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         change_your_information 'George', 'Johnson', 'testing@gmail.com'
         $wait.until {
@@ -59,9 +56,6 @@ class TestYourInformation < TestBasic
     def test_email_without_dot
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
-        $wait.until {
-            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-        }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         change_your_information 'George', 'Johnson', 'testing@gmailcom'
         $wait.until {
@@ -79,9 +73,6 @@ class TestYourInformation < TestBasic
     def test_email_without_at_sign
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
-        $wait.until {
-            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-        }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         change_your_information 'George', 'Johnson', 'testinggmail.com'
         $wait.until {
@@ -99,9 +90,6 @@ class TestYourInformation < TestBasic
     def test_blank_name
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
-        $wait.until {
-            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-        }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         change_your_information '', 'Johnson', Common::USER1_EMAIL
         $wait.until {
@@ -119,9 +107,6 @@ class TestYourInformation < TestBasic
     def test_blank_surname
         #Login 
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
-        $wait.until {
-            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-        }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         change_your_information 'George', '', Common::USER1_EMAIL
         $wait.until {
@@ -139,9 +124,6 @@ class TestYourInformation < TestBasic
     def test_blank_email
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
-        $wait.until {
-            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-        }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         change_your_information 'George', 'Johnson', ''
         $wait.until {
@@ -159,9 +141,6 @@ class TestYourInformation < TestBasic
     def test_email_account_already_used
         #Login
         Common.login Common::USER1_EMAIL, Common::GLOBAL_PASSWORD
-        $wait.until {
-            $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-        }
         $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).click
         change_your_information 'George', 'Johnson', 'user2@automation.com'
         #TODO: "PUT THE THIS EMAIL ON COMMON"

@@ -24,11 +24,7 @@ class TestStandalonePdp < TestBasic
   #Method to go to an item modal
   #Tests (TC1492), (TC1493), (TC1494), (TC1495 STEPS 1,2,3), (TC1496), (TC1500), (TC1503), (TC1506) and (TC1507)
   def goToItemModal
-    #Go to Collection/easy-entertaining
-    
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).displayed?
-    }  
+    #Go to Collection/easy-entertaining     
     $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).displayed?

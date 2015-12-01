@@ -21,9 +21,6 @@ class TestPublicRegistryReminders < TestBasic
   def test_visible_to_guests_not_address
     #Login
     Common.login(Common::USER2_EMAIL, Common::USER23_password)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to registry page
     $browser.get HomePage::HOME_URL
     #Waiting for Make Registry Visible modal appears

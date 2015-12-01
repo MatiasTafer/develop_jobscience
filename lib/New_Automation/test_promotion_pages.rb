@@ -110,9 +110,6 @@ class PromotionPageTest < TestBasic
   #TC1114 TRY TO CREATE ACCOUNT WHEN YOU ARE LOGGED IN
   def test_logged_in   
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     $browser.get "https://qa.zola.com/promotion/smp"
     assert $wait.until{
       $browser.find_element(:xpath, PromotionPage::GO_TO_ZOLA_BUTTON_XPATH).displayed?
@@ -206,9 +203,6 @@ class PromotionPageTest < TestBasic
   #TC1121 TRY TO CREATE ACCOUNT WHEN YOU ARE LOGGED IN OLD PROMOTION PAGE
   def test_logged_in_old_page
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     $browser.get "https://qa.zola.com/promotion/smp?variation=a"
     assert $wait.until{
       $browser.find_element(:xpath, OldPromotionPage::GO_TO_ZOLA_BUTTON_XPATH).displayed?

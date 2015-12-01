@@ -37,10 +37,7 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
     
@@ -78,10 +75,7 @@ class TestCashGiftSettings < TestBasic
  
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
     
@@ -110,11 +104,7 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).click
-    $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -143,10 +133,7 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -175,10 +162,7 @@ class TestCashGiftSettings < TestBasic
 
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -207,10 +191,7 @@ class TestCashGiftSettings < TestBasic
 
     #Login 
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -239,10 +220,7 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -271,10 +249,7 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -303,10 +278,7 @@ class TestCashGiftSettings < TestBasic
 
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -335,10 +307,7 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -367,10 +336,7 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -399,10 +365,7 @@ class TestCashGiftSettings < TestBasic
 
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Go to cash gift settings
     goToCashGiftSettings
 
@@ -433,9 +396,6 @@ class TestCashGiftSettings < TestBasic
 
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
@@ -468,9 +428,6 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
@@ -503,9 +460,6 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
@@ -538,9 +492,6 @@ class TestCashGiftSettings < TestBasic
 
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
@@ -573,9 +524,6 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
@@ -608,9 +556,6 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
@@ -643,9 +588,6 @@ class TestCashGiftSettings < TestBasic
 
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
@@ -678,9 +620,6 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
@@ -713,9 +652,6 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
@@ -748,9 +684,6 @@ class TestCashGiftSettings < TestBasic
     
     #Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-        $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to cash gift settings
     goToCashGiftSettings
