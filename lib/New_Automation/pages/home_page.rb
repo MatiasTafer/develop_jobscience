@@ -59,7 +59,7 @@ class HomePage
   HOME_URL = "https://qa.zola.com"
   REGISTRY_URL = "https://qa.zola.com/registry/juanandjulisa/edit"
   FIND_REGISTRY_URL = "https://qa.zola.com/find-registry"
-  DOWNLOAD_APPS_URL = "https://qa.zola.com/registry/apps"
+  DOWNLOAD_APPS_URL = "https://qa.zola.com/simplify"
   REGISTRY_BENEFITS_URL = "https://qa.zola.com/registry/benefits"
   ZOLA_SHOP_URL = "https://qa.zola.com/shop/index"
   ABOUT_ZOLA_URL = "https://qa.zola.com/about/index"
