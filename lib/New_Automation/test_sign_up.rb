@@ -127,6 +127,7 @@ class TestSignup < TestBasic
     }
     newEmail = Common.generate_email('test')
     $browser.find_element(:xpath => SignupModal::EMAIL_TEXTBOX_XPATH).send_keys newEmail
+    $browser.find_element(:xpath => SignupModal::PASSWORD_TEXTBOX_XPATH).send_keys ''
     $browser.find_element(:xpath => SignupModal::BUTTON_SUBMIT_XPATH).click
     assert $wait.until{
       $browser.find_element(:xpath => SignupModal::ERROR_MESSAGE_PASSWORD_XPATH).displayed?

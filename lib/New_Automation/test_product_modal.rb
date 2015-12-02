@@ -25,10 +25,7 @@ class TestProductModal < TestBasic
   #Method to go to an item modal
     #Used by tests TC1403 , TC1404, TC1405, TC1406(step1), TC1406(step2), TC1406(step3), TC1407, TC1411, TC1414, TC1417
   def goToItemModal
-    #Go to Collection/easy-entertaining
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::TWITTER_XPATH).displayed?
-    }   
+    #Go to Collection/easy-entertaining      
     $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).displayed?
@@ -49,9 +46,6 @@ class TestProductModal < TestBasic
     #Used by tests TC1409, TC1412, TC1415
   def goToItemWithSizeModal
     #Go to Collection/easy-entertaining
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::TWITTER_XPATH).displayed?
-    }
     $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).displayed?
@@ -88,9 +82,6 @@ class TestProductModal < TestBasic
     #Used by tests TC1410, TC1413, TC1416
   def goToItemWithcolorModal 
     #Go to Collection/easy-entertaining
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::TWITTER_XPATH).displayed?
-    }
     $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).displayed?

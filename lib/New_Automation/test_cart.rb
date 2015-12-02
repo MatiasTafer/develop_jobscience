@@ -69,10 +69,7 @@ class TestCart < TestBasic
     
     #METHOD TO LOGIN    
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
-    $wait.until {
-     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Preconditions: Must have items on the cart
     Common.add_items_to_cart
     
@@ -190,10 +187,7 @@ class TestCart < TestBasic
    
     #Login
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)    
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Add items to the cart
     Common.add_items_to_cart
     $browser.find_element(:id => HomePage::CART_BUTTON_ID).click
@@ -229,9 +223,7 @@ class TestCart < TestBasic
     
     #Login
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART) 
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    
     $browser.find_element(:id => HomePage::CART_BUTTON_ID).click
     $wait.until {
       $browser.find_element(:xpath => CartModal::CHECKOUT_MODAL_XPATH).displayed?
@@ -255,10 +247,7 @@ class TestCart < TestBasic
     
     #Login
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-  
+      
     #Add items  
     Common.add_items_to_cart
     $wait.until {
@@ -281,10 +270,7 @@ class TestCart < TestBasic
     
     #Login
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Remove all items from the cart 
     $wait.until {
       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
@@ -302,10 +288,7 @@ class TestCart < TestBasic
     
     #Login
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     #Add items
     Common.add_items_to_cart
     
@@ -329,10 +312,7 @@ class TestCart < TestBasic
     
     #RelogIn
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     $browser.find_element(:id => HomePage::CART_BUTTON_ID).click    
     $wait.until {
       $browser.find_element(:xpath => CartModal::CHECKOUT_MODAL_XPATH).displayed?
@@ -398,10 +378,7 @@ class TestCart < TestBasic
      
      #Log in
      Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
-     $wait.until {
-       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-     }
-    
+         
      #Add items
      Common.add_items_to_cart
      $wait.until {
@@ -429,10 +406,7 @@ class TestCart < TestBasic
      
      #Re Log in
      Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
-     $wait.until {
-       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-     }
-     
+          
      #Go to cart
      $browser.find_element(:id => HomePage::CART_BUTTON_ID).click 
      $wait.until {
@@ -458,10 +432,7 @@ class TestCart < TestBasic
     
     #First login to user's url to use the registry
     Common::login(LoginModal::OTHER_USER_TEXT,LoginModal::OTHER_USER_PASSWORD_TEXT)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-    
+        
     userUrl = $browser.current_url
     
     #Log Out
@@ -469,10 +440,7 @@ class TestCart < TestBasic
     
     #LogIn to a new user
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
-   
+       
     #Paste the url of the user's registry 
     $browser.get userUrl
     
@@ -521,10 +489,7 @@ class TestCart < TestBasic
 
      #First Log in to user's url to use the registry
      Common::login(LoginModal::OTHER_USER_TEXT,LoginModal::OTHER_USER_PASSWORD_TEXT)  
-     $wait.until {
-       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-     }
-    
+         
      userUrl = $browser.current_url
     
      #LogOut
@@ -532,10 +497,7 @@ class TestCart < TestBasic
 
      #LogIn to a new user
      Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
-     $wait.until {
-       $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-     }
-     
+          
      #Paste the url of the user's registry
      $browser.get userUrl
      
@@ -561,9 +523,6 @@ class TestCart < TestBasic
     Common.login(Common::USER_NAME_CART, Common::USER_PASSWORD_CART)
     
     #Add first item with one properie in this case size
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::TWITTER_XPATH).displayed?
-    }
     $browser.find_element(:xpath => HomePage::HOME_SHOP_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => Shop::SHOP_BUTTON_XPATH).displayed?

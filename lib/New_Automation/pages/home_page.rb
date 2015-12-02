@@ -6,7 +6,7 @@ class HomePage
   LOGIN_LINK_ID   = "loginLink"
   START_YOUR_REGISTRY_LINK_ID = "createRegistryLink"
   REGISTRY_EDIT_URL = "https://qa.zola.com/registry"
-  MY_ACCOUNT_LINK_XPATH = ".//*[@class='dropdown dropdown-hover with-arrow']//*[@href='/account/info']"
+  MY_ACCOUNT_LINK_XPATH = "(.//*[@class='dropdown dropdown-hover with-arrow']//*[@href='/account/info'])[1]"
   CART_BUTTON_ID = "openCartLink"
   
   #Account sub-menu
@@ -71,8 +71,8 @@ class HomePage
   TWITTER_URL = "https://twitter.com/zolaregistry"
   FACEBOOK_URL = "https://www.facebook.com/zolaregistry"
   PINTEREST_URL = "https://www.pinterest.com/zolaregistry/"
-  INSTAGRAM_URL1 = "http://instagram.com/zolaregistry/"
-  INSTAGRAM_URL2 = "https://instagram.com/zolaregistry/"
+  INSTAGRAM_URL1 = "http://www.instagram.com/zolaregistry/"
+  INSTAGRAM_URL2 = "https://www.instagram.com/zolaregistry/"
   GOOGLE_PLUS_URL = "https://plus.google.com/116442943345722651304/about"
   TERMS_SERVICE_URL = "https://qa.zola.com/terms"
   PRIVACY_POLICY_URL = "https://qa.zola.com/privacy"
@@ -81,7 +81,7 @@ class HomePage
   TWITTER_PROFILE_IMAGE_XPATH = ".//*[@class='ProfileAvatar']"
   FACEBOOK_PROFILE_IMAGE_XPATH = ".//*[@class='profilePic img']"
   GOOGLE_PLUS_PROFILE_IMAGE_XPATH = ".//*[@class='dkb photo']"
-  INSTAGRAM_PROFILE_IMAGE_XPATH = ".//*[@class='-cx-PRIVATE-ProfilePage__avatar']"
+  INSTAGRAM_ACCOUNT_NAME_XPATH = ".//*[@class='-cx-PRIVATE-ProfilePage__username']"
   PINTEREST_PROFILE_IMAGE_XPATH = ".//*[@class='profileImage']"
   BLOG_HEADER_ID = "site-header"
   

@@ -17,9 +17,6 @@ class TestShippingInfo < TestBasic
   def test_successfully_change_values
     #Preconditions: must be logged in
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to shipping info page
     goToShippingInformation
     #cleans fields and complete the shipping information with new values
@@ -76,9 +73,6 @@ class TestShippingInfo < TestBasic
   def test_NoNameShippingInfo
     #Preconditions: must be logged in
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to shipping information
     goToShippingInformation
     #cleans fields and completes shipping information leaving the first name empty
@@ -103,9 +97,6 @@ class TestShippingInfo < TestBasic
   def test_NoLastNameShippingInfo
     #Preconditions: must be logged in
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to Shipping Information
     goToShippingInformation
     #cleans fields and completes shipping address information leaving the last name empty
@@ -129,9 +120,6 @@ class TestShippingInfo < TestBasic
   def test_NoStreetShippingInfo
     #Preconditions: must be logged in
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Must be on Shipping Information
     goToShippingInformation
     #cleans fields and complete shipping information leaving street address
@@ -155,9 +143,6 @@ class TestShippingInfo < TestBasic
   def test_NoCityShippingInfo
     #Preconditions: must be logged in
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to Shipping Information
     goToShippingInformation
     #clean fiels and complete shipping information leaving the city field empty
@@ -182,9 +167,6 @@ class TestShippingInfo < TestBasic
   def test_NoZipCodeShippingInfo
     #Preconditions: must be logged in
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to Shipping Information
     goToShippingInformation
     #cleans fields and enter all information, but the zip code
@@ -209,9 +191,6 @@ class TestShippingInfo < TestBasic
   def test_WrongZipCode
     #Preconditions: must be logged in
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #must be on registry settings page
     goToShippingInformation
     #cleans and complete fields using an invalid zip code
@@ -237,9 +216,6 @@ class TestShippingInfo < TestBasic
   def test_NoPhoneShippingInfo
     #Preconditions: must be logged in
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to Shipping Information page
     goToShippingInformation
     #clean and enter values on the fields
@@ -264,9 +240,6 @@ class TestShippingInfo < TestBasic
   def test_UseInvalidZipCode
     #Preconditions: be logged in
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to Shipping Information page
     goToShippingInformation
     #enters an invalid zip code
@@ -298,9 +271,6 @@ class TestShippingInfo < TestBasic
   def test_NoStateShippingInfo
     #Preconditions: Login
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to Shipping Information
     goToShippingInformation
     #Enter all the shipping information but the state

@@ -12,21 +12,28 @@ require_relative './pages/shop_page.rb'
 
 class Common
   
-  #NEW USERS
+  #Gregory McGregor
+  #Gretchen McGallagher
+  #Registry must be public, so you need to complete the Shipping Information
   USER1_EMAIL = "user1@automation.com"
   GLOBAL_PASSWORD  = "test1234"
   
+  #Daniel McDaemon
+  #Dominique McDonalds
+  #Registry must be public, so you need to complete the Shipping Information
   USER_CHANGE_PASSWORD_EMAIL  = "user_change_password@automation.com"
   USER_CHANGE_PASSWORD_PASS   = "test12345"
   
-  USER_NO_REGISTRY_EMAIL    = "trinity3@trinity.com"
+  #USER WITHOUT REGISTRY
+  USER_NO_REGISTRY_EMAIL    = "user.noregistry@automation.com"
   USER_NO_REGISTRY_PASS     = "test1234"
-  URL_EXISTING              = "homerandmarge"
+  
+  #EXISTING URL IN PRODUCTION THAT IS ALWAYS ON STAGE
+  URL_EXISTING              = "martinandgracie"
   
   #User used to test: "test_registry_settings"
   #this suite uses this user to deactivate a registry
   USER2_EMAIL = "user2@automation.com"
-  
   
   #TEST PUBLIC REGISTRY REMINDERS
   #This account must have:
@@ -127,6 +134,9 @@ class Common
     $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys userEmail
     $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys password
     $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+    $wait.until {
+     $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
+    }
   end
 
   #Log out

@@ -10,14 +10,11 @@ require_relative './pages/login_modal.rb'
 require_relative './pages/registry_settings_page.rb'
 
 class RegistrySettings < TestBasic
-
+=begin
 #Deactivates your Registry
 def test_DeactivateRegistry
     #Login  
     Common.login(Common::USER2_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to Registry Settings page
     $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
     $wait.until{
@@ -68,16 +65,13 @@ def test_DeactivateRegistry
       $browser.find_element(:xpath => HomePage::ADD_WEDDING_WEB_BUTTON_XPATH).displayed?
     }
   end
-
+=end
   
   #SUCCESSFULLY CHANGE REGISTRY INFO (TC1557)
   def test_SuccessfulyChangeRegistryInfo
     
     #Login
     Common.login(Common::USER2_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Goes to registry info page
     goToRegistryInfo
@@ -167,14 +161,12 @@ def test_DeactivateRegistry
     }
   end
 
+
   #NO FIRST NAME AT REGISTRY INFO (TC1558)
   def test_NoFirstName
     
     #Login
     Common.login(Common::USER2_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to Registry info
     goToRegistryInfo
@@ -203,9 +195,6 @@ def test_DeactivateRegistry
     
     #Login
     Common.login(Common::USER2_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to Registry info
     goToRegistryInfo
@@ -234,9 +223,6 @@ def test_DeactivateRegistry
     
     #Login
     Common.login(Common::USER2_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to Registry info
     goToRegistryInfo
@@ -265,9 +251,6 @@ def test_DeactivateRegistry
     
     #Login
     Common.login(Common::USER2_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to Registry info
     goToRegistryInfo
@@ -296,9 +279,6 @@ def test_DeactivateRegistry
     
     #Login
     Common.login(Common::USER2_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to Registry info
     goToRegistryInfo
@@ -329,9 +309,6 @@ def test_DeactivateRegistry
     
     #Login
     Common.login(Common::USER2_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to Registry info
     goToRegistryInfo
@@ -363,9 +340,6 @@ def test_DeactivateRegistry
     
     #Login
     Common.login(Common::USER2_EMAIL, Common::GLOBAL_PASSWORD)
-    assert $wait.until{
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     
     #Go to Registry info
     goToRegistryInfo

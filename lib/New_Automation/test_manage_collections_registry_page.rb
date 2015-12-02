@@ -27,9 +27,6 @@ class ManegeCollectionRegistry < TestBasic
   def test_collection_without_name
     #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to registry page
     $browser.get HomePage::HOME_URL
     $wait.until{
@@ -55,9 +52,6 @@ class ManegeCollectionRegistry < TestBasic
   def test_collection_create_using_zola_photos
     #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to registry page
     $browser.get HomePage::HOME_URL
     $wait.until{
@@ -95,9 +89,6 @@ class ManegeCollectionRegistry < TestBasic
   def test_edit_collection_name_blank
     #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to registry page
     $browser.get HomePage::HOME_URL
     $wait.until{
@@ -148,9 +139,6 @@ class ManegeCollectionRegistry < TestBasic
   def test_edit_collection_using_zola_photo
     #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to registry page
     $browser.get HomePage::HOME_URL
     $wait.until{
@@ -221,9 +209,6 @@ class ManegeCollectionRegistry < TestBasic
   def test_edit_collection_deleting_it
     #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to registry page
     $browser.get HomePage::HOME_URL
     $wait.until{
@@ -279,9 +264,6 @@ class ManegeCollectionRegistry < TestBasic
   def test_delete_registry_collection
     #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to registry page
     $browser.get HomePage::HOME_URL
     $wait.until{
@@ -323,9 +305,6 @@ class ManegeCollectionRegistry < TestBasic
   def test_reorder_registry_collections_single_layout
     #Login
     Common.login(Common::USER4_EMAIL, Common::USER4_PASSWORD)
-    $wait.until {
-      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
     #Go to registry page
     $browser.get HomePage::HOME_URL
     $wait.until{

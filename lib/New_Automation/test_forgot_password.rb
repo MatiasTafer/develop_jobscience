@@ -26,7 +26,7 @@ class ForgotPasswordTest < TestBasic
     #Once on forgot password modal, complete the email textbox with a not registered email
     $browser.find_element(:xpath => ForgotPasswordModal::EMAIL_TEXTBOX_XPATH).send_keys "notregistered@notregistered.com"
     $browser.find_element(:xpath => ForgotPasswordModal::SUBMIT_BUTTON_XPATH).click
-    assert $wait.until{
+    $wait.until{
       $browser.find_element(:xpath => ForgotPasswordModal::ERROR_MESSAGE_XPATH).displayed?
     }
     assert_equal($browser.find_element(:xpath => ForgotPasswordModal::ERROR_MESSAGE_XPATH).text, ForgotPasswordModal::ERROR_MESSAGE_TEXT)
@@ -47,7 +47,7 @@ class ForgotPasswordTest < TestBasic
     
     #Click on submit button without complete the email textbox
     $browser.find_element(:xpath => ForgotPasswordModal::SUBMIT_BUTTON_XPATH).click
-    assert $wait.until{
+    $wait.until{
       $browser.find_element(:xpath => ForgotPasswordModal::EMPTY_EMAIL_ERROR_XPATH)
     }
     assert_equal($browser.find_element(:xpath => ForgotPasswordModal::EMPTY_EMAIL_ERROR_XPATH).text, ForgotPasswordModal::EMPTY_EMAIL_ERROR_TEXT)
@@ -55,7 +55,7 @@ class ForgotPasswordTest < TestBasic
     #Click on submit button with a not valid email
     $browser.find_element(:xpath => ForgotPasswordModal::EMAIL_TEXTBOX_XPATH).send_keys "notavalidemail.com"
     $browser.find_element(:xpath => ForgotPasswordModal::SUBMIT_BUTTON_XPATH).click
-     assert $wait.until{
+     $wait.until{
       $browser.find_element(:xpath => ForgotPasswordModal::EMPTY_EMAIL_ERROR_XPATH)
     }
     assert_equal($browser.find_element(:xpath => ForgotPasswordModal::EMPTY_EMAIL_ERROR_XPATH).text, ForgotPasswordModal::EMPTY_EMAIL_ERROR_TEXT)
