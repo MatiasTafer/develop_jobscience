@@ -23,7 +23,7 @@ end
 def check_current_information (name, surname, email)
     Common.wait_to_load
     assert_equal($browser.find_element(:xpath, AccountInfoPage::FIRST_NAME_FIELD_XPATH)['value'], name)
-    assertequal($browser.find_element(:xpath, AccountInfoPage::LAST_NAME_FIELD_XPATH)['value'], surname)
+    assert_equal($browser.find_element(:xpath, AccountInfoPage::LAST_NAME_FIELD_XPATH)['value'], surname)
     assert_equal($browser.find_element(:xpath, AccountInfoPage::EMAIL_FIELD_XPATH)['value'], email)
 end
 
