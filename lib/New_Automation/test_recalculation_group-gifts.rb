@@ -24,19 +24,6 @@ require_relative './pages/adjustments_group_gift_modal.rb'
 
 class TestRecalculationGroupGifts < TestBasic
   
-  
-  #LOGIN USING THE PROVIDED USER EMAIL AND PASSWORD
-  def login (userEmail, password)
-    $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
-    }
-    $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys userEmail
-    $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys password
-    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
-  end
-  
-  
   #CLEANS THE VALUES ON THE FIELDS ON SHIPPING INFORMATION
   def cleanFields
     $browser.find_element(:xpath => ShippingInfoPage::FIRST_NAME_TEXTBOX_XPATH).clear
@@ -87,10 +74,7 @@ class TestRecalculationGroupGifts < TestBasic
   #TC1067 TOGGLE ADDRESS BETWEEN NEW YORK AND NON NEW YORK
   def test_toggle_ny_non_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -166,10 +150,7 @@ class TestRecalculationGroupGifts < TestBasic
   #TC1068 TOGGLE ADDRESS BETWEEN NON-NY AND NEW YORK ADDRESSES
   def test_toggle_non_ny_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -248,10 +229,7 @@ class TestRecalculationGroupGifts < TestBasic
   #TC1069 TOGGLE ADDRESS BETWEEN NON NEW YORK AND NON NEW YORK ADDRESSES
   def test_toggle_non_ny_non_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -330,10 +308,7 @@ class TestRecalculationGroupGifts < TestBasic
   #TC1070 TOGGLE ADDRESS BETWEEN NEW YORK AND NEW YORK ADDRESSES
   def test_toggle_ny_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -412,10 +387,7 @@ class TestRecalculationGroupGifts < TestBasic
   #TC1085 TOGGLE ADDRESS BETWEEN NEW YORK AND NON NEW YORK NO GROUP GIFT
   def test_not_group_gift_non_ny_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -473,10 +445,7 @@ class TestRecalculationGroupGifts < TestBasic
    #TC1071 TOGGLE ADDRESS BETWEEN NON NEW YORK AND NEW YORK ADRESSES NO GROUP GIFT
    def test_not_group_gift_ny_non_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -534,10 +503,7 @@ class TestRecalculationGroupGifts < TestBasic
    #TC1072 TOGGLE ADDRESS BETWEEN NON NEW YORK AND NON NEW YORK NO GROUP GIFT
    def test_not_group_gift_non_ny_non_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -595,10 +561,7 @@ class TestRecalculationGroupGifts < TestBasic
    #TC1084 TOGGLE ADDRESS BETWEEN NEW YORK AND NEW YORK ADRESSES NO GROUP GIFT
    def test_not_group_gift_ny_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -656,10 +619,7 @@ class TestRecalculationGroupGifts < TestBasic
    #TC1073 DELETE GROUP GIFT NEW YORK AND NON NEW YORK ADDRESS
    def test_delete_group_gift_ny_non_ny
    #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -782,10 +742,7 @@ class TestRecalculationGroupGifts < TestBasic
    #TC1074 DELETE GROUP GIFT NON NEW YORK AND NEW YORK ADDRESS
    def test_delete_group_gift_non_ny_ny
    #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -908,10 +865,7 @@ class TestRecalculationGroupGifts < TestBasic
    #TC1075 FULFILLED PRODUCT NEW YORK AND NON NEW YORK
    def test_filfilled_ny_non_ny
    #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page
@@ -1026,10 +980,7 @@ class TestRecalculationGroupGifts < TestBasic
     #TC1076 FULFILLED PRODUCT NON NEW YORK AND NEW YORK
     def test_filfilled_non_ny_ny
     #Log in
-    login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
-    $wait.until{
-      $browser.find_element(:xpath, HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
-    }
+    Common.login(Common::USER_GROUP_GIFT_EMAIL, Common::USER_GROUP_GIFT_PASSWORD)
     #Eliminate all items in registry
     clean_registry
     #Go to Shipping information page

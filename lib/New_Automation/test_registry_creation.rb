@@ -38,7 +38,7 @@ class TestRegistryCreation < TestBasic
     
     #Verify the info is correct
     #verfify welcome message
-    assert $browser.find_element(:xpath => CreateRegistryModal::WELCOME_LABEL).text == "Welcome, Kent"
+    assert_equal($browser.find_element(:xpath => CreateRegistryModal::WELCOME_LABEL).text, "Welcome, Kent")
     $browser.find_element(:xpath => CreateRegistryModal::WELCOME_SKIP_LINK).click
     
   end

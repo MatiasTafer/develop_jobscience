@@ -14,7 +14,7 @@ class TestLogin < TestBasic
     $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
     assert $wait.until {
         	$browser.find_element(:xpath => LoginModal::LOG_IN_MODAL_XPATH).displayed?
-    	}
+    }
   end
 
   # Logging in and logging out correctly
@@ -38,7 +38,7 @@ class TestLogin < TestBasic
     $browser.find_element(:id, HomePage::LOG_OUT_LINK_ID).click
     assert $wait.until{
             $browser.find_element(:id, HomePage::LOGIN_LINK_ID).displayed?
-        }
+    }
   end
 
   # Trying to log in with an unregistered user
@@ -54,7 +54,7 @@ class TestLogin < TestBasic
     $wait.until {
       $browser.find_element(:xpath => LoginModal::MISMATCH_MESSAGE_XPATH).displayed?
     }
-    assert $browser.find_element(:xpath => LoginModal::MISMATCH_MESSAGE_XPATH).text == LoginModal::MISMATCH_MESSAGE_TEXT
+    assert_equal($browser.find_element(:xpath => LoginModal::MISMATCH_MESSAGE_XPATH).text, LoginModal::MISMATCH_MESSAGE_TEXT)
   end
 
   # Trying to log in with a registered user but using a wrong password
@@ -70,7 +70,7 @@ class TestLogin < TestBasic
     $wait.until {
       $browser.find_element(:xpath => LoginModal::MISMATCH_MESSAGE_XPATH).displayed?
     }
-    assert $browser.find_element(:xpath => LoginModal::MISMATCH_MESSAGE_XPATH).text == LoginModal::MISMATCH_MESSAGE_TEXT
+    assert_equal($browser.find_element(:xpath => LoginModal::MISMATCH_MESSAGE_XPATH).text, LoginModal::MISMATCH_MESSAGE_TEXT)
   end
 
   # Trying to log in with a registered user but leaving the password field blank
@@ -86,7 +86,7 @@ class TestLogin < TestBasic
     $wait.until {
       $browser.find_element(:xpath => LoginModal::PASSWORD_ERROR_MESSAGE_XPATH).displayed?
     }
-    assert $browser.find_element(:xpath => LoginModal::PASSWORD_ERROR_MESSAGE_XPATH).text == LoginModal::PASSWORD_ERROR_MESSAGE_TEXT
+    assert_equal($browser.find_element(:xpath => LoginModal::PASSWORD_ERROR_MESSAGE_XPATH).text, LoginModal::PASSWORD_ERROR_MESSAGE_TEXT)
   end
 
   # Trying to log in leaving the username field blank
@@ -102,7 +102,7 @@ class TestLogin < TestBasic
     $wait.until {
       $browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).displayed?
     }
-    assert $browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).text == LoginModal::EMAIL_ERROR_MESSAGE_TEXT
+    assert_equal($browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).text, LoginModal::EMAIL_ERROR_MESSAGE_TEXT)
   end
 
   # Trying to log in using an email address with the @ sign missing
@@ -118,7 +118,7 @@ class TestLogin < TestBasic
     $wait.until {
       $browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).displayed?
     }
-    assert $browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).text == LoginModal::EMAIL_ERROR_MESSAGE_TEXT
+    assert_equal($browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).text, LoginModal::EMAIL_ERROR_MESSAGE_TEXT)
   end
 
   # Trying to log in using an email address with the dot missing
@@ -134,6 +134,6 @@ class TestLogin < TestBasic
     $wait.until {
       $browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).displayed?
     }
-    assert $browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).text == LoginModal::EMAIL_ERROR_MESSAGE_TEXT
+    assert_equal($browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).text, LoginModal::EMAIL_ERROR_MESSAGE_TEXT)
   end
 end

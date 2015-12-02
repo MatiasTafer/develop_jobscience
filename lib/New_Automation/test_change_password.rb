@@ -13,9 +13,9 @@ def change_password (currentPassword, newPassword, verifyPassword)
     $browser.find_element(:id, AccountInfoPage::CHANGE_PASSWORD_LINK_ID).displayed?
   }
   $browser.find_element(:id, AccountInfoPage::CHANGE_PASSWORD_LINK_ID).click
-  assert $wait.until{
+  $wait.until{
             $browser.find_element(:xpath, AccountInfoPage::CURRENT_PASSWORD_FIELD_XPATH).displayed?
-        }
+  }
   $browser.find_element(:xpath, AccountInfoPage::CURRENT_PASSWORD_FIELD_XPATH).send_keys currentPassword
   $browser.find_element(:xpath, AccountInfoPage::NEW_PASSWORD_FIELD_XPATH).send_keys newPassword
   $browser.find_element(:xpath, AccountInfoPage::VERIFY_PASSWORD_FIELD_XPATH).send_keys verifyPassword
@@ -35,7 +35,7 @@ class TestChangePassword < TestBasic
     $wait.until{
       $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).displayed?
     }
-    assert $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text == AccountInfoPage::CHANGE_PASSWORD_SUCCESSFULLY_TEXT
+    assert_equal($browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text, AccountInfoPage::CHANGE_PASSWORD_SUCCESSFULLY_TEXT)
     Common.wait_to_load
     #Log out
     $wait.until {
@@ -46,9 +46,9 @@ class TestChangePassword < TestBasic
       $browser.find_element(:id, HomePage::LOG_OUT_LINK_ID).displayed?
     }
     $browser.find_element(:id, HomePage::LOG_OUT_LINK_ID).click
-    assert $wait.until{
+    $wait.until{
             $browser.find_element(:id, HomePage::LOGIN_LINK_ID).displayed?
-        }
+    }
     #Log in with your new password
     Common.login(Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS)
     
@@ -67,13 +67,21 @@ class TestChangePassword < TestBasic
     $wait.until{
       $browser.find_element(:id, AccountInfoPage::NEW_PASSWORD_ERROR_ID).displayed?
     }
-    assert $browser.find_element(:id, AccountInfoPage::NEW_PASSWORD_ERROR_ID).text == AccountInfoPage::NEW_PASSWORD_ERROR_TEXT
+    assert_equal($browser.find_element(:id, AccountInfoPage::NEW_PASSWORD_ERROR_ID).text, AccountInfoPage::NEW_PASSWORD_ERROR_TEXT)
     #Log out
     Common.logout
     #Try to log in with the password you tried to change to
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_SHORT
-    
-    assert $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).text == AccountInfoPage::MISMATCH_MESSAGE_TEXT
+    $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys Common::USER_CHANGE_PASSWORD_EMAIL
+    $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys Common::USER_CHANGE_PASSWORD_SHORT
+    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+    $wait.until{
+      $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).displayed?
+    }
+    assert_equal($browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).text, AccountInfoPage::MISMATCH_MESSAGE_TEXT)
   end
 
   # Trying to change the password but with the verification not matching
@@ -87,22 +95,37 @@ class TestChangePassword < TestBasic
     $wait.until{
       $browser.find_element(:id, AccountInfoPage::VERIFY_PASSWORD_ERROR_ID).displayed?
     }
-    assert $browser.find_element(:id, AccountInfoPage::VERIFY_PASSWORD_ERROR_ID).text == AccountInfoPage::VERIFY_PASSWORD_ERROR_TEXT
+    assert_equal($browser.find_element(:id, AccountInfoPage::VERIFY_PASSWORD_ERROR_ID).text, AccountInfoPage::VERIFY_PASSWORD_ERROR_TEXT)
     #Log out
     Common.logout
     #Try to log in with the password you tried to change to
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
-    $wait.until {
+    $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys Common::USER_CHANGE_PASSWORD_EMAIL
+    $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys Common::USER_CHANGE_PASSWORD_PASS
+    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+    $wait.until{
       $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).displayed?
     }
-    assert $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).text == AccountInfoPage::MISMATCH_MESSAGE_TEXT
+    assert_equal($browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).text, AccountInfoPage::MISMATCH_MESSAGE_TEXT)
     #Try to log in with the password you used in the verification
     $browser.find_element(:xpath => LoginModal::CLOSE_MODAL_XPATH).click
-    assert $wait.until{
+    $wait.until{
             $browser.find_element(:id, HomePage::LOGIN_LINK_ID).displayed?
     }
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, 'test123456'
-    assert $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).text == AccountInfoPage::MISMATCH_MESSAGE_TEXT
+    $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys Common::USER_CHANGE_PASSWORD_EMAIL
+    $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys 'test123456'
+    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+    $wait.until{
+      $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).displayed?
+    }
+    assert_equal($browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).text, AccountInfoPage::MISMATCH_MESSAGE_TEXT)
   end
 
   #Try to change your password providing a wrong current password
@@ -114,11 +137,20 @@ class TestChangePassword < TestBasic
     $wait.until{
       $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).displayed?
     }
-    assert $browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text == AccountInfoPage::CURRENT_PASSWORD_ERROR_TEXT
+    assert_equal($browser.find_element(:id, AccountInfoPage::MESSAGE_ID).text, AccountInfoPage::CURRENT_PASSWORD_ERROR_TEXT)
     #Log out
     Common.logout
     #Try to log in with the password you tried to change to
-    Common.login Common::USER_CHANGE_PASSWORD_EMAIL, Common::USER_CHANGE_PASSWORD_PASS
-    assert $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).text == AccountInfoPage::MISMATCH_MESSAGE_TEXT
+    $browser.find_element(:id, HomePage::LOGIN_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys Common::USER_CHANGE_PASSWORD_EMAIL
+    $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys Common::USER_CHANGE_PASSWORD_PASS
+    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+    $wait.until{
+      $browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).displayed?
+    }
+    assert_equal($browser.find_element(:xpath => AccountInfoPage::MISMATCH_MESSAGE_XPATH).text, AccountInfoPage::MISMATCH_MESSAGE_TEXT)
   end
 end
