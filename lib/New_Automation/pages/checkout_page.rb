@@ -6,7 +6,7 @@ class CheckOutPage
   ITEM_TWO_ADDED_NAME_XPATH = "(.//*[@class='row-fluid cart-item full-width free-shipping'])[2]//*[@class='info-wrapper']/a/span"
   ITEM_TWO_ADDED_QUANTITY_XPATH = "(.//*[@class='short quantity-p'])[2]"
   
-  
+  ORDER_SUMMARY_LABELS_XPATH = ".//*[@class= 'key-val divide']"
   CART_TEXT_AUX_XPATH = ".//*[@class='clearfix top-actions']"
   
 end

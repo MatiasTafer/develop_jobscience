@@ -10,6 +10,7 @@ class RegistryPage
   OTHER_REGISTRY_CART_XPATH = ".//*[@class='cart']"
 
   FIRST_PRODUCT_XPATH = "((.//*[@id='collection-results']//*[@class='single-item single-product editable'])[1])//*[@class='item-top']//*[@class='contain-link']"
+  FIRST_PRODUCT_BUY_BUTTON_XPATH = "(.//*[@value='Buy Now'])[1]"
   LAST_PRODUCT_XPATH = "((.//*[@id='collection-results']//*[@class='single-item single-product editable'])[last()])//*[@class='item-top']//*[@class='contain-link']"
   QUANTITY_OF_ITEMS_IN_REGISTRY_XPATH = "((.//*[@id='collection-results']//*[@class='single-item single-product editable']))//*[@class='item-top']//*[@class='contain-link']"
   NAME_OF_FIRST_ITEM_IN_REGISTRY_XPATH = "(.//*[@class='item-body with-bottom']//*[@class='single-product-name'])[1]"

@@ -17,6 +17,7 @@ class Common
   #Registry must be public, so you need to complete the Shipping Information
   USER1_EMAIL = "user1@automation.com"
   GLOBAL_PASSWORD  = "test1234"
+  USER1_URL = "https://qa.zola.com/registry/gregoryandgretchen"
   
   #Daniel McDaemon
   #Dominique McDonalds
@@ -253,7 +254,7 @@ class Common
   #Then, it waits for jQuery because Selenium runs fast and makes queries to jQuery before it has had a chance to load into the page
   def self.wait_to_load
     $wait.until {
-      $browser.execute_script("return document.readyState;") == "complete"
+      $browser.execute_script("return document.readyState == 'complete';") 
       $browser.execute_script("return window.jQuery != undefined && jQuery.active === 0")
     }
   end

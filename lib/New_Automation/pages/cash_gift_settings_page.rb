@@ -1,7 +1,9 @@
 class CashGiftSettings
   
   #BUTTONS AND TEXTBOXES
-  
+  YOU_COVER_FEE_RADIOBUTTON_ID = "coverCardFees"
+  GUEST_COVER_FEE_RADIOBUTTON_ID = "doNotCoverCardFees"
+  SUBMIT_FEE_CHANGES_BUTTON_XPATH = "(.//*[@class='button teal big'])[1]"
   SUBMIT_CHANGES_BUTTON_XPATH = "(.//*[@class='button teal big'])[2]"
   ROUTING_NUMBER_ID = "banking-routing-number"
   ACCOUNT_TEXTBOX_ID = "banking-account-number"
@@ -60,4 +62,5 @@ class CashGiftSettings
   
   VALID_ACCOUNT_ENTER = "humaneMessage"
   VALID_ACCOUNT_ENTER_TEXT = "Bank Information Updated"
+  FEE_SETTINGS_CHANGED_TEXT = "Settings Updated"
 end

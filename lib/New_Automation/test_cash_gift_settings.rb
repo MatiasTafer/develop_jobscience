@@ -10,27 +10,124 @@ require_relative './pages/home_page.rb'
 require_relative './pages/login_modal.rb'
 require_relative './pages/registry_settings_page.rb'
 require_relative './pages/cash_gift_settings_page.rb'
-
+require_relative './pages/registry_page.rb'
+require_relative './pages/cart_modal.rb'
+require_relative './pages/checkout_modal.rb'
+require_relative './pages/checkout_page.rb'
 
 class TestCashGiftSettings < TestBasic
   
   #SUITE : CASH GIFT SETTINGS
-  
-=begin
-    #TODO: PENDING METHOD
-    def test_YouCoverTheProcessingFee
+  #Go to Cash Gift Settings section
+  def goToCashGiftSettings
     
-      #TEST : CHANGE CREDIT CARD FEE, MAKING YOU COVER THE PROCESSING FEE (TC698)
+    #Clicks on Registry Settings
+    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
+    $wait.until{
+        $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
+    }
+    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
+    $wait.until{
+        $browser.find_element(:id => RegistrySettingsPage::CASH_GIFT_SETTINGS_ID).displayed?
+    }
     
-    end  
+    #Clicks on Cash Gift Settings menu
+    $browser.find_element(:id => RegistrySettingsPage::CASH_GIFT_SETTINGS_ID).click
+    $wait.until{
+      $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).displayed?
+    }
+  end
+    
+    #TEST : CHANGE CREDIT CARD FEE, MAKING YOU COVER THE PROCESSING FEE (TC698)
+    def test_YouCoverTheProcessingFee       
+      #Login
+      Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
+        
+      #Go to cash gift settings
+      goToCashGiftSettings
+    
+      #Change the Credit Card Fee option to "You"
+      $browser.find_element(:id => CashGiftSettings::YOU_COVER_FEE_RADIOBUTTON_ID).click    
+      $browser.find_element(:xpath => CashGiftSettings::SUBMIT_FEE_CHANGES_BUTTON_XPATH).click
+      $wait.until{
+        $browser.find_element(:id => CashGiftSettings::VALID_ACCOUNT_ENTER).displayed?
+      }
+      assert_equal($browser.find_element(:id => CashGiftSettings::VALID_ACCOUNT_ENTER).text, CashGiftSettings::FEE_SETTINGS_CHANGED_TEXT)
+      
+      #Log out
+      Common::logout
+      
+      #Go to the registry page of the first account.
+      $browser.get Common::USER1_URL
+      $wait.until{
+        $browser.find_element(:xpath => RegistryPage::FIRST_PRODUCT_BUY_BUTTON_XPATH).displayed?
+      }
+      
+      #Add to cart a cash gift.
+      $browser.find_element(:xpath => RegistryPage::FIRST_PRODUCT_BUY_BUTTON_XPATH).click
+      $wait.until{
+        $browser.find_element(:xpath => CartModal::CHECKOUT_MODAL_XPATH).displayed?
+      }
+      
+      #Go to checkout page.
+      $browser.find_element(:xpath => CartModal::CHECKOUT_MODAL_XPATH).click
+      $wait.until{
+        $browser.find_element(:xpath => CheckOutModal::BUTTON_CHECKOUT_GUEST).displayed?
+      }
+      $browser.find_element(:xpath => CheckOutModal::BUTTON_CHECKOUT_GUEST).click
+      $wait.until{
+        $browser.find_element(:id => CheckOutPage::PLACEORDER_BUTTON_ID).displayed?
+      }
+         
+      #Handling Fees label is not displayed
+      assert($browser.find_elements(:xpath => CheckOutPage::ORDER_SUMMARY_LABELS_XPATH).size <= 2)
+    end
+      
 
-    #PENDING METHOD
+    #TEST : CHANGE CREDIT CARD FEE, MAKING THE GUESTS COVER THE PROCESSING FEE (TC699)
     def  test_GuestCoverTheProcessingFee
+      #Login
+      Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
+        
+      #Go to cash gift settings
+      goToCashGiftSettings
+    
+      #Change the Credit Card Fee option to "Your Guests"
+      $browser.find_element(:id => CashGiftSettings::GUEST_COVER_FEE_RADIOBUTTON_ID).click    
+      $browser.find_element(:xpath => CashGiftSettings::SUBMIT_FEE_CHANGES_BUTTON_XPATH).click
+      $wait.until{
+        $browser.find_element(:id => CashGiftSettings::VALID_ACCOUNT_ENTER).displayed?
+      }
+      assert_equal($browser.find_element(:id => CashGiftSettings::VALID_ACCOUNT_ENTER).text, CashGiftSettings::FEE_SETTINGS_CHANGED_TEXT)
       
-      #TEST : CHANGE CREDIT CARD FEE, MAKING THE GUESTS COVER THE PROCESSING FEE (TC699)
+      #Log out
+      Common::logout
       
+      #Go to the registry page of the first account.
+      $browser.get Common::USER1_URL
+      $wait.until{
+        $browser.find_element(:xpath => RegistryPage::FIRST_PRODUCT_BUY_BUTTON_XPATH).displayed?
+      }
+      
+      #Add to cart a cash gift.
+      $browser.find_element(:xpath => RegistryPage::FIRST_PRODUCT_BUY_BUTTON_XPATH).click
+      $wait.until{
+        $browser.find_element(:xpath => CartModal::CHECKOUT_MODAL_XPATH).displayed?
+      }
+      
+      #Go to checkout page.
+      $browser.find_element(:xpath => CartModal::CHECKOUT_MODAL_XPATH).click
+      $wait.until{
+        $browser.find_element(:xpath => CheckOutModal::BUTTON_CHECKOUT_GUEST).displayed?
+      }
+      $browser.find_element(:xpath => CheckOutModal::BUTTON_CHECKOUT_GUEST).click
+      $wait.until{
+        $browser.find_element(:id => CheckOutPage::PLACEORDER_BUTTON_ID).displayed?
+      }
+         
+      #Handling Fees label is displayed
+      assert($browser.find_elements(:xpath => CheckOutPage::ORDER_SUMMARY_LABELS_XPATH).size > 2)      
     end  
-=end
 
   #Test cases TC715 and TC1483 add a successfully bank account and remove it
   def test_SuccessfullyAddRemoveAccount
@@ -69,7 +166,7 @@ class TestCashGiftSettings < TestBasic
     }
     
   end
-
+  
   #TEST : ADD A BANK ACCOUNT LEAVING THE ROUTING NUMBER IN BLANK (TC700)
   def test_LeaveRoutingNumBlank
  
@@ -710,23 +807,4 @@ class TestCashGiftSettings < TestBasic
     }
   end
 
-  #Go to Cash Gift Settings section
-  def goToCashGiftSettings
-    
-    #Clicks on Registry Settings
-    $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
-    $wait.until{
-        $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).displayed?
-    }
-    $browser.find_element(:id => HomePage::REGISTRY_SETTINGS_ID).click
-    $wait.until{
-        $browser.find_element(:id => RegistrySettingsPage::CASH_GIFT_SETTINGS_ID).displayed?
-    }
-    
-    #Clicks on Cash Gift Settings menu
-    $browser.find_element(:id => RegistrySettingsPage::CASH_GIFT_SETTINGS_ID).click
-    $wait.until{
-      $browser.find_element(:xpath => CashGiftSettings::SUBMIT_CHANGES_BUTTON_XPATH).displayed?
-    }
-  end
 end
