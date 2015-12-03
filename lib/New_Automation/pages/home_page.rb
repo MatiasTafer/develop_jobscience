@@ -5,7 +5,7 @@ class HomePage
   LOGIN_LINK_ID   = "loginLink"
   START_YOUR_REGISTRY_LINK_ID = "createRegistryLink"
   REGISTRY_EDIT_URL = "https://qa.zola.com/registry"
-  MY_ACCOUNT_LINK_XPATH = "(.//*[@class='dropdown dropdown-hover with-arrow']//*[@href='/account/info'])[1]"
+  MY_ACCOUNT_LINK_XPATH = ".//*[@class='dropdown dropdown-hover with-arrow']"
   CART_BUTTON_ID = "openCartLink"
   
   #Account sub-menu

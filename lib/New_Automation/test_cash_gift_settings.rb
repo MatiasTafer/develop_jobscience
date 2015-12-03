@@ -80,7 +80,7 @@ class TestCashGiftSettings < TestBasic
       }
          
       #Handling Fees label is not displayed
-      assert($browser.find_elements(:xpath => CheckOutPage::ORDER_SUMMARY_LABELS_XPATH).size <= 2)
+      assert($browser.find_elements(:xpath => CheckOutPage::ORDER_SUMMARY_LABELS_XPATH).size == 0)
     end
       
 
@@ -126,7 +126,7 @@ class TestCashGiftSettings < TestBasic
       }
          
       #Handling Fees label is displayed
-      assert($browser.find_elements(:xpath => CheckOutPage::ORDER_SUMMARY_LABELS_XPATH).size > 2)      
+      assert($browser.find_elements(:xpath => CheckOutPage::ORDER_SUMMARY_LABELS_XPATH).size > 0)      
     end  
 
   #Test cases TC715 and TC1483 add a successfully bank account and remove it

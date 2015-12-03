@@ -44,7 +44,7 @@ class NewSignupPage
         PARTNER_WEDDING_ROL_XPATH = "(.//*[@name='partnerType'])[1]"
     
         #STEP 2 
-        HAVENT_DECIDE_WEDDING_DATE_XPATH = ".//*[@name='eventDateSkip']"
+        HAVENT_DECIDE_WEDDING_DATE_XPATH = ".//*[@class='datepicker-undecided-label']"
         DATE_TEXTBOX_XPATH = ".//*[@name='eventDate']"
         
         #STEP 3 

@@ -27,18 +27,20 @@ class TestLogin < TestBasic
     $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys Common::USER1_EMAIL
     $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys Common::GLOBAL_PASSWORD
     $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit    
-    assert $wait.until {
+    $wait.until {
             $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }
+    assert_equal($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).text, "Hi Gregory")
     #Logout
     $browser.action.move_to($browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH)).perform
     $wait.until{
       $browser.find_element(:id, HomePage::LOG_OUT_LINK_ID).displayed?
     }
     $browser.find_element(:id, HomePage::LOG_OUT_LINK_ID).click
-    assert $wait.until{
+    $wait.until{
             $browser.find_element(:id, HomePage::LOGIN_LINK_ID).displayed?
     }
+    assert_equal($browser.find_element(:id, HomePage::LOGIN_LINK_ID).text,"Log In")
   end
 
   # Trying to log in with an unregistered user
@@ -136,4 +138,5 @@ class TestLogin < TestBasic
     }
     assert_equal($browser.find_element(:xpath => LoginModal::EMAIL_ERROR_MESSAGE_XPATH).text, LoginModal::EMAIL_ERROR_MESSAGE_TEXT)
   end
+
 end
