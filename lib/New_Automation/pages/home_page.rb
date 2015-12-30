@@ -16,7 +16,7 @@ class HomePage
   
   #HEADER LINKS
   HOME_SHOP_XPATH = "(.//*[@href='/shop'])[1]"
-  REGISTRY_LINK_XPATH = "(.//*[@href='/registry/oliviaandfitz/edit'])[2]"  
+  REGISTRY_LINK_ID = "editRegistryLink"  
   BLOG_LINK_XPATH = "(.//*[@href='http://blog.zola.com/'])[2]"
   LOGO_ZOLA_XPATH = "(.//*[@class='logo'])[1]"
   REGISTRY_UNIVERSAL_BUTTON_XPATH = "(.//*[@target='_self'])[1]"
@@ -58,7 +58,7 @@ class HomePage
   HOME_URL = "https://qa.zola.com"
   REGISTRY_URL = "https://qa.zola.com/registry/juanandjulisa/edit"
   FIND_REGISTRY_URL = "https://qa.zola.com/find-registry"
-  DOWNLOAD_APPS_URL = "https://qa.zola.com/simplify"
+  DOWNLOAD_APPS_URL = "https://qa.zola.com/registry/apps"
   REGISTRY_BENEFITS_URL = "https://qa.zola.com/registry/benefits"
   ZOLA_SHOP_URL = "https://qa.zola.com/shop/index"
   ABOUT_ZOLA_URL = "https://qa.zola.com/about/index"
@@ -79,8 +79,8 @@ class HomePage
   #ITEMS FROM OTHER PAGES
   TWITTER_PROFILE_IMAGE_XPATH = ".//*[@class='ProfileAvatar']"
   FACEBOOK_PROFILE_IMAGE_XPATH = ".//*[@class='profilePic img']"
-  GOOGLE_PLUS_PROFILE_IMAGE_XPATH = ".//*[@class='dkb photo']"
-  INSTAGRAM_ACCOUNT_NAME_XPATH = ".//*[@class='-cx-PRIVATE-ProfilePage__username']"
+  GOOGLE_PLUS_PROFILE_IMAGE_XPATH = ".//*[@class='NkN0Fc']"
+  INSTAGRAM_ACCOUNT_NAME_XPATH = ".//*[@class='_8gpiy _r43r5']"
   PINTEREST_PROFILE_IMAGE_XPATH = ".//*[@class='profileImage']"
   BLOG_HEADER_ID = "site-header"
   

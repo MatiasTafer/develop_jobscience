@@ -29,7 +29,7 @@ class CashGiftSettings
   STATE = "Nevada"
   ZIP_CODE = "89501"
   MONTH_OF_BIRTH = "December"
-  DAY_OF_BIRTH = "3"
+  DAY_OF_BIRTH = "31"
   YEAR_OF_BIRTH = "1999"
   #WRONG INFORMATION TO USE
   SHORT_ROUTING_NUMBER = "11000000"
