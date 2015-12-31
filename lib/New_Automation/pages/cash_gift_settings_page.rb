@@ -1,12 +1,12 @@
 require 'date'
-
+#Improve the way the buttons are obtained (id instead of xpath)
 class CashGiftSettings
   
   #BUTTONS AND TEXTBOXES
   YOU_COVER_FEE_RADIOBUTTON_ID = "coverCardFees"
   GUEST_COVER_FEE_RADIOBUTTON_ID = "doNotCoverCardFees"
-  SUBMIT_FEE_CHANGES_BUTTON_XPATH = "(.//*[@class='button teal big'])[1]"
-  SUBMIT_CHANGES_BUTTON_XPATH = "(.//*[@class='button teal big'])[2]"
+  SUBMIT_FEE_CHANGES_BUTTON_XPATH = ".//*[@id='registry-settings-fee-form-submit']"
+  SUBMIT_CHANGES_BUTTON_XPATH = ".//*[id='registry-settings-banking-form-submit']"
   ROUTING_NUMBER_ID = "banking-routing-number"
   ACCOUNT_TEXTBOX_ID = "banking-account-number"
   BANK_NAME_ID = "banking-name"

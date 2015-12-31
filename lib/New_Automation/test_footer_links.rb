@@ -34,7 +34,7 @@ class TestFooterLinks < TestBasic
     registryUrl = $browser.current_url
     $browser.find_element(:xpath => HomePage::EDIT_REGISTRY_LINK_XPATH).click
     $wait.until{
-      $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
+      $browser.find_elements(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).size > 0
     }    
     assert_equal($browser.current_url, registryUrl)
   end
