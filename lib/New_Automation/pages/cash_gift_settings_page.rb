@@ -6,7 +6,7 @@ class CashGiftSettings
   YOU_COVER_FEE_RADIOBUTTON_ID = "coverCardFees"
   GUEST_COVER_FEE_RADIOBUTTON_ID = "doNotCoverCardFees"
   SUBMIT_FEE_CHANGES_BUTTON_XPATH = ".//*[@id='registry-settings-fee-form-submit']"
-  SUBMIT_CHANGES_BUTTON_XPATH = ".//*[id='registry-settings-banking-form-submit']"
+  SUBMIT_CHANGES_BUTTON_XPATH = ".//*[@id='registry-settings-banking-form-submit']"
   ROUTING_NUMBER_ID = "banking-routing-number"
   ACCOUNT_TEXTBOX_ID = "banking-account-number"
   BANK_NAME_ID = "banking-name"
