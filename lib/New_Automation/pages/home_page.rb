@@ -16,7 +16,7 @@ class HomePage
   
   #HEADER LINKS
   HOME_SHOP_XPATH = "(.//*[@href='/shop'])[1]"
-  REGISTRY_LINK_ID = "editRegistryLink"  
+  REGISTRY_LINK_XPATH = ".//*[@id='collapsed-registry-nav']//*[@id='editRegistryLink']"  
   BLOG_LINK_XPATH = "(.//*[@href='http://blog.zola.com/'])[2]"
   LOGO_ZOLA_XPATH = "(.//*[@class='logo'])[1]"
   REGISTRY_UNIVERSAL_BUTTON_XPATH = "(.//*[@target='_self'])[1]"

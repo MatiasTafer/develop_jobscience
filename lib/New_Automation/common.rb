@@ -134,7 +134,7 @@ class Common
     }
     $browser.find_element(:xpath => LoginModal::EMAIL_FIELD_XPATH).send_keys userEmail
     $browser.find_element(:xpath => LoginModal::PASSWORD_FIELD_XPATH).send_keys password
-    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).submit
+    $browser.find_element(:xpath => LoginModal::LOGIN_BUTTON_XPATH).click
     $wait.until {
      $browser.find_element(:xpath => HomePage::MY_ACCOUNT_LINK_XPATH).displayed?
     }

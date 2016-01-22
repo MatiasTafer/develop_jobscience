@@ -27,7 +27,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - REGISTRY LINK (TC1432)
   def test_RegistryLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -42,7 +42,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - FIND LINK (TC1433)
   def test_FindLink  
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -57,7 +57,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - APPS LINK (TC1434)
   def test_AppsLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -72,7 +72,7 @@ class TestFooterLinks < TestBasic
   #TEST : REGISTRY BENEFITS LINK (TC1435)
   def test_RegistryBenefitsLink  
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -87,7 +87,7 @@ class TestFooterLinks < TestBasic
   #TEST : ZOLA SHOP LINK (TC1436)
   def test_ZolaShopLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -102,7 +102,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - ABOUT ZOLA LINK (TC1437)
   def test_AboutZolaLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -117,7 +117,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - PRESS LINK (TC1438)
   def test_PressLink  
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -132,7 +132,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - JOBS LINK (TC1439)
   def test_JobsLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -147,7 +147,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - BLOG LINK (TC1440)
   def test_BlogLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -166,7 +166,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - FAQS LINK (TC1441)
   def test_FaqsLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -181,7 +181,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - ORDER STATUS LINK (TC1442)
   def test_OrderStatusLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -197,7 +197,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - TWITTER LINK (TC1443)
   def test_TwitterLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -216,7 +216,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - FACEBOOK LINK (TC1444)
   def test_FacebookLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -250,7 +250,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER INSTAGRAM LINK (TC1446)
   def test_InstagramLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -269,7 +269,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - GOOGLE PLUS LINK (TC1447)
   def test_GooglePLusLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -288,7 +288,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - TERMS OF SERVICE LINK (TC1448)
   def test_ServiceTermsLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -303,7 +303,7 @@ class TestFooterLinks < TestBasic
   #TEST : FOOTER - PRIVACY POLICY LINK (TC1449)
   def test_PrivacyPolicyLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -318,7 +318,7 @@ class TestFooterLinks < TestBasic
   #TEST : MARKETING SERVICE TERMS (TC1450)
   def test_MarketingServiceLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
@@ -332,7 +332,7 @@ class TestFooterLinks < TestBasic
   #TEST : VENDOR TERMS (TC1451)
   def test_VendorTermsLink
     Common.login(Common::USER1_EMAIL, Common::GLOBAL_PASSWORD)
-    $browser.find_element(:id => HomePage::REGISTRY_LINK_ID).click
+    $browser.find_element(:xpath => HomePage::REGISTRY_LINK_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => RegistryPage::NEW_COLLECTION_BUTTON_XPATH).displayed?
     }
