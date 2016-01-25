@@ -280,7 +280,7 @@ class TestFooterLinks < TestBasic
     newWindow= $browser.window_handles[1]
     $browser.switch_to.window(newWindow)
     $wait.until{
-      $browser.find_element(:xpath => HomePage::GOOGLE_PLUS_PROFILE_IMAGE_XPATH).displayed?
+      $browser.find_element(:xpath => HomePage::GOOGLE_PLUS_CONTACTS_SECTION_XPATH).displayed?
     }    
     assert_equal($browser.current_url, HomePage::GOOGLE_PLUS_URL)
   end

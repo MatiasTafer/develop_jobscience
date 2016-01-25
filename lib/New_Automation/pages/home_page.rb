@@ -5,7 +5,7 @@ class HomePage
   LOGIN_LINK_ID   = "loginLink"
   START_YOUR_REGISTRY_LINK_ID = "createRegistryLink"
   REGISTRY_EDIT_URL = "https://qa.zola.com/registry"
-  MY_ACCOUNT_LINK_XPATH = ".//*[@class='dropdown dropdown-hover with-arrow']"
+  MY_ACCOUNT_LINK_XPATH = ".//*[@class='dropdown dropdown-hover with-arrow']/a"
   CART_BUTTON_ID = "openCartLink"
   
   #Account sub-menu
@@ -79,7 +79,7 @@ class HomePage
   #ITEMS FROM OTHER PAGES
   TWITTER_PROFILE_IMAGE_XPATH = ".//*[@class='ProfileAvatar']"
   FACEBOOK_PROFILE_IMAGE_XPATH = ".//*[@class='profilePic img']"
-  GOOGLE_PLUS_PROFILE_IMAGE_XPATH = ".//*[@class='NkN0Fc']"
+  GOOGLE_PLUS_CONTACTS_SECTION_XPATH = ".//*[@aria-label='Contact']"
   INSTAGRAM_ACCOUNT_NAME_XPATH = ".//*[@class='_8gpiy _r43r5']"
   PINTEREST_PROFILE_IMAGE_XPATH = ".//*[@class='profileImage']"
   BLOG_HEADER_ID = "site-header"
