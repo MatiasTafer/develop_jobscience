@@ -95,7 +95,8 @@ class Common
   #Generates an email
   def self.generate_email(name)
     randomString = SecureRandom.hex.gsub('-','')
-    name+"@"+randomString+".com"
+    randomNumber = SecureRandom.random_number(99999).to_s
+    name+randomNumber+"@"+randomString+".com"
   end
 
   #Generates an URL
