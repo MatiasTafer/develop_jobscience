@@ -15,8 +15,8 @@ def change_your_information (name, surname, email)
     $browser.find_element(:xpath, AccountInfoPage::LAST_NAME_FIELD_XPATH).clear
     $browser.find_element(:xpath, AccountInfoPage::LAST_NAME_FIELD_XPATH).send_keys surname
     $browser.find_element(:xpath, AccountInfoPage::EMAIL_FIELD_XPATH).clear
-    $browser.find_element(:xpath, AccountInfoPage::EMAIL_FIELD_XPATH).send_keys email
-    $browser.find_element(:xpath, AccountInfoPage::EMAIL_FIELD_XPATH).send_keys :tab
+    $browser.find_element(:xpath, AccountInfoPage::EMAIL_FIELD_XPATH).send_keys email,:tab
+    #$browser.find_element(:xpath, AccountInfoPage::EMAIL_FIELD_XPATH).send_keys :tab
     $browser.find_element(:xpath => AccountInfoPage::SAVE_CHANGES_BUTTON_XPATH).click
 end
 
