@@ -9,6 +9,31 @@ require_relative 'common.rb'
 #Suite: Login
 class TestLogin < TestBasic
 
+
+  def test_login
+    $browser.find_element(:id, LoginPage::NAME_TEXT_FIELD_ID).send_keys Common::USER_EMAIL
+    $browser.find_element(:id, LoginPage::PASSWORD_TEST_FIELD_ID).send_keys Common::PASSWORD
+    $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).send_keys
+    
+    
+    
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   # Logging in and logging out correctly
   def test_login_logout_ok
     #Login
