@@ -17,7 +17,7 @@ class Common
     $browser.find_element(:id, LoginPage::NAME_TEXT_FIELD_ID).send_keys username
     $browser.find_element(:id, LoginPage::PASSWORD_TEST_FIELD_ID).send_keys password
     $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).click
-    assert $wait.until{
+    $wait.until{
       $browser.find_element(:id, HomePage::HOME_TAB_LINK_ID).displayed? 
     } 
   end
