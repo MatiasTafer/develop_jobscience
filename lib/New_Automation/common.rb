@@ -10,8 +10,6 @@ class Common
   PASSWORD  = "muffin99"
   
   
-  
-  
   #LOGIN
   def login(username, password) 
     $browser.find_element(:id, LoginPage::NAME_TEXT_FIELD_ID).send_keys username
