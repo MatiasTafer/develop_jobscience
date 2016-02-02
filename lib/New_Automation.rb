@@ -1,4 +1,4 @@
-require 'ci/reporter/rake/test_unit_loader'
+#require 'ci/reporter/rake/test_unit_loader'
 require 'test-unit' 
 require 'rubygems'
 require 'selenium-webdriver'

@@ -1,20 +1,15 @@
 class HomePage
   
-  #TOP LINKS
-  LOGIN_LINK_ID   = "loginLink"
-  MY_ACCOUNT_LINK_XPATH = ".//*[@class='dropdown dropdown-hover with-arrow']/a"
-  
-  #Account sub-menu
-  REGISTRY_SETTINGS_ID = "your-registry-menu-registry-settings"
-  REGISTRY_SETTINGS_LINK_ID = "registrySettingsLink"
-  LOG_OUT_LINK_ID = "account-menu-logout"
-  
-  
-  #HEADER LINKS
-  HOME_SHOP_XPATH = "(.//*[@href='/shop'])[1]"
-  REGISTRY_LINK_XPATH = ".//*[@id='collapsed-registry-nav']//*[@id='editRegistryLink']"  
-  BLOG_LINK_XPATH = "(.//*[@href='http://blog.zola.com/'])[2]"
-  LOGO_ZOLA_XPATH = "(.//*[@class='logo'])[1]"
-  REGISTRY_UNIVERSAL_BUTTON_XPATH = "(.//*[@target='_self'])[1]"
+  #TAB LINKS
+  HOME_TAB_LINK_ID = "home_Tab"
+  SHORT_LIST_TAB_LINK_XPATH = ".//*[@id='tabBar']//*[@class='wt-s_UserList']"
+  POWER_SEARCH_TAB_LINK_XPATH = ".//*[@id='tabBar']//*[@class='wt-PowerSearch']"
+  APPLICATION_TAB_LINK_XPATH = ".//*[@id='tabBar']//*[@class='wt-Application']"
+  REQUISITION_TAB_LINK_XPATH = ".//*[@id='tabBar']//*[@class='wt-Job']"
+  PRESENTATION_TAB_LINK_XPATH = ".//*[@id='tabBar']//*[@class='wt-Presentation']"
+  CONTACT_TAB_LINK_ID = "Contact_Tab"
+  AMS_SETUP_TAB_LINK_XPATH = ".//*[@id='tabBar']//*[@class='wt-AMS-Setup']"
+  BOARD_SETUP_TAB_LINK_URL = "https://na17.salesforce.com/a0G/o"
+  ADVANCED_CONTACT_SEARCH_SIDEBAR_LINK_XPATH = ".//*[@class='sidebarModuleBody']//*[@class='searchFooter']/a"
   
 end
