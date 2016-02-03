@@ -11,5 +11,10 @@ class HomePage
   AMS_SETUP_TAB_LINK_XPATH = ".//*[@id='tabBar']//*[@class='wt-AMS-Setup']"
   BOARD_SETUP_TAB_LINK_URL = "https://na17.salesforce.com/a0G/o"
   ADVANCED_CONTACT_SEARCH_SIDEBAR_LINK_XPATH = ".//*[@class='sidebarModuleBody']//*[@class='searchFooter']/a"
+  JOB_TEMPLATES_TAB_LINK_URL = "https://na17.salesforce.com/a0B/o"
+  
+  
+  
+  
   
 end
