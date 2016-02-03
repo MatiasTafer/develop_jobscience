@@ -1,6 +1,5 @@
-class ApplicationsDetailPage
+class ApplicationsHomePage
   
-  APPLICATIONS_TAB_ID = "01ro0000000hRdN_Tab"
   APPLICATION_RECORD_ID = "a02o0000003w8V2_NAME"
   
 end

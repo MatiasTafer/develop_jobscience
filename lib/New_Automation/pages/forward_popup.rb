@@ -1,4 +1,4 @@
-class EmailActions
+class ForwardPopup
   
   # Forward pop-up
   TO_ICON_ID = "j_id0:j_id1:j_id2:frm:pbSendEmail:j_id39:j_id48:j_id52_lkwgt"
