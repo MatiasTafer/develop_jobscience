@@ -2,4 +2,14 @@ class RequisitionMassTransfer
   REQUISITIONS_MASS_TRANSFER_TRANSFER_TO_RECRUITER_XPATH = ".//*[@class='detailList']/tbody/tr/td[1]/span/input"
   REQUISITIONS_MASS_TRANSFER_BTN_TRANSFER_XPATH = "(.//*[@type='button'])[2]"
   REQUISITIONS_MASS_TRANSFER_BTN_BACK_TO_LIST_XPATH = ".//*[@class='btn'][2]"
+  
+  #PAGINATION MUST BE ON SECOND PAGE
+  REQUISITIONS_MASS_TRANSFER_RECORDS_PER_PAGE_XPATH = ".//*[@class='bottomNav']//select"
+  REQUISITIONS_MASS_TRANSFER_FIRST_PAGE_XPATH = ".//*[@class='first']"
+  REQUISITIONS_MASS_TRANSFER_PREVIOUS_PAGE_XPATH = ".//*[@class='prev']"
+  REQUISITIONS_MASS_TRANSFER_NEXT_PAGE_XPATH = ".//*[@class='next']"
+  REQUISITIONS_MASS_TRANSFER_LAST_PAGE_XPATH = ".//*[@class='last']"
+  REQUISITIONS_MASS_TRANSFER_CURRENT_PAGE_XPATH = ".//*[@class='bottomNav']//input"
+  REQUISITIONS_MASS_TRANSFER_NUMBER_OF_RECORDS_XPATH = "(.//*[@class='bottomNav']//span)[2]"
+
 end
