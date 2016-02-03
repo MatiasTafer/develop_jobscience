@@ -1,5 +1,5 @@
-class ApplicationsHomePage
+class ApplicationsDetailPage
   
-  FORWARD_APPLICATIONS_BUTTON_ID = "topButtonRow"
+  FORWARD_APPLICATIONS_BUTTON_ID = ".//*[@value='Forward Application']"
   
 end

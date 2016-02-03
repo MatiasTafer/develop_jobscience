@@ -1,4 +1,4 @@
-class AdvancedContactSearchPage
+class AdvancedContactSearchHomePage
 
   ADVANCED_CONTACT_SEARCH_ID = "sbsearch'"
 
