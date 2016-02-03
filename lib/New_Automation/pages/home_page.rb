@@ -16,7 +16,10 @@ class HomePage
   INTERVIEW_TAB_LINK_URL = "https://ts2extams.na17.visual.force.com/apex/Interview_Custom_List?save_new=1&sfdc.override=1"
   PLACEMENT_TAB_LINK_URL = "https://na17.salesforce.com/a0Q/o"
   ADVANCED_CONTACT_SEARCH_SIDEBAR_LINK_XPATH = ".//*[@class='sidebarModuleBody']//*[@class='searchFooter']/a"
+  PROJECTS_TAB_LINK_URL = "https://na17.salesforce.com/a0S/o"
+  QUESTION_SETS_LINK_URL = "https://na17.salesforce.com/a0T/o"
+  REQUISITIONS_LINK_URL = "https://na17.salesforce.com/a0K/o"
+  SOURCE_LINK_URL = "https://na17.salesforce.com/a0e/o"
   JOB_TEMPLATES_TAB_LINK_URL = "https://na17.salesforce.com/a0B/o"
-  
-  
+
 end
