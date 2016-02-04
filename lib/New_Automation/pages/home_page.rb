@@ -21,5 +21,6 @@ class HomePage
   REQUISITIONS_LINK_URL = "https://na17.salesforce.com/a0K/o"
   SOURCE_LINK_URL = "https://na17.salesforce.com/a0e/o"
   JOB_TEMPLATES_TAB_LINK_URL = "https://na17.salesforce.com/a0B/o"
+  STANDARD_QUESTIONS_TAB_LINK = "https://na17.salesforce.com/a0f/o"
 
 end
