@@ -7,6 +7,11 @@ class SetupEditPage
   AUTO_SHARE_MODE_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Auto_Share_Mode__c"
   STANDARD_QUESTION_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Standard_Question_Handler__c"
   INVITE_TO_APPLY_CUSTOM_MESSAGE_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Invite_to_Apply_Custom_Message__c"
+  EEO_QUESTION_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__EEO_Question_Handler__c"
+  COMMIT_EEO_DEFAULT_VALUE_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Commit_EEO_Default_Value__c" 
+  ENABLE_CLOSE_JOB_ORDER_WIZARD_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Close_Job_Order_Wizard__c"
+  QUESTION_SET_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Handler__c"
+  QUESTION_SET_DAY_HANDLER = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Days_Valid__c'"
   
   # Board Setup
   # board setup tab > record link > edit
@@ -39,5 +44,29 @@ class SetupEditPage
   TWITTER_TOKEN_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Twitter_token__c"
   TWITTER_SOURCE_TRACKING_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Twitter_Source_Tracking__c"
   
+  #EEO DEFAULT VALUES ON REQUISITIONS
+    #RACE
+    CONFIG_EEO_RACE_REQUISITIONS_DEFAULT_URL = "https://na17.salesforce.com/00No0000008HtQJ?setupid=CustomObjects"
+    EDIT_ASIAN_AS_DEFAULT_EEO_REQUISITION_PAGE_XPATH = ".//*[@title='Edit - Record 2 - Asian']"
+    SET_ASIAN_AS_DEFAULT_EEO_REQUISITION_CHECKBOX_ID = "p2"
+    SET_ASIAN_AS_DEFAULT_EEO_REQUISITION_SAVE_BTN_XPATH = ".//*[@Title='Save']"
+    
+    #VETERAN
+    CONFIG_EEO_RACE_REQUISITIONS_DEFAUL_URL = "https://na17.salesforce.com/00No0000008HtQU?setupid=CustomObjects"
+    EDIT_YES_AS_DEFAULT_EEO_REQUISITION_PAGE_XPATH = ".//*[@title='Edit - Record 1 - Yes, I am a protected veteran']"
+    SET_YES_AS_DEFAULT_EEO_REQUISITION_CHECKBOX_ID = "p2"
+    SET_YES_AS_DEFAULT_EEO_REQUISITION_SAVE_BTN_XPATH = ".//*[@Title='Save']"
+    
+    #GENDER
+    CONFIG_EEO_GENDER_REQUISITIONS_DEFAUL_URL = "https://na17.salesforce.com/00No0000008HtQ1?setupid=CustomObjects"
+    EDIT_FEMALE_AS_DEFAULT_EEO_REQUISITION_PAGE_XPATH = ".//*[@title='Edit - Record 1 - Female']"
+    SET_FEMALE_AS_DEFAULT_EEO_REQUISITION_CHECKBOX_ID = "p2"
+    SET_FEMALE_AS_DEFAULT_EEO_REQUISITION_SAVE_BTN_XPATH = ".//*[@title='Save']"
+    
+    #DISABLED
+    CONFIG_EEO_DISABLED_REQUISITIONS_DEFAUL_URL = "https://na17.salesforce.com/00No0000008HtPz?setupid=CustomObjects"
+    EDIT_YES_AS_DEFAULT_EEO_REQUISITION_PAGE_XPATH = ".//*[@title='Edit - Record 1 - Yes, I have a disability (or previously had a disability)']"
+    SET_YES_AS_DEFAULT_EEO_REQUISITION_CHECKBOX_ID = "p2"
+    SET_YES_AS_DEFAULT_EEO_REQUISITION_SAVE_BTN_XPATH = ".//*[@title='Save']"
   
 end
