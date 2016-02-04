@@ -24,7 +24,7 @@ class NewStandardQuestion
   QUESTION_TEXT_FIELD_XPATH = "(.//*[@class='data2Col '])[3]/span/textarea"
   QUESTION_LAYOUT_DROPDOWN_XPATH = "(.//*[@class='data2Col '])[4]/div/select"
   REQUIRED_BY_APPLICANT_CHECKBOX_XPATH = "(.//*[@class='detailList']/tbody/tr)[6]/td/input"
-  
+  ERROR_MESSAGE_XPATH = ".//*[@class='message errorM3']"
   
   
   

@@ -37,6 +37,25 @@ class TestStandardQuestions < TestBasic
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
   
+  #TC930 - New Standard Question, Field Validation, Required By Applicant = true
+  def test_newStandardQuestion
+    
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    $browser.get HomePage::STANDARD_QUESTIONS_TAB_LINK
+    $wait.until {
+      $browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_LINK
+      $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    assert $wait.until {
+      $browser.find_element(:xpath, NewStandardQuestion::ERROR_MESSAGE_XPATH).displayed?
+    }
+    
+  end
   
   
   
