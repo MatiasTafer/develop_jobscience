@@ -13,7 +13,6 @@ class TestStandardQuestions < TestBasic
 
   # TC928 New Standard Question, Successfully created, Required By Applicant = true
   def test_successfullyCreated
-    
     Common.login(Common::USER_EMAIL, Common::PASSWORD) 
     $browser.get HomePage::STANDARD_QUESTIONS_TAB_LINK
     $wait.until {
@@ -37,9 +36,9 @@ class TestStandardQuestions < TestBasic
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
 
+
   #TC930 - New Standard Question, Field Validation, Required By Applicant = true
   def test_FieldValidationQuestionAplicantTrue
-    
     Common.login(Common::USER_EMAIL, Common::PASSWORD) 
     $browser.get HomePage::STANDARD_QUESTIONS_TAB_LINK
     $wait.until {
@@ -55,8 +54,8 @@ class TestStandardQuestions < TestBasic
     assert $wait.until {
       $browser.find_element(:xpath, NewStandardQuestion::ERROR_MESSAGE_XPATH).displayed?
     }
-    
   end
+
 
   #TC931 - New Standard Question, Successfully created, Required By Applicant = false
   def test_NewStandaQuestionRequiredFalse
@@ -81,6 +80,7 @@ class TestStandardQuestions < TestBasic
     }
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
+
 
   #TC933 - New Standard Question, Field Validation, Required By Applicant = false
   def test_FieldValidationQuestionAplicantFalse
