@@ -57,6 +57,25 @@ class TestStandardQuestions < TestBasic
     
   end
   
+  #TC931 - New Standard Question, Successfully created, Required By Applicant = false
+  def test_NewStandaQuestionRequiredFalse
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    $browser.get HomePage::STANDARD_QUESTIONS_TAB_LINK
+    $wait.until {
+      $browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_LINK
+      $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, NewStandardQuestion::QUESTION_NAME_TEXT_FIELD_XPATH).send_keys NewStandardQuestion::QUESTION_NAME
+    $browser.find_element(:xpath, NewStandardQuestion::QUESTION_LAYOUT_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_LAYOUT_OPTION_1 
+    $browser.find_element(:xpath, NewStandardQuestion::CONTACT_FIELD_DROPDOWN_XPATH).send_keys NewStandardQuestion::CONTACT_FIELD_OPTION_1
+    $browser.find_element(:xpath, NewStandardQuestion::QUESTION_SIZE_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_SIZE_OPTION_1
+    $browser.find_element(:xpath, NewStandardQuestion::QUESTION_TEXT_FIELD_XPATH).send_keys NewStandardQuestion::QUESTION_NAME
+    $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    assert $wait.until {
+      $browser.current_url.eql?(HomePage::STANDARD_QUESTIONS_TAB_LINK)
+    }
+    assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
+  end
   
   
 end
