@@ -13,16 +13,16 @@ class Common
   PASSWORD  = "muffin99"
   
   
+  #LOGIN
   def self.login(username, password) 
-   $browser.find_element(:id, LoginPage::NAME_TEXT_FIELD_ID).send_keys username
-   $browser.find_element(:id, LoginPage::PASSWORD_TEST_FIELD_ID).send_keys password
-   $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).click
-   $wait.until {
-     $browser.current_url.eql?(HomePage::HOME_TAB_LINK_URL)
-   } 
- end
-    
-  
-  
+    $browser.find_element(:id, LoginPage::NAME_TEXT_FIELD_ID).send_keys username
+    $browser.find_element(:id, LoginPage::PASSWORD_TEST_FIELD_ID).send_keys password
+    $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).click
+    $wait.until {
+      $browser.current_url.eql?(HomePage::HOME_TAB_LINK_URL)
+    } 
+  end
+
+
   
 end
