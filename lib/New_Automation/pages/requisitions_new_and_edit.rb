@@ -31,5 +31,14 @@ class RequisitionsNewAndEdit
   REQUISITIONS_NEW_OPENINGS_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[5]/td[2]//input"
   REQUISITIONS_NEW_PASSING_SCORE_XPATH = "(.//*[@class='detailList'])[2]/tbody/tr[4]/td[4]//input"
   
-    
+  #TEXTS
+  RECORD_TYPE_OF_NEW_RECORD_TEXT = "Corporate" 
+  JOB_TITLE_TEXT =  "JobTitle"
+  PRIMARY_RECRUITER_TEXT = "Naomi Kihara"
+  LOCATION_TEXT = "San Francisco, CA"
+  DEPARTMENT_TEXT = "Dept ABC"
+  MIN_SALARY_TEXT = "1000"
+  MAX_SALARY_TEXT = "2000"
+  
+  
 end
