@@ -4,6 +4,7 @@ class SetupEditPage
   # setup > develop > custom settings > manage next to config > edit
   CONFIG_SETUP_EDIT_PAGE_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da07&id=a07o00000021XSy"
   
+  CONFIG_SETUP_EDIT_SAVE_BTN_XPATH = ".//*[@class='pbButton']//*[@value='Save']"
   AUTO_SHARE_MODE_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Auto_Share_Mode__c"
   STANDARD_QUESTION_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Standard_Question_Handler__c"
   INVITE_TO_APPLY_CUSTOM_MESSAGE_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Invite_to_Apply_Custom_Message__c"
@@ -57,10 +58,10 @@ class SetupEditPage
     SET_ASIAN_AS_DEFAULT_EEO_REQUISITION_SAVE_BTN_XPATH = ".//*[@Title='Save']"
     
     #VETERAN
-    CONFIG_EEO_RACE_REQUISITIONS_DEFAUL_URL = "https://na17.salesforce.com/00No0000008HtQU?setupid=CustomObjects"
-    EDIT_YES_AS_DEFAULT_EEO_REQUISITION_PAGE_XPATH = ".//*[@title='Edit - Record 1 - Yes, I am a protected veteran']"
-    SET_YES_AS_DEFAULT_EEO_REQUISITION_CHECKBOX_ID = "p2"
-    SET_YES_AS_DEFAULT_EEO_REQUISITION_SAVE_BTN_XPATH = ".//*[@Title='Save']"
+    CONFIG_EEO_VETERAN_REQUISITIONS_DEFAUL_URL = "https://na17.salesforce.com/00No0000008HtQU?setupid=CustomObjects"
+    EDIT_YES_VETERAN_DEFAULT_EEO_REQUISITION_PAGE_XPATH = ".//*[@title='Edit - Record 1 - Yes, I am a protected veteran']"
+    SET_YES_VETERAN_DEFAULT_EEO_REQUISITION_CHECKBOX_ID = "p2"
+    SET_YES_VETERAN_DEFAULT_EEO_REQUISITION_SAVE_BTN_XPATH = ".//*[@Title='Save']"
     
     #GENDER
     CONFIG_EEO_GENDER_REQUISITIONS_DEFAUL_URL = "https://na17.salesforce.com/00No0000008HtQ1?setupid=CustomObjects"
@@ -74,4 +75,8 @@ class SetupEditPage
     SET_YES_AS_DEFAULT_EEO_REQUISITION_CHECKBOX_ID = "p2"
     SET_YES_AS_DEFAULT_EEO_REQUISITION_SAVE_BTN_XPATH = ".//*[@title='Save']"
   
+  #JOB BOARD LOGIN OPTIONS
+  CONFIG_JOB_BOARD_LOGIN_URL = "https://na17.salesforce.com/udd/Site/editSiteLoginSettings.apexp?id=0DMo00000005Nzk"
+  CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:loginPageBlockSection:enableLogin']"
+  CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:thePageBlockButtons:save']"      
 end

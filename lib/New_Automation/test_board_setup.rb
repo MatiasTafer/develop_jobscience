@@ -138,7 +138,7 @@ class TestBoardSetup < TestBasic
     ]
     Common.main(test)
     # Test case
-    $browser.get HomePage::JOB_BOARD_PAGE_URL
+    $browser.get HomePage::JOB_BOARD_URL
     
     
   end
@@ -177,7 +177,7 @@ class TestBoardSetup < TestBasic
     Common.main(test)
     
     # steps
-    $browser.get HomePage::JOB_BOARD_PAGE_URL
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
     ]
@@ -200,7 +200,7 @@ class TestBoardSetup < TestBasic
     Common.main(test)
     
     # steps
-    $browser.get HomePage::JOB_BOARD_PAGE_URL
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
     ]
@@ -247,7 +247,7 @@ class TestBoardSetup < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::JOB_BOARD_PAGE_URL
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
       {"click" => JobBoardHomePage::REGISTER_LINK_XPATH},
@@ -288,7 +288,7 @@ class TestBoardSetup < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::JOB_BOARD_PAGE_URL
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
       {"click" => JobBoardHomePage::REGISTER_LINK_XPATH},
@@ -322,7 +322,7 @@ class TestBoardSetup < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::JOB_BOARD_PAGE_URL
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
       {"click" => JobBoardHomePage::REGISTER_LINK_XPATH},
@@ -356,7 +356,7 @@ class TestBoardSetup < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::JOB_BOARD_PAGE_URL
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
       {"click" => JobBoardHomePage::REGISTER_LINK_XPATH},
@@ -389,7 +389,7 @@ class TestBoardSetup < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::JOB_BOARD_PAGE_URL
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
       {"click" => JobBoardHomePage::REGISTER_LINK_XPATH},
