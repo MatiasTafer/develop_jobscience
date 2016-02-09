@@ -2,6 +2,7 @@ class ProjectsNewProject
   
   PROJECT_NAME = "ProjectName1"
   CURRENCY_INVALID_VALUE = "invalidCurrency"
+  DATE_INVALID_VALUE = "invalidDate"
   
   
   
@@ -23,6 +24,7 @@ class ProjectsNewProject
   ERROR = ".//*[@class='errorMsg']"
   
   #ERROR TEXTS
-  INVALID_CURRENCY = "Error: Invalid currency"
-  REQUIRED_FIELD = "Error: You must enter a value"
+  INVALID_CURRENCY_ERROR = "Error: Invalid currency"
+  REQUIRED_FIELD_ERROR = "Error: You must enter a value"
+  INVALID_DATE_ERROR = "Error: Invalid Date"
 end
