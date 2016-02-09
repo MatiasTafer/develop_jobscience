@@ -10,4 +10,6 @@ $browserName = ARGV[0]
 $browser
 $wait
 
-require './New_Automation/test_login'
+#require './New_Automation/session'
+
+require './New_Automation/test_board_setup'

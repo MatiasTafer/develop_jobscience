@@ -17,9 +17,9 @@ class SetupEditPage
   # board setup tab > record link > edit
   JOB_BOARD_SETUP_EDIT_PAGE_URL = "https://ts2.na17.visual.force.com/apex/JobBoardSetup?retURL=%2Fa0Go00000080Tcp&scontrolCaching=1&sfdc.override=1&id=a0Go00000080Tcp"
   
-  AUTO_ASSOCIATE_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id42"
-  SHOW_SEARCH_ONLY_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id39"
-  ALLOW_REGISTER_ONLY_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id41"
+  AUTO_ASSOCIATE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id42']"
+  SHOW_SEARCH_ONLY_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id39']"
+  ALLOW_REGISTER_ONLY_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id41']"
   RESUME_REQUIRE_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id44" 
   HIDE_RESUME_UPLOAD_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id43"
   HIDE_RESUME_PASTE_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id45"
@@ -32,8 +32,13 @@ class SetupEditPage
   HIDE_CONTACT_METHOD_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id56"
   DISABLE_MOBILE_JOB_BOARD_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id57"
   
+  SAVE_BUTTON_XPATH = ".//*[@value='Save']"
   # Custom Settings
   
+  # Parse settings edit page
+  PARSE_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0O"
+  PARSE_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
+  RESUME_DAYS_VALID_TEXT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']"
   
   
   # Social Settings
