@@ -44,10 +44,27 @@ class TestProjects <TestBasic
     }
     $browser.find_element(:xpath, ProjectsNewProject::PROJECTS_NEW_PROJECT_BTN_SAVE_XPATH).click
     assert $wait.until {
-      $browser.find_element(:xpath, ProjectsNewProject::ERROR_PROJECT_NAME_BLANK_XPATH).displayed?
+      $browser.find_element(:xpath, ProjectsNewProject::ERROR).displayed?
     }
   end
-  
-  
-  
+ 
+  #TC1152 - New Project Fields Validation with invalid currency
+  def test_invalidCurrencyValidation
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    $browser.get HomePage::PROJECTS_TAB_LINK_URL
+    $wait.until {
+      $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).click
+    $wait.until {
+      $browser.find_element(:id, ProjectsNewProject::PROJECTS_NEW_PROJECT_NAME_ID).displayed?
+    }
+    $browser.find_element(:id, ProjectsNewProject::PROJECTS_NEW_PROJECT_NAME_ID).send_keys ProjectsNewProject::PROJECT_NAME
+    $browser.find_element(:xpath, ProjectsNewProject::PROJECTS_NEW_BUDGET_XPATH).send_keys ProjectsNewProject::CURRENCY_INVALID_VALUE
+    $browser.find_element(:xpath, ProjectsNewProject::PROJECTS_NEW_PROJECT_BTN_SAVE_XPATH).click
+    assert $wait.until {
+      $browser.find_element(:xpath, ProjectsNewProject::ERROR).displayed?
+    }
+    assert_equal($browser.find_element(:xpath, ProjectsNewProject::ERROR).text, ProjectsNewProject::INVALID_CURRENCY)
+  end
 end

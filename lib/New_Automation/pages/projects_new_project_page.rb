@@ -1,6 +1,7 @@
 class ProjectsNewProject
   
   PROJECT_NAME = "ProjectName1"
+  CURRENCY_INVALID_VALUE = "invalidCurrency"
   
   
   
@@ -19,6 +20,9 @@ class ProjectsNewProject
   PROJECTS_NEW_START_DATE_XPATH = ".//*[@class='detailList']/tbody/tr[2]/td[4]//input"
   
   #ERRORS
-  ERROR_PROJECT_NAME_BLANK_XPATH = ".//*[@class='errorMsg']"
+  ERROR = ".//*[@class='errorMsg']"
   
+  #ERROR TEXTS
+  INVALID_CURRENCY = "Error: Invalid currency"
+  REQUIRED_FIELD = "Error: You must enter a value"
 end
