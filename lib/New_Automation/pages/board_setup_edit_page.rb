@@ -17,7 +17,7 @@ class BoardSetupEditPage
   BOARD_EDIT_ALLOW_REGISTER_ONLY_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[5]/td[1]//*[@type='checkbox']"
   BOARD_EDIT_AUTO_ASSOCIATE_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[5]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_HIDE_RESUME_UPLOAD_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[6]/td[1]//*[@type='checkbox']"
-  BOARD_EDIT_RESUME_REQUIRED_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[6]/td[2]//*[@type='checkbox']"
+  BOARD_EDIT_RESUME_REQUIRED_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id44']"
   BOARD_EDIT_HIDE_RESUME_PASTE_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[7]/td[1]//*[@type='checkbox']"
   BOARD_EDIT_HIDE_EMAIL_THIS_JOB_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[7]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_HIDE_RESUME_BUILDER_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[8]/td[1]//*[@type='checkbox']"
