@@ -17,5 +17,8 @@ class ProjectsNewProject
   
   #DATE FIELDS
   PROJECTS_NEW_START_DATE_XPATH = ".//*[@class='detailList']/tbody/tr[2]/td[4]//input"
-
+  
+  #ERRORS
+  ERROR_PROJECT_NAME_BLANK_XPATH = ".//*[@class='errorMsg']"
+  
 end
