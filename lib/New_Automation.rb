@@ -10,4 +10,8 @@ $browserName = ARGV[0]
 $browser
 $wait
 
+
+require './New_Automation/test_applications.rb'
+
 require './New_Automation/test_eeo_questions.rb'
+
