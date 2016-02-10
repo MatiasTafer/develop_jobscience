@@ -30,6 +30,7 @@ class RequisitionsNewAndEdit
     #NUMBER FIELDS
   REQUISITIONS_NEW_OPENINGS_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[5]/td[2]//input"
   REQUISITIONS_NEW_PASSING_SCORE_XPATH = "(.//*[@class='detailList'])[2]/tbody/tr[4]/td[4]//input"
+
   
   #TEXTS
   RECORD_TYPE_OF_NEW_RECORD_TEXT = "Corporate" 
@@ -41,4 +42,18 @@ class RequisitionsNewAndEdit
   MAX_SALARY_TEXT = "2000"
   
   
+
+    
+    #OTHER FIELDS
+  REQUISITIONS_NEW_QUESTIONS_SET_XPATH = "(.//*[@class='detailList'])[2]/tbody/tr[3]/td[4]//span/input"
+  REQUISITIONS_NEW_POST_JOB_BOX_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[2]/td[2]//input"
+  
+ #HARD CODE DATA
+ REQUISITIONS_NEW_DATA_TITLE_TEXT = "Test Job TC827"
+ REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT = "Naomi Kihara" 
+ REQUISITIONS_NEW_DATA_LOCATION_TEXT = "San Francisco, CA" 
+ REQUISITIONS_NEW_DATA_DEPARTMENT_TEXT = "Dept ABC"
+ REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT = "2000"
+ REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT = "4000" 
+
 end
