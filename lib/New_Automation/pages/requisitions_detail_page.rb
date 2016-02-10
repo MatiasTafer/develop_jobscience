@@ -8,6 +8,12 @@ class RequisitionsDetail
   REQUISITIONS_DETAIL_HIRING_MANAGER_XPATH = "(.//*[@class='dataCol inlineEditWrite'])[7]"
   REQUISITIONS_DETAIL_EXECUTIVE_APPROVER_XPATH = "(.//*[@class='dataCol inlineEditWrite'])[8]"
   
-  SITE_URL_XPATH = ".//*[@class='list']/tbody/tr[1]/td[5]/a"
+  SITE_URL_ID = "j_id0:frm:pageBlock:j_id30:0:j_id43"
+  
+  #Webpage Search Opening TC965, JS2 Projects
+  FIRST_SEARCH_RESULT_LINK_XPATH = ".//*[@class='atsSearchResultsTable']/tbody/tr[1]/td[1]/a"
   
 end
+
+
+
