@@ -21,6 +21,7 @@ class QuestionSetsNew
   #HARD CODE DATA
   QUESTION_SETS_NAME_TEXT = "Test case TC819"
   QUESTION_SETS_NAME_2_TEXT = "Test Question Set w Questions"
+  QUESTION_SETS_NAME_3_TEXT = "Test Question Set TC830"
   QUESTION_SETS_PASSING_SCORE_INVALID_TEXT = "abcdef"
   
 

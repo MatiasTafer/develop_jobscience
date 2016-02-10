@@ -5,7 +5,7 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_EMAIL_XPATH = "(.//*[@class='atsInput'])[1]"
   JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH = "(.//*[@class='atsInput'])[2]"
   JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH = "(.//*[@class='atsInput'])[3]"
-  
+  JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_ID = "HowDidYouHearAboutUs"
   
   JOB_BOARD_APPLY_JOB_CONTINUE_XPATH = ".//*[@value='Continue']"
   JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH = ".//*[@id='js-menu-search']/a"

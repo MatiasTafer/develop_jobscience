@@ -423,11 +423,19 @@ class TestEeoQuestions < TestBasic
     $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
     $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
     $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    
+    #If How did you hear about us? is displayed
+    if $browser.find_element(:id => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_ID).displayed?
+      $browser.find_element(:id => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_ID).send_keys "Job Board"
+    end
+    
     $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).click
     $wait.until{
-      $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).displayed?
+      $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).click
+    if $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).displayed?
+      $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).click
+    end
     
     # 2 - Verify that questions are shown correctly
     # Question 1 must be required and no text
@@ -529,7 +537,7 @@ class TestEeoQuestions < TestBasic
     $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH + "//*[text()[contains(.,'" + QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_TEXT_XPATH + "')]]") 
     
   end
-=end  
+ 
   # TC829 - New Question, Question Size 
   def test_NewQuestionSize
     
@@ -609,8 +617,184 @@ class TestEeoQuestions < TestBasic
     # 12 - You will be redirected to the "Question" page.
     $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH + "//*[text()[contains(.,'" + QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_2_TEXT_XPATH + "')]]")
     $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_SIZE_XPATH + "//*[text()[contains(.,'Rich Text (up to 32k)')]]")
-  end  
+  
+  end
+=end  
+  
+  #TC830 - New Question, Optional
+  def test_NewQuestionOptional 
     
+    #PRECONDITION: Must be logged in
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    #Create an empty Question Sets
+    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_3_TEXT)
+    
+     #Create Job with Question Set asociated
+    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    $wait.until{
+      $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
+      }
+    $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH).displayed?
+      }
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH).click
+    $wait.until{
+      $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).displayed?
+      }
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC830_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_DEPARTMENT_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_3_TEXT
+    
+    unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
+      $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
+    end
+    
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
+    
+    #JobBoard without login
+    CustomSettings.JobBoardLogin(false)
+    
+    # 1 - Click on Tab "Question Sets"
+    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
+      }
+    
+    # 2 - Click on previously created Question Set's name from the list
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_3_TEXT + "')]]").click
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
+      }
+    
+    # 3 - Click on "New Question"
+    $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_XPATH).displayed?
+      }
+    
+    # 4 - Fill all the fields
+    $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_XPATH).send_keys QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_TEXT_XPATH
+    $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_ORDER_XPATH).send_keys QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_ORDER_INT_XPATH
+    $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_QUESTION_XPATH).send_keys QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_TEXT_XPATH
+
+    # 5 - Check "Optional" box
+    unless $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_OPTIONAL_XPATH).attribute("checked")
+      $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_OPTIONAL_XPATH).click
+    end
+   
+    # 6 - Click on "Save"
+    $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_BTN_SAVE_XPATH).click
+    
+    $wait.until{
+      $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH).displayed?
+      }
+    $browser.find_element(:xpath => QuestionDetailPage::)
+      
+      
+    #RESULTS
+    # 6 - You will be redirected to the "Question" page.
+    $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH + "//*[text()[contains(.,'" + QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_TEXT_XPATH + "')]]")
+    $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_OPTIONAL_XPATH + "//*[@title='Checked']") 
+      
+    # 7 - Click on Tab "Question Sets"
+    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
+      }
+    
+    # 8 - Click on previously created Question Set's name from the list
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_3_TEXT + "')]]").click
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
+      }
+    
+    # 9 - Click on "New Question"
+    $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_XPATH).displayed?
+      }
+    
+    # 10 - Fill all the fields
+    $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_XPATH).send_keys QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_2_TEXT_XPATH
+    $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_ORDER_XPATH).send_keys QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_ORDER_2_INT_XPATH
+    $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_QUESTION_XPATH).send_keys QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_2_TEXT_XPATH
+
+    # 11 - Uncheck "Optional" box
+    if $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_OPTIONAL_XPATH).attribute("checked")
+      $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_OPTIONAL_XPATH).click
+    end
+   
+    # 12 - Click on "Save"
+    $browser.find_element(:xpath => QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_BTN_SAVE_XPATH).click
+    
+    $wait.until{
+      $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH).displayed?
+      } 
+    
+    #RESULTS
+    # 12 - You will be redirected to the "Question" page.
+    $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH + "//*[text()[contains(.,'" + QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_2_TEXT_XPATH + "')]]")
+    $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_OPTIONAL_XPATH + "//*[@title='Not Checked']") 
+    
+    # 13 - Apply to a job from the job board site, with Question Set asociated.
+    $browser.get(HomePage::JOB_BOARD_URL)
+    $wait.until{
+      $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
+      }
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC830_TEXT + "')]]").click
+    $wait.until{
+      $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
+      }
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
+      }
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    
+    #If How did you hear about us? is displayed
+    if $browser.find_element(:id => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_ID).displayed?
+      $browser.find_element(:id => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_ID).send_keys "Job Board"
+    end
+       
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH).displayed?
+      }
+    if $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).displayed?
+      $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).click
+    end
+    
+    
+    # 14 - Verify that questions are shown correctly
+    # Question 1 must be required and no text
+    $wait.until{
+      $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_1_XPATH).displayed?
+      }
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_1_XPATH + "//*[@class='atsRequired']")
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_1_INPUT_XPATH + "//select")
+    
+    # Question 2 must be optional and no text
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_2_XPATH)
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_2_INPUT_XPATH + "//select")
+    
+    # Question 3 must be optional and text
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_3_XPATH)
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_3_INPUT_XPATH + "//textarea")
+    
+    # Question 4 must be required and text
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_4_XPATH + "//*[@class='atsRequired']")
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_4_INPUT_XPATH + "//textarea")
+    
+    
+  end 
    
   def CreateQuestionSetWithQuestions
          
@@ -745,6 +929,28 @@ class TestEeoQuestions < TestBasic
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTIONS_LIST_FOURTH_XPATH).displayed?
     }
       
+  end
+  
+  def CreateQuestionSetEmpty(name)
+     # 1 - Go to "Question Sets" Tab
+    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+   
+    # 2 - Click on New button
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
+    }
+   
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).click
+   
+    # 3 - FIll all the fields
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).displayed?
+    }
+    
+    $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys name
+    
+    # 4 - Click on "Save" button
+    $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).click
   end
   
   
