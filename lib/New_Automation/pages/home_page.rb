@@ -22,6 +22,7 @@ class HomePage
   SOURCE_LINK_URL = "https://na17.salesforce.com/a0e/o"
   JOB_TEMPLATES_TAB_LINK_URL = "https://na17.salesforce.com/a0B/o"
   STANDARD_QUESTIONS_TAB_LINK = "https://na17.salesforce.com/a0f/o"
-  
+
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
+
 end
