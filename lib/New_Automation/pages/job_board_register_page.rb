@@ -6,7 +6,7 @@ class JobBoardRegisterPage
   JOB_BOARD_REGISTER_FIRST_NAME_XPATH = "(.//*[@class='atsInput'])[4]"
   JOB_BOARD_REGISTER_LAST_NAME_XPATH = "(.//*[@class='atsInput'])[5]"
   JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH = ".//*[@class='atsButton']"
-  
+  JOB_BOARD_REGISTER_QUESTION_XPATH = ".//*[@id='j_id0:j_id1:atsForm:candidateSource']"
   #SECOND STEP
   JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH = ".//*[@class='atsButton']"
 

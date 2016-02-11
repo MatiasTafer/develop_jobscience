@@ -11,4 +11,12 @@ class RequisitionsDetail
   REQUISITIONS_DETAIL_EXECUTIVE_APPROVER_XPATH = "(.//*[@class='dataCol inlineEditWrite'])[8]"
   REQUISITIONS_DETAIL_QUESTION_SET_XPATH = "(.//*[@class='detailList'])[2]//tr[3]/td[4]/span/input"
   
+  SITE_URL_XPATH = ".//*[@id='j_id0:frm:pageBlock:j_id30:tb']/tr[1]/td[5]/a"
+  
+  #Webpage Search Opening TC965, JS2 Projects
+  FIRST_SEARCH_RESULT_LINK_XPATH = ".//*[@class='atsSearchResultsTable']/tbody/tr[1]/td[1]/a"
+  
 end
+
+
+

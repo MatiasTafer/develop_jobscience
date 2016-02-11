@@ -11,6 +11,7 @@ require_relative 'test_basic.rb'
 require_relative './pages/login_page.rb'
 require_relative './pages/home_page.rb'
 
+
 class Common
   USER_EMAIL = "naomi@joblabs.com"
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
@@ -28,6 +29,7 @@ class Common
    } 
  end
     
+
   #Selects the option from a Select element, by Text
   # selectElement: dropdown element
   # optionText: string option to be selected from the dropdown  
@@ -62,6 +64,25 @@ class Common
       }
   end
   
+  def self.not_displayed(field)
+    begin
+      $wait.until{
+        return $browser.find_element(:xpath => field).displayed?
+      }
+    rescue
+      return true
+    end
+  end
+  
+  def self.assert(field)
+    return assert $browser.find_element(:xpath, field).displayed?
+ 
+  end
+  
+  def self.assert_equal(text, text2)
+    assert_equal($browser.find_element(:xpath => text).text, text2)
+  end
+  
   def self.set_text(field, text)
     begin
       $browser.find_element(:xpath => field).clear()
@@ -83,6 +104,10 @@ class Common
         puts "displayed"
         self.displayed(i["displayed"])
       end
+      if i["not_displayed"]
+        puts "not displayed"
+        self.not_displayed(i["not_displayed"])
+      end
       if i["checked"]
         puts "checked"
         begin
@@ -91,10 +116,6 @@ class Common
           #puts "An error of type #{ex.class} happened, message is #{ex.message}"
           puts "Error" 
           self.click(i["checked"])
-          self.click(i["save"])
-          self.displayed(".//*[@name='edit']")
-          self.click(".//*[@name='edit']")
-          self.displayed(i["checked"] + "[@checked='checked']")
         end
       end 
       if i["unchecked"]
@@ -104,20 +125,25 @@ class Common
         rescue Exception => ex
           #puts "An error of type #{ex.class} happened, message is #{ex.message}"
           self.click(i["unchecked"])
-          self.click(i["save"])
-          self.displayed(".//*[@name='edit']")
-          self.click(".//*[@name='edit']")
-          self.displayed(i["checked"] + "[not (@checked='checked')]")
         end
       end 
       if i["set_text"]
         puts "set_text"
         self.set_text(i["set_text"], i["text"])
       end
+      if i["assert"]
+        puts "assert"
+        self.assert(i["assert"])
+      end
+      if i["assert_equal"]
+        puts "assert equal"
+        self.assert_equal(i["assert_equal"])
+      end
     end
     
     return true
   end
+
 
   
 end
