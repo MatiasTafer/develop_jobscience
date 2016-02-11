@@ -9,6 +9,7 @@ require_relative './pages/projects_home_page.rb'
 require_relative './pages/projects_new_project_page.rb'
 require_relative './pages/requisitions_new_and_edit.rb'
 require_relative './pages/requisitions_detail_page.rb'
+require_relative './pages/project_edit_page.rb'
 
 
 class TestProjects <TestBasic
@@ -231,7 +232,7 @@ class TestProjects <TestBasic
     assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit::ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_INVALID_NUMBER_TEXT)
   end
 
-=end
+
 
   
   #TC1159 - Project, New Job Order Validation Invalid Percent
@@ -270,5 +271,55 @@ class TestProjects <TestBasic
   end
 
 
+  #TC967 - Clone Project
+  def test_cloneProject
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    $browser.get HomePage::PROJECTS_TAB_LINK_URL
+    $wait.until {
+      $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_FIRST_ENTRY_LIST_LINK_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_CLONE).displayed?
+    }
+    $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_CLONE).click
+    assert $wait.until{
+      $browser.find_element(:xpath, ProjectEdit::PROJECT_EDIT_TITLE_XPATH).displayed?
+    }
+  end
 
+=end
+  
+  #TC968 - Delete Project
+  def test_deleteProject
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    $browser.get HomePage::PROJECTS_TAB_LINK_URL
+    $wait.until {
+      $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).click
+    $wait.until {
+      $browser.find_element(:id, ProjectsNewProject::PROJECTS_NEW_PROJECT_NAME_ID).displayed?
+    }
+    $browser.find_element(:id, ProjectsNewProject::PROJECTS_NEW_PROJECT_NAME_ID).send_keys ProjectsNewProject::PROJECT_NAME
+    $browser.find_element(:xpath, ProjectsNewProject::PROJECTS_NEW_PROJECT_BTN_SAVE_XPATH).click
+    $browser.get HomePage::PROJECTS_TAB_LINK_URL
+    $wait.until {
+      $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_FIRST_ENTRY_LIST_LINK_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_DELETE).displayed?
+    }
+    $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_DELETE).click
+    $browser.switch_to.alert.accept
+    assert $wait.until {
+      $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
+    } 
+  end
+  
+  
+  
+  
+   
 end
