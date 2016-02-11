@@ -12,7 +12,7 @@ require_relative './pages/requisitions_detail_page.rb'
 
 
 class TestProjects <TestBasic
-
+=begin
   #TC963 - New Project Successfully Created
   def test_projectSuccessCreated
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -91,6 +91,7 @@ class TestProjects <TestBasic
     }
     assert_equal($browser.find_element(:xpath, ProjectsNewProject::ERROR).text, ProjectsNewProject::INVALID_DATE_ERROR)
   end
+=end
 
 =begin
   #TC965 - Project, New Job Order
@@ -121,9 +122,9 @@ class TestProjects <TestBasic
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::MAX_SALARY_TEXT
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
     $wait.until {
-      $browser.find_element(:id, RequisitionsDetail::SITE_URL_ID).displayed?
+      $browser.find_element(:xpath, RequisitionsDetail::SITE_URL_XPATH).displayed?
     }
-    $browser.find_element(:id, RequisitionsDetail::SITE_URL_ID).click
+    $browser.find_element(:xpath, RequisitionsDetail::SITE_URL_XPATH).click
     newWindow= $browser.window_handles[1]
     $browser.switch_to.window(newWindow)
     assert $wait.until {
@@ -131,6 +132,104 @@ class TestProjects <TestBasic
     }
   end
 =end
+=begin
+  #TC966 - Project, New Job Order Required Field Validation
+  def test_projectRequiredValidation
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    $browser.get HomePage::PROJECTS_TAB_LINK_URL
+    $wait.until {
+      $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_FIRST_ENTRY_LIST_LINK_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_NEW_REQUISITION).displayed?
+    }
+    $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_NEW_REQUISITION).click
+    $wait.until{
+      $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH).displayed?
+    }
+    $browser.find_element(:id, RequisitionsNewAndEdit::REQUISITIONS_NEW_RECORD_TYPE_ID).send_keys RequisitionsNewAndEdit::RECORD_TYPE_OF_NEW_RECORD_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
+    assert $wait.until{
+      $browser.find_element(:xpath, RequisitionsNewAndEdit::ERROR_MESSAGE_FIELD_XPATH).displayed?
+    }
+    assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit::ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_REQUIRED_FIELDS_TEXT)
+  end
+
+
+
+  #TC1157 - Project, New Job Order Validation invalid currency
+  def test_projectInvalidCurrency
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    $browser.get HomePage::PROJECTS_TAB_LINK_URL
+    $wait.until {
+      $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_FIRST_ENTRY_LIST_LINK_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_NEW_REQUISITION).displayed?
+    }
+    $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_NEW_REQUISITION).click
+    $wait.until{
+      $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH).displayed?
+    }
+    $browser.find_element(:id, RequisitionsNewAndEdit::REQUISITIONS_NEW_RECORD_TYPE_ID).send_keys RequisitionsNewAndEdit::RECORD_TYPE_OF_NEW_RECORD_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).displayed?
+    }
+    $browser.find_element(:id, RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::JOB_TITLE_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::LOCATION_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH).send_keys RequisitionsNewAndEdit::DEPARTMENT_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::MIN_SALARY_WRONG_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::MAX_SALARY_WRONG_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
+    assert $wait.until{
+      $browser.find_element(:xpath, RequisitionsNewAndEdit::ERROR_MESSAGE_FIELD_XPATH).displayed?
+    }
+    assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit::ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_INVALID_CURRENCY_TEXT)
+  end
+=end
+  
+  #TC1158 - Project, New Job Order Validation Invalid Number
+  def test_projectInvalidNumber
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    $browser.get HomePage::PROJECTS_TAB_LINK_URL
+    $wait.until {
+      $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_FIRST_ENTRY_LIST_LINK_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_NEW_REQUISITION).displayed?
+    }
+    $browser.find_element(:xpath, ProjectDetail::PROJECT_DETAIL_BTN_NEW_REQUISITION).click
+    $wait.until{
+      $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH).displayed?
+    }
+    $browser.find_element(:id, RequisitionsNewAndEdit::REQUISITIONS_NEW_RECORD_TYPE_ID).send_keys RequisitionsNewAndEdit::RECORD_TYPE_OF_NEW_RECORD_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).displayed?
+    }
+    $browser.find_element(:id, RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::JOB_TITLE_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::LOCATION_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH).send_keys RequisitionsNewAndEdit::DEPARTMENT_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::MIN_SALARY_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::MAX_SALARY_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_OPENINGS_XPATH).send_keys RequisitionsNewAndEdit::OPENINGS_WRONG_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_PASSING_SCORE_XPATH).send_keys RequisitionsNewAndEdit::PASSING_SCORE_WRONG_TEXT
+    $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
+    assert $wait.until{
+      $browser.find_element(:xpath, RequisitionsNewAndEdit::ERROR_MESSAGE_FIELD_XPATH).displayed?
+    }
+    assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit::ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_INVALID_NUMBER_TEXT)
+  end
 
 
 
