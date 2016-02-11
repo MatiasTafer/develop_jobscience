@@ -13,7 +13,7 @@ require_relative './pages/project_edit_page.rb'
 
 
 class TestProjects <TestBasic
-=begin
+
   #TC963 - New Project Successfully Created
   def test_projectSuccessCreated
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -92,7 +92,7 @@ class TestProjects <TestBasic
     }
     assert_equal($browser.find_element(:xpath, ProjectsNewProject::ERROR).text, ProjectsNewProject::INVALID_DATE_ERROR)
   end
-=end
+
 
 =begin
   #TC965 - Project, New Job Order
@@ -133,7 +133,7 @@ class TestProjects <TestBasic
     }
   end
 =end
-=begin
+
   #TC966 - Project, New Job Order Required Field Validation
   def test_projectRequiredValidation
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -288,7 +288,6 @@ class TestProjects <TestBasic
     }
   end
 
-=end
   
   #TC968 - Delete Project
   def test_deleteProject
