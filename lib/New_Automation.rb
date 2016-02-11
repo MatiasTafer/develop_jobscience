@@ -12,11 +12,22 @@ $wait
 
 
 
+
+#require './New_Automation/test_board_setup'
+
+
+#require './New_Automation/test_standard_questions'
+
 require './New_Automation/test_projects'
 
 
 
+
 #require './New_Automation/test_board_setup'
+
+
+#require './New_Automation/test_applications.rb'
+
 
 
 #require './New_Automation/test_standard_questions'

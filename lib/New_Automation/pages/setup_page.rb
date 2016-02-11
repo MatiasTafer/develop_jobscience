@@ -32,6 +32,9 @@ class SetupEditPage
   HIDE_SOURCE_QUESTION_CHECKBOX_ID = "'j_id0:frm:PageBlock:j_id32:j_id54"
   HIDE_CONTACT_METHOD_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id56"
   DISABLE_MOBILE_JOB_BOARD_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id57"
+  STANDARD_QUESTION_1_OPTION_1_XPATH = "((.//*[@class='detailList'])[3]//select)[1]/option[1]"
+  STANDARD_QUESTION_2_OPTION_1_XPATH = "((.//*[@class='detailList'])[3]//select)[2]/option[1]"
+  STANDARD_QUESTION_3_OPTION_1_XPATH = "((.//*[@class='detailList'])[3]//select)[3]/option[1]"
   
   SAVE_BUTTON_XPATH = ".//*[@value='Save']"
   # Custom Settings
