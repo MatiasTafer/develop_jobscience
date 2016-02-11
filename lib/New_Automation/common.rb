@@ -11,6 +11,7 @@ require_relative 'test_basic.rb'
 require_relative './pages/login_page.rb'
 require_relative './pages/home_page.rb'
 
+
 class Common
   USER_EMAIL = "naomi@joblabs.com"
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
@@ -28,6 +29,7 @@ class Common
    } 
  end
     
+
   #Selects the option from a Select element, by Text
   # selectElement: dropdown element
   # optionText: string option to be selected from the dropdown  
@@ -141,6 +143,7 @@ class Common
     
     return true
   end
+
 
   
 end

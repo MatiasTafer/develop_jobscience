@@ -21,6 +21,9 @@ class RequisitionsNewAndEdit
   REQUISITIONS_NEW_MAX_SALARY_XPATH = ".//*[@id='00No0000008HtYy']"
   REQUISITIONS_NEW_DEPARTAMENT_XPATH = ".//*[@id='00No0000008HtYJ']"
   REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH = ".//*[@name='save']"
+  REQUISITIONS_JOBS_PROJECTS_FIELD_XPATH = ".//*[@id='00No0000008HtYf']"
+  REQUISITIONS_CLIENT_FIELD_XPATH = ".//*[@id='CF00No0000008HtXu']"
+  REQUISITIONS_CONTACT_FIELD_XPATH = ".//*[@id='CF00No0000008HtY9']"
   
     #DATE FIELDS
   REQUISITIONS_NEW_DATE_POSTED_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[1]/td[4]//input"
@@ -31,16 +34,41 @@ class RequisitionsNewAndEdit
     #NUMBER FIELDS
   REQUISITIONS_NEW_OPENINGS_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[5]/td[2]//input"
   REQUISITIONS_NEW_PASSING_SCORE_XPATH = "(.//*[@class='detailList'])[2]/tbody/tr[4]/td[4]//input"
+
+  
+  #HARD CODE DATA
+  RECORD_TYPE_OF_NEW_RECORD_TEXT = "Corporate" 
+  RECORD_TYPE_OF_NEW_RECORD_TEXT_2 = "Internship"
+  JOB_TITLE_TEXT =  "JobTitle"
+  PRIMARY_RECRUITER_TEXT = "Naomi Kihara"
+  LOCATION_TEXT = "San Francisco, CA"
+  DEPARTMENT_TEXT = "Dept ABC"
+  MIN_SALARY_TEXT = "1000"
+  MAX_SALARY_TEXT = "2000"
+  MIN_SALARY_WRONG_TEXT = "minWrongText"
+  MAX_SALARY_WRONG_TEXT = "maxWrongText"
+  OPENINGS_WRONG_TEXT = "openingWrong"
+  PASSING_SCORE_WRONG_TEXT = "scoreWrong"
+  JOB_PROJECTS_TEXT= "Function ABC"
+  CLIENT_TEXT = "Candidates"
+  CONTACT_TEXT = "Charlie Day2"
+  TRAVEL_WRONG_PERCENT_TEXT = "wrongPercent"
+
     
-    #OTHER FIELDS
+  #OTHER FIELDS
   REQUISITIONS_NEW_QUESTIONS_SET_XPATH = "(.//*[@class='detailList'])[2]/tbody/tr[3]/td[4]//span/input"
   REQUISITIONS_NEW_POST_JOB_BOX_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[2]/td[2]//input"
+  REQUISITION_TRAVEL_FIELD_XPATH = ".//*[@id='00No0000008HtZb']"
   
- #HARD CODE DATA
- REQUISITIONS_NEW_DATA_TITLE_TEXT = "Test Job TC827"
- REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT = "Naomi Kihara" 
- REQUISITIONS_NEW_DATA_LOCATION_TEXT = "San Francisco, CA" 
- REQUISITIONS_NEW_DATA_DEPARTMENT_TEXT = "Dept ABC"
- REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT = "2000"
- REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT = "4000" 
+ 
+ #ERROR
+ ERROR_MESSAGE_FIELD_XPATH = ".//*[@class='errorMsg']"
+ 
+ 
+ #ERROR TEXTS
+ ERROR_REQUIRED_FIELDS_TEXT = "Error: You must enter a value"
+ ERROR_INVALID_CURRENCY_TEXT = "Error: Invalid currency"
+ ERROR_INVALID_NUMBER_TEXT = "Error: Invalid number"
+ ERROR_INVALID_PERCENT_TEXT = "Error: Invalid percent"
+
 end
