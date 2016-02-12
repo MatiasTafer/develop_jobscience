@@ -44,7 +44,7 @@ class TestStandardQuestions < TestBasic
     }
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
-=end
+
 
   #TC929 - Validation of new standar question, Required By Applicant = true
   def test_validationStandarQuestion
@@ -121,7 +121,7 @@ class TestStandardQuestions < TestBasic
     }
     
   end
-=begin  
+
 
   #TC930 - New Standard Question, Field Validation, Required By Applicant = true
   def test_FieldValidationQuestionAplicantTrue
@@ -256,7 +256,7 @@ class TestStandardQuestions < TestBasic
     } 
   end
 =end
-=begin  
+ 
   #TC934 - Standard Question Handler, Standard Question Handler = Always
   def test_StandardQuestionHandlerAlways
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -278,17 +278,71 @@ class TestStandardQuestions < TestBasic
     $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_FIRST_NAME_XPATH).send_keys JobBoardRegisterPage::FIRST_NAME_TEXT
     $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_LAST_NAME_XPATH).send_keys JobBoardRegisterPage::LAST_NAME_TEXT
     $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH).send_keys JobBoardRegisterPage::QUESTION_TEXT
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click 
+    $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
     assert $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     }
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    
   end
-=end 
-  #TC935 ############
+
+ #TC935 - Standard Question Handler, Standard Question Handler = Populate
+  def test_StandardQuestionHandlerPopulate
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    CustomSettings.QuestionSetHandler("Populate")
+    CustomSettings.JobBoardLogin(false)
+    $browser.get JobBoardHomePage::JOB_BOARD_URL
+    $wait.until{
+      $browser.current_url.eql?(JobBoardHomePage::JOB_BOARD_URL)
+    }
+    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).send_keys JobBoardRegisterPage::EMAIL_ADRESS_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_FIRST_NAME_XPATH).send_keys JobBoardRegisterPage::FIRST_NAME_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_LAST_NAME_XPATH).send_keys JobBoardRegisterPage::LAST_NAME_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH).send_keys JobBoardRegisterPage::QUESTION_TEXT
+    $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    assert $wait.until{
+      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
+    }
+  end
   
-  #TC936 ############
   
+  
+  #TC936 - Standard Question Handler, Standard Question Handler = Omit
+  def test_StandardQuestionHandlerOmit
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    CustomSettings.QuestionSetHandler("Omit")
+    CustomSettings.JobBoardLogin(false)
+    $browser.get JobBoardHomePage::JOB_BOARD_URL
+    $wait.until{
+      $browser.current_url.eql?(JobBoardHomePage::JOB_BOARD_URL)
+    }
+    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).send_keys JobBoardRegisterPage::EMAIL_ADRESS_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_FIRST_NAME_XPATH).send_keys JobBoardRegisterPage::FIRST_NAME_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_LAST_NAME_XPATH).send_keys JobBoardRegisterPage::LAST_NAME_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH).send_keys JobBoardRegisterPage::QUESTION_TEXT
+    $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    assert $wait.until{
+      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
+    }
+  end
 
   
   
