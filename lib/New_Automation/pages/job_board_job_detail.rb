@@ -44,6 +44,8 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT = "Doe"
   JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT = "matiasq@oktana.io"
   JOB_BOARD_APPLY_JOB_DATA_DATE_START_DATE = "2/16/2017"
-    
+  
+  #ERROR
+  ERRORS_OF_FIELD_TO_SUBMIT_XPATH = ".//*[@class='atsError']"  
   
 end

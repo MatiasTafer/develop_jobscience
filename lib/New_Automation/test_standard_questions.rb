@@ -11,6 +11,10 @@ require_relative './pages/board_setup_home_page.rb'
 require_relative './pages/job_board_home_page.rb'
 require_relative './pages/board_setup_detail_page.rb'
 require_relative './pages/board_setup_edit_page.rb'
+require_relative './pages/job_board_home_page.rb'
+require_relative './pages/job_board_job_detail.rb'
+require_relative './pages/job_board_register_page.rb'
+require_relative 'custom_settings.rb'
 
 
 
@@ -82,6 +86,31 @@ class TestStandardQuestions < TestBasic
     $browser.find_element(:xpath, BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH).click
     $wait.until {
       $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
+    }
+    CustomSettings.JobBoardLogin(false)
+    $browser.get JobBoardHomePage::JOB_BOARD_URL
+    $wait.until{
+      $browser.current_url.eql?(JobBoardHomePage::JOB_BOARD_URL)
+    }
+    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).send_keys JobBoardRegisterPage::EMAIL_ADRESS_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_FIRST_NAME_XPATH).send_keys JobBoardRegisterPage::FIRST_NAME_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_LAST_NAME_XPATH).send_keys JobBoardRegisterPage::LAST_NAME_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH).send_keys JobBoardRegisterPage::QUESTION_TEXT
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click 
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
+    }
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::ERRORS_OF_FIELD_TO_SUBMIT_XPATH).displayed?
     }
   end
   
