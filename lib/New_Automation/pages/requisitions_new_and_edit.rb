@@ -61,7 +61,7 @@ class RequisitionsNewAndEdit
   REQUISITIONS_NEW_POST_JOB_BOX_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[2]/td[2]//input"
   REQUISITION_TRAVEL_FIELD_XPATH = ".//*[@id='00No0000008HtZb']"
   
-<<<<<<< HEAD
+
  #HARD CODE DATA
  REQUISITIONS_NEW_DATA_TITLE_TEXT = "Test Job TC827"
  REQUISITIONS_NEW_DATA_TITLE_TC830_TEXT = "Test Job TC830"
@@ -78,7 +78,7 @@ class RequisitionsNewAndEdit
  REQUISITIONS_NEW_DATA_DEPARTMENT_TEXT = "Dept ABC"
  REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT = "2000"
  REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT = "4000" 
-=======
+
  
  #ERROR
  ERROR_MESSAGE_FIELD_XPATH = ".//*[@class='errorMsg']"
@@ -90,5 +90,4 @@ class RequisitionsNewAndEdit
  ERROR_INVALID_NUMBER_TEXT = "Error: Invalid number"
  ERROR_INVALID_PERCENT_TEXT = "Error: Invalid percent"
 
->>>>>>> develop
 end
