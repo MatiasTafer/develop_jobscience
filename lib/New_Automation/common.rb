@@ -93,6 +93,15 @@ class Common
     end
   end
   
+  #Find an item that has size options 
+ def self.itemNotExists(xpath)
+   array = $browser.find_elements(:xpath => xpath)
+   found = array.size < 1
+   return found
+ end
+  
+  
+  
   def self.main(arr)
     puts "main"
     for i in arr

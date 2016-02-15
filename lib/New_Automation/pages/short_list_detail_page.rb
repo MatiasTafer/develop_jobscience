@@ -10,7 +10,7 @@ class ShortListDetailPage
   SUBMIT_BUTTON_XPATH = ".//*[@id='j_id0:j_id28:j_id29']/div[1]/input"
   CLOSE_BUTTON_XPATH = ".//*[@id='j_id0:j_id28:j_id34']/div[1]/input"
   SUBMIT_MESSAGE_XPATH = ".//*[@id='j_id0:j_id2:j_id3:j_id4:0:j_id5']/div"
-  
-  
-  FRAME_STATUS_XPATH = ".//*[@id='JobscienceDialog']"
+  SPEED_REVIEW_ICON_XPATH = ".//*[@class='shortlist-header-tabs-item'][1]"
+  CONTACT_NAME_SPEED_REVIEW_PAGE_XPATH = "(.//*[@class='jck-h1-label jck-jcard-header-label']/span)[2]"
+  NAME_FIRST_CONTACT_SPEED_LIST_XPATH = "(.//*[@class='shortlist-candidate-record-list-item-row']/a)[1]"
 end
