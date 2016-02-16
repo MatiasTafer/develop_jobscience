@@ -10,11 +10,16 @@ require_relative './pages/short_list_home_page.rb'
 require_relative './pages/short_list_review_email_popup.rb'
 require_relative './pages/short_list_send_email_popup.rb'
 require_relative './pages/setup_page.rb'
+require_relative './pages/home_page.rb'
+require_relative './pages/contacts_home_page.rb'
+require_relative './pages/short_list_add_to_popup.rb'
 
 
 
 class TestShortList < TestBasic
-=begin  
+=begin 
+  
+#TC90 - Successfully Add/Update Status 
 def test_addUpdateStauts
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
   $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
@@ -44,7 +49,7 @@ end
 =end  
 
 
-=begin
+
 #TC91 - Open Speed review
 def test_openSpeedReview
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -61,6 +66,10 @@ def test_openSpeedReview
     $browser.find_element(:xpath, ShortListDetailPage::NAME_FIRST_CONTACT_SPEED_LIST_XPATH).displayed?
   }
   contactName =$browser.find_element(:xpath, ShortListDetailPage::NAME_FIRST_CONTACT_SPEED_LIST_XPATH).text
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow) 
   assert $wait.until {
@@ -69,8 +78,8 @@ def test_openSpeedReview
   assert_equal($browser.find_element(:xpath, ShortListDetailPage::CONTACT_NAME_SPEED_REVIEW_PAGE_XPATH).text, contactName)
   
 end
-=end
 
+=begin
 #TC93 - Successfully Removing Enable Web Sourcing and Enable Speed Review
 def test_removeWebSourcing
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -96,8 +105,37 @@ def test_removeWebSourcing
    Common.itemNotExists(ShortListDetailPage::SPEED_REVIEW_ICON_XPATH)
   }  
 end
+=end
 
-
+=begin
+#TC801 Add Contacts to a Short List
+def test_addContactShortList
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::ALL_CONTACTS_TAB_LINK
+  $wait.until {
+    $browser.current_url.eql? HomePage::ALL_CONTACTS_TAB_LINK
+  }
+  test = [{"displayed" => ContactsHomePage::FIRST_CHECKBOX_OF_FIRST_CONTACT_XPATH},
+          {"click" => ContactsHomePage::FIRST_CHECKBOX_OF_FIRST_CONTACT_XPATH},
+          {"click" => ContactsHomePage::SECOND_CHECKBOX_OF_SECOND_CONTACT_XPATH},
+          {"click" => ContactsHomePage::ADD_TO_LIST_BUTTON_XPATH}]
+  Common.main(test)
+  
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow)       
+  test2 = [{"set_text" => AddToShortList::SHORT_LIST_TEXTBOX_XPATH, "text" => AddToShortList::SHORTLIST_TEXT},
+           {"click" => AddToShortList::ADD_TO_SHORT_LIST_BUTTON_XPATH}]
+  Common.main(test2)
+  assert $wait.until{
+    $browser.find_element(:xpath, AddToShortList::CLOSE_BUTTON_XPATH).displayed?
+  }
+  
+end
+=end
 
 
 
