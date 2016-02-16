@@ -13,6 +13,8 @@ require_relative './pages/setup_page.rb'
 require_relative './pages/home_page.rb'
 require_relative './pages/contacts_home_page.rb'
 require_relative './pages/short_list_add_to_popup.rb'
+require_relative './pages/short_list_creation_page.rb'
+require_relative './pages/short_list_add_contact_popup.rb'
 
 
 
@@ -167,7 +169,8 @@ def test_addContactShortListDuplicated
   }
 end
 =end
- 
+
+=begin 
 #TC803 - Add Contacts to a Short List, empty values 
 def test_addContactToShortListEmptyValues
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -193,8 +196,50 @@ def test_addContactToShortListEmptyValues
     $browser.find_element(:xpath, AddToShortList::ERROR_MESSAGE_XPATH).displayed?
   }
 end
- 
- 
+=end
+
+#TC804 - Add a Contact to a Short list
+def test_addContactShortList
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  #First step: create a new short list
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
+          {"click" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
+          {"displayed" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH},
+          {"set_text" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH, "text" => ShortListCreation::SHORT_LIST_NAME_TEXT},
+          {"click" => ShortListCreation::SAVE_BUTTON_XPATH},
+          {"displayed" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH},
+          {"click" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH}]
+  Common.main(test)
+  #Second step: add contact to short list
+  $browser.switch_to.frame(1)
+  test2= [{"displayed" => AddContactPopUp::CONTACT_NAME_TEXTBOX_XPATH},
+          {"set_text" => AddContactPopUp::CONTACT_NAME_TEXTBOX_XPATH, "text" => AddContactPopUp::CONTACT_NAME_TEXT},
+          {"click" => AddContactPopUp::ADD_TO_SHORT_LIST_BUTTON_XPATH}]
+  Common.main(test2)
+  assert $wait.until {
+    $browser.find_element(:xpath, AddContactPopUp::SUCCESS_MESSAGE_XPATH).displayed?
+  }
+  assert_equal($browser.find_element(:xpath, AddContactPopUp::SUCCESS_MESSAGE_TEXT_XPATH).text, AddContactPopUp::SUCCESS_MESSAGE_TEXT)
+  $browser.find_element(:xpath, AddContactPopUp::CLOSE_BUTTON_XPATH).click
+  #Fianl step: delete short list 
+  $browser.switch_to.default_content
+  $wait.until {
+    $browser.find_element(:xpath, ShortListDetailPage::DELETE_SHORT_LIST_ICON_XPATH).displayed?
+  }
+  sleep 30 #esto es porque el objeto se muestra peo no esta activo 
+  $browser.find_element(:xpath, ShortListDetailPage::DELETE_SHORT_LIST_ICON_XPATH).click
+  sleep 30
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow)
+  $wait.until {
+    $browser.find_element(:xpath, ShortListDetailPage::CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH).displayed?
+  }
+  $browser.find_element(:xpath, ShortListDetailPage::CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH).click
+  assert $wait.until {
+    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
+  }
+end
  
  
  

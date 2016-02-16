@@ -13,4 +13,12 @@ class ShortListDetailPage
   SPEED_REVIEW_ICON_XPATH = ".//*[@class='shortlist-header-tabs-item'][1]"
   CONTACT_NAME_SPEED_REVIEW_PAGE_XPATH = "(.//*[@class='jck-h1-label jck-jcard-header-label']/span)[2]"
   NAME_FIRST_CONTACT_SPEED_LIST_XPATH = "(.//*[@class='shortlist-candidate-record-list-item-row']/a)[1]"
+  ADD_CONTACT_ICON_XPATH = ".//*[@action='addShortlistContact']/i[1]"
+  DELETE_SHORT_LIST_ICON_XPATH = ".//*[@id='shortlistTitleLabel']/i[2]"
+  
+  CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH = ".//*[@id='JobscienceDialog']/div[3]/div[3]/table/tbody/tr/td[3]/div"
+                                        
+  
+  
 end
+                  
