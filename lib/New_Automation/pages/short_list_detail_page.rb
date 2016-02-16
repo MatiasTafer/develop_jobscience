@@ -5,5 +5,7 @@ class ShortListDetailPage
   SL_SEND_EMAIL_MENU_XPATH = "html/body/div[4]/div[9]"
   SL_REVIEW_EMAIL_MENU_XPATH = "html/body/div[4]/div[8]"
   SL_STANDART_CHECKBOX_ID = "j_id0:frm:pbSendEmail:j_id40:j_id41:j_id43:1"
+  SL_LIST_XPATH = ".//*[@class='wk-list-body']"
+  SL_DELETE_LIST_XPATH = ".//*[@action='confirmRemoveShortlist']"
   
 end

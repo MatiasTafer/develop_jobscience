@@ -18,9 +18,9 @@ $wait
 
 #require './New_Automation/test_standard_questions'
 
-require './New_Automation/test_projects'
+#require './New_Automation/test_projects'
 
-
+require './New_Automation/test_action_on_list_view'
 
 
 #require './New_Automation/test_board_setup'
