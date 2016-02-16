@@ -7,4 +7,8 @@ class ContactDetailPage
   CONTACT_DETAIL_RECORD_SKILL_LIST_FIRST_XPATH = "(.//*[@class='list'])[last()]//tr[2]//td[last()]/a"
   CONTACT_DETAIL_RECORD_SKILL_LIST_SECOND_XPATH = "(.//*[@class='list'])[last()]//tr[3]//td[last()]/a"
   CONTACT_DETAIL_APPLICATIONS_LIST_XPATH = "(.//*[@class='list'])[9]"
+  CONTACT_DETAIL_BTN_ADD_SKILL_XPATH = ".//*[@id='topButtonRow']/input[9]"
+  CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH = ".//*[@id='topButtonRow']/input[8]"
+  CONTACT_DETAIL_BTN_APPLY_TO_JOB_XPATH = ".//*[@id='topButtonRow']/input[6]"
+  
 end

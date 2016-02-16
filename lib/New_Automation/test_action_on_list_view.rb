@@ -964,42 +964,7 @@ class TestActionsOnListView < TestBasic
     #Delete requisition created in this testcase
     DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
   end
-      
-  def CreateRequisitionPostJob(name, postjob)
-    #postjob=TRUE will check "Post Job" checkbox, postjob=false will not check it.
-      
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
-    test = [
-      {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => name},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH},
-    ]
-    Common.main(test)
-    if postjob
-      unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
-        $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
-      end
-    else
-      if $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
-        $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
-      end  
-    end
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
-    
-    $wait.until {
-        $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
-      }
-  end
- 
-
+  
   #TC259 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
   def test_ApplyPostedJobEnableEnhancedApplyTrueException
   
@@ -1019,10 +984,7 @@ class TestActionsOnListView < TestBasic
           
     #At least one contact must exist 
     CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
-    
-    #At least one agency must exist
-    CreateAgencyAccount(AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT)
-    
+        
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
     
@@ -1224,6 +1186,8 @@ class TestActionsOnListView < TestBasic
     #Delete requisition created in this testcase
     DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
   end
+ 
+################### CUSTOM METHODS #####################
       
   def CreateRequisitionPostJob(name, postjob)
     #postjob=TRUE will check "Post Job" checkbox, postjob=false will not check it.
@@ -1260,7 +1224,7 @@ class TestActionsOnListView < TestBasic
   end 
 
   
-################### CUSTOM METHODS #####################
+
   
   def CreateAgencyAccount(name)
     #Create a Agency with "name" as its name
@@ -1343,20 +1307,6 @@ class TestActionsOnListView < TestBasic
     $browser.switch_to.alert.accept
   end
   
-  def DeleteShortList(name)
-    #Delete the Short List with name "name"
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
-    test = [
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH, "text" => "All Short List"},
-    {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_GO_XPATH},
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}
-    ]
-    Common.main(test)
-    $browser.find_element(:xpath => "//*[text()[contains(.,'" + name + "')]]/../../../../td[3]//a[2]").click
-    sleep(1)
-    $browser.switch_to.alert.accept 
-  end
   def DeleteShortList(name)
     #Delete the Short List with name "name"
     $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
