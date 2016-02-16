@@ -15,7 +15,7 @@ require_relative './pages/home_page.rb'
 class Common
   USER_EMAIL = "naomi@joblabs.com"
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
-  PASSWORD  = "muffin99"
+  PASSWORD  = "muffin100"
   
   
 

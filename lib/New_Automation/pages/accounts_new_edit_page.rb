@@ -7,4 +7,6 @@ class AccountsNewEditPage
   ACCOUNTS_NEW_BTN_SAVE_XPATH = ".//*[@id='topButtonRow']/input[1]"
   ACCOUNTS_NEW_BTN_SAVE_AND_NEW_XPATH = ".//*[@id='topButtonRow']/input[2]"
   
+  #HARD CODE DATA
+  ACCOUNT_NEW_DATA_NAME_TEXT = "Test Agency Account"
 end

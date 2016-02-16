@@ -62,6 +62,27 @@ class CustomSettings
     $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
     
   end
+  
+  def self.EnableEnhancedApplyToJob(setBool)
+    #SetBool=True will leave the checkbox checked, if SetBool=false will leave it unchecked
+    
+    $browser.get(SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL)
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).displayed?
+      }
+    if setBool
+      unless $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).attribute("checked")
+        $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).click
+      end
+    else
+      if $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).attribute("checked")
+        $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).click
+      end  
+    end
+    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    sleep(2)  
+    
+  end
     
    
 end
