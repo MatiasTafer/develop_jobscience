@@ -310,6 +310,7 @@ def test_addExistingContact
 end
 =end
 
+=begin
 #TC807 - Remove Contacts from a Short List
 def test_removeContact
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -349,7 +350,41 @@ def test_removeContact
   $browser.switch_to.window(newWindow) 
   assert $browser.find_element(:xpath, ShortListDetailPage::CONFIRM_DELETE_CONTACT_BUTTON_XPATH).click     
 end
+=end
 
+#TC808 - Short list menu - no contacts selected
+def test_menuNoContactSelected
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  #Generate a random string for Short List name
+  randomName = SecureRandom.hex(4)
+  #First step: create a new short list
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
+          {"click" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
+          {"displayed" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH},
+          {"set_text" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH, "text" => randomName},
+          {"click" => ShortListCreation::SAVE_BUTTON_XPATH},
+          {"displayed" => ShortListDetailPage::SEARCH_BUTTON_XPATH},
+          {"displayed" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH},
+          {"click" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH}]
+  Common.main(test)
+  $browser.switch_to.frame(1)
+  test2= [{"displayed" => AddContactPopUp::CONTACT_NAME_TEXTBOX_XPATH},
+          {"set_text" => AddContactPopUp::CONTACT_NAME_TEXTBOX_XPATH, "text" => AddContactPopUp::CONTACT_NAME_TEXT},
+          {"click" => AddContactPopUp::ADD_TO_SHORT_LIST_BUTTON_XPATH}]
+  Common.main(test2)
+  assert $wait.until {
+    $browser.find_element(:xpath, AddContactPopUp::SUCCESS_MESSAGE_XPATH).displayed?
+  }
+  assert_equal($browser.find_element(:xpath, AddContactPopUp::SUCCESS_MESSAGE_TEXT_XPATH).text, AddContactPopUp::SUCCESS_MESSAGE_TEXT)
+  $browser.find_element(:xpath, AddContactPopUp::CLOSE_BUTTON_XPATH).click
+  $browser.switch_to.default_content 
+  $wait.until {
+    $browser.find_element(:xpath, ShortListDetailPage::SL_RECORD_XPATH).displayed?
+  }
+  $browser.find_element(:xpath, ShortListDetailPage::SL_MENU_XPATH).click
+  
+end
 
 
   
