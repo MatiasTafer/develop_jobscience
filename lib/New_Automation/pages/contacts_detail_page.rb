@@ -10,5 +10,7 @@ class ContactDetailPage
   CONTACT_DETAIL_BTN_ADD_SKILL_XPATH = ".//*[@id='topButtonRow']/input[9]"
   CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH = ".//*[@id='topButtonRow']/input[8]"
   CONTACT_DETAIL_BTN_APPLY_TO_JOB_XPATH = ".//*[@id='topButtonRow']/input[6]"
+  CONTACT_DETAIL_BTN_NEW_EDUCATION_HIST_XPATH = ".//*[@value='New Education History']"
+  CONTACT_DETAIL_BTN_NEW_EMPLOYMENT_HIST_XPATH = ".//*[@value='New Employment History']"
   
 end
