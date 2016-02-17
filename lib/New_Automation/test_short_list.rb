@@ -235,7 +235,8 @@ def test_addContactShortList
   assert $browser.find_element(:xpath, ShortListDetailPage::CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH).click
 end
 =end
- 
+
+=begin
 #TC805 - Add a Contact to a Short list, no contact selected
 def test_noContactSelected
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -262,8 +263,50 @@ def test_noContactSelected
   }
   assert_equal($browser.find_element(:xpath, AddContactPopUp::ERROR_MESSAGE_TEXT_XPATH).text, AddContactPopUp::ERROR_MESSAGE_TEXT)
 end
-  
- 
+=end
+
+#TC806 - Add a Contact to a Short list, existing contact
+def test_addExistingContact
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  #Generate a random string for Short List name
+  randomName = SecureRandom.hex(4)
+  #First step: create a new short list
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
+          {"click" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
+          {"displayed" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH},
+          {"set_text" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH, "text" => randomName},
+          {"click" => ShortListCreation::SAVE_BUTTON_XPATH},
+          {"displayed" => ShortListDetailPage::SEARCH_BUTTON_XPATH},
+          {"displayed" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH},
+          {"click" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH}]
+  Common.main(test)
+  #Second step: add contact to short list
+  $browser.switch_to.frame(1)
+  test2= [{"displayed" => AddContactPopUp::CONTACT_NAME_TEXTBOX_XPATH},
+          {"set_text" => AddContactPopUp::CONTACT_NAME_TEXTBOX_XPATH, "text" => AddContactPopUp::CONTACT_NAME_TEXT},
+          {"click" => AddContactPopUp::ADD_TO_SHORT_LIST_BUTTON_XPATH}]
+  Common.main(test2)
+  assert $wait.until {
+    $browser.find_element(:xpath, AddContactPopUp::SUCCESS_MESSAGE_XPATH).displayed?
+  }
+  assert_equal($browser.find_element(:xpath, AddContactPopUp::SUCCESS_MESSAGE_TEXT_XPATH).text, AddContactPopUp::SUCCESS_MESSAGE_TEXT)
+  $browser.find_element(:xpath, AddContactPopUp::CLOSE_BUTTON_XPATH).click
+  #Third step: add the same contact to the same Short list
+  $browser.switch_to.default_content
+  test3 = [{"displayed" => ShortListDetailPage::SL_RECORD_XPATH},
+           {"displayed" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH},
+           {"click" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH}]
+  Common.main(test3)
+  $browser.switch_to.frame(1)
+  test4= [{"displayed" => AddContactPopUp::CONTACT_NAME_TEXTBOX_XPATH},
+          {"set_text" => AddContactPopUp::CONTACT_NAME_TEXTBOX_XPATH, "text" => AddContactPopUp::CONTACT_NAME_TEXT},
+          {"click" => AddContactPopUp::ADD_TO_SHORT_LIST_BUTTON_XPATH}]
+  Common.main(test4)
+  assert $wait.until {
+    $browser.find_element(:xpath, AddContactPopUp::ERROR_MESSAGE_XPATH).displayed?
+  }
+end
 
   
 end
