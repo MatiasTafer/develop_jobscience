@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'selenium-webdriver'
 require 'test-unit'
+require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
@@ -198,6 +199,7 @@ def test_addContactToShortListEmptyValues
 end
 =end
 
+=begin
 #TC804 - Add a Contact to a Short list
 def test_addContactShortList
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -232,10 +234,36 @@ def test_addContactShortList
   $browser.switch_to.window(newWindow)
   assert $browser.find_element(:xpath, ShortListDetailPage::CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH).click
 end
+=end
  
+#TC805 - Add a Contact to a Short list, no contact selected
+def test_noContactSelected
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  #Generate a random string for Short List name
+  randomName = SecureRandom.hex(4)
+  #First step: create a new short list
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
+          {"click" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
+          {"displayed" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH},
+          {"set_text" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH, "text" => randomName},
+          {"click" => ShortListCreation::SAVE_BUTTON_XPATH},
+          {"displayed" => ShortListDetailPage::SEARCH_BUTTON_XPATH},
+          {"displayed" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH},
+          {"click" => ShortListDetailPage::ADD_CONTACT_ICON_XPATH}]
+  Common.main(test)
+  #Second step: add contact to short list
+  $browser.switch_to.frame(1)
+  test2= [{"displayed" => AddContactPopUp::CONTACT_NAME_TEXTBOX_XPATH},
+          {"click" => AddContactPopUp::ADD_TO_SHORT_LIST_BUTTON_XPATH}]
+  Common.main(test2)
+  assert $wait.until {
+    $browser.find_element(:xpath, AddContactPopUp::ERROR_MESSAGE_TEXT_XPATH).displayed?
+  }
+  assert_equal($browser.find_element(:xpath, AddContactPopUp::ERROR_MESSAGE_TEXT_XPATH).text, AddContactPopUp::ERROR_MESSAGE_TEXT)
+end
+  
  
- 
- 
- 
+
   
 end

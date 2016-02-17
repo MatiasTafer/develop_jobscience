@@ -11,5 +11,9 @@ class AddContactPopUp
   
   SUCCESS_MESSAGE_TEXT = "Contacts Added Successfully"
   
+  ERROR_MESSAGE_XPATH = ".//*[@class='message errorM3']"
+  ERROR_MESSAGE_TEXT_XPATH = ".//*[@class='messageCell']/div"
+  
+  ERROR_MESSAGE_TEXT = "Error:\nContact: You must enter a value"
   
 end

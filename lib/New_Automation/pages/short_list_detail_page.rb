@@ -17,7 +17,8 @@ class ShortListDetailPage
   DELETE_SHORT_LIST_ICON_XPATH = ".//*[@id='shortlistTitleLabel']/i[2]"
   
   CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH = ".//*[@id='JobscienceDialog']/div[3]/div[3]/table/tbody/tr/td[3]/div"
-                                        
+  
+  SEARCH_BUTTON_XPATH = ".//*[@class='web-sourcing-footer']/div"                                     
   
   
 end
