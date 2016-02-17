@@ -70,7 +70,7 @@ class TestActionsOnListView < TestBasic
     #Delete account created in this testcase
     DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
   end
-  
+ 
   #TC48 - Successfully Add Skill
   def test_SuccessfullyAddSkill
     #PRECONDITIONS
@@ -138,6 +138,7 @@ class TestActionsOnListView < TestBasic
     DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)  
 
   end
+  
    
  #TC253 - Successfully Add and Rate Skill
  def test_SuccessfullyAddRateSkill

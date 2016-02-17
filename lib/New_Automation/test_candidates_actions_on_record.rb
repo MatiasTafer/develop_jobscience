@@ -27,7 +27,7 @@ require_relative './pages/requisitions_new_and_edit.rb'
 require_relative './pages/requisitions_detail_page.rb'
 
 class TestActionsOnRecord < TestBasic
-=begin  
+  
   #TC53 - Successfully add new skill to one contact
   def test_AddNewSkillToContact
     
@@ -381,9 +381,7 @@ class TestActionsOnRecord < TestBasic
    DeleteShortList(ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT)
         
   end      
-   
-=end
-
+  
   #TC55 - Successfully Apply to Jobs
   def test_ApplyToJobContact
   

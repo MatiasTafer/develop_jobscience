@@ -15,10 +15,11 @@ class ContactsHomePage
   #Add Skill Pop Up Window
   CONTACT_SKILL_POPUP_FIRST_ELEMENT_XPATH = "(.//*[@class='first_level']//input)[1]"
   CONTACT_SKILL_POPUP_SECOND_ELEMENT_XPATH = "(.//*[@class='first_level']//input)[2]"
-  CONTACT_SKILL_POPUP_ARROW_RIGHT_XPATH = ".//*[@class='fa fa-chevron-right']" 
+  CONTACT_SKILL_POPUP_ARROW_RIGHT_XPATH = ".//*[@class='fa fa-chevron-right']"    
   CONTACT_SKILL_POPUP_BTN_SAVE_XPATH = ".//*[@title='Save Skills']"
   CONTACT_SKILL_POPUP_BTN_SAVE_RATE_XPATH = ".//*[@value='Save & Rate Skills']"
   CONTACT_SKILL_POPUP_BTN_CLOSE_XPATH = ".//*[@value='Close']"
+  CONTACT_SKILL_POPUP_SKILL_LIST_1_ELEMENT_XPATH = "(.//*[@class = 'detailList'])[2]//td[last()]//option[1]"
   CONTACT_SKILL_POPUP_SKILL_LIST_2_ELEMENT_XPATH = "(.//*[@class = 'detailList'])[2]//td[last()]//option[2]"
   CONTACT_SKILL_POPUP_RATE_SKILL_BTN_SUBMIT_XPATH = ".//*[@value='Submit']"
   CONTACT_SKILL_POPUP_RATE_SLIDER_1_XPATH = "(.//*[@class='ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all'])[1]//a"
@@ -27,6 +28,7 @@ class ContactsHomePage
   CONTACT_SKILL_POPUP_ERROR_MESSAGE_TEXT = 'You currently have multiple contacts selected. You cannot rate multiple candidates at once. Please select "Save Skills" or "Cancel"'
   CONTACT_SKILL_POPUP_SUCCESS_MESSAGE_XPATH = ".//*[@class='messageText']"
   CONTACT_SKILL_POPUP_SKILL_RATED_MSG_XPATH = ".//*[@style='margin-top: -5px; padding-left: 23px; font: bold 110% arial;']"
+  CONTACT_SKILL_POPUP_SKILL_LIST_XPATH = ".//*[@class='m-parent m-last']"
   
   #Add to Short List Pop Up Window
   CONTACT_LIST_POPUP_NAME_INPUT_XPATH = ".//*[@class='lookupInput']/input"

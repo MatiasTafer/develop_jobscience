@@ -23,6 +23,9 @@ class HomePage
   JOB_TEMPLATES_TAB_LINK_URL = "https://na17.salesforce.com/a0B/o"
   STANDARD_QUESTIONS_TAB_LINK = "https://na17.salesforce.com/a0f/o"
   ACCOUNTS_TAB_LINK_URL = "https://na17.salesforce.com/001/o"
+  SEARCH_BAR_XPATH = ".//*[@id='phSearchInput']"
+  SEARCH_BUTTON_XPATH = ".//*[@id='phSearchButton']"
+  
 
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
 
