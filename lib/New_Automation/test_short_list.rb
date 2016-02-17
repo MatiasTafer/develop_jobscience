@@ -224,15 +224,12 @@ def test_addContactShortList
   $browser.find_element(:xpath, AddContactPopUp::CLOSE_BUTTON_XPATH).click
   #Fianl step: delete short list 
   $browser.switch_to.default_content
-  $wait.until {
-    $browser.find_element(:xpath, ShortListDetailPage::DELETE_SHORT_LIST_ICON_XPATH).displayed?
+  $wait.until{
+    $browser.find_element(:xpath, ShortListDetailPage::SL_RECORD_XPATH).displayed?
   }
-  sleep 10 #esto es porque el objeto se muestra peo no esta activo 
   $browser.find_element(:xpath, ShortListDetailPage::DELETE_SHORT_LIST_ICON_XPATH).click
-  sleep 10
   newWindow= $browser.window_handles
   $browser.switch_to.window(newWindow)
-  $browser.switch_to.default_content
   assert $browser.find_element(:xpath, ShortListDetailPage::CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH).click
 end
  
