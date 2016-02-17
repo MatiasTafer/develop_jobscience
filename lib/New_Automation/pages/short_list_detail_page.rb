@@ -6,6 +6,7 @@ class ShortListDetailPage
   SL_REVIEW_EMAIL_MENU_XPATH = "html/body/div[4]/div[8]"
   SL_STANDART_CHECKBOX_ID = "j_id0:frm:pbSendEmail:j_id40:j_id41:j_id43:1"
   SL_UPDATE_STATUS_OPTION_XPATH = "html/body/div[4]/div[2]"
+  SL_REMOVE_CONTACT_XPATH = "html/body/div[4]/div[1]"
   SELECT_STATUS_DROPDOWN_XPATH = ".//*[@id='j_id0:j_id28:j_id29:j_id32']"
   SUBMIT_BUTTON_XPATH = ".//*[@id='j_id0:j_id28:j_id29']/div[1]/input"
   CLOSE_BUTTON_XPATH = ".//*[@id='j_id0:j_id28:j_id34']/div[1]/input"
@@ -17,6 +18,7 @@ class ShortListDetailPage
   DELETE_SHORT_LIST_ICON_XPATH = ".//*[@id='shortlistTitleLabel']/i[2]"
   
   CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH = ".//*[@id='JobscienceDialog']/div[3]/div[3]/table/tbody/tr/td[3]/div"
+  CONFIRM_DELETE_CONTACT_BUTTON_XPATH = ".//*[@id='JobscienceDialog']/div[3]/div[3]/table/tbody/tr/td[3]/div"
   
   SEARCH_BUTTON_XPATH = ".//*[@class='web-sourcing-footer']/div"                                     
   
