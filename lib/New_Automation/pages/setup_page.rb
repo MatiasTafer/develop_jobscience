@@ -14,6 +14,7 @@ class SetupEditPage
   ENABLE_CLOSE_JOB_ORDER_WIZARD_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Close_Job_Order_Wizard__c"
   QUESTION_SET_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Handler__c"
   QUESTION_SET_DAY_HANDLER = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Days_Valid__c'"
+  ENABLE_ENHANCED_APPLY_TO_JOB_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enhanced_Apply_to_Job__c']"
   
   SHORT_LIST_CUSTOM_SETINGS_PAGE_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a1A"
   

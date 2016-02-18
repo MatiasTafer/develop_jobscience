@@ -14,6 +14,7 @@ class RequisitionsNewAndEdit
     
     #REQUIRED FIELDS
   REQUISITIONS_NEW_JOB_TITLE_ID = "Name"
+  REQUISITIONS_NEW_JOB_TITLE_XPATH = ".//*[@id='Name']"
   REQUISITIONS_NEW_PRIMARY_RECRUITER_TYPE_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[5]//select"
   REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH = "(.//*[@class='requiredInput'])[2]//span//input"
   REQUISITIONS_NEW_LOCATION_XPATH = "(.//*[@class='requiredInput'])[3]//select"
@@ -61,8 +62,13 @@ class RequisitionsNewAndEdit
   REQUISITIONS_NEW_POST_JOB_BOX_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[2]/td[2]//input"
   REQUISITION_TRAVEL_FIELD_XPATH = ".//*[@id='00No0000008HtZb']"
   
+
+
+
+
  #HARD CODE DATA
  REQUISITIONS_NEW_DATA_TITLE_TEXT = "Test Job TC827"
+ REQUISITIONS_NEW_DATA_TITLE = "Test Job Requisition"
  REQUISITIONS_NEW_DATA_TITLE_TC830_TEXT = "Test Job TC830"
  REQUISITIONS_NEW_DATA_TITLE_TC831_TEXT = "Test Job TC831"
  REQUISITIONS_NEW_DATA_TITLE_TC832_TEXT = "Test Job TC832"

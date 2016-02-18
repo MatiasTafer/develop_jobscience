@@ -74,12 +74,12 @@ class Common
     end
   end
   
-  def self.assert(field)
+  def self.hassert(field)
     return assert $browser.find_element(:xpath, field).displayed?
  
   end
   
-  def self.assert_equal(text, text2)
+  def self.hassert_equal(text, text2)
     assert_equal($browser.find_element(:xpath => text).text, text2)
   end
   
@@ -147,6 +147,10 @@ class Common
       if i["assert_equal"]
         puts "assert equal"
         self.assert_equal(i["assert_equal"])
+      end
+      if i["select_by_text"]
+        puts "select by text"
+        self.selectByText(i["select_by_text"], i["option_text"])
       end
     end
     

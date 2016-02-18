@@ -16,6 +16,10 @@ class ShortListDetailPage
   NAME_FIRST_CONTACT_SPEED_LIST_XPATH = "(.//*[@class='shortlist-candidate-record-list-item-row']/a)[1]"
   ADD_CONTACT_ICON_XPATH = ".//*[@action='addShortlistContact']/i[1]"
   DELETE_SHORT_LIST_ICON_XPATH = ".//*[@id='shortlistTitleLabel']/i[2]"
+
+  SL_LIST_XPATH = ".//*[@class='wk-list-body']"
+  SL_DELETE_LIST_XPATH = ".//*[@action='confirmRemoveShortlist']"
+
   
   CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH = ".//*[@id='JobscienceDialog']/div[3]/div[3]/table/tbody/tr/td[3]/div"
   CONFIRM_DELETE_CONTACT_BUTTON_XPATH = ".//*[@id='JobscienceDialog']/div[3]/div[3]/table/tbody/tr/td[3]/div"
