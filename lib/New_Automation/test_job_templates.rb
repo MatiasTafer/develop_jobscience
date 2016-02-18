@@ -48,7 +48,8 @@ def test_newJobTemplateValidation
   assert_equal($browser.find_element(:xpath, NewJobTemplate::ERROR_REQUIRED_FIELDS).text, NewJobTemplate::ERROR_REQUIRED_FIELDS_TEXT)  
 end  
 =end
- 
+
+=begin 
 #TC971 - New Job Template Mapping 
 def test_newJobTemplateMapping
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -64,8 +65,24 @@ def test_newJobTemplateMapping
     $browser.find_element(:xpath, JobTemplateMapping::NEW_MAPPING_ITEM_BUTTON_XPATH).displayed?
   }
 end 
+=end
+
+#TC972 - New Job Template Mapping, Validation  
+def test_newJobTemplateMappingValidation
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::JOB_TEMPLATE_MAPPING_TAB_LINK
+  test = [{"displayed" => JobTemplateMapping::NEW_BUTTON_XPATH},
+          {"click" => JobTemplateMapping::NEW_BUTTON_XPATH},
+          {"displayed" => JobTemplateMapping::JOB_TEMPLATE_MAPPING_NAME_XPATH},
+          {"click" => JobTemplateMapping::SAVE_BUTON_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+    $browser.find_element(:xpath, JobTemplateMapping::ERROR_REQUIRED_FIELD_XPATH).displayed?
+  }
+  assert_equal($browser.find_element(:xpath, JobTemplateMapping::ERROR_REQUIRED_FIELD_XPATH).text, JobTemplateMapping::ERROR_REQUIRED_FIELD_TEXT)
   
   
+end
   
   
 end
