@@ -70,7 +70,7 @@ class TestActionsOnListView < TestBasic
     #Delete account created in this testcase
     DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
   end
- 
+=begin 
   #TC48 - Successfully Add Skill
   def test_SuccessfullyAddSkill
     #PRECONDITIONS
@@ -1187,7 +1187,7 @@ class TestActionsOnListView < TestBasic
     #Delete requisition created in this testcase
     DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
   end
- 
+=end 
 ################### CUSTOM METHODS #####################
       
   def CreateRequisitionPostJob(name, postjob)
