@@ -787,7 +787,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    #Common.login(Common::USER_EMAIL, Common::PASSWORD) 
     
     # Job with "Post job" = True
     CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, true)
@@ -972,7 +972,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    #Common.login(Common::USER_EMAIL, Common::PASSWORD) 
     
     # Job with "Post job" = true
     CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, true)
