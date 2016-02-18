@@ -12,6 +12,7 @@ require_relative './pages/job_template_detail_page.rb'
 require_relative './pages/new_job_template_page.rb'
 require_relative './pages/job_template_mapping_page.rb'
 require_relative './pages/home_page.rb'
+require_relative './pages/requisitions_detail_page.rb'
 
 class TestJobTemplates < TestBasic
   
@@ -67,6 +68,7 @@ def test_newJobTemplateMapping
 end 
 =end
 
+=begin
 #TC972 - New Job Template Mapping, Validation  
 def test_newJobTemplateMappingValidation
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -80,9 +82,28 @@ def test_newJobTemplateMappingValidation
     $browser.find_element(:xpath, JobTemplateMapping::ERROR_REQUIRED_FIELD_XPATH).displayed?
   }
   assert_equal($browser.find_element(:xpath, JobTemplateMapping::ERROR_REQUIRED_FIELD_XPATH).text, JobTemplateMapping::ERROR_REQUIRED_FIELD_TEXT)
-  
-  
+ 
 end
+=end
+
+#TC973 - Create Job Order 
+def test_createJobOrder
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::JOB_TEMPLATES_TAB_LINK_URL
+  test = [{"displayed" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},
+          {"click" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},
+          {"displayed" => JobTemplates::CREATE_JOB_ORDER_BUTTON_XPATH},
+          {"click" => JobTemplates::CREATE_JOB_ORDER_BUTTON_XPATH},
+          {"displayed" => JobTemplates::NEXT_BUTTON_XPATH},
+          {"click" => JobTemplates::NEXT_BUTTON_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+    $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_EDIT_XPATH).displayed?  
+  }         
+end
+  
+  
+ 
   
   
 end
