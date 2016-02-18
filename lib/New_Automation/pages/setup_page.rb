@@ -21,6 +21,7 @@ class SetupEditPage
   EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH = ".//*[@class='btn'][1]"
   CHECKBOX_SPEEDREVIEW_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Speed_Review__c']"
   CHECKBOX_WEB_SOURCING_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Web_Sourcing__c']"
+  CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH =".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Jobscience_UI__c']"
   SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@class='btn btn'][1]"
   
   

@@ -16,6 +16,7 @@ require_relative './pages/contacts_home_page.rb'
 require_relative './pages/short_list_add_to_popup.rb'
 require_relative './pages/short_list_creation_page.rb'
 require_relative './pages/short_list_add_contact_popup.rb'
+require_relative './pages/short_list_detail_old_ui_page.rb'
 
 
 
@@ -352,6 +353,7 @@ def test_removeContact
 end
 =end
 
+=begin
 #TC808 - Short list menu - no contacts selected
 def test_menuNoContactSelected
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -385,6 +387,7 @@ def test_menuNoContactSelected
   $browser.find_element(:xpath, ShortListDetailPage::SL_MENU_XPATH).click
   assert $browser.find_element(:xpath, ShortListDetailPage::SL_UPDATE_STATUS_OPTION_XPATH).displayed? == false  
 end
+=end
 
 #TC809 - Add to another Short List (old interface)
 def test_addToOldInterface
@@ -394,17 +397,40 @@ def test_addToOldInterface
     $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
   }
   test = [{"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-          {"displayed" => SetupEditPage::CHECKBOX_SPEEDREVIEW_XPATH},
-          #{"unchecked"  => SetupEditPage::CHECKBOX_SPEEDREVIEW_XPATH},
-          #{"unchecked" => SetupEditPage::CHECKBOX_WEB_SOURCING_XPATH},
+          {"displayed" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"unchecked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
           {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
   Common.main(test)
   $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
   $wait.until {
     $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
   }
-  
-  
+  test2 = [{"click" => ShortListHomePage::SHORT_LIST_RECORD_XPATH},
+           {"displayed" => ShortListDetailOldUi::CHECKBOX_CONTACT_XPATH},
+           {"click" => ShortListDetailOldUi::CHECKBOX_CONTACT_XPATH},
+           {"click" => ShortListDetailOldUi::ADD_TO_ANOTHER_LIST_BUTTON_XPATH}]
+  Common.main(test2)
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow) 
+  test3= [{"set_text" => AddToShortList::SHORT_LIST_TEXTBOX_XPATH, "text" => AddToShortList::SHORTLIST_TEXT},
+          {"click" => AddToShortList::ADD_TO_SHORT_LIST_BUTTON_XPATH}]
+  Common.main(test3)
+  assert $wait.until{
+    $browser.find_element(:xpath, AddToShortList::CLOSE_BUTTON_XPATH).displayed?
+  }
+  $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  $wait.until {
+    $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  }
+  test4 = [{"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+          {"displayed" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"checked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
+  Common.main(test4)
 end
 
   
