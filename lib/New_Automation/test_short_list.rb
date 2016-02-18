@@ -383,7 +383,7 @@ def test_menuNoContactSelected
     $browser.find_element(:xpath, ShortListDetailPage::SL_RECORD_XPATH).displayed?
   }
   $browser.find_element(:xpath, ShortListDetailPage::SL_MENU_XPATH).click
-  
+  assert $browser.find_element(:xpath, ShortListDetailPage::SL_UPDATE_STATUS_OPTION_XPATH).displayed? == false  
 end
 
 
