@@ -21,8 +21,7 @@ require_relative './pages/short_list_detail_old_ui_page.rb'
 
 
 class TestShortList < TestBasic
-=begin 
-  
+ 
 #TC90 - Successfully Add/Update Status 
 def test_addUpdateStauts
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -50,10 +49,7 @@ def test_addUpdateStauts
     $browser.find_element(:xpath, ShortListDetailPage::SUBMIT_MESSAGE_XPATH).displayed?
   }      
 end
-=end  
 
-
-=begin
 #TC91 - Open Speed review
 def test_openSpeedReview
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -82,10 +78,7 @@ def test_openSpeedReview
   assert_equal($browser.find_element(:xpath, ShortListDetailPage::CONTACT_NAME_SPEED_REVIEW_PAGE_XPATH).text, contactName)
   # hay que vovler a poner el icono de short list y la lupa sino los otros test no funcionan
 end
-=end
 
-
-=begin
 #TC801 Add Contacts to a Short List
 def test_addContactShortList
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -113,9 +106,7 @@ def test_addContactShortList
   }
   
 end
-=end
 
-=begin
 #TC93 - Successfully Removing Enable Web Sourcing and Enable Speed Review
 def test_removeWebSourcing
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -148,9 +139,7 @@ def test_removeWebSourcing
           {"checked" => SetupEditPage::CHECKBOX_WEB_SOURCING_XPATH},
           {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]  
 end
-=end
 
-=begin
 #TC802 - Add Contacts to a Short List, duplicated
 def test_addContactShortListDuplicated
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -177,9 +166,7 @@ def test_addContactShortListDuplicated
     $browser.find_element(:xpath, AddToShortList::CLOSE_BUTTON_XPATH).displayed?
   }
 end
-=end
 
-=begin 
 #TC803 - Add Contacts to a Short List, empty values 
 def test_addContactToShortListEmptyValues
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -205,9 +192,7 @@ def test_addContactToShortListEmptyValues
     $browser.find_element(:xpath, AddToShortList::ERROR_MESSAGE_XPATH).displayed?
   }
 end
-=end
 
-=begin
 #TC804 - Add a Contact to a Short list
 def test_addContactShortList
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -242,9 +227,7 @@ def test_addContactShortList
   $browser.switch_to.window(newWindow)
   assert $browser.find_element(:xpath, ShortListDetailPage::CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH).click
 end
-=end
 
-=begin
 #TC805 - Add a Contact to a Short list, no contact selected
 def test_noContactSelected
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -271,9 +254,7 @@ def test_noContactSelected
   }
   assert_equal($browser.find_element(:xpath, AddContactPopUp::ERROR_MESSAGE_TEXT_XPATH).text, AddContactPopUp::ERROR_MESSAGE_TEXT)
 end
-=end
 
-=begin
 #TC806 - Add a Contact to a Short list, existing contact
 def test_addExistingContact
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -316,9 +297,7 @@ def test_addExistingContact
     $browser.find_element(:xpath, AddContactPopUp::ERROR_MESSAGE_XPATH).displayed?
   }
 end
-=end
 
-=begin
 #TC807 - Remove Contacts from a Short List
 def test_removeContact
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -358,9 +337,7 @@ def test_removeContact
   $browser.switch_to.window(newWindow) 
   assert $browser.find_element(:xpath, ShortListDetailPage::CONFIRM_DELETE_CONTACT_BUTTON_XPATH).click     
 end
-=end
 
-=begin
 #TC808 - Short list menu - no contacts selected
 def test_menuNoContactSelected
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -394,8 +371,7 @@ def test_menuNoContactSelected
   $browser.find_element(:xpath, ShortListDetailPage::SL_MENU_XPATH).click
   assert $browser.find_element(:xpath, ShortListDetailPage::SL_UPDATE_STATUS_OPTION_XPATH).displayed? == false  
 end
-=end
-=begin
+
 #TC809 - Add to another Short List (old interface)
 def test_addToOldInterface
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -439,7 +415,6 @@ def test_addToOldInterface
           {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
   Common.main(test4)
 end
-=end
 
 #TC810 - Add to another Short List (old interface), no contacts selected
 def test_noContactSelectedOldUi
@@ -475,5 +450,47 @@ def test_noContactSelectedOldUi
   Common.main(test3)
 end
 
-  
+#TC811 - Add to another Short List (old interface), no short list selected
+def test_noShortListSelectedoldUi
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  $wait.until {
+    $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  }
+  test = [{"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+          {"displayed" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"unchecked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
+  Common.main(test)
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $wait.until {
+    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
+  }
+  test2 = [{"click" => ShortListHomePage::SHORT_LIST_RECORD_XPATH},
+           {"displayed" => ShortListDetailOldUi::CHECKBOX_CONTACT_XPATH},
+           {"click" => ShortListDetailOldUi::CHECKBOX_CONTACT_XPATH},
+           {"click" => ShortListDetailOldUi::ADD_TO_ANOTHER_LIST_BUTTON_XPATH}]
+  Common.main(test2)
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow) 
+  test3= [{"click" => AddToShortList::ADD_TO_SHORT_LIST_BUTTON_XPATH}]
+  Common.main(test3)
+  assert $wait.until{
+    $browser.find_element(:xpath, AddToShortList::ERROR_MESSAGE_XPATH).displayed?
+  }
+  $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  $wait.until {
+    $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  }
+  test4 = [{"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+          {"displayed" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"checked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
+  Common.main(test4)
+end
+
 end
