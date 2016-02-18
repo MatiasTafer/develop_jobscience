@@ -17,7 +17,7 @@ require_relative './pages/job_board_register_page.rb'
 
 
 class TestBoardSetup < TestBasic
-=begin
+
   def test_board_setup_tc1040
     # JS2 - Board Setup - TC1040
     #Login
@@ -72,7 +72,7 @@ class TestBoardSetup < TestBasic
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH).click
     
   end
-
+=begin
   def test_board_setup_tc1041
     #  TC1041 - Board Setup - Auto Associate = false 
     #Login
