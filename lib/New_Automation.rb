@@ -13,6 +13,10 @@ $wait
 
 
 
+
+
+require './New_Automation/test_short_list.rb'
+
 #require './New_Automation/test_board_setup'
 
 
