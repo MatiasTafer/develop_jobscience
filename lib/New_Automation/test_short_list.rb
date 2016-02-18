@@ -136,10 +136,17 @@ def test_removeWebSourcing
   $browser.find_element(:xpath, ShortListHomePage::SHORT_LIST_RECORD_XPATH_2).click
   assert $wait.until {
    $browser.find_element(:xpath, ShortListDetailPage::SL_RECORD_XPATH).displayed?
-   #!($browser.find_element(:xpath, ShortListDetailPage::)
-   #!($browser.find_element(:xpath, ShortListDetailPage::SPEED_REVIEW_ICON_XPATH).displayed?)
    Common.itemNotExists(ShortListDetailPage::SPEED_REVIEW_ICON_XPATH)
   }  
+  $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  $wait.until {
+    $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  }
+  test = [{"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+          {"displayed" => SetupEditPage::CHECKBOX_SPEEDREVIEW_XPATH},
+          {"checked"  => SetupEditPage::CHECKBOX_SPEEDREVIEW_XPATH},
+          {"checked" => SetupEditPage::CHECKBOX_WEB_SOURCING_XPATH},
+          {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]  
 end
 =end
 
@@ -388,7 +395,7 @@ def test_menuNoContactSelected
   assert $browser.find_element(:xpath, ShortListDetailPage::SL_UPDATE_STATUS_OPTION_XPATH).displayed? == false  
 end
 =end
-
+=begin
 #TC809 - Add to another Short List (old interface)
 def test_addToOldInterface
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -431,6 +438,41 @@ def test_addToOldInterface
           {"checked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
           {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
   Common.main(test4)
+end
+=end
+
+#TC810 - Add to another Short List (old interface), no contacts selected
+def test_noContactSelectedOldUi
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  $wait.until {
+    $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  }
+  test = [{"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+          {"displayed" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"unchecked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
+  Common.main(test)
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $wait.until {
+    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
+  }
+  test2 = [{"click" => ShortListHomePage::SHORT_LIST_RECORD_XPATH},
+           {"displayed" => ShortListDetailOldUi::CHECKBOX_CONTACT_XPATH},
+           {"click" => ShortListDetailOldUi::ADD_TO_ANOTHER_LIST_BUTTON_XPATH}]
+  Common.main(test2)
+  assert $wait.until{
+    $browser.switch_to.alert.accept
+  }
+  $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  $wait.until {
+    $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+  }
+  test3 = [{"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+          {"displayed" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"checked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
+          {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
+  Common.main(test3)
 end
 
   
