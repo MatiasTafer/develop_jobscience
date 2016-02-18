@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestBoardSetup" tests="1" time="56.454045" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-02-18T10:54:44-03:00">
-  <testcase name="test_board_setup_tc1040" time="56.453557" assertions="0">
-  </testcase>
-</testsuite>
