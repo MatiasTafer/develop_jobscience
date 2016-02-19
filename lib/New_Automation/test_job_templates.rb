@@ -15,8 +15,7 @@ require_relative './pages/home_page.rb'
 require_relative './pages/requisitions_detail_page.rb'
 
 class TestJobTemplates < TestBasic
-  
-=begin  
+ 
 #TC969 - New Job Template  
 def test_newJobTemplate
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -32,8 +31,8 @@ def test_newJobTemplate
     $browser.find_element(:xpath, JobTemplateDetail::EDIT_TEMPLATE_BUTTON_XPATH).displayed?
   }  
 end  
-=end
-=begin
+
+
 #TC970 - New Job Template, Validation
 def test_newJobTemplateValidation
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -48,9 +47,7 @@ def test_newJobTemplateValidation
   }  
   assert_equal($browser.find_element(:xpath, NewJobTemplate::ERROR_REQUIRED_FIELDS).text, NewJobTemplate::ERROR_REQUIRED_FIELDS_TEXT)  
 end  
-=end
 
-=begin 
 #TC971 - New Job Template Mapping 
 def test_newJobTemplateMapping
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -66,9 +63,7 @@ def test_newJobTemplateMapping
     $browser.find_element(:xpath, JobTemplateMapping::NEW_MAPPING_ITEM_BUTTON_XPATH).displayed?
   }
 end 
-=end
 
-=begin
 #TC972 - New Job Template Mapping, Validation  
 def test_newJobTemplateMappingValidation
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -84,8 +79,8 @@ def test_newJobTemplateMappingValidation
   assert_equal($browser.find_element(:xpath, JobTemplateMapping::ERROR_REQUIRED_FIELD_XPATH).text, JobTemplateMapping::ERROR_REQUIRED_FIELD_TEXT)
  
 end
-=end
-=begin
+
+
 #TC973 - Create Job Order 
 def test_createJobOrder
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -101,8 +96,7 @@ def test_createJobOrder
     $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_EDIT_XPATH).displayed?  
   }         
 end
-=end  
-  
+
 #TC974 - Create Job Order, Validation 
 def test_createJobOrderValidation
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
