@@ -85,7 +85,7 @@ def test_newJobTemplateMappingValidation
  
 end
 =end
-
+=begin
 #TC973 - Create Job Order 
 def test_createJobOrder
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -101,10 +101,25 @@ def test_createJobOrder
     $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_EDIT_XPATH).displayed?  
   }         
 end
+=end  
   
-  
- 
-  
+#TC974 - Create Job Order, Validation 
+def test_createJobOrderValidation
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::JOB_TEMPLATES_TAB_LINK_URL
+  test = [{"displayed" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},
+          {"click" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},
+          {"displayed" => JobTemplates::CREATE_JOB_ORDER_BUTTON_XPATH},
+          {"click" => JobTemplates::CREATE_JOB_ORDER_BUTTON_XPATH},
+          {"displayed" => JobTemplates::NEXT_BUTTON_XPATH},
+          {"set_text" => JobTemplates::PRIMARY_RECRUITER_TEXT_FIELD_XPATH, "text" => ""},
+          {"click" => JobTemplates::NEXT_BUTTON_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+    $browser.find_element(:xpath, JobTemplates::ERROR_REQUIRED_FIELD_XPATH).displayed?  
+  } 
+  assert_equal($browser.find_element(:xpath, JobTemplates::ERROR_REQUIRED_FIELD_XPATH).text, JobTemplates::ERROR_REQUIRED_FIELD_TEXT)
+end  
   
 end
 
