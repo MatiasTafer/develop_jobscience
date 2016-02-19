@@ -16,5 +16,8 @@ class RequisitionMassTransfer
   
   
   RECRUITER_TO_TRANSFER_TEXT = "Charlie Day"
+  
+  #ERRORS
+  ERROR_RECRUITER_MUST_BE_SELECTED_XPATH = ".//*[@class='message errorM3']"
 
 end
