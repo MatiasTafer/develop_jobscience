@@ -30,13 +30,14 @@ class TestActionsOnListView < TestBasic
 
   #TC47 - Successfully create a new contact
   def test_CreateNewContact
-    
+    randomContact = SecureRandom.hex(4)
+    randomAccount = SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #An account must be created for the contact
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateAccount(randomAccount)
     
     # 1. Click on "Contacts" 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -54,8 +55,8 @@ class TestActionsOnListView < TestBasic
     
     # 5. Complete the text box (required): "Last name" an "Account Name".
     Common.displayed(ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH)
-    Common.set_text(ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH, ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT)
-    Common.set_text(ContactNewEditPage::CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    Common.set_text(ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH, randomContact)
+    Common.set_text(ContactNewEditPage::CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH, randomAccount)
     
     #6. Complete the fields (optional).
     #7. Click on "Save".
@@ -64,24 +65,25 @@ class TestActionsOnListView < TestBasic
     #RESULT
     #Redirects to "Contact Detail" page.
     Common.displayed(ContactDetailPage::CONTACT_DETAIL_NAME_XPATH)
-    Common.hassert_equal(ContactDetailPage::CONTACT_DETAIL_NAME_XPATH, ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT)
-    #assert_equal($browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text, ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT)
+    
+    assert_equal($browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text, randomContact)
     
     #Delete account created in this testcase
-    DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    DeleteAccount(randomAccount)
   end
-
+ 
   #TC48 - Successfully Add Skill
   def test_SuccessfullyAddSkill
+    randomContact = SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -96,7 +98,7 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     # 3. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
     
     # 4. Click on "Add skills"
     Common.click(ContactsHomePage::CONTACT_HOME_ADD_SKILL_XPATH)
@@ -127,7 +129,7 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     assert $wait.until {
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH).displayed? 
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH).displayed?   
@@ -135,22 +137,23 @@ class TestActionsOnListView < TestBasic
     }
     
     #Delete account created in this testcase
-    DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)  
+    DeleteAccount(randomContact)  
 
   end
   
    
  #TC253 - Successfully Add and Rate Skill
  def test_SuccessfullyAddRateSkill
-   #PRECONDITIONS
-   #Login
+    randomContact = SecureRandom.hex(4)
+    #PRECONDITIONS
+    #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -165,7 +168,7 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     # 3. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
     
     # 4. Click on "Add skills"
     Common.click(ContactsHomePage::CONTACT_HOME_ADD_SKILL_XPATH)
@@ -212,7 +215,7 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     assert $wait.until {
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH).displayed? 
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH).displayed?   
@@ -234,7 +237,7 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     
     test = [
     {"displayed" => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH},
@@ -246,24 +249,26 @@ class TestActionsOnListView < TestBasic
     assert_equal("10", $browser.find_element(:xpath => SkillDetailPage::SKILL_DETAIL_RATING_XPATH).text)
     
     #Delete account created in this testcase
-    DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)  
+    DeleteAccount(randomContact)  
     
   end
     
    
   #TC254 - Adding and Rating Skills for multiple contacts
   def test_AddRateSkillMultipleContacts
+    randomContact = SecureRandom.hex(4)
+    randomContact2 = SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #At least two account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_2_TEXT)
+    CreateAccount(randomContact) 
+    CreateAccount(randomContact2)
     
     #At least two contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_2_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_2_TEXT)
+    CreateContact(randomContact, randomContact)
+    CreateContact(randomContact2, randomContact2)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -278,8 +283,8 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     # 3. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_2_TEXT + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact2 + "')]]/../../../..//td[1]//input").click
   
     
     # 4. Click on "Add skills"
@@ -306,25 +311,28 @@ class TestActionsOnListView < TestBasic
     assert_equal($browser.find_element(:xpath => ContactsHomePage::CONTACT_SKILL_POPUP_ERROR_OUTPUT_XPATH).text, "Error:")
     
     #Delete accounts created in this testcase
-    DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-    DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_2_TEXT) 
+    DeleteAccount(randomContact) 
+    DeleteAccount(randomContact2) 
     
   end
  
   #TC49 - Successfully Add to Existing Short List
   def test_SuccessfullyAddToExistingList
+    randomContact = SecureRandom.hex(4)
+    randomList = SecureRandom.hex(4)
+    
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
         
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
     #At least one short list must exist 
-    CreateShortList(ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT)
+    CreateShortList(randomList)
         
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -339,7 +347,7 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     # 3. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
     
     # 4. Click on "Add to List"
     Common.click(ContactsHomePage::CONTACT_HOME_ADD_LIST_XPATH)
@@ -351,7 +359,7 @@ class TestActionsOnListView < TestBasic
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_LIST_POPUP_NAME_INPUT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_LIST_POPUP_NAME_INPUT_XPATH, "text" => ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT},
+      {"set_text" => ContactsHomePage::CONTACT_LIST_POPUP_NAME_INPUT_XPATH, "text" => randomList},
     # 5. Click on "Add to Short list"   
       {"click" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_ADD_SHORT_LIST_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_CLOSE_XPATH},
@@ -368,7 +376,7 @@ class TestActionsOnListView < TestBasic
     $wait.until {
       $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH).displayed?
     }
-    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT + "')]]").click
+    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + randomList + "')]]").click
    
     test = [
       {"displayed" => ShortListDetailPage::SL_LIST_XPATH},
@@ -376,28 +384,31 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     assert $wait.until {
-      $browser.find_element(:xpath, "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").displayed?
+      $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
    #Delete accounts created in this testcase
-   DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+   DeleteAccount(randomContact) 
    
    #Delete shortlist created in this testcase
-   DeleteShortList(ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT)
+   DeleteShortList(randomList)
         
   end
 
  #TC255 - Successfully Add to New Short List
   def test_SuccessfullyAddToNewList
+    randomContact = SecureRandom.hex(4)
+    randomList = SecureRandom.hex(4)
+    
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
         
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -412,7 +423,7 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     # 3. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
     
     # 4. Click on "Add to List"
     Common.click(ContactsHomePage::CONTACT_HOME_ADD_LIST_XPATH)
@@ -424,7 +435,7 @@ class TestActionsOnListView < TestBasic
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_LIST_POPUP_NAME_INPUT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_LIST_POPUP_NEW_NAME_INPUT_XPATH, "text" => ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT},
+      {"set_text" => ContactsHomePage::CONTACT_LIST_POPUP_NEW_NAME_INPUT_XPATH, "text" => randomList},
     # 5. Click on "Add to Short list"   
       {"click" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_ADD_SHORT_LIST_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_CLOSE_XPATH},
@@ -441,7 +452,7 @@ class TestActionsOnListView < TestBasic
     $wait.until {
       $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH).displayed?
     }
-    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT + "')]]").click
+    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + randomList + "')]]").click
    
     test = [
       {"displayed" => ShortListDetailPage::SL_LIST_XPATH},
@@ -449,360 +460,124 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     assert $wait.until {
-      $browser.find_element(:xpath, "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").displayed?
+      $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
    #Delete accounts created in this testcase
-   DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+   DeleteAccount(randomContact) 
    
    #Delete shortlist created in this testcase
-   DeleteShortList(ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT)
+   DeleteShortList(randomList)
         
   end
 
   #TC50 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = FALSE
   def test_ApplyUnpostedJobEnableEnhancedApplyToJobFalse  
-
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
   
-  #PRECONDITIONS:
-  
-  #Login
-  Common.login(Common::USER_EMAIL, Common::PASSWORD) 
-  
-  # Job with "Post job" = False. 
-  CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, false)
-  
-  #Enable Enhanced Apply to Job" = FALSE
-  CustomSettings.EnableEnhancedApplyToJob(false)
-  
-  #At least one account must exist
-  CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-        
-  #At least one contact must exist 
-  CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
-  
-  
-  # 1. Click on "Contacts". 
-  $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-  
-  
-  test = [
-    {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-    {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-  ]
-  Common.main(test)
-  
-  # 2. Select (doing click on checkbox) one or more contacts
-  $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
-  
-  # 3. Click on "Apply to jobs"
-  Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
-  sleep(3)
-  #A pop up window will be disaplyed
-  newWindow= $browser.window_handles.last
-  $browser.switch_to.window(newWindow)
-  sleep(2)
-  
-  test = [
-  # 5. Select the unposted Job
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE},
-  # 6. Click "Apply To Position" 
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_APPLY_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
-  # 7. Click "Close"     
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH}
-  ]
-  Common.main(test)
-  newWindow2= $browser.window_handles.first
-  $browser.switch_to.window(newWindow2)
-  
-  $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-  test = [
-    {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-    {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-  ]
-  Common.main(test)
-  
-  $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
-  $wait.until {
-        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    
+    # Job with "Post job" = False. 
+    CreateRequisitionPostJob(randomReq, false)
+    
+    #Enable Enhanced Apply to Job" = FALSE
+    CustomSettings.EnableEnhancedApplyToJob(false)
+    
+    #At least one account must exist
+    CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3. Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2)
+    
+    test = [
+    # 5. Select the unposted Job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
+    # 6. Click "Apply To Position" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_APPLY_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+    # 7. Click "Close"     
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH}
+    ]
+    Common.main(test)
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    $wait.until {
+          $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
+        }
+    assert $wait.until {
+        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }
-  assert $wait.until {
-      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE + "')]]").displayed?
-    }
-  
-  #Delete accounts created in this testcase
-   DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-  #Delete requisition created in this testcase
-  DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
+    
+    #Delete accounts created in this testcase
+     DeleteAccount(randomContact) 
+    #Delete requisition created in this testcase
+    DeleteRequisition(randomReq)  
   end
   
   
   
   #TC256 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = FALSE
   def test_ApplyPostedJobEnableEnhancedApplyFalsePostTrue  
-  
-  #PRECONDITIONS:
-  
-  #Login
-  Common.login(Common::USER_EMAIL, Common::PASSWORD) 
-  
-  # Job with "Post job" = True. 
-  CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, true)
-  
-  #Enable Enhanced Apply to Job" = FALSE
-  CustomSettings.EnableEnhancedApplyToJob(false)
-  
-  #At least one account must exist
-  CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-        
-  #At least one contact must exist 
-  CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
-  
-  
-  # 1. Click on "Contacts". 
-  $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-  
-  
-  test = [
-    {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-    {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-  ]
-  Common.main(test)
-  
-  # 2. Select (doing click on checkbox) one or more contacts
-  $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
-  
-  # 3. Click on "Apply to jobs"
-  Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
-  sleep(3)
-  #A pop up window will be disaplyed
-  newWindow= $browser.window_handles.last
-  $browser.switch_to.window(newWindow)
-  sleep(2)
-  
-  test = [
-  # 5. Select the unposted Job
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE},
-  # 6. Click "Apply To Position" 
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_APPLY_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
-  # 7. Click "Close"     
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH}
-  ]
-  Common.main(test)
-  newWindow2= $browser.window_handles.first
-  $browser.switch_to.window(newWindow2)
-  
-  $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-  test = [
-    {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-    {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-  ]
-  Common.main(test)
-  
-  $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
-  $wait.until {
-        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
-      }
-  assert $wait.until {
-      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE + "')]]").displayed?
-    }
-  
-  #Delete accounts created in this testcase
-   DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-  #Delete requisition created in this testcase
-  DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
-  end
- 
-  #TC51 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Invite to Apply
-  def test_ApplyPostedJobEnableEnhancedApplyTrueInvite 
-  
-  #PRECONDITIONS:
-  
-  #Login
-  Common.login(Common::USER_EMAIL, Common::PASSWORD) 
-  
-  # Job with "Post job" = True
-  CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, true)
-  
-  #Enable Enhanced Apply to Job" = True
-  CustomSettings.EnableEnhancedApplyToJob(true)
-  
-  #At least one account must exist
-  CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-        
-  #At least one contact must exist 
-  CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
-  
-  
-  # 1. Click on "Contacts". 
-  $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-  
-  
-  test = [
-    {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-    {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-  ]
-  Common.main(test)
-  
-  # 2. Select (doing click on checkbox) one or more contacts
-  $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
-  
-  # 3. Click on "Apply to jobs"
-  Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
-  sleep(3)
-  #A pop up window will be disaplyed
-  newWindow= $browser.window_handles.last
-  $browser.switch_to.window(newWindow)
-  sleep(2)
-  
-  test = [
-  # 5. Select the posted Job
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE},
-  # 6. Click "Next" 
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
-  # 7. Click on Invite to Apply   
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH}
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
     
-  ]
-  Common.main(test)
-  newWindow2= $browser.window_handles.first
-  $browser.switch_to.window(newWindow2)
-  
-  $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-  test = [
-    {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-    {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-  ]
-  Common.main(test)
-  
-  $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
-  $wait.until {
-        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
-      }
-  assert $wait.until {
-      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE + "')]]").displayed?
-    }
-  
-  #Delete accounts created in this testcase
-   DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-  #Delete requisition created in this testcase
-  DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
-  end  
-
-  #TC52 - Try to Invite to Apply with "Post job" = False
-  def test_TryToInvitePostJobFalse 
-  
-  #PRECONDITIONS:
-  
-  #Login
-  Common.login(Common::USER_EMAIL, Common::PASSWORD) 
-  
-  # Job with "Post job" = false
-  CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, false)
-  
-  #Enable Enhanced Apply to Job" = True
-  CustomSettings.EnableEnhancedApplyToJob(true)
-  
-  #At least one account must exist
-  CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-        
-  #At least one contact must exist 
-  CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
-  
-  
-  # 1. Click on "Contacts". 
-  $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-  
-  
-  test = [
-    {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-    {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-  ]
-  Common.main(test)
-  
-  # 2. Select (doing click on checkbox) one or more contacts
-  $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
-  
-  # 3. Click on "Apply to jobs"
-  Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
-  sleep(3)
-  #A pop up window will be disaplyed
-  newWindow= $browser.window_handles.last
-  $browser.switch_to.window(newWindow)
-  sleep(2)
-  
-  test = [
-  # 5. Select the unposted Job
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-    {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE},
-  # 6. Click "Next" 
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
-  # 7. Click on Invite to Apply   
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
-    {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
-    {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_INVITE_ERROR_XPATH}
-  ]
-  Common.main(test)
-
-    
-  assert_equal($browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_INVITE_ERROR_XPATH).text, "Error:\nYou cannot Invite Candidates to apply for a Job that is not posted.**")
-  
-  $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CANCEL_XPATH).click
-  
-  newWindow2= $browser.window_handles.first
-  $browser.switch_to.window(newWindow2)
-  
-  #Delete accounts created in this testcase
-   DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-  #Delete requisition created in this testcase
-  DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
-  end
-
-  #TC257 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Agency
-  def test_ApplyPostedJobEnableEnhancedApplyTrueAgency 
-  
     #PRECONDITIONS:
     
     #Login
-    #Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
     
-    # Job with "Post job" = True
-    CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, true)
+    # Job with "Post job" = True. 
+    CreateRequisitionPostJob(randomReq, true)
     
-    #Enable Enhanced Apply to Job" = True
-    CustomSettings.EnableEnhancedApplyToJob(true)
+    #Enable Enhanced Apply to Job" = FALSE
+    CustomSettings.EnableEnhancedApplyToJob(false)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
-    #At least one agency must exist
-    CreateAgencyAccount(AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -817,7 +592,90 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     # 2. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3. Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2)
+    
+    test = [
+    # 5. Select the unposted Job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
+    # 6. Click "Apply To Position" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_APPLY_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+    # 7. Click "Close"     
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH}
+    ]
+    Common.main(test)
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    $wait.until {
+          $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
+        }
+    assert $wait.until {
+        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
+      }
+    
+    #Delete accounts created in this testcase
+     DeleteAccount(randomContact) 
+    #Delete requisition created in this testcase
+    DeleteRequisition(randomReq)  
+  end
+ 
+  #TC51 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Invite to Apply
+  def test_ApplyPostedJobEnableEnhancedApplyTrueInvite 
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    
+    # Job with "Post job" = True
+    CreateRequisitionPostJob(randomReq, true)
+    
+    #Enable Enhanced Apply to Job" = True
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    #At least one account must exist
+    CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
     
     # 3. Click on "Apply to jobs"
     Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
@@ -830,14 +688,177 @@ class TestActionsOnListView < TestBasic
     test = [
     # 5. Select the posted Job
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
+    # 6. Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+    # 7. Click on Invite to Apply   
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH}
+      
+    ]
+    Common.main(test)
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    $wait.until {
+          $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
+        }
+    assert $wait.until {
+        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
+      }
+    
+    #Delete accounts created in this testcase
+     DeleteAccount(randomContact) 
+    #Delete requisition created in this testcase
+    DeleteRequisition(randomReq)  
+  end  
+
+  #TC52 - Try to Invite to Apply with "Post job" = False
+  def test_TryToInvitePostJobFalse 
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    
+    # Job with "Post job" = false
+    CreateRequisitionPostJob(randomReq, false)
+    
+    #Enable Enhanced Apply to Job" = True
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    #At least one account must exist
+    CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3. Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2)
+    
+    test = [
+    # 5. Select the unposted Job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
+    # 6. Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+    # 7. Click on Invite to Apply   
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_INVITE_ERROR_XPATH}
+    ]
+    Common.main(test)
+  
+      
+    assert_equal($browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_INVITE_ERROR_XPATH).text, "Error:\nYou cannot Invite Candidates to apply for a Job that is not posted.**")
+    
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CANCEL_XPATH).click
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    
+    #Delete accounts created in this testcase
+     DeleteAccount(randomContact) 
+    #Delete requisition created in this testcase
+    DeleteRequisition(randomReq)  
+  end
+
+  #TC257 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Agency
+  def test_ApplyPostedJobEnableEnhancedApplyTrueAgency 
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    randomAgy = SecureRandom.hex(4)
+    
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    
+    # Job with "Post job" = True
+    CreateRequisitionPostJob(randomReq, true)
+    
+    #Enable Enhanced Apply to Job" = True
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    #At least one account must exist
+    CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    CreateContact(randomContact, randomContact)
+    
+    #At least one agency must exist
+    CreateAgencyAccount(randomAgy)
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3. Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2)
+    
+    test = [
+    # 5. Select the posted Job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
     # 6. Click "Next" 
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
     # 7. Click on Agency   
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_AGENCY_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_AGENCY_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_AGENCY_XPATH, "text" => AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_AGENCY_XPATH, "text" => randomAgy},
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
@@ -856,46 +877,49 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
   
     assert $wait.until {
-        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE + "')]]").displayed?
+        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
     #Delete accounts created in this testcase
-     DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-     DeleteAccount(AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT)
+     DeleteAccount(randomContact) 
+     DeleteAccount(randomAgy)
      
     #Delete requisition created in this testcase
-    DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
+    DeleteRequisition(randomReq)  
   end
 
   
   #TC258 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Agency
   def test_ApplyUnpostedJobEnableEnhancedApplyTrueAgency 
-  
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    randomAgy = SecureRandom.hex(4)
+    
     #PRECONDITIONS:
     
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD) 
     
     # Job with "Post job" = False
-    CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, false)
+    CreateRequisitionPostJob(randomReq, false)
     
     #Enable Enhanced Apply to Job" = True
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
     #At least one agency must exist
-    CreateAgencyAccount(AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT)
+    CreateAgencyAccount(randomAgy)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -910,7 +934,7 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     # 2. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
     
     # 3. Click on "Apply to jobs"
     Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
@@ -923,14 +947,14 @@ class TestActionsOnListView < TestBasic
     test = [
     # 5. Select the unposted Job
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
     # 6. Click "Next" 
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
     # 7. Click on Agency   
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_AGENCY_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_AGENCY_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_AGENCY_XPATH, "text" => AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_AGENCY_XPATH, "text" => randomAgy},
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
@@ -949,42 +973,45 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
   
     assert $wait.until {
-        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE + "')]]").displayed?
+        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
     #Delete accounts created in this testcase
-     DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-     DeleteAccount(AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT)
+     DeleteAccount(randomContact) 
+     DeleteAccount(randomAgy)
      
     #Delete requisition created in this testcase
-    DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
+    DeleteRequisition(randomReq)  
   end
   
   #TC259 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
   def test_ApplyPostedJobEnableEnhancedApplyTrueException
-  
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    randomAgy = SecureRandom.hex(4)
+    
     #PRECONDITIONS:
     
     #Login
-    #Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
     
     # Job with "Post job" = true
-    CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, true)
+    CreateRequisitionPostJob(randomReq, true)
     
     #Enable Enhanced Apply to Job" = True
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
         
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -999,7 +1026,7 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     # 2. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
     
     # 3. Click on "Apply to jobs"
     Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
@@ -1012,7 +1039,7 @@ class TestActionsOnListView < TestBasic
     test = [
     # 5. Select the posted Job
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
     # 6. Click "Next" 
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
@@ -1041,60 +1068,27 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
   
     assert $wait.until {
-        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE + "')]]").displayed?
+        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
     #Delete accounts created in this testcase
-     DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-     DeleteAccount(AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT)
-     
+     DeleteAccount(randomContact) 
+          
     #Delete requisition created in this testcase
-    DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
+    DeleteRequisition(randomReq)  
   end
-      
-  def CreateRequisitionPostJob(name, postjob)
-    #postjob=TRUE will check "Post Job" checkbox, postjob=false will not check it.
-      
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
-    test = [
-      {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => name},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH},
-    ]
-    Common.main(test)
-    if postjob
-      unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
-        $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
-      end
-    else
-      if $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
-        $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
-      end  
-    end
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
-    
-    $wait.until {
-        $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
-      }
-  end
-
-
-  #TC260 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
+  
+    #TC260 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
   def test_ApplyUnpostedJobEnableEnhancedApplyTrueException
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    randomAgy = SecureRandom.hex(4)
   
     #PRECONDITIONS:
     
@@ -1102,19 +1096,19 @@ class TestActionsOnListView < TestBasic
     Common.login(Common::USER_EMAIL, Common::PASSWORD) 
     
     # Job with "Post job" = False
-    CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, false)
+    CreateRequisitionPostJob(randomReq, false)
     
     #Enable Enhanced Apply to Job" = True
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
     #At least one agency must exist
-    CreateAgencyAccount(AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT)
+    CreateAgencyAccount(randomAgy)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -1129,7 +1123,7 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     
     # 2. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]/../../../..//td[1]//input").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
     
     # 3. Click on "Apply to jobs"
     Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
@@ -1142,7 +1136,7 @@ class TestActionsOnListView < TestBasic
     test = [
     # 5. Select the unposted Job
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
     # 6. Click "Next" 
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
@@ -1171,26 +1165,27 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
   
     assert $wait.until {
-        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE + "')]]").displayed?
+        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
     #Delete accounts created in this testcase
-     DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-     DeleteAccount(AccountsNewEditPage::ACCOUNT_NEW_DATA_NAME_TEXT)
+     DeleteAccount(randomContact) 
+     DeleteAccount(randomAgy)
      
     #Delete requisition created in this testcase
-    DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
+    DeleteRequisition(randomReq)  
   end
+      
  
 ################### CUSTOM METHODS #####################
-      
-  def CreateRequisitionPostJob(name, postjob)
+
+def CreateRequisitionPostJob(name, postjob)
     #postjob=TRUE will check "Post Job" checkbox, postjob=false will not check it.
       
     $browser.get(HomePage::REQUISITIONS_LINK_URL)
@@ -1304,7 +1299,7 @@ class TestActionsOnListView < TestBasic
     {"click" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
     ]
     Common.main(test)
-    sleep(5)
+    sleep(3)
     $browser.switch_to.alert.accept
   end
   
@@ -1319,7 +1314,7 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     $browser.find_element(:xpath => "//*[text()[contains(.,'" + name + "')]]/../../../../td[3]//a[2]").click
-    sleep(5)
+    sleep(3)
     $browser.switch_to.alert.accept 
   end
   
@@ -1337,7 +1332,7 @@ class TestActionsOnListView < TestBasic
       }
      # 3 - Click on Delete 
     $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).click
-     sleep(5)
+     sleep(3)
     # 4 - Confirm
     $browser.switch_to.alert.accept
   end
