@@ -41,6 +41,7 @@ def test_newJobOrder
 end  
 =end
 
+=begin
 #TC1060 - New Job Order, Validation
 def test_newJobOrderValidation
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -117,9 +118,23 @@ def test_newJobOrderValidation
   }
   assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_INVALID_NUMBER_TEXT)
 end
+=end
 
-  
-  
+#TC1061 - Transfer Jobs  
+def test_transferJobs
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::REQUISITION_TAB_LINK_URL
+  test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_TRANSFER_JOBS_XPATH},
+          {"displayed" => RequisitionMassTransfer::REQUISITIONS_MASS_TRANSFER_TRANSFER_TO_RECRUITER_XPATH },
+          {"set_text" => RequisitionMassTransfer::REQUISITIONS_MASS_TRANSFER_TRANSFER_TO_RECRUITER_XPATH, "text" => RequisitionMassTransfer::RECRUITER_TO_TRANSFER_TEXT},
+          {"click" => RequisitionMassTransfer::REQUISITIONS_MASS_TRANSFER_BTN_TRANSFER_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+     $browser.find_element(:xpath, RequisitionMassTransfer::BACK_TO_LIST_BUTTON_ON_SUCCSESS_PAGE).displayed?
+  }
+end  
   
   
   
