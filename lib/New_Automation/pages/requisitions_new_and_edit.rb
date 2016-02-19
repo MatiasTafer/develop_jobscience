@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class RequisitionsNewAndEdit
   
   #FIRST STEP
@@ -14,6 +16,7 @@ class RequisitionsNewAndEdit
     
     #REQUIRED FIELDS
   REQUISITIONS_NEW_JOB_TITLE_ID = "Name"
+  REQUISITIONS_NEW_JOB_TITLE_XPATH =".//*[@id='Name']"
   REQUISITIONS_NEW_JOB_TITLE_XPATH = ".//*[@id='Name']"
   REQUISITIONS_NEW_PRIMARY_RECRUITER_TYPE_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[5]//select"
   REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH = "(.//*[@class='requiredInput'])[2]//span//input"
@@ -55,6 +58,7 @@ class RequisitionsNewAndEdit
   CLIENT_TEXT = "Candidates"
   CONTACT_TEXT = "Charlie Day2"
   TRAVEL_WRONG_PERCENT_TEXT = "wrongPercent"
+  REQUISITION_NAME = SecureRandom.hex(5)
 
     
   #OTHER FIELDS

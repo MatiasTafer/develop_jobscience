@@ -10,4 +10,10 @@ class RequisitionsHomePage
   REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH = "(.//*[@name='ids'])[1]"
   REQUISITIONS_PAGE_FIRST_SELECT_ALL_BOX_ID = "allBox"
   REQUISITIONS_PAGE_LIST_XPATH = ".//*[@class='listBody']"
+  
+  
+  #Record Type Page
+  NEW_RECORD_TYPE_DROPDOWN_XPATH = ".//*[@id='p3']"
+  RECORD_TYPE_REQUISITION_TEXT = "Corporate"
+  CONTINUE_BUTTON_XPATH = ".//*[@id='bottomButtonRow']/input[1]"
 end
