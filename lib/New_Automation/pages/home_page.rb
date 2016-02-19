@@ -22,6 +22,8 @@ class HomePage
   SOURCE_LINK_URL = "https://na17.salesforce.com/a0e/o"
   JOB_TEMPLATES_TAB_LINK_URL = "https://na17.salesforce.com/a0B/o"
   STANDARD_QUESTIONS_TAB_LINK = "https://na17.salesforce.com/a0f/o"
+  JOB_TEMPLATE_MAPPING_TAB_LINK = "https://na17.salesforce.com/a0J/o"
+  
 
   ALL_CONTACTS_TAB_LINK = "https://na17.salesforce.com/003?fcf=00Bo0000003aqv0"
 
