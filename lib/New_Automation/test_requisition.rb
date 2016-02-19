@@ -16,7 +16,7 @@ require_relative './pages/requisitions_mass_transfer_page.rb'
 require_relative './pages/requisitions_new_and_edit.rb'
 
 class TestRequisition < TestBasic
-  
+=begin  
 #TC1059 - New Job Order 
 def test_newJobOrder
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -39,8 +39,29 @@ def test_newJobOrder
       $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed? 
     }      
 end  
+=end
 
 #TC1060 - New Job Order, Validation
+def test_newJobOrderValidation
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::REQUISITION_TAB_LINK_URL
+  test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
+           {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
+           {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
+           {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
+           {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+    $browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).displayed?
+  }
+  assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_REQUIRED_FIELDS_TEXT)
+  
+
+
+end
+
   
   
   
