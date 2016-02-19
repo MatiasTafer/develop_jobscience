@@ -1304,7 +1304,7 @@ class TestActionsOnListView < TestBasic
     {"click" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
     ]
     Common.main(test)
-    sleep(1)
+    sleep(5)
     $browser.switch_to.alert.accept
   end
   
@@ -1319,7 +1319,7 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     $browser.find_element(:xpath => "//*[text()[contains(.,'" + name + "')]]/../../../../td[3]//a[2]").click
-    sleep(1)
+    sleep(5)
     $browser.switch_to.alert.accept 
   end
   
@@ -1337,7 +1337,7 @@ class TestActionsOnListView < TestBasic
       }
      # 3 - Click on Delete 
     $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).click
-     sleep(1)
+     sleep(5)
     # 4 - Confirm
     $browser.switch_to.alert.accept
   end
