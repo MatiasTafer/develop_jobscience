@@ -153,7 +153,8 @@ def test_transferJobVlaidation
   }
 end
 =end
-  
+
+=begin
 #TC1064 - Change Priority
 def test_changePriority
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -169,10 +170,41 @@ def test_changePriority
     $browser.find_element(:xpath, RequisitionsChangePriority::BACK_TO_LIST_BUTTON_ON_SUCCESS_PAGE_XPATH).displayed?
   } 
 end
+=end
+
+=begin
+#TC1065 - Change Priority, Validation  
+def test_changePriorityValidation
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::REQUISITION_TAB_LINK_URL
+  test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_PRIORITY_JOBS_XPATH},
+          {"displayed" => RequisitionsChangePriority::REQUISITIONS_CHANGE_PRIORITY_NEW_PRIORITY_XPATH},
+          {"click" => RequisitionsChangePriority::REQUISITIONS_CHANGE_PRIORITY_BTN_UPDATE_PRIORITY_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+    $browser.find_element(:xpath, RequisitionsChangePriority::ERROR_PRIORITY_MUST_BE_SELECTED).displayed?
+  }  
+end
+=end 
+ 
+#TC1067 - Change Status
+def test_changeStatus
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::REQUISITION_TAB_LINK_URL
+  test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_STATUS_JOBS_XPATH},
+          {"displayed" => RequisitionsChangeStatus::REQUISITIONS_CHANGE_STATUS_NEW_STATUS_XPATH},
+          {"set_text" => RequisitionsChangeStatus::REQUISITIONS_CHANGE_STATUS_NEW_STATUS_XPATH, "text" => RequisitionsChangeStatus::REQUISITION_NEW_STATUS_TEXT},
+          {"click" => RequisitionsChangeStatus::REQUISITIONS_CHANGE_STATUS_BTN_UPDATE_STATUS_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+    $browser.find_element(:xpath, RequisitionsChangeStatus::BACK_TO_LIST_BUTTON_SUCCESS_PAGE_XPATH).displayed?
+  }
   
-  
-  
-  
+end
   
   
   

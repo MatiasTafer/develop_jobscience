@@ -17,4 +17,6 @@ class RequisitionsChangePriority
   NEW_PRIORITY_TEXT = "High"
   
   BACK_TO_LIST_BUTTON_ON_SUCCESS_PAGE_XPATH = ".//*[@title='Back to List']"
+  
+  ERROR_PRIORITY_MUST_BE_SELECTED = ".//*[@class='message errorM3']"
 end
