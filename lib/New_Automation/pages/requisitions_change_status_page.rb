@@ -16,4 +16,7 @@ class RequisitionsChangeStatus
   REQUISITION_NEW_STATUS_TEXT = "Open"
   
   BACK_TO_LIST_BUTTON_SUCCESS_PAGE_XPATH = ".//*[@title='Back to List']"
+  
+  
+  ERROR_STATUS_MUST_BE_SELECTED = ".//*[@class='message errorM3']"
 end

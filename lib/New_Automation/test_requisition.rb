@@ -188,7 +188,8 @@ def test_changePriorityValidation
   }  
 end
 =end 
- 
+
+=begin 
 #TC1067 - Change Status
 def test_changeStatus
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -202,11 +203,28 @@ def test_changeStatus
   Common.main(test)
   assert $wait.until {
     $browser.find_element(:xpath, RequisitionsChangeStatus::BACK_TO_LIST_BUTTON_SUCCESS_PAGE_XPATH).displayed?
+  }  
+end
+=end
+
+#TC1068 - Change Status, Validation
+def test_changeStatusValidation
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::REQUISITION_TAB_LINK_URL
+  test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_STATUS_JOBS_XPATH},
+          {"displayed" => RequisitionsChangeStatus::REQUISITIONS_CHANGE_STATUS_NEW_STATUS_XPATH},
+          {"click" => RequisitionsChangeStatus::REQUISITIONS_CHANGE_STATUS_BTN_UPDATE_STATUS_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+    $browser.find_element(:xpath, RequisitionsChangeStatus::ERROR_STATUS_MUST_BE_SELECTED).displayed?
   }
   
-end
   
   
+  
+end  
   
   
   
