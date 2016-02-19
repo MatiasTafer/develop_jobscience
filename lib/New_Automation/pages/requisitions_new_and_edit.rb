@@ -59,7 +59,7 @@ class RequisitionsNewAndEdit
   CONTACT_TEXT = "Charlie Day2"
   TRAVEL_WRONG_PERCENT_TEXT = "wrongPercent"
   REQUISITION_NAME = SecureRandom.hex(5)
-
+  DATE_WRONG_TEXT = "WrongDate"
     
   #OTHER FIELDS
   REQUISITIONS_NEW_QUESTIONS_SET_XPATH = "(.//*[@class='detailList'])[2]/tbody/tr[3]/td[4]//span/input"
@@ -98,6 +98,7 @@ class RequisitionsNewAndEdit
  ERROR_INVALID_CURRENCY_TEXT = "Error: Invalid currency"
  ERROR_INVALID_NUMBER_TEXT = "Error: Invalid number"
  ERROR_INVALID_PERCENT_TEXT = "Error: Invalid percent"
+ ERROR_INVALID_DATE_TEXT = "Error: Invalid Date"
 
 
 end
