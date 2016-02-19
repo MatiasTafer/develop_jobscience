@@ -137,6 +137,7 @@ def test_transferJobs
 end  
 =end  
 
+=begin
 #TC1062 - Transfer Jobs, Validation
 def test_transferJobVlaidation
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -151,7 +152,23 @@ def test_transferJobVlaidation
      $browser.find_element(:xpath, RequisitionMassTransfer::ERROR_RECRUITER_MUST_BE_SELECTED_XPATH).displayed?
   }
 end
+=end
   
+#TC1064 - Change Priority
+def test_changePriority
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::REQUISITION_TAB_LINK_URL
+  test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_PRIORITY_JOBS_XPATH},
+          {"displayed" => RequisitionsChangePriority::REQUISITIONS_CHANGE_PRIORITY_NEW_PRIORITY_XPATH},
+          {"set_text" => RequisitionsChangePriority::REQUISITIONS_CHANGE_PRIORITY_NEW_PRIORITY_XPATH, "text" => RequisitionsChangePriority::NEW_PRIORITY_TEXT},
+          {"click" => RequisitionsChangePriority::REQUISITIONS_CHANGE_PRIORITY_BTN_UPDATE_PRIORITY_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+    $browser.find_element(:xpath, RequisitionsChangePriority::BACK_TO_LIST_BUTTON_ON_SUCCESS_PAGE_XPATH).displayed?
+  } 
+end
   
   
   
