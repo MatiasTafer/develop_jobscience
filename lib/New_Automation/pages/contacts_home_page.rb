@@ -11,6 +11,8 @@ class ContactsHomePage
   CONTACT_HOME_ADD_SKILL_XPATH = ".//*[@name='ts2__add_skills']"
   CONTACT_HOME_ADD_LIST_XPATH = ".//*[@name='ts2__add_to_list']"
   CONTACT_HOME_APPLY_TO_JOB_XPATH = ".//*[@name='ts2__apply_to_job']"
+  CONTACT_HOME_FIRST_VIEW_OPTION_XPATH = ".//*[@id='fcf']/option[1]"
+  CONTACT_HOME_FIRST_ENTRY_GO_XPATH = ".//*[@id='ext-gen25']/div[1]//td[4]//a"
   
   #Add Skill Pop Up Window
   CONTACT_SKILL_POPUP_FIRST_ELEMENT_XPATH = "(.//*[@class='first_level']//input)[1]"
