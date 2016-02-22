@@ -14,4 +14,11 @@ class RequisitionsCloseJob
   
   #Messages
   CONFIRM_DELETED_MESSAGE_XPATH = ".//*[@class='message confirmM3']"
+  
+  
+  #Errors
+  ERROR_REQUIRED_FIELDS_XPATH =".//*[@class='errorMsg']"
+  
+  ERROR_REQUIRED_FIELD_TEXT = "Error: You must enter a value"
+  
 end
