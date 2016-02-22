@@ -9,5 +9,13 @@ class RequisitionsHomePage
   REQUISITIONS_PAGE_FIRST_ENTRY_LIST_STATUS_TEXT_XPATH = "(.//table)[4]/tbody/tr/td[7]//div"
   REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH = "(.//*[@name='ids'])[1]"
   REQUISITIONS_PAGE_FIRST_SELECT_ALL_BOX_ID = "allBox"
+
   REQUISITIONS_PAGE_FIRST_ENTRY_LIST_EDIT_XPATH = "((.//*[@class='x-grid3-row-table']/child::tbody/child::tr/child::td)[3]/div/a/span)[text()[contains(.,'Edit')]]"
+
+  REQUISITIONS_PAGE_LIST_XPATH = ".//*[@class='listBody']"
+
+  #Record Type Page
+  NEW_RECORD_TYPE_DROPDOWN_XPATH = ".//*[@id='p3']"
+  RECORD_TYPE_REQUISITION_TEXT = "Corporate"
+  CONTINUE_BUTTON_XPATH = ".//*[@id='bottomButtonRow']/input[1]"
 end

@@ -1,6 +1,6 @@
 class QuestionSetsQuestionBuilder
   #BUTTONS
-  QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_QUESTION_XPATH = "(.//*[@id='QApage:Qq:theGrid']//span)[1]/input[1]"
+  QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_QUESTION_XPATH = ".//*[@title='New Question']"
   QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_ORDER_XPATH = "(.//*[@id='QApage:Qq:theGrid']//span)[1]/input[2]" 
   
   #NEW QUESTION FIELDS
@@ -25,6 +25,7 @@ class QuestionSetsQuestionBuilder
   QUESTION_SETS_QUESTIONS_LIST_SECOND_XPATH = ".//*[@class='ui-sortable']/li[2]"
   QUESTION_SETS_QUESTIONS_LIST_THIRD_XPATH = ".//*[@id='QALIST']/li[3]"
   QUESTION_SETS_QUESTIONS_LIST_FOURTH_XPATH = ".//*[@id='QALIST']/li[4]"
+  QUESTION_SETS_QUESTIONS_LIST_FOURTH_v2_XPATH = "(.//*[@style='font-weight:bold;padding-left:20px;padding-top:5px;cursor:pointer;'])[4]"
   
   #HARD CORE DATA
   QUESTION_SETS_QUESTION_NAME_TEXT = "Work"
