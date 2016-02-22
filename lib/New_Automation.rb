@@ -13,6 +13,11 @@ $wait
 
 
 
+
+require './New_Automation/test_job_templates.rb'
+
+#require './New_Automation/test_short_list.rb'
+
 #require './New_Automation/test_board_setup'
 
 
@@ -22,7 +27,7 @@ $wait
 
 #require './New_Automation/test_action_on_list_view'
 
-require './New_Automation/test_actions_on_record'
+#require './New_Automation/test_actions_on_record'
 
 #require './New_Automation/test_board_setup'
 

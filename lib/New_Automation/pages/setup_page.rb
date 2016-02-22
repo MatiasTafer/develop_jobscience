@@ -4,6 +4,7 @@ class SetupEditPage
   # setup > develop > custom settings > manage next to config > edit
   CONFIG_SETUP_EDIT_PAGE_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da07&id=a07o00000021XSy"
   
+  
   CONFIG_SETUP_EDIT_SAVE_BTN_XPATH = ".//*[@class='pbButton']//*[@value='Save']"
   AUTO_SHARE_MODE_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Auto_Share_Mode__c"
   STANDARD_QUESTION_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Standard_Question_Handler__c"
@@ -14,6 +15,16 @@ class SetupEditPage
   QUESTION_SET_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Handler__c"
   QUESTION_SET_DAY_HANDLER = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Days_Valid__c'"
   ENABLE_ENHANCED_APPLY_TO_JOB_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enhanced_Apply_to_Job__c']"
+  
+  SHORT_LIST_CUSTOM_SETINGS_PAGE_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a1A"
+  
+  #Short list
+  EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH = ".//*[@class='btn'][1]"
+  CHECKBOX_SPEEDREVIEW_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Speed_Review__c']"
+  CHECKBOX_WEB_SOURCING_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Web_Sourcing__c']"
+  CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH =".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Jobscience_UI__c']"
+  SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@class='btn btn'][1]"
+  
   
   # Board Setup
   # board setup tab > record link > edit

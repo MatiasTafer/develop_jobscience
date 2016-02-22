@@ -93,6 +93,7 @@ class Common
     end
   end
   
+
   def self.upload(field, file)
     begin
      $browser.find_element(:xpath => field).send_keys(file) # "/Users/admin/Desktop/document.pdf"
@@ -101,6 +102,15 @@ class Common
      puts "error in upload"
    end
   end
+
+  #Find an item that has size options 
+ def self.itemNotExists(xpath)
+   array = $browser.find_elements(:xpath => xpath)
+   found = array.size < 1
+   return found
+ end
+  
+
   
   def self.main(arr)
     puts "main"
