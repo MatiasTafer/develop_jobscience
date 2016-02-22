@@ -38,6 +38,7 @@ class Common
     select.select_by(:text, optionText)
   end
   
+  
   #Selects the option from a Select element, by Index
   # selectElement: dropdown element
   # index: index number to be selected from the dropdown
