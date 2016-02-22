@@ -24,5 +24,6 @@ class HomePage
   STANDARD_QUESTIONS_TAB_LINK = "https://na17.salesforce.com/a0f/o"
 
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
+  JOB_BOARD_INTERNAL_URL = "http://js-recruiting-148857d918a-14910044900.force.com/internal"
 
 end

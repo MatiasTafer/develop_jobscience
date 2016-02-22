@@ -13,10 +13,14 @@ class SetupEditPage
   ENABLE_CLOSE_JOB_ORDER_WIZARD_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Close_Job_Order_Wizard__c"
   QUESTION_SET_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Handler__c"
   QUESTION_SET_DAY_HANDLER = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Days_Valid__c'"
+  ATTACH_TO_APPLICATIONS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Attach_to_Applications__c']"
+  DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Accepted_Exts__c']"
+  MAX_NUMBER_ATTACHMENTS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Max_Number_of_Attachments__c']"
   
   # Board Setup
   # board setup tab > record link > edit
   JOB_BOARD_SETUP_EDIT_PAGE_URL = "https://ts2.na17.visual.force.com/apex/JobBoardSetup?retURL=%2Fa0Go00000080Tcp&scontrolCaching=1&sfdc.override=1&id=a0Go00000080Tcp"
+  JOB_BOARD_SETUP_EDIT_PAGE_INTERNAL_XPATH = "https://ts2.na17.visual.force.com/apex/JobBoardSetup?retURL=%2Fa0Go000001Ij584&scontrolCaching=1&sfdc.override=1&id=a0Go000001Ij584"
   
   AUTO_ASSOCIATE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id42']"
   SHOW_SEARCH_ONLY_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id39']"
@@ -32,6 +36,7 @@ class SetupEditPage
   HIDE_SOURCE_QUESTION_CHECKBOX_ID = "'j_id0:frm:PageBlock:j_id32:j_id54"
   HIDE_CONTACT_METHOD_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id56"
   DISABLE_MOBILE_JOB_BOARD_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id57"
+  ALLOW_DUPLICATE_APPS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Allow_Duplicate_Apps__c']"
   
   SAVE_BUTTON_XPATH = ".//*[@value='Save']"
   # Custom Settings
@@ -40,15 +45,20 @@ class SetupEditPage
   PARSE_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0O"
   PARSE_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
   RESUME_DAYS_VALID_TEXT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']"
+  JOB_BOARD_DUPE_PREVENTION_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Job_Board_Dupe_Prevention__c']"
   
   
   # Social Settings
   # setup > develop > custom settings > manage next to social settings
+  SOCIAL_SETTINGS_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0t"
   SOCIAL_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?CS_list%3ACS_Form=CS_list%3ACS_Form&CS_list%3ACS_Form%3AtheDetailPageBlock%3AthePageBlockButtons%3Aedit=Edit&retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da0t&isOrg=1&id=a0to000000081HN&id=a0to000000081HN&com.salesforce.visualforce.ViewStateCSRF=VmpFPSxNakF4Tmkwd01pMHdObFF4T0RvME16bzFOUzR4TWpsYSxKVnlvQkhwanVYWmM4Z1pHVEdpTWpCLFpXWmtNR1Uy&com.salesforce.visualforce.ViewStateVersion=201602022000070248" 
   TWITTER_ISACCESS_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Twitter_isAccess__c"
   TWITTER_SECRET_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Twitter_secret__c"
   TWITTER_TOKEN_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Twitter_token__c"
   TWITTER_SOURCE_TRACKING_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Twitter_Source_Tracking__c"
+  SOCIAL_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
+  LINKEDIN_SOURCE_TRACKING_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__LinkedIn_Source_Tracking__c']"
+  MOBILE_JOB_BOARD_SOURCE_TRACKING_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Mobile_Job_Board_Source_Tracking__c']"
   
   #EEO DEFAULT VALUES ON REQUISITIONS
     #RACE
@@ -79,4 +89,8 @@ class SetupEditPage
   CONFIG_JOB_BOARD_LOGIN_URL = "https://na17.salesforce.com/udd/Site/editSiteLoginSettings.apexp?id=0DMo00000005Nzk"
   CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:loginPageBlockSection:enableLogin']"
   CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:thePageBlockButtons:save']"      
+  CONFIG_JOB_BOARD_LOGIN_EDIT_XPATH = ".//*[@value='Edit']"
+  
+  
+  
 end

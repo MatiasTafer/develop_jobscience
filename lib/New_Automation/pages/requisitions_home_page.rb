@@ -9,4 +9,5 @@ class RequisitionsHomePage
   REQUISITIONS_PAGE_FIRST_ENTRY_LIST_STATUS_TEXT_XPATH = "(.//table)[4]/tbody/tr/td[7]//div"
   REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH = "(.//*[@name='ids'])[1]"
   REQUISITIONS_PAGE_FIRST_SELECT_ALL_BOX_ID = "allBox"
+  REQUISITIONS_PAGE_FIRST_ENTRY_LIST_EDIT_XPATH = "((.//*[@class='x-grid3-row-table']/child::tbody/child::tr/child::td)[3]/div/a/span)[text()[contains(.,'Edit')]]"
 end
