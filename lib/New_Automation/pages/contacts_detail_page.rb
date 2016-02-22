@@ -12,5 +12,7 @@ class ContactDetailPage
   CONTACT_DETAIL_BTN_APPLY_TO_JOB_XPATH = ".//*[@id='topButtonRow']/input[6]"
   CONTACT_DETAIL_BTN_NEW_EDUCATION_HIST_XPATH = ".//*[@value='New Education History']"
   CONTACT_DETAIL_BTN_NEW_EMPLOYMENT_HIST_XPATH = ".//*[@value='New Employment History']"
+  CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH = ".//*[@name='ts2__resume_update']"
+  CONTACT_DETAIL_HOVER_LINKS_XPATH = ".//*[@class='listHoverLinks']"
   
 end

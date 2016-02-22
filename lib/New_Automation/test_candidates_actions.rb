@@ -1033,7 +1033,7 @@ class TestActions < TestBasic
  
 ############ CUSTOM METHODS ###############
 
-def CreateAccount(name)
+  def CreateAccount(name)
     #Create an account record with "name" as Account Name
     $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
     test = [
@@ -1085,7 +1085,7 @@ def CreateAccount(name)
     {"click" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
     ]
     Common.main(test)
-    sleep(1)
+    sleep(3)
     $browser.switch_to.alert.accept
   end
     
@@ -1211,7 +1211,7 @@ def CreateAccount(name)
     ]
     Common.main(test)
     $browser.find_element(:xpath => "//*[text()[contains(.,'" + name + "')]]/../../../../td[3]//a[2]").click
-    sleep(1)
+    sleep(3)
     $browser.switch_to.alert.accept 
   end
   
@@ -1263,7 +1263,7 @@ def CreateAccount(name)
       }
      # 3 - Click on Delete 
     $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).click
-     sleep(1)
+     sleep(3)
     # 4 - Confirm
     $browser.switch_to.alert.accept
   end 
