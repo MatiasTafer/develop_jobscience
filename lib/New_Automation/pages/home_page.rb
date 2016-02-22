@@ -28,8 +28,10 @@ class HomePage
   ALL_CONTACTS_TAB_LINK = "https://na17.salesforce.com/003?fcf=00Bo0000003aqv0"
 
   ACCOUNTS_TAB_LINK_URL = "https://na17.salesforce.com/001/o"
+  
   SEARCH_BAR_XPATH = ".//*[@id='phSearchInput']"
   SEARCH_BUTTON_XPATH = ".//*[@id='phSearchButton']"
+  ADD_RESUMES_XPATH = ".//*[@id='sidebarDiv']/div[3]/div[2]/ul/li[1]/a"
   
 
 

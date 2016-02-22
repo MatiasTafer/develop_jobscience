@@ -47,7 +47,13 @@ class SetupEditPage
   STANDARD_QUESTION_1_OPTION_1_XPATH = "((.//*[@class='detailList'])[3]//select)[1]/option[1]"
   STANDARD_QUESTION_2_OPTION_1_XPATH = "((.//*[@class='detailList'])[3]//select)[2]/option[1]"
   STANDARD_QUESTION_3_OPTION_1_XPATH = "((.//*[@class='detailList'])[3]//select)[3]/option[1]"
+  EEO_QUESTIONS_GENDER_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem2:Gender']"
+  EEO_QUESTIONS_VETERAN_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem4:Veteran']"
+  EEO_QUESTIONS_RACE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem3:Race']"
+  EEO_QUESTIONS_DISABLE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem5:Disabled']"
+  EEO_QUESTIONS_REQUIRED_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem6:EEORequired']"
   
+  EDIT_BUTTON_XPATH = ".//*[@name='edit']"
   SAVE_BUTTON_XPATH = ".//*[@value='Save']"
   # Custom Settings
   
@@ -55,8 +61,8 @@ class SetupEditPage
   PARSE_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0O"
   PARSE_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
   RESUME_DAYS_VALID_TEXT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']"
-  
-  
+  ADD_RESUME_ALLOWED_FILETYPES_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Add_Resume_Allowed_Filetypes__c']"
+  JOB_BOARD_ALLOWED_FILETYPES_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Job_Board_Allowed_Filetypes__c']"
   # Social Settings
   # setup > develop > custom settings > manage next to social settings
   SOCIAL_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?CS_list%3ACS_Form=CS_list%3ACS_Form&CS_list%3ACS_Form%3AtheDetailPageBlock%3AthePageBlockButtons%3Aedit=Edit&retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da0t&isOrg=1&id=a0to000000081HN&id=a0to000000081HN&com.salesforce.visualforce.ViewStateCSRF=VmpFPSxNakF4Tmkwd01pMHdObFF4T0RvME16bzFOUzR4TWpsYSxKVnlvQkhwanVYWmM4Z1pHVEdpTWpCLFpXWmtNR1Uy&com.salesforce.visualforce.ViewStateVersion=201602022000070248" 
