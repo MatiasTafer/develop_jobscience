@@ -31,8 +31,8 @@ class TestCandidatesMisc < TestBasic
     $browser.switch_to.window(newWindow)
     
     test = [
-      {"displayed" => HomePage::UPLOAD_BTN_BROWSE_XPATH},
-      {"set_text" => }
+      {"displayed" => HomePage::UPLOAD_BTN_BROWSE_XPATH}
+      
     ]
     
     
