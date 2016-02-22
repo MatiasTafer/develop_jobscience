@@ -5,6 +5,7 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
+require_relative 'custom_settings.rb'
 
 require_relative './pages/home_page.rb'
 require_relative './pages/job_board_home_page.rb'
@@ -62,6 +63,18 @@ def   test_eeoQuestionHiddenQuestion
    } 
 end
 
-  
+
+#TC838 - EEO Question Handler, Always
+def test_eeoQuestionHandlerAlways
+   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   #Preconditions
+   CustomSettings.QuestionSetHandler("Always")
+   CustomSettings.JobBoardLogin(true)
+   #Steps
+   $browser.get HomePage::JOB_BOARD_URL
+     
+end
+
+
   
 end
