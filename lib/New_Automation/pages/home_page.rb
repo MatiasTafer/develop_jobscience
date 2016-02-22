@@ -25,6 +25,11 @@ class HomePage
   ACCOUNTS_TAB_LINK_URL = "https://na17.salesforce.com/001/o"
   SEARCH_BAR_XPATH = ".//*[@id='phSearchInput']"
   SEARCH_BUTTON_XPATH = ".//*[@id='phSearchButton']"
+  ADD_JOB_ORDERS_XPATH = ".//*[@id='sidebarDiv']/div[6]/div[2]/ul/li/a"
+  
+  #UPLOAD JOB ORDER
+  UPLOAD_BTN_BROWSE_XPATH = ".//*[@id='j_id0:frm:j_id4:j_id40']"
+  UPLOAD_BTN_ADD_JOB_XPATH = ".//*[@name='j_id0:frm:j_id4:pbbsMainButtons:j_id30']"
   
 
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
