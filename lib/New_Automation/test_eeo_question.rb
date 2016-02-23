@@ -15,7 +15,8 @@ require_relative './pages/board_setup_edit_page.rb'
 require_relative './pages/board_setup_detail_page.rb'
 require_relative './pages/board_setup_home_page.rb' 
 
-
+$EMAIL =  "testrodrigo@gmail.com"
+$PASSWOR = "password123"
 
 class EeoQuestion < TestBasic
 =begin  
@@ -41,7 +42,7 @@ def   test_eeoQuestionHiddenQuestion
 end
 =end
 
-
+=begin
 #TC836 - EEO Questions, displayed questions
 def   test_eeoQuestionHiddenQuestion
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -62,17 +63,44 @@ def   test_eeoQuestionHiddenQuestion
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
    } 
 end
+=end
+
+#TC837 - EEO Commit Default
+def test_eeoCommitDefault
+  
+  
+  
+  
+end
+
 
 
 #TC838 - EEO Question Handler, Always
 def test_eeoQuestionHandlerAlways
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
    #Preconditions
+   Common.login(Common::USER_EMAIL, Common::PASSWORD)
    CustomSettings.QuestionSetHandler("Always")
    CustomSettings.JobBoardLogin(true)
    #Steps
    $browser.get HomePage::JOB_BOARD_URL
-     
+   test =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+          {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+   Common.main(test)
+   assert $wait.until {
+     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
+   }
+   $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click  
 end
 
 

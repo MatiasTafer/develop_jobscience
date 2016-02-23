@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class JobBoardHomePage
 
   
@@ -6,6 +8,8 @@ class JobBoardHomePage
   EMAIL_ADRESS_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:email']"
   FIRST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:firstName']"
   LAST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:lastName']"
+  PASSWORD_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:password']"
+  PASSWORD_CONFIRM_XPATH = ".//*[@id='j_id0:j_id1:atsForm:confirmPassword']"
   CONTINUE_BUTTON_XPATH = ".//*[@value='Continue']"
   UPLOAD_CHECKBOX_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:0']"
   PASTE_CHECKBOX_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:1']"
@@ -27,5 +31,9 @@ class JobBoardHomePage
   JOB_BOARD_SEARCH_RESULTS_XPATH = ".//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a"
   JOB_BOARD_LOCATION_LABEL_XPATH = "//*[text()[contains(.,'Location:')]]"
   JOB_BOARD_CONTACT_LABEL_XPATH = "//*[text()[contains(.,'Contact:')]]"
+  
+  
+  
+  
   
 end
