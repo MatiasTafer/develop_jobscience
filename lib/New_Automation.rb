@@ -12,9 +12,15 @@ $wait
 
 
 
+require './New_Automation/test_job_board'
 
 #require './New_Automation/test_board_setup'
 
+require './New_Automation/test_requisition.rb'
+
+#require './New_Automation/test_job_templates.rb'
+
+#require './New_Automation/test_short_list.rb'
 
 #require './New_Automation/test_standard_questions'
 
@@ -23,20 +29,6 @@ $wait
 require './New_Automation/test_candidates_action_on_list_view'
 
 #require './New_Automation/test_candidates_actions_on_record'
-
-#require './New_Automation/test_board_setup'
-
-
-#require './New_Automation/test_applications.rb'
-
-
-
-#require './New_Automation/test_standard_questions'
-
-#require './New_Automation/test_applications.rb'
-
-
-#require './New_Automation/test_standard_questions'
 
 
 #require './New_Automation/test_applications.rb'
