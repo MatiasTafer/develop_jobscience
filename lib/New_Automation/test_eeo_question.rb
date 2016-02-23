@@ -265,6 +265,7 @@ def test_eeoDisclaimersOnlyCustom
 end
 =end
 
+=begin
 #TC131 - Apply To A Job With LinkedIn EEO Questions Enable
 def test_eeoApplyWithLinkedInEeoEnable
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -297,7 +298,40 @@ def test_eeoApplyWithLinkedInEeoEnable
     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_CLOSE_POPUP_XPATH).displayed?
   }  
 end
+=end
 
-
+#TC1224 - Apply To A Job With LinkedIn EEO Questions Disable
+def test_eeoApplyWithLinkedInEeoDisable
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  CustomSettings.QuestionSetHandler("Always")
+  $browser.get HomePage::JOB_BOARD_URL
+  test =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+         {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+         {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+         {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+         {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+         {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+         {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+         {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH},
+         {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH}] 
+  Common.main(test)
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow)
+  test2= [{"displayed" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_EMAIL_XPATH},
+          {"set_text" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_EMAIL_XPATH, "text" => $USER_LINKEDIN},
+          {"set_text" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_PASSWORD_XPATH, "text" => $PASSWORD_LINKEDIN},
+          {"click" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_ALLOW_XPATH }]
+  Common.main(test2)
+  newWindow= $browser.window_handles[0]
+  $browser.switch_to.window(newWindow)  
+  assert $wait.until {
+    $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_CLOSE_POPUP_XPATH).displayed?
+  }  
+end
 
 end
