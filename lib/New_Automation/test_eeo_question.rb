@@ -21,7 +21,7 @@ $USER_LINKEDIN = "automationoktana@gmail.com"
 $PASSWORD_LINKEDIN = "oktanaqa"
 
 class EeoQuestion < TestBasic
-=begin  
+  
 #TC835 - EEO Questions, hidden questions
 def   test_eeoQuestionHiddenQuestion
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -42,9 +42,7 @@ def   test_eeoQuestionHiddenQuestion
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
    } 
 end
-=end
 
-=begin
 #TC836 - EEO Questions, displayed questions
 def   test_eeoQuestionHiddenQuestion
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -65,9 +63,7 @@ def   test_eeoQuestionHiddenQuestion
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
    } 
 end
-=end
 
-=begin
 #TC837 - EEO Commit Default
 def test_eeoCommitDefault
   #Preconditions
@@ -99,9 +95,7 @@ def test_eeoCommitDefault
    }
    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click    
 end
-=end
 
-=begin
 #TC838 - EEO Question Handler, Always
 def test_eeoQuestionHandlerAlways
    #Preconditions
@@ -129,8 +123,7 @@ def test_eeoQuestionHandlerAlways
    }
    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click  
 end
-=end
-=begin
+
 #TC839 - EEO Question Handler, Populate
 def test_eeoQuestionHandlerPopulate
   #Preconditions
@@ -158,8 +151,7 @@ def test_eeoQuestionHandlerPopulate
   }
   $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click   
 end
-=end
-=begin
+
 #TC840 - EEO Question Handler, Omit
 def test_eeoQuestionHandlerOmit
   #Preconditions
@@ -187,9 +179,7 @@ def test_eeoQuestionHandlerOmit
   }
   $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click 
 end
-=end
 
-=begin
 #TC841 - Standard and Custom EEO Disclaimers, standard & custom
 def test_eeoDisclaimersStandardCustom
   #Preconditions
@@ -225,9 +215,7 @@ def test_eeoDisclaimersStandardCustom
   }
   $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click 
 end
-=end
 
-=begin
 #TC842 - Standard and Custom EEO Disclaimers, Only custom
 def test_eeoDisclaimersOnlyCustom
   #Preconditions
@@ -263,9 +251,7 @@ def test_eeoDisclaimersOnlyCustom
   }
   $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
 end
-=end
 
-=begin
 #TC131 - Apply To A Job With LinkedIn EEO Questions Enable
 def test_eeoApplyWithLinkedInEeoEnable
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -298,7 +284,6 @@ def test_eeoApplyWithLinkedInEeoEnable
     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_CLOSE_POPUP_XPATH).displayed?
   }  
 end
-=end
 
 #TC1224 - Apply To A Job With LinkedIn EEO Questions Disable
 def test_eeoApplyWithLinkedInEeoDisable
