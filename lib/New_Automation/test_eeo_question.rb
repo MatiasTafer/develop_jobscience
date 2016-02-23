@@ -67,14 +67,40 @@ end
 
 #TC837 - EEO Commit Default
 def test_eeoCommitDefault
-  
-  
+  #Preconditions
+   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   CustomSettings.JobBoardLogin(true)
+   $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
+   test = [{"displayed" => SetupEditPage::COMMIT_EEO_DEFAULT_VALUE_CHECKBOX_XPATH},
+           {"checked" => SetupEditPage::COMMIT_EEO_DEFAULT_VALUE_CHECKBOX_XPATH},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+   Common.main(test)
+   #Steps
+   $browser.get HomePage::JOB_BOARD_URL
+   test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+          {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+   Common.main(test2)
+   assert $wait.until {
+     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
+   }
+   $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click  
   
   
 end
 
 
-
+=begin
 #TC838 - EEO Question Handler, Always
 def test_eeoQuestionHandlerAlways
    #Preconditions
@@ -102,7 +128,7 @@ def test_eeoQuestionHandlerAlways
    }
    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click  
 end
-
+=end
 
   
 end
