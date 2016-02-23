@@ -88,6 +88,7 @@ class JobBoardJobDetail
   JOB_BOARD_LINKEDIN_PASSWORD_XPATH = ".//*[@id='session_password-oauthAuthorizeForm']"
   JOB_BOARD_LINKEDIN_BTN_ALLOW_XPATH = ".//*[@name='authorize']"
   JOB_BOARD_EEO_QUESTIONS_GENDER_XPATH = ".//*[@id='j_id0:j_id1:atsForm:Gender']"
+  JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH = ".//*[@id='js-menu-logout']/a"
   JOB_BOARD_EEO_QUESTIONS_RACE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:Race']"
   JOB_BOARD_EEO_QUESTIONS_VETERAN_XPATH = ".//*[@id='j_id0:j_id1:atsForm:Veteran']"
   JOB_BOARD_EEO_QUESTIONS_DISABLED_XPATH = ".//*[@id='j_id0:j_id1:atsForm:Disabled']"

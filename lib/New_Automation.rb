@@ -12,12 +12,15 @@ $wait
 
 
 
+require './New_Automation/test_eeo_question.rb'
 
-require './New_Automation/test_job_board'
+#require './New_Automation/test_requisition.rb'
+
+#require './New_Automation/test_job_board'
 
 #require './New_Automation/test_board_setup'
 
-require './New_Automation/test_requisition.rb'
+#require './New_Automation/test_requisition.rb'
 
 #require './New_Automation/test_job_templates.rb'
 
@@ -44,7 +47,6 @@ require './New_Automation/test_requisition.rb'
 #require './New_Automation/test_standard_questions'
 
 #require './New_Automation/test_applications.rb'
->>>>>>> develop
 
 
 #require './New_Automation/test_standard_questions'
