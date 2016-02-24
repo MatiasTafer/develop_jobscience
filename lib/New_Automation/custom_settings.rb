@@ -62,6 +62,96 @@ class CustomSettings
     $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
     
   end
+  
+  def self.EnableEnhancedApplyToJob(setBool)
+    #SetBool=True will leave the checkbox checked, if SetBool=false will leave it unchecked
+    
+    $browser.get(SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL)
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).displayed?
+      }
+    if setBool
+      unless $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).attribute("checked")
+        $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).click
+      end
+    else
+      if $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).attribute("checked")
+        $browser.find_element(:xpath => SetupEditPage::ENABLE_ENHANCED_APPLY_TO_JOB_XPATH).click
+      end  
+    end
+    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    sleep(2)  
+    
+  end
+  
+  def self.DefineResumeAllowedTypes(types)
+    #"types" must be a string with extensions separated with a comma, like "pdf, doc, txt"
+    
+    $browser.get(SetupEditPage::PARSE_SETTINGS_EDIT_URL)
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+      }  
+    $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::ADD_RESUME_ALLOWED_FILETYPES_XPATH).displayed?
+      } 
+    $browser.find_element(:xpath => SetupEditPage::ADD_RESUME_ALLOWED_FILETYPES_XPATH).clear  
+    $browser.find_element(:xpath => SetupEditPage::ADD_RESUME_ALLOWED_FILETYPES_XPATH).send_keys types
+    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click  
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+      }
+  end
+  
+  def self.DefineResumeAllowedTypesJobBoard(types)
+    #"types" must be a string with extensions separated with a comma, like "pdf, doc, txt"
+    
+    $browser.get(SetupEditPage::PARSE_SETTINGS_EDIT_URL)
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+      }  
+    $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::JOB_BOARD_ALLOWED_FILETYPES_XPATH).displayed?
+      } 
+    $browser.find_element(:xpath => SetupEditPage::JOB_BOARD_ALLOWED_FILETYPES_XPATH).clear  
+    $browser.find_element(:xpath => SetupEditPage::JOB_BOARD_ALLOWED_FILETYPES_XPATH).send_keys types
+    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click  
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+      }
+  end
+  
+  def self.DefineEEOQuestions(gender, veteran, race, disabled, required)
+    #If each parameter is true, will check the corresponding checkbox.
+     
+    $browser.get(SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL)
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::EEO_QUESTIONS_GENDER_CHECKBOX_XPATH).displayed?
+    }
+    Checkbox(SetupEditPage::EEO_QUESTIONS_GENDER_CHECKBOX_XPATH, gender)
+    Checkbox(SetupEditPage::EEO_QUESTIONS_VETERAN_CHECKBOX_XPATH, veteran)
+    Checkbox(SetupEditPage::EEO_QUESTIONS_RACE_CHECKBOX_XPATH, race)  
+    Checkbox(SetupEditPage::EEO_QUESTIONS_DISABLE_CHECKBOX_XPATH, disabled) 
+    Checkbox(SetupEditPage::EEO_QUESTIONS_REQUIRED_CHECKBOX_XPATH, required)  
+    
+    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::EDIT_BUTTON_XPATH).displayed?
+    }
+  end
+  
+  def self.Checkbox(checkbox, boolean)
+    if boolean
+      unless $browser.find_element(:xpath => checkbox).attribute("checked")
+        $browser.find_element(:xpath => checkbox).click
+      end
+    else
+      if $browser.find_element(:xpath => checkbox).attribute("checked")
+        $browser.find_element(:xpath => checkbox).click
+      end  
+    end 
+  end
     
    
 end
