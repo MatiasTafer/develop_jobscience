@@ -1,9 +1,12 @@
+require 'securerandom'
+
+
 class NewJobTemplate
   
   SAVE_BUTTON_XPATH = "(.//*[@class='pbButton']//*[@class='btn'])[1]"
   SAVE_AND_NEW_BUTTON_XPATH = "(.//*[@class='pbButton']//*[@class='btn'])[2]"
   CANCEL_BUTTON_XPATH = "(.//*[@class='pbButton']//*[@class='btn'])[3]"
-  JOB_TITLE_TEXT_ID = "Name"
+  JOB_TITLE_TEXT_XPATH = ".//*[@id='Name']"
   JOB_TEMPLATE_MAPPING_TEXT_XPATH = ".//*[@class='lookupInput']/input"
   CUSTOMFIELD_TEXT_XPATH = ".//*[@class='dataCol last col02']/input"
   SOC_CODE_TEXT_XPATH = ".//*[@class='dataCol']/input"
@@ -29,8 +32,11 @@ class NewJobTemplate
   WORK_VALUES_AVAILABLE_LIST_XPATH = "((.//*[@class='multiSelectPicklistRow'])[9]/td)[1]"
   WORK_VALUES_CHOASEN_LIST_XPATH = "((.//*[@class='multiSelectPicklistRow'])[9]/td)[3]"
   
+  ERROR_REQUIRED_FIELDS = ".//*[@id='ep']/div[2]/div[3]/table/tbody/tr[1]/td[2]/div/div[2]"
+  ERROR_REQUIRED_FIELDS_TEXT = "Error: You must enter a value"
   
-  
+  JOB_TEMPLATE_NAME_TEXT = SecureRandom.hex(5)
+  JOB_TEMPLATE_MAPPING_TEXT = "Job 1 Mapping"
   
   
   

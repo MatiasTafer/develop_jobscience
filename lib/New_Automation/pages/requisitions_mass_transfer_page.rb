@@ -2,6 +2,8 @@ class RequisitionMassTransfer
   REQUISITIONS_MASS_TRANSFER_TRANSFER_TO_RECRUITER_XPATH = ".//*[@class='detailList']/tbody/tr/td[1]/span/input"
   REQUISITIONS_MASS_TRANSFER_BTN_TRANSFER_XPATH = "(.//*[@type='button'])[2]"
   REQUISITIONS_MASS_TRANSFER_BTN_BACK_TO_LIST_XPATH = ".//*[@class='btn'][2]"
+  BACK_TO_LIST_BUTTON_ON_SUCCSESS_PAGE = ".//*[@class='btn']"
+  
   
   #PAGINATION MUST BE ON SECOND PAGE
   REQUISITIONS_MASS_TRANSFER_RECORDS_PER_PAGE_XPATH = ".//*[@class='bottomNav']//select"
@@ -11,5 +13,11 @@ class RequisitionMassTransfer
   REQUISITIONS_MASS_TRANSFER_LAST_PAGE_XPATH = ".//*[@class='last']"
   REQUISITIONS_MASS_TRANSFER_CURRENT_PAGE_XPATH = ".//*[@class='bottomNav']//input"
   REQUISITIONS_MASS_TRANSFER_NUMBER_OF_RECORDS_XPATH = "(.//*[@class='bottomNav']//span)[2]"
+  
+  
+  RECRUITER_TO_TRANSFER_TEXT = "Charlie Day"
+  
+  #ERRORS
+  ERROR_RECRUITER_MUST_BE_SELECTED_XPATH = ".//*[@class='message errorM3']"
 
 end
