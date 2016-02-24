@@ -74,4 +74,32 @@ end
  end 
 =end  
   
+#TC980 - Job Board Resume, Parse Fields 
+def test_jobBoardResumeParseFields
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    CustomSettings.JobBoardLogin(true)
+    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+    test = [{"displyed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+    Common.main(test)
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    }  
+end 
+  
+  
 end
