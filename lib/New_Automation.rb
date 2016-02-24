@@ -12,7 +12,10 @@ $wait
 
 
 
-require './New_Automation/test_eeo_question.rb'
+
+require './New_Automation/test_resume.rb'
+
+#require './New_Automation/test_eeo_question.rb'
 
 #require './New_Automation/test_requisition.rb'
 

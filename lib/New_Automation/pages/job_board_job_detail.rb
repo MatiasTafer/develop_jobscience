@@ -148,5 +148,6 @@ class JobBoardJobDetail
   JOB_BOARD_LINKEDIN_DATA_EMAIL_TEXT = "automationoktana@gmail.com"
   JOB_BOARD_LINKEDIN_DATA_PASSWORD_TEXT = "oktanaqa"
 
-  
+  #MESSAGES
+  SUCCESS_UPLOADED_RESUEM_XPATH = ".//*[@id='atsApplicationSubmittedMain']"
 end
