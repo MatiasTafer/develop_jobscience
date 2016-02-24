@@ -13,7 +13,7 @@ require_relative './pages/project_edit_page.rb'
 
 
 class TestProjects <TestBasic
-
+=begin
   #TC963 - New Project Successfully Created
   def test_projectSuccessCreated
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -92,9 +92,9 @@ class TestProjects <TestBasic
     }
     assert_equal($browser.find_element(:xpath, ProjectsNewProject::ERROR).text, ProjectsNewProject::INVALID_DATE_ERROR)
   end
+=end
 
 
-=begin
   #TC965 - Project, New Job Order
   def test_projectNewJobOrder
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -122,6 +122,7 @@ class TestProjects <TestBasic
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::MIN_SALARY_TEXT
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::MAX_SALARY_TEXT
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
+    $browser.switch_to.frame($browser.find_element(:xpath, RequisitionsDetail::LINK_TO_POSTING_IFRAME_XPATH))
     $wait.until {
       $browser.find_element(:xpath, RequisitionsDetail::SITE_URL_XPATH).displayed?
     }
@@ -132,7 +133,7 @@ class TestProjects <TestBasic
       $browser.find_element(:xpath, RequisitionsDetail::FIRST_SEARCH_RESULT_LINK_XPATH).displayed?
     }
   end
-=end
+=begin
 
   #TC966 - Project, New Job Order Required Field Validation
   def test_projectRequiredValidation
@@ -316,7 +317,7 @@ class TestProjects <TestBasic
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     } 
   end
-  
+=end
   
   
   
