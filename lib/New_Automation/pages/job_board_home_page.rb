@@ -44,6 +44,8 @@ class JobBoardHomePage
   JOB_BOARD_CONTACT_LABEL_XPATH = "//*[text()[contains(.,'Contact:')]]"
   
   
+  JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
+  
   
   
   
