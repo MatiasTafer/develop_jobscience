@@ -28,4 +28,5 @@ class JobBoardHomePage
   JOB_BOARD_LOCATION_LABEL_XPATH = "//*[text()[contains(.,'Location:')]]"
   JOB_BOARD_CONTACT_LABEL_XPATH = "//*[text()[contains(.,'Contact:')]]"
   
+  
 end

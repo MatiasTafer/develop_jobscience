@@ -27,6 +27,7 @@ class TestQuestionSets < TestBasic
    
   #TC819 - New Question Set Successfully Created
   def test_NewQuestionSet
+    randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -47,7 +48,7 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).displayed?
     }
     
-    $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys QuestionSetsNew::QUESTION_SETS_NAME_TEXT
+    $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys randomName
     
     # 4 - Click on "Save" button
     $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).click
@@ -57,16 +58,17 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_COPY_QUESTION_SET_XPATH).displayed?
       }
     
-    assert_equal($browser.find_element(:id => QuestionSetsDetail::QUESTION_SETS_DETAIL_NAME_ID).text, QuestionSetsNew::QUESTION_SETS_NAME_TEXT)  
+    assert_equal($browser.find_element(:id => QuestionSetsDetail::QUESTION_SETS_DETAIL_NAME_ID).text, randomName)  
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_TEXT)
+    self.DeleteQuestionSet(randomName)
      
   end
 
 
   #TC820 - New Question Set Field Validation
   def test_NewQuestionSetsErrors
+    randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -91,7 +93,7 @@ class TestQuestionSets < TestBasic
     }
     
     # 5 - Fill all the required fields
-    $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys QuestionSetsNew::QUESTION_SETS_NAME_TEXT
+    $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys randomName
     
     # 6 - Enter invalid value into number fields ("Passing Score").
     $browser.find_element(:xpath => QuestionSetsNew::QUESTIONS_SETS_NEW_PASSING_SCORE_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_PASSING_SCORE_INVALID_TEXT
@@ -112,6 +114,12 @@ class TestQuestionSets < TestBasic
   
   #TC821 - Question Set Handler = Always
   def test_QuestionSetHandlerAlways
+    randomName = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    randomReq2 = SecureRandom.hex(4)
+    
+    randomEmail = SecureRandom.hex(4) 
+    randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -120,7 +128,7 @@ class TestQuestionSets < TestBasic
     CustomSettings.QuestionSetHandler("Always")
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_5_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
      # Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -128,7 +136,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_5_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -191,13 +199,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC821_1_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_5_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
     end
@@ -217,13 +225,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC821_2_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq2
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_5_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
     end
@@ -242,7 +250,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC821_1_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -250,9 +258,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -296,7 +304,7 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
     # 6 - Apply to another job
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC821_2_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq2 + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -304,9 +312,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -341,14 +349,20 @@ class TestQuestionSets < TestBasic
       }
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_5_TEXT)
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC821_1_TEXT) 
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC821_2_TEXT)  
+    self.DeleteQuestionSet(randomName)
+    self.DeleteRequisition(randomReq) 
+    self.DeleteRequisition(randomReq2)  
            
   end
   
   #TC822 - Question Set Handler = Populate
   def test_QuestionSetHandlerPopulate
+    randomName = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    randomReq2 = SecureRandom.hex(4)
+    
+    randomEmail = SecureRandom.hex(4) 
+    randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -357,7 +371,7 @@ class TestQuestionSets < TestBasic
     CustomSettings.QuestionSetHandler("Populate")
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_6_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
      # Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -365,7 +379,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_6_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -428,13 +442,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC822_1_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_6_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
     end
@@ -454,13 +468,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC822_2_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq2
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_6_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
     end
@@ -479,7 +493,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC822_1_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -487,9 +501,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -533,7 +547,7 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
     # 6 - Apply to another job
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC822_2_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -541,9 +555,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -578,14 +592,20 @@ class TestQuestionSets < TestBasic
       }
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_6_TEXT)
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC822_1_TEXT) 
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC822_2_TEXT)  
+    self.DeleteQuestionSet(randomName)
+    self.DeleteRequisition(randomReq) 
+    self.DeleteRequisition(randomReq2)  
              
   end
 
  #TC823 - Question Set Handler = Omit
   def test_QuestionSetHandlerPopulate
+    randomName = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    randomReq2 = SecureRandom.hex(4)
+    
+    randomEmail = SecureRandom.hex(4) 
+    randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -594,7 +614,7 @@ class TestQuestionSets < TestBasic
     CustomSettings.QuestionSetHandler("Omit")
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_7_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
      # Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -602,7 +622,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_7_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -665,13 +685,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC823_1_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_7_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
     end
@@ -691,13 +711,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC823_2_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq2
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_7_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
     end
@@ -716,7 +736,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC823_1_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -724,9 +744,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -770,7 +790,7 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
     # 6 - Apply to another job
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC823_2_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq2 + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -778,9 +798,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -820,20 +840,21 @@ class TestQuestionSets < TestBasic
       }
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_7_TEXT)
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC823_1_TEXT) 
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC823_2_TEXT)  
+    self.DeleteQuestionSet(randomName)
+    self.DeleteRequisition(randomReq) 
+    self.DeleteRequisition(randomReq2)  
              
   end 
  
   #TC824 - Copy Question Set
   def test_CopyQuestionSet
+    randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_10_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -842,7 +863,7 @@ class TestQuestionSets < TestBasic
      $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_10_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -856,23 +877,24 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?
     }
-    assert_match "Copy - " + QuestionSetsNew::QUESTION_SETS_NAME_10_TEXT, $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NAME_XPATH).text
+    assert_match "Copy - " + randomName, $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NAME_XPATH).text
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet("Copy - " + QuestionSetsNew::QUESTION_SETS_NAME_10_TEXT)
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_10_TEXT)
+    self.DeleteQuestionSet("Copy - " + randomName)
+    self.DeleteQuestionSet(randomName)
     
   end
 
 
   #TC825 - Question Set Builder 
   def test_QuestionSetBuilder
+    randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_11_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -881,7 +903,7 @@ class TestQuestionSets < TestBasic
      $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_11_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -938,7 +960,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_11_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_QUESTION_BUILDER_XPATH).displayed?  
       }
@@ -949,19 +971,20 @@ class TestQuestionSets < TestBasic
     assert_equal($browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_1_NAME_LABEL_XPATH).text, "Q: Icecream")
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_11_TEXT)
+    self.DeleteQuestionSet(randomName)
     
   end
 
 
   #TC826 - Question Set Builder, Optional and Text 
   def test_QuestionSetBuilderOptionalText
+    randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
    #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_12_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -970,7 +993,7 @@ class TestQuestionSets < TestBasic
      $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_12_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -1096,19 +1119,24 @@ class TestQuestionSets < TestBasic
     assert_equal($browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTIONS_LIST_FOURTH_v2_XPATH).text, "A: Text") 
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_12_TEXT)
+    self.DeleteQuestionSet(randomName)
   
   end
   
 
   #TC827 - Question Set Builder, Verify Optional and Text Questions
   def test_VerifyQuestionSetJobBoard
+    randomName = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    
+    randomEmail = SecureRandom.hex(4) 
+    randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #PRECONDITION: Must have a Question Set created, with Questions already created, some with Optional = true some not, some with Text= true, some not and combined.
-    self.CreateQuestionSetWithQuestions
+    self.CreateQuestionSetWithQuestions(randomName)
     
     #Create Job with Question Set asociated
     $browser.get(HomePage::REQUISITIONS_LINK_URL)
@@ -1123,13 +1151,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_2_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
     end
@@ -1145,7 +1173,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -1153,9 +1181,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -1221,7 +1249,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_2_TEXT + "')]]").click   
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click   
     
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?
@@ -1236,7 +1264,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_PRESCREEN_1_XPATH).displayed?
       }
-    $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_JOB_TEXT_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TEXT + "')]]").displayed?
+    $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_JOB_TEXT_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
     assert $wait.until { 
     $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_PRESCREEN_1_XPATH).displayed?
     $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_PRESCREEN_2_XPATH).displayed?
@@ -1245,19 +1273,20 @@ class TestQuestionSets < TestBasic
     }
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_2_TEXT) 
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TEXT) 
+    self.DeleteQuestionSet(randomName) 
+    self.DeleteRequisition(randomReq) 
   end
    
   
   #TC828 - New Question
   def test_NewQuestion
-  
+    randomName = SecureRandom.hex(4)
+    
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)  
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_13_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -1266,7 +1295,7 @@ class TestQuestionSets < TestBasic
      $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_13_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -1294,19 +1323,20 @@ class TestQuestionSets < TestBasic
     #$browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH + "//*[text()[contains(.,'" + QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_TEXT_XPATH + "')]]") 
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_13_TEXT)
+    self.DeleteQuestionSet(randomName)
     
   end
   
  
   # TC829 - New Question, Question Size 
   def test_NewQuestionSize
+    randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_14_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -1315,7 +1345,7 @@ class TestQuestionSets < TestBasic
      $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_14_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -1384,18 +1414,23 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_SIZE_XPATH + "//*[text()[contains(.,'Rich Text (up to 32k)')]]")
     } 
      #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_14_TEXT) 
+    self.DeleteQuestionSet(randomName) 
   end
  
   
   #TC830 - New Question, Optional
   def test_NewQuestionOptional 
+    randomName = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    
+    randomEmail = SecureRandom.hex(4) 
+    randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_3_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
     
      #Create Job with Question Set asociated
     $browser.get(HomePage::REQUISITIONS_LINK_URL)
@@ -1410,13 +1445,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC830_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_3_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
@@ -1472,7 +1507,7 @@ class TestQuestionSets < TestBasic
       }
     
     # 8 - Click on previously created Question Set's name from the list
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_3_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -1514,7 +1549,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC830_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -1522,9 +1557,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -1567,19 +1602,24 @@ class TestQuestionSets < TestBasic
     assert_match QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_2_TEXT_XPATH, $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_QUESTION_NAME_2_XPATH).text
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_3_TEXT)
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC830_TEXT)
+    self.DeleteQuestionSet(randomName)
+    self.DeleteRequisition(randomReq)
    end 
    
    
    #TC831 - New Question, Text
-     def test_NewQuestionText 
+    def test_NewQuestionText 
+    randomName = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    
+    randomEmail = SecureRandom.hex(4) 
+    randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_4_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
     
      #Create Job with Question Set asociated
     $browser.get(HomePage::REQUISITIONS_LINK_URL)
@@ -1594,13 +1634,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC831_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_4_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
@@ -1619,7 +1659,7 @@ class TestQuestionSets < TestBasic
       }
     
     # 2 - Click on previously created Question Set's name from the list
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_4_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -1659,7 +1699,7 @@ class TestQuestionSets < TestBasic
       }
     
     # 8 - Click on previously created Question Set's name from the list
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_4_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -1701,7 +1741,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC831_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -1709,9 +1749,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -1753,20 +1793,25 @@ class TestQuestionSets < TestBasic
     assert_match QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_2_TEXT_XPATH, $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_QUESTION_NAME_2_XPATH).text
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_4_TEXT)
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC831_TEXT)
+    self.DeleteQuestionSet(randomName)
+    self.DeleteRequisition(randomReq)
     
    end 
 
 
   #TC832 - Answer questions from the question set
   def test_AnswerQuestionsFromQuestionSet
+    randomName = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+    
+    randomEmail = SecureRandom.hex(4) 
+    randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_8_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
@@ -1830,13 +1875,13 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).displayed?
       }
-    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC832_TEXT
+    $browser.find_element(:id => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_ID).send_keys randomReq
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_PRIMARY_RECRUITER_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_LOCATION_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH).click
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH).send_keys RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys QuestionSetsNew::QUESTION_SETS_NAME_8_TEXT
+    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH).send_keys randomName
     unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
     end
@@ -1854,7 +1899,7 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC832_TEXT + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -1862,9 +1907,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys JobBoardJobDetail::JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
     #If How did you hear about us? is displayed
     begin
@@ -1910,7 +1955,7 @@ class TestQuestionSets < TestBasic
       }
     
     # Click on previously created Question Set's name from the list
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_8_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }   
@@ -1925,18 +1970,19 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_PRESCREEN_1_XPATH).displayed?
       }
     assert $wait.until{
-      $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_JOB_TEXT_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC832_TEXT + "')]]").displayed?
+      $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_JOB_TEXT_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_PRESCREEN_1_XPATH).displayed?
     } 
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_8_TEXT)
-    self.DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE_TC832_TEXT)
+    self.DeleteQuestionSet(randomName)
+    self.DeleteRequisition(randomReq)
   end 
    
  
   #TC1149 - New Answer
   def test_NewAnswer
+    randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -1944,7 +1990,7 @@ class TestQuestionSets < TestBasic
     #PRECONDITION: Must have a Question Set already created. Must have a Question already created.
     
     #Create an empty Question Sets
-    self.CreateQuestionSetEmpty(QuestionSetsNew::QUESTION_SETS_NAME_9_TEXT)
+    self.CreateQuestionSetEmpty(randomName)
      
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
@@ -1980,7 +2026,7 @@ class TestQuestionSets < TestBasic
       }
     
     # Click on previously created Question Set's name from the list
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_9_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -2045,11 +2091,11 @@ class TestQuestionSets < TestBasic
     assert_equal($browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_THIRD_ANSWER_LIST_XPATH).text, AnswerEditPage::ANSWER_DATA_NAME_3_TEXT)    
     
     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(QuestionSetsNew::QUESTION_SETS_NAME_9_TEXT)
+    self.DeleteQuestionSet(randomName)
     
   end
   
-  def CreateQuestionSetWithQuestions
+  def CreateQuestionSetWithQuestions(name)
          
     # 1 - Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -2066,7 +2112,7 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).displayed?
     }
     
-    $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys QuestionSetsNew::QUESTION_SETS_NAME_2_TEXT
+    $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys name
     
     # 4 - Click on "Save" button
     $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).click

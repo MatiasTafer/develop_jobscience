@@ -14,7 +14,7 @@ $wait
 
 
 
-require './New_Automation/test_job_templates.rb'
+#require './New_Automation/test_job_templates.rb'
 
 #require './New_Automation/test_short_list.rb'
 
@@ -30,12 +30,13 @@ require './New_Automation/test_job_templates.rb'
 
 #require './New_Automation/test_candidates_actions_on_record'
 
-#require './New_Automation/test_candidates_actions'
+require './New_Automation/test_candidates_actions'
 
-require './New_Automation/test_candidates_parsing_candidates_file_types'
+#require './New_Automation/test_candidates_parsing_candidates_file_types'
+
+#require './New_Automation/test_candidates_misc'
 
 #require './New_Automation/test_actions_on_record'
-
 
 #require './New_Automation/test_board_setup'
 
