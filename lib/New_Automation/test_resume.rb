@@ -206,6 +206,38 @@ def test_contactUpdateResumeAttachOnly
   } 
 end
 
+#TC992 - Contact Update Resume Successfully, Parse Fields
+def test_contactUpdateResumeParseFields
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+  test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test)
+  $browser.get HomePage::ALL_CONTACTS_TAB_LINK
+  test2 = [{"displayed" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
+          {"click" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
+          {"displayed" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH},
+          {"click" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH}]
+  Common.main(test2)
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow)
+  test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+  Common.main(test3)
+  newWindow= $browser.window_handles[0]
+  $browser.switch_to.window(newWindow)
+  assert $wait.until{
+    $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
+  }   
+end
+
 =begin
  #TC106 - Enable Resume Attached to contact record
   def test_EnableResumeAttachContactRecord
