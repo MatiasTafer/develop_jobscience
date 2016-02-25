@@ -109,7 +109,7 @@ end
 #TC982 - Upload Referral Resume Successfully, ERP Dupe Prevention = Attach Only  (pending)
   
 #TC983 - Upload Referral Resume Successfully, ERP Dupe Prevention = Parse Fields.  (pending)
-
+=begin
 #TC984 - Add Resume with the Add Resume Tool, Attach Only
 def test_ResumToolAttachOly
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -138,10 +138,40 @@ def test_ResumToolAttachOly
   $wait.until{
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   } 
-  
-  
+end
+=end
+
+#TC985 - Add Resume with the Add Resume Tool, Parse Fields
+def test_addResumeToolParseFields
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+  test = [{"displyed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test)
+  $browser.get HomePage::HOME_TAB_LINK_URL
+  test2 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+  Common.main(test2)
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow)
+  test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+  Common.main(test3)
+  newWindow= $browser.window_handles[0]
+  $browser.switch_to.window(newWindow)
+  $wait.until{
+    $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
+  }   
 end
 
 
-  
+
+ 
 end
