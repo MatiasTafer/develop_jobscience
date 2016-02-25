@@ -271,6 +271,22 @@ def test_contactUpdateResumeValidation
   }  
 end
 
+#TC994 - State and Country Picklists feature, USA with State and Country picklists - Resume Tools
+def test_picklistUSAResumeTools
+   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+            {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+   Common.main(test)
+   #me quede en la precondition 2 me falta la de Enable State and Country
+  
+  
+end
+
+
 =begin
  #TC106 - Enable Resume Attached to contact record
   def test_EnableResumeAttachContactRecord
