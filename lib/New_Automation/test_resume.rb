@@ -17,6 +17,8 @@ require_relative './pages/job_board_login_page.rb'
 require_relative './pages/job_board_register_page.rb'  
 require_relative './pages/contacts_detail_page.rb'
 require_relative './pages/add_resume_popup_page.rb'
+require_relative './pages/contacts_home_page.rb'
+require_relative './pages/contacts_detail_page.rb'
 
 
 
@@ -31,7 +33,7 @@ def test_jobBoardResumeAttachOnly
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
-    test = [{"displyed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
@@ -81,7 +83,7 @@ def test_jobBoardResumeParseFields
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
-    test = [{"displyed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
@@ -114,7 +116,7 @@ end
 def test_ResumToolAttachOly
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
-  test = [{"displyed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+  test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
           {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
@@ -140,7 +142,7 @@ def test_ResumToolAttachOly
   } 
 end
 =end
-
+=begin
 #TC985 - Add Resume with the Add Resume Tool, Parse Fields
 def test_addResumeToolParseFields
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -166,12 +168,146 @@ def test_addResumeToolParseFields
   Common.main(test3)
   newWindow= $browser.window_handles[0]
   $browser.switch_to.window(newWindow)
-  $wait.until{
+  assert $wait.until{
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }   
 end
+=end
 
+#TC991 - Contact Update Resume Successfully, Attach Onlydef 
+def test_contactUpdateResumeAttachOnly
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+  test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test)
+  $browser.get HomePage::ALL_CONTACTS_TAB_LINK
+  test2 = [{"displayed" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
+          {"click" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
+          {"displayed" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH},
+          {"click" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH}]
+  Common.main(test2)
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow)
+  test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+  Common.main(test3)
+  newWindow= $browser.window_handles[0]
+  $browser.switch_to.window(newWindow)
+  assert $wait.until{
+    $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
+  } 
+end
 
-
+=begin
+ #TC106 - Enable Resume Attached to contact record
+  def test_EnableResumeAttachContactRecord
+    randomName = SecureRandom.hex(4)
+  
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    Common.CreateRequisitionPostJob(randomName, true)
+    
+    # Mark the field "Attach to Applications" = TRUE
+    CustomSettings.AttachToApplications(true)
+    
+    CustomSettings.BoardSetupInit
+    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
+    
+    
+    # 1. Go to Board Setup tab
+    $browser.get(HomePage::JOB_BOARD_URL)
+     
+    # Login
+    test = [
+      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},  
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_USER_TEXT},
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_PASSWORD_TEXT}, 
+      {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH}  
+    ]
+    Common.main(test)
+    # 8. Select a Job title
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
+    test = [
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+    # 9. Click Apply for [job title] position    
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+    # 10. Click Continue
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH},
+      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH}
+    ]
+    Common.main(test)
+    
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+    ]
+    Common.main(test)
+    
+    # 13. Go to Contact record
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + JobBoardLoginPage::JOB_BOARD_USER_NAME_TEXT + "')]]").click
+    test = [
+      {"displayed" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_XPATH}
+    ]
+    Common.main(test) 
+    
+    # 14. Click on record ID of newly created Application
+    $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]//..//..//..//td[7]//a").click
+    test = [
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_RESUME_UPLOADED_XPATH}
+    ]
+    Common.main(test) 
+    
+    # Resume should be attached to contact record as well as application record
+    assert_equal("true", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_RESUME_UPLOADED_XPATH).text)
  
+    Common.DeleteRequisition(randomName)
+    
+  end
+  
+ 
+  #TC107 - Enable contact jcard view
+  def test_EnableContactJCardView 
+   
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   
+    CustomSettings.EnableJCardForContact(true)
+   
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_FIRST_ENTRY_GO_XPATH},
+      {"click" => ContactsHomePage::CONTACT_HOME_FIRST_ENTRY_GO_XPATH},
+      {"displayed" => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH}
+    ]
+    Common.main(test)
+    sleep(3)
+    
+    $browser.switch_to.frame(ContactDetailPage::CONTACT_DETAIL_RESUME_IFRAME_ID)
+    assert $wait.until{
+      $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_JCARD_XPATH).displayed?
+    }
+   CustomSettings.EnableJCardForContact(false)
+  end
+=end
+  
+
 end
