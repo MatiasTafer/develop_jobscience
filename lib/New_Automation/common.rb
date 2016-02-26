@@ -7,14 +7,28 @@ require 'securerandom'
 
 require_relative 'test_basic.rb' 
 
-
 require_relative './pages/login_page.rb'
 require_relative './pages/home_page.rb'
-
+require_relative './pages/accounts_home_page.rb'
+require_relative './pages/accounts_new_edit_page.rb'
+require_relative './pages/accounts_detail_page.rb'
+require_relative './pages/skill_detail_page.rb'
+require_relative './pages/short_list_home_page.rb'
+require_relative './pages/short_list_new_edit_page.rb'
+require_relative './pages/short_list_detail_page.rb'
+require_relative './pages/requisitions_home_page.rb'
+require_relative './pages/requisitions_new_and_edit.rb'
+require_relative './pages/requisitions_detail_page.rb'
+require_relative './pages/contacts_home_page.rb'
+require_relative './pages/contacts_detail_page.rb'
+require_relative './pages/contacts_new_edit_page.rb'
+require_relative './pages/job_board_home_page.rb'
+require_relative './pages/job_board_job_detail.rb'
 
 class Common
   USER_EMAIL = "naomi@joblabs.com"
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
+  USER_EMAIL3 = "naomimanager@joblabs.com"
   PASSWORD  = "muffin100"
 
   
@@ -458,7 +472,38 @@ class Common
     # 4 - Confirm
     $browser.switch_to.alert.accept
   end
-
+  
+  def self.CreateUserJobBoard(email, password, fname="a", lname="b")
+    
+    # Login for JobBoard enable
+    CustomSettings.JobBoardLogin(true)
+    
+    $browser.get HomePage::JOB_BOARD_URL
+    test = [
+      {"displayed" => JobBoardHomePage::JOB_BOARD_REGISTER_LINK_XPATH},
+      # Click on "Register".
+      {"click" => JobBoardHomePage::JOB_BOARD_REGISTER_LINK_XPATH},
+      # Leave all fields blank.
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"set_text" => JobBoardJobDetail::EMAIL_ADDRESS_XPATH, "text" => email},
+      # Enter a incorrect password, containing less than 8 characters.
+      {"set_text" => JobBoardJobDetail::PASSWORD_TEXT_XPATH, "text" => password},
+      {"set_text" => JobBoardJobDetail::CONFIRM_PASSWORD_TEXT_XPATH, "text" => password},
+      {"set_text" => JobBoardJobDetail::FIRST_NAME_TEXT_XPATH, "text" => fname},
+      {"set_text" => JobBoardJobDetail::LAST_NAME_TEXT_XPATH, "text" => lname},
+      {"set_text" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_XPATH, "text" => "c"},
+      # 8. Click on "Continue".
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"displayed" => ".//*[@id='atsApplicationSubmittedMain']"},
+      {"hassert_equal" => ".//*[@id='atsApplicationSubmittedMain']", 
+      "text" => "You have successfully registered. Your information has been added to our system."},
+     
+    ]
+    Common.main(test)
+    
+  end
 
 
   

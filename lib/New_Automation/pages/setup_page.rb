@@ -9,8 +9,8 @@ class SetupEditPage
   AUTO_SHARE_MODE_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Auto_Share_Mode__c"
   STANDARD_QUESTION_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Standard_Question_Handler__c"
   INVITE_TO_APPLY_CUSTOM_MESSAGE_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Invite_to_Apply_Custom_Message__c"
-  EEO_QUESTION_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__EEO_Question_Handler__c"
-  COMMIT_EEO_DEFAULT_VALUE_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Commit_EEO_Default_Value__c" 
+  EEO_QUESTION_HANDLER_TEXT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__EEO_Question_Handler__c']"
+  COMMIT_EEO_DEFAULT_VALUE_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Commit_EEO_Default_Value__c']" 
   ENABLE_CLOSE_JOB_ORDER_WIZARD_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Close_Job_Order_Wizard__c"
   QUESTION_SET_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Handler__c"
   QUESTION_SET_DAY_HANDLER = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Days_Valid__c'"
@@ -19,8 +19,15 @@ class SetupEditPage
   MAX_NUMBER_ATTACHMENTS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Max_Number_of_Attachments__c']"
 
   ENABLE_ENHANCED_APPLY_TO_JOB_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enhanced_Apply_to_Job__c']"
-  
+  ALLOW_DUPLICATE_APPS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Allow_Duplicate_Apps__c']"
+  ALLOW_DUPLICATE_APPS_DAYS_INPUT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Allow_Duplicate_Application_Days__c']"
   SHORT_LIST_CUSTOM_SETINGS_PAGE_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a1A"
+  NEW_CONFIG_BTN_XPATH = ".//*[@id='CS_list:ts2__Config__c:newBtn']"
+  ENABLE_JCARD_FOR_CONTACT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__JCARD_ENABLE_FOR_CONTACT__c']"
+  MAX_NUMB_ATTACHEMNT_INPUT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Max_Number_of_Attachments__c']"
+  ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Attach_to_Applications__c']"
+  AUTO_SHARE_MODE_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Auto_Share_Mode__c']"
+  DISPLAY_PRIVACY_STATEMENT_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id225:j_id228']"
   
   #Short list
   EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH = ".//*[@class='btn'][1]"
@@ -61,6 +68,10 @@ class SetupEditPage
   EEO_QUESTIONS_RACE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem3:Race']"
   EEO_QUESTIONS_DISABLE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem5:Disabled']"
   EEO_QUESTIONS_REQUIRED_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem6:EEORequired']"
+
+  EEO_TEXT_TEXTAREA_IFRAME_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id212:j_id213:j_id214:textAreaDelegate_ts2__EEO_Text__c_rta_body']"
+  HIDE_STANDARD_EEO_DISCLAIMER_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id212:j_id216']"
+  PRIVACY_POLICY_TEXTAREA_IFRAME_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id225:j_id226:j_id227:textAreaDelegate_ts2__Privacy_Policy_Statement__c_rta_body']"
 
   
   EDIT_BUTTON_XPATH = ".//*[@name='edit']"
@@ -118,8 +129,13 @@ class SetupEditPage
   CONFIG_JOB_BOARD_LOGIN_URL = "https://na17.salesforce.com/udd/Site/editSiteLoginSettings.apexp?id=0DMo00000005Nzk"
   CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:loginPageBlockSection:enableLogin']"
   CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:thePageBlockButtons:save']"      
+
+  
+  #RSS FEED Customization
+  RSS_FEED_CUSTOMIZATION_URL = "https://na17.salesforce.com/setup/FieldSetEditor.apexp?tableEnumOrId=01Io0000001F8QI&setupid=CustomObjects&retURL=%2F_ui%2Fcommon%2Fconfig%2Fentity%2FFieldSetListUI%2Fd%3FretURL%3D%252F01Io0000001F8QI%253Fsetupid%253DCustomObjects%26tableEnumOrId%3D01Io0000001F8QI%26setupid%3DCustomObjects&id=0IXo00000003LvI"
+  RSS_FEED_CUSTIOMIZATION_EDIT_BTN_XPATH = ".//*[@id='FieldSetList_body']/table/tbody/tr[5]/td[1]/a"
+
   CONFIG_JOB_BOARD_LOGIN_EDIT_XPATH = ".//*[@value='Edit']"
   
-  
-  
+
 end
