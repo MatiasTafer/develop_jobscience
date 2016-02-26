@@ -97,8 +97,6 @@ class TestActionsOnRecord < TestBasic
   
     }
     
-    #Delete account created in this testcase
-    DeleteAccount(randomContact)  
 
   end
 
@@ -195,11 +193,7 @@ class TestActionsOnRecord < TestBasic
       {"click" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_FIRST_XPATH}
     ]
     Common.main(test) 
-     begin
-      $browser.switch_to.alert.accept 
-     rescue 
-     end  
-     
+
      test = [ 
       {"displayed" => SkillDetailPage::SKILL_DETAIL_RATING_XPATH}
     ]
@@ -212,11 +206,7 @@ class TestActionsOnRecord < TestBasic
     ]
     Common.main(test)
     $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
-    
-    begin
-      $browser.switch_to.alert.accept 
-     rescue 
-     end  
+
      
     test = [
     {"displayed" => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH},
@@ -227,8 +217,6 @@ class TestActionsOnRecord < TestBasic
     Common.main(test)
     assert_equal("10", $browser.find_element(:xpath => SkillDetailPage::SKILL_DETAIL_RATING_XPATH).text)
     
-    #Delete account created in this testcase
-    DeleteAccount(randomContact)  
     
   end  
 
@@ -309,12 +297,6 @@ class TestActionsOnRecord < TestBasic
     assert $wait.until {
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
-    
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomSL)
         
   end
 
@@ -394,12 +376,6 @@ class TestActionsOnRecord < TestBasic
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomSL)
-        
   end      
   
   #TC55 - Successfully Apply to Jobs
@@ -491,11 +467,6 @@ class TestActionsOnRecord < TestBasic
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
-    #Delete accounts created in this testcase
-     DeleteAccount(randomContact) 
-         
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
   end  
   
 ############### CUSTOM METHODS #####################  
@@ -533,25 +504,8 @@ class TestActionsOnRecord < TestBasic
     Common.main(test)   
   end
   
-  def DeleteAccount(name)
-    #Delete the account record with name "name"
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
-    test = [
-    {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH}
-    ]
-    Common.main(test)
-    $browser.find_element(:xpath => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
-     test = [
-    {"displayed" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH},
-    {"click" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
-    ]
-    Common.main(test)
-    sleep(1)
-    $browser.switch_to.alert.accept
-  end
-  
-    def CreateShortList(name)
-    #Create a Short List with "name" as its name
+  def CreateShortList(name)
+  #Create a Short List with "name" as its name
     $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
     test = [
       {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}, 
@@ -597,21 +551,6 @@ class TestActionsOnRecord < TestBasic
         $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
       }
   end 
-  
-  def DeleteShortList(name)
-    #Delete the Short List with name "name"
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
-    test = [
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH, "text" => "All Short List"},
-    {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_GO_XPATH},
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}
-    ]
-    Common.main(test)
-    $browser.find_element(:xpath => "//*[text()[contains(.,'" + name + "')]]/../../../../td[3]//a[2]").click
-    sleep(1)
-    $browser.switch_to.alert.accept 
-  end
   
   def DeleteRequisition(name)
     # 1 - Go to "Requisition" Tab

@@ -258,6 +258,7 @@ class CustomSettings
     $wait.until{
       $browser.find_element(:xpath => SetupEditPage::DISPLAY_PRIVACY_STATEMENT_XPATH).displayed?
     }
+    sleep(3)
     Checkbox(SetupEditPage::DISPLAY_PRIVACY_STATEMENT_XPATH, setbool)
     sleep(1)
     old_win = $browser.window_handle

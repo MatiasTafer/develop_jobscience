@@ -663,7 +663,8 @@ class TestActionsOnListView < TestBasic
     # 7. Click on Invite to Apply   
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
-      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH}
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH}
       
     ]
     Common.main(test)

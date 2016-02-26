@@ -60,9 +60,6 @@ class TestQuestionSets < TestBasic
     
     assert_equal($browser.find_element(:id => QuestionSetsDetail::QUESTION_SETS_DETAIL_NAME_ID).text, randomName)  
     
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
-     
   end
 
 
@@ -347,12 +344,7 @@ class TestQuestionSets < TestBasic
     assert $wait.until{
         $browser.find_element(:xpath =>JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_1_INPUT_XPATH + "//select/option[1]").selected?
       }
-    
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
-    self.DeleteRequisition(randomReq) 
-    self.DeleteRequisition(randomReq2)  
-           
+
   end
   
   #TC822 - Question Set Handler = Populate
@@ -590,12 +582,7 @@ class TestQuestionSets < TestBasic
     assert $wait.until{
         $browser.find_element(:xpath =>JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_1_INPUT_XPATH + "//select/option[2]").selected?
       }
-    
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
-    self.DeleteRequisition(randomReq) 
-    self.DeleteRequisition(randomReq2)  
-             
+ 
   end
 
  #TC823 - Question Set Handler = Omit
@@ -838,12 +825,7 @@ class TestQuestionSets < TestBasic
     assert $wait.until{
        result
       }
-    
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
-    self.DeleteRequisition(randomReq) 
-    self.DeleteRequisition(randomReq2)  
-             
+ 
   end 
  
   #TC824 - Copy Question Set
@@ -878,11 +860,7 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?
     }
     assert_match "Copy - " + randomName, $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NAME_XPATH).text
-    
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet("Copy - " + randomName)
-    self.DeleteQuestionSet(randomName)
-    
+
   end
 
 
@@ -969,9 +947,6 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_QUESTION_XPATH).displayed?
     }
     assert_equal($browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_1_NAME_LABEL_XPATH).text, "Q: Icecream")
-    
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
     
   end
 
@@ -1118,9 +1093,6 @@ class TestQuestionSets < TestBasic
     #RESULTS Step 19
     assert_equal($browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTIONS_LIST_FOURTH_v2_XPATH).text, "A: Text") 
     
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
-  
   end
   
 
@@ -1272,9 +1244,6 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_PRESCREEN_4_XPATH).displayed?
     }
     
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName) 
-    self.DeleteRequisition(randomReq) 
   end
    
   
@@ -1321,9 +1290,6 @@ class TestQuestionSets < TestBasic
     # 5 - You will be redirected to the "Question" page. 
     assert_equal(QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_TEXT_XPATH, $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH + "//span").text) 
     #$browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH + "//*[text()[contains(.,'" + QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_TEXT_XPATH + "')]]") 
-    
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
     
   end
   
@@ -1413,11 +1379,9 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_NAME_XPATH + "//*[text()[contains(.,'" + QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_2_TEXT_XPATH + "')]]")
       $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_QUESTION_SIZE_XPATH + "//*[text()[contains(.,'Rich Text (up to 32k)')]]")
     } 
-     #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName) 
+   
   end
  
-  
   #TC830 - New Question, Optional
   def test_NewQuestionOptional 
     randomName = SecureRandom.hex(4)
@@ -1601,9 +1565,6 @@ class TestQuestionSets < TestBasic
     assert_match QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_TEXT_XPATH, $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_QUESTION_NAME_1_XPATH).text
     assert_match QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_2_TEXT_XPATH, $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_QUESTION_NAME_2_XPATH).text
     
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
-    self.DeleteRequisition(randomReq)
    end 
    
    
@@ -1792,10 +1753,6 @@ class TestQuestionSets < TestBasic
     assert_match QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_TEXT_XPATH, $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_QUESTION_NAME_1_XPATH).text
     assert_match QuestionSetsNewQuestion::QUESTION_SETS_NEW_QUESTION_NAME_2_TEXT_XPATH, $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_QUESTION_NAME_2_XPATH).text
     
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
-    self.DeleteRequisition(randomReq)
-    
    end 
 
 
@@ -1974,9 +1931,6 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => ApplicationsDetailPage::APPLICATIONS_DETAIL_PRESCREEN_1_XPATH).displayed?
     } 
     
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
-    self.DeleteRequisition(randomReq)
   end 
    
  
@@ -2089,9 +2043,6 @@ class TestQuestionSets < TestBasic
     assert_equal($browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_FIRST_ANSWER_LIST_XPATH).text, AnswerEditPage::ANSWER_DATA_NAME_1_TEXT)    
     assert_equal($browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_SECOND_ANSWER_LIST_XPATH).text, AnswerEditPage::ANSWER_DATA_NAME_2_TEXT)    
     assert_equal($browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_THIRD_ANSWER_LIST_XPATH).text, AnswerEditPage::ANSWER_DATA_NAME_3_TEXT)    
-    
-    #Delete Question Set & Requisition
-    self.DeleteQuestionSet(randomName)
     
   end
   
@@ -2256,44 +2207,4 @@ class TestQuestionSets < TestBasic
      
   end
   
-  def DeleteQuestionSet(name)
-    # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
-    $wait.until{
-      $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH).displayed?  
-      }
-      
-    # 2 - Click on the Question Set
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
-    $wait.until{
-      $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_DELETE_XPATH).displayed?  
-      }
-    # 3 - Click on Delete  
-    $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_DELETE_XPATH).click
-    sleep(1)
-    # 4 - Confirm
-    $browser.switch_to.alert.accept
-    $wait.until{
-      $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH).displayed?  
-      }
-  end
-  
-  def DeleteRequisition(name)
-    # 1 - Go to "Requisition" Tab
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
-    $wait.until{
-      $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH).displayed?  
-      }
-    sleep(5)  
-    # 2 - Click on the Requisition
-    $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
-    $wait.until{
-      $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?  
-      }
-     # 3 - Click on Delete 
-    $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).click
-     sleep(1)
-    # 4 - Confirm
-    $browser.switch_to.alert.accept
-  end
 end

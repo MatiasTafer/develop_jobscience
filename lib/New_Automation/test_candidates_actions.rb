@@ -30,7 +30,7 @@ require_relative './pages/education_history_new_page.rb'
 require_relative './pages/employment_history_new_page.rb'
 
 class TestActions < TestBasic
-=begin
+
   #TC263 - Add to List (New) on Skill section in Search
   def test_SearchSkillAddToNewList
     randomContact = SecureRandom.hex(4)
@@ -66,10 +66,7 @@ class TestActions < TestBasic
     ] 
     Common.main(test)
     
-    $wait.until {
-      $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH).displayed?
-    }
-    sleep(2)
+    sleep(4)
     # 4. Select one or more contact doing click on checkbox on column "Action".
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input").click
     
@@ -121,11 +118,7 @@ class TestActions < TestBasic
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomSL)
+
   end
   
 #TC264 - Add to List (Existing) on Skill section in Search
@@ -221,11 +214,6 @@ class TestActions < TestBasic
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomSL)
    
   end
 
@@ -246,7 +234,7 @@ class TestActions < TestBasic
     CreateContact(randomContact, randomContact)
     
     #Contact must have one education history record asociated
-    AddEducationRecordToContact(randomContact, EducationHistoryNewPage::EDU_HISTORY_DATA_SCHOOL_NAME_TEXT)
+    recordEdu = AddEducationRecordToContact(randomContact, EducationHistoryNewPage::EDU_HISTORY_DATA_SCHOOL_NAME_TEXT)
     
     sleep(15) ### Must have time for asociate record with contact
     
@@ -270,7 +258,7 @@ class TestActions < TestBasic
     }
     sleep(2)
     # 4. Select one or more contact doing click on checkbox on column "Action".
-    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_RESULT_LIST_FIRST_CHECKBOX_XPATH).click
+    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").click
     
     # 5. Click on "Add to List"
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_ADD_TO_LIST_XPATH).click
@@ -320,11 +308,7 @@ class TestActions < TestBasic
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomSL)
+
   end
 
 
@@ -344,7 +328,7 @@ class TestActions < TestBasic
     CreateContact(randomContact, randomContact)
     
     #Contact must have one education history record asociated
-    AddEducationRecordToContact(randomContact, EducationHistoryNewPage::EDU_HISTORY_DATA_SCHOOL_NAME_TEXT)
+    recordEdu = AddEducationRecordToContact(randomContact, EducationHistoryNewPage::EDU_HISTORY_DATA_SCHOOL_NAME_TEXT)
     
     #At least one short list must exist 
     CreateShortList(randomSL)
@@ -375,7 +359,7 @@ class TestActions < TestBasic
     }
     sleep(2)
     # 4. Select one or more contact doing click on checkbox on column "Action".
-    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_RESULT_LIST_FIRST_CHECKBOX_XPATH).click
+    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").click
     
     # 5. Click on "Add to List"
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_ADD_TO_LIST_XPATH).click
@@ -427,11 +411,6 @@ class TestActions < TestBasic
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomSL)
    
   end
  
@@ -476,7 +455,7 @@ class TestActions < TestBasic
     }
     sleep(4)
     # 4. Select one or more contact doing click on checkbox on column "Action".
-    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_RESULT_LIST_FIRST_CHECKBOX_XPATH).click
+    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input").click
     
     # 5. Click on "Add to List"
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_ADD_TO_LIST_XPATH).click
@@ -525,12 +504,6 @@ class TestActions < TestBasic
     assert $wait.until {
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
-    
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomSL)
    
   end 
 
@@ -577,7 +550,7 @@ class TestActions < TestBasic
     }
     sleep(2)
     # 4. Select one or more contact doing click on checkbox on column "Action".
-    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_RESULT_LIST_FIRST_CHECKBOX_XPATH).click
+    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input").click
     
     # 5. Click on "Add to List"
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_ADD_TO_LIST_XPATH).click
@@ -626,12 +599,6 @@ class TestActions < TestBasic
     assert $wait.until {
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
-    
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomSL)
    
   end
 
@@ -710,7 +677,7 @@ class TestActions < TestBasic
     ]  
     Common.main(test)
     
-    assert_equal(randomContact, $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH).text)
+    assert_equal(randomContact.encode!('UTF-8', 'US-ASCII'), $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH).text)
 
     test = [
     {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
@@ -733,13 +700,6 @@ class TestActions < TestBasic
     assert $wait.until {
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
     }  
-    
-    
-    #Delete accounts created in this testcase
-    DeleteAccount(randomContact) 
-   
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
    
   end    
  
@@ -759,7 +719,7 @@ class TestActions < TestBasic
     CreateContact(randomContact, randomContact)
     
     #Contact must have one education history record asociated
-    AddEducationRecordToContact(randomContact, EducationHistoryNewPage::EDU_HISTORY_DATA_SCHOOL_NAME_TEXT)
+    recordEdu = AddEducationRecordToContact(randomContact, EducationHistoryNewPage::EDU_HISTORY_DATA_SCHOOL_NAME_TEXT)
     
     # Job with "Post job" = true
     CreateRequisitionPostJob(randomReq, true)
@@ -789,7 +749,7 @@ class TestActions < TestBasic
     }
     sleep(2)
     # 4. Select one or more contact doing click on checkbox on column "Action".
-    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_RESULT_LIST_FIRST_CHECKBOX_XPATH).click
+    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input[1]").click
     
     # 5. Click on "Apply to Job"
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_APPLY_TO_JOB_XPATH).click
@@ -818,7 +778,7 @@ class TestActions < TestBasic
     ]  
     Common.main(test)
     
-    assert_equal(randomContact, $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH).text)
+    assert_equal(randomContact.encode!('UTF-8', 'US-ASCII'), $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH).text)
     # 11. Close popup
     test = [
     {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
@@ -841,16 +801,9 @@ class TestActions < TestBasic
     assert $wait.until {
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
     }  
-    
-    
-    #Delete accounts created in this testcase
-    DeleteAccount(randomContact) 
-   
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
    
   end 
-=end 
+ 
   #TC271 - Apply to jobs on Employment History section in Search
   def test_SearchEmploymentApplyToJob
     randomContact = SecureRandom.hex(4)
@@ -866,6 +819,7 @@ class TestActions < TestBasic
     #At least one contact must exist 
     CreateContact(randomContact, randomContact)
     
+    CustomSettings.EnableJCardForContact(false)
     #Contact must have one employment history record asociated
     AddEmploymentRecordToContact(randomContact, EmploymentHistoryNewPage::EMPLOYMENT_HIST_DATA_EMPLOYER_NAME_TEXT, EmploymentHistoryNewPage::EMPLOYMENT_HIST_DATA_JOB_TITLE_TEXT)
     
@@ -894,7 +848,7 @@ class TestActions < TestBasic
     
     sleep(2)
     # 4. Select one or more contact doing click on checkbox on column "Action".
-    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_RESULT_LIST_FIRST_CHECKBOX_XPATH).click
+    $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input[1]").click
     
     # 5. Click on "Apply to Job"
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULT_APPLY_TO_JOB_XPATH).click
@@ -923,8 +877,8 @@ class TestActions < TestBasic
     ]  
     Common.main(test)
     
-    randomContact.encode!('US-ASCII', 'UTF-8')
-    assert_equal(randomContact, $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH).text)
+    
+    assert_equal(randomContact.encode!('UTF-8', 'US-ASCII'), $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH).text)
     # 11. Close popup
     test = [
     {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
@@ -1088,23 +1042,6 @@ class TestActions < TestBasic
     Common.main(test)   
   end
   
-  def DeleteAccount(name)
-    #Delete the account record with name "name"
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
-    test = [
-    {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH}
-    ]
-    Common.main(test)
-    $browser.find_element(:xpath => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
-     test = [
-    {"displayed" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH},
-    {"click" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
-    ]
-    Common.main(test)
-    sleep(3)
-    $browser.switch_to.alert.accept
-  end
-    
   def AddSkillToContact(contact, skill)
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -1186,7 +1123,7 @@ class TestActions < TestBasic
       {"displayed" => EducationHistoryNewPage::EDU_HISTORY_DETAIL_BTN_EDIT_XPATH}
     ]
     Common.main(test)
-    
+    return $browser.find_element(:xpath => ".//*[@id='Name_ileinner']").text
   end
   
   def AddEmploymentRecordToContact(contact, employment, job)
@@ -1227,25 +1164,10 @@ class TestActions < TestBasic
       {"displayed" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH},
       {"set_text" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH, "text" => name},
       {"click" => ShortListNewEditPage::SHORT_LIST_NEW_BTN_SAVE_XPATH},
-      {"displayed" => ShortListDetailPage::SL_MENU_XPATH}
+      {"displayed" => ShortListDetailPage::SL_DELETE_LIST_XPATH}
     ]
     Common.main(test)   
   end  
-  
-  def DeleteShortList(name)
-    #Delete the Short List with name "name"
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
-    test = [
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH, "text" => "All Short List"},
-    {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_GO_XPATH},
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}
-    ]
-    Common.main(test)
-    $browser.find_element(:xpath => "//*[text()[contains(.,'" + name + "')]]/../../../../td[3]//a[2]").click
-    sleep(3)
-    $browser.switch_to.alert.accept 
-  end
   
   def CreateRequisitionPostJob(name, postjob)
     #postjob=TRUE will check "Post Job" checkbox, postjob=false will not check it.
@@ -1281,23 +1203,4 @@ class TestActions < TestBasic
       }
   end
   
-  def DeleteRequisition(name)
-    # 1 - Go to "Requisition" Tab
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
-    $wait.until{
-      $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH).displayed?  
-      }
-    sleep(5)  
-    # 2 - Click on the Requisition
-    $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
-    $wait.until{
-      $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?  
-      }
-     # 3 - Click on Delete 
-    $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).click
-     sleep(3)
-    # 4 - Confirm
-    $browser.switch_to.alert.accept
-  end 
-
 end

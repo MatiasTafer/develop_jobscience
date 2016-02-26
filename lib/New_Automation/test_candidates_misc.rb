@@ -13,60 +13,28 @@ require_relative './pages/rss_customization_page.rb'
 require_relative './pages/job_board_home_page.rb'
 require_relative './pages/job_board_job_detail.rb'
 require_relative './pages/job_board_login_page.rb'
+require_relative './pages/job_board_register_page.rb'
 require_relative './pages/contacts_detail_page.rb'
 require_relative './pages/applications_detail_page.rb'
 require_relative './pages/applications_new_page.rb'
 require_relative './pages/requisitions_home_page.rb'
 require_relative './pages/requisitions_new_and_edit.rb'
 require_relative './pages/requisitions_detail_page.rb'
-
+require_relative './pages/board_setup_home_page.rb'
+require_relative './pages/board_setup_detail_page.rb'
 
 class TestCandidatesMisc < TestBasic
   @@job_path = "/Users/admin/Desktop/testing job order.pdf"
-=begin  
-  #TC103 - Add Job Order from Uploading File
-  def test_AddJobOrderFromUploading
-    
-    #PRECONDITIONS
-    #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
-    
-    #Go to HomePage
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
-    
-    # 1 - Click on "Job Order Tools" on sidebar sections
-    test = [
-      {"displayed" => HomePage::ADD_JOB_ORDERS_XPATH},
-    # 2 - Click on "Add Job Order"  
-      {"click" => HomePage::ADD_JOB_ORDERS_XPATH}
-    ]
-    Common.main(test)
-    
-    newWindow= $browser.window_handles.last
-    $browser.switch_to.window(newWindow)
-    
-    test = [
-      {"displayed" => HomePage::UPLOAD_BTN_BROWSE_XPATH},
-      {"upload" => HomePage::UPLOAD_BTN_BROWSE_XPATH, "file" => @@job_path},
-      {"click" => HomePage::UPLOAD_BTN_ADD_JOB_XPATH}
-    ]
-    Common.main(test)
-    
-    newWindow= $browser.window_handles.first
-    $browser.switch_to.window(newWindow)
-    
-    assert $wait.until{
-      $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_NAME_XPATH).displayed?
-    }
-  end
  
-   #TC104 - RSS feed customizable fields
+  #JS2 Board Setup
+  #TC104 - RSS feed customizable fields
   def test_RSSFeddCustomizableFields
     
     #PRECONDITIONS
+    #Need to have pre configured on Setup>Create>Objects>Job Orders>RSS Feed the followings fields: 
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
-    
+=begin    
     $browser.get(SetupEditPage::RSS_FEED_CUSTOMIZATION_URL)
     
     test = [
@@ -87,90 +55,43 @@ class TestCandidatesMisc < TestBasic
     $wait.until{
       $browser.find_element(:xpath => RSSCustomizationPage::RSS_CUSTOM_DETAIL_BTN_NEW_XPATH).displayed?
     }
-    
-    ###### TERMINAR TERMINAR TERMINAR TERMINAR TERMINAR ######
+=end
+    $browser.get(HomePage::BOARD_SETUP_TAB_LINK_URL)
+    test = [
+      {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URLBUILDER_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URLBUILDER_BUTTON_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NEXT_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NEXT_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NEXT_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NEXT_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NEXT_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NEXT_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_RSS_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_RSS_URL_XPATH}
+    ]
+   Common.main(test)
+   newWindow= $browser.window_handles.last
+   $browser.switch_to.window(newWindow)
    
-   end  
+   sleep(3)
 
-  
-  #TC105 - Allow Duplicate Applications
-  def test_AllowDuplicateApp
-    randomName = SecureRandom.hex(4)
-
-    #PRECONDITIONS
-    #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
-    
-    # Mark the field Allow Duplicate Apps = TRUE
-    # In Allow Duplicate Application Days enter: 0
-    CustomSettings.AllowDuplicateApplcation(true)
-    
-    CustomSettings.BoardSetupInit
-    CustomSettings.JobBoardLogin(true)
-    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
-    CustomSettings.MaxNumberOfAttachments(0)    
-    Common.CreateRequisitionPostJob(randomName, true)
-        
-    # 1. Go to Board Setup tab
-    $browser.get(HomePage::JOB_BOARD_URL)
-     
-    # 6. Click Login
-    test = [
-      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-      {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},  
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_USER_TEXT},
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_PASSWORD_TEXT}, 
-      {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH}  
-    ]
-    Common.main(test)
-    
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
-    test = [
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
-      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH},
-      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH},
-      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH}
-    ]
-    Common.main(test)
-    
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
-    test = [
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
-      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH},
-      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH},
-      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH}
-    ]
-    Common.main(test)
-    
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-    test = [
-      {"displayed" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-    ]
-    Common.main(test)
-    
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + JobBoardLoginPage::JOB_BOARD_USER_NAME_TEXT + "')]]").click
-    
-    test = [
-      {"displayed" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_XPATH},
-      {"displayed" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_SECOND_XPATH}
-    ]
-    Common.main(test)
-    
-    assert_equal(randomName, $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_XPATH).text)
-    assert_equal(randomName, $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_APP_LIST_SECOND_XPATH).text)
-    
-    Common.DeleteRequisition(randomName)
-
-  end
-   
+   puts $browser.browser.to_s
+   if $browser.browser.to_s == "chrome"
+     assert $wait.until{
+      $browser.find_element(:xpath => ".//*[text()[contains(.,'Min_Salary')]]").displayed?
+      $browser.find_element(:xpath => ".//*[text()[contains(.,'Max_Salary')]]").displayed?
+    }
+   else
+     assert $wait.until{
+       $browser.find_element(:xpath => ".//*[@class='entry']").displayed?  
+     } 
+   end
+   sleep(5)
+ end  
+=begin  
+  #JS2 Resume
   #TC106 - Enable Resume Attached to contact record
   def test_EnableResumeAttachContactRecord
     randomName = SecureRandom.hex(4)
@@ -244,6 +165,7 @@ class TestCandidatesMisc < TestBasic
     
   end
   
+ 
   #TC107 - Enable contact jcard view
   def test_EnableContactJCardView 
    
@@ -271,6 +193,7 @@ class TestCandidatesMisc < TestBasic
    CustomSettings.EnableJCardForContact(false)
   end
  
+  #Deleted 
   #TC108 - Able Read Hiring Manager Job Orders
   def test_ReadHiringManagerJobOrders
     randomName = SecureRandom.hex(4)
@@ -356,6 +279,7 @@ class TestCandidatesMisc < TestBasic
   
   end
   
+  #Deleted
   #TC109 - Able Read Hiring Manager Job Orders
   def test_ReadWriteHiringManagerJobOrders
     randomName = SecureRandom.hex(4)
@@ -442,7 +366,8 @@ class TestCandidatesMisc < TestBasic
     sleep(10)
   
   end
-
+  
+  #Deleted
   #TC111 - Custom text EEO message on Job Board
   def test_CustomTextEEOMessage
     randomJob = SecureRandom.hex(4)
@@ -483,188 +408,9 @@ class TestCandidatesMisc < TestBasic
     Common.main(test)
     
   end
-  
-  #TC113 - Add Custom Privacy Policy message on registration page
-  def test_AddCustomPrivacyPolicy
-    #PRECONDITIONS
-    #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
-    
-    CustomSettings.PrivacyPolicyTextAndDisplay("This is a privacy policy statement. Thank you!", true)
-    
-    CustomSettings.JobBoardLogin(true)
-    CustomSettings.BoardSetupInit
-    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
-    CustomSettings.AllowDuplicateApplcation(true)
-    
-    
-    # Go to Board Setup tab
-    $browser.get(HomePage::JOB_BOARD_URL)
-     
-    # Login
-    test = [
-      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-      {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},  
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_USER_TEXT},
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_PASSWORD_TEXT}, 
-      {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-      {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
-      {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH}, 
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
-      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH} 
-    ]
-    Common.main(test)
-    # FALTA VER EL MENSAJE PRIVACY POLICY
-  end
 =end  
-  #TC110 - Revert button on record in Job Orders
-  def test_RevertButtonOnJobOrders
-    randomName = SecureRandom.hex(4)
-    randomContact = SecureRandom.hex(4)
-    
-    #PRECONDITIONS
-    #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
-    
-    Common.CreateRequisitionPostJob(randomName, true)
-    
-    #At least one account must exist
-    Common.CreateAccount(randomContact) 
-          
-    #At least one contact must exist 
-    Common.CreateContact(randomContact, randomContact)
-    
-     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-    
-    
-    test = [
-      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-    ]
-    Common.main(test)
-    
-    # 2. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
-    
-    # 3. Click on "Apply to jobs"
-    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
-    sleep(3)
-    #A pop up window will be disaplyed
-    newWindow= $browser.window_handles.last
-    $browser.switch_to.window(newWindow)
-    sleep(2)
-    
-    test = [
-    # 5. Select the posted Job
-      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomName},
-    # 6. Click "Next" 
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
-      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
-    # 7. Click on Exception   
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
-      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
-    # 8. Select Referral in picklist  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
-    # 9. Click "Save"  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
-      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
-      ]
-    Common.main(test)
-    
-    newWindow2= $browser.window_handles.first
-    $browser.switch_to.window(newWindow2)
-    
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-    test = [
-      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-    ]
-    Common.main(test)
-    
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
-    $wait.until {
-          $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
-        }
-    test = [
-      {"click" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_APP_XPATH},
-      {"display" => ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH},
-    ]
-    Common.main(test)
-    sleep(2)
-    
-    currentUrl = $browser.current_url
-    
-    $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH).click
-    
-    newWindow3= $browser.window_handles.last
-    $browser.switch_to.window(newWindow3)   
-    sleep(5)
-    
-    test = [
-      {"display" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
-      {"click" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
-      {"display" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
-    ]
-    Common.main(test) 
-    sleep(1)
-    
-    newWindow4= $browser.window_handles.first
-    $browser.switch_to.window(newWindow4)
-    
-    sleep(5)
-    $browser.get(currentUrl)
-    
-    
-    test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
-      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
-    ]
-    Common.main(test) 
-    
-    newWindow5= $browser.window_handles.last
-    $browser.switch_to.window(newWindow5)
-    
-    sleep(2)
-    
-    test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH},
-      {"click" => ApplicationsDetailPage::REVERT_STAGE_RADIO_XPATH},
-      {"click" => ApplicationsDetailPage::REVERT_STAGE_SEND_EMAIL_BOX_XPATH},
-      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH}
-    ]
-    Common.main(test)
-    
-    $browser.switch_to.alert.accept
-    sleep(4)
-    
-    test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH},
-      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH}
-    ]
-    Common.main(test)
-    
-    newWindow6= $browser.window_handles.first
-    $browser.switch_to.window(newWindow6)
-    sleep(2)
-    $browser.get(currentUrl)
-    
-    test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
-          ]
-    Common.main(test) 
-    
-    assert_equal("Application", $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_OVERALL_STAGE_XPATH).text)
-    
-  end
-       
+  
+
+  
+      
 end
