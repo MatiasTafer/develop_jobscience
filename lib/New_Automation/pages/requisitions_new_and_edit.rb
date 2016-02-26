@@ -17,18 +17,19 @@ class RequisitionsNewAndEdit
     #REQUIRED FIELDS
   REQUISITIONS_NEW_JOB_TITLE_ID = "Name"
   REQUISITIONS_NEW_JOB_TITLE_XPATH =".//*[@id='Name']"
-  REQUISITIONS_NEW_JOB_TITLE_XPATH = ".//*[@id='Name']"
   REQUISITIONS_NEW_PRIMARY_RECRUITER_TYPE_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[5]//select"
   REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH = "(.//*[@class='requiredInput'])[2]//span//input"
-  REQUISITIONS_NEW_LOCATION_XPATH = "(.//*[@class='requiredInput'])[3]//select"
-  REQUISITIONS_NEW_MIN_SALARY_XPATH = "(.//*[@class='requiredInput'])[5]//input"
-  REQUISITIONS_NEW_MAX_SALARY_XPATH = "(.//*[@class='requiredInput'])[6]//input"
-  REQUISITIONS_NEW_DEPARTAMENT_XPATH = "(.//*[@class='requiredInput'])[4]//select"
-  REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH = "(.//*[@class='requiredInput'])[4]//option[2]"
+  REQUISITIONS_NEW_LOCATION_XPATH = "(.//*[@class='requiredInput'])[4]//select"
+  REQUISITIONS_NEW_MIN_SALARY_XPATH = "(.//*[@class='requiredInput'])[6]//input"
+  REQUISITIONS_NEW_MAX_SALARY_XPATH = "(.//*[@class='requiredInput'])[7]//input"
+  REQUISITIONS_NEW_DEPARTAMENT_XPATH = "(.//*[@class='requiredInput'])[5]//select"
+  REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH = "(.//*[@class='requiredInput'])[5]//option[2]"
   REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH = ".//*[@name='save']"
   REQUISITIONS_JOBS_PROJECTS_FIELD_XPATH = ".//*[@id='00No0000008HtYf']"
   REQUISITIONS_CLIENT_FIELD_XPATH = ".//*[@id='CF00No0000008HtXu']"
   REQUISITIONS_CONTACT_FIELD_XPATH = ".//*[@id='CF00No0000008HtY9']"
+  
+  REQUISITIONS_HIRING_MANAGER_XPATH = "(//*[@class='lookupInput'])[4]/input"
   
     #DATE FIELDS
   REQUISITIONS_NEW_DATE_POSTED_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[1]/td[4]//input"
@@ -70,6 +71,7 @@ class RequisitionsNewAndEdit
 
 
 
+
  #HARD CODE DATA
  REQUISITIONS_NEW_DATA_TITLE_TEXT = "Test Job TC827"
  REQUISITIONS_NEW_DATA_TITLE = "Test Job Requisition"
@@ -87,6 +89,7 @@ class RequisitionsNewAndEdit
  REQUISITIONS_NEW_DATA_DEPARTMENT_TEXT = "Dept ABC"
  REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT = "2000"
  REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT = "4000" 
+
 
  
  # SECTION JOB POSTING DETAILS

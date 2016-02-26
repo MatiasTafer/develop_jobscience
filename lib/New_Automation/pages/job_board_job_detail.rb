@@ -3,8 +3,6 @@ class JobBoardJobDetail
   
   # LINKEDIN
   JOB_BOARD_APPLY_LINKEDIN_XPATH = ".//*[@id='applyWithLinkedInBtn']"
-  JOB_BOARD_LINKEDIN_EMAIL_XPATH = ".//*[@id='session_key-oauthAuthorizeForm']"
-  JOB_BOARD_LINKEDIN_PASSWORD_XPATH = ".//*[@id='session_password-oauthAuthorizeForm']"
   JOB_BOARD_LINKEDIN_ALLOW_ACCESS_XPATH = ".//*[@value='Allow access']"
   
   #APPLY TO A JOB
@@ -30,16 +28,12 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_SALES_BACKGROUND = ".//*[@id='j_id0:j_id1:atsForm:j_id92:0:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
   JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id92:2:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
   JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id92:1:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
-  JOB_BOARD_APPLY_JOB_QUESTION_1_XPATH = "(.//*[@class='atsPreScreen']//*[@class='atsInput'])[1]"
-  JOB_BOARD_APPLY_JOB_QUESTION_2_XPATH = "(.//*[@class='atsPreScreen']//*[@class='atsInput'])[2]"
-  JOB_BOARD_APPLY_JOB_QUESTION_3_XPATH = "(.//*[@class='atsPreScreen']//*[@class='atsInput'])[3]"
   JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH = ".//*[@id='atsJobDetailsBox']/table/tbody/tr[6]/td/div/a[7]"
   JOB_BOARD_APPLY_JOB_CURRENT_SALARY_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:0:standardQuestionTag:standardQuestionComponent:answerText']"
   JOB_BOARD_APPLY_JOB_START_DATE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:1:standardQuestionTag:standardQuestionComponent:answerDate']"
   JOB_BOARD_APPLY_JOB_TAXONOMY_SKILLS_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:2:standardQuestionTag:standardQuestionComponent:answerTextArea']"
-  JOB_BOARD_APPLY_JOB_EMAIL_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:3:standardQuestionTag:standardQuestionComponent:answerText']"
+  JOB_BOARD_APPLY_JOB_EMAIL_2_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:3:standardQuestionTag:standardQuestionComponent:answerText']"
   JOB_BOARD_APPLY_JOB_HOME_PHONE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:4:standardQuestionTag:standardQuestionComponent:answerText']"
-  JOB_BOARD_APPLY_JOB_DEGREE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:5:standardQuestionTag:standardQuestionComponent:answerMultiSelectList']"
   JOB_BOARD_APPLY_JOB_LEVEL_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:6:standardQuestionTag:standardQuestionComponent:answerSelectList']"
   
   # REFER CANDIDATE
@@ -88,16 +82,27 @@ class JobBoardJobDetail
   JOB_BOARD_LINKEDIN_PASSWORD_XPATH = ".//*[@id='session_password-oauthAuthorizeForm']"
   JOB_BOARD_LINKEDIN_BTN_ALLOW_XPATH = ".//*[@name='authorize']"
   JOB_BOARD_EEO_QUESTIONS_GENDER_XPATH = ".//*[@id='j_id0:j_id1:atsForm:Gender']"
+  JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH = ".//*[@id='js-menu-logout']/a"
   JOB_BOARD_EEO_QUESTIONS_RACE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:Race']"
   JOB_BOARD_EEO_QUESTIONS_VETERAN_XPATH = ".//*[@id='j_id0:j_id1:atsForm:Veteran']"
   JOB_BOARD_EEO_QUESTIONS_DISABLED_XPATH = ".//*[@id='j_id0:j_id1:atsForm:Disabled']"
   JOB_BOARD_EEO_QUESTIONS_BTN_SUBMIT_XPATH = ".//*[@type='submit']"
+  
+  EMAIL_ADDRESS_XPATH = ".//*[@id='j_id0:j_id1:atsForm:email']"
+  PASSWORD_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:password']"
+  CONFIRM_PASSWORD_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:confirmPassword']"
+  FIRST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:firstName']"
+  LAST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:lastName']"
+  
   
   #HARD CORE DATA
   JOB_BOARD_APPLY_JOB_DATA_NAME_TEXT = "John"
   JOB_BOARD_APPLY_JOB_DATA_LAST_NAME_TEXT = "Does"
   JOB_BOARD_APPLY_JOB_DATA_EMAIL_TEXT = "matiasqqq@oktana.io"
   JOB_BOARD_APPLY_JOB_DATA_DATE_START_DATE = "2/16/2017"
+  
+  #ERROR
+  ERRORS_OF_FIELD_TO_SUBMIT_XPATH = ".//*[@class='atsError']"  
 
   
   #UPDATE YOUR INFO
@@ -137,13 +142,6 @@ class JobBoardJobDetail
   REMOVE_SKILL_BUTTON_XPATH = ".//input[@value='Remove Skill']" 
   BUILD_RESUME_BUTTON_XPATH = ".//input[@value='Build Resume']"
   
-  # REGISTER
-  EMAIL_ADDRESS_XPATH = ".//*[@id='j_id0:j_id1:atsForm:email']"
-  PASSWORD_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:password']"
-  CONFIRM_PASSWORD_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:confirmPassword']"
-  FIRST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:firstName']"
-  LAST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:lastName']"
-
   JOB_BOARD_LINKEDIN_DATA_EMAIL_TEXT = "automationoktana@gmail.com"
   JOB_BOARD_LINKEDIN_DATA_PASSWORD_TEXT = "oktanaqa"
 

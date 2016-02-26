@@ -14,5 +14,10 @@ class ContactDetailPage
   CONTACT_DETAIL_BTN_NEW_EMPLOYMENT_HIST_XPATH = ".//*[@value='New Employment History']"
   CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH = ".//*[@name='ts2__resume_update']"
   CONTACT_DETAIL_HOVER_LINKS_XPATH = ".//*[@class='listHoverLinks']"
-  
+  CONTACT_DETAIL_APP_LIST_FIRST_XPATH = "((.//*[@class='bPageBlock brandSecondaryBrd secondaryPalette'])[9]//tr[2]//a)[3]"
+  CONTACT_DETAIL_APP_LIST_SECOND_XPATH = "((.//*[@class='bPageBlock brandSecondaryBrd secondaryPalette'])[9]//tr[3]//a)[3]"
+  CONTACT_DETAIL_APP_LIST_XPATH = "(.//*[@class='bPageBlock brandSecondaryBrd secondaryPalette'])[9]"
+  CONTACT_DETAIL_JCARD_XPATH = ".//*[@class='jck-panel-header']"
+  CONTACT_DETAIL_RESUME_IFRAME_ID = "066o0000002B6Ef"
+  CONTACT_DETAIL_APP_LIST_FIRST_APP_XPATH = "(.//*[@class='bPageBlock brandSecondaryBrd secondaryPalette'])[9]//tr[2]/td[7]/a"
 end
