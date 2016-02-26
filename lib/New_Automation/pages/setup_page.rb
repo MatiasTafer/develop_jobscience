@@ -116,6 +116,13 @@ class SetupEditPage
     SET_YES_AS_DEFAULT_EEO_REQUISITION_CHECKBOX_ID = "p2"
     SET_YES_AS_DEFAULT_EEO_REQUISITION_SAVE_BTN_XPATH = ".//*[@title='Save']"
   
+  #SHARING SETTINGS
+  SHARING_SETTINGS_URL ="https://na17.salesforce.com/p/own/OrgSharingDetail?setupid=SecuritySharing&retURL=%2Fui%2Fsetup%2FSetup%3Fsetupid%3DSecurity"
+  EDIT_SHARING_SETTINGS_BUTTON_XPATH = ".//*[@class='pbButton']//*[@title='Edit']"
+  CONTACT_PICKLIST_XPATH = ".//*[@id='p18']"
+  ENFORCE_SHARING_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enforce_Sharing__c']"
+  SHARING_SETTINGS_SAVE_BUTTON_XPATH = ".//*[@title='Save']"
+  
   #JOB BOARD LOGIN OPTIONS
   CONFIG_JOB_BOARD_LOGIN_URL = "https://na17.salesforce.com/udd/Site/editSiteLoginSettings.apexp?id=0DMo00000005Nzk"
   CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:loginPageBlockSection:enableLogin']"

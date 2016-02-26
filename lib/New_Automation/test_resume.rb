@@ -131,7 +131,7 @@ def test_UploadRederralResume
 end
 =end
 
-  
+=begin  
 #TC982 - Upload Referral Resume Successfully, ERP Dupe Prevention = Attach Only
 def test_UploadReferralResumeAtachOnly
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -160,10 +160,38 @@ def test_UploadReferralResumeAtachOnly
     $browser.find_element(:xpath, JobBoardJobDetail::THANK_YOU_REFERRAL_MESSAGE_XPATH)
   }    
 end
-  
+=end
+
+=begin  
 #TC983 - Upload Referral Resume Successfully, ERP Dupe Prevention = Parse Fields.  (pending)
-
-
+def test_UploadReferralResumeParseFields
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+   Common.main(test)
+   $browser.get HomePage::JOB_BOARD_INTERNAL_URL
+   test2 = [{"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+            {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+            {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+            {"displayed" => JobBoardJobDetail::REFERREL_EMAIL_XPATH},
+            {"set_text" => JobBoardJobDetail::REFERREL_EMAIL_XPATH, "text" => $EMAIL},
+            {"click" => JobBoardJobDetail::JOB_BOARD_CONTINUE_BUTTON_XPATH},
+            {"displayed" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH},
+            {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "NameTest"},
+            {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "LastNameTest"},
+            {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL, "text" => "correo.test@email.com"},
+            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
+  Common.main(test2)
+  assert $wait.until {
+    $browser.find_element(:xpath, JobBoardJobDetail::THANK_YOU_REFERRAL_MESSAGE_XPATH)
+  }  
+end
+=end
 
 
 =begin
@@ -197,6 +225,9 @@ def test_ResumToolAttachOly
   } 
 end
 =end
+
+
+
 =begin
 #TC985 - Add Resume with the Add Resume Tool, Parse Fields
 def test_addResumeToolParseFields
@@ -228,6 +259,58 @@ def test_addResumeToolParseFields
   }   
 end
 =end
+
+
+#TC986 - Add resume , De-Duplication in a Private Sharing Model, New Candidate
+def test_addResumePrivateSharingModel
+  #Preconditions
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+  test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+          {"checked" => SetupEditPage::ENFORCE_SHARING_CHECKBOX_XPATH},
+          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test)
+  $browser.get SetupEditPage::SHARING_SETTINGS_URL
+  test2 = [{"displayed" => SetupEditPage::EDIT_SHARING_SETTINGS_BUTTON_XPATH},
+           {"click" => SetupEditPage::EDIT_SHARING_SETTINGS_BUTTON_XPATH},
+           #{"displayed" => SetupEditPage::CONTACT_PICKLIST_XPATH},
+           {"set_text" => SetupEditPage::CONTACT_PICKLIST_XPATH, "text" => "Private"},
+           {"click" => SetupEditPage::SHARING_SETTINGS_SAVE_BUTTON_XPATH}]
+  Common.main(test2)
+  #Steps
+  $browser.get HomePage::HOME_TAB_LINK_URL
+  test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+  Common.main(test3)
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow)
+  test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+  Common.main(test4)
+  newWindow= $browser.window_handles[0]
+  $browser.switch_to.window(newWindow)
+  assert $wait.until{
+    $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
+  }  
+end
+
+
+
+
+
+
+
+
+
+
+
 =begin
 #TC991 - Contact Update Resume Successfully, Attach Onlydef 
 def test_contactUpdateResumeAttachOnly
