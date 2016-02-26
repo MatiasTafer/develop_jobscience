@@ -27,19 +27,21 @@ require_relative './pages/requisitions_new_and_edit.rb'
 require_relative './pages/requisitions_detail_page.rb'
 
 class TestActionsOnRecord < TestBasic
-  
+ 
   #TC53 - Successfully add new skill to one contact
   def test_AddNewSkillToContact
+    randomContact = SecureRandom.hex(4)
+    
     
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -49,7 +51,7 @@ class TestActionsOnRecord < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
     Common.main(test)
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     
     # 3. Click on "Add skills"
     test = [
@@ -84,7 +86,7 @@ class TestActionsOnRecord < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
        $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH).displayed? 
      }
@@ -95,23 +97,22 @@ class TestActionsOnRecord < TestBasic
   
     }
     
-    #Delete account created in this testcase
-    DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)  
 
   end
 
   #TC261 - Successfully add/rate new skill to one contact
   def test_SuccessfullyAddRateSkillToContact
+    randomContact = SecureRandom.hex(4)
     
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -121,7 +122,7 @@ class TestActionsOnRecord < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
     Common.main(test)
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     
     # 3. Click on "Add skills"
     test = [
@@ -181,7 +182,7 @@ class TestActionsOnRecord < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
     Common.main(test)
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
         
     assert $wait.until {
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH).displayed? 
@@ -189,7 +190,11 @@ class TestActionsOnRecord < TestBasic
     
     }
     test = [
-      {"click" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_FIRST_XPATH},
+      {"click" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_FIRST_XPATH}
+    ]
+    Common.main(test) 
+
+     test = [ 
       {"displayed" => SkillDetailPage::SKILL_DETAIL_RATING_XPATH}
     ]
     Common.main(test) 
@@ -200,8 +205,9 @@ class TestActionsOnRecord < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
     Common.main(test)
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
-    
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+
+     
     test = [
     {"displayed" => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH},
     {"click" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_SECOND_XPATH},
@@ -211,26 +217,26 @@ class TestActionsOnRecord < TestBasic
     Common.main(test)
     assert_equal("10", $browser.find_element(:xpath => SkillDetailPage::SKILL_DETAIL_RATING_XPATH).text)
     
-    #Delete account created in this testcase
-    DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)  
     
   end  
-  
+
   #TC54 - Successfully Add to List (Existing) one contact
   def test_SuccessfullyAddToExistingListContact
+    randomContact = SecureRandom.hex(4)
+    randomSL = SecureRandom.hex(4)
     
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
     
     #At least one short list must exist 
-    CreateShortList(ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT)
+    CreateShortList(randomSL)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -240,7 +246,7 @@ class TestActionsOnRecord < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
     Common.main(test)
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
         $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
       } 
@@ -256,7 +262,7 @@ class TestActionsOnRecord < TestBasic
     test = [
     # 4. Enter a Short List name  
       {"displayed" => ContactsHomePage::CONTACT_LIST_POPUP_NAME_INPUT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_LIST_POPUP_NAME_INPUT_XPATH, "text" => ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT},
+      {"set_text" => ContactsHomePage::CONTACT_LIST_POPUP_NAME_INPUT_XPATH, "text" => randomSL},
     # 5. Click on "Add to Short list"   
       {"click" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_ADD_SHORT_LIST_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_CLOSE_XPATH}
@@ -281,7 +287,7 @@ class TestActionsOnRecord < TestBasic
     $wait.until {
       $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH).displayed?
     }
-    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT + "')]]").click
+    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + randomSL + "')]]").click
    
     test = [
       {"displayed" => ShortListDetailPage::SL_LIST_XPATH},
@@ -289,30 +295,26 @@ class TestActionsOnRecord < TestBasic
     Common.main(test)
     
     assert $wait.until {
-      $browser.find_element(:xpath, "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").displayed?
+      $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
-    
-   #Delete accounts created in this testcase
-   DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT)
         
   end
 
   
   #TC262 - Successfully Add to List (New) one contact
   def test_SuccessfullyAddToNewListContact
+    randomContact = SecureRandom.hex(4)
+    randomSL = SecureRandom.hex(4)
     
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
         
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -322,7 +324,7 @@ class TestActionsOnRecord < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
     Common.main(test)
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
         $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
       } 
@@ -338,7 +340,7 @@ class TestActionsOnRecord < TestBasic
     test = [
     # 4. 4. Enter a value in the fields: "Name (required) an "Description" (optional). 
       {"displayed" => ContactsHomePage::CONTACT_LIST_POPUP_NAME_INPUT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_LIST_POPUP_NEW_NAME_INPUT_XPATH, "text" => ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT},
+      {"set_text" => ContactsHomePage::CONTACT_LIST_POPUP_NEW_NAME_INPUT_XPATH, "text" => randomSL},
     # 5. Click on "Add to Short list"   
       {"click" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_ADD_SHORT_LIST_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_CLOSE_XPATH}
@@ -363,7 +365,7 @@ class TestActionsOnRecord < TestBasic
     $wait.until {
       $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH).displayed?
     }
-    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT + "')]]").click
+    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + randomSL + "')]]").click
    
     test = [
       {"displayed" => ShortListDetailPage::SL_LIST_XPATH},
@@ -371,19 +373,15 @@ class TestActionsOnRecord < TestBasic
     Common.main(test)
     
     assert $wait.until {
-      $browser.find_element(:xpath, "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").displayed?
+      $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
-   #Delete accounts created in this testcase
-   DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(ShortListNewEditPage::SHORT_LIST_DATA_NAME_1_TEXT)
-        
   end      
   
   #TC55 - Successfully Apply to Jobs
   def test_ApplyToJobContact
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
   
     #PRECONDITIONS:
     
@@ -391,16 +389,16 @@ class TestActionsOnRecord < TestBasic
     Common.login(Common::USER_EMAIL, Common::PASSWORD) 
     
     # Job with "Post job" = False
-    CreateRequisitionPostJob(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE, false)
+    CreateRequisitionPostJob(randomReq, false)
     
     #Enable Enhanced Apply to Job" = True
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
+    CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT)
+    CreateContact(randomContact, randomContact)
        
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -410,7 +408,7 @@ class TestActionsOnRecord < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
     Common.main(test)
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
         $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_APPLY_TO_JOB_XPATH).displayed?
       }  
@@ -426,7 +424,7 @@ class TestActionsOnRecord < TestBasic
     test = [
     # 4. Select the created Job
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
     # 5. Click "Next" 
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
@@ -459,21 +457,16 @@ class TestActionsOnRecord < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
      
     $wait.until {
       $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
     }
   
     assert $wait.until {
-        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE + "')]]").displayed?
+        $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
-    #Delete accounts created in this testcase
-     DeleteAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 
-         
-    #Delete requisition created in this testcase
-    DeleteRequisition(RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_TITLE)  
   end  
   
 ############### CUSTOM METHODS #####################  
@@ -511,25 +504,8 @@ class TestActionsOnRecord < TestBasic
     Common.main(test)   
   end
   
-  def DeleteAccount(name)
-    #Delete the account record with name "name"
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
-    test = [
-    {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH}
-    ]
-    Common.main(test)
-    $browser.find_element(:xpath => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
-     test = [
-    {"displayed" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH},
-    {"click" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
-    ]
-    Common.main(test)
-    sleep(1)
-    $browser.switch_to.alert.accept
-  end
-  
-    def CreateShortList(name)
-    #Create a Short List with "name" as its name
+  def CreateShortList(name)
+  #Create a Short List with "name" as its name
     $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
     test = [
       {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}, 
@@ -575,21 +551,6 @@ class TestActionsOnRecord < TestBasic
         $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
       }
   end 
-  
-  def DeleteShortList(name)
-    #Delete the Short List with name "name"
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
-    test = [
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH, "text" => "All Short List"},
-    {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_GO_XPATH},
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}
-    ]
-    Common.main(test)
-    $browser.find_element(:xpath => "//*[text()[contains(.,'" + name + "')]]/../../../../td[3]//a[2]").click
-    sleep(1)
-    $browser.switch_to.alert.accept 
-  end
   
   def DeleteRequisition(name)
     # 1 - Go to "Requisition" Tab

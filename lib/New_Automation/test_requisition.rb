@@ -305,7 +305,43 @@ def test_closeJobOrderValidation
     $browser.find_element(:xpath, RequisitionsCloseJob::ERROR_REQUIRED_FIELDS_XPATH).displayed?
   }
 end  
-  
+
+#TC103 - Add Job Order from Uploading File
+  def test_AddJobOrderFromUploading
+    
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    #Go to HomePage
+    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    
+    # 1 - Click on "Job Order Tools" on sidebar sections
+    test = [
+      {"displayed" => HomePage::ADD_JOB_ORDERS_XPATH},
+    # 2 - Click on "Add Job Order"  
+      {"click" => HomePage::ADD_JOB_ORDERS_XPATH}
+    ]
+    Common.main(test)
+    
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    
+    test = [
+      {"displayed" => HomePage::UPLOAD_BTN_BROWSE_XPATH},
+      {"upload" => HomePage::UPLOAD_BTN_BROWSE_XPATH, "file" => @@job_path},
+      {"click" => HomePage::UPLOAD_BTN_ADD_JOB_XPATH}
+    ]
+    Common.main(test)
+    
+    newWindow= $browser.window_handles.first
+    $browser.switch_to.window(newWindow)
+    
+    assert $wait.until{
+      $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_NAME_XPATH).displayed?
+    }
+    
+  end  
   
   
 
