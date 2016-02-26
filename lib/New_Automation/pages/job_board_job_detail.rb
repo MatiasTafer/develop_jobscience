@@ -47,6 +47,8 @@ class JobBoardJobDetail
   PROSPECT_FIRST_NAME_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_first_name']"
   PROSPECT_LAST_NAME_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_last_name']"
   PROSPECT_EMAIL = ".//*[@id='j_id0:j_id1:j_id28:p_email']"
+  PROSPECT_RESUME_BROWSE_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_resume']"
+  THANK_YOU_REFERRAL_MESSAGE_XPATH = ".//*[@class='atsThankForReferral']"
   
   JOB_BOARD_APPLY_JOB_QUESTION_1_TR_XPATH = "(.//*[@class='atsPreScreen'])//tr[2]"
   JOB_BOARD_APPLY_JOB_QUESTION_2_TR_XPATH = "(.//*[@class='atsPreScreen'])//tr[4]"

@@ -106,11 +106,36 @@ def test_jobBoardResumeParseFields
 end 
 =end
 
-#TC981 - Upload Referral Resume Successfully (pending)
+#TC981 - Upload Referral Resume Successfully
+def test_UploadRederralResume
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get HomePage::JOB_BOARD_INTERNAL_URL
+  test = [{"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+          {"displayed" => JobBoardJobDetail::REFERREL_EMAIL_XPATH},
+          {"set_text" => JobBoardJobDetail::REFERREL_EMAIL_XPATH, "text" => $EMAIL},
+          {"click" => JobBoardJobDetail::JOB_BOARD_CONTINUE_BUTTON_XPATH},
+          {"displayed" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH},
+          {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "NameTest"},
+          {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "LastNameTest"},
+          {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL, "text" => "correo.test@email.com"},
+          {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
+  Common.main(test)
+  assert $wait.until {
+    $browser.find_element(:xpath, JobBoardJobDetail::THANK_YOU_REFERRAL_MESSAGE_XPATH)
+  }  
+end
   
 #TC982 - Upload Referral Resume Successfully, ERP Dupe Prevention = Attach Only  (pending)
   
 #TC983 - Upload Referral Resume Successfully, ERP Dupe Prevention = Parse Fields.  (pending)
+
+
+
+
 =begin
 #TC984 - Add Resume with the Add Resume Tool, Attach Only
 def test_ResumToolAttachOly
@@ -241,6 +266,7 @@ def test_contactUpdateResumeParseFields
 end
 =end
 
+=begin
 #TC993 - Contact Update Resume Validation
 def test_contactUpdateResumeValidation
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -270,7 +296,8 @@ def test_contactUpdateResumeValidation
     $browser.find_element(:xpath, AddResumePopUpPage::ADD_RESUME_POPUP_ERROR_MESSAGE_XPATH).displayed?
   }  
 end
-
+=end
+=begin
 #TC994 - State and Country Picklists feature, USA with State and Country picklists - Resume Tools
 def test_picklistUSAResumeTools
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -281,11 +308,10 @@ def test_picklistUSAResumeTools
             {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test)
-   #me quede en la precondition 2 me falta la de Enable State and Country
-  
+     
   
 end
-
+=end
 
 =begin
  #TC106 - Enable Resume Attached to contact record
