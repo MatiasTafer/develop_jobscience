@@ -418,6 +418,45 @@ def test_addResumeNotShared
 end
 
 
+#TC988 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared others not
+def test_addResumeOneShared
+  #Preconditions
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+  test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+          {"unchecked" => SetupEditPage::ENFORCE_SHARING_CHECKBOX_XPATH},
+          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test)
+  $browser.get SetupEditPage::SHARING_SETTINGS_URL
+  test2 = [{"displayed" => SetupEditPage::EDIT_SHARING_SETTINGS_BUTTON_XPATH},
+           {"click" => SetupEditPage::EDIT_SHARING_SETTINGS_BUTTON_XPATH},
+           {"set_text" => SetupEditPage::CONTACT_PICKLIST_XPATH, "text" => "Private"},
+           {"click" => SetupEditPage::SHARING_SETTINGS_SAVE_BUTTON_XPATH}]
+  Common.main(test2)
+  #Steps
+  $browser.get HomePage::HOME_TAB_LINK_URL
+  test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+  Common.main(test3)
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow)
+  test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+  Common.main(test4)
+  newWindow= $browser.window_handles[0]
+  $browser.switch_to.window(newWindow)
+  assert $wait.until{
+    $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
+  }   
+end
+
 
 =begin
 #TC993 - Contact Update Resume Validation
