@@ -14,5 +14,6 @@ class ContactDetailPage
   CONTACT_DETAIL_BTN_NEW_EMPLOYMENT_HIST_XPATH = ".//*[@value='New Employment History']"
   CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH = ".//*[@name='ts2__resume_update']"
   CONTACT_DETAIL_HOVER_LINKS_XPATH = ".//*[@class='listHoverLinks']"
-  
+  CONTACT_DETAIL_MAILING_ADDRESS_XPATH = ".//*[@id='con19_ileinner']/table/tbody/tr[1]/td"
+  CONTACT_DETAIL_COUNTRY_XPATH = ".//*[@id='00No0000008Htrx_ileinner']"
 end

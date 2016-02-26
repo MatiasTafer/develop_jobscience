@@ -260,7 +260,7 @@ def test_addResumeToolParseFields
 end
 =end
 
-
+=begin
 #TC986 - Add resume , De-Duplication in a Private Sharing Model, New Candidate
 def test_addResumePrivateSharingModel
   #Preconditions
@@ -299,7 +299,7 @@ def test_addResumePrivateSharingModel
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }  
 end
-
+=end
 
 
 
@@ -378,6 +378,7 @@ def test_contactUpdateResumeParseFields
 end
 =end
 
+=begin
 #TC987 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate not shared
 def test_addResumeNotShared
   #Preconditions
@@ -416,8 +417,10 @@ def test_addResumeNotShared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }  
 end
+=end
 
 
+=begin
 #TC988 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared others not
 def test_addResumeOneShared
   #Preconditions
@@ -456,7 +459,7 @@ def test_addResumeOneShared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }   
 end
-
+=end
 
 =begin
 #TC993 - Contact Update Resume Validation
@@ -489,7 +492,10 @@ def test_contactUpdateResumeValidation
   }  
 end
 =end
-=begin
+
+
+
+
 #TC994 - State and Country Picklists feature, USA with State and Country picklists - Resume Tools
 def test_picklistUSAResumeTools
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -500,13 +506,73 @@ def test_picklistUSAResumeTools
             {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test)
-     
-  
+   $browser.get HomePage::HOME_TAB_LINK_URL
+   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+   Common.main(test3)
+   $wait.until{
+     windowsNumer = $browser.window_handles.size
+     windowsNumer > 1
+   }
+   newWindow= $browser.window_handles[1]
+   $browser.switch_to.window(newWindow)
+   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressOnly.pdf"},
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+   Common.main(test4)
+   newWindow= $browser.window_handles[0]
+   $browser.switch_to.window(newWindow)
+   assert $wait.until{
+      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
+   } 
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "61MeetinghouseRoadWindhamNH03087US")
+   $browser.get HomePage::HOME_TAB_LINK_URL
+   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+   Common.main(test3)
+   $wait.until{
+     windowsNumer = $browser.window_handles.size
+     windowsNumer > 1
+   }
+   newWindow= $browser.window_handles[1]
+   $browser.switch_to.window(newWindow)
+   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+   Common.main(test4)
+   newWindow= $browser.window_handles[0]
+   $browser.switch_to.window(newWindow)
+   assert $wait.until{
+      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
+   } 
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "61MeetinghouseRoadWindhamNH03087US")
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "US")
+   $browser.get HomePage::HOME_TAB_LINK_URL
+   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+   Common.main(test3)
+   $wait.until{
+     windowsNumer = $browser.window_handles.size
+     windowsNumer > 1
+   }
+   newWindow= $browser.window_handles[1]
+   $browser.switch_to.window(newWindow)
+   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+   Common.main(test4)
+   newWindow= $browser.window_handles[0]
+   $browser.switch_to.window(newWindow)
+   assert $wait.until{
+      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
+   } 
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "61MeetinghouseRoadWindhamNH03087US")
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "US")
 end
-=end
 
 
 
+=begin
 #TC989 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared
 def test_addResumeOneShared
   #Preconditions
@@ -545,7 +611,7 @@ def test_addResumeOneShared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   } 
 end
-
+=end
 
 
 =begin
@@ -651,7 +717,7 @@ end
   end
 =end
   
-
+=begin
 #TC990 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate No shared
 def test_addResumeNoshared
   #Preconditions
@@ -690,7 +756,7 @@ def test_addResumeNoshared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }  
 end
-
+=end
 
 
 end
