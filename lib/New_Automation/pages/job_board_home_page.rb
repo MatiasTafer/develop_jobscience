@@ -40,16 +40,15 @@ class JobBoardHomePage
   JOB_BOARD_SEARCH_BY_KEYWORD_SECOND_AND_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:logicalOperator2']"
   JOB_BOARD_SEARCH_BUTTON_XPATH = ".//*[@value='Search']"
   JOB_BOARD_SEARCH_RESULTS_XPATH = ".//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a"
-  JOB_BOARD_LOCATION_LABEL_XPATH = "//*[text()[contains(.,'Location:')]]"
   JOB_BOARD_CONTACT_LABEL_XPATH = "//*[text()[contains(.,'Contact:')]]"
   
-  
+
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
   
   
   
   
-  JOB_BOARD_DEPARTMENT_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id40:0:searchCtrl']"
+  
   JOB_BOARD_LOCATION_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id40:1:searchCtrl']"
   JOB_BOARD_LOCATION_LABEL_XPATH = ".//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:j_id82:3:j_id86']"
   JOB_BOARD_FACILITY_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id40:2:searchCtrl']"
@@ -65,4 +64,5 @@ class JobBoardHomePage
   JOB_BOARD_PREVIOUS_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id107']"
   JOB_BOARD_FIRST_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id102']"
   JOB_BOARD_LAST_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id129']"
+
 end
