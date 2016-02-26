@@ -495,7 +495,7 @@ end
 
 
 
-
+=begin
 #TC994 - State and Country Picklists feature, USA with State and Country picklists - Resume Tools
 def test_picklistUSAResumeTools
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -568,6 +568,82 @@ def test_picklistUSAResumeTools
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "61MeetinghouseRoadWindhamNH03087US")
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "US")
+end
+=end
+
+#TC995 - State and Country Picklists feature, Canada with State and Country picklists - Resume Tools
+def test_pickListCanadaResumeTools
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+            {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+   Common.main(test)
+   $browser.get HomePage::HOME_TAB_LINK_URL
+   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+   Common.main(test3)
+   $wait.until{
+     windowsNumer = $browser.window_handles.size
+     windowsNumer > 1
+   }
+   newWindow= $browser.window_handles[1]
+   $browser.switch_to.window(newWindow)
+   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressOnly.pdf"},
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+   Common.main(test4)
+   newWindow= $browser.window_handles[0]
+   $browser.switch_to.window(newWindow)
+   assert $wait.until{
+      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
+   } 
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "10­123MainstMontrealQCH3Z2Y7CA")
+   $browser.get HomePage::HOME_TAB_LINK_URL
+   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+   Common.main(test3)
+   $wait.until{
+     windowsNumer = $browser.window_handles.size
+     windowsNumer > 1
+   }
+   newWindow= $browser.window_handles[1]
+   $browser.switch_to.window(newWindow)
+   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCA.pdf"},
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+   Common.main(test4)
+   newWindow= $browser.window_handles[0]
+   $browser.switch_to.window(newWindow)
+   assert $wait.until{
+      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
+   } 
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "10­123MainstMontrealQCH3Z2Y7CA")
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "CA")
+   $browser.get HomePage::HOME_TAB_LINK_URL
+   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+   Common.main(test3)
+   $wait.until{
+     windowsNumer = $browser.window_handles.size
+     windowsNumer > 1
+   }
+   newWindow= $browser.window_handles[1]
+   $browser.switch_to.window(newWindow)
+   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCanada.pdf"},
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+   Common.main(test4)
+   newWindow= $browser.window_handles[0]
+   $browser.switch_to.window(newWindow)
+   assert $wait.until{
+      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
+   } 
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "10­123MainstMontrealQCH3Z2Y7CA")
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "CA")
+   
 end
 
 
