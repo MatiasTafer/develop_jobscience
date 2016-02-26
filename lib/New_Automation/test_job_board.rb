@@ -3110,4 +3110,31 @@ class TestJobBoard < TestBasic
     Common.main(test)
     
   end
+  
+  #TC113 - Add Custom Privacy Policy message on registration page
+  def test_AddCustomPrivacyPolicy
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    CustomSettings.PrivacyPolicyTextAndDisplay(JobBoardRegisterPage::JOB_BOARD_REGISTER_PRIVACY_POLICY_TEXT, true)
+    
+    CustomSettings.JobBoardLogin(true)
+
+    # Go to Board Setup tab
+    $browser.get(HomePage::JOB_BOARD_URL)
+     
+    # Login
+    test = [
+      {"displayed" => JobBoardHomePage::JOB_BOARD_REGISTER_LINK_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_REGISTER_LINK_XPATH},
+      {"displayed" => JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH},  
+    ]
+    Common.main(test)
+    
+    assert $wait.until {
+      $browser.find_element(:xpath => "//*[text()[contains(.,'" + JobBoardRegisterPage::JOB_BOARD_REGISTER_PRIVACY_POLICY_TEXT + "')]]").displayed?  
+    } 
+  end
+  
 end
