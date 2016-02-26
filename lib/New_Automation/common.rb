@@ -67,6 +67,11 @@ class Common
       }
   end
   
+  def self.ssleep
+      sleep(5)
+      puts "sleep"
+  end
+  
   def self.not_displayed(field)
     begin
       $wait.until{
@@ -83,7 +88,9 @@ class Common
   end
   
   def self.hassert_equal(text, text2)
-    assert_equal($browser.find_element(:xpath => text).text, text2)
+    $wait.until{
+      assert_equal($browser.find_element(:xpath => text).text, text2)
+    }
   end
   
   def self.set_text_url(field, text)
@@ -139,10 +146,20 @@ class Common
   end
   
   def self.change_window
+    sleep(5)
+    puts "change window"
     $wait.until{
       newWindow= $browser.window_handles.last
       $browser.switch_to.window(newWindow)
     }
+    
+  end
+  
+  def self.change_frame
+    $wait.until{
+      $browser.switch_to.frame(1)  
+    }
+    
   end
   
   def self.check_apply
@@ -267,6 +284,15 @@ class Common
         puts "upload"
         self.upload(i["upload"], i["file"])
       end
+      if i["ssleep"]
+        puts "sleep"
+        self.ssleep
+      end
+      if i["change_frame"]
+        puts "change frame"
+        self.change_frame
+      end
+      
     end
     
     return true

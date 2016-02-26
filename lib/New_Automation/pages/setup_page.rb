@@ -28,6 +28,10 @@ class SetupEditPage
   CHECKBOX_WEB_SOURCING_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Web_Sourcing__c']"
   CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH =".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Jobscience_UI__c']"
   SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@class='btn btn'][1]"
+  ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Review_Email__c']"
+  REVIEW_MODE_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Review_Mode__c']"
+  ENABLE_EMAIL_SEND_OPTIONS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Review_Email_Send_Options__c']"
+  DEFAULT_STAFFING_REVIEW_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Default_Staffing_Review__c']"
   
 
   
@@ -120,6 +124,9 @@ class SetupEditPage
   CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:thePageBlockButtons:save']"      
   CONFIG_JOB_BOARD_LOGIN_EDIT_XPATH = ".//*[@value='Edit']"
   
+  # MASS MAIL
+  ENABLE_MASS_MAIL_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:jsmassmail__EnableMassMailService__c']"
+  MASS_MAIL_SERVICE_EDIT_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?CS_list%3ACS_Form%3AtheDetailPageBlock%3AthePageBlockButtons%3Aedit=Edit&CS_list%3ACS_Form=CS_list%3ACS_Form&retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da1l&setupid=CustomSettings&isOrg=1&id=a1lo0000000UeE6&id=a1lo0000000UeE6&com.salesforce.visualforce.ViewStateVersion=201602242157540280&com.salesforce.visualforce.ViewStateCSRF=VmpFPSxNakF4Tmkwd01pMHlPRlF4T1RveU56bzBOUzR3TVRWYSxRM0RpbWN1cnV6T0E0cThKekFaTmhfLFpXWmtNR1Uy"
   
   
 end
