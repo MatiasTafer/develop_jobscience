@@ -106,6 +106,7 @@ def test_jobBoardResumeParseFields
 end 
 =end
 
+=begin
 #TC981 - Upload Referral Resume Successfully
 def test_UploadRederralResume
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -128,8 +129,37 @@ def test_UploadRederralResume
     $browser.find_element(:xpath, JobBoardJobDetail::THANK_YOU_REFERRAL_MESSAGE_XPATH)
   }  
 end
+=end
+
   
-#TC982 - Upload Referral Resume Successfully, ERP Dupe Prevention = Attach Only  (pending)
+#TC982 - Upload Referral Resume Successfully, ERP Dupe Prevention = Attach Only
+def test_UploadReferralResumeAtachOnly
+   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+   Common.main(test)
+   $browser.get HomePage::JOB_BOARD_INTERNAL_URL
+   test2 = [{"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+            {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+            {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+            {"displayed" => JobBoardJobDetail::REFERREL_EMAIL_XPATH},
+            {"set_text" => JobBoardJobDetail::REFERREL_EMAIL_XPATH, "text" => $EMAIL},
+            {"click" => JobBoardJobDetail::JOB_BOARD_CONTINUE_BUTTON_XPATH},
+            {"displayed" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH},
+            {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "NameTest"},
+            {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "LastNameTest"},
+            {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL, "text" => "correo.test@email.com"},
+            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
+  Common.main(test2)
+  assert $wait.until {
+    $browser.find_element(:xpath, JobBoardJobDetail::THANK_YOU_REFERRAL_MESSAGE_XPATH)
+  }    
+end
   
 #TC983 - Upload Referral Resume Successfully, ERP Dupe Prevention = Parse Fields.  (pending)
 
