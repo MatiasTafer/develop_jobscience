@@ -1,6 +1,6 @@
 class ShortListDetailPage
   
-  SL_MENU_XPATH = ".//*[@id='JobscienceMainPanel']//*[@class='fa fa-bars']"
+  SL_MENU_XPATH = ".//*[@id='JobscienceMainPanel']/div[1]/div/div[2]/i"
   SL_RECORD_XPATH = ".//*[@id='shortlistGrid']/div/ul/ul/li[1]/div[1]/div/div[2]/div"
   SL_SEND_EMAIL_MENU_XPATH = "html/body/div[4]/div[9]"
   SL_REVIEW_EMAIL_MENU_XPATH = "html/body/div[4]/div[8]"
