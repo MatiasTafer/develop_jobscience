@@ -12,7 +12,22 @@ def setup
         when "firefox"
             $browser = Selenium::WebDriver.for(:firefox, :http_client => client)
         when "chrome"
-            $browser = Selenium::WebDriver.for(:chrome, :http_client => client)
+            #$browser = Selenium::WebDriver.for(:chrome, :http_client => client)
+            caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--test-type" ]})
+            $browser = Selenium::WebDriver.for(:chrome, :http_client => client, :desired_capabilities => caps)
+            
+            
+
+
+            # Add ChromeDriver-specific capabilities through ChromeOptions.
+            #options = new ChromeOptions();
+            #options.addArguments("test-type")
+            #capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+            #$browser = Selenium::WebDriver.for(:chrome, :http_client => client)
+        
+            
+            
+            
         when "safari"
             $browser = Selenium::WebDriver.for(:safari, :http_client => client)
         when "IE"
