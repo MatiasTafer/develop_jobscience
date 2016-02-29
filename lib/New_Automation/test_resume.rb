@@ -837,6 +837,7 @@ def test_resumUpdateCountryPickList
 end
 =end
 
+=begin
 #TC1005 - State and Country Picklists feature, Canada with State and Country picklists - Resume Update feature
 def test_resumeUpdateCountryPicklistCanada
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -913,8 +914,9 @@ def test_resumeUpdateCountryPicklistCanada
   } 
   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "10­123MainstMontrealQCH3Z2Y7CA")
 end
+=end
   
-
+=begin
 #TC1006 - State and Country Picklists feature, International with State and Country picklists - Resume Update feature  
 def test_resumeUpdateInternational
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -945,12 +947,79 @@ def test_resumeUpdateInternational
   assert $wait.until{
       $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
   } 
-  assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "8ArdaghRdLimerickIE")
-  
-  
-  
+  assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "8ArdaghRdLimerickIE")  
 end
+=end
 
+=begin
+#TC1007 - State and Country Picklists feature, validation with State and Country picklists - Resume Update feature
+def test_stateContryPicklistUpdateResumeValidation
+   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+            {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+   Common.main(test)
+   $browser.get HomePage::ALL_CONTACTS_TAB_LINK
+   test2 = [{"displayed" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
+          {"click" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
+          {"displayed" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH},
+          {"click" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH}]
+  Common.main(test2)
+   $wait.until{
+     windowsNumer = $browser.window_handles.size
+     windowsNumer > 1
+   }
+   newWindow= $browser.window_handles[1]
+   $browser.switch_to.window(newWindow)
+   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+   Common.main(test4)
+   newWindow= $browser.window_handles[0]
+   $browser.switch_to.window(newWindow)
+   assert $wait.until{
+      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).displayed?
+   } 
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")
+end
+=end
+
+#TC1008 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Update feature
+def test_nonEnglishUpdateResum
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+            {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+   Common.main(test)
+   $browser.get HomePage::ALL_CONTACTS_TAB_LINK
+   test2 = [{"displayed" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
+          {"click" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
+          {"displayed" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH},
+          {"click" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH}]
+   Common.main(test2)
+   $wait.until{
+     windowsNumer = $browser.window_handles.size
+     windowsNumer > 1
+   }
+   newWindow= $browser.window_handles[1]
+   $browser.switch_to.window(newWindow)
+   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+   Common.main(test4)
+   newWindow= $browser.window_handles[0]
+   $browser.switch_to.window(newWindow)
+   assert $wait.until{
+      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).displayed?
+   } 
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")  
+end
 
 =begin
 #TC989 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared
