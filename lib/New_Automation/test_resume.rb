@@ -1162,6 +1162,203 @@ def test_updateResumeJobBoardNoEnglish
     }  
 end
 
+#TC1019 - State and Country Picklists feature, USA without State and Country picklists - Job Board
+def test_USAUpdateResumePicklistDisable
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    CustomSettings.JobBoardLogin(true)
+    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+    Common.main(test)
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/USAdressOnly.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    }
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/USAdressUnitedStates.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    } 
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/USAAdressUSA.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    }   
+end
+
+#TC1020 - State and Country Picklists feature, Canada without State and Country picklists - Job Board
+def test_CanadaUpdateResumePickListDisable
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    CustomSettings.JobBoardLogin(true)
+    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+    Common.main(test)
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/CAAdressOnly.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    }
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/CAAdressCanada.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    } 
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/CAAdressCA.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    }  
+end
+
+#TC1021 - State and Country Picklists feature, International without State and Country picklists - Job Board
+def test_InternationalUpdateResumeDisable
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    CustomSettings.JobBoardLogin(true)
+    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+    Common.main(test)
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/InternationalAdress.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    }
+end
+
+#TC1022 - State and Country Picklists feature, validation without State and Country picklists - Job Board
+def test_PostCodeResumeUpdateDisable
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    CustomSettings.JobBoardLogin(true)
+    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+    Common.main(test)
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/USPostalCode.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    }
+end
+
+
+#TC1023 - State and Country Picklists feature, non-English language without State and Country picklists - Job Board
+def test_noEnglishResumeUpdateDisable
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    CustomSettings.JobBoardLogin(true)
+    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+    Common.main(test)
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/AdressInSpanish.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    }
+end
+
+
 
 =begin
 #TC989 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared
@@ -1202,6 +1399,36 @@ def test_addResumeOneShared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   } 
 end
+
+#TC1013 - State and Country Picklists feature Disabled, non-English language without State and Country picklists - Resume Update feature
+def test_updateResumeJobBoardNoEnglishDisabled
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    CustomSettings.JobBoardLogin(true)
+    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+    Common.main(test)
+    $browser.get HomePage::JOB_BOARD_URL
+    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
+            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWOR},
+            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/AdressInSpanish.pdf"},
+            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+    Common.main(test2) 
+    assert $wait.until {
+      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+    }  
+end
+
+
+
 
  #TC106 - Enable Resume Attached to contact record
   def test_EnableResumeAttachContactRecord
