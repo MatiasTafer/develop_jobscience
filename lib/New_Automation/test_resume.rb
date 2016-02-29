@@ -23,11 +23,11 @@ require_relative './pages/contacts_detail_page.rb'
 
 
 
-$EMAIL =  "testrodrigo@gmail.com"
+$EMAIL =  "testrodrigo2@gmail.com"
 $PASSWOR = "password123"
 
 class TestResume < TestBasic
-=begin
+
 #TC979 - Job Board Resume, Attach Only  
 def test_jobBoardResumeAttachOnly
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -47,15 +47,16 @@ def test_jobBoardResumeAttachOnly
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/document.pdf"},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
     }          
 end 
-=begin
-=begin  
+
+
+
 #TC978 - Job Board Register and upload Resume  
  def test_jobBoardUploadResume
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -69,15 +70,14 @@ end
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/document.pdf"},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test) 
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
     }
  end 
-=end  
-=begin 
+ 
 #TC980 - Job Board Resume, Parse Fields 
 def test_jobBoardResumeParseFields
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -97,16 +97,14 @@ def test_jobBoardResumeParseFields
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Resumes/document.pdf"},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
     }  
 end 
-=end
 
-=begin
 #TC981 - Upload Referral Resume Successfully
 def test_UploadRederralResume
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -122,16 +120,14 @@ def test_UploadRederralResume
           {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "NameTest"},
           {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "LastNameTest"},
           {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL, "text" => "correo.test@email.com"},
-          {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+          {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
   Common.main(test)
   assert $wait.until {
     $browser.find_element(:xpath, JobBoardJobDetail::THANK_YOU_REFERRAL_MESSAGE_XPATH)
   }  
 end
-=end
 
-=begin  
 #TC982 - Upload Referral Resume Successfully, ERP Dupe Prevention = Attach Only
 def test_UploadReferralResumeAtachOnly
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -153,16 +149,14 @@ def test_UploadReferralResumeAtachOnly
             {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "NameTest"},
             {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "LastNameTest"},
             {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL, "text" => "correo.test@email.com"},
-            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
             {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
   Common.main(test2)
   assert $wait.until {
     $browser.find_element(:xpath, JobBoardJobDetail::THANK_YOU_REFERRAL_MESSAGE_XPATH)
   }    
 end
-=end
-
-=begin  
+ 
 #TC983 - Upload Referral Resume Successfully, ERP Dupe Prevention = Parse Fields.  (pending)
 def test_UploadReferralResumeParseFields
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -184,17 +178,14 @@ def test_UploadReferralResumeParseFields
             {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "NameTest"},
             {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "LastNameTest"},
             {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL, "text" => "correo.test@email.com"},
-            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
             {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
   Common.main(test2)
   assert $wait.until {
     $browser.find_element(:xpath, JobBoardJobDetail::THANK_YOU_REFERRAL_MESSAGE_XPATH)
   }  
 end
-=end
 
-
-=begin
 #TC984 - Add Resume with the Add Resume Tool, Attach Only
 def test_ResumToolAttachOly
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -215,7 +206,7 @@ def test_ResumToolAttachOly
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -224,11 +215,7 @@ def test_ResumToolAttachOly
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   } 
 end
-=end
 
-
-
-=begin
 #TC985 - Add Resume with the Add Resume Tool, Parse Fields
 def test_addResumeToolParseFields
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -249,7 +236,7 @@ def test_addResumeToolParseFields
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -258,9 +245,7 @@ def test_addResumeToolParseFields
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }   
 end
-=end
 
-=begin
 #TC986 - Add resume , De-Duplication in a Private Sharing Model, New Candidate
 def test_addResumePrivateSharingModel
   #Preconditions
@@ -299,18 +284,7 @@ def test_addResumePrivateSharingModel
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }  
 end
-=end
 
-
-
-
-
-
-
-
-
-
-=begin
 #TC991 - Contact Update Resume Successfully, Attach Onlydef 
 def test_contactUpdateResumeAttachOnly
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -342,9 +316,7 @@ def test_contactUpdateResumeAttachOnly
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   } 
 end
-=end
 
-=begin
 #TC992 - Contact Update Resume Successfully, Parse Fields
 def test_contactUpdateResumeParseFields
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -367,7 +339,7 @@ def test_contactUpdateResumeParseFields
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -376,9 +348,7 @@ def test_contactUpdateResumeParseFields
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }   
 end
-=end
 
-=begin
 #TC987 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate not shared
 def test_addResumeNotShared
   #Preconditions
@@ -408,7 +378,7 @@ def test_addResumeNotShared
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -417,10 +387,7 @@ def test_addResumeNotShared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }  
 end
-=end
 
-
-=begin
 #TC988 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared others not
 def test_addResumeOneShared
   #Preconditions
@@ -450,7 +417,7 @@ def test_addResumeOneShared
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -459,9 +426,7 @@ def test_addResumeOneShared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }   
 end
-=end
 
-=begin
 #TC993 - Contact Update Resume Validation
 def test_contactUpdateResumeValidation
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -484,18 +449,14 @@ def test_contactUpdateResumeValidation
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.png"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   assert $wait.until{
     $browser.find_element(:xpath, AddResumePopUpPage::ADD_RESUME_POPUP_ERROR_MESSAGE_XPATH).displayed?
   }  
 end
-=end
 
-
-
-=begin
 #TC994 - State and Country Picklists feature, USA with State and Country picklists - Resume Tools
 def test_picklistUSAResumeTools
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -517,7 +478,7 @@ def test_picklistUSAResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressOnly.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/USAdressOnly.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -537,7 +498,7 @@ def test_picklistUSAResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/USAdressUSA.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -558,7 +519,7 @@ def test_picklistUSAResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/USAdressUSA.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -569,9 +530,7 @@ def test_picklistUSAResumeTools
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "61MeetinghouseRoadWindhamNH03087US")
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "US")
 end
-=end
 
-=begin
 #TC995 - State and Country Picklists feature, Canada with State and Country picklists - Resume Tools
 def test_pickListCanadaResumeTools
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -593,7 +552,7 @@ def test_pickListCanadaResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressOnly.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/CAAdressOnly.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -613,7 +572,7 @@ def test_pickListCanadaResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCA.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/CAAdressCA.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -634,7 +593,7 @@ def test_pickListCanadaResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCanada.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/CAAdressCanada.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -643,12 +602,9 @@ def test_pickListCanadaResumeTools
       $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "10­123MainstMontrealQCH3Z2Y7CA")
-   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "CA")
-   
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "CA")  
 end
-=end
 
-=begin
 #TC996 - State and Country Picklists feature, International with State and Country picklists - Resume Tools
 def test_PickListInternationalResumeTool
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -670,7 +626,7 @@ def test_PickListInternationalResumeTool
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/InternationalAdress.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/InternationalAdress.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -680,9 +636,7 @@ def test_PickListInternationalResumeTool
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text.delete!("\n").delete(' ').delete(','), "8ArdaghRdLimerickIE")     
 end
-=end
 
-=begin
 #TC997 - State and Country Picklists feature, validation with State and Country picklists - Resume Tools
 def test_ValidationCountryPicklist
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -708,7 +662,7 @@ def test_ValidationCountryPicklist
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/USPostalCode.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -718,9 +672,7 @@ def test_ValidationCountryPicklist
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")
 end
-=end
 
-=begin
 #TC998 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Tools
 def test_nonEnglishPickList
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -746,7 +698,7 @@ def test_nonEnglishPickList
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/AdressInSpanish.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -756,9 +708,7 @@ def test_nonEnglishPickList
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")
 end
-=end
 
-=begin
 #TC1004 - State and Country Picklists feature, USA with State and Country picklists - Resume Update feature
 def test_resumUpdateCountryPickList
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -781,7 +731,7 @@ def test_resumUpdateCountryPickList
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressOnly.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/USAdressOnly.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -803,7 +753,7 @@ def test_resumUpdateCountryPickList
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/USAdressUSA.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -825,7 +775,7 @@ def test_resumUpdateCountryPickList
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUnitedStates.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/USAdressUnitedStates.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -835,9 +785,7 @@ def test_resumUpdateCountryPickList
   } 
   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "61MeetinghouseRoadWindhamNH03087US") 
 end
-=end
 
-=begin
 #TC1005 - State and Country Picklists feature, Canada with State and Country picklists - Resume Update feature
 def test_resumeUpdateCountryPicklistCanada
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -860,7 +808,7 @@ def test_resumeUpdateCountryPicklistCanada
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressOnly.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/CAAdressOnly.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -882,7 +830,7 @@ def test_resumeUpdateCountryPicklistCanada
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCA.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/CAAdressCA.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -904,7 +852,7 @@ def test_resumeUpdateCountryPicklistCanada
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCanada.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/CAAdressCanada.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -914,9 +862,7 @@ def test_resumeUpdateCountryPicklistCanada
   } 
   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "10­123MainstMontrealQCH3Z2Y7CA")
 end
-=end
-  
-=begin
+
 #TC1006 - State and Country Picklists feature, International with State and Country picklists - Resume Update feature  
 def test_resumeUpdateInternational
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -939,7 +885,7 @@ def test_resumeUpdateInternational
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/InternationalAdress.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/InternationalAdress.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -949,9 +895,7 @@ def test_resumeUpdateInternational
   } 
   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "8ArdaghRdLimerickIE")  
 end
-=end
 
-=begin
 #TC1007 - State and Country Picklists feature, validation with State and Country picklists - Resume Update feature
 def test_stateContryPicklistUpdateResumeValidation
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -975,7 +919,7 @@ def test_stateContryPicklistUpdateResumeValidation
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/USPostalCode.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -985,7 +929,6 @@ def test_stateContryPicklistUpdateResumeValidation
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")
 end
-=end
 
 #TC1008 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Update feature
 def test_nonEnglishUpdateResum
@@ -1010,7 +953,7 @@ def test_nonEnglishUpdateResum
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/AdressInSpanish.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -1021,7 +964,6 @@ def test_nonEnglishUpdateResum
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")  
 end
 
-=begin
 #TC989 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared
 def test_addResumeOneShared
   #Preconditions
@@ -1051,7 +993,7 @@ def test_addResumeOneShared
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -1060,10 +1002,7 @@ def test_addResumeOneShared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   } 
 end
-=end
 
-
-=begin
  #TC106 - Enable Resume Attached to contact record
   def test_EnableResumeAttachContactRecord
     randomName = SecureRandom.hex(4)
@@ -1164,9 +1103,7 @@ end
     }
    CustomSettings.EnableJCardForContact(false)
   end
-=end
-  
-=begin
+
 #TC990 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate No shared
 def test_addResumeNoshared
   #Preconditions
@@ -1196,7 +1133,7 @@ def test_addResumeNoshared
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Resumes/document.pdf"},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -1205,7 +1142,7 @@ def test_addResumeNoshared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }  
 end
-=end
+
 
 
 end
