@@ -682,6 +682,7 @@ def test_PickListInternationalResumeTool
 end
 =end
 
+=begin
 #TC997 - State and Country Picklists feature, validation with State and Country picklists - Resume Tools
 def test_ValidationCountryPicklist
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -708,6 +709,43 @@ def test_ValidationCountryPicklist
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
             {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+   Common.main(test4)
+   newWindow= $browser.window_handles[0]
+   $browser.switch_to.window(newWindow)
+   assert $wait.until{
+      $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).displayed?
+   } 
+   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")
+end
+=end
+
+#TC998 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Tools
+def test_nonEnglishPickList
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+            {"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+            {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
+            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+   Common.main(test)
+   $browser.get HomePage::HOME_TAB_LINK_URL
+   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+   Common.main(test3)
+   $browser.get HomePage::HOME_TAB_LINK_URL
+   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           {"click" => HomePage::ADD_RESUMES_XPATH}]
+   Common.main(test3)
+   $wait.until{
+     windowsNumer = $browser.window_handles.size
+     windowsNumer > 1
+   }
+   newWindow= $browser.window_handles[1]
+   $browser.switch_to.window(newWindow)
+   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
