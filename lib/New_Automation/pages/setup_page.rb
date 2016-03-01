@@ -43,7 +43,7 @@ class SetupEditPage
   HIDE_RESUME_UPLOAD_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id43"
   HIDE_RESUME_PASTE_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id45"
   HIDE_RESUME_BUILDER_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id47"
-  HIDE_RESUME_PREVIOUSLY_UPLOADED_ID = "j_id0:frm:PageBlock:j_id32:j_id49"
+  HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id49']"
   HIDE_COVER_LETTER_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id48"
   HIDE_PHONE_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id50"
   HIDE_MOBILE_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id52"

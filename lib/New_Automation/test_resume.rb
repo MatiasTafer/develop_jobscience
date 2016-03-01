@@ -1905,6 +1905,29 @@ def test_validationPicklistDisableConatacResumeUpdateFeature
   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")  
 end
 
+#TC1024 - Previously Uploaded Resumes - False
+def test_PreviouslyUploadResume
+#Preconditions
+Common.login(Common::USER_EMAIL, Common::PASSWORD)
+CustomSettings.JobBoardLogin(true)
+$browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
+test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
+        {"unchecked" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
+        {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+Common.main(test)
+$browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
+test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+         {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+         {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+Common.main(test2)
+#Steps
+$browser.get HomePage::JOB_BOARD_URL
+#estoy en Job Board ahora me tengo que loguear y copiar el apply to job de test_job_board linea 220
+
+
+ 
+end
+
 
 
 
