@@ -1,16 +1,11 @@
 class ContactsHomePage
   
-<<<<<<< HEAD
-  CONTACT_RECORD_XPATH  = ".//*[@class='dataRow even first']/child::th/child::a"
-  #CONTACT_HOME_PAGE_BTN_NEW = ".//*[@class='pbButton']/input"
-  CONTACT_HOME_PAGE_BTN_NEW = ".//*[@name='new']"
-=======
+
   CONTACT_RECORD_XPATH  = ".//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[11]/th/a"
   FIRST_CHECKBOX_OF_FIRST_CONTACT_XPATH = ".//*[@ id='003o000000nkTa2_checkbox']/input"
   SECOND_CHECKBOX_OF_SECOND_CONTACT_XPATH = ".//*[@id='003o000000bIplp_checkbox']/input"
   ADD_TO_LIST_BUTTON_XPATH = ".//*[@class='btn'][2]"
   CONTACT_HOME_PAGE_BTN_NEW = ".//*[@class='pbButton']/input"
->>>>>>> develop
   CONTACT_HOME_VIEW_SELECT_XPATH = ".//*[@id='fcf']"
   CONTACT_HOME_BTN_GO_XPATH = ".//*[@name='go']"
   CONTACT_HOME_LIST_XPATH = ".//*[@class='list']"
