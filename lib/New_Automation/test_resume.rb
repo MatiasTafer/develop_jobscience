@@ -1869,11 +1869,7 @@ def test_InternationalResumeUpdateContactTabDisbalePickList
   assert $wait.until{
       $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
   } 
-  assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "8ArdaghRdLimerickIE") 
-  
-  
-  
-  
+  assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "8ArdaghRdLimerickIE")  
 end
 
 
