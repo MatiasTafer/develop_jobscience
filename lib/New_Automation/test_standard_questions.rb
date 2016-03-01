@@ -19,7 +19,7 @@ require_relative 'custom_settings.rb'
 
 
 class TestStandardQuestions < TestBasic
-=begin
+
   # TC928 New Standard Question, Successfully created, Required By Applicant = true
   def test_successfullyCreated
     Common.login(Common::USER_EMAIL, Common::PASSWORD) 
@@ -255,7 +255,6 @@ class TestStandardQuestions < TestBasic
       $browser.find_element(:xpath, NewStandardQuestion::ERROR_MESSAGE_XPATH).displayed?
     } 
   end
-=end
  
   #TC934 - Standard Question Handler, Standard Question Handler = Always
   def test_StandardQuestionHandlerAlways
