@@ -21,6 +21,7 @@ class Common
 
   #LOGIN
   def self.login(username, password)
+   #Waits added for Chrome
    $wait.until{
       $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).displayed?
    }
