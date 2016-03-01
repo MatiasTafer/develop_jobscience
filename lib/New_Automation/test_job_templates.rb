@@ -7,12 +7,12 @@ require 'securerandom'
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
 
-require_relative './pages/job_templates_page.rb'
-require_relative './pages/job_template_detail_page.rb'
-require_relative './pages/new_job_template_page.rb'
-require_relative './pages/job_template_mapping_page.rb'
+require_relative './pages/job_templates/job_templates_page.rb'
+require_relative './pages/job_templates/job_template_detail_page.rb'
+require_relative './pages/job_templates/new_job_template_page.rb'
+require_relative './pages/job_templates/job_template_mapping_page.rb'
 require_relative './pages/home_page.rb'
-require_relative './pages/requisitions_detail_page.rb'
+require_relative './pages/requisitions/requisitions_detail_page.rb'
 
 class TestJobTemplates < TestBasic
  

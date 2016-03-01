@@ -7,13 +7,13 @@ require_relative 'test_basic.rb'
 require_relative 'common.rb'
 
 require_relative './pages/home_page.rb'
-require_relative './pages/requisitions_change_priority_page.rb'
-require_relative './pages/requisitions_change_status_page.rb'
-require_relative './pages/requisitions_close_job_page.rb'
-require_relative './pages/requisitions_detail_page.rb'
-require_relative './pages/requisitions_home_page.rb'
-require_relative './pages/requisitions_mass_transfer_page.rb'
-require_relative './pages/requisitions_new_and_edit.rb'
+require_relative './pages/requisitions/requisitions_change_priority_page.rb'
+require_relative './pages/requisitions/requisitions_change_status_page.rb'
+require_relative './pages/requisitions/requisitions_close_job_page.rb'
+require_relative './pages/requisitions/requisitions_detail_page.rb'
+require_relative './pages/requisitions/requisitions_home_page.rb'
+require_relative './pages/requisitions/requisitions_mass_transfer_page.rb'
+require_relative './pages/requisitions/requisitions_new_and_edit.rb'
 
 class TestRequisition < TestBasic
   

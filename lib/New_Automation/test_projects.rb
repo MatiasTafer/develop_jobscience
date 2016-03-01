@@ -4,12 +4,12 @@ require 'test-unit'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-require_relative './pages/projects_detail_page.rb'
-require_relative './pages/projects_home_page.rb'
-require_relative './pages/projects_new_project_page.rb'
-require_relative './pages/requisitions_new_and_edit.rb'
-require_relative './pages/requisitions_detail_page.rb'
-require_relative './pages/project_edit_page.rb'
+require_relative './pages/projects/projects_detail_page.rb'
+require_relative './pages/projects/projects_home_page.rb'
+require_relative './pages/projects/projects_new_project_page.rb'
+require_relative './pages/requisitions/requisitions_new_and_edit.rb'
+require_relative './pages/requisitions/requisitions_detail_page.rb'
+require_relative './pages/projects/project_edit_page.rb'
 
 
 class TestProjects <TestBasic
