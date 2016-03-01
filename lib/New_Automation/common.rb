@@ -64,7 +64,7 @@ class Common
   
   def self.displayed(field)
       $wait.until{
-        return $browser.find_element(:xpath => field).displayed?
+        $browser.find_element(:xpath => field).displayed?
       }
   end
   

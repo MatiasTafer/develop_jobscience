@@ -41,7 +41,7 @@ class TestActionsOnListView < TestBasic
     
     # 1. Click on "Contacts" 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-        
+    
     # 2. Click on "New".
     Common.displayed(ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW)
     Common.click(ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW)

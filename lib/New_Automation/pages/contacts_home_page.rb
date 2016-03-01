@@ -1,7 +1,8 @@
 class ContactsHomePage
   
   CONTACT_RECORD_XPATH  = ".//*[@class='dataRow even first']/child::th/child::a"
-  CONTACT_HOME_PAGE_BTN_NEW = ".//*[@class='pbButton']/input"
+  #CONTACT_HOME_PAGE_BTN_NEW = ".//*[@class='pbButton']/input"
+  CONTACT_HOME_PAGE_BTN_NEW = ".//*[@name='new']"
   CONTACT_HOME_VIEW_SELECT_XPATH = ".//*[@id='fcf']"
   CONTACT_HOME_BTN_GO_XPATH = ".//*[@name='go']"
   CONTACT_HOME_LIST_XPATH = ".//*[@class='list']"
