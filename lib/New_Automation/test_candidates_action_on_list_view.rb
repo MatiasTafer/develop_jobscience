@@ -134,13 +134,6 @@ class TestActionsOnListView < TestBasic
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH).displayed?   
   
     }
-    
-<<<<<<< HEAD
-    #Delete account created in this testcase
-    DeleteAccount(randomContact)  
-
-=======
->>>>>>> develop
   end
   
    
@@ -250,12 +243,6 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     assert_equal("10", $browser.find_element(:xpath => SkillDetailPage::SKILL_DETAIL_RATING_XPATH).text)
     
-<<<<<<< HEAD
-    #Delete account created in this testcase
-    DeleteAccount(randomContact)  
-    
-=======
->>>>>>> develop
   end
     
    
@@ -315,15 +302,7 @@ class TestActionsOnListView < TestBasic
     
     assert_equal($browser.find_element(:xpath => ContactsHomePage::CONTACT_SKILL_POPUP_ERROR_OUTPUT_XPATH).text, "Error:")
     
-<<<<<<< HEAD
-    #Delete accounts created in this testcase
-    DeleteAccount(randomContact) 
-    DeleteAccount(randomContact2) 
-    
-  end
-=======
    end
->>>>>>> develop
  
   #TC49 - Successfully Add to Existing Short List
   def test_SuccessfullyAddToExistingList
@@ -396,15 +375,6 @@ class TestActionsOnListView < TestBasic
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
-<<<<<<< HEAD
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomList)
-        
-=======
->>>>>>> develop
   end
 
  #TC255 - Successfully Add to New Short List
@@ -475,15 +445,6 @@ class TestActionsOnListView < TestBasic
       $browser.find_element(:xpath, "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
-<<<<<<< HEAD
-   #Delete accounts created in this testcase
-   DeleteAccount(randomContact) 
-   
-   #Delete shortlist created in this testcase
-   DeleteShortList(randomList)
-        
-=======
->>>>>>> develop
   end
 
   #TC50 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = FALSE
@@ -562,15 +523,7 @@ class TestActionsOnListView < TestBasic
     assert $wait.until {
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }
-<<<<<<< HEAD
-    
-    #Delete accounts created in this testcase
-     DeleteAccount(randomContact) 
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
-=======
-  
->>>>>>> develop
+
   end
   
     
@@ -651,13 +604,6 @@ class TestActionsOnListView < TestBasic
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }
     
-<<<<<<< HEAD
-    #Delete accounts created in this testcase
-     DeleteAccount(randomContact) 
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
-=======
->>>>>>> develop
   end
 
   #TC51 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Invite to Apply
@@ -716,13 +662,8 @@ class TestActionsOnListView < TestBasic
     # 7. Click on Invite to Apply   
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
-<<<<<<< HEAD
-      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH}
-=======
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH}
->>>>>>> develop
-      
     ]
     Common.main(test)
     newWindow2= $browser.window_handles.first
@@ -744,14 +685,6 @@ class TestActionsOnListView < TestBasic
     assert $wait.until {
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }
-    
-<<<<<<< HEAD
-    #Delete accounts created in this testcase
-     DeleteAccount(randomContact) 
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
-=======
->>>>>>> develop
   end  
 
   #TC52 - Try to Invite to Apply with "Post job" = False
@@ -818,21 +751,10 @@ class TestActionsOnListView < TestBasic
     assert_equal($browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_INVITE_ERROR_XPATH).text, "Error:\nYou cannot Invite Candidates to apply for a Job that is not posted.**")
     
     $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CANCEL_XPATH).click
-<<<<<<< HEAD
-    
-    newWindow2= $browser.window_handles.first
-    $browser.switch_to.window(newWindow2)
-    
-    #Delete accounts created in this testcase
-     DeleteAccount(randomContact) 
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
-=======
     sleep(2)
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
     
->>>>>>> develop
   end
 
   #TC257 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Agency
@@ -922,15 +844,6 @@ class TestActionsOnListView < TestBasic
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
-<<<<<<< HEAD
-    #Delete accounts created in this testcase
-     DeleteAccount(randomContact) 
-     DeleteAccount(randomAgy)
-     
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
-=======
->>>>>>> develop
   end
 
   
@@ -1021,15 +934,6 @@ class TestActionsOnListView < TestBasic
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
-<<<<<<< HEAD
-    #Delete accounts created in this testcase
-     DeleteAccount(randomContact) 
-     DeleteAccount(randomAgy)
-     
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
-=======
->>>>>>> develop
   end
   
   #TC259 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
@@ -1119,14 +1023,6 @@ class TestActionsOnListView < TestBasic
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
-<<<<<<< HEAD
-    #Delete accounts created in this testcase
-     DeleteAccount(randomContact) 
-          
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
-=======
->>>>>>> develop
   end
   
     #TC260 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
@@ -1219,15 +1115,6 @@ class TestActionsOnListView < TestBasic
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
-<<<<<<< HEAD
-    #Delete accounts created in this testcase
-     DeleteAccount(randomContact) 
-     DeleteAccount(randomAgy)
-     
-    #Delete requisition created in this testcase
-    DeleteRequisition(randomReq)  
-=======
->>>>>>> develop
   end
       
 
@@ -1333,58 +1220,4 @@ def CreateRequisitionPostJob(name, postjob)
     ]
     Common.main(test)   
   end
-  
-<<<<<<< HEAD
-  def DeleteAccount(name)
-    #Delete the account record with name "name"
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
-    test = [
-    {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH}
-    ]
-    Common.main(test)
-    $browser.find_element(:xpath => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
-     test = [
-    {"displayed" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH},
-    {"click" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
-    ]
-    Common.main(test)
-    sleep(3)
-    $browser.switch_to.alert.accept
-  end
-  
-  def DeleteShortList(name)
-    #Delete the Short List with name "name"
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
-    test = [
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH},
-    {"set_text" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH, "text" => "All Short List"},
-    {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_GO_XPATH},
-    {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}
-    ]
-    Common.main(test)
-    $browser.find_element(:xpath => "//*[text()[contains(.,'" + name + "')]]/../../../../td[3]//a[2]").click
-    sleep(3)
-    $browser.switch_to.alert.accept 
-  end
-  
-  def DeleteRequisition(name)
-    # 1 - Go to "Requisition" Tab
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
-    $wait.until{
-      $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH).displayed?  
-      }
-    sleep(5)  
-    # 2 - Click on the Requisition
-    $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
-    $wait.until{
-      $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?  
-      }
-     # 3 - Click on Delete 
-    $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).click
-     sleep(3)
-    # 4 - Confirm
-    $browser.switch_to.alert.accept
-  end
-=======
->>>>>>> develop
 end
