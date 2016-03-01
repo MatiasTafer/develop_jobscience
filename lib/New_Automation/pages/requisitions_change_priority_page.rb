@@ -11,4 +11,12 @@ class RequisitionsChangePriority
   REQUISITIONS_CHANGE_PRIORITY_LAST_PAGE_XPATH = ".//*[@class='last']"
   REQUISITIONS_CHANGE_PRIORITY_CURRENT_PAGE_XPATH = ".//*[@class='bottomNav']//input"
   REQUISITIONS_CHANGE_PRIORITY_NUMBER_OF_RECORDS_XPATH = "(.//*[@class='bottomNav']//span)[2]"
+  
+  
+  
+  NEW_PRIORITY_TEXT = "High"
+  
+  BACK_TO_LIST_BUTTON_ON_SUCCESS_PAGE_XPATH = ".//*[@title='Back to List']"
+  
+  ERROR_PRIORITY_MUST_BE_SELECTED = ".//*[@class='message errorM3']"
 end

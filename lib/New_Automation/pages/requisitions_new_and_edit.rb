@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class RequisitionsNewAndEdit
   
   #FIRST STEP
@@ -14,18 +16,20 @@ class RequisitionsNewAndEdit
     
     #REQUIRED FIELDS
   REQUISITIONS_NEW_JOB_TITLE_ID = "Name"
-  REQUISITIONS_NEW_JOB_TITLE_XPATH = ".//*[@id='Name']"
+  REQUISITIONS_NEW_JOB_TITLE_XPATH =".//*[@id='Name']"
   REQUISITIONS_NEW_PRIMARY_RECRUITER_TYPE_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[5]//select"
   REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH = "(.//*[@class='requiredInput'])[2]//span//input"
-  REQUISITIONS_NEW_LOCATION_XPATH = "(.//*[@class='requiredInput'])[3]//select"
-  REQUISITIONS_NEW_MIN_SALARY_XPATH = "(.//*[@class='requiredInput'])[5]//input"
-  REQUISITIONS_NEW_MAX_SALARY_XPATH = "(.//*[@class='requiredInput'])[6]//input"
-  REQUISITIONS_NEW_DEPARTAMENT_XPATH = "(.//*[@class='requiredInput'])[4]//select"
-  REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH = "(.//*[@class='requiredInput'])[4]//option[2]"
+  REQUISITIONS_NEW_LOCATION_XPATH = "(.//*[@class='requiredInput'])[4]//select"
+  REQUISITIONS_NEW_MIN_SALARY_XPATH = "(.//*[@class='requiredInput'])[6]//input"
+  REQUISITIONS_NEW_MAX_SALARY_XPATH = "(.//*[@class='requiredInput'])[7]//input"
+  REQUISITIONS_NEW_DEPARTAMENT_XPATH = "(.//*[@class='requiredInput'])[5]//select"
+  REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH = "(.//*[@class='requiredInput'])[5]//option[2]"
   REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH = ".//*[@name='save']"
   REQUISITIONS_JOBS_PROJECTS_FIELD_XPATH = ".//*[@id='00No0000008HtYf']"
   REQUISITIONS_CLIENT_FIELD_XPATH = ".//*[@id='CF00No0000008HtXu']"
   REQUISITIONS_CONTACT_FIELD_XPATH = ".//*[@id='CF00No0000008HtY9']"
+  
+  REQUISITIONS_HIRING_MANAGER_XPATH = "(//*[@class='lookupInput'])[4]/input"
   
     #DATE FIELDS
   REQUISITIONS_NEW_DATE_POSTED_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[1]/td[4]//input"
@@ -55,13 +59,18 @@ class RequisitionsNewAndEdit
   CLIENT_TEXT = "Candidates"
   CONTACT_TEXT = "Charlie Day2"
   TRAVEL_WRONG_PERCENT_TEXT = "wrongPercent"
-
+  REQUISITION_NAME = SecureRandom.hex(5)
+  DATE_WRONG_TEXT = "WrongDate"
     
   #OTHER FIELDS
   REQUISITIONS_NEW_QUESTIONS_SET_XPATH = "(.//*[@class='detailList'])[2]/tbody/tr[3]/td[4]//span/input"
   REQUISITIONS_NEW_POST_JOB_BOX_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[2]/td[2]//input"
   REQUISITION_TRAVEL_FIELD_XPATH = ".//*[@id='00No0000008HtZb']"
   
+
+
+
+
 
  #HARD CODE DATA
  REQUISITIONS_NEW_DATA_TITLE_TEXT = "Test Job TC827"
@@ -81,6 +90,16 @@ class RequisitionsNewAndEdit
  REQUISITIONS_NEW_DATA_MIN_SALARY_TEXT = "2000"
  REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT = "4000" 
 
+
+ 
+ # SECTION JOB POSTING DETAILS
+ QUESTION_SET_TEXT_XPATH = ".//*[@id='CF00No0000008HtZI']"
+ REQUISITIONS_BTN_SAVE_XPATH = ".//*[@name='save']"
+ 
+ # CLIENTS DETAILS
+ CONTACT_TEXT_XPATH = ".//*[@id='CF00No0000008HtY9']"
+
+
  
  #ERROR
  ERROR_MESSAGE_FIELD_XPATH = ".//*[@class='errorMsg']"
@@ -91,6 +110,7 @@ class RequisitionsNewAndEdit
  ERROR_INVALID_CURRENCY_TEXT = "Error: Invalid currency"
  ERROR_INVALID_NUMBER_TEXT = "Error: Invalid number"
  ERROR_INVALID_PERCENT_TEXT = "Error: Invalid percent"
+ ERROR_INVALID_DATE_TEXT = "Error: Invalid Date"
 
 
 end

@@ -1,8 +1,16 @@
 class ContactsHomePage
   
+<<<<<<< HEAD
   CONTACT_RECORD_XPATH  = ".//*[@class='dataRow even first']/child::th/child::a"
   #CONTACT_HOME_PAGE_BTN_NEW = ".//*[@class='pbButton']/input"
   CONTACT_HOME_PAGE_BTN_NEW = ".//*[@name='new']"
+=======
+  CONTACT_RECORD_XPATH  = ".//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[11]/th/a"
+  FIRST_CHECKBOX_OF_FIRST_CONTACT_XPATH = ".//*[@ id='003o000000nkTa2_checkbox']/input"
+  SECOND_CHECKBOX_OF_SECOND_CONTACT_XPATH = ".//*[@id='003o000000bIplp_checkbox']/input"
+  ADD_TO_LIST_BUTTON_XPATH = ".//*[@class='btn'][2]"
+  CONTACT_HOME_PAGE_BTN_NEW = ".//*[@class='pbButton']/input"
+>>>>>>> develop
   CONTACT_HOME_VIEW_SELECT_XPATH = ".//*[@id='fcf']"
   CONTACT_HOME_BTN_GO_XPATH = ".//*[@name='go']"
   CONTACT_HOME_LIST_XPATH = ".//*[@class='list']"
@@ -12,6 +20,8 @@ class ContactsHomePage
   CONTACT_HOME_ADD_SKILL_XPATH = ".//*[@name='ts2__add_skills']"
   CONTACT_HOME_ADD_LIST_XPATH = ".//*[@name='ts2__add_to_list']"
   CONTACT_HOME_APPLY_TO_JOB_XPATH = ".//*[@name='ts2__apply_to_job']"
+  CONTACT_HOME_FIRST_VIEW_OPTION_XPATH = ".//*[@id='fcf']/option[1]"
+  CONTACT_HOME_FIRST_ENTRY_GO_XPATH = ".//*[@id='ext-gen25']/div[1]//td[4]//a"
   
   #Add Skill Pop Up Window
   CONTACT_SKILL_POPUP_FIRST_ELEMENT_XPATH = "(.//*[@class='first_level']//input)[1]"

@@ -320,7 +320,8 @@ class TestBoardSetup < TestBasic
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_PASTE_XPATH, "save" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_BUILDER_XPATH, "save" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH, "save" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
-      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_COVER_LETTER_XPATH, "save" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_COVER_LETTER_XPATH},
+      {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
     ]
     Common.main(test)
     

@@ -104,7 +104,7 @@ class BoardSetupEditPage
   BOARD_EDIT_INDEED_FEED_DESCRIPTION_XPATH = "((.//*[@class='detailList'])[8])/tbody/tr[1]/td[2]/select"
   
   #EEO TEXT SECTION
-  BOARD_EDIT_EEO_TEXT_XPATH = "((.//*[@class='detailList'])[9])/tbody/tr/td/textarea"
+  BOARD_EDIT_EEO_TEXT_XPATH = ".//*[@id='cke_j_id0:frm:PageBlock:j_id212:j_id213:j_id214:textAreaDelegate_ts2__EEO_Text__c']"
   BOARD_EDIT_HIDE_STANDARD_EEO_DISCLAIMER = "((.//*[@class='detailList'])[9])/tbody/tr[3]/td/input"
   
   #EEO QUESTIONS SECTION
