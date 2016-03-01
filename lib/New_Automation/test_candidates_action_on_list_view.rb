@@ -71,7 +71,7 @@ class TestActionsOnListView < TestBasic
     #Delete account created in this testcase
     DeleteAccount(randomAccount)
   end
-=begin 
+  
   #TC48 - Successfully Add Skill
   def test_SuccessfullyAddSkill
     randomContact = SecureRandom.hex(4)
@@ -1182,7 +1182,7 @@ class TestActionsOnListView < TestBasic
     DeleteRequisition(randomReq)  
   end
       
-=end
+
 ################### CUSTOM METHODS #####################
 
 def CreateRequisitionPostJob(name, postjob)
