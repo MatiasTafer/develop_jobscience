@@ -118,6 +118,8 @@ class TestApplications < TestBasic
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     Common.CreateRequisitionPostJob(randomName, true)
+  
+    CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -185,7 +187,7 @@ class TestApplications < TestBasic
         }
     test = [
       {"click" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_APP_XPATH},
-      {"display" => ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH},
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH},
     ]
     Common.main(test)
     sleep(3)
@@ -199,9 +201,9 @@ class TestApplications < TestBasic
     sleep(6)
     
     test = [
-      {"display" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
       {"click" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
-      {"display" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
     ]
     Common.main(test) 
     sleep(2)
@@ -214,7 +216,7 @@ class TestApplications < TestBasic
     
     
     test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
     ]
     Common.main(test) 
@@ -225,7 +227,7 @@ class TestApplications < TestBasic
     sleep(3)
     
     test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH},
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_RADIO_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_SEND_EMAIL_BOX_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH}
@@ -236,7 +238,7 @@ class TestApplications < TestBasic
     sleep(5)
     
     test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH},
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH}
     ]
     Common.main(test)
@@ -247,7 +249,7 @@ class TestApplications < TestBasic
     $browser.get(currentUrl)
     
     test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
           ]
     Common.main(test) 
     

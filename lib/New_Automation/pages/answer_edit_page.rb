@@ -2,7 +2,7 @@ class AnswerEditPage
   ANSWER_EDIT_NAME_XPATH = ".//*[@id='Name']"
   ANSWER_EDIT_ANSWER_XPATH = "(.//*[@class='requiredInput'])[2]//input"
   ANSWER_EDIT_ORDER_XPATH = "(.//*[@class='requiredInput'])[4]//input"
-  ANSWER_EDIT_SCORE_XPATH = "(.//*[@class='requiredInput'])[5]//input"
+  ANSWER_EDIT_SCORE_XPATH = "(.//*[@class='requiredInput'])[6]//input"
   ANSWER_EDIT_BTN_SAVE_XPATH = ".//*[@title='Save']"
   ANSWER_EDIT_BTN_SAVE_NEW_XPATH = ".//*[@title='Save & New']"
   

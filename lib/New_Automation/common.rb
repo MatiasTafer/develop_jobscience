@@ -359,7 +359,8 @@ class Common
       {"set_text" => ContactNewEditPage::CONTACT_NEW_RECORD_TYPE_NEW_XPATH, "text" => "Contact"},
       {"click" => ContactNewEditPage::CONTACT_NEW_BTN_CONTINUE_XPATH},
       {"displayed" => ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH},
-      {"displayed" => ContactNewEditPage::CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH}
+      {"displayed" => ContactNewEditPage::CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH},
+      {"displayed" => ContactNewEditPage::CONTACT_NEW_FIELD_LISTS_XPATH}
     ] 
     Common.main(test)
     sleep(2) 
@@ -418,9 +419,11 @@ class Common
     $browser.switch_to.alert.accept 
   end
   
-  def self.CreateRequisitionPostJob(name, postjob)
+  def self.CreateRequisitionPostJob(name, postjob, disableEeo=false, questionSet=nil)
     #postjob=TRUE will check "Post Job" checkbox, so the job will be posted on JobBoard, postjob=false will not check it.
-      
+    #disableEeo=TRUE will check "Disable EEO" checkbox, if it is false it will be unchecked.  
+    #questionSet will define the name of the Question Set asosiated with the Job Order, the default value is nil
+    
     $browser.get(HomePage::REQUISITIONS_LINK_URL)
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
@@ -433,6 +436,7 @@ class Common
       {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
       {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
       {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT},
+      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_QUESTIONS_SET_XPATH, "text" => questionSet},
       {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH},
     ]
     Common.main(test)
@@ -445,6 +449,8 @@ class Common
         $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
       end  
     end
+    Checkbox(RequisitionsNewAndEdit::REQUISITIONS_DISABLE_EEO_CHECKBOX_XPATH, disableEeo)
+    
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
     
     $wait.until {
@@ -471,6 +477,32 @@ class Common
      sleep(1)
     # 4 - Confirm
     $browser.switch_to.alert.accept
+  end
+  
+  def self.CreateQuestionSetEmpty(name)
+     # 1 - Go to "Question Sets" Tab
+    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+   
+    # 2 - Click on New button
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
+    }
+   
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).click
+   
+    # 3 - FIll all the fields
+    $wait.until{
+      $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).displayed?
+    }
+    
+    $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys name
+    
+    # 4 - Click on "Save" button
+    $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).click
+     $wait.until{
+      $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_QUESTION_BUILDER_XPATH).displayed?
+    } 
+     
   end
   
   def self.CreateUserJobBoard(email, password, fname="a", lname="b")
@@ -527,6 +559,20 @@ class Common
     ]
     Common.main(test)
   end
+  
+  def self.Checkbox(checkbox, boolean)
+    if boolean
+      unless $browser.find_element(:xpath => checkbox).attribute("checked")
+        $browser.find_element(:xpath => checkbox).click
+      end
+    else
+      if $browser.find_element(:xpath => checkbox).attribute("checked")
+        $browser.find_element(:xpath => checkbox).click
+      end  
+    end 
+  end
+  
   #newWindow= $browser.window_handles.last
   #$browser.switch_to.window(newWindow)
+  
 end

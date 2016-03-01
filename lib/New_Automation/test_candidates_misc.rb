@@ -91,7 +91,7 @@ class TestCandidatesMisc < TestBasic
    sleep(5)
  end  
 =begin  
-  #JS2 Resume
+  #JS2 Resume ya pasado
   #TC106 - Enable Resume Attached to contact record
   def test_EnableResumeAttachContactRecord
     randomName = SecureRandom.hex(4)
@@ -165,7 +165,7 @@ class TestCandidatesMisc < TestBasic
     
   end
   
- 
+  # Resume ya pasado
   #TC107 - Enable contact jcard view
   def test_EnableContactJCardView 
    

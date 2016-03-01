@@ -41,7 +41,7 @@ class JobBoardHomePage
   JOB_BOARD_SEARCH_BUTTON_XPATH = ".//*[@value='Search']"
   JOB_BOARD_SEARCH_RESULTS_XPATH = ".//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a"
   JOB_BOARD_CONTACT_LABEL_XPATH = "//*[text()[contains(.,'Contact:')]]"
-  
+  JOB_BOARD_SEARCH_FIRST_KEYWORD_XPATH = ".//*[@name='jobSearchPage:j_id0:jobBoardTag:jobBoardComponent:jobSearchTag:jobSearchComponent:atsSearch:j_id127']"
 
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
   

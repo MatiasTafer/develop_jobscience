@@ -275,6 +275,22 @@ class CustomSettings
     }
     
   end 
+  
+  def self.InviteToApplyCustomMessage(setbool)
+    #If setBool is true "Invite to Apply Custom Message" will be checked, if setBool is false it will be unchecked 
+  
+    $browser.get(SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL)
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::INVITE_TO_APPLY_CUSTOM_MESSAGE_CHECKBOX_XPATH).displayed?
+    }
+    
+    Checkbox(SetupEditPage::INVITE_TO_APPLY_CUSTOM_MESSAGE_CHECKBOX_XPATH, setbool)
+    
+    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::NEW_CONFIG_BTN_XPATH).displayed?
+    }
+  end
     
   
   def self.Checkbox(checkbox, boolean)

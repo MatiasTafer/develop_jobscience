@@ -137,9 +137,61 @@ class TestActionsOnListView < TestBasic
     
   end
   
+  #TC857 - Add Skills, Validation
+  def test_AddSkillValidation
+    randomContact = SecureRandom.hex(4)
+    
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+    
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    # 2. Select a Contact List View and click Go
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 3. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 4. Click on "Add skills"
+    Common.click(ContactsHomePage::CONTACT_HOME_ADD_SKILL_XPATH)
+    sleep(6)
+    
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_SAVE_XPATH},
+      {"click" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_SKILL_POPUP_ERROR_OUTPUT_2_XPATH}
+      ]
+    Common.main(test)
+    
+    assert_equal(ContactsHomePage::CONTACT_SKILL_POPUP_ERROR_MESSAGE_2_TEXT, $browser.find_element(:xpath => ContactsHomePage::CONTACT_SKILL_POPUP_ERROR_OUTPUT_2_XPATH).text)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_CANCEL_XPATH},
+      {"click" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_CANCEL_XPATH}
+    ]
+    Common.main(test)
+    $browser.switch_to.window($browser.window_handles.first)
+  end    
    
- #TC253 - Successfully Add and Rate Skill
- def test_SuccessfullyAddRateSkill
+  #TC253 - Successfully Add and Rate Skill
+  def test_SuccessfullyAddRateSkill
     randomContact = SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
@@ -1028,12 +1080,11 @@ class TestActionsOnListView < TestBasic
     
   end
   
-    #TC260 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
+  #TC260 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
   def test_ApplyUnpostedJobEnableEnhancedApplyTrueException
     randomContact = SecureRandom.hex(4)
     randomReq = SecureRandom.hex(4)
-    randomAgy = SecureRandom.hex(4)
-  
+      
     #PRECONDITIONS:
     
     #Login
@@ -1051,8 +1102,6 @@ class TestActionsOnListView < TestBasic
     #At least one contact must exist 
     CreateContact(randomContact, randomContact)
     
-    #At least one agency must exist
-    CreateAgencyAccount(randomAgy)
     
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -1119,7 +1168,358 @@ class TestActionsOnListView < TestBasic
       }  
     
   end
+  
+  #TC855 - Apply to Jobs, Validation
+  def test_ApplyToJobsValidation  
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+  
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    
+    # Job with "Post job" = False. 
+    Common.CreateRequisitionPostJob(randomReq, false)
+    
+    #Enable Enhanced Apply to Job" = True
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    #Custom Settings > Config > Invite to Apply Custom Message = true
+    CustomSettings.InviteToApplyCustomMessage(true)
+    
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3. Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2)
+    
+    test = [
+    # 4 - Click on "Next" without selection any job order
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_ERROR_OUTPUT_XPATH},
+    ]
+    Common.main(test)
+    
+    assert_equal(ContactsHomePage::CONTACT_JOB_POPUP_ERROR_TEXT, $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_ERROR_OUTPUT_XPATH).text)
+    test = [
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CANCEL_XPATH}
+    ]
+    Common.main(test)
+    $browser.switch_to.window($browser.window_handles.first)
+  end  
+  
+  #TC852 - Apply To Jobs, Disable EEO = false
+  def test_ApplyToJobsDisableEEOFalse
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
       
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    
+    # Job with "Post job" = False
+    #Disable EEO = false
+    Common.CreateRequisitionPostJob(randomReq, false, false)
+    
+    #Custom Settings > Config > Invite to Apply Custom Message = true
+    CustomSettings.InviteToApplyCustomMessage(true)
+    
+    #Enable Enhanced Apply to Job" = True
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3. Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2)
+    
+    test = [
+    # 5. Select the Job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
+    # 6. Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+    # 7. Click on Exception   
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
+     
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+    # 8. Click "Save"  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_GOTO_JOB_XPATH},
+    # 9 - Click on "Go to Job"  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_GOTO_JOB_XPATH} 
+      ]
+    Common.main(test)
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+  
+
+    test = [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # RESULT 9 - You will be redirected to the "Job Order Detail" page. 
+    # Verify that new application(s) for selected contact(s) were created. 
+    assert $wait.until {
+      $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
+    }
+    
+    $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../th[1]/a").click
+    test = [
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH}
+    ]
+    
+    # RESULT Verify that the following application fields were populated according to the application option selected on previous step:
+    # App Status = Incomplete; Apply Exception = true; Exception Reason = <Selected Value>; Exception Reason Other = <Entered Value>
+    
+    assert_equal("Incomplete", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH).text)
+    assert $wait.until {
+        $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_APPLY_EXCEPTION_CHECKED_XPATH).displayed?
+      }  
+    assert_equal("Referral", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_XPATH).text)
+    assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_OTHER_XPATH).text)
+  end
+  
+  #TC853 - Apply To Jobs, Disable EEO = true
+  def test_ApplyToJobsDisableEEOTrue
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+      
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    
+    # Job with "Post job" = False
+    #Disable EEO = true
+    Common.CreateRequisitionPostJob(randomReq, false, true)
+    
+    #Custom Settings > Config > Invite to Apply Custom Message = true
+    CustomSettings.InviteToApplyCustomMessage(true)
+    
+    #Enable Enhanced Apply to Job" = True
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3. Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2)
+    
+    test = [
+    # 4. Select Job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
+    # 5. Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+    # 6. Click on "Go to Job"
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_GOTO_JOB_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_GOTO_JOB_XPATH} 
+      ]
+    Common.main(test)
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+  
+
+    test = [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # RESULT 6 - You will be redirected to the "Job Order Detail" page. 
+    # Verify that new application(s) for selected contact(s) were created. 
+    assert $wait.until {
+      $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
+    }
+    
+    $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../th[1]/a").click
+    test = [
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH}
+    ]
+    
+    # RESULT Verify that the following application fields were populated according to the application option selected on previous step:
+    # App Status = Incomplete; Apply Exception = true; Exception Reason = <Selected Value>; Exception Reason Other = <Entered Value>
+    
+    assert_equal("Incomplete", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH).text)
+    assert $wait.until {
+        $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_APPLY_EXCEPTION_NOT_CHECKED_XPATH).displayed?
+      }  
+    assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_XPATH).text)
+    assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_OTHER_XPATH).text)
+  end
+  
+  #TC854 - Apply To Jobs, Enable Enhanced Apply to Job = false & Disable EEO = false
+  def test_ApplyToJobsDisableEEOFalseEnableEnhancedFalse
+    randomContact = SecureRandom.hex(4)
+    randomReq = SecureRandom.hex(4)
+      
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    
+    # Job with "Post job" = False
+    #Disable EEO = false
+    Common.CreateRequisitionPostJob(randomReq, false, false)
+    
+    #Custom Settings > Config > Invite to Apply Custom Message = true
+    CustomSettings.InviteToApplyCustomMessage(true)
+    
+    #Enable Enhanced Apply to Job" = False
+    CustomSettings.EnableEnhancedApplyToJob(false)
+    
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3. Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2)
+    
+    test = [
+    # 4. Select Job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
+    # 5. Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_APPLY_XPATH},
+    # 6. Click on "Go to Job"
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_GOTO_JOB_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_GOTO_JOB_XPATH} 
+      ]
+    Common.main(test)
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+  
+
+    test = [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # RESULT 6 - You will be redirected to the "Job Order Detail" page. 
+    # Verify that new application(s) for selected contact(s) were created. 
+    assert $wait.until {
+      $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
+    }
+    
+    $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../th[1]/a").click
+    test = [
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH}
+    ]
+    
+    # RESULT Verify that the following application fields were populated according to the application option selected on previous step:
+    # App Status = Incomplete; Apply Exception = true; Exception Reason = <Selected Value>; Exception Reason Other = <Entered Value>
+    
+    assert_equal("Incomplete", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH).text)
+    assert $wait.until {
+        $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_APPLY_EXCEPTION_NOT_CHECKED_XPATH).displayed?
+      }  
+    assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_XPATH).text)
+    assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_OTHER_XPATH).text)
+  end     
 
 ################### CUSTOM METHODS #####################
 
