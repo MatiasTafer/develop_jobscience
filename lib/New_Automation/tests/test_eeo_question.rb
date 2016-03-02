@@ -7,13 +7,13 @@ require_relative 'test_basic.rb'
 require_relative 'common.rb'
 require_relative 'custom_settings.rb'
 
-require_relative './pages/home_page.rb'
-require_relative './pages/job_board/job_board_home_page.rb'
-require_relative './pages/job_board/job_board_job_detail.rb'
-require_relative './pages/job_board/job_board_login_page.rb'
-require_relative './pages/board_setup/board_setup_edit_page.rb'
-require_relative './pages/board_setup/board_setup_detail_page.rb'
-require_relative './pages/board_setup/board_setup_home_page.rb' 
+require './New_Automation/pages/home_page.rb'
+require './New_Automation/pages/job_board/job_board_home_page.rb'
+require './New_Automation/pages/job_board/job_board_job_detail.rb'
+require './New_Automation/pages/job_board/job_board_login_page.rb'
+require './New_Automation/pages/board_setup/board_setup_edit_page.rb'
+require './New_Automation/pages/board_setup/board_setup_detail_page.rb'
+require './New_Automation/pages/board_setup/board_setup_home_page.rb' 
 
 $EMAIL =  "testrodrigo@gmail.com"
 $PASSWOR = "password123"

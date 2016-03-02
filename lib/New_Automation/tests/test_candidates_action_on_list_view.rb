@@ -5,26 +5,26 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-require_relative './pages/home_page.rb'
-require_relative './pages/contacts/contacts_home_page.rb'
-require_relative './pages/contacts/contacts_detail_page.rb'
-require_relative './pages/contacts/contacts_new_edit_page.rb'
-require_relative './pages/answer_detail_page.rb'
-require_relative './pages/setup_page.rb'
-require_relative './pages/job_board/job_board_home_page.rb'
-require_relative './pages/job_board/job_board_job_detail.rb'
-require_relative './pages/applications/applications_detail_page.rb'
+require './New_Automation/pages/home_page.rb'
+require './New_Automation/pages/contacts/contacts_home_page.rb'
+require './New_Automation/pages/contacts/contacts_detail_page.rb'
+require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
+require './New_Automation/pages/offers/offers_home_page.rb'
+require './New_Automation/pages/setup_page.rb'
+require './New_Automation/pages/job_board/job_board_home_page.rb'
+require './New_Automation/pages/job_board/job_board_job_detail.rb'
+require './New_Automation/pages/applications/applications_detail_page.rb'
 require_relative 'custom_settings.rb'
-require_relative './pages/accounts/accounts_home_page.rb'
-require_relative './pages/accounts/accounts_new_edit_page.rb'
-require_relative './pages/accounts/accounts_detail_page.rb'
-require_relative './pages/skill_detail_page.rb'
-require_relative './pages/short_lists/short_list_home_page.rb'
-require_relative './pages/short_lists/short_list_new_edit_page.rb'
-require_relative './pages/short_lists/short_list_detail_page.rb'
-require_relative './pages/requisitions/requisitions_home_page.rb'
-require_relative './pages/requisitions/requisitions_new_and_edit.rb'
-require_relative './pages/requisitions/requisitions_detail_page.rb'
+require './New_Automation/pages/accounts/accounts_home_page.rb'
+require './New_Automation/pages/accounts/accounts_new_edit_page.rb'
+require './New_Automation/pages/accounts/accounts_detail_page.rb'
+require './New_Automation/pages/search/skill_detail_page.rb'
+require './New_Automation/pages/short_lists/short_list_home_page.rb'
+require './New_Automation/pages/short_lists/short_list_new_edit_page.rb'
+require './New_Automation/pages/short_lists/short_list_detail_page.rb'
+require './New_Automation/pages/requisitions/requisitions_home_page.rb'
+require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
+require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
 
 class TestActionsOnListView < TestBasic
 
@@ -69,7 +69,7 @@ class TestActionsOnListView < TestBasic
     assert_equal($browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text, randomContact)
     
   end
-  
+=begin  
   #TC48 - Successfully Add Skill
   def test_SuccessfullyAddSkill
     randomContact = SecureRandom.hex(4)
@@ -1116,7 +1116,7 @@ class TestActionsOnListView < TestBasic
       }  
     
   end
-      
+=end     
 
 ################### CUSTOM METHODS #####################
 

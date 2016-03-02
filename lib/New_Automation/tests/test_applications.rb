@@ -5,8 +5,8 @@ require 'test-unit'
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
 
-require_relative './pages/applications/applications_detail_page.rb'
-require_relative './pages/applications/applications_home_page.rb'
+require './New_Automation/pages/applications/applications_detail_page.rb'
+require './New_Automation/pages/applications/applications_home_page.rb'
 
 
 class TestApplications < TestBasic

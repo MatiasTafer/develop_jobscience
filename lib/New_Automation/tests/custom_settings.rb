@@ -5,11 +5,11 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-require_relative './pages/home_page.rb'
-require_relative './pages/question_sets_home_page.rb'
-require_relative './pages/question_sets_new_page.rb'
-require_relative './pages/question_set_detail_page.rb'
-require_relative './pages/setup_page.rb'
+require './New_Automation/pages/home_page.rb'
+require './New_Automation/pages/questions/question_sets_home_page.rb'
+require './New_Automation/pages/questions/question_sets_new_page.rb'
+require './New_Automation/pages/questions/question_set_detail_page.rb'
+require './New_Automation/pages/setup_page.rb'
 
 class CustomSettings
     
