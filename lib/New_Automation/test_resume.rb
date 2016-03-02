@@ -1602,7 +1602,7 @@ def test_resumeToolInternationalDisable
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text.delete!("\n").delete(' ').delete(','), "8ArdaghRdLimerickIE") 
 end
-=end
+
 
 #TC1002 - State and Country Picklists feature, validation without State and Country picklists - Resume Tools
 def test_ValidationResumeToolUpdateResume
@@ -1905,6 +1905,9 @@ def test_validationPicklistDisableConatacResumeUpdateFeature
   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")  
 end
 
+=end
+
+
 #TC1024 - Previously Uploaded Resumes - False
 def test_PreviouslyUploadResume
 #Preconditions
@@ -1923,9 +1926,57 @@ Common.main(test2)
 #Steps
 $browser.get HomePage::JOB_BOARD_URL
 #estoy en Job Board ahora me tengo que loguear y copiar el apply to job de test_job_board linea 220
-
-
- 
+$browser.get HomePage::JOB_BOARD_URL
+    test3 = [
+      # Steps
+      
+      # LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      # 6. Click on "Login"
+      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
+      # 7. Fill the required fields: "Username" and "Password".
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $EMAIL},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWOR},
+      # 8. Click in "Login".
+      {"click" => LoginPage::LOGIN_BUTTON_XPATH},
+      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      # END LOGIN
+      
+      # 6. Click on a job title
+      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+      # 7. Click on green link "Apply for the ..." depending of the job selected.
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_PREVIOUSLY_UPLOADED_RADIO_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_PREVIOUSLY_UPLOADED_RADIO_XPATH}]
+      Common.main(test3)
+      $wait.until{
+        $browser.find_element(:xpath, JobBoardJobDetail::SELECT_RESUME_DROPDOWN_XPATH).displayed?
+      }
+      $browser.find_element(:xpath, JobBoardJobDetail::SELECT_RESUME_DROPDOWN_XPATH).send_keys "2/29/2016 12:01 PM - Resume_testro_testro_JB_Non-parsed.pdf"
+     # $wait.until{
+       # $browser.find_element(:xpath, JobBoardJobDetail::SELECT_RESUME_FIRST_OPTION_XPATH).displayed?
+      #}
+      #$browser.find_element(:xpath, JobBoardJobDetail::SELECT_RESUME_FIRST_OPTION_XPATH).click
+      #Common.selectByIndex(JobBoardJobDetail::SELECT_RESUME_DROPDOWN_XPATH, 1)
+     
+test4 = [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+         {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+         
+       #9. Fill the field...
+     {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
+Common.main(test4)      
+assert $wait.until{
+  $browser.find_element(:xpath, ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]").displayed?     
+  }
+            
 end
 
 

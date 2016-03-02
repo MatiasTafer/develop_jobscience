@@ -61,6 +61,11 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_QUESTION_NAME_1_XPATH = "(.//*[@class='atsPreScreen']//span)[1]"
   JOB_BOARD_APPLY_JOB_QUESTION_NAME_2_XPATH = "(.//*[@class='atsPreScreen']//span)[2]"
   JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH = "(.//*[@type='radio'])[1]"
+ 
+  JOB_BOARD_APPLY_PREVIOUSLY_UPLOADED_RADIO_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:3']"
+  SELECT_RESUME_DROPDOWN_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeAttachments']"
+  SELECT_RESUME_FIRST_OPTION_XPATH = "(.//*[@id='j_id0:j_id1:atsForm:resumeAttachments']/option)[2]"
+  
   JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeFile']"
   JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH = ".//*[@id='LinkedInIcon']"
 
