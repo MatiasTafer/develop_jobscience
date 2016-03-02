@@ -12,7 +12,9 @@ def setup
         when "firefox"
             $browser = Selenium::WebDriver.for(:firefox, :http_client => client)
         when "chrome"
-            $browser = Selenium::WebDriver.for(:chrome, :http_client => client)
+            #Adding capability to run in chrome
+            caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--test-type" ]})
+            $browser = Selenium::WebDriver.for(:chrome, :http_client => client, :desired_capabilities => caps) 
         when "safari"
             $browser = Selenium::WebDriver.for(:safari, :http_client => client)
         when "IE"
@@ -20,7 +22,6 @@ def setup
         else
             puts "ERROR: Wrong browser name!!"
     end
-
     $browser.get "https://login.salesforce.com/"  
 
     $wait = Selenium::WebDriver::Wait.new(:timeout => 30)

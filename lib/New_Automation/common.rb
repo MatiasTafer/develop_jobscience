@@ -9,10 +9,11 @@ require_relative 'test_basic.rb'
 
 require_relative './pages/login_page.rb'
 require_relative './pages/home_page.rb'
-require_relative './pages/accounts_home_page.rb'
-require_relative './pages/accounts_new_edit_page.rb'
-require_relative './pages/accounts_detail_page.rb'
+require_relative './pages/accounts/accounts_home_page.rb'
+require_relative './pages/accounts/accounts_new_edit_page.rb'
+require_relative './pages/accounts/accounts_detail_page.rb'
 require_relative './pages/skill_detail_page.rb'
+
 require_relative './pages/short_list_home_page.rb'
 require_relative './pages/short_list_new_edit_page.rb'
 require_relative './pages/short_list_detail_page.rb'
@@ -27,16 +28,37 @@ require_relative './pages/job_board_job_detail.rb'
 require_relative './pages/source_home_page.rb'
 require_relative './pages/source_new_edit_page.rb'
 
+require_relative './pages/short_lists/short_list_home_page.rb'
+require_relative './pages/short_lists/short_list_new_edit_page.rb'
+require_relative './pages/short_lists/short_list_detail_page.rb'
+require_relative './pages/requisitions/requisitions_home_page.rb'
+require_relative './pages/requisitions/requisitions_new_and_edit.rb'
+require_relative './pages/requisitions/requisitions_detail_page.rb'
+require_relative './pages/contacts/contacts_home_page.rb'
+require_relative './pages/contacts/contacts_detail_page.rb'
+require_relative './pages/contacts/contacts_new_edit_page.rb'
+require_relative './pages/job_board/job_board_home_page.rb'
+require_relative './pages/job_board/job_board_job_detail.rb'
+
+
 class Common
   USER_EMAIL = "naomi@joblabs.com"
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
   USER_EMAIL3 = "naomimanager@joblabs.com"
+  
+  USER_AUTOMATION = "oktana@joblabs.com"
+  PASSWORD_AUTOMATION = "Jobscience16"
+  
   PASSWORD  = "muffin100"
 
   
 
   #LOGIN
-  def self.login(username, password) 
+  def self.login(username, password)
+   #Waits added for Chrome
+   $wait.until{
+      $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).displayed?
+   }
    $browser.find_element(:id, LoginPage::NAME_TEXT_FIELD_ID).send_keys username
    $browser.find_element(:id, LoginPage::PASSWORD_TEST_FIELD_ID).send_keys password
    $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).click
@@ -79,9 +101,7 @@ class Common
   def self.displayed(field)
      puts field
       $wait.until{
-        a = $browser.find_element(:xpath => field).displayed?
-        puts a
-        return a
+        return $browser.find_element(:xpath => field).displayed?
       }
   end
   

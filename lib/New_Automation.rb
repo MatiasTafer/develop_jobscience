@@ -11,7 +11,14 @@ $browser
 $wait
 
 
+
 require './New_Automation/test_sources'
+
+
+
+#ENABLED
+require './New_Automation/test_candidates_action_on_list_view'
+
 
 
 #require './New_Automation/test_email_actions'
@@ -21,7 +28,7 @@ require './New_Automation/test_sources'
 
 #require './New_Automation/test_requisition.rb'
 
-
+#require './New_Automation/test_email_actions'
 #require './New_Automation/test_job_board'
 
 
@@ -29,8 +36,11 @@ require './New_Automation/test_sources'
 
 #require './New_Automation/test_projects'
 
+#require './New_Automation/test_candidates_actions_on_record'
+
 
 #require './New_Automation/test_job_templates.rb'
+
 
 #require './New_Automation/test_short_list.rb'
 

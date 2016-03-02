@@ -7,19 +7,19 @@ require_relative 'common.rb'
 require_relative './pages/home_page.rb'
 require_relative './pages/standard_questions_page.rb'
 require_relative './pages/new_standard_question_page.rb'
-require_relative './pages/board_setup_home_page.rb'
-require_relative './pages/job_board_home_page.rb'
-require_relative './pages/board_setup_detail_page.rb'
-require_relative './pages/board_setup_edit_page.rb'
-require_relative './pages/job_board_home_page.rb'
-require_relative './pages/job_board_job_detail.rb'
-require_relative './pages/job_board_register_page.rb'
+require_relative './pages/board_setup/board_setup_home_page.rb'
+require_relative './pages/job_board/job_board_home_page.rb'
+require_relative './pages/board_setup/board_setup_detail_page.rb'
+require_relative './pages/board_setup/board_setup_edit_page.rb'
+require_relative './pages/job_board/job_board_home_page.rb'
+require_relative './pages/job_board/job_board_job_detail.rb'
+require_relative './pages/job_board/job_board_register_page.rb'
 require_relative 'custom_settings.rb'
 
 
 
 class TestStandardQuestions < TestBasic
-=begin
+
   # TC928 New Standard Question, Successfully created, Required By Applicant = true
   def test_successfullyCreated
     Common.login(Common::USER_EMAIL, Common::PASSWORD) 
@@ -255,7 +255,6 @@ class TestStandardQuestions < TestBasic
       $browser.find_element(:xpath, NewStandardQuestion::ERROR_MESSAGE_XPATH).displayed?
     } 
   end
-=end
  
   #TC934 - Standard Question Handler, Standard Question Handler = Always
   def test_StandardQuestionHandlerAlways

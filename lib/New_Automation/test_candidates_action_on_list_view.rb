@@ -6,25 +6,25 @@ require 'securerandom'
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
 require_relative './pages/home_page.rb'
-require_relative './pages/contacts_home_page.rb'
-require_relative './pages/contacts_detail_page.rb'
-require_relative './pages/contacts_new_edit_page.rb'
+require_relative './pages/contacts/contacts_home_page.rb'
+require_relative './pages/contacts/contacts_detail_page.rb'
+require_relative './pages/contacts/contacts_new_edit_page.rb'
 require_relative './pages/answer_detail_page.rb'
 require_relative './pages/setup_page.rb'
-require_relative './pages/job_board_home_page.rb'
-require_relative './pages/job_board_job_detail.rb'
-require_relative './pages/applications_detail_page.rb'
+require_relative './pages/job_board/job_board_home_page.rb'
+require_relative './pages/job_board/job_board_job_detail.rb'
+require_relative './pages/applications/applications_detail_page.rb'
 require_relative 'custom_settings.rb'
-require_relative './pages/accounts_home_page.rb'
-require_relative './pages/accounts_new_edit_page.rb'
-require_relative './pages/accounts_detail_page.rb'
+require_relative './pages/accounts/accounts_home_page.rb'
+require_relative './pages/accounts/accounts_new_edit_page.rb'
+require_relative './pages/accounts/accounts_detail_page.rb'
 require_relative './pages/skill_detail_page.rb'
-require_relative './pages/short_list_home_page.rb'
-require_relative './pages/short_list_new_edit_page.rb'
-require_relative './pages/short_list_detail_page.rb'
-require_relative './pages/requisitions_home_page.rb'
-require_relative './pages/requisitions_new_and_edit.rb'
-require_relative './pages/requisitions_detail_page.rb'
+require_relative './pages/short_lists/short_list_home_page.rb'
+require_relative './pages/short_lists/short_list_new_edit_page.rb'
+require_relative './pages/short_lists/short_list_detail_page.rb'
+require_relative './pages/requisitions/requisitions_home_page.rb'
+require_relative './pages/requisitions/requisitions_new_and_edit.rb'
+require_relative './pages/requisitions/requisitions_detail_page.rb'
 
 class TestActionsOnListView < TestBasic
 
@@ -41,7 +41,7 @@ class TestActionsOnListView < TestBasic
     
     # 1. Click on "Contacts" 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-        
+    
     # 2. Click on "New".
     Common.displayed(ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW)
     Common.click(ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW)
@@ -69,11 +69,11 @@ class TestActionsOnListView < TestBasic
     assert_equal($browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text, randomContact)
     
   end
- 
+  
   #TC48 - Successfully Add Skill
   def test_SuccessfullyAddSkill
     randomContact = SecureRandom.hex(4)
-    
+
     #PRECONDITIONS
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -134,7 +134,6 @@ class TestActionsOnListView < TestBasic
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH).displayed?   
   
     }
-    
   end
   
    
@@ -524,7 +523,7 @@ class TestActionsOnListView < TestBasic
     assert $wait.until {
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }
-  
+
   end
   
     
@@ -665,7 +664,6 @@ class TestActionsOnListView < TestBasic
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH}
-      
     ]
     Common.main(test)
     newWindow2= $browser.window_handles.first
@@ -687,7 +685,6 @@ class TestActionsOnListView < TestBasic
     assert $wait.until {
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }
-    
   end  
 
   #TC52 - Try to Invite to Apply with "Post job" = False
@@ -1223,5 +1220,4 @@ def CreateRequisitionPostJob(name, postjob)
     ]
     Common.main(test)   
   end
-  
 end

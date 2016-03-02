@@ -6,23 +6,23 @@ require 'securerandom'
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
 require_relative './pages/home_page.rb'
-require_relative './pages/board_setup_detail_page.rb'
-require_relative './pages/board_setup_edit_page.rb'
-require_relative './pages/board_setup_home_page.rb'
+require_relative './pages/board_setup/board_setup_detail_page.rb'
+require_relative './pages/board_setup/board_setup_edit_page.rb'
+require_relative './pages/board_setup/board_setup_home_page.rb'
 require_relative './pages/setup_page.rb'
-require_relative './pages/requisitions_home_page.rb'
-require_relative './pages/requisitions_new_and_edit.rb'
-require_relative './pages/job_board_home_page.rb'
-require_relative './pages/job_board_register_page.rb'
+require_relative './pages/requisitions/requisitions_home_page.rb'
+require_relative './pages/requisitions/requisitions_new_and_edit.rb'
+require_relative './pages/job_board/job_board_home_page.rb'
+require_relative './pages/job_board/job_board_register_page.rb'
 
 
 class TestBoardSetup < TestBasic
-=begin
-  def test_board_setup_tc1040
+
+  def test_board_setup_tc1040   
     # JS2 - Board Setup - TC1040
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
-    
+=begin    
     # PRECONDITIONS
     # open board setup page
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
@@ -70,9 +70,9 @@ class TestBoardSetup < TestBasic
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys "Alex"
     # SAVE
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH).click
-    
+=end    
   end
-
+=begin
   def test_board_setup_tc1041
     #  TC1041 - Board Setup - Auto Associate = false 
     #Login

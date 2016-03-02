@@ -143,8 +143,4 @@ class SetupEditPage
   #RSS FEED Customization
   RSS_FEED_CUSTOMIZATION_URL = "https://na17.salesforce.com/setup/FieldSetEditor.apexp?tableEnumOrId=01Io0000001F8QI&setupid=CustomObjects&retURL=%2F_ui%2Fcommon%2Fconfig%2Fentity%2FFieldSetListUI%2Fd%3FretURL%3D%252F01Io0000001F8QI%253Fsetupid%253DCustomObjects%26tableEnumOrId%3D01Io0000001F8QI%26setupid%3DCustomObjects&id=0IXo00000003LvI"
   RSS_FEED_CUSTIOMIZATION_EDIT_BTN_XPATH = ".//*[@id='FieldSetList_body']/table/tbody/tr[5]/td[1]/a"
-
-  CONFIG_JOB_BOARD_LOGIN_EDIT_XPATH = ".//*[@value='Edit']"
-  
-
 end

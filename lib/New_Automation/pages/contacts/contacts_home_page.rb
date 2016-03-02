@@ -1,5 +1,6 @@
 class ContactsHomePage
   
+
   CONTACT_RECORD_XPATH  = ".//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[11]/th/a"
   FIRST_CHECKBOX_OF_FIRST_CONTACT_XPATH = ".//*[@ id='003o000000nkTa2_checkbox']/input"
   SECOND_CHECKBOX_OF_SECOND_CONTACT_XPATH = ".//*[@id='003o000000bIplp_checkbox']/input"
