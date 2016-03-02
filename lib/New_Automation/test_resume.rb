@@ -28,7 +28,7 @@ $PASSWOR = "password123"
 
 class TestResume < TestBasic
 
-=begin
+
 #TC979 - Job Board Resume, Attach Only  
 def test_jobBoardResumeAttachOnly
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -2082,7 +2082,6 @@ Common.main(test3)
 assert Common.not_displayed(JobBoardJobDetail::JOB_BOARD_APPLY_PREVIOUSLY_UPLOADED_RADIO_XPATH)
 end
 
-=end
 
 #TC1026 - Resume Days Valid 
 def test_ResumeDaysValid
@@ -2144,8 +2143,6 @@ def test_ResumeDaysValid
       }  
 end
 
-
-=begin
 #TC989 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared
 def test_addResumeOneShared
   #Preconditions
@@ -2216,7 +2213,65 @@ def test_updateResumeJobBoardNoEnglishDisabled
     }  
 end
 
-
+#TC1028 - Resume Days Valid, Validation Blank
+def test_ResumeDaysValidationBlank
+   #Preconditions
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  CustomSettings.JobBoardLogin(true)
+  $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
+  test = [{"displayed" => SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
+          {"checked" =>  SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
+          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test)
+  $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+  test2 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"displayed" => SetupEditPage::RESUME_DAYS_VALID_TEXT_XPATH},
+          {"set_text" => SetupEditPage::RESUME_DAYS_VALID_TEXT_XPATH, "text" => "N"},
+          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test2)
+  #Steps
+  $browser.get HomePage::JOB_BOARD_URL
+    test3 = [
+      # Steps
+      
+      # LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      # 6. Click on "Login"
+      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
+      # 7. Fill the required fields: "Username" and "Password".
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $EMAIL},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWOR},
+      # 8. Click in "Login".
+      {"click" => LoginPage::LOGIN_BUTTON_XPATH},
+      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      # END LOGIN
+      
+      # 6. Click on a job title
+      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+      # 7. Click on green link "Apply for the ..." depending of the job selected.
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH},
+      {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      # 9. Fill the field...
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
+      
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
+      Common.main(test3)        
+      assert $wait.until{ 
+          $browser.find_element(:xpath, ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]") .displayed?   
+      }  
+end
 
 
  #TC106 - Enable Resume Attached to contact record
@@ -2360,7 +2415,7 @@ def test_addResumeNoshared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }  
 end
-=end
+
 
 
 end
