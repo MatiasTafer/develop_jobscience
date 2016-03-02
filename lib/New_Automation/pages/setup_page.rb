@@ -19,8 +19,15 @@ class SetupEditPage
   MAX_NUMBER_ATTACHMENTS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Max_Number_of_Attachments__c']"
 
   ENABLE_ENHANCED_APPLY_TO_JOB_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enhanced_Apply_to_Job__c']"
-  
+  ALLOW_DUPLICATE_APPS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Allow_Duplicate_Apps__c']"
+  ALLOW_DUPLICATE_APPS_DAYS_INPUT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Allow_Duplicate_Application_Days__c']"
   SHORT_LIST_CUSTOM_SETINGS_PAGE_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a1A"
+  NEW_CONFIG_BTN_XPATH = ".//*[@id='CS_list:ts2__Config__c:newBtn']"
+  ENABLE_JCARD_FOR_CONTACT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__JCARD_ENABLE_FOR_CONTACT__c']"
+  MAX_NUMB_ATTACHEMNT_INPUT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Max_Number_of_Attachments__c']"
+  ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Attach_to_Applications__c']"
+  AUTO_SHARE_MODE_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Auto_Share_Mode__c']"
+  DISPLAY_PRIVACY_STATEMENT_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id225:j_id228']"
   
   #Short list
   EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH = ".//*[@class='btn'][1]"
@@ -28,6 +35,10 @@ class SetupEditPage
   CHECKBOX_WEB_SOURCING_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Web_Sourcing__c']"
   CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH =".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Jobscience_UI__c']"
   SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@class='btn btn'][1]"
+  ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Review_Email__c']"
+  REVIEW_MODE_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Review_Mode__c']"
+  ENABLE_EMAIL_SEND_OPTIONS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Review_Email_Send_Options__c']"
+  DEFAULT_STAFFING_REVIEW_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Default_Staffing_Review__c']"
   
 
   
@@ -61,6 +72,10 @@ class SetupEditPage
   EEO_QUESTIONS_RACE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem3:Race']"
   EEO_QUESTIONS_DISABLE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem5:Disabled']"
   EEO_QUESTIONS_REQUIRED_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id217:PageBlockSectionItem6:EEORequired']"
+
+  EEO_TEXT_TEXTAREA_IFRAME_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id212:j_id213:j_id214:textAreaDelegate_ts2__EEO_Text__c_rta_body']"
+  HIDE_STANDARD_EEO_DISCLAIMER_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id212:j_id216']"
+  PRIVACY_POLICY_TEXTAREA_IFRAME_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id225:j_id226:j_id227:textAreaDelegate_ts2__Privacy_Policy_Statement__c_rta_body']"
 
   
   EDIT_BUTTON_XPATH = ".//*[@name='edit']"
@@ -129,6 +144,12 @@ class SetupEditPage
   CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:thePageBlockButtons:save']"      
   CONFIG_JOB_BOARD_LOGIN_EDIT_XPATH = ".//*[@value='Edit']"
   
+  # MASS MAIL
+  ENABLE_MASS_MAIL_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:jsmassmail__EnableMassMailService__c']"
+  MASS_MAIL_SERVICE_EDIT_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?CS_list%3ACS_Form%3AtheDetailPageBlock%3AthePageBlockButtons%3Aedit=Edit&CS_list%3ACS_Form=CS_list%3ACS_Form&retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da1l&setupid=CustomSettings&isOrg=1&id=a1lo0000000UeE6&id=a1lo0000000UeE6&com.salesforce.visualforce.ViewStateVersion=201602242157540280&com.salesforce.visualforce.ViewStateCSRF=VmpFPSxNakF4Tmkwd01pMHlPRlF4T1RveU56bzBOUzR3TVRWYSxRM0RpbWN1cnV6T0E0cThKekFaTmhfLFpXWmtNR1Uy"
+
   
-  
+  #RSS FEED Customization
+  RSS_FEED_CUSTOMIZATION_URL = "https://na17.salesforce.com/setup/FieldSetEditor.apexp?tableEnumOrId=01Io0000001F8QI&setupid=CustomObjects&retURL=%2F_ui%2Fcommon%2Fconfig%2Fentity%2FFieldSetListUI%2Fd%3FretURL%3D%252F01Io0000001F8QI%253Fsetupid%253DCustomObjects%26tableEnumOrId%3D01Io0000001F8QI%26setupid%3DCustomObjects&id=0IXo00000003LvI"
+  RSS_FEED_CUSTIOMIZATION_EDIT_BTN_XPATH = ".//*[@id='FieldSetList_body']/table/tbody/tr[5]/td[1]/a"
 end

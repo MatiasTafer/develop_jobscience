@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestActionsOnListView" tests="1" time="58.625909" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-02-18T18:19:44-03:00">
+  <testcase name="test_CreateNewContact" time="58.625509" assertions="0">
+  </testcase>
+  <system-out>
+main
+displayed
+click
+displayed
+set_text
+click
+displayed
+set_text
+click
+displayed
+main
+displayed
+main
+displayed
+click
+  </system-out>
+</testsuite>

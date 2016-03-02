@@ -23,7 +23,9 @@ class HomePage
   JOB_TEMPLATES_TAB_LINK_URL = "https://na17.salesforce.com/a0B/o"
   STANDARD_QUESTIONS_TAB_LINK = "https://na17.salesforce.com/a0f/o"
   JOB_TEMPLATE_MAPPING_TAB_LINK = "https://na17.salesforce.com/a0J/o"
+  SUBMITTALS_TAB_LINK_XPATH = "https://ts2extams.na17.visual.force.com/apex/Submittal_Custom_List?save_new=1&sfdc.override=1"
   
+  LOGIN_URL = "https://login.salesforce.com/"
 
   ALL_CONTACTS_TAB_LINK = "https://na17.salesforce.com/003?fcf=00Bo0000003aqv0"
 
@@ -31,10 +33,15 @@ class HomePage
   
   SEARCH_BAR_XPATH = ".//*[@id='phSearchInput']"
   SEARCH_BUTTON_XPATH = ".//*[@id='phSearchButton']"
+
+  ADD_JOB_ORDERS_XPATH = ".//*[@id='sidebarDiv']/div[6]/div[2]/ul/li/a"
+  
+  #UPLOAD JOB ORDER
+  UPLOAD_BTN_BROWSE_XPATH = ".//*[@id='j_id0:frm:j_id4:j_id40']"
+  UPLOAD_BTN_ADD_JOB_XPATH = ".//*[@name='j_id0:frm:j_id4:pbbsMainButtons:j_id30']"
+
   ADD_RESUMES_XPATH = ".//*[@id='sidebarDiv']/div[3]/div[2]/ul/li[1]/a"
   
-
-
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
   JOB_BOARD_INTERNAL_URL = "http://js-recruiting-148857d918a-14910044900.force.com/internal"
                         
