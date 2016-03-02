@@ -26,7 +26,35 @@ require_relative './pages/contacts_detail_page.rb'
 $EMAIL =  "testrodrigo2@gmail.com"
 $PASSWOR = "password123"
 
+
+$DOCUMENT_PDF = "/New_Automation/Resumes/document.pdf"
+$DOCUMENT_PNG = "/New_Automation/Resumes/document.png"
+$ADRESS_IN_SPANISH = "/New_Automation/Resumes/AdressInSpanish.pdf"
+$CA_ADRESS_CA = "/New_Automation/Resumes/CAAdressCA.pdf"
+$CA_ADRESS_CANADA = "/New_Automation/Resumes/CAAdressCanada.pdf"
+$CA_ADRESS_ONLY = "/New_Automation/Resumes/CAAdressOnly.pdf"
+$INTERNATIONAL_ADRESS ="/New_Automation/Resumes/InternationalAdress.pdf"
+$USA_ADRESS_ONLY = "/New_Automation/Resumes/USAdressOnly.pdf"
+$USA_ADRESS_UNITED_STATES ="/New_Automation/Resumes/USAdressUnitedStates.pdf"
+$USA_ADRESS_USA = "/New_Automation/Resumes/USAdressUSA.pdf"
+$US_POST_CODE = "/New_Automation/Resumes/USPostalCode.pdf"
+
+
+
 class TestResume < TestBasic
+
+
+@@AdressInSpanish = File.join(Dir.pwd, $ADRESS_IN_SPANISH)
+@@CAAdressCA = File.join(Dir.pwd, $CA_ADRESS_CA)
+@@CAAdressCanada = File.join(Dir.pwd, $CA_ADRESS_CANADA)
+@@CAAdressOnly = File.join(Dir.pwd, $CA_ADRESS_ONLY)
+@@documentPdf = File.join(Dir.pwd, $DOCUMENT_PDF)
+@@documentPng = File.join(Dir.pwd, $DOCUMENT_PNG)
+@@internationalAdress = File.join(Dir.pwd, $INTERNATIONAL_ADRESS )
+@@usaAdressOnly = File.join(Dir.pwd, $USA_ADRESS_ONLY )
+@@usaAdressUnitedStates = File.join(Dir.pwd, $USA_ADRESS_UNITED_STATES)
+@@usaAdressUsa = File.join(Dir.pwd, $USA_ADRESS_USA)
+@@usPostalCode = File.join(Dir.pwd, $US_POST_CODE)
 
 
 #TC979 - Job Board Resume, Attach Only  
@@ -50,7 +78,7 @@ def test_jobBoardResumeAttachOnly
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@documentPdf},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test3) 
     assert $wait.until {
@@ -73,7 +101,7 @@ end
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@documentPdf},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test) 
     assert $wait.until {
@@ -102,7 +130,7 @@ def test_jobBoardResumeParseFields
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@documentPdf},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test3) 
     assert $wait.until {
@@ -125,7 +153,7 @@ def test_UploadRederralResume
           {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "NameTest"},
           {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "LastNameTest"},
           {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL, "text" => "correo.test@email.com"},
-          {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+          {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => @@documentPdf},
           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
   Common.main(test)
   assert $wait.until {
@@ -156,7 +184,7 @@ def test_UploadReferralResumeAtachOnly
             {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "NameTest"},
             {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "LastNameTest"},
             {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL, "text" => "correo.test@email.com"},
-            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => @@documentPdf},
             {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
   Common.main(test3)
   assert $wait.until {
@@ -187,7 +215,7 @@ def test_UploadReferralResumeParseFields
             {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "NameTest"},
             {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "LastNameTest"},
             {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL, "text" => "correo.test@email.com"},
-            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+            {"upload" => JobBoardJobDetail::PROSPECT_RESUME_BROWSE_XPATH, "file" => @@documentPdf},
             {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH}]
   Common.main(test3)
   assert $wait.until {
@@ -217,7 +245,7 @@ def test_ResumToolAttachOly
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -249,7 +277,7 @@ def test_addResumeToolParseFields
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -289,7 +317,7 @@ def test_addResumePrivateSharingModel
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -323,7 +351,7 @@ def test_contactUpdateResumeAttachOnly
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -357,7 +385,7 @@ def test_contactUpdateResumeParseFields
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -397,7 +425,7 @@ def test_addResumeNotShared
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -437,7 +465,7 @@ def test_addResumeOneShared
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -469,7 +497,7 @@ def test_contactUpdateResumeValidation
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPng},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   assert $wait.until{
@@ -499,7 +527,7 @@ def test_picklistUSAResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test2 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressOnly.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressOnly},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test2)
    newWindow= $browser.window_handles[0]
@@ -519,7 +547,7 @@ def test_picklistUSAResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressUsa},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -540,7 +568,7 @@ def test_picklistUSAResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test8 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressUsa},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test8)
    newWindow= $browser.window_handles[0]
@@ -574,7 +602,7 @@ def test_pickListCanadaResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test2 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressOnly.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressOnly},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test2)
    newWindow= $browser.window_handles[0]
@@ -594,7 +622,7 @@ def test_pickListCanadaResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCA.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressCA},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -615,7 +643,7 @@ def test_pickListCanadaResumeTools
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test8 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCanada.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressCanada},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test8)
    newWindow= $browser.window_handles[0]
@@ -649,7 +677,7 @@ def test_PickListInternationalResumeTool
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test2 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/InternationalAdress.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@internationalAdress},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test2)
    newWindow= $browser.window_handles[0]
@@ -687,7 +715,7 @@ def test_ValidationCountryPicklist
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usPostalCode},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -725,7 +753,7 @@ def test_nonEnglishPickList
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@AdressInSpanish},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -760,7 +788,7 @@ def test_resumUpdateCountryPickList
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressOnly.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressOnly},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -782,7 +810,7 @@ def test_resumUpdateCountryPickList
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test7 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressUsa},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test7)
   newWindow= $browser.window_handles[0]
@@ -804,7 +832,7 @@ def test_resumUpdateCountryPickList
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test9 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUnitedStates.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressUnitedStates},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test9)
   newWindow= $browser.window_handles[0]
@@ -837,7 +865,7 @@ def test_resumeUpdateCountryPicklistCanada
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressOnly.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressOnly},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -859,7 +887,7 @@ def test_resumeUpdateCountryPicklistCanada
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test7 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCA.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressCA},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test7)
   newWindow= $browser.window_handles[0]
@@ -881,7 +909,7 @@ def test_resumeUpdateCountryPicklistCanada
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test9 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCanada.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressCanada},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test9)
   newWindow= $browser.window_handles[0]
@@ -916,7 +944,7 @@ def test_resumeUpdateInternational
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/InternationalAdress.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@internationalAdress},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -952,7 +980,7 @@ def test_stateContryPicklistUpdateResumeValidation
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usPostalCode},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -988,7 +1016,7 @@ def test_nonEnglishUpdateResum
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@AdressInSpanish},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -1021,7 +1049,7 @@ def test_updateResumePickListJobBoard
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/USAdressOnly.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressOnly},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1036,7 +1064,7 @@ def test_updateResumePickListJobBoard
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/USAdressUnitedStates.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUnitedStates},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test3) 
     assert $wait.until {
@@ -1051,7 +1079,7 @@ def test_updateResumePickListJobBoard
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/USAAdressUSA.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUsa},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test4) 
     assert $wait.until {
@@ -1081,7 +1109,7 @@ def test_updateResumePickListJobBoardCanada
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/CAAdressOnly.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressOnly},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1096,7 +1124,7 @@ def test_updateResumePickListJobBoardCanada
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/CAAdressCanada.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressCanada},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test3) 
     assert $wait.until {
@@ -1111,7 +1139,7 @@ def test_updateResumePickListJobBoardCanada
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/CAAdressCA.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressCA},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test4) 
     assert $wait.until {
@@ -1141,7 +1169,7 @@ def test_updateResumePickListJobBoardIntenational
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/InternationalAdress.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@internationalAdress},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1170,7 +1198,7 @@ def test_validationResumePickList
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usPostalCode},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1199,7 +1227,7 @@ def test_updateResumeJobBoardNoEnglish
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@AdressInSpanish},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1228,7 +1256,7 @@ def test_USAUpdateResumePicklistDisable
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/USAdressOnly.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressOnly},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1243,7 +1271,7 @@ def test_USAUpdateResumePicklistDisable
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/USAdressUnitedStates.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUnitedStates},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test3) 
     assert $wait.until {
@@ -1258,7 +1286,7 @@ def test_USAUpdateResumePicklistDisable
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/USAAdressUSA.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUsa},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test4) 
     assert $wait.until {
@@ -1287,7 +1315,7 @@ def test_CanadaUpdateResumePickListDisable
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/CAAdressOnly.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressOnly},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1302,7 +1330,7 @@ def test_CanadaUpdateResumePickListDisable
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/CAAdressCanada.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressCanada},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test3) 
     assert $wait.until {
@@ -1317,7 +1345,7 @@ def test_CanadaUpdateResumePickListDisable
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/CAAdressCA.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressCA},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test4) 
     assert $wait.until {
@@ -1346,7 +1374,7 @@ def test_InternationalUpdateResumeDisable
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/InternationalAdress.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@internationalAdress},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1375,7 +1403,7 @@ def test_PostCodeResumeUpdateDisable
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usPostalCode},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1405,7 +1433,7 @@ def test_noEnglishResumeUpdateDisable
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@AdressInSpanish},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -1437,7 +1465,7 @@ def test_USAResumeUpdateDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressOnly.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressOnly},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -1459,7 +1487,7 @@ def test_USAResumeUpdateDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test7 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressUsa},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test7)
   newWindow= $browser.window_handles[0]
@@ -1481,7 +1509,7 @@ def test_USAResumeUpdateDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test9 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUnitedStates.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressUnitedStates},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test9)
   newWindow= $browser.window_handles[0]
@@ -1515,7 +1543,7 @@ def test_UpdateResumeCanadaDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressOnly.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressOnly},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -1537,7 +1565,7 @@ def test_UpdateResumeCanadaDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test7 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCA.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressCA},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test7)
   newWindow= $browser.window_handles[0]
@@ -1559,7 +1587,7 @@ def test_UpdateResumeCanadaDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test9 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCanada.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressCanada},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test9)
   newWindow= $browser.window_handles[0]
@@ -1592,7 +1620,7 @@ def test_resumeToolInternationalDisable
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test2 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/InternationalAdress.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@internationalAdress},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test2)
    newWindow= $browser.window_handles[0]
@@ -1630,7 +1658,7 @@ def test_ValidationResumeToolUpdateResume
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usPostalCode},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -1669,7 +1697,7 @@ def test_noEnglishResumeUpdateDisablePicklist
    newWindow= $browser.window_handles[1]
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
+            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@AdressInSpanish},
             {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
@@ -1706,7 +1734,7 @@ def test_ResumeUpdateFeaturePicklistDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressOnly.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressOnly},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -1728,7 +1756,7 @@ def test_ResumeUpdateFeaturePicklistDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test7 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUSA.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressUsa},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test7)
   newWindow= $browser.window_handles[0]
@@ -1750,7 +1778,7 @@ def test_ResumeUpdateFeaturePicklistDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test9 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USAdressUnitedStates.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usaAdressUnitedStates},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test9)
   newWindow= $browser.window_handles[0]
@@ -1784,7 +1812,7 @@ def test_UpdateResumeContactTabPcikListDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressOnly.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressOnly},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -1806,7 +1834,7 @@ def test_UpdateResumeContactTabPcikListDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test7 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCA.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressCA},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test7)
   newWindow= $browser.window_handles[0]
@@ -1828,7 +1856,7 @@ def test_UpdateResumeContactTabPcikListDisable
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test9 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/CAAdressCanada.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@CAAdressCanada},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test9)
   newWindow= $browser.window_handles[0]
@@ -1861,7 +1889,7 @@ def test_InternationalResumeUpdateContactTabDisbalePickList
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/InternationalAdress.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@internationalAdress},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -1894,7 +1922,7 @@ def test_validationPicklistDisableConatacResumeUpdateFeature
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test3 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/USPostalCode.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@usPostalCode},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test3)
   newWindow= $browser.window_handles[0]
@@ -2127,7 +2155,7 @@ def test_ResumeDaysValid
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH},
-      {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => @@documentPdf},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       # 9. Fill the field...
@@ -2174,7 +2202,7 @@ def test_addResumeOneShared
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
@@ -2205,7 +2233,7 @@ def test_updateResumeJobBoardNoEnglishDisabled
             {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
             {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
             {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/AdressInSpanish.pdf"},
+            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@AdressInSpanish},
             {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
     Common.main(test2) 
     assert $wait.until {
@@ -2257,7 +2285,7 @@ def test_ResumeDaysValidationBlank
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH},
-      {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => @@documentPdf},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       # 9. Fill the field...
@@ -2406,7 +2434,7 @@ def test_addResumeNoshared
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+           {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
