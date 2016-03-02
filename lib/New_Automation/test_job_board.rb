@@ -22,9 +22,9 @@ require_relative './pages/source_new_edit_page.rb'
 
 class TestJobBoard < TestBasic
   
-  $USER_JOB_BOARD = "et@fromthesky.up"
+  $USER_JOB_BOARD = "eete@fromthesky.up"
   $PASSWORD_JOB_BOARD = "otherworld666"
-  $USER_JOB_BOARD2 = "momiWrewas@a.com"
+  $USER_JOB_BOARD2 = "testqa@a.com"
   $PASSWORD_JOB_BOARD2 = "o1234567" 
   
   $USER_LINKEDIN = "automationoktana@gmail.com"
@@ -171,7 +171,7 @@ class TestJobBoard < TestBasic
       {"set_text" => JobBoardJobDetail::CONFIRM_PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
-      {"set_text" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
+      {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
       # 9. Click on button "Continue".
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"displayed" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
