@@ -334,7 +334,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
-    #Common.logout_job_board
+    Common.logout_job_board
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -345,14 +345,14 @@ class TestSources < TestBasic
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     source_name = 'source_test21'
     url_name = 'url_name' + source_name
     
-    #Common.create_sources(source_name)
+    Common.create_sources(source_name)
     
-    #Common.delete_sources(source_name)
+    Common.delete_sources(source_name)
     
     #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
     
@@ -455,7 +455,7 @@ class TestSources < TestBasic
     
   end
   
-=end
+
 
   def test_sources_tc944 #8 
     # Applying to the Job, New Candidate, Authenticated
@@ -470,14 +470,13 @@ class TestSources < TestBasic
     # Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
-    Common.logout_job_board
+    Common.login_job_board
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
-      {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -486,25 +485,286 @@ class TestSources < TestBasic
     # Steps
     $browser.get "http://js-recruiting-148857d918a-14910044900.force.com/openings?nostate=1&tSource=a0eo00000036CYQAA2"
     test = [
+      # LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      # 6. Click on "Login"
+      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
+      # 7. Fill the required fields: "Username" and "Password".
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      # 8. Click in "Login".
+      {"click" => LoginPage::LOGIN_BUTTON_XPATH},
+      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      # END LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      #
       {"check_apply" => ""},
-      {"delete_cookie" => ""},
-      {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
-      # 6. Click on (at the right side) in "Register".
-      {"click" => JobBoardHomePage::REGISTER_LINK_XPATH},
-      # 7. Fill the fields (required)
-      {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
-      {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
-      {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
-      # 9. Click on button "Continue".
-      {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
-      {"displayed" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
-      # 11. Click on "Continue"
-      {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
-      {"displayed" => ".//*[text()[contains(.,'You have successfully registered')]]"},
-      {"get_cookie" => ""},
+      #
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       
+      # 9. Fill the field...
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
+      
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
+      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
+      
+      
+    ]
+    Common.main(test)
+    
+  end
+  
+
+
+  def test_sources_tc945 #9 
+    # Applying to the Job, New Candidate, Hide Source Question = false, Authenticated, deleted tSource
+    # Preconditions:
+    # Job Board Setup -> Hide Source Question = false
+    
+    # Steps:
+    #  1 - Create and Save a URL for a Source using Search URL Builder on Board Setup
+    #  2 - Delete the Source associated with the URL
+    #  3 - Click on the Saved URL in Notes & Attachments section on Board Setup
+    #  4 - Click on a job order to go to detail page
+    #  5 - Click Apply
+    #  6 - Login and complete Application process and select a Source
+    
+    
+    # Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    Common.login_job_board
+    
+    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    test = [
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
+      {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
+    ]
+    #Common.main(test)
+    
+    source_name = 'source_test21'
+    url_name = 'url_name' + source_name
+    
+    #Common.create_sources(source_name)
+    
+    #Common.delete_sources(source_name)
+    
+    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    
+    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    test = [
+      # Click on the Saved URL in Notes & Attachments section on Board Setup
+      {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
+      {"click" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
+      
+      {"displayed" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
+      {"click" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
+      
+      {"change_window" => ""},
+      
+      # LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      # 6. Click on "Login"
+      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
+      # 7. Fill the required fields: "Username" and "Password".
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      # 8. Click in "Login".
+      {"click" => LoginPage::LOGIN_BUTTON_XPATH},
+      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      # END LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      #
+      {"check_apply" => ""},
+      #
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      
+      # 9. Fill the field...
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
+      
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
+      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
+    ]
+    Common.main(test)
+    
+  end
+  
+
+  
+  def test_sources_tc946 #10 
+    # Applying to the Job, New Candidate, Hide Source Question = false, Blank tSource, Authenticated
+    # Preconditions:
+    # Job Board Setup -> Hide Source Question = false
+    
+    # Steps:
+    #  1 - Go to "Job Board"
+    #  2 - Click on a job
+    #  3 - Delete tSource cookie, URL should contain empty tSource parameter
+    #  4 - Register and start application process
+    #  5 - Complete process
+    
+    
+    # Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    Common.login_job_board
+    
+    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    test = [
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
+      {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
+    ]
+    Common.main(test)
+    
+    # Steps
+    $browser.get "http://js-recruiting-148857d918a-14910044900.force.com/openings?nostate=1&tSource=a0eo00000036CYQAA2"
+    test = [
+      # LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      # 6. Click on "Login"
+      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
+      # 7. Fill the required fields: "Username" and "Password".
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      # 8. Click in "Login".
+      {"click" => LoginPage::LOGIN_BUTTON_XPATH},
+      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      # END LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      #
+      {"delete_cookie" => ""},
+      
+      {"check_apply" => ""},
+      #
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      
+      # 9. Fill the field...
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
+      
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
+      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
+      
+      
+    ]
+    Common.main(test)
+    
+  end
+  
+  
+=end
+  
+  def test_sources_tc947 #11 
+    # Applying to the Job, New Candidate, Hide Source Question = true, Authenticated, deleted tSource
+    # Preconditions:
+    # Job Board Setup -> Hide Source Question = true
+    
+    # Steps:
+    #  1 - Create and Save a URL for a Source using Search URL Builder on Board Setup
+    #  2 - Delete the Source associated with the URL
+    #  3 - Click on the Saved URL in Notes & Attachments section on Board Setup
+    #  4 - Click on a job
+    #  5 - Register/login and start application process
+    #  6 - Complete process
+    
+    
+    # Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    Common.login_job_board
+    
+    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    test = [
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
+      {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
+    ]
+    #Common.main(test)
+    
+    source_name = 'source_test21'
+    url_name = 'url_name' + source_name
+    
+    #Common.create_sources(source_name)
+    
+    #Common.delete_sources(source_name)
+    
+    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    
+    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    test = [
+      # Click on the Saved URL in Notes & Attachments section on Board Setup
+      {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
+      {"click" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
+      
+      {"displayed" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
+      {"click" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
+      
+      {"change_window" => ""},
+      
+      # LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      # 6. Click on "Login"
+      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
+      # 7. Fill the required fields: "Username" and "Password".
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      # 8. Click in "Login".
+      {"click" => LoginPage::LOGIN_BUTTON_XPATH},
+      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      # END LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      #
+      {"check_apply" => ""},
+      #
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      
+      # 9. Fill the field...
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
+      
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
+      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
     ]
     Common.main(test)
     
