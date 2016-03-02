@@ -39,7 +39,7 @@ class SetupEditPage
   AUTO_ASSOCIATE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id42']"
   SHOW_SEARCH_ONLY_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id39']"
   ALLOW_REGISTER_ONLY_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id41']"
-  RESUME_REQUIRE_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id44" 
+  RESUME_REQUIRE_CHECKBOX_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id44']" 
   HIDE_RESUME_UPLOAD_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id43"
   HIDE_RESUME_PASTE_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id45"
   HIDE_RESUME_BUILDER_CHECKBOX_ID = "j_id0:frm:PageBlock:j_id32:j_id47"

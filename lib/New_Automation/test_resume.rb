@@ -1925,8 +1925,6 @@ test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
 Common.main(test2)
 #Steps
 $browser.get HomePage::JOB_BOARD_URL
-#estoy en Job Board ahora me tengo que loguear y copiar el apply to job de test_job_board linea 220
-$browser.get HomePage::JOB_BOARD_URL
     test3 = [
       # Steps
       
@@ -1992,8 +1990,6 @@ test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
 Common.main(test2)
 #Steps
 $browser.get HomePage::JOB_BOARD_URL
-#estoy en Job Board ahora me tengo que loguear y copiar el apply to job de test_job_board linea 220
-$browser.get HomePage::JOB_BOARD_URL
     test3 = [
       # Steps
       
@@ -2058,8 +2054,6 @@ test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
 Common.main(test2)
 #Steps
 $browser.get HomePage::JOB_BOARD_URL
-#estoy en Job Board ahora me tengo que loguear y copiar el apply to job de test_job_board linea 220
-$browser.get HomePage::JOB_BOARD_URL
     test3 = [
       # Steps
       
@@ -2086,10 +2080,31 @@ $browser.get HomePage::JOB_BOARD_URL
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH}]
 Common.main(test3)
 assert Common.not_displayed(JobBoardJobDetail::JOB_BOARD_APPLY_PREVIOUSLY_UPLOADED_RADIO_XPATH)
-      #{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_PREVIOUSLY_UPLOADED_RADIO_XPATH},   
 end
 
-
+#TC1026 - Resume Days Valid 
+def test_ResumeDaysValid
+  #Preconditions
+  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  CustomSettings.JobBoardLogin(true)
+  $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
+  test = [{"displayed" => SetupEditPage::RESUME_REQUIRE_CHECKBOX_ID},
+          {"checked" =>  SetupEditPage::RESUME_REQUIRE_CHECKBOX_ID},
+          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test)
+  $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
+  test2 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+          {"displayed" => SetupEditPage::RESUME_DAYS_VALID_TEXT_XPATH},
+          {"set_text" => SetupEditPage::RESUME_DAYS_VALID_TEXT_XPATH, "text" => "N"},
+          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test2)
+  #Steps
+          
+    
+  
+  
+end
 
 
 =begin
