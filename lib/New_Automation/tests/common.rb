@@ -7,6 +7,7 @@ require 'securerandom'
 
 require_relative 'test_basic.rb' 
 
+<<<<<<< HEAD:lib/New_Automation/common.rb
 require_relative './pages/login_page.rb'
 require_relative './pages/home_page.rb'
 require_relative './pages/accounts/accounts_home_page.rb'
@@ -39,6 +40,25 @@ require_relative './pages/contacts/contacts_detail_page.rb'
 require_relative './pages/contacts/contacts_new_edit_page.rb'
 require_relative './pages/job_board/job_board_home_page.rb'
 require_relative './pages/job_board/job_board_job_detail.rb'
+=======
+require './New_Automation/pages/login_page.rb'
+require './New_Automation/pages/home_page.rb'
+require './New_Automation/pages/accounts/accounts_home_page.rb'
+require './New_Automation/pages/accounts/accounts_new_edit_page.rb'
+require './New_Automation/pages/accounts/accounts_detail_page.rb'
+require './New_Automation/pages/search/skill_detail_page.rb'
+require './New_Automation/pages/short_lists/short_list_home_page.rb'
+require './New_Automation/pages/short_lists/short_list_new_edit_page.rb'
+require './New_Automation/pages/short_lists/short_list_detail_page.rb'
+require './New_Automation/pages/requisitions/requisitions_home_page.rb'
+require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
+require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
+require './New_Automation/pages/contacts/contacts_home_page.rb'
+require './New_Automation/pages/contacts/contacts_detail_page.rb'
+require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
+require './New_Automation/pages/job_board/job_board_home_page.rb'
+require './New_Automation/pages/job_board/job_board_job_detail.rb'
+>>>>>>> 71f229fe845faf368a8cafca043158b647494e57:lib/New_Automation/tests/common.rb
 
 
 class Common

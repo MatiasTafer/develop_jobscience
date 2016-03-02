@@ -5,19 +5,19 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-require_relative './pages/home_page.rb'
-require_relative './pages/board_setup/board_setup_detail_page.rb'
-require_relative './pages/board_setup/board_setup_edit_page.rb'
-require_relative './pages/board_setup/board_setup_home_page.rb'
-require_relative './pages/setup_page.rb'
-require_relative './pages/login_page.rb'
-require_relative './pages/requisitions/requisitions_home_page.rb'
-require_relative './pages/requisitions/requisitions_new_and_edit.rb'
-require_relative './pages/job_board/job_board_home_page.rb'
-require_relative './pages/job_board/job_board_register_page.rb'
-require_relative './pages/job_board/job_board_job_detail.rb'
-require_relative './pages/source_home_page.rb'
-require_relative './pages/source_new_edit_page.rb'
+require './New_Automation/pages/home_page.rb'
+require './New_Automation/pages/board_setup/board_setup_detail_page.rb'
+require './New_Automation/pages/board_setup/board_setup_edit_page.rb'
+require './New_Automation/pages/board_setup/board_setup_home_page.rb'
+require './New_Automation/pages/setup_page.rb'
+require './New_Automation/pages/login_page.rb'
+require './New_Automation/pages/requisitions/requisitions_home_page.rb'
+require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
+require './New_Automation/pages/job_board/job_board_home_page.rb'
+require './New_Automation/pages/job_board/job_board_register_page.rb'
+require './New_Automation/pages/job_board/job_board_job_detail.rb'
+require './New_Automation/pages/sources/answer_edit_page.rb'
+require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 
 class TestJobBoard < TestBasic
@@ -30,7 +30,7 @@ class TestJobBoard < TestBasic
   $USER_LINKEDIN = "automationoktana@gmail.com"
   $PASSWORD_LINKEDIN = "oktanaqa"
   
-=begin
+
   def test_job_board_tc64 #1 #OK
     # JS2 -  Search jobs by criteria 
     # Login
@@ -64,7 +64,7 @@ class TestJobBoard < TestBasic
     
   end
 
-
+=begin
   def test_job_board_tc65 #2 #OK
     # JS2 - Set "Show Search Only" to "TRUE" in Board Setup
     # Login

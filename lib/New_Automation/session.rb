@@ -6,7 +6,7 @@ require 'selenium-webdriver'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-require_relative './pages/home_page.rb'
+require './New_Automation/pages/home_page.rb'
 
 
 class Session < TestBasic
