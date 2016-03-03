@@ -14,7 +14,7 @@ $wait
 
 
 
-require './New_Automation/test_resume.rb'
+require './New_Automation/tests/test_resume.rb'
 
 
 
