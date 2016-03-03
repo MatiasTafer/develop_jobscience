@@ -10,17 +10,20 @@ task :firefox => 'ci:setup:testunit' do
 end
 
 task :chrome => 'ci:setup:testunit' do
-  cd 'lib'  
+  cd 'lib'
+  ENV["CI_REPORTS"]='reports'  
   ruby 'New_Automation.rb ' 'chrome'  
 end
 
 task :safari => 'ci:setup:testunit' do
-  cd 'lib'  
+  cd 'lib'
+  ENV["CI_REPORTS"]='reports'  
   ruby 'New_Automation.rb ' 'safari'  
 end
 
 task :internet_explorer => 'ci:setup:testunit' do
-  cd 'lib'  
+  cd 'lib'
+  ENV["CI_REPORTS"]='reports'  
   ruby 'New_Automation.rb ' 'internet_explorer'  
 end
 
