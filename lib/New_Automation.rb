@@ -17,10 +17,6 @@ $wait
 require './New_Automation/tests/test_candidates_action_on_list_view'
 
 
-
-
-
-
 #require './New_Automation/test_eeo_question.rb'
 
 #require './New_Automation/test_requisition.rb'
