@@ -65,7 +65,10 @@ def test_jobBoardResumeAttachOnly
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-    Common.main(test)     
+    Common.main(test)    
+    $wait.until {
+      $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+    } 
     $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
     test2 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
