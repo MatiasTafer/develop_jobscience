@@ -557,7 +557,7 @@ class Common
   def self.CreateUserJobBoard(email, password, fname="a", lname="b")
     
     # Login for JobBoard enable
-    CustomSettings.JobBoardLogin(true)
+    #CustomSettings.JobBoardLogin(true)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -579,7 +579,7 @@ class Common
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain']"},
       {"hassert_equal" => ".//*[@id='atsApplicationSubmittedMain']", 
-      "text" => "You have successfully registered."},
+      "text" => "You have successfully registered.  Your information has been added to our system."},
      
     ]
     Common.main(test)

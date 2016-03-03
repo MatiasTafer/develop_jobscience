@@ -24,7 +24,7 @@ def setup
     end
     $browser.get "https://login.salesforce.com/"  
 
-    $wait = Selenium::WebDriver::Wait.new(:timeout => 30)
+    $wait = Selenium::WebDriver::Wait.new(:timeout => 10)
 
 end
  
