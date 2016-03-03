@@ -1413,7 +1413,7 @@ class TestDaxtraParse < TestBasic
   end
 
   #TC164 - Upload resume by Job Board "Job Board Allowed Filetypes" set to "pdf"
-  def test_UploadResumeJobBoardDupePreventionAttachOnly
+  def test_UploadResumeJobBoardAllowedFiletypesPdf
     
     #PRECONDITIONS:
     
@@ -1482,7 +1482,7 @@ class TestDaxtraParse < TestBasic
   end
  
   #TC165 - Upload resume by Job Board "Job Board Allowed Filetypes" set to blank
-  def test_UploadResumeJobBoardDupePreventionAttachOnly
+  def test_UploadResumeJobBoardAllowedFiletypesBlank
     
     #PRECONDITIONS:
     
