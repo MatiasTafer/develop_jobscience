@@ -16,7 +16,7 @@ require_relative './pages/requisitions_mass_transfer_page.rb'
 require_relative './pages/requisitions_new_and_edit.rb'
 
 class TestRequisition < TestBasic
-  
+  @@job_path = "/Users/admin/Desktop/testing job order.pdf"
 =begin  
 #TC1059 - New Job Order 
 def test_newJobOrder
@@ -342,9 +342,6 @@ end
     }
     
   end  
-  
-  
-
   
 end  
   

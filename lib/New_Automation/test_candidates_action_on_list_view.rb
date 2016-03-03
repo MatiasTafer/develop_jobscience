@@ -9,6 +9,8 @@ require_relative './pages/home_page.rb'
 require_relative './pages/contacts_home_page.rb'
 require_relative './pages/contacts_detail_page.rb'
 require_relative './pages/contacts_new_edit_page.rb'
+require_relative './pages/applications_detail_page.rb'
+require_relative './pages/applications_home_page.rb'
 require_relative './pages/answer_detail_page.rb'
 require_relative './pages/setup_page.rb'
 require_relative './pages/job_board_home_page.rb'
@@ -1556,10 +1558,318 @@ def CreateRequisitionPostJob(name, postjob)
         $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
       }
   end 
+  
+  #TC847 - Add Tags, Public Tag
+  def test_AddTagsPublicTag
+    randomContact = SecureRandom.hex(4)
+      
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+        
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3 - Click on "Add Tags"
+    Common.click(ContactsHomePage::CONTACT_HOME_ADD_TAGS_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2) 
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_PUBLIC_TAGS_XPATH},
+    # 4 - Choose tag to add for the selected candidates from the "Public Tags" drop-down list  
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_PUBLIC_TAGS_FIRST_OPTION_XPATH},
+    # 5 - Click on "Add Tags"  
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH}
+    ]
+    Common.main(test)
+    
+    #RESULT Message "Tags Added Successfully" and  the quantity of total tags added will be displayed.
+    assert_equal(ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_TEXT, $browser.find_element(:xpath => ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH).text)
+    
+    assert_equal("1", $browser.find_element(:xpath => ContactsHomePage::CONTACT_TAGS_POPUP_TOTAL_TAGS_XPATH).text)
+    
+    test = [
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_CLOSE_XPATH}
+    ]
+    Common.main(test)
+
+    $browser.switch_to.window($browser.window_handles.first) 
+  end
+ 
+  #TC848 - Add Tags, Personal Tag
+  def test_AddTagsPersonalTag
+    randomContact = SecureRandom.hex(4)
+      
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+        
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3 - Click on "Add Tags"
+    Common.click(ContactsHomePage::CONTACT_HOME_ADD_TAGS_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2) 
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_PERSONAL_TAGS_XPATH},
+    # 4 - Choose tag to add for the selected candidates from the "Personal Tags" drop-down list
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_PERSONAL_TAGS_FIRST_OPTION_XPATH},
+    # 5 - Click on "Add Tags"  
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH}
+    ]
+    Common.main(test)
+    
+    #RESULT Message "Tags Added Successfully" and  the quantity of total tags added will be displayed.
+    assert_equal(ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_TEXT, $browser.find_element(:xpath => ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH).text)
+    
+    assert_equal("1", $browser.find_element(:xpath => ContactsHomePage::CONTACT_TAGS_POPUP_TOTAL_TAGS_XPATH).text)
+    
+    test = [
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_CLOSE_XPATH}
+    ]
+    Common.main(test)
+
+    $browser.switch_to.window($browser.window_handles.first) 
+  end 
+
+  
+  #TC849 - Add Tags, New Public Tag
+  def test_AddTagsNewPublicTag
+    randomContact = SecureRandom.hex(4)
+    randomTag = SecureRandom.hex(2)
+      
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+        
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3 - Click on "Add Tags"
+    Common.click(ContactsHomePage::CONTACT_HOME_ADD_TAGS_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2) 
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_NEW_TAG_XPATH},
+    # 4 - Enter a value on "New Tag" field
+      {"set_text" => ContactsHomePage::CONTACT_TAGS_POPUP_NEW_TAG_XPATH, "text" => "TestTag" + randomTag},
+    # 5 - Select "Public" from "Type" field
+      {"set_text" => ContactsHomePage::CONTACT_TAGS_POPUP_TYPE_XPATH, "text" => "Public"},
+    # 6 - Click on "Add Tags"  
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH}
+      
+    ]
+    Common.main(test)
+    
+    #RESULT Message "Tags Added Successfully" and  the quantity of total tags added will be displayed.
+    assert_equal(ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_TEXT, $browser.find_element(:xpath => ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH).text)
+    
+    assert_equal("1", $browser.find_element(:xpath => ContactsHomePage::CONTACT_TAGS_POPUP_TOTAL_TAGS_XPATH).text)
+    
+    test = [
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_CLOSE_XPATH}
+    ]
+    Common.main(test)
+
+    $browser.switch_to.window($browser.window_handles.first) 
+  end 
+  
+  #TC850 - Add Tags, New Personal Tag
+  def test_AddTagsNewPersonalTag
+    randomContact = SecureRandom.hex(4)
+    randomTag = SecureRandom.hex(2)
+      
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+        
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # 3 - Click on "Add Tags"
+    Common.click(ContactsHomePage::CONTACT_HOME_ADD_TAGS_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2) 
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_NEW_TAG_XPATH},
+    # 4 - Enter a value on "New Tag" field
+      {"set_text" => ContactsHomePage::CONTACT_TAGS_POPUP_NEW_TAG_XPATH, "text" => "TestTag" + randomTag},
+    # 5 - Select "Private" from "Type" field 
+      {"set_text" => ContactsHomePage::CONTACT_TAGS_POPUP_TYPE_XPATH, "text" => "Private"},
+    # 6 - Click on "Add Tags"  
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH}
+      
+    ]
+    Common.main(test)
+    
+    #RESULT Message "Tags Added Successfully" and  the quantity of total tags added will be displayed.
+    assert_equal(ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_TEXT, $browser.find_element(:xpath => ContactsHomePage::CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH).text)
+    
+    assert_equal("1", $browser.find_element(:xpath => ContactsHomePage::CONTACT_TAGS_POPUP_TOTAL_TAGS_XPATH).text)
+    
+    test = [
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_CLOSE_XPATH}
+    ]
+    Common.main(test)
+
+    $browser.switch_to.window($browser.window_handles.first) 
+  end 
+  
+  #TC851 - Add Tag, Validation
+  def test_AddTagsValidation
+    
+    #PRECONDITIONS:
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+      
+    
+    # 1. Click on "Contacts". 
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2. Select (doing click on checkbox) one or more contacts
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_FIRST_ENTRY_GO_XPATH + "/../../../..//td[1]//input").click
+    
+    # 3 - Click on "Add Tags"
+    Common.click(ContactsHomePage::CONTACT_HOME_ADD_TAGS_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(2) 
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH},
+    # 4 - Click on "Add Tags" without selecting any tag or entering any value
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_TAGS_POPUP_ERROR_CELL_XPATH},
+    ]
+    Common.main(test)
+    
+    #RESULT Error message "No tags selected" will be displayed.
+    assert_equal(ContactsHomePage::CONTACT_TAGS_POPUP_ERROR_TAGS_TEXT, $browser.find_element(:xpath => ContactsHomePage::CONTACT_TAGS_POPUP_ERROR_CELL_XPATH).text)
+    
+    test = [
+      {"click" => ContactsHomePage::CONTACT_TAGS_POPUP_BTN_CANCEL_XPATH}
+    ]
+    Common.main(test)
+
+    $browser.switch_to.window($browser.window_handles.first) 
+  end
 
   
 
-  
+  ######### CUSTOM METHODS ##########
   def CreateAgencyAccount(name)
     #Create a Agency with "name" as its name
     $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)

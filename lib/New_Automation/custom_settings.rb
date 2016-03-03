@@ -103,6 +103,7 @@ class CustomSettings
       }
   end
   
+ 
   def self.DefineResumeAllowedTypesJobBoard(types)
     #"types" must be a string with extensions separated with a comma, like "pdf, doc, txt"
     
@@ -291,6 +292,77 @@ class CustomSettings
       $browser.find_element(:xpath => SetupEditPage::NEW_CONFIG_BTN_XPATH).displayed?
     }
   end
+  
+  def self.AddResumeDupePrevention(option)
+    
+    $browser.get(SetupEditPage::PARSE_SETTINGS_EDIT_URL)
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).click
+    
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::ADD_RESUME_DUPE_PREVENTION_XPATH).displayed?
+    }
+    
+    $browser.find_element(:xpath => SetupEditPage::ADD_RESUME_DUPE_PREVENTION_XPATH).clear
+    $browser.find_element(:xpath => SetupEditPage::ADD_RESUME_DUPE_PREVENTION_XPATH).send_keys option
+    
+    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    
+     $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+    }
+    
+  end
+  
+  def self.JobBoardDupePrevention(option)
+    
+    $browser.get(SetupEditPage::PARSE_SETTINGS_EDIT_URL)
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).click
+    
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+    }
+    
+    $browser.find_element(:xpath => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear
+    $browser.find_element(:xpath => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).send_keys option
+    
+    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    
+     $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+    }
+    
+  end
+  
+  def self.DaxtraParseOverwrite(address=false, employment=false, education=false, skills=false)
+    
+    $browser.get(SetupEditPage::PARSE_SETTINGS_EDIT_URL)
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).click
+    
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH).displayed?
+    }
+    Checkbox(SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH, address)
+    Checkbox(SetupEditPage::OVERWRITE_EMPLOYMENT_CHECKBOX_XPATH, employment)
+    Checkbox(SetupEditPage::OVERWRITE_EDUCATION_CHECKBOX_XPATH, education)
+    Checkbox(SetupEditPage::INLCUDE_SKILLS_CHECKBOX_XPATH, skills)
+    
+    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    
+     $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH).displayed?
+    }
+    
+  end
+    
     
   
   def self.Checkbox(checkbox, boolean)

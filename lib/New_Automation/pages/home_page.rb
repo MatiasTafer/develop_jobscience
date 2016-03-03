@@ -40,6 +40,11 @@ class HomePage
 
   ADD_RESUMES_XPATH = ".//*[@id='sidebarDiv']/div[3]/div[2]/ul/li[1]/a"
   
+  #UPLOAD RESUME
+  UPLOAD_RESUME_BROWSE_XPATH = ".//*[@id='j_id0:frm:j_id5:j_id41']"
+  UPLOAD_RESUME_BTN_ADD_RESUME_XPATH = ".//*[@id='j_id0:frm:j_id5:pbbsMainButtons:bottom']/input[1]"
+    
+  
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
   JOB_BOARD_INTERNAL_URL = "http://js-recruiting-148857d918a-14910044900.force.com/internal"
 

@@ -419,6 +419,21 @@ class Common
     $browser.switch_to.alert.accept 
   end
   
+  def self.DeleteCandidateCreatedToday(name)
+    #Delete the Candidate with name "name"
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    test = [
+    {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+    {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
+    {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+    {"displayed" => ContactsHomePage::CONTACT_HOME_FIRST_ENTRY_GO_XPATH}
+    ]
+    Common.main(test)
+    $browser.find_element(:xpath => "//*[text()[contains(.,'" + name + "')]]/../../../../td[3]//a[2]").click
+    sleep(1)
+    $browser.switch_to.alert.accept 
+  end
+  
   def self.CreateRequisitionPostJob(name, postjob, disableEeo=false, questionSet=nil)
     #postjob=TRUE will check "Post Job" checkbox, so the job will be posted on JobBoard, postjob=false will not check it.
     #disableEeo=TRUE will check "Disable EEO" checkbox, if it is false it will be unchecked.  

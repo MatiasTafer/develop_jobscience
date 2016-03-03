@@ -83,7 +83,11 @@ class SetupEditPage
   PARSE_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0O"
   PARSE_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
   RESUME_DAYS_VALID_TEXT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']"
-
+  ADD_RESUME_DUPE_PREVENTION_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Add_Resume_Dupe_Prevention__c']"
+  OVERWRITE_ADDRESS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Overwrite_Address__c']"
+  OVERWRITE_EDUCATION_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Overwrite_Education__c']"
+  OVERWRITE_EMPLOYMENT_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Overwrite_Employment__c']"
+  INLCUDE_SKILLS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Include_Skills__c']"
   JOB_BOARD_DUPE_PREVENTION_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Job_Board_Dupe_Prevention__c']"
   
   ADD_RESUME_ALLOWED_FILETYPES_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Add_Resume_Allowed_Filetypes__c']"
