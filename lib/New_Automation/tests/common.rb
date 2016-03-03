@@ -90,7 +90,7 @@ class Common
   end
   
   def self.ssleep
-      sleep(5)
+      sleep(10)
       puts "sleep"
   end
   
@@ -185,7 +185,7 @@ class Common
   
   def self.change_frame
     $wait.until{
-      $browser.switch_to.frame(1)  
+      $browser.switch_to.frame(7)  
     }
     
   end

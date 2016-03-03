@@ -1374,13 +1374,50 @@ class TestSources < TestBasic
     
     $browser.get HomePage::REQUISITION_TAB_LINK_URL
     test = [
-      {"check_apply" => ""},
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
-      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+      {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
+      {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
       
-      
+      {"displayed" => RequisitionsDetail::RE_CHAR_BUTTON_XPATH},
+      {"click" => RequisitionsDetail::RE_CHAR_BUTTON_XPATH},
     ]
     Common.main(test)
+    
+    $browser.get HomePage::CHATTER_TAB_URL
+    test = [
+      {"displayed" => ".//*[text()[contains(.,'View Job Posting')]]"},
+      {"click" => ".//*[text()[contains(.,'View Job Posting')]]"},
+      
+      {"change_window" => ""},
+      
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+  
+      {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
+      {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
+      {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
+      # 9. Click on button "Continue".
+      {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
+      
+      {"displayed" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
+      {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
+      # 9. Fill the field...
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
+      
+      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
+      
+      {"change_window" => ""},
+      {"change_window" => ""},
+    ]
+    Common.main(test)
+    
+    
+    
     
     
   end

@@ -24,6 +24,7 @@ class HomePage
   STANDARD_QUESTIONS_TAB_LINK = "https://na17.salesforce.com/a0f/o"
   JOB_TEMPLATE_MAPPING_TAB_LINK = "https://na17.salesforce.com/a0J/o"
   SUBMITTALS_TAB_LINK_XPATH = "https://ts2extams.na17.visual.force.com/apex/Submittal_Custom_List?save_new=1&sfdc.override=1"
+  CHATTER_TAB_URL = "https://na17.salesforce.com/_ui/core/chatter/ui/ChatterPage"
   
   LOGIN_URL = "https://login.salesforce.com/"
 
