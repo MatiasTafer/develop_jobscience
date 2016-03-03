@@ -20,7 +20,6 @@ require_relative 'custom_settings.rb'
 
 class TestStandardQuestions < TestBasic
 
-=begin
   # TC928 New Standard Question, Successfully created, Required By Applicant = true
   def test_successfullyCreated
     Common.login(Common::USER_EMAIL, Common::PASSWORD) 
@@ -180,7 +179,7 @@ class TestStandardQuestions < TestBasic
     }
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
-=end
+
 
   #TC932 - New Standard Question, Adding Standard Questions, Required By Applicant = false
   def test_validationStandarQuestionFalseApplicant
@@ -260,7 +259,7 @@ class TestStandardQuestions < TestBasic
     end
   end
   
-=begin  
+  
   #TC933 - New Standard Question, Field Validation, Required By Applicant = false
   def test_FieldValidationQuestionAplicantFalse
     Common.login(Common::USER_EMAIL, Common::PASSWORD) 
@@ -390,8 +389,7 @@ class TestStandardQuestions < TestBasic
     }
     end
   end
-
-=end    
+    
 end
   
   
