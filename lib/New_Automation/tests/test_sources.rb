@@ -1093,12 +1093,9 @@ class TestSources < TestBasic
     
   end
   
-=end
 
   def test_sources_tc953 #17 
     # Applying to the Job, Existing Candidate, tSource incorrect, Authenticated 
-    
-    
     
     # Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -1170,6 +1167,225 @@ class TestSources < TestBasic
     Common.main(test)
     
   end
+  
+
+  
+  
+  def test_sources_tc954 #18 
+    # Applying to the Job, Existing Candidate, tSource incorrect, Authenticated 
+    
+    
+    # Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    Common.login_job_board
+    
+    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    test = [
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
+      {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
+    ]
+    Common.main(test)
+    
+    # Steps
+    $browser.get "http://js-recruiting-148857d918a-14910044900.force.com/openings?nostate=1&tSource=a0eo00000036CYQAA2"
+    test = [
+      # LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      # 6. Click on "Login"
+      {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+      {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
+      # 7. Fill the required fields: "Username" and "Password".
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      # 8. Click in "Login".
+      {"click" => LoginPage::LOGIN_BUTTON_XPATH},
+      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      # END LOGIN
+      {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
+      #
+      {"delete_cookie" => ""},
+      {"check_apply" => ""},
+      #
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+      
+      # 9. Fill the field...
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
+      
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
+      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
+      
+      
+    ]
+    Common.main(test)
+    
+  end
+  
+
+
+  def test_sources_tc955   NO AUTOMATABLE
+    #  Assign Source to Candidate via Email-to-Parse
+  end 
+  
+
+  def test_sources_tc956 #19
+    #  Assign Source to Candidate via Email-to-Parse
+    # Preconditions:
+    # Job Board Setup -> Job Board Type = Internal
+    # ->Apply Referral Immediately = true
+    # Set any valid source in Source Tracking for Internal Referrals on Board Setup
+    
+    # Steps:
+    #  1 - Go to "Job Board"
+    #  2 - Go to a job detail page
+    #  3 - Click on "Refer Candidate"
+    #  4 - Enter internal user email address
+    #  5 - Fill in the form for Prospect, use an email address which is not present in the system
+    # Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    # Preconditions
+    $browser.get BoardSetupHomePage::INTERNAL_URL
+    test = [
+      {"displayed" => ".//*[@name='edit']"},
+      {"click" => ".//*[@name='edit']"},
+      
+      {"displayed" => BoardSetupEditPage::BOARD_EDIT_APPLY_REFERRAL_IMMEDIATELY_XPATH},
+      {"checked" => BoardSetupEditPage::BOARD_EDIT_APPLY_REFERRAL_IMMEDIATELY_XPATH},
+      {"set_text" => BoardSetupEditPage::BOARD_EDIT_SOURCE_TRACKING_FOR_INTERNAL_REFERRAL_XPATH, "text" => "Change Jobs"},
+      
+      {"click" => ".//*[@value='Save']"},
+    ]
+    Common.main(test)
+    
+    $browser.get JobBoardHomePage::JOB_BOARD_INTERNAL_URL
+    test = [
+      {"check_apply" => ""},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+      
+      {"displayed" => ".//*[@id='j_id0:j_id1:j_id28:r2_email']"},
+      {"set_text" => ".//*[@id='j_id0:j_id1:j_id28:r2_email']", "text" => "matiast@oktana.io"},
+      {"click" => ".//*[@value='Continue']"},
+      
+      {"displayed" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH},
+      {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "a"},
+      {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "b"},
+      {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL_XPATH, "text" => "matiast@oktana.io"},
+      {"click" => ".//*[@value='Submit']"},
+    ]
+    Common.main(test)
+    
+    
+  end 
+  
+
+
+  #TC957 - Refering candidate with tracking source, existing candidate  NOT AUTOMATABLE
+  
+  def test_sources_tc958 #20  
+    # Refering candidate with tracking source, new candidate, Clear Source Tracking for Internal Referrals
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    # Preconditions
+    $browser.get BoardSetupHomePage::INTERNAL_URL
+    test = [
+      {"displayed" => ".//*[@name='edit']"},
+      {"click" => ".//*[@name='edit']"},
+      
+      {"displayed" => BoardSetupEditPage::BOARD_EDIT_APPLY_REFERRAL_IMMEDIATELY_XPATH},
+      {"checked" => BoardSetupEditPage::BOARD_EDIT_APPLY_REFERRAL_IMMEDIATELY_XPATH},
+      {"set_text" => BoardSetupEditPage::BOARD_EDIT_SOURCE_TRACKING_FOR_INTERNAL_REFERRAL_XPATH, "text" => " "},
+      
+      {"click" => ".//*[@value='Save']"},
+    ]
+    Common.main(test)
+    
+    $browser.get JobBoardHomePage::JOB_BOARD_INTERNAL_URL
+    test = [
+      {"check_apply" => ""},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+      
+      {"displayed" => ".//*[@id='j_id0:j_id1:j_id28:r2_email']"},
+      {"set_text" => ".//*[@id='j_id0:j_id1:j_id28:r2_email']", "text" => "matiast@oktana.io"},
+      {"click" => ".//*[@value='Continue']"},
+      
+      {"displayed" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH},
+      {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "a"},
+      {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "b"},
+      {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL_XPATH, "text" => "matiast@oktana.io"},
+      {"click" => ".//*[@value='Submit']"},
+    ]
+    Common.main(test)
+  end 
+  
+  
+  def test_sources_tc959 #21 
+    # Refering candidate with tracking source, existing candidate, Clear Source Tracking for Internal Referrals 
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    # Preconditions
+    $browser.get BoardSetupHomePage::INTERNAL_URL
+    test = [
+      {"displayed" => ".//*[@name='edit']"},
+      {"click" => ".//*[@name='edit']"},
+      
+      {"displayed" => BoardSetupEditPage::BOARD_EDIT_APPLY_REFERRAL_IMMEDIATELY_XPATH},
+      {"checked" => BoardSetupEditPage::BOARD_EDIT_APPLY_REFERRAL_IMMEDIATELY_XPATH},
+      {"set_text" => BoardSetupEditPage::BOARD_EDIT_SOURCE_TRACKING_FOR_INTERNAL_REFERRAL_XPATH, "text" => " "},
+      
+      {"click" => ".//*[@value='Save']"},
+    ]
+    Common.main(test)
+    
+    $browser.get JobBoardHomePage::JOB_BOARD_INTERNAL_URL
+    test = [
+      {"check_apply" => ""},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+      
+      {"displayed" => ".//*[@id='j_id0:j_id1:j_id28:r2_email']"},
+      {"set_text" => ".//*[@id='j_id0:j_id1:j_id28:r2_email']", "text" => "matiast@oktana.io"},
+      {"click" => ".//*[@value='Continue']"},
+      
+      {"displayed" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH},
+      {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "a"},
+      {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "b"},
+      {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL_XPATH, "text" => "matiast@oktana.io"},
+      {"click" => ".//*[@value='Submit']"},
+    ]
+    Common.main(test)
+  end 
+  
+=end
+
+  def test_sources_tc962 #22 
+    # Chatter Source Tracking
+    # Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    $browser.get HomePage::REQUISITION_TAB_LINK_URL
+    test = [
+      {"check_apply" => ""},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
+      
+      
+    ]
+    Common.main(test)
+    
+    
+  end
+  
+  
 end    
 
 

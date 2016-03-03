@@ -5,6 +5,6 @@ class BoardSetupHomePage
   SECOND_ELEMENT_BOARD_LIST_XPATH = ".//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[3]/th/a"
   CAREERS_LINK_LIST_XPATH = ".//a[text()[contains(.,'Careers')]]"
   CAREERS_URL_XPATH = "https://na17.salesforce.com/a0Go00000080Tcp"
-  
+  INTERNAL_URL = "https://na17.salesforce.com/a0Go000001Ij584"
   
 end
