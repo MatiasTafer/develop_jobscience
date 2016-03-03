@@ -240,22 +240,20 @@ class TestStandardQuestions < TestBasic
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
     $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
     $wait.until{
-      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
+      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     }
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::ERRORS_OF_FIELD_TO_SUBMIT_XPATH).displayed?
     }
     rescue
-    $wait.until {
-      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
-    }
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
     $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
     $wait.until{
-      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
+      $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
     }
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click
+    $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
+    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::ERRORS_OF_FIELD_TO_SUBMIT_XPATH).displayed?
     }
