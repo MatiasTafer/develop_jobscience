@@ -36,9 +36,6 @@ def test_addUpdateStauts
           {"displayed" => ShortListDetailPage::SL_UPDATE_STATUS_OPTION_XPATH},
           {"click" => ShortListDetailPage::SL_UPDATE_STATUS_OPTION_XPATH}]
   Common.main(test)        
-  #newWindow= $browser.window_handles[1]
-  #$browser.switch_to.window(newWindow) 
-  #new_frame = $browser.find_element(:xpath, ShortListDetailPage::FRAME_STATUS_XPATH)
   $browser.switch_to.frame(1)  
   test2 = [ {"displayed" => ShortListDetailPage::SELECT_STATUS_DROPDOWN_XPATH},
             {"set_text" => ShortListDetailPage::SELECT_STATUS_DROPDOWN_XPATH, "text" => "Not Invited"},
@@ -76,7 +73,6 @@ def test_openSpeedReview
     $browser.find_element(:xpath, ShortListDetailPage::CONTACT_NAME_SPEED_REVIEW_PAGE_XPATH).displayed?
   }      
   assert_equal($browser.find_element(:xpath, ShortListDetailPage::CONTACT_NAME_SPEED_REVIEW_PAGE_XPATH).text, contactName)
-  # hay que vovler a poner el icono de short list y la lupa sino los otros test no funcionan
 end
 
 #TC801 Add Contacts to a Short List

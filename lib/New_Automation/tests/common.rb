@@ -142,6 +142,9 @@ class Common
     end
   end
   
+  
+  
+  
   def self.upload(field, file)
     begin
       $browser.find_element(:xpath => field).send_keys(file) # "/Users/admin/Desktop/document.pdf"
