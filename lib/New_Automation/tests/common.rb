@@ -33,7 +33,7 @@ class Common
   USER_AUTOMATION = "oktana@joblabs.com"
   PASSWORD_AUTOMATION = "Jobscience16"
   
-  PASSWORD  = "muffin100"
+  PASSWORD  = "Jobscience16"
 
   
 
