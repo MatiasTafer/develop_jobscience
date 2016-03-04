@@ -27,7 +27,7 @@ class BoardSetupEditPage
   BOARD_EDIT_ENABLE_ADDTHIS_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[10]/td[1]//*[@type='checkbox']"
   BOARD_EDIT_HIDE_MOBILE_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[10]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_ADDTHIS_USERNAME_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[11]/td[1]//*[@type='text']"
-  BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[11]/td[2]//*[@type='checkbox']"
+  BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id54']"
   BOARD_EDIT_HOMEPAGE_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[12]/td[1]//*[@type='text']"
   BOARD_EDIT_HIDE_CONTACT_METHOD_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[12]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_DISABLE_MOBILE_JOB_BOARD_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[13]/td[1]//*[@type='checkbox']"

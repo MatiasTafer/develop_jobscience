@@ -24,6 +24,8 @@ class RequisitionsDetail
 
   #Webpage Search Opening TC965, JS2 Projects
   FIRST_SEARCH_RESULT_LINK_XPATH = ".//*[@class='atsSearchResultsTable']/tbody/tr[1]/td[1]/a"
+  
+  RE_CHAR_BUTTON_XPATH = ".//*[@title='Re-Chat']"
 end
 
 

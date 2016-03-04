@@ -5,8 +5,6 @@ require 'test-unit'
 require 'securerandom'
 
 
-require_relative 'test_basic.rb' 
-
 require './New_Automation/pages/login_page.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/accounts/accounts_home_page.rb'
@@ -24,6 +22,8 @@ require './New_Automation/pages/contacts/contacts_detail_page.rb'
 require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
+
+
 
 class Common
   USER_EMAIL = "naomi@joblabs.com"
@@ -78,17 +78,19 @@ class Common
   end
   
   def self.click(field)
-    return $browser.find_element(:xpath => field).click
+      a = $browser.find_element(:xpath => field).click
+      return a
   end
   
   def self.displayed(field)
+     puts field
       $wait.until{
         return $browser.find_element(:xpath => field).displayed?
       }
   end
   
   def self.ssleep
-      sleep(5)
+      sleep(10)
       puts "sleep"
   end
   
@@ -110,6 +112,12 @@ class Common
   def self.hassert_equal(text, text2)
     $wait.until{
       assert_equal($browser.find_element(:xpath => text).text, text2)
+    }
+  end
+  
+  def self.hassert_match(text, text2)
+    $wait.until{
+      assert_match($browser.find_element(:xpath => text).text, text2)
     }
   end
   
@@ -186,6 +194,7 @@ class Common
   end
   
   def self.check_apply
+    # apply on job board
     $num = 1
     c = true
     begin
@@ -206,6 +215,10 @@ class Common
     end
   end
   
+  def self.accept_alert
+    $browser.switch_to.alert.accept
+  end
+  
   def self.take_url(field)
     $browser.find_element(:xpath => field).click
     $url = $browser.current_url
@@ -218,6 +231,26 @@ class Common
     array = $browser.find_elements(:xpath => xpath)
     found = array.size < 1
     return found
+  end
+  
+  def self.get_cookie
+    begin
+      #cookie = $browser.manage.add_cookie(opts = {})
+      cookie = $browser.manage.cookie_named("apex__tSource")
+      cook = cookie[:value]
+      puts cook
+      #$browser.manage.all_cookies.each do |cookie|
+      #    puts cookie[:name]
+      #end
+    rescue
+      puts "no cookie"
+    end   
+  end
+  
+  def self.delete_cookie
+    #cookie = $browser.manage.add_cookie(opts = {})
+    cookie = $browser.manage.delete_cookie("apex__tSource")
+    puts cookie
   end
   
 
@@ -278,6 +311,10 @@ class Common
         puts "assert equal"
         self.hassert_equal(i["hassert_equal"], i["text"])
       end
+      if i["hassert_match"]
+        puts "assert_match"
+        self.hassert_match(i["hassert_match"], i["text"])
+      end
       if i["take_url"]
         puts "take_url"
         self.take_url(i["take_url"])
@@ -315,9 +352,21 @@ class Common
         puts "change frame"
         self.change_frame
       end
+      if i["get_cookie"]
+        puts "get cookie"
+        self.get_cookie
+      end
       
+      if i["delete_cookie"]
+        puts "delete cookie"
+        self.delete_cookie
+      end
+      
+      if i["accept_alert"]
+        puts "accept_alert"
+        self.accept_alert
+      end
     end
-    
     return true
   end
   
@@ -511,7 +560,7 @@ class Common
   def self.CreateUserJobBoard(email, password, fname="a", lname="b")
     
     # Login for JobBoard enable
-    CustomSettings.JobBoardLogin(true)
+    #CustomSettings.JobBoardLogin(true)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -526,14 +575,14 @@ class Common
       {"set_text" => JobBoardJobDetail::CONFIRM_PASSWORD_TEXT_XPATH, "text" => password},
       {"set_text" => JobBoardJobDetail::FIRST_NAME_TEXT_XPATH, "text" => fname},
       {"set_text" => JobBoardJobDetail::LAST_NAME_TEXT_XPATH, "text" => lname},
-      {"set_text" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_XPATH, "text" => "c"},
+      {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_XPATH, "text" => "c"},
       # 8. Click on "Continue".
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain']"},
       {"hassert_equal" => ".//*[@id='atsApplicationSubmittedMain']", 
-      "text" => "You have successfully registered. Your information has been added to our system."},
+      "text" => "You have successfully registered.  Your information has been added to our system."},
      
     ]
     Common.main(test)
@@ -562,6 +611,123 @@ class Common
     ]
     Common.main(test)
   end
+  
+  def self.create_sources(name)
+    # New Source, Successfully Created
+    # If you want to create a URL with the source embedded you can click the Search URL builder button on the board setup page, 
+    # click the magnifying glass next to Choose Source to select a source, click Next, click Next, 
+    # then click on the Search URL (if you enter a name and click save it will be saved to the notes  and attachments related list)
+    
+    $browser.get HomePage::SOURCE_LINK_URL
+    test = [
+      {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
+      {"click" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
+      
+      {"displayed" => SourceNewEdit::SOURCE_EDIT_SOURCE_NAME_XPATH},
+      {"set_text" => SourceNewEdit::SOURCE_EDIT_SOURCE_NAME_XPATH, "text" => name},
+      {"set_text" => SourceNewEdit::GENERAL_SOURCE_TYPE_XPATH, "text" => "Other"},
+      {"set_text" => SourceNewEdit::TYPE_SELECT_XPATH, "text" => "s"},
+      {"checked" => SourceNewEdit::ACTIVE_CHECKBOX_XPATH},
+      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH},
+      
+      {"displayed" => ".//*[@class='pageDescription'][text()[contains(.,'" + name + "')]]"},
+      # (.//*[@id='j_id0:frm:j_id33:j_id151']/div[2]/table/tbody/tr[2]/th)/following-sibling::td/child::a
+      # .attribute("href")
+    ]
+    Common.main(test)
+    
+    url_name = 'url_name' + name
+    
+    $browser.get BoardSetupDetailPage::URL_BUILDER_URL_XPATH
+    test = [
+      # Create and Save a URL for a Source using Search URL Builder on Board Setup
+      {"displayed" => BoardSetupDetailPage::CHOOSE_SOURCE_XPATH},
+      {"set_text" => BoardSetupDetailPage::CHOOSE_SOURCE_XPATH, "text" => name},
+      {"click" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
+      
+      {"displayed" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
+      
+      {"displayed" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
+      
+      {"displayed" => BoardSetupDetailPage::SEARCH_URL_NAME_TEXT_XPATH},
+      {"set_text" => BoardSetupDetailPage::SEARCH_URL_NAME_TEXT_XPATH, "text" => url_name},
+      
+      {"click" => BoardSetupDetailPage::SAVE_AND_CLOSE_BUTTON_XPATH},
+      
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+    ]
+    Common.main(test)
+    
+  end
+  
+  def self.delete_sources(source_name)
+    
+    $browser.get HomePage::SOURCE_LINK_URL
+    test = [
+      # Delete the Source associated with the URL
+      {"displayed" => ".//*[text()[contains(., '#{source_name}')]]"},
+      {"click" => ".//*[text()[contains(., '#{source_name}')]]"},
+      
+      {"displayed" => SourceNewEdit::SOURCE_EDIT_BTN_DELETE_XPATH},
+      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_DELETE_XPATH},
+      
+      {"accept_alert" => ""},
+    ]
+    Common.main(test)
+    
+  end
+  
+  def self.register_job_board(username, password)
+    
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    # Precondition
+    
+    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    test = [
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_UPLOAD_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_PASTE_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_BUILDER_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_COVER_LETTER_XPATH},
+      {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
+    ]
+    Common.main(test)
+    #
+    Common.login_job_board
+    
+    $browser.get HomePage::JOB_BOARD_URL
+    test = [
+      {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
+      # 6. Click on (at the right side) in "Register".
+      {"click" => JobBoardHomePage::REGISTER_LINK_XPATH},
+      # 7. Fill the fields (required)
+      {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => username},
+      {"set_text" => JobBoardJobDetail::PASSWORD_TEXT_XPATH, "text" => password},
+      {"set_text" => JobBoardJobDetail::CONFIRM_PASSWORD_TEXT_XPATH, "text" => password},
+      {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
+      {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
+      {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
+      # 9. Click on button "Continue".
+      {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
+      {"displayed" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
+      # 11. Click on "Continue"
+      {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
+      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
+    ]
+    Common.main(test)
+    
+  end
+  
+  
+  
   #newWindow= $browser.window_handles.last
   #$browser.switch_to.window(newWindow)
 end
