@@ -15,7 +15,7 @@ require './New_Automation/pages/board_setup/board_setup_edit_page.rb'
 require './New_Automation/pages/board_setup/board_setup_detail_page.rb'
 require './New_Automation/pages/board_setup/board_setup_home_page.rb' 
 
-$EMAIL =  "testrodrigo@gmail.com"
+$EMAIL =  "testrodrigo2@gmail.com"
 $PASSWOR = "password123"
 $USER_LINKEDIN = "automationoktana@gmail.com"
 $PASSWORD_LINKEDIN = "oktanaqa"
@@ -255,6 +255,7 @@ end
 #TC131 - Apply To A Job With LinkedIn EEO Questions Enable
 def test_eeoApplyWithLinkedInEeoEnable
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  CustomSettings.JobBoardLogin(true)
   $browser.get HomePage::JOB_BOARD_URL
   test =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
@@ -288,7 +289,9 @@ end
 #TC1224 - Apply To A Job With LinkedIn EEO Questions Disable
 def test_eeoApplyWithLinkedInEeoDisable
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  CustomSettings.JobBoardLogin(true)
   CustomSettings.QuestionSetHandler("Always")
+  CustomSettings.ApplyToLinkedIn(true)
   $browser.get HomePage::JOB_BOARD_URL
   test =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},

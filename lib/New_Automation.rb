@@ -74,7 +74,7 @@ $wait
 #require './New_Automation/tests/test_job_board'
 
 
-require './New_Automation/tests/test_applications.rb'
+#require './New_Automation/tests/test_applications.rb'
 
 #require './New_Automation/test_url_builder.rb'
 
@@ -91,7 +91,7 @@ require './New_Automation/tests/test_applications.rb'
 #require './New_Automation/test_applications.rb'
 
 
-#require './New_Automation/test_eeo_questions.rb'
+require './New_Automation/tests/test_eeo_question.rb'
 
 
 
