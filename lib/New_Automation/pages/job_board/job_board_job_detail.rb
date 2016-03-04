@@ -153,8 +153,6 @@ class JobBoardJobDetail
   JOB_BOARD_LINKEDIN_DATA_PASSWORD_TEXT = "oktanaqa"
 
   # REFERRALS
-  PROSPECT_FIRST_NAME_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_first_name']"
-  PROSPECT_LAST_NAME_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_last_name']"
   PROSPECT_EMAIL_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_email']"
   
   #MESSAGES
