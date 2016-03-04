@@ -12,17 +12,16 @@ $wait
 
 
 
-require './New_Automation/test_sources'
+#require './New_Automation/test_sources'
 
 
 
+#ENABLED
+require './New_Automation/tests/test_candidates_action_on_list_view'
 
-require './New_Automation/tests/test_resume.rb'
 
 
 #require './New_Automation/test_email_actions'
-
-#require './New_Automation/tests/test_candidates_action_on_list_view'
 
 
 #require './New_Automation/test_eeo_question.rb'
