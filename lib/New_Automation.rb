@@ -14,7 +14,7 @@ $wait
 
 
 
-require './New_Automation/tests/test_resume.rb'
+#require './New_Automation/tests/test_resume.rb'
 
 
 
@@ -42,7 +42,7 @@ require './New_Automation/tests/test_resume.rb'
 
 #require './New_Automation/test_short_list.rb'
 
-#require './New_Automation/test_standard_questions'
+require './New_Automation/tests/test_standard_questions'
 
 #require './New_Automation/test_projects'
 
