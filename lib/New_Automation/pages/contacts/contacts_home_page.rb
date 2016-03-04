@@ -4,6 +4,7 @@ class ContactsHomePage
   CONTACT_RECORD_XPATH  = ".//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[11]/th/a"
   FIRST_CHECKBOX_OF_FIRST_CONTACT_XPATH = ".//*[@ id='003o000000nkTa2_checkbox']/input"
   SECOND_CHECKBOX_OF_SECOND_CONTACT_XPATH = ".//*[@id='003o000000bIplp_checkbox']/input"
+  FIRST_CONTACT_ALL_CONTACT_TAB_XPATH = "(.//*[@class='x-grid3-cell-inner x-grid3-col-FULL_NAME']/a)[1]"
   ADD_TO_LIST_BUTTON_XPATH = ".//*[@class='btn'][2]"
   CONTACT_HOME_PAGE_BTN_NEW = ".//*[@class='pbButton']/input"
   CONTACT_HOME_VIEW_SELECT_XPATH = ".//*[@id='fcf']"
