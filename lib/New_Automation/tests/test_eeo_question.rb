@@ -22,7 +22,7 @@ $PASSWORD_LINKEDIN = "oktanaqa"
 
 class EeoQuestion < TestBasic
   
-=begin  
+
   
 #TC835 - EEO Questions, hidden questions
 def   test_eeoQuestionHiddenQuestion
@@ -46,7 +46,7 @@ def   test_eeoQuestionHiddenQuestion
 end
 
 #TC836 - EEO Questions, displayed questions
-def   test_eeoQuestionHiddenQuestion
+def   test_eeoQuestionDisplayedQuestion
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
    test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
@@ -65,7 +65,6 @@ def   test_eeoQuestionHiddenQuestion
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
    } 
 end
-=end
 
 #TC837 - EEO Commit Default
 def test_eeoCommitDefault
@@ -111,7 +110,6 @@ def test_eeoCommitDefault
    end
 end
 
-
 #TC838 - EEO Question Handler, Always
 def test_eeoQuestionHandlerAlways
    #Preconditions
@@ -151,7 +149,6 @@ def test_eeoQuestionHandlerAlways
      $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
    end
 end
-
 
 #TC839 - EEO Question Handler, Populate
 def test_eeoQuestionHandlerPopulate
@@ -193,7 +190,6 @@ def test_eeoQuestionHandlerPopulate
   end
 end
 
-
 #TC840 - EEO Question Handler, Omit
 def test_eeoQuestionHandlerOmit
   #Preconditions
@@ -233,8 +229,6 @@ def test_eeoQuestionHandlerOmit
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
   end
 end
-
-
 
 #TC841 - Standard and Custom EEO Disclaimers, standard & custom
 def test_eeoDisclaimersStandardCustom
@@ -280,9 +274,8 @@ def test_eeoDisclaimersStandardCustom
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
     }
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click 
+  end
 end
-
-
 
 #TC842 - Standard and Custom EEO Disclaimers, Only custom
 def test_eeoDisclaimersOnlyCustom
@@ -333,7 +326,6 @@ def test_eeoDisclaimersOnlyCustom
   end
 end
 
-=begin
 #TC131 - Apply To A Job With LinkedIn EEO Questions Enable
 def test_eeoApplyWithLinkedInEeoEnable
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
@@ -404,6 +396,6 @@ def test_eeoApplyWithLinkedInEeoDisable
     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_CLOSE_POPUP_XPATH).displayed?
   }  
 end
-=end
+
 
 end
