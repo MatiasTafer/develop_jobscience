@@ -1,0 +1,8 @@
+# pack-refs with: peeled fully-peeled 
+da99dbc8f2dc97d433d6248603142319b22f6e9b refs/heads/candidates_misc
+ffa040becfcb70b31713ef5289846d54132ffba1 refs/heads/develop
+76bc616287886d9dd1778a9fcc2c48e39c01aa21 refs/heads/fixes_MQ
+e31ac1577ac47a1917ed2b837eca6ecafa2d7e80 refs/heads/martintest
+ffa040becfcb70b31713ef5289846d54132ffba1 refs/heads/master
+9ffbedcd0caa7794bef51dd7641663ec1e4c5189 refs/heads/matias_te
+1b8e695de50a09b59f36670303a3edc4244d6c73 refs/heads/rodrigo

@@ -12,6 +12,7 @@ $wait
 
 
 
+require './New_Automation/test_standard_questions'
 
 #require './New_Automation/tests/test_sources'
 
@@ -37,7 +38,7 @@ $wait
 #require './New_Automation/test_job_board'
 
 
-#require './New_Automation/test_standard_questions'
+
 
 #require './New_Automation/test_projects'
 
