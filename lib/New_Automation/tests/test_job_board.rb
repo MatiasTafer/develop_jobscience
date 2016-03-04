@@ -21,7 +21,7 @@ require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 class TestJobBoard < TestBasic
 
-  $USER_JOB_BOARD = "ETTTE@fromthesky.up"
+  $USER_JOB_BOARD = "ETTTTE@fromthesky.up"
   $PASSWORD_JOB_BOARD = "otherworld666"
   $USER_JOB_BOARD2 = "testqa@a.com"
   $PASSWORD_JOB_BOARD2 = "o1234567" 

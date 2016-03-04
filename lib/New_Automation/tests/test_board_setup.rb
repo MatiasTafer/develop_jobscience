@@ -17,7 +17,7 @@ require './New_Automation/pages/job_board/job_board_register_page.rb'
 
 
 class TestBoardSetup < TestBasic
-
+  
   def test_board_setup_tc1040   
     # JS2 - Board Setup - TC1040
     #Login

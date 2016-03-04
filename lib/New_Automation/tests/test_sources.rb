@@ -28,8 +28,9 @@ require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 class TestSources < TestBasic
   #
-  $USER_JOB_BOARD = "ETTTE@fromthesky.up"
+  $USER_JOB_BOARD = "ETTTTE@fromthesky.up"
   $PASSWORD_JOB_BOARD = "otherworld666"
+  #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
   
 =begin
   def test_sources_tc937 #1
@@ -559,14 +560,14 @@ class TestSources < TestBasic
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     source_name = 'source_test21'
     url_name = 'url_name' + source_name
     
-    #Common.create_sources(source_name)
+    Common.create_sources(source_name)
     
-    #Common.delete_sources(source_name)
+    Common.delete_sources(source_name)
     
     #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
     
@@ -719,16 +720,14 @@ class TestSources < TestBasic
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     source_name = 'source_test21'
     url_name = 'url_name' + source_name
     
-    #Common.create_sources(source_name)
+    Common.create_sources(source_name)
     
-    #Common.delete_sources(source_name)
-    
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    Common.delete_sources(source_name)
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
@@ -927,16 +926,14 @@ class TestSources < TestBasic
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     source_name = 'source_test21'
     url_name = 'url_name' + source_name
     
-    #Common.create_sources(source_name)
+    Common.create_sources(source_name)
     
-    #Common.delete_sources(source_name)
-    
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    Common.delete_sources(source_name)
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
@@ -1111,16 +1108,14 @@ class TestSources < TestBasic
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     source_name = 'source_test21'
     url_name = 'url_name' + source_name
     
-    #Common.create_sources(source_name)
+    Common.create_sources(source_name)
     
-    #Common.delete_sources(source_name)
-    
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    Common.delete_sources(source_name)
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
