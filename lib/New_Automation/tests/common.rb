@@ -185,7 +185,7 @@ class Common
   
   def self.change_frame
     $wait.until{
-      $browser.switch_to.frame(7)  
+      $browser.switch_to.frame(1)  
     }
     
   end
