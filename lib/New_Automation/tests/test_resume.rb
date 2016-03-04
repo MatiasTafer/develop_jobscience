@@ -28,17 +28,17 @@ $EMAIL =  "testrodrigo2@gmail.com"
 $PASSWOR = "password123"
 
 
-$DOCUMENT_PDF = "/New_Automation/Resumes/document.pdf"
-$DOCUMENT_PNG = "/New_Automation/Resumes/document.png"
-$ADRESS_IN_SPANISH = "/New_Automation/Resumes/AdressInSpanish.pdf"
-$CA_ADRESS_CA = "/New_Automation/Resumes/CAAdressCA.pdf"
-$CA_ADRESS_CANADA = "/New_Automation/Resumes/CAAdressCanada.pdf"
-$CA_ADRESS_ONLY = "/New_Automation/Resumes/CAAdressOnly.pdf"
-$INTERNATIONAL_ADRESS ="/New_Automation/Resumes/InternationalAdress.pdf"
-$USA_ADRESS_ONLY = "/New_Automation/Resumes/USAdressOnly.pdf"
-$USA_ADRESS_UNITED_STATES ="/New_Automation/Resumes/USAdressUnitedStates.pdf"
-$USA_ADRESS_USA = "/New_Automation/Resumes/USAdressUSA.pdf"
-$US_POST_CODE = "/New_Automation/Resumes/USPostalCode.pdf"
+$DOCUMENT_PDF = "/New_Automation/files/Resumes/document.pdf"
+$DOCUMENT_PNG = "/New_Automation/files/Resumes/document.png"
+$ADRESS_IN_SPANISH = "/New_Automation/files/Resumes/AdressInSpanish.pdf"
+$CA_ADRESS_CA = "/New_Automation/files/Resumes/CAAdressCA.pdf"
+$CA_ADRESS_CANADA = "/New_Automation/files/Resumes/CAAdressCanada.pdf"
+$CA_ADRESS_ONLY = "/New_Automation/files/Resumes/CAAdressOnly.pdf"
+$INTERNATIONAL_ADRESS ="/New_Automation/files/Resumes/InternationalAdress.pdf"
+$USA_ADRESS_ONLY = "/New_Automation/files/Resumes/USAdressOnly.pdf"
+$USA_ADRESS_UNITED_STATES ="/New_Automation/files/Resumes/USAdressUnitedStates.pdf"
+$USA_ADRESS_USA = "/New_Automation/files/Resumes/USAdressUSA.pdf"
+$US_POST_CODE = "/New_Automation/files/Resumes/USPostalCode.pdf"
 
 
 
