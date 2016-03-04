@@ -16,13 +16,12 @@ require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_register_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
-require './New_Automation/pages/sources/answer_edit_page.rb'
 require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 
 class TestJobBoard < TestBasic
-  
-  $USER_JOB_BOARD = "eete@fromthesky.up"
+
+  $USER_JOB_BOARD = "ETTTE@fromthesky.up"
   $PASSWORD_JOB_BOARD = "otherworld666"
   $USER_JOB_BOARD2 = "testqa@a.com"
   $PASSWORD_JOB_BOARD2 = "o1234567" 
@@ -30,7 +29,7 @@ class TestJobBoard < TestBasic
   $USER_LINKEDIN = "automationoktana@gmail.com"
   $PASSWORD_LINKEDIN = "oktanaqa"
   
-
+=begin
   def test_job_board_tc64 #1 #OK
     # JS2 -  Search jobs by criteria 
     # Login
@@ -1038,7 +1037,7 @@ class TestJobBoard < TestBasic
   end
   
 
-
+=end
   
   def test_job_board_tc881 #30
     # JS2 - Resume Page
@@ -1070,20 +1069,19 @@ class TestJobBoard < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       
       {"displayed" => JobBoardHomePage::UPLOAD_CHECKBOX_XPATH},
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       #{"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
       #{"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
       #{"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       #{"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      #/Users/admin/Desktop/document.pdf
+      #/New_Automation/files/Resumes/document.pdf
     ]
     Common.main(test)
   end
   
-  
-
+=begin
 
 
   def test_job_board_tc883 #31
@@ -1237,12 +1235,12 @@ class TestJobBoard < TestBasic
       
       {"displayed" => JobBoardHomePage::UPLOAD_CHECKBOX_XPATH},
       # 9. Upload a Resume a fill the required field.
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       # 10. Click on "Continue".
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 11. In the additional attachments step. Attach documents of inappropriate filetype.
       {"displayed" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH},
-      {"upload" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH, "file" => "/Users/admin/Desktop/test.rb"},
+      {"upload" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH, "file" => "/New_Automation/files/Resumes/document.png"},
       # Error message "Invalid file format" will be displayed.
       #{"displayed" => ".//*[text()[contains(.,'Invalid file format')]]"},
     ]
@@ -1312,7 +1310,7 @@ class TestJobBoard < TestBasic
       
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
       # 9. Upload a Resume a fill the required field.
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       # 10. Click on "Continue".
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 11. In the additional attachments step, Attach fewer documents than Required Number of Attachments setting specifies.
@@ -1374,12 +1372,12 @@ class TestJobBoard < TestBasic
       #{"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
       # 9. Upload a Resume a fill the required field.
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       # 10. Click on "Continue".
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 11. In the additional attachments step, Attach the required number of documents with proper filetype..
       {"displayed" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH},
-      {"upload" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       #{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
@@ -1434,11 +1432,11 @@ class TestJobBoard < TestBasic
       # 8. Click on "Continue".
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 9. Click on "Continue".
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 10. In the additional attachments step, Attach the required number of documents with proper filetype.
       {"displayed" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH},
-      {"upload" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       # 11. Click on "Continue".
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
@@ -2100,7 +2098,7 @@ class TestJobBoard < TestBasic
       # 8. Click on "Continue".
       {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH},
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
     ]
     Common.main(test)   
@@ -2148,7 +2146,7 @@ class TestJobBoard < TestBasic
       # 8. Click on "Continue".
       {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH},
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"hassert_equal" => ".//*[@id='atsApplicationSubmittedMain']", 
        "text" => "You have successfully registered. Your information has been added to our system."},
@@ -2198,7 +2196,7 @@ class TestJobBoard < TestBasic
       # 8. Click on "Continue".
       {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH},
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
     ]
     Common.main(test)
@@ -2233,7 +2231,7 @@ class TestJobBoard < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       # 9. Upload resume.
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       # 10. Add text to cover letter field.
       {"set_text" => JobBoardJobDetail::JOB_BOARD_APPLY_COVER_LETTER_XPATH, "text" => "THIS IS A LETTER"},
       # 11. Click on "Continue" button.
@@ -2281,7 +2279,7 @@ class TestJobBoard < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       # 9. Upload resume.
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       # 10. Add text to cover letter field.
       {"set_text" => JobBoardJobDetail::JOB_BOARD_APPLY_COVER_LETTER_XPATH, "text" => "THIS IS A LETTER"},
       # 11. Click on "Continue" button.
@@ -2379,7 +2377,7 @@ class TestJobBoard < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       # 10. Add text to cover letter field.
       {"set_text" => JobBoardJobDetail::JOB_BOARD_APPLY_COVER_LETTER_XPATH, "text" => "THIS IS A LETTER"},
       # 11. Click on "Continue" button.
@@ -2444,7 +2442,7 @@ class TestJobBoard < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       # 10. Add text to cover letter field.
       {"set_text" => JobBoardJobDetail::JOB_BOARD_APPLY_COVER_LETTER_XPATH, "text" => "THIS IS A LETTER"},
       # 11. Click on "Continue" button.
@@ -2632,7 +2630,7 @@ class TestJobBoard < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       # Upload resume.
       {"displayed" => JobBoardHomePage::BROWSE_BUTTON_XPATH},
-      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
+      {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/New_Automation/files/Resumes/document.pdf"},
       # Add text to cover letter field.
       {"set_text" => JobBoardJobDetail::JOB_BOARD_APPLY_COVER_LETTER_XPATH, "text" => "THIS IS A LETTER"},
       # Click on "Continue" button.
@@ -3073,7 +3071,7 @@ class TestJobBoard < TestBasic
     
   end
 
-=end
+
 
    def test_job_board_tc923  #71
     # JS2 - Job Board Email Page send with invalid email
@@ -3136,5 +3134,5 @@ class TestJobBoard < TestBasic
       $browser.find_element(:xpath => "//*[text()[contains(.,'" + JobBoardRegisterPage::JOB_BOARD_REGISTER_PRIVACY_POLICY_TEXT + "')]]").displayed?  
     } 
   end
-  
+=end
 end

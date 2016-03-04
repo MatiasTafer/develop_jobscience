@@ -22,7 +22,7 @@ class TestBoardSetup < TestBasic
     # JS2 - Board Setup - TC1040
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
-=begin    
+
     # PRECONDITIONS
     # open board setup page
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
@@ -70,7 +70,7 @@ class TestBoardSetup < TestBasic
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH).send_keys "Alex"
     # SAVE
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH).click
-=end    
+       
   end
 =begin
   def test_board_setup_tc1041
