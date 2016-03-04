@@ -3,34 +3,34 @@ require 'selenium-webdriver'
 require 'test-unit'
 require 'securerandom'
 
-require_relative 'test_basic.rb'
-require_relative 'common.rb'
-require_relative 'custom_settings.rb'
-require_relative './pages/home_page.rb'
-require_relative './pages/contacts_detail_page.rb'
-require_relative './pages/contacts_new_edit_page.rb'
-require_relative './pages/add_resume_popup_page.rb'
-require_relative './pages/job_board_home_page.rb'
-require_relative './pages/job_board_login_page.rb'
-require_relative './pages/add_resume_popup_page.rb'
+require './New_Automation/tests/test_basic.rb'
+require './New_Automation/tests/common.rb'
+require './New_Automation/tests/custom_settings.rb'
+require './New_Automation/pages/home_page.rb'
+require './New_Automation/pages/contacts/contacts_detail_page.rb'
+require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
+require './New_Automation/pages/resume/add_resume_popup_page.rb'
+require './New_Automation/pages/job_board/job_board_home_page.rb'
+require './New_Automation/pages/job_board/job_board_login_page.rb'
+require './New_Automation/pages/resume/add_resume_popup_page.rb'
 
 class TestDaxtraParse < TestBasic
   
-  @@Daxtra01 = "/New_Automation/Daxtra/DaxtraResume01.pdf"
-  @@Daxtra02 = "/New_Automation/Daxtra/DaxtraResume02.pdf"
-  @@Daxtra03 = "/New_Automation/Daxtra/DaxtraResume03.pdf"
-  @@Daxtra04 = "/New_Automation/Daxtra/DaxtraResume04.pdf"
-  @@Daxtra05 = "/New_Automation/Daxtra/DaxtraResume05.pdf"
-  @@Daxtra06 = "/New_Automation/Daxtra/DaxtraResume06.pdf"
-  @@Daxtra07 = "/New_Automation/Daxtra/DaxtraResume07.pdf"
-  @@Daxtra08 = "/New_Automation/Daxtra/DaxtraResume08.pdf"
-  @@Daxtra09 = "/New_Automation/Daxtra/DaxtraResume09.pdf"
-  @@DaxtraDoc01 = "/New_Automation/Daxtra/DaxtraResumeDoc01.doc"
-  @@DaxtraFrench = "/New_Automation/Daxtra/DaxtraResumeFrench.pdf"
-  @@DaxtraDutch = "/New_Automation/Daxtra/DaxtraResumeDutch.pdf"
-  @@DaxtraGerman = "/New_Automation/Daxtra/DaxtraResumeGerman.pdf"
-  @@DaxtraSpanish = "/New_Automation/Daxtra/DaxtraResumeEspanol.pdf"
-  @@DaxtraEnglish = "/New_Automation/Daxtra/DaxtraResumeEnglish.pdf"
+  @@Daxtra01 = "/New_Automation/files/Daxtra/DaxtraResume01.pdf"
+  @@Daxtra02 = "/New_Automation/files/Daxtra/DaxtraResume02.pdf"
+  @@Daxtra03 = "/New_Automation/files/Daxtra/DaxtraResume03.pdf"
+  @@Daxtra04 = "/New_Automation/files/Daxtra/DaxtraResume04.pdf"
+  @@Daxtra05 = "/New_Automation/files/Daxtra/DaxtraResume05.pdf"
+  @@Daxtra06 = "/New_Automation/files/Daxtra/DaxtraResume06.pdf"
+  @@Daxtra07 = "/New_Automation/files/Daxtra/DaxtraResume07.pdf"
+  @@Daxtra08 = "/New_Automation/files/Daxtra/DaxtraResume08.pdf"
+  @@Daxtra09 = "/New_Automation/files/Daxtra/DaxtraResume09.pdf"
+  @@DaxtraDoc01 = "/New_Automation/files/Daxtra/DaxtraResumeDoc01.doc"
+  @@DaxtraFrench = "/New_Automation/files/Daxtra/DaxtraResumeFrench.pdf"
+  @@DaxtraDutch = "/New_Automation/files/Daxtra/DaxtraResumeDutch.pdf"
+  @@DaxtraGerman = "/New_Automation/files/Daxtra/DaxtraResumeGerman.pdf"
+  @@DaxtraSpanish = "/New_Automation/files/Daxtra/DaxtraResumeEspanol.pdf"
+  @@DaxtraEnglish = "/New_Automation/files/Daxtra/DaxtraResumeEnglish.pdf"
 
   #TC148 - Add resume with "Add Resume Dupe Prevention" set to "Attach Only"
   def test_AddResumeDupePreventionAttachOnly
@@ -412,10 +412,10 @@ class TestDaxtraParse < TestBasic
     
     sleep(3)
     test=[
-      {"displayed" => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH}
+      {"displayed" => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH}
     ]
     Common.main(test)
-    mailing_address = $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text
+    mailing_address = $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text
     
     #
     sleep(2)
@@ -452,10 +452,10 @@ class TestDaxtraParse < TestBasic
     
     sleep(3)
     test=[
-      {"displayed" => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH}
+      {"displayed" => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH}
     ]
     Common.main(test)
-    mailing_address2 = $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text
+    mailing_address2 = $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text
     
     assert_not_equal(mailing_address, mailing_address2)
     
@@ -537,10 +537,10 @@ class TestDaxtraParse < TestBasic
     
     sleep(3)
     test=[
-      {"displayed" => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH}
+      {"displayed" => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH}
     ]
     Common.main(test)
-    mailing_address = $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text
+    mailing_address = $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text
     
     #
     sleep(6)
@@ -578,11 +578,11 @@ class TestDaxtraParse < TestBasic
     
     sleep(3)
     test=[
-      {"displayed" => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH}
+      {"displayed" => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH}
     ]
     Common.main(test)
     
-    assert_equal(mailing_address, $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text)
+    assert_equal(mailing_address, $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text)
     
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_DELETE_XPATH).displayed?  
@@ -1620,7 +1620,7 @@ class TestDaxtraParse < TestBasic
     assert_equal("Martin Martinez", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
     assert_equal("Product Developer", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_EMPLOYMENT_TITLE_1_XPATH).text)
     assert_equal("Master of Engineering", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_DEGREE_NAME_1_XPATH).text)
-    assert_equal("Italy Street 2000\nNew York, NY\nUS", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text)
+    assert_equal("Italy Street 2000\nNew York, NY\nUS", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text)
     
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_DELETE_XPATH).displayed?  
@@ -1703,7 +1703,7 @@ class TestDaxtraParse < TestBasic
     assert_equal("Martin Martinez", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
     assert_equal("Développeur de produit", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_EMPLOYMENT_TITLE_1_XPATH).text)
     assert_equal("Master", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_DEGREE_NAME_1_XPATH).text)
-    assert_equal("Paris, Saint-Lazare, 75003\nFR", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text)
+    assert_equal("Paris, Saint-Lazare, 75003\nFR", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text)
     
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_DELETE_XPATH).displayed?  
@@ -1786,7 +1786,7 @@ class TestDaxtraParse < TestBasic
     assert_equal("Martin Martinez", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
     assert_equal("Développeur de produit", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_EMPLOYMENT_TITLE_1_XPATH).text)
     assert_equal("Master", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_DEGREE_NAME_1_XPATH).text)
-    assert_equal("Paris, Saint-Lazare, 75003\nFR", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text)
+    assert_equal("Paris, Saint-Lazare, 75003\nFR", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text)
     
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_DELETE_XPATH).displayed?  
@@ -1870,7 +1870,7 @@ class TestDaxtraParse < TestBasic
     assert_equal("Martin Martinez", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
     assert_equal(" ", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_EMPLOYMENT_TITLE_1_XPATH).text)
     assert_equal("Master en Ingenieria", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_DEGREE_NAME_1_XPATH).text)
-    assert_equal("Montevideo,\nUY", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text)
+    assert_equal("Montevideo,\nUY", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text)
     
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_DELETE_XPATH).displayed?  
@@ -1953,7 +1953,7 @@ class TestDaxtraParse < TestBasic
     assert_equal("Martin Martinez", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
     assert_equal("Productontwikkelaar", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_EMPLOYMENT_TITLE_1_XPATH).text)
     assert_equal("Meester", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_DEGREE_NAME_1_XPATH).text)
-    assert_equal("Italy Street 2000\nNew York, NY\nUS", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text)
+    assert_equal("Italy Street 2000\nNew York, NY\nUS", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text)
     
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_DELETE_XPATH).displayed?  
@@ -2035,7 +2035,7 @@ class TestDaxtraParse < TestBasic
     assert_equal("Martin Martinez", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
     assert_equal("Produktentwickler", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_EMPLOYMENT_TITLE_1_XPATH).text)
     assert_equal(" ", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_DEGREE_NAME_1_XPATH).text)
-    assert_equal("Italien Straße 2000\nNew York, NY\nUS", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text)
+    assert_equal("Italien Straße 2000\nNew York, NY\nUS", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text)
     
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_DELETE_XPATH).displayed?  
