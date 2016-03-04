@@ -41,7 +41,7 @@ class JobBoardHomePage
   JOB_BOARD_SEARCH_BUTTON_XPATH = ".//*[@value='Search']"
   JOB_BOARD_SEARCH_RESULTS_XPATH = ".//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a"
   JOB_BOARD_CONTACT_LABEL_XPATH = "//*[text()[contains(.,'Contact:')]]"
-  
+  JOB_BOARD_SEARCH_FIRST_KEYWORD_XPATH = ".//*[@name='jobSearchPage:j_id0:jobBoardTag:jobBoardComponent:jobSearchTag:jobSearchComponent:atsSearch:j_id127']"
 
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
   JOB_BOARD_INTERNAL_URL = "http://js-recruiting-148857d918a-14910044900.force.com/internal"
@@ -64,5 +64,11 @@ class JobBoardHomePage
   JOB_BOARD_PREVIOUS_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id107']"
   JOB_BOARD_FIRST_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id102']"
   JOB_BOARD_LAST_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id129']"
-
+  JOB_BOARD_UPLOAD_RESUME_SUCCESS_OUTPUT_XPATH = ".//*[@id='atsApplicationSubmittedMain']"
+  JOB_BOARD_UPLOAD_RESUME_SUCCESS_TEXT = "Your resume was successfully added / updated."
+  JOB_BOARD_UPLOAD_RESUME_ERROR_TYPE_XPATH = ".//*[@id='j_id0:j_id1:atsForm']/span/table/tbody//td"
+  JOB_BOARD_UPLOAD_RESUME_ERROR_TYPE_TEXT = "Wrong file type. The following file types are allowed: pdf"
+  JOB_BOARD_UPLOAD_RESUME_BROWSE_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm']/table/tbody/tr[4]/td"
+  JOB_BOARD_UPLOAD_RESUME_ALL_TYPES_TEXT = "docx, doc, pdf, rtf, html, txt"
+  
 end

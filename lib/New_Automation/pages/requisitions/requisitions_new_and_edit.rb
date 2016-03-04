@@ -30,6 +30,7 @@ class RequisitionsNewAndEdit
   REQUISITIONS_CONTACT_FIELD_XPATH = ".//*[@id='CF00No0000008HtY9']"
   
   REQUISITIONS_HIRING_MANAGER_XPATH = "(//*[@class='lookupInput'])[4]/input"
+  REQUISITIONS_DISABLE_EEO_CHECKBOX_XPATH = "(.//*[@type='checkbox'])[4]"
   
     #DATE FIELDS
   REQUISITIONS_NEW_DATE_POSTED_XPATH = "(.//*[@class='detailList'])[1]/tbody/tr[1]/td[4]//input"

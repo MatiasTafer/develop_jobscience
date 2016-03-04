@@ -9,6 +9,7 @@ class SetupEditPage
   AUTO_SHARE_MODE_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Auto_Share_Mode__c"
   STANDARD_QUESTION_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Standard_Question_Handler__c"
   INVITE_TO_APPLY_CUSTOM_MESSAGE_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Invite_to_Apply_Custom_Message__c"
+  INVITE_TO_APPLY_CUSTOM_MESSAGE_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Invite_to_Apply_Custom_Message__c']"
   EEO_QUESTION_HANDLER_TEXT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__EEO_Question_Handler__c']"
   COMMIT_EEO_DEFAULT_VALUE_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Commit_EEO_Default_Value__c']" 
   ENABLE_CLOSE_JOB_ORDER_WIZARD_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Close_Job_Order_Wizard__c"
@@ -86,9 +87,17 @@ class SetupEditPage
   PARSE_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0O"
   PARSE_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
   RESUME_DAYS_VALID_TEXT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']"
+
+  ADD_RESUME_DUPE_PREVENTION_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Add_Resume_Dupe_Prevention__c']"
+  OVERWRITE_ADDRESS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Overwrite_Address__c']"
+  OVERWRITE_EDUCATION_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Overwrite_Education__c']"
+  OVERWRITE_EMPLOYMENT_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Overwrite_Employment__c']"
+  INLCUDE_SKILLS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Include_Skills__c']"
+
   OVERWRITE_ADDRESS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Overwrite_Address__c']"
   
   
+
   JOB_BOARD_DUPE_PREVENTION_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Job_Board_Dupe_Prevention__c']"
   
   ADD_RESUME_ALLOWED_FILETYPES_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Add_Resume_Allowed_Filetypes__c']"

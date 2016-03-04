@@ -5,8 +5,20 @@ require 'test-unit'
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
 
+
+require_relative './pages/applications_detail_page.rb'
+require_relative './pages/applications_home_page.rb'
+require_relative './pages/home_page.rb'
+require_relative './pages/contacts_home_page.rb'
+require_relative './pages/contacts_detail_page.rb'
+require_relative './pages/contacts_new_edit_page.rb'
+require_relative './pages/requisitions_home_page.rb'
+require_relative './pages/requisitions_detail_page.rb'
+require_relative './pages/requisitions_new_and_edit.rb'
+
 require './New_Automation/pages/applications/applications_detail_page.rb'
 require './New_Automation/pages/applications/applications_home_page.rb'
+
 
 
 class TestApplications < TestBasic
@@ -118,6 +130,8 @@ class TestApplications < TestBasic
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
     Common.CreateRequisitionPostJob(randomName, true)
+  
+    CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -185,7 +199,7 @@ class TestApplications < TestBasic
         }
     test = [
       {"click" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_APP_XPATH},
-      {"display" => ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH},
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH},
     ]
     Common.main(test)
     sleep(3)
@@ -199,9 +213,9 @@ class TestApplications < TestBasic
     sleep(6)
     
     test = [
-      {"display" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
       {"click" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
-      {"display" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
     ]
     Common.main(test) 
     sleep(2)
@@ -214,7 +228,7 @@ class TestApplications < TestBasic
     
     
     test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
     ]
     Common.main(test) 
@@ -225,7 +239,7 @@ class TestApplications < TestBasic
     sleep(3)
     
     test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH},
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_RADIO_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_SEND_EMAIL_BOX_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH}
@@ -236,7 +250,7 @@ class TestApplications < TestBasic
     sleep(5)
     
     test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH},
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH}
     ]
     Common.main(test)
@@ -247,7 +261,7 @@ class TestApplications < TestBasic
     $browser.get(currentUrl)
     
     test = [
-      {"display" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
           ]
     Common.main(test) 
     
@@ -255,5 +269,483 @@ class TestApplications < TestBasic
     
   end
   
+  #TC858 - Revert Stage
+  def test_RevertStage
+    randomName = SecureRandom.hex(4)
+    randomContact = SecureRandom.hex(4)
+    
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    Common.CreateRequisitionPostJob(randomName, true)
+    
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
+     
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(4)
+    
+    test = [
+    # Select a job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomName},
+    #Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+    # Click on Exception   
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
+    # Select Referral in picklist  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+    # Click "Save"  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
+      ]
+    Common.main(test)
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    
+    
+    
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    $wait.until {
+          $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
+        }
+     
+    test = [
+      {"click" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_APP_XPATH},
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH},
+    ]
+    Common.main(test)
+    sleep(3)
+    
+    currentUrl = $browser.current_url
+    
+    $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH).click
+    sleep(2)
+    newWindow3= $browser.window_handles.last
+    $browser.switch_to.window(newWindow3)   
+    sleep(4)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
+      {"click" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
+    ]
+    Common.main(test) 
+    sleep(2)
+    
+    newWindow4= $browser.window_handles.first
+    $browser.switch_to.window(newWindow4)
+    
+    sleep(6)
+    $browser.get(currentUrl)
+    
+    #
+    $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH).click
+    sleep(3)
+    newWindow5= $browser.window_handles.last
+    $browser.switch_to.window(newWindow5)   
+    sleep(6)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_CS1_STAGE_XPATH},
+      {"click" => ApplicationsDetailPage::MOVE_POPUP_CS1_STAGE_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CLOSE_XPATH},
+      {"click" => ApplicationsDetailPage::MOVE_POPUP_BTN_CLOSE_XPATH}
+    ]
+    Common.main(test) 
+    sleep(2)
+    
+    newWindow6= $browser.window_handles.first
+    $browser.switch_to.window(newWindow6)
+    
+    sleep(6)
+    $browser.get(currentUrl)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+    # 4 - Click on "Revert Stage'  
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+    ]
+    Common.main(test) 
+    sleep(1)
+    
+    newWindow7= $browser.window_handles.last
+    $browser.switch_to.window(newWindow7)
+    
+    sleep(3)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH},
+    # 5 - Select any previous stage (except Application)   
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_RADIO_2_XPATH},
+    # 6 - Click on "Next"  
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH}
+    ]
+    Common.main(test)
+    
+    # 7 - Click on "OK"
+    $browser.switch_to.alert.accept
+    sleep(5)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_XPATH},
+    ]
+    Common.main(test)
+    
+    # RESULT
+    # Success message will be displayed.
+    assert_equal(ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_TEXT, $browser.find_element(:xpath, ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_XPATH).text)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH},
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH}
+    ]
+    Common.main(test)
+    
+    newWindow8= $browser.window_handles.last
+    $browser.switch_to.window(newWindow8)
+    $browser.close
+    
+    newWindow9= $browser.window_handles.first
+    $browser.switch_to.window(newWindow9)
+    sleep(3)
+    $browser.get(currentUrl)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+          ]
+    Common.main(test) 
+    
+    # RESULT 
+    # Further stages will be deleted, and application will have Overall Stage = selected stage. 
+    assert_equal("Submittal", $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_OVERALL_STAGE_XPATH).text)
+    
+  end
+
+  #TC859 - Revert Stage, Send Email
+  def test_RevertStageSendMail
+    randomName = SecureRandom.hex(4)
+    randomContact = SecureRandom.hex(4)
+    
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    Common.CreateRequisitionPostJob(randomName, true)
+    
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
+     
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(4)
+    
+    test = [
+    # Select a job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomName},
+    #Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+    # Click on Exception   
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
+    # Select Referral in picklist  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+    # Click "Save"  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
+      ]
+    Common.main(test)
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    
+    
+    
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    $wait.until {
+          $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
+        }
+     
+    test = [
+      {"click" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_APP_XPATH},
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH},
+    ]
+    Common.main(test)
+    sleep(3)
+    
+    currentUrl = $browser.current_url
+    
+    $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH).click
+    
+    sleep(2)
+    newWindow3= $browser.window_handles.last
+    $browser.switch_to.window(newWindow3)   
+    sleep(4)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
+      {"click" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
+    ]
+    Common.main(test) 
+    sleep(2)
+    
+    newWindow4= $browser.window_handles.first
+    $browser.switch_to.window(newWindow4)
+    
+    sleep(6)
+    $browser.get(currentUrl)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+    # 4 - Click on "Revert Stage'  
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+    ]
+    Common.main(test) 
+    sleep(1)
+    
+    newWindow7= $browser.window_handles.last
+    $browser.switch_to.window(newWindow7)
+    
+    sleep(3)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_SEND_EMAIL_BOX_XPATH},
+    # 5 - Check "Send Email" box  
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_SEND_EMAIL_BOX_XPATH},
+    # 6 - Select "Aplication" stage  
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_RADIO_XPATH},
+    # 7 - Click on "Next"  
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH}
+    ]
+    Common.main(test)
+    
+    # 8 - Click on "OK"
+    $browser.switch_to.alert.accept
+    sleep(5)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_XPATH},
+    ]
+    Common.main(test)
+    
+    # RESULT
+    # Success message will be displayed.
+    assert_equal(ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_TEXT, $browser.find_element(:xpath, ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_XPATH).text)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH},
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_CLOSE_XPATH}
+    ]
+    Common.main(test)
+        
+    newWindow9= $browser.window_handles.first
+    $browser.switch_to.window(newWindow9)
+    sleep(3)
+    $browser.get(currentUrl)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+          ]
+    Common.main(test) 
+    
+    # RESULT 
+    # Further stages will be deleted, and application will have Overall Stage = selected stage. Email with merged fields from template will be sent to candidate.
+    assert_equal("Application", $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_OVERALL_STAGE_XPATH).text)
+    
+  end
+
+  #TC860 - TC860 - Revert Stage, Can't revert
+  def test_RevertStageCantRevert
+    randomName = SecureRandom.hex(4)
+    randomContact = SecureRandom.hex(4)
+    
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    Common.CreateRequisitionPostJob(randomName, true)
+    
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    #At least one account must exist
+    Common.CreateAccount(randomContact) 
+          
+    #At least one contact must exist 
+    Common.CreateContact(randomContact, randomContact)
+    
+    # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
+     
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    sleep(4)
+    
+    test = [
+    # Select a job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomName},
+    #Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+    # Click on Exception   
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
+    # Select Referral in picklist  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+    # Click "Save"  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
+      ]
+    Common.main(test)
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    
+    # 1 - Click on "Contacts" Tab
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # 2 - Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    $wait.until {
+          $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
+        }
+     
+    test = [
+    # 3 - Click on a Candidate's application that fits the preconditions => Application is in Application Stage. 
+      {"click" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_APP_XPATH},
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+    # 4 - Click on "Revert Stage'  
+      {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH}
+    ]
+    Common.main(test)
+    sleep(3)
+    # RESULT
+    # Pop-up window will be opened.
+    newWindow7= $browser.window_handles.last
+    $browser.switch_to.window(newWindow7)
+    
+    sleep(3)
+    
+    test = [
+      {"displayed" => ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_XPATH}
+    ]
+    Common.main(test) 
+    
+    # RESULT 
+    # The message "The Application selected cannot be Reverted as it is in the Application Stage. There is no stage it can be reverted to" will be displayed.
+    assert_equal(ApplicationsDetailPage::REVERT_STAGE_CANNOT_REVERT_MSG_TEXT, $browser.find_element(:xpath, ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_XPATH).text)
+    
+    $browser.close
+    
+    newWindow9= $browser.window_handles.first
+    $browser.switch_to.window(newWindow9)
+    sleep(1)
+    
+  end
   
 end

@@ -5,13 +5,28 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
+require_relative './pages/home_page.rb'
+require_relative './pages/home_page.rb'
+require_relative './pages/contacts_home_page.rb'
+require_relative './pages/contacts_detail_page.rb'
+require_relative './pages/contacts_new_edit_page.rb'
+require_relative './pages/question_sets_home_page.rb'
+require_relative './pages/question_sets_new_page.rb'
+require_relative './pages/question_set_detail_page.rb'
+require_relative './pages/question_sets_question_builder_page.rb'
+require_relative './pages/question_sets_new_question_page.rb'
+require_relative './pages/question_detail_page.rb'
+require_relative './pages/answer_edit_page.rb'
+require_relative './pages/answer_detail_page.rb'
+require_relative './pages/requisitions_home_page.rb'
+require_relative './pages/requisitions_detail_page.rb'
+require_relative './pages/requisitions_new_and_edit.rb'
+require_relative './pages/setup_page.rb'
+require_relative './pages/job_board_home_page.rb'
+require_relative './pages/job_board_job_detail.rb'
+require_relative './pages/applications_detail_page.rb'
+require_relative './pages/applications_home_page.rb'
 require './New_Automation/pages/home_page.rb'
-require './New_Automation/pages/questions/question_sets_home_page.rb'
-require './New_Automation/pages/questions/question_sets_new_page.rb'
-require './New_Automation/pages/questions/question_set_detail_page.rb'
-require './New_Automation/pages/questions/question_sets_question_builder_page.rb'
-require './New_Automation/pages/questions/question_sets_new_question_page.rb'
-require './New_Automation/pages/questions/question_detail_page.rb'
 require './New_Automation/pages/answers/answer_edit_page.rb'
 require './New_Automation/pages/answers/offers_home_page.rb'
 require './New_Automation/pages/requisitions/requisitions_home_page.rb'
@@ -21,6 +36,7 @@ require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
 require './New_Automation/pages/applications/applications_detail_page.rb'
+
 require_relative 'custom_settings.rb'
 
 class TestQuestionSets < TestBasic
@@ -1804,6 +1820,9 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_BTN_SAVE_XPATH).displayed?
       }
+     $wait.until{
+      $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_SCORE_XPATH).displayed?
+      }
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_NAME_XPATH).send_keys AnswerEditPage::ANSWER_DATA_NAME_1_TEXT
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_ANSWER_XPATH).send_keys AnswerEditPage::ANSWER_DATA_NAME_1_TEXT
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_ORDER_XPATH).send_keys AnswerEditPage::ANSWER_DATA_ORDER_1_INT
@@ -2045,6 +2064,432 @@ class TestQuestionSets < TestBasic
     assert_equal($browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_THIRD_ANSWER_LIST_XPATH).text, AnswerEditPage::ANSWER_DATA_NAME_3_TEXT)    
     
   end
+  
+  #TC861 - Rollover, different Question Sets
+  def test_RolloverDifferentQuestionSets
+    randomName = "a" + SecureRandom.hex(4)
+    randomName2 = "a" + SecureRandom.hex(4)
+    randomQS = SecureRandom.hex(4)
+    randomQS2 = SecureRandom.hex(4)
+    randomContact = SecureRandom.hex(4)
+    randomContact2 = SecureRandom.hex(4)
+    
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    Common.CreateQuestionSetEmpty(randomQS)
+    
+    Common.CreateQuestionSetEmpty(randomQS2)
+    
+    Common.CreateRequisitionPostJob(randomName, true, false, randomQS)
+    
+    Common.CreateRequisitionPostJob(randomName2, true, false, randomQS2)
+    
+    #Must have several accounts
+    Common.CreateAccount(randomContact) 
+          
+    #Must have several contacs
+    Common.CreateContact(randomContact, randomContact)
+    
+    #Must have several accounts
+    Common.CreateAccount(randomContact2) 
+          
+    #Must have several contacs
+    Common.CreateContact(randomContact2, randomContact2)
+    
+    # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
+     
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact2 + "')]]/../../../..//td[1]//input").click
+    
+    # Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    
+    sleep(4)
+    
+    test = [
+    # Select a job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomName},
+    #Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+    # Click on Exception   
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
+    # Select Referral in picklist  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+    # Click "Save"  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
+      ]
+    Common.main(test)
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    
+    # 1 - Click on "Requisitions"
+    $browser.get(HomePage::REQUISITION_TAB_LINK_URL)
+    
+    test= [
+      {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH}
+    ]
+    Common.main(test)
+    sleep(3)
+    # 2 - Select a Job Order
+    $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
+    
+    test= [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_ROLLOVER_CONTACTS_XPATH},
+    # 3 - Click on "Rollover Contacts"  
+      {"click" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_ROLLOVER_CONTACTS_XPATH},
+    ]
+    Common.main(test)
+    
+    sleep(2)
+    newWindow3= $browser.window_handles.last
+    $browser.switch_to.window(newWindow3)
+    sleep(2)
+    
+    test= [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_JOB_INPUT_XPATH},
+    # 4 - Select another job order that fits the preconditions  
+      {"set_text" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_JOB_INPUT_XPATH, "text" => randomName2},
+    # 5 - Click on "Rollover"  
+      {"click" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_BTN_ROLLOVER_XPATH},
+      {"displayed" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_MSG_CELL_XPATH}
+    ]
+    Common.main(test)
+    sleep(3)
+    # RESULT 
+    # A message stating that Rollover is impossible and prompt to apply contacts to the selected job order will be displayed.
+    assert_equal(RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_MSG_WARNING_TEXT, $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_MSG_CELL_XPATH).text)
+    
+    $browser.close
+    
+    newWindow9= $browser.window_handles.first
+    $browser.switch_to.window(newWindow9)
+  
+  end  
+ 
+  #TC862 - Rollover, same Question Sets
+  def test_RolloverSameQuestionSets
+    randomName = "a" + SecureRandom.hex(4)
+    randomName2 = "a" + SecureRandom.hex(4)
+    randomQS = SecureRandom.hex(4)
+    randomContact = SecureRandom.hex(4)
+    randomContact2 = SecureRandom.hex(4)
+    
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    Common.CreateQuestionSetEmpty(randomQS)
+    
+    Common.CreateRequisitionPostJob(randomName, true, false, randomQS)
+    
+    Common.CreateRequisitionPostJob(randomName2, true, false, randomQS)
+    
+    #Must have several accounts
+    Common.CreateAccount(randomContact) 
+          
+    #Must have several contacs
+    Common.CreateContact(randomContact, randomContact)
+    
+    #Must have several accounts
+    Common.CreateAccount(randomContact2) 
+          
+    #Must have several contacs
+    Common.CreateContact(randomContact2, randomContact2)
+    
+    # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
+     
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact2 + "')]]/../../../..//td[1]//input").click
+    
+    # Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    
+    sleep(4)
+    
+    test = [
+    # Select a job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomName},
+    #Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+    # Click on Exception   
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
+    # Select Referral in picklist  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+    # Click "Save"  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
+      ]
+    Common.main(test)
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    sleep(2)
+    # 1 - Click on "Requisitions"
+    $browser.get(HomePage::REQUISITION_TAB_LINK_URL)
+    
+    test= [
+      {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH}
+    ]
+    Common.main(test)
+    sleep(4)
+    # 2 - Select a Job Order
+    $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
+    
+    test= [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_ROLLOVER_CONTACTS_XPATH},
+    # 3 - Click on "Rollover Contacts"  
+      {"click" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_ROLLOVER_CONTACTS_XPATH},
+    ]
+    Common.main(test)
+    
+    sleep(2)
+    newWindow3= $browser.window_handles.last
+    $browser.switch_to.window(newWindow3)
+    sleep(2)
+    
+    test= [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_JOB_INPUT_XPATH},
+    # 4 - Select another job order that fits the preconditions  
+      {"set_text" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_JOB_INPUT_XPATH, "text" => randomName2},
+    # 5 - Click on "Rollover"  
+      {"click" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_BTN_ROLLOVER_XPATH},
+      {"displayed" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_MSG_CELL_XPATH}
+    ]
+    Common.main(test)
+    sleep(3)
+    # RESULT 
+    # New applications will be created for selected job order, they will have the same status, stage and prescreen as applications from original job order. Message will be displayed.
+    assert_equal(RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_MSG_SUCCESS_TEXT, $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_MSG_CELL_XPATH).text)
+    
+    
+    newWindow9= $browser.window_handles.first
+    $browser.switch_to.window(newWindow9)
+    
+    $browser.get(HomePage::REQUISITION_TAB_LINK_URL)
+    
+    test= [
+      {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH}
+    ]
+    Common.main(test)
+    sleep(3)
+    $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + randomName2 + "')]]").click
+    
+    test= [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    currentUrl = $browser.current_url
+    
+    test= [
+      {"click" => RequisitionsDetail::REQUISITIONS_DETAIL_FIRST_APP_LIST_XPATH},
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH}
+    ]
+    Common.main(test)
+    
+    assert_equal("New", $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_STATUS_XPATH).text)
+    assert_equal("Application", $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_OVERALL_STAGE_XPATH).text)
+    
+    $browser.get(currentUrl)
+    
+      test= [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    currentUrl = $browser.current_url
+    
+    test= [
+      {"click" => RequisitionsDetail::REQUISITIONS_DETAIL_SECOND_APP_LIST_XPATH},
+      {"displayed" => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH}
+    ]
+    Common.main(test)
+    
+    assert_equal("New", $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_STATUS_XPATH).text)
+    assert_equal("Application", $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_OVERALL_STAGE_XPATH).text)
+    
+    $browser.switch_to.window($browser.window_handles.last)
+    $browser.close
+    
+    $browser.switch_to.window($browser.window_handles.last)
+    $browser.close
+  end
+
+  #TC863 - Rollover, same Job Order
+  def test_RolloverSameJobOrder
+    randomName = SecureRandom.hex(4)
+    randomQS = SecureRandom.hex(4)
+    randomContact = SecureRandom.hex(4)
+    randomContact2 = SecureRandom.hex(4)
+    
+    #PRECONDITIONS
+    #Login
+    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    
+    CustomSettings.EnableEnhancedApplyToJob(true)
+    
+    Common.CreateQuestionSetEmpty(randomQS)
+        
+    Common.CreateRequisitionPostJob(randomName, true, false, randomQS)
+    
+    
+    #Must have several accounts
+    Common.CreateAccount(randomContact) 
+          
+    #Must have several contacs
+    Common.CreateContact(randomContact, randomContact)
+    
+    #Must have several accounts
+    Common.CreateAccount(randomContact2) 
+          
+    #Must have several contacs
+    Common.CreateContact(randomContact2, randomContact2)
+    
+    # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
+     
+    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    
+    test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+    ]
+    Common.main(test)
+    
+    # Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    
+    # Select a Candidate
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact2 + "')]]/../../../..//td[1]//input").click
+    
+    # Click on "Apply to jobs"
+    Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
+    sleep(3)
+    #A pop up window will be disaplyed
+    newWindow= $browser.window_handles.last
+    $browser.switch_to.window(newWindow)
+    
+    sleep(4)
+    
+    test = [
+    # Select a job
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomName},
+    #Click "Next" 
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+    # Click on Exception   
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
+    # Select Referral in picklist  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+    # Click "Save"  
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
+      ]
+    Common.main(test)
+    
+    newWindow2= $browser.window_handles.first
+    $browser.switch_to.window(newWindow2)
+    
+    # 1 - Click on "Requisitions"
+    $browser.get(HomePage::REQUISITION_TAB_LINK_URL)
+    
+    test= [
+      {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH}
+    ]
+    Common.main(test)
+    sleep(2)
+    # 2 - Select a Job Order
+    $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
+    
+    test= [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_ROLLOVER_CONTACTS_XPATH},
+    # 3 - Click on "Rollover Contacts"  
+      {"click" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_ROLLOVER_CONTACTS_XPATH},
+    ]
+    Common.main(test)
+    
+    sleep(2)
+    newWindow3= $browser.window_handles.last
+    $browser.switch_to.window(newWindow3)
+    sleep(2)
+    
+    test= [
+      {"displayed" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_JOB_INPUT_XPATH},
+    # 4 - Select another job order that fits the preconditions  
+      {"set_text" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_JOB_INPUT_XPATH, "text" => randomName},
+    # 5 - Click on "Rollover"  
+      {"click" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_BTN_ROLLOVER_XPATH},
+      {"displayed" => RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_MSG_CELL_XPATH}
+    ]
+    Common.main(test)
+    sleep(3)
+    # RESULT 
+    # A message stating that Rollover is impossible and prompt to apply contacts to the selected job order will be displayed.
+    assert_equal("The Rollover Process has been completed. Applications Rolled Over: 0.", $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_ROLLOVER_POPUP_MSG_CELL_XPATH).text)
+    
+    $browser.close
+    
+    newWindow9= $browser.window_handles.first
+    $browser.switch_to.window(newWindow9)
+    
+
+  end
+  
+  ######## CUSTOM METHODS ############
   
   def CreateQuestionSetWithQuestions(name)
          
