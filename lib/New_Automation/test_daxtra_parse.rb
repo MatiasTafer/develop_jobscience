@@ -15,6 +15,7 @@ require_relative './pages/job_board_login_page.rb'
 require_relative './pages/add_resume_popup_page.rb'
 
 class TestDaxtraParse < TestBasic
+  
   @@Daxtra01 = "/New_Automation/Daxtra/DaxtraResume01.pdf"
   @@Daxtra02 = "/New_Automation/Daxtra/DaxtraResume02.pdf"
   @@Daxtra03 = "/New_Automation/Daxtra/DaxtraResume03.pdf"
