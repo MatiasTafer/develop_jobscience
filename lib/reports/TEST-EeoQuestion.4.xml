@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="EeoQuestion" tests="9" time="548.185743" failures="0" errors="7" skipped="0" assertions="3" timestamp="2016-03-04T16:22:16-02:00">
+  <testcase name="test_eeoApplyWithLinkedInEeoDisable" time="52.904093" assertions="1">
+  </testcase>
+  <testcase name="test_eeoApplyWithLinkedInEeoEnable" time="81.576829" assertions="1">
+  </testcase>
+  <testcase name="test_eeoCommitDefault" time="53.662661" assertions="0">
+    <error type="Selenium::WebDriver::Error::TimeOutError" message="timed out after 20 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@value='Continue']&quot;})">
+timed out after 20 seconds (Unable to locate element: {"method":"xpath","selector":".//*[@value='Continue']"}) (Selenium::WebDriver::Error::TimeOutError)
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:76:in `until'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:87:in `displayed'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:269:in `block in main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `each'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `main'
+/Users/admin/jobscience/lib/New_Automation/tests/test_eeo_question.rb:92:in `test_eeoCommitDefault'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_eeoDisclaimersOnlyCustom" time="31.45175" assertions="0">
+    <error type="Errno::ECONNREFUSED" message="Connection refused - connect(2)">
+Connection refused - connect(2) (Errno::ECONNREFUSED)
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:878:in `initialize'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:878:in `open'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:878:in `block in connect'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/timeout.rb:66:in `timeout'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:877:in `connect'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:862:in `do_start'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:851:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1367:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:107:in `response_for'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:58:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:592:in `find_element_by'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/search_context.rb:61:in `find_element'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:81:in `click'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:282:in `rescue in block in main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:277:in `block in main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `each'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `main'
+/Users/admin/jobscience/lib/New_Automation/tests/test_eeo_question.rb:232:in `test_eeoDisclaimersOnlyCustom'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+    <error type="Errno::ECONNREFUSED" message="Connection refused - connect(2)">
+Connection refused - connect(2) (Errno::ECONNREFUSED)
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:878:in `initialize'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:878:in `open'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:878:in `block in connect'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/timeout.rb:66:in `timeout'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:877:in `connect'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:862:in `do_start'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:851:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1367:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:107:in `response_for'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:58:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:222:in `close'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/driver.rb:183:in `close'
+/Users/admin/jobscience/lib/New_Automation/tests/test_basic.rb:33:in `teardown'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:202:in `block in run_fixture_callback'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:207:in `call'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:207:in `run_fixture_callback'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:190:in `block in run_fixture'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:189:in `each'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:189:in `run_fixture'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:223:in `run_teardown'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:439:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_eeoDisclaimersStandardCustom" time="65.26708" assertions="0">
+    <error type="Selenium::WebDriver::Error::TimeOutError" message="timed out after 20 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@value='Continue']&quot;})">
+timed out after 20 seconds (Unable to locate element: {"method":"xpath","selector":".//*[@value='Continue']"}) (Selenium::WebDriver::Error::TimeOutError)
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:76:in `until'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:87:in `displayed'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:269:in `block in main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `each'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `main'
+/Users/admin/jobscience/lib/New_Automation/tests/test_eeo_question.rb:212:in `test_eeoDisclaimersStandardCustom'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_eeoQuestionHandlerAlways" time="54.468146" assertions="0">
+    <error type="Selenium::WebDriver::Error::TimeOutError" message="timed out after 20 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@value='Continue']&quot;})">
+timed out after 20 seconds (Unable to locate element: {"method":"xpath","selector":".//*[@value='Continue']"}) (Selenium::WebDriver::Error::TimeOutError)
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:76:in `until'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:87:in `displayed'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:269:in `block in main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `each'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `main'
+/Users/admin/jobscience/lib/New_Automation/tests/test_eeo_question.rb:120:in `test_eeoQuestionHandlerAlways'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_eeoQuestionHandlerOmit" time="39.873881" assertions="0">
+    <error type="Selenium::WebDriver::Error::TimeOutError" message="timed out after 20 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id='js-menu-login']/a&quot;})">
+timed out after 20 seconds (Unable to locate element: {"method":"xpath","selector":".//*[@id='js-menu-login']/a"}) (Selenium::WebDriver::Error::TimeOutError)
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:76:in `until'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:87:in `displayed'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:269:in `block in main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `each'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `main'
+/Users/admin/jobscience/lib/New_Automation/tests/test_eeo_question.rb:176:in `test_eeoQuestionHandlerOmit'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_eeoQuestionHandlerPopulate" time="54.412761" assertions="0">
+    <error type="Selenium::WebDriver::Error::TimeOutError" message="timed out after 20 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@value='Continue']&quot;})">
+timed out after 20 seconds (Unable to locate element: {"method":"xpath","selector":".//*[@value='Continue']"}) (Selenium::WebDriver::Error::TimeOutError)
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:76:in `until'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:87:in `displayed'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:269:in `block in main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `each'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:262:in `main'
+/Users/admin/jobscience/lib/New_Automation/tests/test_eeo_question.rb:148:in `test_eeoQuestionHandlerPopulate'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_eeoQuestionHiddenQuestion" time="114.566066" assertions="1">
+    <failure type="Test::Unit::Notification" message="EeoQuestion#test_eeoQuestionHiddenQuestion was redefined">
+EeoQuestion#test_eeoQuestionHiddenQuestion was redefined (Test::Unit::Notification)
+/Users/admin/jobscience/lib/New_Automation/tests/test_eeo_question.rb:47:in `&lt;class:EeoQuestion&gt;'
+/Users/admin/jobscience/lib/New_Automation/tests/test_eeo_question.rb:23:in `&lt;top (required)&gt;'
+New_Automation.rb:94:in `require'
+New_Automation.rb:94:in `&lt;main&gt;'    </failure>
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@value='Edit']
+click
+displayed
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__LinkedIn_Apply__c']
+checked
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__LinkedIn_Apply__c'][@checked='checked']
+click
+displayed
+.//*[@value='Edit']
+
+main
+
+displayed
+.//*[@id='js-menu-login']/a
+click
+displayed
+.//*[@style='margin-top:1em;']/tbody/tr[1]//input
+set_text
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a
+click
+displayed
+.//*[@id='LinkedInIcon']
+click
+
+main
+
+displayed
+.//*[@id='session_key-oauthAuthorizeForm']
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@value='Edit']
+click
+displayed
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__LinkedIn_Apply__c']
+checked
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__LinkedIn_Apply__c'][@checked='checked']
+click
+displayed
+.//*[@value='Edit']
+
+main
+
+displayed
+.//*[@id='js-menu-login']/a
+click
+displayed
+.//*[@style='margin-top:1em;']/tbody/tr[1]//input
+set_text
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a
+click
+displayed
+.//*[@id='LinkedInIcon']
+click
+
+main
+
+displayed
+.//*[@id='session_key-oauthAuthorizeForm']
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Commit_EEO_Default_Value__c']
+checked
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Commit_EEO_Default_Value__c'][@checked='checked']
+click
+
+main
+
+displayed
+.//*[@id='js-menu-login']/a
+click
+displayed
+.//*[@style='margin-top:1em;']/tbody/tr[1]//input
+set_text
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a
+click
+displayed
+.//*[@class='atsJobDetailsAlreadyLogin']//a
+click
+displayed
+.//*[@value='Continue']
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@name='edit']
+click
+displayed
+.//*[@id='cke_j_id0:frm:PageBlock:j_id212:j_id213:j_id214:textAreaDelegate_ts2__EEO_Text__c']
+set_text
+checked
+((.//*[@class='detailList'])[9])/tbody/tr[3]/td/input[@checked='checked']
+Error
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@name='edit']
+click
+displayed
+.//*[@id='cke_j_id0:frm:PageBlock:j_id212:j_id213:j_id214:textAreaDelegate_ts2__EEO_Text__c']
+set_text
+unchecked
+((.//*[@class='detailList'])[9])/tbody/tr[3]/td/input[not (@checked='checked')]
+click
+
+main
+
+displayed
+.//*[@id='js-menu-login']/a
+click
+displayed
+.//*[@style='margin-top:1em;']/tbody/tr[1]//input
+set_text
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a
+click
+displayed
+.//*[@class='atsJobDetailsAlreadyLogin']//a
+click
+displayed
+.//*[@value='Continue']
+
+main
+
+displayed
+.//*[@id='js-menu-login']/a
+click
+displayed
+.//*[@style='margin-top:1em;']/tbody/tr[1]//input
+set_text
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a
+click
+displayed
+.//*[@class='atsJobDetailsAlreadyLogin']//a
+click
+displayed
+.//*[@value='Continue']
+
+main
+
+displayed
+.//*[@id='js-menu-login']/a
+
+main
+
+displayed
+.//*[@id='js-menu-login']/a
+click
+displayed
+.//*[@style='margin-top:1em;']/tbody/tr[1]//input
+set_text
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a
+click
+displayed
+.//*[@class='atsJobDetailsAlreadyLogin']//a
+click
+displayed
+.//*[@value='Continue']
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@name='edit']
+click
+displayed
+((.//*[@class='detailList'])[10])/tbody/tr[2]/td[1]/input
+checked
+((.//*[@class='detailList'])[10])/tbody/tr[2]/td[1]/input[@checked='checked']
+Error
+checked
+((.//*[@class='detailList'])[10])/tbody/tr[3]/td[1]/input[@checked='checked']
+Error
+checked
+((.//*[@class='detailList'])[10])/tbody/tr[4]/td[1]/input[@checked='checked']
+Error
+checked
+((.//*[@class='detailList'])[10])/tbody/tr[2]/td[2]/input[@checked='checked']
+Error
+checked
+((.//*[@class='detailList'])[10])/tbody/tr[3]/td[2]/input[@checked='checked']
+Error
+click
+  </system-out>
+</testsuite>
