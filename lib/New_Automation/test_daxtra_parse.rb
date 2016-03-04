@@ -1559,7 +1559,7 @@ class TestDaxtraParse < TestBasic
   end 
 
   #TC166 - Upload a resume in English
-  def test_UploadResumeGerman
+  def test_UploadResumeEnglish
     randomContact = "a" + SecureRandom.hex(4)
     
     #PRECONDITIONS:
