@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="EeoQuestion" tests="1" time="131.841982" failures="0" errors="0" skipped="0" assertions="1" timestamp="2016-03-04T18:47:26-02:00">
+  <testcase name="test_eeoQuestionHiddenQuestion" time="131.841346" assertions="1">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@name='edit']
+click
+displayed
+((.//*[@class='detailList'])[10])/tbody/tr[2]/td[1]/input
+unchecked
+((.//*[@class='detailList'])[10])/tbody/tr[2]/td[1]/input[not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[10])/tbody/tr[3]/td[1]/input[not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[10])/tbody/tr[4]/td[1]/input[not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[10])/tbody/tr[2]/td[2]/input[not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[10])/tbody/tr[3]/td[2]/input[not (@checked='checked')]
+click
+  </system-out>
+</testsuite>
