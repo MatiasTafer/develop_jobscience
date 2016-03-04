@@ -85,7 +85,7 @@ class SetupEditPage
   
   # Parse settings edit page
   PARSE_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0O"
-  PARSE_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
+  PARSE_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@id='CS_list:CS_Form:theDetailPageBlock:thePageBlockButtons:edit']"
   RESUME_DAYS_VALID_TEXT_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']"
 
   ADD_RESUME_DUPE_PREVENTION_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Add_Resume_Dupe_Prevention__c']"

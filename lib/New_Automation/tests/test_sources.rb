@@ -28,8 +28,8 @@ require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 class TestSources < TestBasic
   #
-  $USER_JOB_BOARD = "ETTTTE@fromthesky.up"
-  $PASSWORD_JOB_BOARD = "otherworld666"
+  $USER_JOB_BOARD = "test2@fromthesky.up"
+  $PASSWORD_JOB_BOARD = "automatable666"
   #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
   
 =begin
@@ -121,6 +121,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
     
+    Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
     # Precondition
     Common.logout_job_board
     

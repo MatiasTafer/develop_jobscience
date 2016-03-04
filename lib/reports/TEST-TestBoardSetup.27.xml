@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestBoardSetup" tests="6" time="696.86855" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-03-04T17:52:42-03:00">
+  <testcase name="test_board_setup_tc1045" time="70.132028" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1046" time="178.51767" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1047" time="106.657829" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1048" time="79.586312" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1049" time="181.413598" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1050" time="80.559713" assertions="0">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+checked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id41'][@checked='checked']
+Error
+click
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+
+main
+
+displayed
+.//*[@id='CS_list:CS_Form:theDetailPageBlock:thePageBlockButtons:edit']
+click
+displayed
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']
+set_text
+click
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+checked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id44'][@checked='checked']
+Error
+click
+
+main
+
+click
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+checked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id41'][@checked='checked']
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[6]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[7]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[9]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[2]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id44'][not (@checked='checked')]
+click
+
+main
+
+displayed
+.//*[@id='thePage:theForm:thePageBlock:loginPageBlockSection:enableLogin']
+set_text
+click
+displayed
+.//*[@value='Edit']
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:email']
+set_text
+set_text
+set_text
+set_text
+set_text
+set_text_exist
+error in set_text_exist
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]
+
+main
+
+displayed
+.//*[@id='CS_list:CS_Form:theDetailPageBlock:thePageBlockButtons:edit']
+click
+displayed
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']
+set_text
+click
+displayed
+.//*[@id='CS_list:CS_Form:theDetailPageBlock:thePageBlockButtons:edit']
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+unchecked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id44'][not (@checked='checked')]
+click
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:email']
+set_text
+set_text
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:j_id53:0']
+click
+displayed
+.//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[6]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[7]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[9]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[2]//*[@type='checkbox'][not (@checked='checked')]
+click
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:email']
+set_text
+set_text
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:j_id53:0']
+displayed
+.//*[@id='j_id0:j_id1:atsForm:j_id53:1']
+displayed
+.//*[@id='j_id0:j_id1:atsForm:j_id53:2']
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[6]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+checked
+((.//*[@class='detailList'])[1])/tbody/tr[7]/td[1]//*[@type='checkbox'][@checked='checked']
+Error
+checked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[1]//*[@type='checkbox'][@checked='checked']
+Error
+checked
+((.//*[@class='detailList'])[1])/tbody/tr[9]/td[1]//*[@type='checkbox'][@checked='checked']
+Error
+checked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[2]//*[@type='checkbox'][@checked='checked']
+Error
+click
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:email']
+set_text
+set_text
+set_text
+click
+displayed
+.//*[@value='Continue']
+click
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+checked
+((.//*[@class='detailList'])[1])/tbody/tr[6]/td[1]//*[@type='checkbox'][@checked='checked']
+Error
+checked
+((.//*[@class='detailList'])[1])/tbody/tr[7]/td[1]//*[@type='checkbox'][@checked='checked']
+checked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[1]//*[@type='checkbox'][@checked='checked']
+checked
+((.//*[@class='detailList'])[1])/tbody/tr[9]/td[1]//*[@type='checkbox'][@checked='checked']
+checked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[2]//*[@type='checkbox'][@checked='checked']
+click
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:email']
+set_text
+set_text
+set_text
+set_text_exist
+error in set_text_exist
+click
+displayed
+.//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]
+  </system-out>
+</testsuite>

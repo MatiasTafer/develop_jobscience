@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestBoardSetup" tests="1" time="110.491906" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-03-04T16:39:45-03:00">
+  <testcase name="test_board_setup_tc1055" time="110.4915" assertions="0">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+unchecked
+((.//*[@class='detailList'])[4])/tbody/tr[6]/td[1]/input[not (@checked='checked')]
+click
+displayed
+.//*[@id='topButtonRow']/input[1]
+
+main
+
+not displayed
+  </system-out>
+</testsuite>

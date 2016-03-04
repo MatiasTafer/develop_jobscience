@@ -105,8 +105,9 @@ class Common
   end
   
   def self.hassert(field)
-    return assert $browser.find_element(:xpath, field).displayed?
- 
+    $wait.until{
+      assert $browser.find_element(:xpath, field).displayed?
+    }
   end
   
   def self.hassert_equal(text, text2)
@@ -607,7 +608,7 @@ class Common
   def self.CreateUserJobBoard(email, password, fname="a", lname="b")
     
     # Login for JobBoard enable
-    #CustomSettings.JobBoardLogin(true)
+    CustomSettings.JobBoardLogin(true)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -742,7 +743,7 @@ class Common
   def self.register_job_board(username, password)
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    #Common.login(Common::USER_EMAIL, Common::PASSWORD)
     # Precondition
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
@@ -756,6 +757,7 @@ class Common
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_BUILDER_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_COVER_LETTER_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
     Common.main(test)

@@ -7,6 +7,7 @@ class JobBoardRegisterPage
   JOB_BOARD_REGISTER_LAST_NAME_XPATH = ".//*[@id='j_id0:j_id1:atsForm:lastName']"
   JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH = ".//*[@class='atsButton']"
   JOB_BOARD_REGISTER_QUESTION_XPATH = ".//*[@id='j_id0:j_id1:atsForm:candidateSource']"
+  PHONE_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:phone']"
   #SECOND STEP
   JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH = ".//*[@id='j_id0:j_id1:atsForm']/table/tbody/tr[8]/td/input"
   JOB_BOARD_REGISTER_PRIVACY_POLICY_TEXT = "This is a privacy policy statement. Thank you!"

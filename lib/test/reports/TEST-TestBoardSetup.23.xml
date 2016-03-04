@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestBoardSetup" tests="1" time="120.107569" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-03-04T16:26:53-03:00">
+  <testcase name="test_board_setup_tc1051" time="120.106898" assertions="0">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[9]/td[2]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[10]/td[2]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id54'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[12]/td[2]//*[@type='checkbox'][not (@checked='checked')]
+click
+displayed
+.//*[@id='topButtonRow']/input[1]
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:email']
+set_text
+set_text
+set_text
+set_text
+set_text_exist
+click
+displayed
+.//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]
+  </system-out>
+</testsuite>

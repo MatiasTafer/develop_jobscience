@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestBoardSetup" tests="1" time="85.180656" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-03-04T18:23:30-03:00">
+  <testcase name="test_board_setup_tc1054" time="85.180307" assertions="0">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//a[text()[contains(.,'Careers')]]
+click
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+checked
+((.//*[@class='detailList'])[4])/tbody/tr[6]/td[1]/input[@checked='checked']
+Error
+click
+displayed
+.//*[@id='topButtonRow']/input[1]
+
+main
+
+displayed
+.//*[@name='j_id0:j_id1:atsForm:j_id51']
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:0:j_id82:0:j_id83']/a
+  </system-out>
+</testsuite>

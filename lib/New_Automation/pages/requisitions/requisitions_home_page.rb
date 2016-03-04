@@ -1,5 +1,5 @@
 class RequisitionsHomePage
-  REQUISITIONS_PAGE_BTN_NEW_XPATH = ".//*[@name='new']"
+  REQUISITIONS_PAGE_BTN_NEW_XPATH = ".//*[@value='New Requisition']"
   REQUISITIONS_PAGE_BTN_TRANSFER_JOBS_XPATH = "(.//*[@class='outer']/tbody//*[@class='btn'])[3]"
   REQUISITIONS_PAGE_BTN_CHANGE_PRIORITY_JOBS_XPATH = "(.//*[@class='outer']/tbody//*[@class='btn'])[2]"
   REQUISITIONS_PAGE_BTN_CHANGE_STATUS_JOBS_XPATH = "(.//*[@class='outer']/tbody//*[@class='btn'])[4]"

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestBoardSetup" tests="10" time="1253.806835" failures="0" errors="3" skipped="0" assertions="1" timestamp="2016-03-04T17:21:37-03:00">
+  <testcase name="test_RSSFeddCustomizableFields" time="97.957723" assertions="1">
+  </testcase>
+  <testcase name="test_board_setup_tc1040" time="133.774496" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1041" time="126.802524" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1042" time="72.246371" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1043" time="72.22387" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1044" time="106.34466" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1045" time="69.403024" assertions="0">
+  </testcase>
+  <testcase name="test_board_setup_tc1046" time="449.748826" assertions="0">
+    <error type="Selenium::WebDriver::Error::TimeOutError" message="timed out after 30 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]&quot;})">
+timed out after 30 seconds (Unable to locate element: {"method":"xpath","selector":".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"}) (Selenium::WebDriver::Error::TimeOutError)
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:76:in `until'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:87:in `displayed'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:270:in `block in main'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:263:in `each'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:263:in `main'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:787:in `register_job_board'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/test_board_setup.rb:245:in `test_board_setup_tc1046'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_board_setup_tc1047" time="103.906132" assertions="0">
+    <error type="Selenium::WebDriver::Error::TimeOutError" message="timed out after 30 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id='j_id0:j_id1:atsForm:j_id53:0']&quot;})">
+timed out after 30 seconds (Unable to locate element: {"method":"xpath","selector":".//*[@id='j_id0:j_id1:atsForm:j_id53:0']"}) (Selenium::WebDriver::Error::TimeOutError)
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:76:in `until'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:87:in `displayed'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:270:in `block in main'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:263:in `each'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:263:in `main'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/test_board_setup.rb:290:in `test_board_setup_tc1047'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_board_setup_tc1048">
+    <error type="Errno::ECONNREFUSED" message="Connection refused - connect(2)">
+Connection refused - connect(2) (Errno::ECONNREFUSED)
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:878:in `initialize'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:878:in `open'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:878:in `block in connect'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/timeout.rb:66:in `timeout'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:877:in `connect'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1451:in `begin_transport'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1408:in `transport_request'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1382:in `request'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1375:in `block in request'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:852:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1373:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:107:in `response_for'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:58:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:222:in `close'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/driver.rb:183:in `close'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/test_basic.rb:33:in `teardown'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:202:in `block in run_fixture_callback'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:207:in `call'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:207:in `run_fixture_callback'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:190:in `block in run_fixture'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:189:in `each'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:189:in `run_fixture'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:223:in `run_teardown'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:439:in `ensure in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:438:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@id='topButtonRow']/input[4]
+click
+displayed
+.//*[@id='j_id0:frm:j_id33:j_id34']/input[1]
+click
+displayed
+.//*[@id='j_id0:frm:j_id33:j_id34']/input[1]
+click
+displayed
+.//*[@id='j_id0:frm:j_id33:j_id34']/input[1]
+click
+displayed
+.//*[@id='j_id0:frm:j_id33:j_id151']/div[2]/table/tbody/tr[3]/td/a
+click
+firefox
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+checked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id39'][@checked='checked']
+Error
+click
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+unchecked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id39'][not (@checked='checked')]
+click
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+unchecked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id41'][not (@checked='checked')]
+click
+
+main
+
+(.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:tb']/child::tr/child::td/child::a)[1]
+.//*[@id='j_id0:j_id4:j_id128'][text()[contains(.,'You have already applied')]]
+
+displayed
+.//*[@class='atsJobDetailsAlreadyLogin']//a
+click
+displayed
+(.//*[@class='atsInput'])[1]
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+checked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id41'][@checked='checked']
+Error
+click
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+
+main
+
+displayed
+.//*[@id='CS_list:CS_Form:theDetailPageBlock:thePageBlockButtons:edit']
+click
+displayed
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']
+set_text
+click
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+checked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id44'][@checked='checked']
+Error
+click
+
+main
+
+click
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+checked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id41'][@checked='checked']
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[6]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[7]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[9]/td[1]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+((.//*[@class='detailList'])[1])/tbody/tr[8]/td[2]//*[@type='checkbox'][not (@checked='checked')]
+unchecked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id44'][not (@checked='checked')]
+click
+
+main
+
+displayed
+.//*[@id='thePage:theForm:thePageBlock:loginPageBlockSection:enableLogin']
+set_text
+click
+displayed
+.//*[@value='Edit']
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:email']
+set_text
+set_text
+set_text
+set_text
+set_text
+set_text_exist
+error in set_text_exist
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]
+
+main
+
+displayed
+.//*[@id='CS_list:CS_Form:theDetailPageBlock:thePageBlockButtons:edit']
+click
+displayed
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']
+set_text
+click
+displayed
+.//*[@id='CS_list:CS_Form:theDetailPageBlock:thePageBlockButtons:edit']
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+click
+unchecked
+.//*[@id='j_id0:frm:PageBlock:j_id32:j_id44'][not (@checked='checked')]
+click
+
+main
+
+displayed
+.//*[@id='js-menu-register']/a
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:email']
+set_text
+set_text
+set_text
+click
+displayed
+.//*[@id='j_id0:j_id1:atsForm:j_id53:0']
+
+main
+
+displayed
+.//*[@id='topButtonRow']/input[1]
+  </system-out>
+</testsuite>

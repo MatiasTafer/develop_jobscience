@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestBoardSetup" tests="1" time="34.738486" failures="0" errors="1" skipped="0" assertions="0" timestamp="2016-03-04T15:55:14-03:00">
+  <testcase name="test_board_setup_tc1047" time="34.738033" assertions="0">
+    <error type="NameError" message="uninitialized constant BoardSetupDetailPage::BOARD_EDIT_SAVE_BUTTON_XPATH">
+uninitialized constant BoardSetupDetailPage::BOARD_EDIT_SAVE_BUTTON_XPATH (NameError)
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/test_board_setup.rb:272:in `test_board_setup_tc1047'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@id='CS_list:CS_Form:theDetailPageBlock:thePageBlockButtons:edit']
+click
+displayed
+.//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Resume_Days_Valid__c']
+set_text
+click
+displayed
+.//*[@id='CS_list:CS_Form:theDetailPageBlock:thePageBlockButtons:edit']
+  </system-out>
+</testsuite>
