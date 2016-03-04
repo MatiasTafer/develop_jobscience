@@ -94,7 +94,6 @@ class SetupEditPage
   OVERWRITE_EMPLOYMENT_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Overwrite_Employment__c']"
   INLCUDE_SKILLS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Include_Skills__c']"
 
-  OVERWRITE_ADDRESS_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Overwrite_Address__c']"
   
   
 

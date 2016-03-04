@@ -31,7 +31,6 @@ class ContactDetailPage
   CONTACT_DETAIL_NOTES_ATTACH_LIST_THIRD_XPATH = "(.//*[@class='list'])[3]//tr[4]"
   CONTACT_DETAIL_NOTES_ATTACH_LIST_FOURTH_XPATH = "(.//*[@class='list'])[3]//tr[5]"
   CONTACT_DETAIL_NOTES_ATTACH_LIST_FIFTH_XPATH = "(.//*[@class='list'])[3]//tr[6]"
-  CONTACT_DETAIL_MAILING_ADDRESS_XPATH = ".//*[@id='con19_ileinner']"
   CONTACT_DETAIL_EMPLOYMENT_LIST_XPATH = "(.//*[@class='list'])[10]"
   CONTACT_DETAIL_EMPLOYMENT_LIST_FIRST_NAME_XPATH = "(.//*[@class='list'])[10]//tr[2]/td[2]"
   CONTACT_DETAIL_EDUCATION_LIST_FIRST_XPATH = "(.//*[@class='list'])[9]//tr[2]/th/a"
