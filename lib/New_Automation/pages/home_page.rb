@@ -23,6 +23,9 @@ class HomePage
   JOB_TEMPLATES_TAB_LINK_URL = "https://na17.salesforce.com/a0B/o"
   STANDARD_QUESTIONS_TAB_LINK = "https://na17.salesforce.com/a0f/o"
   JOB_TEMPLATE_MAPPING_TAB_LINK = "https://na17.salesforce.com/a0J/o"
+  SUBMITTALS_TAB_LINK_XPATH = "https://ts2extams.na17.visual.force.com/apex/Submittal_Custom_List?save_new=1&sfdc.override=1"
+  CHATTER_TAB_URL = "https://na17.salesforce.com/_ui/core/chatter/ui/ChatterPage"
+  
   LOGIN_URL = "https://login.salesforce.com/"
 
   ALL_CONTACTS_TAB_LINK = "https://na17.salesforce.com/003?fcf=00Bo0000003aqv0"
@@ -47,5 +50,5 @@ class HomePage
   
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
   JOB_BOARD_INTERNAL_URL = "http://js-recruiting-148857d918a-14910044900.force.com/internal"
-
+                        
 end
