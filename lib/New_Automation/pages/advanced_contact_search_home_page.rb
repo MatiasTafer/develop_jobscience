@@ -1,11 +1,9 @@
 class AdvancedContactSearchHomePage
 
-  ADVANCED_CONTACT_SEARCH_ID = "sbsearch'"
-
   # Keyword Search Tab
-  KEYWORD_TAB_ID = "ssPg:topFm:booleanTab_lbl"
+  KEYWORD_TAB_XPATH = "(.//*[@class='rich-tabhdr-side-cell']/table)[1]"
 
-  SEARCH_CANDIDATE_ONLY_CHECKBOX_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:searchCandidateLfF"
+  SEARCH_CANDIDATE_ONLY_CHECKBOX_XPATH = "(.//*[@type='checkbox'])[1]"
   SEARCH_K_BUTTON_ID = "ssPg:topFm:booleanSearchPb:booleanSearchPbBtns:booleanSearchBtn"
   CLEAR_K_BUTTON_ID = "ssPg:topFm:booleanSearchPb:booleanSearchPbBtns:booleanClearBtn"
   ALL_THESE_WORDS_LABEL_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:allwordsLf"
