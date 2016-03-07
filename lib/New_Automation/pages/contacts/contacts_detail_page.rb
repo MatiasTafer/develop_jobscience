@@ -1,6 +1,6 @@
 class ContactDetailPage
   
-  FORWARD_CONTACT_BUTTON_XPATH = ".//*[@value='Forward Contact']" 
+  FORWARD_CONTACT_BUTTON_XPATH = ".//*[@value='Forward Contact']"
   CONTACT_DETAIL_NAME_XPATH = "((((.//*[@class='detailList'])[3]/tbody/tr)[1])/td)[2]"
   CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH = "(.//*[@class='list'])[last()]//tr[2]"
   CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH = "(.//*[@class='list'])[last()]//tr[3]"
