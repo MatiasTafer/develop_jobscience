@@ -56,13 +56,13 @@ $wait
 #require './New_Automation/test_candidates_action_on_list_view'
 
 
-#require './New_Automation/test_question_sets'
+#require './New_Automation/tests/test_question_sets'
 
 #require './New_Automation/test_candidates_actions_on_record'
 
-#require './New_Automation/test_candidates_actions'
+require './New_Automation/tests/test_candidates_actions'
 
-#require './New_Automation/test_candidates_parsing_candidates_file_types'
+#require './New_Automation/tests/test_candidates_parsing_candidates_file_types'
 
 #require './New_Automation/test_candidates_misc'
 
@@ -71,7 +71,7 @@ $wait
 
 #require './New_Automation/tests/test_board_setup'
 
-require './New_Automation/tests/test_job_board'
+#require './New_Automation/tests/test_job_board'
 
 
 #require './New_Automation/test_applications.rb'
