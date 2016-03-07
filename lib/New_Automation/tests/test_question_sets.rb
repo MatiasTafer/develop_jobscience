@@ -7,28 +7,28 @@ require './New_Automation/tests/test_basic.rb'
 require './New_Automation/tests/common.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/home_page.rb'
-require_relative './pages/contacts_home_page.rb'
+require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
 require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
-require_relative './pages/question_sets_home_page.rb'
-require_relative './pages/question_sets_new_page.rb'
-require_relative './pages/question_set_detail_page.rb'
-require_relative './pages/question_sets_question_builder_page.rb'
-require_relative './pages/question_sets_new_question_page.rb'
-require_relative './pages/question_detail_page.rb'
-require_relative './pages/answer_edit_page.rb'
-require_relative './pages/answer_detail_page.rb'
-require_relative './pages/requisitions_home_page.rb'
-require_relative './pages/requisitions_detail_page.rb'
-require_relative './pages/requisitions_new_and_edit.rb'
-require_relative './pages/setup_page.rb'
+require './New_Automation/pages/questions/question_sets_home_page.rb'
+require './New_Automation/pages/questions/question_sets_new_page.rb'
+require './New_Automation/pages/questions/question_set_detail_page.rb'
+require './New_Automation/pages/questions/question_sets_question_builder_page.rb'
+require './New_Automation/pages/questions/question_sets_new_question_page.rb'
+require './New_Automation/pages/questions/question_detail_page.rb'
+require './New_Automation/pages/answers/answer_edit_page.rb'
+require './New_Automation/pages/answers/answer_detail_page.rb'
+require './New_Automation/pages/requisitions/requisitions_home_page.rb'
+require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
+require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
+require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
-require_relative './pages/job_board_job_detail.rb'
-require_relative './pages/applications_detail_page.rb'
-require_relative './pages/applications_home_page.rb'
+require './New_Automation/pages/job_board/job_board_job_detail.rb'
+require './New_Automation/pages/applications/applications_detail_page.rb'
+require './New_Automation/pages/applications/applications_home_page.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/answers/answer_edit_page.rb'
-require './New_Automation/pages/answers/offers_home_page.rb'
+require './New_Automation/pages/offers/offers_home_page.rb'
 require './New_Automation/pages/requisitions/requisitions_home_page.rb'
 require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
 require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
@@ -40,7 +40,7 @@ require './New_Automation/pages/applications/applications_detail_page.rb'
 require './New_Automation/tests/custom_settings.rb'
 
 class TestQuestionSets < TestBasic
-   
+  
   #TC819 - New Question Set Successfully Created
   def test_NewQuestionSet
     randomName = SecureRandom.hex(4)
@@ -96,6 +96,10 @@ class TestQuestionSets < TestBasic
    
     $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).click
     
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).displayed?
+    }
+    
     # 4 - Click on "Save" button
     $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).click
     
@@ -123,13 +127,11 @@ class TestQuestionSets < TestBasic
     
   end
 
-
-  
   #TC821 - Question Set Handler = Always
   def test_QuestionSetHandlerAlways
     randomName = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
-    randomReq2 = SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
+    randomReq2 = "0" + SecureRandom.hex(4)
     
     randomEmail = SecureRandom.hex(4) 
     randomLastName = SecureRandom.hex(4)
@@ -189,7 +191,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_ORDER_XPATH).send_keys AnswerEditPage::ANSWER_DATA_ORDER_1_INT
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_SCORE_XPATH).send_keys AnswerEditPage::ANSWER_DATA_SCORE_1_INT
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_BTN_SAVE_NEW_XPATH).click
-    
+    sleep(1)
     $wait.until{
       $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_BTN_SAVE_XPATH).displayed?
       }
@@ -254,6 +256,8 @@ class TestQuestionSets < TestBasic
     #JobBoard without login
     CustomSettings.JobBoardLogin(false)
     CustomSettings.BoardSetupInit
+    CustomSettings.ResumeRequired(false)
+    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     
     # 1 - Go to Job Board
     $browser.get(HomePage::JOB_BOARD_URL)
@@ -362,12 +366,12 @@ class TestQuestionSets < TestBasic
       }
 
   end
-  
+ 
   #TC822 - Question Set Handler = Populate
   def test_QuestionSetHandlerPopulate
     randomName = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
-    randomReq2 = SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
+    randomReq2 = "0" + SecureRandom.hex(4)
     
     randomEmail = SecureRandom.hex(4) 
     randomLastName = SecureRandom.hex(4)
@@ -492,6 +496,8 @@ class TestQuestionSets < TestBasic
     #JobBoard without login
     CustomSettings.JobBoardLogin(false)
     CustomSettings.BoardSetupInit
+    CustomSettings.ResumeRequired(false)
+    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     
     # 1 - Go to Job Board
     $browser.get(HomePage::JOB_BOARD_URL)
@@ -555,7 +561,7 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_RETURN_TO_SEARCH_XPATH).displayed?
       }
     # 6 - Apply to another job
-    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
+    $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_JOB_LIST_XPATH + "//*[text()[contains(.,'" + randomReq2 + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
       }
@@ -602,10 +608,10 @@ class TestQuestionSets < TestBasic
   end
 
  #TC823 - Question Set Handler = Omit
-  def test_QuestionSetHandlerPopulate
+  def test_QuestionSetHandlerOmit
     randomName = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
-    randomReq2 = SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
+    randomReq2 = "0" + SecureRandom.hex(4)
     
     randomEmail = SecureRandom.hex(4) 
     randomLastName = SecureRandom.hex(4)
@@ -730,6 +736,8 @@ class TestQuestionSets < TestBasic
     #JobBoard without login
     CustomSettings.JobBoardLogin(false)
     CustomSettings.BoardSetupInit
+    CustomSettings.ResumeRequired(false)
+    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     
     # 1 - Go to Job Board
     $browser.get(HomePage::JOB_BOARD_URL)
@@ -827,23 +835,18 @@ class TestQuestionSets < TestBasic
     if continue_button
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).click
     end
-    $wait.until{
-      $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH).displayed?
-      }
+    
     
     # RESULT 
-    # The Questions page would populate previously answered questions from the question set.
-    begin 
-      result = browser.find_element(:xpath =>JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_QUESTION_1_INPUT_XPATH + "//select").disabled?
-    rescue
-      result = true
-    end
+    # The Questions page would hide each previously answered question from the question set.
+    
     assert $wait.until{
-       result
-      }
- 
+            $browser.find_element(:xpath => JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+          }
+    
+
   end 
- 
+
   #TC824 - Copy Question Set
   def test_CopyQuestionSet
     randomName = SecureRandom.hex(4)
@@ -913,26 +916,52 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_OPTIONAL_XPATH).displayed?
     }
-    sleep(1)
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
+    }
+    sleep(2)
     
     # 5 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_TEXT
-    $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_TEXT
+    
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_TEXT
+    $browser.switch_to.default_content
+    
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_1_TEXT
     
     # 6 - Click on "Save"
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_NEW_BTN_SAVE_XPATH).click
+    sleep(2)
     
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTIONS_LIST_FIRST_XPATH).displayed?
+    }
     # 7 - Click on "New Question"
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_QUESTION_XPATH).click
+    sleep(1)
+    
     $wait.until{
-      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_OPTIONAL_XPATH).displayed?
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
     }
-    sleep(2)
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
+    }
     
     # 8 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_2_TEXT
-    $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_2_TEXT
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_2_TEXT
+    $browser.switch_to.default_content
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_2_TEXT
     
     # 9 - Click on "Save"
@@ -1000,10 +1029,22 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_OPTIONAL_XPATH).displayed?
     }
+    sleep(3)
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
+    }
     
     # 5 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_TEXT
-    $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_TEXT
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_TEXT
+    $browser.switch_to.default_content
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_1_TEXT
     
     #6 - Uncheck "Optional" and "Text" boxes
@@ -1018,6 +1059,7 @@ class TestQuestionSets < TestBasic
     
     # 7 - Click on "Save"
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_NEW_BTN_SAVE_XPATH).click
+    sleep(1)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTIONS_LIST_FIRST_XPATH).displayed?
     }
@@ -1027,10 +1069,22 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_OPTIONAL_XPATH).displayed?
     }
-    sleep(2)
+    sleep(3)
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
+    }
+    
     # 9 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_2_TEXT
-    $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_2_TEXT
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_2_TEXT
+    $browser.switch_to.default_content
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_2_TEXT
     
     elementOptional = $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_OPTIONAL_XPATH)
@@ -1050,10 +1104,22 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_OPTIONAL_XPATH).displayed?
     }
-    sleep(2)
+    sleep(3)
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
+    }
+    
     # 13 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_4_TEXT
-    $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_4_TEXT
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_4_TEXT
+    $browser.switch_to.default_content
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_4_TEXT
     
     # 14 - Check "Text" box
@@ -1078,9 +1144,21 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_OPTIONAL_XPATH).displayed?
     }
     sleep(2)
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
+    }
+    
     # 17 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_3_TEXT
-    $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_3_TEXT
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_3_TEXT
+    $browser.switch_to.default_content
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_3_TEXT
     
     # 18 - Uncheck "Optional" box
@@ -1115,7 +1193,7 @@ class TestQuestionSets < TestBasic
   #TC827 - Question Set Builder, Verify Optional and Text Questions
   def test_VerifyQuestionSetJobBoard
     randomName = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
     
     randomEmail = SecureRandom.hex(4) 
     randomLastName = SecureRandom.hex(4)
@@ -1155,6 +1233,8 @@ class TestQuestionSets < TestBasic
     #JobBoard without login
     CustomSettings.JobBoardLogin(false)
     CustomSettings.BoardSetupInit
+    CustomSettings.ResumeRequired(false)
+    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     
     # 1 - Apply to a job from the job board site, with Question Set asociated.
     $browser.get(HomePage::JOB_BOARD_URL)
@@ -1262,7 +1342,7 @@ class TestQuestionSets < TestBasic
     
   end
    
-  
+
   #TC828 - New Question
   def test_NewQuestion
     randomName = SecureRandom.hex(4)
@@ -1309,7 +1389,7 @@ class TestQuestionSets < TestBasic
     
   end
   
- 
+
   # TC829 - New Question, Question Size 
   def test_NewQuestionSize
     randomName = SecureRandom.hex(4)
@@ -1447,7 +1527,7 @@ class TestQuestionSets < TestBasic
       }
     
     # 2 - Click on previously created Question Set's name from the list
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + QuestionSetsNew::QUESTION_SETS_NAME_3_TEXT + "')]]").click
+    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SET_LIST_XPATH + "//*[text()[contains(.,'" + randomName + "')]]").click
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NEW_QUESTION_XPATH).displayed?  
       }
@@ -1523,6 +1603,8 @@ class TestQuestionSets < TestBasic
      #JobBoard without login
     CustomSettings.JobBoardLogin(false)
     CustomSettings.BoardSetupInit
+    CustomSettings.ResumeRequired(false)
+    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     
     # 13 - Apply to a job from the job board site, with Question Set asociated.
     $browser.get(HomePage::JOB_BOARD_URL)
@@ -1628,6 +1710,8 @@ class TestQuestionSets < TestBasic
     #JobBoard without login
     CustomSettings.JobBoardLogin(false)
     CustomSettings.BoardSetupInit
+    CustomSettings.ResumeRequired(false)
+    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     
     # 1 - Click on Tab "Question Sets"
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -1712,6 +1796,8 @@ class TestQuestionSets < TestBasic
      #JobBoard without login
     CustomSettings.JobBoardLogin(false)
     CustomSettings.BoardSetupInit
+    CustomSettings.ResumeRequired(false)
+    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     
     # 13 - Apply to a job from the job board site, with Question Set asociated.
     $browser.get(HomePage::JOB_BOARD_URL)
@@ -1866,6 +1952,8 @@ class TestQuestionSets < TestBasic
     #JobBoard without login
     CustomSettings.JobBoardLogin(false)
     CustomSettings.BoardSetupInit
+    CustomSettings.ResumeRequired(false)
+    CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     
     # Go to Job Board
     $browser.get(HomePage::JOB_BOARD_URL)
@@ -2488,7 +2576,7 @@ class TestQuestionSets < TestBasic
     
 
   end
-  
+
   ######## CUSTOM METHODS ############
   
   def CreateQuestionSetWithQuestions(name)
@@ -2513,6 +2601,9 @@ class TestQuestionSets < TestBasic
     # 4 - Click on "Save" button
     $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).click
     
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_QUESTION_BUILDER_XPATH).displayed?
+    }
     
     # 5 - Click on "Question Builder"
     $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_QUESTION_BUILDER_XPATH).click
@@ -2522,13 +2613,23 @@ class TestQuestionSets < TestBasic
     
     # 6 - Click on "New Question"
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_QUESTION_XPATH).click
+    sleep(4)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
     }
     
     # 7 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_TEXT
-    $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_TEXT
+    sleep(2)
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_TEXT
+    $browser.switch_to.default_content
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_1_TEXT
     
     # 8 - Uncheck "Optional" and "Text" boxes
@@ -2543,19 +2644,30 @@ class TestQuestionSets < TestBasic
     
     # 9 - Click on "Save"
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_NEW_BTN_SAVE_XPATH).click
+    sleep(2)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTIONS_LIST_FIRST_XPATH).displayed?
     }
     
     # 10 - Click on "New Question"
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_QUESTION_XPATH).click
+    sleep(2)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
     }
     
     # 11 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_2_TEXT
-    $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_2_TEXT
+    sleep(2)
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_2_TEXT
+    $browser.switch_to.default_content
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_2_TEXT
     
     # 12 - Check "Optional" box
@@ -2572,12 +2684,23 @@ class TestQuestionSets < TestBasic
     
     # 14 - Click on "New Question"
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_QUESTION_XPATH).click
+    sleep(2)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
     }
     
     # 15 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_4_TEXT
+    sleep(2)
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_TEXT
+    $browser.switch_to.default_content
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_4_TEXT
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_4_TEXT
     
@@ -2596,15 +2719,27 @@ class TestQuestionSets < TestBasic
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTIONS_LIST_THIRD_XPATH).displayed?
     }
+    sleep(1)
     
     # 18 - Click on "New Question"
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_QUESTION_XPATH).click
+    sleep(2)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).displayed?
+    }
+    $wait.until{
+      $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).displayed?
     }
     
     # 19 - Fill all fields
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_NAME_3_TEXT
+    sleep(2)
+    $browser.switch_to.frame("QApage:Qq:frmQ:theTextarea_frame")
+    $browser.find_element(:xpath => "html/body").send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_TEXT
+    $browser.switch_to.default_content
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_QUESTION_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_3_TEXT
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_ANSWER_1_XPATH).send_keys QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_ANSWER_3_TEXT
     

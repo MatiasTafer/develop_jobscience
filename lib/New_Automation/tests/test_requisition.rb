@@ -16,7 +16,8 @@ require './New_Automation/pages/requisitions/requisitions_mass_transfer_page.rb'
 require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 
 class TestRequisition < TestBasic
-  @@job_path = "/Users/admin/Desktop/testing job order.pdf"
+  @@JobBoard01 = "/New_Automation/files/Job Orders/job_order_upload01.pdf"
+  
 =begin  
 #TC1059 - New Job Order 
 def test_newJobOrder
@@ -327,9 +328,11 @@ end
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
     
+    file = File.join(Dir.pwd, @@JobBoard01)
+    
     test = [
       {"displayed" => HomePage::UPLOAD_BTN_BROWSE_XPATH},
-      {"upload" => HomePage::UPLOAD_BTN_BROWSE_XPATH, "file" => @@job_path},
+      {"upload" => HomePage::UPLOAD_BTN_BROWSE_XPATH, "file" => file},
       {"click" => HomePage::UPLOAD_BTN_ADD_JOB_XPATH}
     ]
     Common.main(test)

@@ -8,4 +8,5 @@ class QuestionDetailPage
   QUESTION_DETAIL_FIRST_ANSWER_LIST_XPATH = "((.//*[@class='list'])[1]//tr[2]//a)[3]"
   QUESTION_DETAIL_SECOND_ANSWER_LIST_XPATH = "((.//*[@class='list'])[1]//tr[3]//a)[3]"
   QUESTION_DETAIL_THIRD_ANSWER_LIST_XPATH = "((.//*[@class='list'])[1]//tr[4]//a)[3]"
+  
 end

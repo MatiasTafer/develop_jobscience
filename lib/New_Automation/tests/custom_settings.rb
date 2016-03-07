@@ -197,6 +197,22 @@ class CustomSettings
     }
  end 
  
+ def self.ResumeRequired(setBool)
+   #If setBool is true "Resume Required" will be checked, if setBool is false it will be unchecked
+    
+   $browser.get(SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL)
+   $wait.until{
+     $browser.find_element(:xpath => SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH).displayed?
+   }
+   
+   Checkbox(SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH, setBool)
+   
+   $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::EDIT_BUTTON_XPATH).displayed?
+    }
+ end
+ 
  def self.AttachToApplications(setBool)
    #If setBool is true "Attach to Applications" will be checked, if setBool is false it will be unchecked
    
