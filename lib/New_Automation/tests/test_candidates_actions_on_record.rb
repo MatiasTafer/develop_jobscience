@@ -35,7 +35,7 @@ class TestActionsOnRecord < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -106,7 +106,7 @@ class TestActionsOnRecord < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -227,7 +227,7 @@ class TestActionsOnRecord < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -308,7 +308,7 @@ class TestActionsOnRecord < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -386,7 +386,7 @@ class TestActionsOnRecord < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
     CreateRequisitionPostJob(randomReq, false)

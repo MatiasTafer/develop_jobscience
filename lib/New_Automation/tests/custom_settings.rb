@@ -12,7 +12,30 @@ require './New_Automation/pages/questions/question_set_detail_page.rb'
 require './New_Automation/pages/setup_page.rb'
 
 class CustomSettings
-    
+  
+   
+  def self.ApplyToLinkedIn(booleanOption) 
+    if (booleanOption) then
+      $browser.get SetupEditPage::SOCIAL_SETTINGS_URL
+      test = [{"displayed" => SetupEditPage::EDIT_BUTTON_XPATH},
+              {"click" => SetupEditPage::EDIT_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
+              {"checked" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
+              {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::EDIT_BUTTON_XPATH}]
+      Common.main(test)
+      else if (booleanOption == false) then
+        test2 = [{"displayed" => SetupEditPage::EDIT_BUTTON_XPATH},
+              {"click" => SetupEditPage::EDIT_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
+              {"unchecked" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
+              {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::EDIT_BUTTON_XPATH}]   
+        Common.main(test2)
+      end
+    end  
+  end
+     
   def self.QuestionSetHandler(option)
     #HARD CORE DATA
     always = "Always"

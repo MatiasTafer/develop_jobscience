@@ -7,7 +7,7 @@ require 'securerandom'
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
 require_relative 'custom_settings.rb'
-
+require_relative 'users.rb'
 
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/requisitions/requisitions_home_page.rb'
@@ -60,7 +60,7 @@ class TestResume < TestBasic
 
 #TC979 - Job Board Resume, Attach Only  
 def test_jobBoardResumeAttachOnly
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -94,7 +94,7 @@ end
 
 #TC978 - Job Board Register and upload Resume  
  def test_jobBoardUploadResume
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get HomePage::JOB_BOARD_URL
     test =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
@@ -115,7 +115,7 @@ end
  
 #TC980 - Job Board Resume, Parse Fields 
 def test_jobBoardResumeParseFields
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -144,7 +144,7 @@ end
 
 #TC981 - Upload Referral Resume Successfully
 def test_UploadRederralResume
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::JOB_BOARD_INTERNAL_URL
   test = [{"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
           {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
@@ -167,7 +167,7 @@ end
 
 #TC982 - Upload Referral Resume Successfully, ERP Dupe Prevention = Attach Only
 def test_UploadReferralResumeAtachOnly
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -198,7 +198,7 @@ end
  
 #TC983 - Upload Referral Resume Successfully, ERP Dupe Prevention = Parse Fields.  (pending)
 def test_UploadReferralResumeParseFields
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -229,7 +229,7 @@ end
 
 #TC984 - Add Resume with the Add Resume Tool, Attach Only
 def test_ResumToolAttachOly
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -261,7 +261,7 @@ end
 
 #TC985 - Add Resume with the Add Resume Tool, Parse Fields
 def test_addResumeToolParseFields
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -294,7 +294,7 @@ end
 #TC986 - Add resume , De-Duplication in a Private Sharing Model, New Candidate
 def test_addResumePrivateSharingModel
   #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -333,7 +333,7 @@ end
 
 #TC991 - Contact Update Resume Successfully, Attach Onlydef 
 def test_contactUpdateResumeAttachOnly
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -367,7 +367,7 @@ end
 
 #TC992 - Contact Update Resume Successfully, Parse Fields
 def test_contactUpdateResumeParseFields
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -402,7 +402,7 @@ end
 #TC987 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate not shared
 def test_addResumeNotShared
   #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -442,7 +442,7 @@ end
 #TC988 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared others not
 def test_addResumeOneShared
   #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -481,7 +481,7 @@ end
 
 #TC993 - Contact Update Resume Validation
 def test_contactUpdateResumeValidation
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -511,7 +511,7 @@ end
 
 #TC994 - State and Country Picklists feature, USA with State and Country picklists - Resume Tools
 def test_picklistUSAResumeTools
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -586,7 +586,7 @@ end
 
 #TC995 - State and Country Picklists feature, Canada with State and Country picklists - Resume Tools
 def test_pickListCanadaResumeTools
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -661,7 +661,7 @@ end
 
 #TC996 - State and Country Picklists feature, International with State and Country picklists - Resume Tools
 def test_PickListInternationalResumeTool
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -694,7 +694,7 @@ end
 
 #TC997 - State and Country Picklists feature, validation with State and Country picklists - Resume Tools
 def test_ValidationCountryPicklist
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -732,7 +732,7 @@ end
 
 #TC998 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Tools
 def test_nonEnglishPickList
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -770,7 +770,7 @@ end
 
 #TC1004 - State and Country Picklists feature, USA with State and Country picklists - Resume Update feature
 def test_resumUpdateCountryPickList
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -849,7 +849,7 @@ end
 
 #TC1005 - State and Country Picklists feature, Canada with State and Country picklists - Resume Update feature
 def test_resumeUpdateCountryPicklistCanada
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -926,7 +926,7 @@ end
 
 #TC1006 - State and Country Picklists feature, International with State and Country picklists - Resume Update feature  
 def test_resumeUpdateInternational
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -961,7 +961,7 @@ end
 
 #TC1007 - State and Country Picklists feature, validation with State and Country picklists - Resume Update feature
 def test_stateContryPicklistUpdateResumeValidation
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -997,7 +997,7 @@ end
 
 #TC1008 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Update feature
 def test_nonEnglishUpdateResum
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -1034,7 +1034,7 @@ end
 
 #TC1014 - State and Country Picklists feature, USA with State and Country picklists - Job Board
 def test_updateResumePickListJobBoard
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1094,7 +1094,7 @@ end
 
 #TC1015 - State and Country Picklists feature, Canada with State and Country picklists - Job Board
 def test_updateResumePickListJobBoardCanada
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1153,7 +1153,7 @@ end
 
 #TC1016 - State and Country Picklists feature, International with State and Country picklists - Job Board
 def test_updateResumePickListJobBoardIntenational
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1183,7 +1183,7 @@ end
 
 #TC1017 - State and Country Picklists feature, validation with State and Country picklists - Job Board
 def test_validationResumePickList
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1212,7 +1212,7 @@ end
 
 #TC1018 - State and Country Picklists feature, non-English language with State and Country picklists - Job Board
 def test_updateResumeJobBoardNoEnglish
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1241,7 +1241,7 @@ end
 
 #TC1019 - State and Country Picklists feature, USA without State and Country picklists - Job Board
 def test_USAUpdateResumePicklistDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1300,7 +1300,7 @@ end
 
 #TC1020 - State and Country Picklists feature, Canada without State and Country picklists - Job Board
 def test_CanadaUpdateResumePickListDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1359,7 +1359,7 @@ end
 
 #TC1021 - State and Country Picklists feature, International without State and Country picklists - Job Board
 def test_InternationalUpdateResumeDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1388,7 +1388,7 @@ end
 
 #TC1022 - State and Country Picklists feature, validation without State and Country picklists - Job Board
 def test_PostCodeResumeUpdateDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1418,7 +1418,7 @@ end
 
 #TC1023 - State and Country Picklists feature, non-English language without State and Country picklists - Job Board
 def test_noEnglishResumeUpdateDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1447,7 +1447,7 @@ end
 
 #TC999 - State and Country Picklists feature, USA without State and Country picklists - Resume Tools
 def test_USAResumeUpdateDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -1527,7 +1527,7 @@ end
 
 #TC1000 - State and Country Picklists feature, Canada without State and Country picklists - Resume Tools
 def test_UpdateResumeCanadaDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1604,7 +1604,7 @@ end
 
 #TC1001 - State and Country Picklists feature, International without State and Country picklists - Resume Tools
 def test_resumeToolInternationalDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -1638,7 +1638,7 @@ end
 
 #TC1002 - State and Country Picklists feature, validation without State and Country picklists - Resume Tools
 def test_ValidationResumeToolUpdateResume
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -1676,7 +1676,7 @@ end
 
 #TC1003 - State and Country Picklists feature, non-English language without State and Country picklists - Resume Tools
 def test_noEnglishResumeUpdateDisablePicklist
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -1716,7 +1716,7 @@ end
 
 #TC1009 - State and Country Picklists feature Disabled, USA without State and Country picklists - Resume Update feature
 def test_ResumeUpdateFeaturePicklistDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -1796,7 +1796,7 @@ end
 
 #TC1010 - State and Country Picklists feature Disabled, Canada without State and Country picklists - Resume Update feature
 def test_UpdateResumeContactTabPcikListDisable
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1873,7 +1873,7 @@ end
 
 #TC1011 - State and Country Picklists feature Disabled, International without State and Country picklists - Resume Update feature
 def test_InternationalResumeUpdateContactTabDisbalePickList
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1906,7 +1906,7 @@ end
 
 #TC1012 - State and Country Picklists feature Disabled, validation without State and Country picklists - Resume Update feature
 def test_validationPicklistDisableConatacResumeUpdateFeature
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
   test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1943,7 +1943,7 @@ end
 #TC1024 - Previously Uploaded Resumes - False
 def test_PreviouslyUploadResume
 #Preconditions
-Common.login(Common::USER_EMAIL, Common::PASSWORD)
+Common.login(Users::USER_EMAIL, Users::PASSWORD)
 CustomSettings.JobBoardLogin(true)
 $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
 test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
@@ -2008,7 +2008,7 @@ end
 #TC1025 - Previously Uploaded Resumes, with Attach to Applications = false
 def test_UploadResumeAttachAppFalse
 #Preconditions
-Common.login(Common::USER_EMAIL, Common::PASSWORD)
+Common.login(Users::USER_EMAIL, Users::PASSWORD)
 CustomSettings.JobBoardLogin(true)
 $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
 test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
@@ -2072,7 +2072,7 @@ end
 
 #TC1150 - Previously Uploaded Resumes - True
 def test_PreviouslyUploadedResumeTrue
-Common.login(Common::USER_EMAIL, Common::PASSWORD)
+Common.login(Users::USER_EMAIL, Users::PASSWORD)
 CustomSettings.JobBoardLogin(true)
 $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
 test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
@@ -2118,7 +2118,7 @@ end
 #TC1026 - Resume Days Valid 
 def test_ResumeDaysValid
   #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   CustomSettings.JobBoardLogin(true)
   $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
   test = [{"displayed" => SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
@@ -2178,7 +2178,7 @@ end
 #TC989 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate One shared
 def test_addResumeOneShared
   #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
@@ -2218,7 +2218,7 @@ end
 
 #TC1013 - State and Country Picklists feature Disabled, non-English language without State and Country picklists - Resume Update feature
 def test_updateResumeJobBoardNoEnglishDisabled
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.JobBoardLogin(true)
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -2248,7 +2248,7 @@ end
 #TC1028 - Resume Days Valid, Validation Blank
 def test_ResumeDaysValidationBlank
    #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   CustomSettings.JobBoardLogin(true)
   $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
   test = [{"displayed" => SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
@@ -2312,7 +2312,7 @@ end
   
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.CreateRequisitionPostJob(randomName, true)
     
@@ -2385,7 +2385,7 @@ end
    
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     CustomSettings.EnableJCardForContact(true)
    
@@ -2410,7 +2410,7 @@ end
 #TC990 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate No shared
 def test_addResumeNoshared
   #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
