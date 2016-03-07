@@ -1250,7 +1250,7 @@ class TestEmailActions < TestBasic
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
-      # Click on "Send E-mail" on the menu
+      # Click on "Review E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
       {"displayed" => ShortListDetailPage::SL_REVIEW_EMAIL_MENU_XPATH},

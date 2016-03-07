@@ -75,7 +75,7 @@ class TestQuestionSets < TestBasic
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_COPY_QUESTION_SET_XPATH).displayed?
       }
     
-    assert_equal($browser.find_element(:id => QuestionSetsDetail::QUESTION_SETS_DETAIL_NAME_ID).text, randomName)  
+    assert_equal($browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_NAME_XPATH).text, randomName)  
     
   end
 

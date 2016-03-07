@@ -10,5 +10,4 @@ class ShortListHomePage
   SHORT_LIST_HOME_BTN_GO_XPATH = ".//*[@name='go']"
   SHORT_LIST_HOME_VIEW_SELECT_XPATH = ".//*[@id='fcf']"
   
-
 end

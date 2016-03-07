@@ -703,10 +703,10 @@ class Common
       {"displayed" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
       
-      {"displayed" => BoardSetupDetailPage::SEARCH_URL_NAME_TEXT_XPATH},
-      {"set_text" => BoardSetupDetailPage::SEARCH_URL_NAME_TEXT_XPATH, "text" => url_name},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NAME_XPATH},
+      {"set_text" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NAME_XPATH, "text" => url_name},
       
-      {"click" => BoardSetupDetailPage::SAVE_AND_CLOSE_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_SAVE_CLOSE_XPATH},
       
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
     ]
@@ -739,7 +739,7 @@ class Common
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},

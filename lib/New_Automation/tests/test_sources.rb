@@ -125,7 +125,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},
@@ -197,7 +197,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -280,7 +280,7 @@ class TestSources < TestBasic
     Common.logout_job_board
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -338,7 +338,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -419,7 +419,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -481,7 +481,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
@@ -552,7 +552,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -638,7 +638,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -712,7 +712,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -798,7 +798,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -867,7 +867,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
@@ -920,7 +920,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -993,7 +993,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
@@ -1045,7 +1045,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
@@ -1104,7 +1104,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -1182,7 +1182,7 @@ class TestSources < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},

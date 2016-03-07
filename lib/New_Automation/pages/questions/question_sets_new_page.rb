@@ -1,4 +1,5 @@
 class QuestionSetsNew
+  
   #BUTTONS
   QUESTION_SETS_NEW_BTN_SAVE_XPATH = ".//*[@name='save']"
   QUESTION_SETS_NEW_BTN_SAVE_AND_NEW_XPATH = ".//*[@name='save_new']"

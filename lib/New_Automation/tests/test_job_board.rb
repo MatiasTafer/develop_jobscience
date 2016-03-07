@@ -144,7 +144,7 @@ class TestJobBoard < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},
