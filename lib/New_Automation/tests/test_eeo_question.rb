@@ -14,6 +14,7 @@ require './New_Automation/pages/job_board/job_board_login_page.rb'
 require './New_Automation/pages/board_setup/board_setup_edit_page.rb'
 require './New_Automation/pages/board_setup/board_setup_detail_page.rb'
 require './New_Automation/pages/board_setup/board_setup_home_page.rb' 
+require_relative 'users.rb'
 
 $EMAIL =  "testrodrigo2@gmail.com"
 $PASSWOR = "password123"
@@ -26,7 +27,7 @@ class EeoQuestion < TestBasic
   
 #TC835 - EEO Questions, hidden questions
 def   test_eeoQuestionHiddenQuestion
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
    test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
            {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
@@ -69,7 +70,7 @@ end
 #TC837 - EEO Commit Default
 def test_eeoCommitDefault
   #Preconditions
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   Common.login(Users::USER_EMAIL, Users::PASSWORD)
    CustomSettings.JobBoardLogin(true)
    $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
    test = [{"displayed" => SetupEditPage::COMMIT_EEO_DEFAULT_VALUE_CHECKBOX_XPATH},
@@ -113,7 +114,7 @@ end
 #TC838 - EEO Question Handler, Always
 def test_eeoQuestionHandlerAlways
    #Preconditions
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   Common.login(Users::USER_EMAIL, Users::PASSWORD)
    CustomSettings.QuestionSetHandler("Always")
    CustomSettings.JobBoardLogin(true)
    #Steps
@@ -153,7 +154,7 @@ end
 #TC839 - EEO Question Handler, Populate
 def test_eeoQuestionHandlerPopulate
   #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   CustomSettings.QuestionSetHandler("Populate")
   CustomSettings.JobBoardLogin(true)
   #Steps
@@ -193,7 +194,7 @@ end
 #TC840 - EEO Question Handler, Omit
 def test_eeoQuestionHandlerOmit
   #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   CustomSettings.QuestionSetHandler("Omit")
   CustomSettings.JobBoardLogin(true)
   #Steps
@@ -233,7 +234,7 @@ end
 #TC841 - Standard and Custom EEO Disclaimers, standard & custom
 def test_eeoDisclaimersStandardCustom
   #Preconditions
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
   test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
           {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},

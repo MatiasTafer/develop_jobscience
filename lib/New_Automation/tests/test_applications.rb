@@ -22,6 +22,9 @@ require './New_Automation/pages/job_board/job_board_login_page.rb'
 require './New_Automation/pages/job_board/job_board_register_page.rb'
 
 
+require_relative 'users.rb'
+
+
 require './New_Automation/pages/applications/applications_detail_page.rb'
 require './New_Automation/pages/applications/applications_home_page.rb'
 
@@ -31,7 +34,7 @@ class TestApplications < TestBasic
 
   #TC1058 - Application / Create PDF
   def test_applicationCreationPdf
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::APPLICATIONS_TAB_LINK_URL
     $wait.until{
       $browser.find_element(:xpath, ApplicationsHomePage::APPLICATION_OPTION_BAR_XPATH).displayed?
@@ -55,7 +58,7 @@ class TestApplications < TestBasic
 
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Mark the field Allow Duplicate Apps = TRUE
     # In Allow Duplicate Application Days enter: 0
@@ -133,7 +136,7 @@ class TestApplications < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.CreateRequisitionPostJob(randomName, true)
   
@@ -282,7 +285,7 @@ class TestApplications < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.CreateRequisitionPostJob(randomName, true)
     
@@ -476,7 +479,7 @@ class TestApplications < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.CreateRequisitionPostJob(randomName, true)
     
@@ -647,7 +650,7 @@ class TestApplications < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.CreateRequisitionPostJob(randomName, true)
     

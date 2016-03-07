@@ -5,6 +5,7 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
+require_relative 'users.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/board_setup/board_setup_detail_page.rb'
 require './New_Automation/pages/board_setup/board_setup_edit_page.rb'
@@ -21,7 +22,7 @@ class TestBoardSetup < TestBasic
   def test_board_setup_tc1040   
     # JS2 - Board Setup - TC1040
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
 
     # PRECONDITIONS
     # open board setup page
@@ -76,7 +77,7 @@ class TestBoardSetup < TestBasic
   def test_board_setup_tc1041
     #  TC1041 - Board Setup - Auto Associate = false 
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # PRECONDITIONS
     # open board setup page
@@ -128,7 +129,7 @@ class TestBoardSetup < TestBasic
   def test_board_setup_tc1042
     # Set "Show Search Only" to "TRUE" in Board Setup
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditios open board setup page
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -148,7 +149,7 @@ class TestBoardSetup < TestBasic
   def test_board_setup_tc1043
     #Set "Show Search Only" to "FALSE" in Board Setup
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditios open board setup page
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -167,7 +168,7 @@ class TestBoardSetup < TestBasic
   def test_board_setup_tc1044
     # Job Board - Allow Register Only = False
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditios open board setup page
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -190,7 +191,7 @@ class TestBoardSetup < TestBasic
   def test_board_setup_tc1045
     # Job Board - Allow Register Only = True
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditios open board setup page
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -209,7 +210,7 @@ class TestBoardSetup < TestBasic
     Common.main(test)
     
     
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditios open board setup page
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [
@@ -226,7 +227,7 @@ class TestBoardSetup < TestBasic
   def test_board_setup_tc1046
     # Job Board - Job Board Resume Required = true
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions open board setup page
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [
@@ -267,7 +268,7 @@ class TestBoardSetup < TestBasic
   def test_board_setup_tc1047
     # Job Board - Job Board Resume Required = false
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [
@@ -308,7 +309,7 @@ class TestBoardSetup < TestBasic
 
   def test_board_setup_tc1048
     # Job Board - Hide Resume Upload / Paste / Builder / Previously Uploaded / Cover Letter
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -343,7 +344,7 @@ class TestBoardSetup < TestBasic
 
   def test_board_setup_tc1049
     # Job Board - Hide Resume Upload / Paste / Builder / Previously Uploaded / Cover Letter
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -376,7 +377,7 @@ class TestBoardSetup < TestBasic
 
   def test_board_setup_tc1050
     # Job Board - Hide Resume Upload / Paste / Builder / Previously Uploaded / Cover Letter
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -413,7 +414,7 @@ class TestBoardSetup < TestBasic
 
   def test_board_setup_tc1051
     # Job Board - Hide Phone / Hide Mobile / Hide Source Question / Hide Contact Method / will be available
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -449,7 +450,7 @@ class TestBoardSetup < TestBasic
   
   def test_board_setup_tc1052
     # Job Board - Hide Phone / Hide Mobile / Hide Source Question / Hide Contact Method / will be hidden
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -484,7 +485,7 @@ class TestBoardSetup < TestBasic
  
   def test_board_setup_tc1053
     # Job Board - Search & Results, Set some job order fields as search criteria.
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
@@ -513,7 +514,7 @@ class TestBoardSetup < TestBasic
 
   def test_board_setup_tc1054
     # Job Board - Search & Results, Search By Keyword = true.
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
@@ -547,7 +548,7 @@ class TestBoardSetup < TestBasic
 
   def test_board_setup_tc1055
     # Job Board - Search & Results, Search By Keyword = false.
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
@@ -578,7 +579,7 @@ class TestBoardSetup < TestBasic
 
   def test_board_setup_tc1056
     # Job Board - Search & Results Jobs Per Page
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
@@ -605,7 +606,7 @@ class TestBoardSetup < TestBasic
   
   def test_board_setup_tc1057
     # Job Board - Job Description Fields
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
     

@@ -4,6 +4,7 @@ require 'test-unit'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
+require_relative 'users.rb'
 require './New_Automation/pages/projects/projects_detail_page.rb'
 require './New_Automation/pages/projects/projects_home_page.rb'
 require './New_Automation/pages/projects/projects_new_project_page.rb'
@@ -16,7 +17,7 @@ class TestProjects <TestBasic
 =begin
   #TC963 - New Project Successfully Created
   def test_projectSuccessCreated
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -36,7 +37,7 @@ class TestProjects <TestBasic
 
   #TC1151 - New Project Fields Validation with blank fields
   def test_allFieldBlankVerification
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -55,7 +56,7 @@ class TestProjects <TestBasic
  
   #TC1152 - New Project Fields Validation with invalid currency
   def test_invalidCurrencyValidation
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -75,7 +76,7 @@ class TestProjects <TestBasic
   
   #TC1153 - New Project Fields Validation with a invalid date
   def test_invalidDateValidation
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -97,7 +98,7 @@ class TestProjects <TestBasic
 
   #TC965 - Project, New Job Order
   def test_projectNewJobOrder
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -137,7 +138,7 @@ class TestProjects <TestBasic
 
   #TC966 - Project, New Job Order Required Field Validation
   def test_projectRequiredValidation
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -166,7 +167,7 @@ class TestProjects <TestBasic
 
   #TC1157 - Project, New Job Order Validation invalid currency
   def test_projectInvalidCurrency
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -200,7 +201,7 @@ class TestProjects <TestBasic
   
   #TC1158 - Project, New Job Order Validation Invalid Number
   def test_projectInvalidNumber
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -238,7 +239,7 @@ class TestProjects <TestBasic
   
   #TC1159 - Project, New Job Order Validation Invalid Percent
   def test_projectInvalidPercent
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -274,7 +275,7 @@ class TestProjects <TestBasic
 
   #TC967 - Clone Project
   def test_cloneProject
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
@@ -292,7 +293,7 @@ class TestProjects <TestBasic
   
   #TC968 - Delete Project
   def test_deleteProject
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::PROJECTS_TAB_LINK_URL
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
