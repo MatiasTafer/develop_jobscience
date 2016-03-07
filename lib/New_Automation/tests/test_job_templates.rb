@@ -6,7 +6,7 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-
+require_relative 'users.rb'
 require './New_Automation/pages/job_templates/job_templates_page.rb'
 require './New_Automation/pages/job_templates/job_template_detail_page.rb'
 require './New_Automation/pages/job_templates/new_job_template_page.rb'
@@ -18,7 +18,7 @@ class TestJobTemplates < TestBasic
  
 #TC969 - New Job Template  
 def test_newJobTemplate
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::JOB_TEMPLATES_TAB_LINK_URL
   test = [{"displayed" => JobTemplates::NEW_BUTTON_XPATH},
           {"click" => JobTemplates::NEW_BUTTON_XPATH},
@@ -35,7 +35,7 @@ end
 
 #TC970 - New Job Template, Validation
 def test_newJobTemplateValidation
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::JOB_TEMPLATES_TAB_LINK_URL
   test = [{"displayed" => JobTemplates::NEW_BUTTON_XPATH},
           {"click" => JobTemplates::NEW_BUTTON_XPATH},
@@ -50,7 +50,7 @@ end
 
 #TC971 - New Job Template Mapping 
 def test_newJobTemplateMapping
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::JOB_TEMPLATE_MAPPING_TAB_LINK
   templateMappingName = SecureRandom.hex(5)
   test = [{"displayed" => JobTemplateMapping::NEW_BUTTON_XPATH},
@@ -66,7 +66,7 @@ end
 
 #TC972 - New Job Template Mapping, Validation  
 def test_newJobTemplateMappingValidation
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::JOB_TEMPLATE_MAPPING_TAB_LINK
   test = [{"displayed" => JobTemplateMapping::NEW_BUTTON_XPATH},
           {"click" => JobTemplateMapping::NEW_BUTTON_XPATH},
@@ -83,7 +83,7 @@ end
 
 #TC973 - Create Job Order 
 def test_createJobOrder
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::JOB_TEMPLATES_TAB_LINK_URL
   test = [{"displayed" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},
           {"click" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},
@@ -99,7 +99,7 @@ end
 
 #TC974 - Create Job Order, Validation 
 def test_createJobOrderValidation
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::JOB_TEMPLATES_TAB_LINK_URL
   test = [{"displayed" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},
           {"click" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},

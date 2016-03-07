@@ -5,7 +5,7 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-
+require_relative 'users.rb'
 require './New_Automation/pages/short_lists/short_list_detail_page.rb'
 require './New_Automation/pages/short_lists/short_list_home_page.rb'
 require './New_Automation/pages/short_lists/short_list_review_email_popup.rb'
@@ -24,7 +24,7 @@ class TestShortList < TestBasic
  
 #TC90 - Successfully Add/Update Status 
 def test_addUpdateStauts
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
   $wait.until {
     $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
@@ -49,7 +49,7 @@ end
 
 #TC91 - Open Speed review
 def test_openSpeedReview
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
   $wait.until {
     $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
@@ -77,7 +77,7 @@ end
 
 #TC801 Add Contacts to a Short List
 def test_addContactShortList
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::ALL_CONTACTS_TAB_LINK
   $wait.until {
     $browser.current_url.eql? HomePage::ALL_CONTACTS_TAB_LINK
@@ -105,7 +105,7 @@ end
 
 #TC93 - Successfully Removing Enable Web Sourcing and Enable Speed Review
 def test_removeWebSourcing
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
   $wait.until {
     $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
@@ -138,7 +138,7 @@ end
 
 #TC802 - Add Contacts to a Short List, duplicated
 def test_addContactShortListDuplicated
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::ALL_CONTACTS_TAB_LINK
   $wait.until {
     $browser.current_url.eql? HomePage::ALL_CONTACTS_TAB_LINK
@@ -165,7 +165,7 @@ end
 
 #TC803 - Add Contacts to a Short List, empty values 
 def test_addContactToShortListEmptyValues
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::ALL_CONTACTS_TAB_LINK
   $wait.until {
     $browser.current_url.eql? HomePage::ALL_CONTACTS_TAB_LINK
@@ -191,7 +191,7 @@ end
 
 #TC804 - Add a Contact to a Short list
 def test_addContactShortList
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   #First step: create a new short list
   $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
   test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
@@ -226,7 +226,7 @@ end
 
 #TC805 - Add a Contact to a Short list, no contact selected
 def test_noContactSelected
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   #Generate a random string for Short List name
   randomName = SecureRandom.hex(4)
   #First step: create a new short list
@@ -253,7 +253,7 @@ end
 
 #TC806 - Add a Contact to a Short list, existing contact
 def test_addExistingContact
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   #Generate a random string for Short List name
   randomName = SecureRandom.hex(4)
   #First step: create a new short list
@@ -296,7 +296,7 @@ end
 
 #TC807 - Remove Contacts from a Short List
 def test_removeContact
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   #Generate a random string for Short List name
   randomName = SecureRandom.hex(4)
   #First step: create a new short list
@@ -336,7 +336,7 @@ end
 
 #TC808 - Short list menu - no contacts selected
 def test_menuNoContactSelected
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   #Generate a random string for Short List name
   randomName = SecureRandom.hex(4)
   #First step: create a new short list
@@ -370,7 +370,7 @@ end
 
 #TC809 - Add to another Short List (old interface)
 def test_addToOldInterface
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
   $wait.until {
     $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
@@ -414,7 +414,7 @@ end
 
 #TC810 - Add to another Short List (old interface), no contacts selected
 def test_noContactSelectedOldUi
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
   $wait.until {
     $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
@@ -448,7 +448,7 @@ end
 
 #TC811 - Add to another Short List (old interface), no short list selected
 def test_noShortListSelectedoldUi
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
   $wait.until {
     $browser.current_url.eql? SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
