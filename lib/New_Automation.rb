@@ -38,12 +38,6 @@ require './New_Automation/tests/test_standard_questions'
 #require './New_Automation/test_job_board'
 
 
-<<<<<<< HEAD
-
-=======
-require './New_Automation/tests/test_standard_questions'
->>>>>>> develop
-
 #require './New_Automation/test_projects'
 
 #require './New_Automation/test_candidates_actions_on_record'
