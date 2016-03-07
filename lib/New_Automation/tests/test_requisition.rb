@@ -5,7 +5,7 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-
+require_relative 'users.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/requisitions/requisitions_change_priority_page.rb'
 require './New_Automation/pages/requisitions/requisitions_change_status_page.rb'
@@ -20,7 +20,7 @@ class TestRequisition < TestBasic
 =begin  
 #TC1059 - New Job Order 
 def test_newJobOrder
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   Common.login(Users::USER_EMAIL, Users::PASSWORD)
    $browser.get HomePage::REQUISITION_TAB_LINK_URL
    test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
@@ -45,7 +45,7 @@ end
 =begin
 #TC1060 - New Job Order, Validation
 def test_newJobOrderValidation
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::REQUISITION_TAB_LINK_URL
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
@@ -123,7 +123,7 @@ end
 =begin
 #TC1061 - Transfer Jobs  
 def test_transferJobs
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::REQUISITION_TAB_LINK_URL
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
@@ -141,7 +141,7 @@ end
 =begin
 #TC1062 - Transfer Jobs, Validation
 def test_transferJobVlaidation
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::REQUISITION_TAB_LINK_URL
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
@@ -158,7 +158,7 @@ end
 =begin
 #TC1064 - Change Priority
 def test_changePriority
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::REQUISITION_TAB_LINK_URL
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
@@ -176,7 +176,7 @@ end
 =begin
 #TC1065 - Change Priority, Validation  
 def test_changePriorityValidation
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::REQUISITION_TAB_LINK_URL
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
@@ -193,7 +193,7 @@ end
 =begin 
 #TC1067 - Change Status
 def test_changeStatus
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::REQUISITION_TAB_LINK_URL
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
@@ -211,7 +211,7 @@ end
 =begin
 #TC1068 - Change Status, Validation
 def test_changeStatusValidation
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::REQUISITION_TAB_LINK_URL
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
@@ -228,7 +228,7 @@ end
 =begin
 #TC1070 - Job Order / Close Job 
 def test_closeJobOrder
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::REQUISITION_TAB_LINK_URL
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
@@ -269,7 +269,7 @@ end
   
 #TC1071 - Job Order / Close Job, Validation
 def test_closeJobOrderValidation
-  Common.login(Common::USER_EMAIL, Common::PASSWORD)
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
   $browser.get HomePage::REQUISITION_TAB_LINK_URL
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
@@ -311,7 +311,7 @@ end
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Go to HomePage
     $browser.get(HomePage::HOME_TAB_LINK_URL)
