@@ -1,5 +1,6 @@
 class PlacementsDetailPage
   
-  PLACEMENT_RECORD_XPATH = ".//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a"
+  PLACEMENT_RECORD_XPATH = "(.//*[contains(@class,'dataCell')]/a)[1][contains(text(),'PLC')]"
+  PLACEMENT_RECORD_GO_XPATH = "(.//*[contains(@class,'x-grid3-cell-inner')]/a/span)[contains(text(),'PLC')][1]"
   
 end
