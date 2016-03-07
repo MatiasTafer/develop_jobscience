@@ -22,6 +22,7 @@ require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
 require './New_Automation/pages/board_setup/board_setup_home_page.rb'
 require './New_Automation/pages/board_setup/board_setup_detail_page.rb'
+require_relative 'users.rb'
 
 class TestCandidatesMisc < TestBasic
   @@job_path = "/Users/admin/Desktop/testing job order.pdf"
@@ -33,7 +34,7 @@ class TestCandidatesMisc < TestBasic
     #PRECONDITIONS
     #Need to have pre configured on Setup>Create>Objects>Job Orders>RSS Feed the followings fields: 
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get(HomePage::BOARD_SETUP_TAB_LINK_URL)
     test = [
       {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},

@@ -26,17 +26,9 @@ require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 
 class Common
-  USER_EMAIL = "naomi@joblabs.com"
-  USER_EMAIL2 = "naomirecruiter@joblabs.com"
-  USER_EMAIL3 = "naomimanager@joblabs.com"
-  
-  USER_AUTOMATION = "oktana@joblabs.com"
-  PASSWORD_AUTOMATION = "Jobscience16"
-  
-  PASSWORD  = "muffin100"
-
   
 
+  
   #LOGIN
   def self.login(username, password)
    #Waits added for Chrome
@@ -742,7 +734,7 @@ class Common
   def self.register_job_board(username, password)
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Common::USER_EMAIL, Users::PASSWORD)
     # Precondition
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL

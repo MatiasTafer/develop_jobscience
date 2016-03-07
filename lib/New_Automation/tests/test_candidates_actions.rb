@@ -5,6 +5,7 @@ require 'securerandom'
 
 require './New_Automation/tests/test_basic.rb'
 require './New_Automation/tests/common.rb'
+require_relative 'users.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
@@ -38,7 +39,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -128,7 +129,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -225,7 +226,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -319,7 +320,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -422,7 +423,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -514,7 +515,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -609,7 +610,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -710,7 +711,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -811,7 +812,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -914,7 +915,7 @@ class TestActions < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(ContactNewEditPage::CONTACT_NEW_DATA_ACCOUNT_NAME_TEXT) 

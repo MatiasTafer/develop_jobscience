@@ -5,9 +5,9 @@ require 'securerandom'
 
 require './New_Automation/tests/test_basic.rb'
 require './New_Automation/tests/common.rb'
-
+require_relative 'users.rb'
 require './New_Automation/pages/home_page.rb'
-require_relative './pages/contacts_home_page.rb'
+require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
 require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
 require_relative './pages/applications_detail_page.rb'
@@ -48,7 +48,7 @@ class TestActionsOnListView < TestBasic
     randomAccount = SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #An account must be created for the contact
     CreateAccount(randomAccount)
@@ -83,14 +83,14 @@ class TestActionsOnListView < TestBasic
     assert_equal($browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text, randomContact)
     
   end
-  
+=begin  
   #TC48 - Successfully Add Skill
   def test_SuccessfullyAddSkill
     randomContact = SecureRandom.hex(4)
 
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -156,7 +156,7 @@ class TestActionsOnListView < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -208,7 +208,7 @@ class TestActionsOnListView < TestBasic
     randomContact = SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -318,7 +318,7 @@ class TestActionsOnListView < TestBasic
     randomContact2 = SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least two account must exist
     CreateAccount(randomContact) 
@@ -377,7 +377,7 @@ class TestActionsOnListView < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -450,7 +450,7 @@ class TestActionsOnListView < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
     CreateAccount(randomContact) 
@@ -521,7 +521,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False. 
     CreateRequisitionPostJob(randomReq, false)
@@ -601,7 +601,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = True. 
     CreateRequisitionPostJob(randomReq, true)
@@ -680,7 +680,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = True
     CreateRequisitionPostJob(randomReq, true)
@@ -761,7 +761,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = false
     CreateRequisitionPostJob(randomReq, false)
@@ -832,7 +832,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = True
     CreateRequisitionPostJob(randomReq, true)
@@ -922,7 +922,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
     CreateRequisitionPostJob(randomReq, false)
@@ -1011,7 +1011,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = true
     CreateRequisitionPostJob(randomReq, true)
@@ -1099,7 +1099,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
     CreateRequisitionPostJob(randomReq, false)
@@ -1189,7 +1189,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False. 
     Common.CreateRequisitionPostJob(randomReq, false)
@@ -1254,7 +1254,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
     #Disable EEO = false
@@ -1356,7 +1356,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
     #Disable EEO = true
@@ -1449,7 +1449,7 @@ class TestActionsOnListView < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
     #Disable EEO = false
@@ -1577,7 +1577,7 @@ def CreateRequisitionPostJob(name, postjob)
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
         
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -1639,7 +1639,7 @@ def CreateRequisitionPostJob(name, postjob)
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
         
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -1703,7 +1703,7 @@ def CreateRequisitionPostJob(name, postjob)
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
         
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -1769,7 +1769,7 @@ def CreateRequisitionPostJob(name, postjob)
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
         
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -1833,7 +1833,7 @@ def CreateRequisitionPostJob(name, postjob)
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
       
     
     # 1. Click on "Contacts". 
@@ -1878,7 +1878,7 @@ def CreateRequisitionPostJob(name, postjob)
     $browser.switch_to.window($browser.window_handles.first) 
   end
 
-  
+=end  
 
   ######### CUSTOM METHODS ##########
   def CreateAgencyAccount(name)

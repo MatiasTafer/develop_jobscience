@@ -4,6 +4,7 @@ require 'test-unit'
 require 'securerandom'
 
 require './New_Automation/tests/test_basic.rb'
+require_relative 'users.rb'
 require './New_Automation/tests/common.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/home_page.rb'
@@ -46,7 +47,7 @@ class TestQuestionSets < TestBasic
     randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
       
    
     # 1 - Go to "Question Sets" Tab
@@ -84,7 +85,7 @@ class TestQuestionSets < TestBasic
     randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # 1 - Go to "Question Sets" Tab
     $browser.get(HomePage::QUESTION_SETS_LINK_URL)
@@ -135,7 +136,7 @@ class TestQuestionSets < TestBasic
     randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Must be set on "Custom Settings", Question Set Handler = Always.
     CustomSettings.QuestionSetHandler("Always")
@@ -373,7 +374,7 @@ class TestQuestionSets < TestBasic
     randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Must be set on "Custom Settings", Question Set Handler = Always.
     CustomSettings.QuestionSetHandler("Populate")
@@ -611,7 +612,7 @@ class TestQuestionSets < TestBasic
     randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Must be set on "Custom Settings", Question Set Handler = Always.
     CustomSettings.QuestionSetHandler("Omit")
@@ -849,7 +850,7 @@ class TestQuestionSets < TestBasic
     randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Create an empty Question Sets
     self.CreateQuestionSetEmpty(randomName)
@@ -885,7 +886,7 @@ class TestQuestionSets < TestBasic
     randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Create an empty Question Sets
     self.CreateQuestionSetEmpty(randomName)
@@ -972,7 +973,7 @@ class TestQuestionSets < TestBasic
     randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
    #Create an empty Question Sets
     self.CreateQuestionSetEmpty(randomName)
@@ -1121,7 +1122,7 @@ class TestQuestionSets < TestBasic
     randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #PRECONDITION: Must have a Question Set created, with Questions already created, some with Optional = true some not, some with Text= true, some not and combined.
     self.CreateQuestionSetWithQuestions(randomName)
@@ -1268,7 +1269,7 @@ class TestQuestionSets < TestBasic
     randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)  
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)  
     
     #Create an empty Question Sets
     self.CreateQuestionSetEmpty(randomName)
@@ -1315,7 +1316,7 @@ class TestQuestionSets < TestBasic
     randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Create an empty Question Sets
     self.CreateQuestionSetEmpty(randomName)
@@ -1407,7 +1408,7 @@ class TestQuestionSets < TestBasic
     randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Create an empty Question Sets
     self.CreateQuestionSetEmpty(randomName)
@@ -1593,7 +1594,7 @@ class TestQuestionSets < TestBasic
     randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Create an empty Question Sets
     self.CreateQuestionSetEmpty(randomName)
@@ -1781,7 +1782,7 @@ class TestQuestionSets < TestBasic
     randomLastName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Create an empty Question Sets
     self.CreateQuestionSetEmpty(randomName)
@@ -1958,7 +1959,7 @@ class TestQuestionSets < TestBasic
     randomName = SecureRandom.hex(4)
     
     #PRECONDITION: Must be logged in
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #PRECONDITION: Must have a Question Set already created. Must have a Question already created.
     
@@ -2076,7 +2077,7 @@ class TestQuestionSets < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.EnableEnhancedApplyToJob(true)
     
@@ -2203,7 +2204,7 @@ class TestQuestionSets < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.EnableEnhancedApplyToJob(true)
     
@@ -2374,7 +2375,7 @@ class TestQuestionSets < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.EnableEnhancedApplyToJob(true)
     

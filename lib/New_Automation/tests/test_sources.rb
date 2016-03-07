@@ -18,7 +18,7 @@ require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
 require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
-
+require_relative 'users.rb'
 require './New_Automation/pages/custom_settings.rb'
 
 require './New_Automation/pages/sources/source_home_page.rb'
@@ -44,7 +44,7 @@ class TestSources < TestBasic
     # 4 - Click on "Save"
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Steps
     $browser.get HomePage::SOURCE_LINK_URL
     test = [
@@ -80,7 +80,7 @@ class TestSources < TestBasic
     # 7 - Click on "Save"
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Steps
     $browser.get HomePage::SOURCE_LINK_URL
     test = [
@@ -118,7 +118,7 @@ class TestSources < TestBasic
     #  4 - Complete process
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Precondition
     Common.logout_job_board
@@ -191,7 +191,7 @@ class TestSources < TestBasic
     # click the magnifying glass next to Choose Source to select a source, click Next, click Next, 
     # then click on the Search URL (if you enter a name and click save it will be saved to the notes  and attachments related list)
     
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.logout_job_board
     
@@ -274,7 +274,7 @@ class TestSources < TestBasic
     #  5 - Complete process
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Precondition
     Common.logout_job_board
@@ -332,7 +332,7 @@ class TestSources < TestBasic
     #  6 - Complete Application process
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.logout_job_board
     
@@ -413,7 +413,7 @@ class TestSources < TestBasic
     # 4 - Start application process with registering new user
     # 5 - Complete process
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.logout_job_board
     
@@ -475,7 +475,7 @@ class TestSources < TestBasic
     #  3 - Log in and start application process
     #  4 - Complete process
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.login_job_board
     
@@ -546,7 +546,7 @@ class TestSources < TestBasic
     
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.login_job_board
     
@@ -632,7 +632,7 @@ class TestSources < TestBasic
     
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.login_job_board
     
@@ -706,7 +706,7 @@ class TestSources < TestBasic
     
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.login_job_board
     
@@ -792,7 +792,7 @@ class TestSources < TestBasic
     
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.login_job_board
     
@@ -861,7 +861,7 @@ class TestSources < TestBasic
     #  3 - Start application process using email address of existing candidate
     #  4 - Complete process
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.logout_job_board
     
@@ -914,7 +914,7 @@ class TestSources < TestBasic
     
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.logout_job_board
     
@@ -987,7 +987,7 @@ class TestSources < TestBasic
     # Applying to the Job, Existing Candidate, tSource deleted, Non-authenticated 
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.logout_job_board
     
@@ -1039,7 +1039,7 @@ class TestSources < TestBasic
     # Applying to the Job, Existing Candidate, tSource deleted, Non-authenticated 
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.login_job_board
     
@@ -1098,7 +1098,7 @@ class TestSources < TestBasic
     # Applying to the Job, Existing Candidate, tSource incorrect, Authenticated 
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.login_job_board
     
@@ -1176,7 +1176,7 @@ class TestSources < TestBasic
     
     
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.login_job_board
     
@@ -1252,7 +1252,7 @@ class TestSources < TestBasic
     #  4 - Enter internal user email address
     #  5 - Fill in the form for Prospect, use an email address which is not present in the system
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get BoardSetupHomePage::INTERNAL_URL
     test = [
@@ -1294,7 +1294,7 @@ class TestSources < TestBasic
   
   def test_sources_tc958 #20  
     # Refering candidate with tracking source, new candidate, Clear Source Tracking for Internal Referrals
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get BoardSetupHomePage::INTERNAL_URL
     test = [
@@ -1331,7 +1331,7 @@ class TestSources < TestBasic
   
   def test_sources_tc959 #21 
     # Refering candidate with tracking source, existing candidate, Clear Source Tracking for Internal Referrals 
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get BoardSetupHomePage::INTERNAL_URL
     test = [
@@ -1370,7 +1370,7 @@ class TestSources < TestBasic
   def test_sources_tc962 #22 
     # Chatter Source Tracking
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::REQUISITION_TAB_LINK_URL
     test = [
