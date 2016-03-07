@@ -22,7 +22,7 @@ class TestBoardSetup < TestBasic
   $USER_JOB_BOARD = "testing5@fromthesky.up"
   $PASSWORD_JOB_BOARD = "automatable666"
   
-
+=begin
   def test_board_setup_tc1040   #1
     # JS2 - Board Setup - TC1040
     #Login
@@ -248,13 +248,15 @@ class TestBoardSetup < TestBasic
     
   end
   
-
+=end
   
   def test_board_setup_tc1047   #8
     # Job Board - Job Board Resume Required = false
     #Login
-
-    Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    
+    Users.create_user_job_board
+    
+    #Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [
@@ -265,7 +267,7 @@ class TestBoardSetup < TestBasic
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
       {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
     ]
-    Common.main(test)
+    #Common.main(test)
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
@@ -274,7 +276,7 @@ class TestBoardSetup < TestBasic
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
     ]
-    Common.main(test)
+    #Common.main(test)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -289,13 +291,13 @@ class TestBoardSetup < TestBasic
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
     ]
-    Common.main(test)
+    #Common.main(test)
     
     
   end
 
 
-
+=begin
   
 
   def test_board_setup_tc1048  #9
@@ -689,7 +691,7 @@ class TestBoardSetup < TestBasic
      sleep(5)
    end  
    
-
+=end
 
 end
 

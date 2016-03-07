@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestBoardSetup" tests="1" time="125.518238" failures="0" errors="1" skipped="0" assertions="0" timestamp="2016-03-07T12:26:30-03:00">
+  <testcase name="test_board_setup_tc1047" time="125.517122" assertions="0">
+    <error type="EOFError" message="end of file reached">
+end of file reached (EOFError)
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/protocol.rb:153:in `read_nonblock'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/protocol.rb:153:in `rbuf_fill'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/protocol.rb:134:in `readuntil'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/protocol.rb:144:in `readline'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http/response.rb:39:in `read_status_line'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http/response.rb:28:in `read_new'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1412:in `block in transport_request'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1409:in `catch'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1409:in `transport_request'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1382:in `request'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1375:in `block in request'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:852:in `start'
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/net/http.rb:1373:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:107:in `response_for'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:58:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:592:in `find_element_by'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/search_context.rb:61:in `find_element'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:79:in `displayed'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:258:in `block in main'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:251:in `each'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/common.rb:251:in `main'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/users.rb:61:in `create_user_job_board'
+/Users/admin/Desktop/automations_jobscience/jobscience/lib/New_Automation/tests/test_board_setup.rb:257:in `test_board_setup_tc1047'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <system-out>
+
+main
+
+click
+displayed
+  </system-out>
+</testsuite>

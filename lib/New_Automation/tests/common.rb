@@ -75,10 +75,8 @@ class Common
   end
   
   def self.displayed(field)
-     puts field
-      $wait.until{
-        return $browser.find_element(:xpath => field).displayed?
-      }
+     #puts field
+     return $browser.find_element(:xpath => field).displayed?
   end
   
   def self.ssleep
@@ -142,8 +140,6 @@ class Common
       puts "error in set_text_exist"
     end
   end
-  
-  
   
   
   def self.upload(field, file)

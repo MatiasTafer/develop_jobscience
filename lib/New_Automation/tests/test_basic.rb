@@ -30,7 +30,7 @@ end
  
 # Closing browser after each test 
 def teardown
-    $browser.close
+    #$browser.close
 end
 
 end
