@@ -49,7 +49,7 @@ $wait
 
 #require './New_Automation/test_short_list.rb'
 
-#require './New_Automation/test_standard_questions'
+require './New_Automation/tests/test_standard_questions'
 
 #require './New_Automation/test_projects'
 
@@ -91,7 +91,7 @@ $wait
 #require './New_Automation/test_applications.rb'
 
 
-require './New_Automation/tests/test_eeo_question.rb'
+#require './New_Automation/tests/test_eeo_question.rb'
 
 
 
