@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestQuestionSets" tests="1" time="51.933862" failures="0" errors="0" skipped="0" assertions="4" timestamp="2016-03-04T15:12:57-03:00">
+  <testcase name="test_QuestionSetBuilderOptionalText" time="51.933556" assertions="4">
+  </testcase>
+</testsuite>
