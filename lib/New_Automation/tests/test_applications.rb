@@ -4,8 +4,7 @@ require 'test-unit'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
-
-require_relative 'users.rb'
+require_relative 'custom_settings.rb'
 
 require './New_Automation/tests/test_basic.rb'
 require './New_Automation/tests/common.rb'
@@ -16,8 +15,13 @@ require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
 require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
 require './New_Automation/pages/requisitions/requisitions_home_page.rb'
-require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
+require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
+require './New_Automation/pages/job_board/job_board_home_page.rb'
+require './New_Automation/pages/job_board/job_board_job_detail.rb'
+require './New_Automation/pages/job_board/job_board_login_page.rb'
+require './New_Automation/pages/job_board/job_board_register_page.rb'
+require_relative 'users.rb'
 
 
 class TestApplications < TestBasic

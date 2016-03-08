@@ -32,7 +32,7 @@ class NewJobTemplate
   WORK_VALUES_AVAILABLE_LIST_XPATH = "((.//*[@class='multiSelectPicklistRow'])[9]/td)[1]"
   WORK_VALUES_CHOASEN_LIST_XPATH = "((.//*[@class='multiSelectPicklistRow'])[9]/td)[3]"
   
-  ERROR_REQUIRED_FIELDS = ".//*[@id='ep']/div[2]/div[3]/table/tbody/tr[1]/td[2]/div/div[2]"
+  ERROR_REQUIRED_FIELDS = ".//*[@class='errorMsg']"
   ERROR_REQUIRED_FIELDS_TEXT = "Error: You must enter a value"
   
   JOB_TEMPLATE_NAME_TEXT = SecureRandom.hex(5)
