@@ -1,0 +1,1891 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestActionsOnListView" tests="24" time="1550.065416" failures="1" errors="3" skipped="0" assertions="34" timestamp="2016-03-08T10:02:06-03:00">
+  <testcase name="test_AddRateSkillMultipleContacts" time="72.785287" assertions="1">
+  </testcase>
+  <testcase name="test_AddSkillValidation" time="53.132902" assertions="1">
+  </testcase>
+  <testcase name="test_AddTagsNewPersonalTag" time="49.908092" assertions="2">
+  </testcase>
+  <testcase name="test_AddTagsNewPublicTag" time="44.752499" assertions="0">
+    <error type="Selenium::WebDriver::Error::TimeOutError" message="timed out after 20 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@id='con2_ilecell']/div&quot;})">
+timed out after 20 seconds (Unable to locate element: {"method":"xpath","selector":".//*[@id='con2_ilecell']/div"}) (Selenium::WebDriver::Error::TimeOutError)
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/common/wait.rb:76:in `until'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:87:in `displayed'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:269:in `block in main'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:262:in `each'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:262:in `main'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:457:in `CreateContact'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/test_candidates_action_on_list_view.rb:1709:in `test_AddTagsNewPublicTag'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_AddTagsPersonalTag" time="41.913071" assertions="2">
+  </testcase>
+  <testcase name="test_AddTagsPublicTag" time="47.263689" assertions="2">
+  </testcase>
+  <testcase name="test_AddTagsValidation" time="25.647803" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyPostedJobEnableEnhancedApplyFalsePostTrue" time="78.60888" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyPostedJobEnableEnhancedApplyTrueAgency" time="91.939232" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyPostedJobEnableEnhancedApplyTrueException" time="83.566093" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyPostedJobEnableEnhancedApplyTrueInvite" time="80.0704" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyToJobsDisableEEOFalse" time="83.71982" assertions="4">
+    <failure type="Test::Unit::AssertionFailedError" message="&lt;&quot;Referral&quot;&gt; expected but was...">
+&lt;"Referral"&gt; expected but was
+&lt;"New"&gt;. (Test::Unit::AssertionFailedError)
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/test_candidates_action_on_list_view.rb:1344:in `test_ApplyToJobsDisableEEOFalse'    </failure>
+  </testcase>
+  <testcase name="test_ApplyToJobsDisableEEOFalseEnableEnhancedFalse" time="79.26304" assertions="1">
+    <error type="Selenium::WebDriver::Error::NoSuchElementError" message="Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;(.//*[@class='detailList'])[1]//tr[6]/td[4]/div&quot;}">
+Unable to locate element: {"method":"xpath","selector":"(.//*[@class='detailList'])[1]//tr[6]/td[4]/div"} (Selenium::WebDriver::Error::NoSuchElementError)
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-2ofqro/extensions/fxdriver@googlecode.com/components/driver-component.js:10719:in `FirefoxDriver.prototype.findElementInternal_'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-2ofqro/extensions/fxdriver@googlecode.com/components/driver-component.js:10728:in `FirefoxDriver.prototype.findElement'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-2ofqro/extensions/fxdriver@googlecode.com/components/command-processor.js:12595:in `DelayedCommand.prototype.executeInternal_/h'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-2ofqro/extensions/fxdriver@googlecode.com/components/command-processor.js:12600:in `DelayedCommand.prototype.executeInternal_'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-2ofqro/extensions/fxdriver@googlecode.com/components/command-processor.js:12542:in `DelayedCommand.prototype.execute/&lt;'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/response.rb:70:in `assert_ok'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/response.rb:34:in `initialize'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/http/common.rb:78:in `new'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/http/common.rb:78:in `create_response'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/http/default.rb:90:in `request'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/bridge.rb:592:in `find_element_by'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/common/search_context.rb:61:in `find_element'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/test_candidates_action_on_list_view.rb:1526:in `test_ApplyToJobsDisableEEOFalseEnableEnhancedFalse'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_ApplyToJobsDisableEEOTrue" time="84.617093" assertions="5">
+  </testcase>
+  <testcase name="test_ApplyToJobsValidation" time="68.900679" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyUnpostedJobEnableEnhancedApplyToJobFalse" time="78.335902" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyUnpostedJobEnableEnhancedApplyTrueAgency" time="87.997014" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyUnpostedJobEnableEnhancedApplyTrueException" time="78.289091" assertions="1">
+  </testcase>
+  <testcase name="test_CreateNewContact" time="25.721005" assertions="1">
+  </testcase>
+  <testcase name="test_SuccessfullyAddRateSkill" time="70.70916" assertions="3">
+  </testcase>
+  <testcase name="test_SuccessfullyAddSkill" time="57.139589" assertions="1">
+  </testcase>
+  <testcase name="test_SuccessfullyAddToExistingList" time="45.069354" assertions="0">
+    <error type="Selenium::WebDriver::Error::UnhandledAlertError" message="Unexpected modal dialog (text: Unable to connect to the server (communication failure).): &quot;Unable to connect to the server (communication failure).&quot;">
+Unexpected modal dialog (text: Unable to connect to the server (communication failure).): "Unable to connect to the server (communication failure)." (Selenium::WebDriver::Error::UnhandledAlertError)
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/command-processor.js:10034:in `fxdriver.modals.closeUnhandledAlert/&lt;'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/command-processor.js:9942:in `fxdriver.modals.isModalPresent/&lt;'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/command-processor.js:629:in `fxdriver.Timer.prototype.runWhenTrue/g'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/command-processor.js:631:in `fxdriver.Timer.prototype.runWhenTrue'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/command-processor.js:9938:in `fxdriver.modals.isModalPresent'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/command-processor.js:10023:in `fxdriver.modals.closeUnhandledAlert'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/command-processor.js:12657:in `nsCommandProcessor.prototype.execute'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/driver-component.js:9507:in `Dispatcher.executeAs/&lt;'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/driver-component.js:9654:in `Resource.prototype.handle'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/driver-component.js:9601:in `Dispatcher.prototype.dispatch'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/driver-component.js:12451:in `WebDriverServer/&lt;.handle'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/httpd.js:2054:in `createHandlerFunc/&lt;'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/httpd.js:2387:in `ServerHandler.prototype.handleResponse'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/httpd.js:1223:in `Connection.prototype.process'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/httpd.js:1677:in `RequestReader.prototype._handleResponse'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/httpd.js:1525:in `RequestReader.prototype._processBody'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/httpd.js:1393:in `RequestReader.prototype.onInputStreamReady'
+[remote server] resource://gre/components/nsPrompter.js:370:in `openModalWindow'
+[remote server] resource://gre/components/nsPrompter.js:560:in `ModalPrompter.prototype.openPrompt'
+[remote server] resource://gre/components/nsPrompter.js:612:in `ModalPrompter.prototype.alert'
+[remote server] file:///var/folders/ml/2cj5zyh53ys2qn9_nwv386q00000gn/T/webdriver-profile20160308-7260-162port/extensions/fxdriver@googlecode.com/components/prompt-service.js:4731:in `ObservingAlert.prototype.alert'
+[remote server] ?:?:in `.wrap/a[b]&lt;/&lt;@https://ts2.na17.visual.force.com/jslibrary/1452545184000/ui-sfdc-javascript/SfdcCore.js'
+[remote server] https://ts2.na17.visual.force.com/resource/1456427449000/ts2__CandidateUpdate/provider/js/provider.js?lrkey=&amp;prefix=ts2__:326:in `.provider&lt;/it.soql/&lt;'
+[remote server] https://ts2.na17.visual.force.com/jslibrary/1450392800000/sfdc/VFRemote.js:133:in `$VFRM.RemotingProviderImpl&lt;.constructor/&lt;/e.cb'
+[remote server] https://ts2.na17.visual.force.com/jslibrary/1450392800000/sfdc/VFRemote.js:99:in `VFExt3.direct.RemotingProvider&lt;.doCallback'
+[remote server] https://ts2.na17.visual.force.com/jslibrary/1450392800000/sfdc/VFRemote.js:94:in `VFExt3.direct.RemotingProvider&lt;.onData'
+[remote server] https://ts2.na17.visual.force.com/jslibrary/1450392800000/sfdc/VFRemote.js:75:in `.handleFailure'
+[remote server] https://ts2.na17.visual.force.com/jslibrary/1450392800000/sfdc/VFRemote.js:39:in `a'
+[remote server] ?:?:in `h/h[e]&lt;@https://ts2.na17.visual.force.com/jslibrary/1450392800000/sfdc/VFRemote.js'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/response.rb:70:in `assert_ok'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/response.rb:34:in `initialize'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/http/common.rb:78:in `new'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/http/common.rb:78:in `create_response'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/http/default.rb:90:in `request'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/remote/bridge.rb:592:in `find_element_by'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/common/search_context.rb:61:in `find_element'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:88:in `block in displayed'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/selenium-webdriver-2.50.0/lib/selenium/webdriver/common/wait.rb:58:in `until'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:87:in `displayed'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:269:in `block in main'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:262:in `each'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/common.rb:262:in `main'
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/test_candidates_action_on_list_view.rb:398:in `test_SuccessfullyAddToExistingList'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_SuccessfullyAddToNewList" time="49.928612" assertions="1">
+  </testcase>
+  <testcase name="test_TryToInvitePostJobFalse" time="70.783942" assertions="1">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+(.//*[@class='first_level']//input)[1]
+click
+click
+click
+displayed
+(.//*[@class = 'detailList'])[2]//td[last()]//option[2]
+click
+displayed
+.//*[@class='messageText']//h4
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+displayed
+.//*[@id='con4']
+displayed
+(.//*[@class='detailList'])[2]
+
+main
+
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@title='Save Skills']
+click
+displayed
+.//*[@class='message errorM3']//div
+
+main
+
+displayed
+.//*[@value='Cancel']
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+displayed
+.//*[@id='con4']
+displayed
+(.//*[@class='detailList'])[2]
+
+main
+
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@id='j_id0:frm:j_id29:pbsMain:j_id44:cNewTag']
+set_text
+set_text
+click
+displayed
+.//*[@class='messageCell']/div
+
+main
+
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+displayed
+.//*[@id='con4']
+displayed
+(.//*[@class='detailList'])[2]
+
+main
+
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+displayed
+.//*[@id='con4']
+displayed
+(.//*[@class='detailList'])[2]
+
+main
+
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@id='j_id0:frm:j_id29:pbsMain:j_id37:personalTagList']
+click
+click
+displayed
+.//*[@class='messageCell']/div
+
+main
+
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+displayed
+.//*[@id='con4']
+displayed
+(.//*[@class='detailList'])[2]
+
+main
+
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@id='j_id0:frm:j_id29:pbsMain:j_id40:publicTagList']
+click
+click
+displayed
+.//*[@class='messageCell']/div
+
+main
+
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@title='Add Tags']
+click
+displayed
+.//*[@class='messageCell']/div
+
+main
+
+click
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+.//*[@class='data2Col last']/span
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='bottomButtonRow']/input[1]
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+(.//*[@type='radio'])[1]
+click
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+.//*[@class='data2Col last']/span
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+(.//*[@type='radio'])[1]
+click
+displayed
+.//*[@class='requiredInput']/select
+click
+click
+displayed
+.//*[@class='data2Col last']/span
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+(.//*[@type='radio'])[1]
+click
+click
+displayed
+.//*[@class='data2Col last']/span
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+displayed
+.//*[@id='con4']
+displayed
+(.//*[@class='detailList'])[2]
+
+main
+
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+(.//*[@type='radio'])[1]
+click
+displayed
+.//*[@class='requiredInput']/select
+click
+click
+displayed
+.//*[@title='Go To Job']
+click
+
+main
+
+displayed
+(.//*[@class='list'])[2]/tbody
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+displayed
+.//*[@id='con4']
+displayed
+(.//*[@class='detailList'])[2]
+
+main
+
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+.//*[@title='Go To Job']
+click
+
+main
+
+displayed
+(.//*[@class='list'])[2]/tbody
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+displayed
+.//*[@id='con4']
+displayed
+(.//*[@class='detailList'])[2]
+
+main
+
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+.//*[@title='Go To Job']
+click
+
+main
+
+displayed
+(.//*[@class='list'])[2]/tbody
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+displayed
+.//*[@id='con4']
+displayed
+(.//*[@class='detailList'])[2]
+
+main
+
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+click
+displayed
+.//*[@class='message errorM3']//div
+
+main
+
+click
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+.//*[@class='data2Col last']/span
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='bottomButtonRow']/input[1]
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+(.//*[@type='radio'])[1]
+click
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+.//*[@class='data2Col last']/span
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+(.//*[@type='radio'])[1]
+click
+displayed
+.//*[@class='requiredInput']/select
+click
+click
+displayed
+.//*[@class='data2Col last']/span
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+.//*[@class='pbButton']/input
+.//*[@id='p3']
+.//*[@id='name_lastcon2']
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+(.//*[@class='first_level']//input)[1]
+click
+click
+click
+displayed
+(.//*[@class = 'detailList'])[2]//td[last()]//option[2]
+click
+displayed
+.//*[@value='Submit']
+
+main
+
+click
+displayed
+.//*[@value='Close']
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+click
+displayed
+(.//*[@class='dataCol col02 inlineEditLock'])[3]/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+(.//*[@class='list'])[last()]//tr[3]
+click
+displayed
+(.//*[@class='dataCol col02 inlineEditLock'])[3]/div
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+(.//*[@class='first_level']//input)[1]
+click
+click
+click
+displayed
+(.//*[@class = 'detailList'])[2]//td[last()]//option[2]
+click
+displayed
+.//*[@value='Close']
+click
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@id='Name']
+set_text
+click
+displayed
+.//*[@id='JobscienceMainPanel']/div[1]/div/div[2]/i
+
+main
+
+displayed
+.//*[@id='fcf']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+.//*[@value='Close']
+click
+
+main
+
+displayed
+.//*[@class='wk-list-body']
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='acc2']
+set_text
+click
+displayed
+.//*[@title='Delete']
+
+main
+
+displayed
+.//*[@class='pbButton']/input
+click
+displayed
+.//*[@id='p3']
+set_text
+click
+displayed
+.//*[@id='name_lastcon2']
+set_text
+set_text
+click
+displayed
+.//*[@id='con2_ilecell']/div
+
+main
+
+displayed
+.//*[@id='fcf']
+set_text
+click
+displayed
+.//*[@id='ext-gen25']
+
+main
+
+displayed
+.//*[@class='lookupInput']/input
+set_text
+click
+displayed
+(.//*[@type='radio'])[1]
+click
+click
+displayed
+.//*[@class='messageText']
+  </system-out>
+</testsuite>

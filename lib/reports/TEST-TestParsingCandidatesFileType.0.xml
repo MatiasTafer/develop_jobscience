@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestParsingCandidatesFileType" tests="8" time="330.468803" failures="0" errors="2" skipped="0" assertions="6" timestamp="2016-03-08T09:53:04-03:00">
+  <testcase name="test_AddResumeResumeToolsCorrectFileType" time="44.182469" assertions="1">
+  </testcase>
+  <testcase name="test_AddResumeResumeToolsIncorrectFileType" time="31.358912" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyJobCorrectFileType" time="98.617965" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyJobIncorrectFileType" time="41.072457" assertions="1">
+  </testcase>
+  <testcase name="test_ApplyToAJobWithLinkedInEEOQuestionsDisable" time="13.981055" assertions="0">
+    <error type="NoMethodError" message="undefined method `ApplyToLinkedIn' for CustomSettings:Class">
+undefined method `ApplyToLinkedIn' for CustomSettings:Class (NoMethodError)
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/test_candidates_parsing_candidates_file_types.rb:185:in `test_ApplyToAJobWithLinkedInEEOQuestionsDisable'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_ApplyToAJobWithLinkedInEEOQuestionsEnable" time="12.355294" assertions="0">
+    <error type="NoMethodError" message="undefined method `ApplyToLinkedIn' for CustomSettings:Class">
+undefined method `ApplyToLinkedIn' for CustomSettings:Class (NoMethodError)
+/Users/admin/Desktop/Autommation/jobscience/lib/New_Automation/tests/test_candidates_parsing_candidates_file_types.rb:132:in `test_ApplyToAJobWithLinkedInEEOQuestionsEnable'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Users/admin/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_ResumeUpdateCorrectFileType" time="47.178144" assertions="1">
+  </testcase>
+  <testcase name="test_ResumeUpdateIncorrectFileType" time="41.721298" assertions="1">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@id='sidebarDiv']/div[3]/div[2]/ul/li[1]/a
+click
+
+main
+
+displayed
+.//*[@id='j_id0:frm:j_id5:j_id41']
+upload
+https://ts2.na17.visual.force.com/apex/ResumeAddUpdateBackend?id=005o0000001NWrs
+upload
+click
+
+main
+
+displayed
+.//*[@id='sidebarDiv']/div[3]/div[2]/ul/li[1]/a
+click
+
+main
+
+displayed
+.//*[@id='j_id0:frm:j_id5:j_id41']
+upload
+https://ts2.na17.visual.force.com/apex/ResumeAddUpdateBackend?id=005o0000001NWrs
+upload
+click
+displayed
+.//*[@id='j_id0:frm:j_id5:j_id41']
+
+main
+
+displayed
+.//*[@name='new']
+click
+displayed
+.//*[@value='Continue']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+
+main
+
+displayed
+(.//*[@type='radio'])[1]
+click
+upload
+https://js-recruiting-148857d918a-14910044900.secure.force.com/openings/ts2__resume
+upload
+click
+displayed
+.//*[@id='atsApplicationSubmittedMain']
+
+main
+
+displayed
+(.//*[@type='radio'])[1]
+click
+upload
+https://js-recruiting-148857d918a-14910044900.secure.force.com/openings/ts2__resume
+upload
+click
+
+main
+
+displayed
+.//*[@id='fcf']/option[1]
+click
+click
+displayed
+.//*[@id='ext-gen25']
+click
+displayed
+.//*[@class='listHoverLinks']
+displayed
+.//*[@name='ts2__resume_update']
+click
+
+main
+
+displayed
+.//*[@id='j_id0:frm:j_id5:j_id41']
+upload
+https://ts2.na17.visual.force.com/apex/ResumeAddUpdateBackend?scontrolCaching=1&amp;id=003o000000pLn1J
+upload
+click
+
+main
+
+displayed
+.//*[@class='list']
+click
+click
+displayed
+.//*[@id='ext-gen25']
+click
+displayed
+.//*[@class='listHoverLinks']
+displayed
+.//*[@name='ts2__resume_update']
+click
+
+main
+
+displayed
+.//*[@id='j_id0:frm:j_id5:j_id41']
+upload
+https://ts2.na17.visual.force.com/apex/ResumeAddUpdateBackend?scontrolCaching=1&amp;id=003o000000pL9jw
+upload
+click
+displayed
+.//*[@id='j_id0:frm:j_id5:j_id41']
+  </system-out>
+</testsuite>

@@ -9,7 +9,7 @@ require './New_Automation/tests/custom_settings.rb'
 require './New_Automation/pages/home_page.rb'
 require_relative './pages/board_setup_home_page.rb'
 require_relative './pages/board_setup_detail_page.rb'
-require_relative './pages/applications_detail_page.rb'
+require './New_Automation/pages/applications/applications_detail_page.rb'
 require_relative './pages/requisitions_detail_page.rb'
 
 class TestURLBuilder < TestBasic
