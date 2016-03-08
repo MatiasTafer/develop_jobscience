@@ -37,7 +37,7 @@ $wait
 #require './New_Automation/test_job_board'
 
 
-require './New_Automation/tests/test_standard_questions'
+#require './New_Automation/tests/test_standard_questions'
 
 #require './New_Automation/test_projects'
 
@@ -53,12 +53,8 @@ require './New_Automation/tests/test_standard_questions'
 
 #require './New_Automation/test_projects'
 
-<<<<<<< HEAD
-require './New_Automation/tests/test_candidates_action_on_list_view'
-=======
-#require './New_Automation/tests/test_candidates_action_on_list_view'
->>>>>>> develop
 
+require './New_Automation/tests/test_candidates_action_on_list_view'
 
 #require './New_Automation/tests/test_question_sets'
 
