@@ -1,39 +1,38 @@
 class ContactsHomePage
   
 
-  CONTACT_RECORD_XPATH  = "(.//*[@class='dataRow odd'])[4]/th/a"
   FIRST_CHECKBOX_OF_FIRST_CONTACT_XPATH = "(.//*[@class='checkbox'])[1]"
   SECOND_CHECKBOX_OF_SECOND_CONTACT_XPATH = "(.//*[@class='checkbox'])[2]"
-  FIRST_CONTACT_ALL_CONTACT_TAB_XPATH = "(.//*[@class='x-grid3-cell-inner x-grid3-col-FULL_NAME']/a)[1]"
-  ADD_TO_LIST_BUTTON_XPATH = ".//*[@class='btn'][2]"
-  CONTACT_HOME_PAGE_BTN_NEW = ".//*[@class='pbButton']/input"
+  FIRST_CONTACT_ALL_CONTACT_TAB_XPATH = "(//*[text()='Del'])[2]/../../../../td[4]//a"
+  ADD_TO_LIST_BUTTON_XPATH = ".//*[@value='Add to List']"
+  CONTACT_HOME_PAGE_BTN_NEW = ".//*[@name='new']"
   CONTACT_HOME_VIEW_SELECT_XPATH = ".//*[@title='View:']"
   CONTACT_HOME_BTN_GO_XPATH = ".//*[@name='go']"
   CONTACT_HOME_LIST_XPATH = ".//*[@class='list']"
   
   #After pressing "GO" button
-  CONTACT_HOME_CONTACT_LIST_XPATH = "((.//*[@class='listBody']/div/div)[2]/div/div/div/div)[2]/div"
-  CONTACT_HOME_ADD_SKILL_XPATH = ".//*[@name='ts2__add_skills']"
-  CONTACT_HOME_ADD_LIST_XPATH = ".//*[@name='ts2__add_to_list']"
-  CONTACT_HOME_ADD_TAGS_XPATH = ".//*[@name='ts2__add_tags']"
-  CONTACT_HOME_APPLY_TO_JOB_XPATH = ".//*[@name='ts2__apply_to_job']"
+  CONTACT_HOME_CONTACT_LIST_XPATH = "(//*[text()='Del'])[2]/../../../../../../../../.."
+  CONTACT_HOME_ADD_SKILL_XPATH = ".//*[@value='Add Skills']"
+  CONTACT_HOME_ADD_LIST_XPATH = ".//*[@value='Add to List']"
+  CONTACT_HOME_ADD_TAGS_XPATH = ".//*[@value='Add Tags']"
+  CONTACT_HOME_APPLY_TO_JOB_XPATH = ".//*[@value='Apply To Jobs']"
   CONTACT_HOME_FIRST_VIEW_OPTION_XPATH = "(.//*[@title='View:']/option)[1]"
-  CONTACT_HOME_FIRST_ENTRY_GO_XPATH = "((.//*[@class='listBody']/div/div)[2]/div/div/div/div)[2]/div/div[1]//td[4]//a"
+  CONTACT_HOME_FIRST_ENTRY_GO_XPATH = "(//*[text()='Del'])[1]/../../../../td[4]//a"
   
    
   #Add Skill Pop Up Window
-  CONTACT_SKILL_POPUP_FIRST_ELEMENT_XPATH = "(.//*[@class='first_level']//input)[1]"
-  CONTACT_SKILL_POPUP_SECOND_ELEMENT_XPATH = "(.//*[@class='first_level']//input)[2]"
+  CONTACT_SKILL_POPUP_FIRST_ELEMENT_XPATH = "(.//*[@type='checkbox'])[1]"
+  CONTACT_SKILL_POPUP_SECOND_ELEMENT_XPATH = "(.//*[@type='checkbox'])[2]"
   CONTACT_SKILL_POPUP_ARROW_RIGHT_XPATH = ".//*[@class='fa fa-chevron-right']"    
   CONTACT_SKILL_POPUP_BTN_SAVE_XPATH = ".//*[@title='Save Skills']"
   CONTACT_SKILL_POPUP_BTN_SAVE_RATE_XPATH = ".//*[@value='Save & Rate Skills']"
   CONTACT_SKILL_POPUP_BTN_CLOSE_XPATH = ".//*[@value='Close']"
   CONTACT_SKILL_POPUP_BTN_CANCEL_XPATH = ".//*[@value='Cancel']"
-  CONTACT_SKILL_POPUP_SKILL_LIST_1_ELEMENT_XPATH = "(.//*[@class = 'detailList'])[2]//td[last()]//option[1]"
-  CONTACT_SKILL_POPUP_SKILL_LIST_2_ELEMENT_XPATH = "(.//*[@class = 'detailList'])[2]//td[last()]//option[2]"
+  CONTACT_SKILL_POPUP_SKILL_LIST_1_ELEMENT_XPATH = "(//*[text()='Selected Skills']/..//option)[1]"
+  CONTACT_SKILL_POPUP_SKILL_LIST_2_ELEMENT_XPATH = "(//*[text()='Selected Skills']/..//option)[2]"
   CONTACT_SKILL_POPUP_RATE_SKILL_BTN_SUBMIT_XPATH = ".//*[@value='Submit']"
-  CONTACT_SKILL_POPUP_RATE_SLIDER_1_XPATH = "(.//*[@class='ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all'])[1]//a"
-  CONTACT_SKILL_POPUP_RATE_SLIDER_2_XPATH = "(.//*[@class='ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all'])[2]//a"
+  CONTACT_SKILL_POPUP_RATE_SLIDER_1_XPATH = "(//*[text()='Rate']/../../../..//tbody//tr)[1]/td[2]//div/a"
+  CONTACT_SKILL_POPUP_RATE_SLIDER_2_XPATH = "(//*[text()='Rate']/../../../..//tbody//tr)[2]/td[2]//div/a"
   CONTACT_SKILL_POPUP_ERROR_OUTPUT_XPATH = ".//*[@class='messageText']//h4"
   CONTACT_SKILL_POPUP_ERROR_OUTPUT_2_XPATH = ".//*[@class='message errorM3']//div"
   CONTACT_SKILL_POPUP_ERROR_MESSAGE_2_TEXT = "Error:\nPlease select at least one skill."
@@ -49,7 +48,8 @@ class ContactsHomePage
   CONTACT_LIST_POPUP_BTN_ADD_SHORT_LIST_XPATH = ".//*[@class='btn'][1]"
   CONTACT_LIST_POPUP_BTN_CLOSE_XPATH = ".//*[@value='Close']"
   CONTACT_LIST_POPUP_NUMBER_ADDED_XPATH = ".//*[@class='data2Col first last']/span"
-  
+
+#aca me quede   
   
   #Apply to Job Pop Up Window
   CONTACT_JOB_POPUP_JOB_TITLE_XPATH = ".//*[@class='lookupInput']/input"
