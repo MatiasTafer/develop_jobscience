@@ -33,7 +33,7 @@ require_relative 'users.rb'
 
 
 class TestParsingCandidatesFileType < TestBasic
-  @@resume_path = "/Users/admin/Desktop/test.pdf"
+  @@resume_path = "/New_Automation/files/Job Orders/Job_Order_Upload01.pdf"
   
 
   # TC127 - Resume uploader with incorrect file type
@@ -58,10 +58,12 @@ class TestParsingCandidatesFileType < TestBasic
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
     
+    file = File.join(Dir.pwd, @@resume_path)
+    
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 2. Click on "Browse ..." to upload a file with type added in preconditions
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@resume_path},
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
     # 3. Click on "Add Resume"  
       {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH}
@@ -100,10 +102,12 @@ class TestParsingCandidatesFileType < TestBasic
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
     
+    file = File.join(Dir.pwd, @@resume_path)
+    
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 2. Click on "Browse ..." to upload a file with type added in preconditions
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@resume_path},
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
     # 3. Click on "Add Resume"  
       {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
       ]
@@ -249,10 +253,12 @@ class TestParsingCandidatesFileType < TestBasic
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
     
+    file = File.join(Dir.pwd, @@resume_path)
+    
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 4. Click on "Browse ..." to upload a file with type added in preconditions
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@resume_path},
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
     # 5. Click on "Add Resume"  
       {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH}
@@ -300,10 +306,12 @@ class TestParsingCandidatesFileType < TestBasic
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
     
+    file = File.join(Dir.pwd, @@resume_path)
+    
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 4. Click on "Browse ..." to upload a file with type added in preconditions
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@resume_path},
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
     # 5. Click on "Add Resume"  
       {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
       ]
@@ -370,11 +378,12 @@ class TestParsingCandidatesFileType < TestBasic
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH).displayed?
       }
     
+    file = File.join(Dir.pwd, @@resume_path)
     
     test = [
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH},
-      {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => @@resume_path},
+      {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => file},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH}
     ]
     Common.main(test)
@@ -435,11 +444,12 @@ class TestParsingCandidatesFileType < TestBasic
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH).displayed?
       }
     
+    file = File.join(Dir.pwd, @@resume_path)
     
     test = [
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH},
-      {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => @@resume_path},
+      {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => file},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_SUCCESS_MSG_XPATH}
     ]
