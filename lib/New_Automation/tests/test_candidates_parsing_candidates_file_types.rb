@@ -28,19 +28,19 @@ require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
 require './New_Automation/pages/search/search_results_page.rb'
 require './New_Automation/pages/search/education_history_new_page.rb'
 require './New_Automation/pages/search/employment_history_new_page.rb'
-require './New_Automation/pages/resume/add_resume_popup_page.rb'
+require './New_Automation/pages/accounts/add_resume_popup_page.rb'
+require_relative 'users.rb'
 
 
 class TestParsingCandidatesFileType < TestBasic
   @@resume_path = "/New_Automation/files/Job Orders/job_order_upload01.pdf"
-  
 
   # TC127 - Resume uploader with incorrect file type
   def test_AddResumeResumeToolsIncorrectFileType
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.DefineResumeAllowedTypes("txt")
     
@@ -84,7 +84,7 @@ class TestParsingCandidatesFileType < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -127,7 +127,7 @@ class TestParsingCandidatesFileType < TestBasic
     randomName = SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.ApplyToLinkedIn(true)
     
@@ -180,7 +180,7 @@ class TestParsingCandidatesFileType < TestBasic
     randomName = SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.ApplyToLinkedIn(true)
     
@@ -230,7 +230,7 @@ class TestParsingCandidatesFileType < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.DefineResumeAllowedTypes("txt")
     
@@ -283,7 +283,7 @@ class TestParsingCandidatesFileType < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -340,7 +340,7 @@ class TestParsingCandidatesFileType < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.DefineResumeAllowedTypesJobBoard("txt")
     CustomSettings.JobBoardLogin(false)
     CustomSettings.BoardSetupInit
@@ -405,7 +405,7 @@ class TestParsingCandidatesFileType < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.DefineResumeAllowedTypesJobBoard("pdf")
     CustomSettings.JobBoardLogin(false)
     CustomSettings.DefineEEOQuestions(false, false, false, false, false)

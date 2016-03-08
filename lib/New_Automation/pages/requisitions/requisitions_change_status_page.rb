@@ -1,7 +1,8 @@
 class RequisitionsChangeStatus
+  
   REQUISITIONS_CHANGE_STATUS_NEW_STATUS_XPATH = ".//*[@class='detailList']//select"
-  REQUISITIONS_CHANGE_STATUS_BTN_UPDATE_STATUS_XPATH = ".//*[@class='pbButton ']//*[@class='btn'][1]"
-  REQUISITIONS_CHANGE_STATUS_BTN_BACK_TO_LIST_XPATH = ".//*[@class='pbButton ']//*[@class='btn'][2]"
+  REQUISITIONS_CHANGE_STATUS_BTN_UPDATE_STATUS_XPATH = ".//*[@title='Update Status']"
+  REQUISITIONS_CHANGE_STATUS_BTN_BACK_TO_LIST_XPATH = ".//*[@title='Back to List']"
 
   #PAGINATION MUST BE ON SECOND PAGE
   REQUISITIONS_CHANGE_STATUS_RECORDS_PER_PAGE_XPATH = ".//*[@class='bottomNav']//select"
@@ -12,11 +13,10 @@ class RequisitionsChangeStatus
   REQUISITIONS_CHANGE_STATUS_CURRENT_PAGE_XPATH = ".//*[@class='bottomNav']//input"
   REQUISITIONS_CHANGE_STATUS_NUMBER_OF_RECORDS_XPATH = "(.//*[@class='bottomNav']//span)[2]"
   
-  
   REQUISITION_NEW_STATUS_TEXT = "Open"
   
   BACK_TO_LIST_BUTTON_SUCCESS_PAGE_XPATH = ".//*[@title='Back to List']"
   
-  
   ERROR_STATUS_MUST_BE_SELECTED = ".//*[@class='message errorM3']"
+  
 end

@@ -1,7 +1,7 @@
 class QuestionSetsQuestionBuilder
   #BUTTONS
   QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_QUESTION_XPATH = ".//*[@title='New Question']"
-  QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_ORDER_XPATH = "(.//*[@id='QApage:Qq:theGrid']//span)[1]/input[2]" 
+  QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_ORDER_XPATH = ".//*[@title='Save New Order']" 
   
   #NEW QUESTION FIELDS
   QUESTION_SETS_QUESTION_BUILDER_QUESTION_NAME_XPATH = "(.//*[@class='LabelCol']//tbody/tr[1]/td)[2]//input"
@@ -18,8 +18,8 @@ class QuestionSetsQuestionBuilder
   QUESTION_SETS_QUESTION_BUILDER_NEW_BTN_SAVE_NEW_XPATH = "((.//*[@class='LabelCol']//tbody/tr[3]/td)[3]//span)[2]/input[3]"
   
   #QUESTIONS CREATED
-  QUESTION_SETS_QUESTION_1_XPATH = "(.//*[@style='font-weight:bold;cursor:pointer;'])[1]"
-  QUESTION_SETS_QUESTION_2_XPATH = "(.//*[@style='font-weight:bold;cursor:pointer;'])[2]"
+  QUESTION_SETS_QUESTION_1_XPATH = ".//*[@id='QALIST']/li[1]/label[1]"
+  QUESTION_SETS_QUESTION_2_XPATH = ".//*[@id='QALIST']/li[2]/label[1]"
   QUESTION_SETS_QUESTION_1_NAME_LABEL_XPATH = "(.//*[@title='Click and Drag to change the order of the questions. Click Save New Order button'])[1]//label"
   QUESTION_SETS_QUESTIONS_LIST_FIRST_XPATH = ".//*[@class='ui-sortable']/li[1]"
   QUESTION_SETS_QUESTIONS_LIST_SECOND_XPATH = ".//*[@class='ui-sortable']/li[2]"

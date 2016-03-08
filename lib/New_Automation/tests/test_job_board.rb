@@ -5,6 +5,7 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
+require_relative 'users.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/board_setup/board_setup_detail_page.rb'
 require './New_Automation/pages/board_setup/board_setup_edit_page.rb'
@@ -33,7 +34,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc64 #1 #OK
     # JS2 -  Search jobs by criteria 
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # set Search & Results criteria 1, 2 and 3.
     test = [
@@ -67,7 +68,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc65 #2 #OK
     # JS2 - Set "Show Search Only" to "TRUE" in Board Setup
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # Preconditions
     test = [
@@ -109,7 +110,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc66 #3 #OK
     # JS2 - Edit search criteria fields
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # Steps
     test = [
@@ -138,12 +139,12 @@ class TestJobBoard < TestBasic
   def test_job_board_tc67 #4 OK
     # JS2 - Successfully Register on Job Board
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Precondition
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},
@@ -185,7 +186,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc68 #5
     # JS2 - Successfully Login on Job Board
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Precondition
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -219,7 +220,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc69 #6
     # JS2 - Successfully apply for one job.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -267,7 +268,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc70 #7
     # JS2 - Successfully apply for one job in Linkedin.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.login_job_board
     
     $browser.get HomePage::JOB_BOARD_URL
@@ -307,7 +308,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc71 #8
     # JS2 - Successfully Add an Standard questions
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -335,7 +336,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc72 #9
     # JS2 - Successfully Add Question Sets in a especific job order
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::REQUISITION_TAB_LINK_URL
     test = [
@@ -357,7 +358,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc74 #10
     # JS2 - Successfully applicant updating info
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.login_job_board
     
@@ -392,7 +393,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc75 #11
     # JS2 - Updating resume of aplication
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.login_job_board
     
     $browser.get HomePage::JOB_BOARD_URL
@@ -429,7 +430,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc76 #12
     # JS2 - Successfully create Application Source
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get HomePage::SOURCE_LINK_URL
     test = [
@@ -461,7 +462,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc77 #13
     # JS2 - Successfully Edit "Disable Mobile Job Board" to False
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -486,7 +487,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc83 #14
     # JS2 - Mobile job board source
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get HomePage::SOURCE_LINK_URL
     test = [
@@ -518,7 +519,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc864 #15
     # JS2 - Job Search by "Jobs/Projects" field
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # set Search & Results criteria 1, 2 and 3.
     test = [
@@ -552,7 +553,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc865 #16
     # JS2 - Job Search by "Department" field
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # set Search & Results criteria 1, 2 and 3.
     test = [
@@ -584,7 +585,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc866 #17
     # JS2 - Job Search by "Location" field
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # set Search & Results criteria 1, 2 and 3.
     test = [
@@ -616,7 +617,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc867 #18
     # JS2 - Job Search by "Employment Type" field
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # set Search & Results criteria 1, 2 and 3.
     test = [
@@ -648,7 +649,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc868 #19
     # JS2 - Job Search by "Business Unit" field
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # set Search & Results criteria 1, 2 and 3.
     test = [
@@ -678,7 +679,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc870 #20
     # JS2 - Job Search by "Jobs/Projects", "Department" and "Location" fields 
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # set Search & Results criteria 1, 2 and 3.
     test = [
@@ -710,7 +711,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc871 #21
     # JS2 - Job Search by "Jobs/Projects", "Department", "Location" and "Employment Type" fields
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # set Search & Results criteria 1, 2 and 3.
     test = [
@@ -745,7 +746,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc872 #22
     # JS2 - Job Search by "Jobs/Projects", "Department", "Location", "Employment Type" and "Business Unit" fields
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     # set Search & Results criteria 1, 2 and 3.
     test = [
@@ -782,7 +783,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc874 #23
     # JS2 - Job Search with one keyword
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -799,7 +800,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc875 #24
     # JS2 - Job Search with several keyword.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -862,7 +863,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc876 #25
     # JS2 - Job Search with wildcards in keyword.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -883,7 +884,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc877 #26
     # JS2 - Search with filters and keywords.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -931,7 +932,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc878 #27
     # JS2 - Search give 0 results
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -981,7 +982,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc879 #28
     # JS2 - Sorting search results by fields
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -1007,7 +1008,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc880 #29
     # JS2 - Pagination search results
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -1042,7 +1043,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc881 #30
     # JS2 - Resume Page
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.login_job_board
     
     $browser.get HomePage::JOB_BOARD_URL
@@ -1087,7 +1088,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc883 #31
     # JS2 - Resume Builder
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.login_job_board
     
     $browser.get HomePage::JOB_BOARD_URL
@@ -1193,7 +1194,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc884 #32 
     # JS2 - Resume Attachments Page with inappropriate filetype
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.login_job_board
     # Preconditios
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
@@ -1267,7 +1268,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc885 #33
     # JS2 - Resume Attachments Page with fewer documents than Required Number of Attachments setting specifies.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.login_job_board
     # Preconditios
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
@@ -1328,7 +1329,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc886 #34
     # JS2 - Resume Attachments Page with attach the required number of documents with proper filetype.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.login_job_board
     # Preconditios
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
@@ -1398,7 +1399,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc887 #35
     # JS2 - Resume Attachments Page with "Attach to Applications" = false.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.logout_job_board
     # Preconditios
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
@@ -1455,7 +1456,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc888 #36
     # JS2 - Referral Page
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Steps
     $browser.get HomePage::JOB_BOARD_INTERNAL_URL
@@ -1488,7 +1489,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc889 #37
     # JS2 - Referral Page, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Steps
     $browser.get HomePage::JOB_BOARD_INTERNAL_URL
@@ -1520,7 +1521,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc890 #38  
     # JS2 - Referral Page, Duplication
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Preconditions
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
@@ -1563,7 +1564,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc891 #39
     # JS2 - Referral Page, Max Number Open Referrals
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.logout_job_board
     # Preconditions
     $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_INTERNAL_XPATH
@@ -1600,7 +1601,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc892 #40
     # JS2 - Referral Page, Max Number Referrals Per Contact
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.logout_job_board
     # Preconditions
     $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_INTERNAL_XPATH
@@ -1636,7 +1637,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc893 #41
     # JS2 - Referral Page, Max Number Referrals Per Contact, Expired
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.logout_job_board
     # Preconditions
     $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_INTERNAL_XPATH
@@ -1674,7 +1675,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc894 #42
     # JS2 - Your Job Application Page
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -1727,7 +1728,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc895 #43
     # JS2 - Try to Register, Leave all fields blank.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -1758,7 +1759,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc1242 #44
     # JS2 - Try to Register, Leave all fields blank.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 9. Repeat steps 1-8 with unauthenticated job board
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
@@ -1790,7 +1791,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc896 #45
     # JS2 - Try to Register, Enter a invalid email
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -1823,7 +1824,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc1243 #46
     # JS2 - Try to Register, Enter a invalid email
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 9. Repeat steps 1-8 with unauthenticated job board
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
@@ -1858,7 +1859,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc897 #47
     # JS2 - Try to Register, Enter a invalid passwords
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -1896,7 +1897,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc898 #48
     # JS2 - Try to Register, Enter a mismatching passwords
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -1934,7 +1935,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc899 #49
     # JS2 - Try to Register, Enter a mismatching passwords
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -1974,7 +1975,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc900 #50
     # JS2 - Successfully Register
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -2019,7 +2020,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc1245 #51
     # JS2 - Successfully Register
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # Unauthenticated job board
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
@@ -2061,7 +2062,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc901 #52
     # JS2 - Registration / Contact Dupe Prevention = Attach Only.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [
@@ -2109,7 +2110,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc902 #53 
     # JS2 - Registration and Create new Contact / Contact Dupe Prevention = Attach Only.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [
@@ -2159,7 +2160,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc903 #54
     # JS2 - Registration and Create new Contact / Contact Dupe Prevention = Attach Only.
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [
@@ -2208,7 +2209,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc904 #55  
     # JS2 - Complete Application in Job Board
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -2256,7 +2257,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc905 #56 
     # JS2 - Incomplete Application in Job Board
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -2303,7 +2304,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc906 #57
     # JS2 - Duplicate for incomplete Applications in Job Board
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # Preconditions
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
@@ -2345,7 +2346,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc907 #58
     # JS2 - Duplicate for complete Applications in Job Board with Allow Duplicate Apps" = false
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # Preconditions
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
@@ -2410,7 +2411,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc908  #59
     # JS2 - Duplicate for complete Applications in Job Board with Allow Duplicate Apps" = true
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # Preconditions
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
@@ -2473,7 +2474,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc909  #60
     # JS2 - Job Detail Page / Authenticated Job Board Email page
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -2522,7 +2523,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc911  #61
     # JS2 - Job Detail Page / Not Authenticated Job Board Email Page
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -2560,7 +2561,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc912  #62
     # JS2 - Job Detail Page / Not Authenticated Job Board
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -2591,7 +2592,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc913  #63
     # JS2 - Job Detail Page / Not Authenticated Job Board - Dupe apps
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -2663,7 +2664,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc914  #64
     # Job Detail Page / Apply with LinkedIn
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get SetupEditPage::SOCIAL_SETTINGS_EDIT_URL
     test = [
       {"displayed" => SetupEditPage::LINKEDIN_SOURCE_TRACKING_XPATH},
@@ -2712,7 +2713,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc915  #65
     # JS2 - Questions Page with fields blank
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -2783,7 +2784,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc916  #66
     # JS2 - Questions Page with fields blank
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -2854,7 +2855,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc917  #67
     # JS2 - Questions Page Picklist
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
@@ -2922,7 +2923,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc918  #68
     # JS2 - Successfully Questions Page Save
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
     test = [
@@ -3006,7 +3007,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc919  #69
     # JS2 - Update Your Info Page
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     Common.standart_question_null
     $browser.get HomePage::JOB_BOARD_URL
@@ -3040,7 +3041,7 @@ class TestJobBoard < TestBasic
   def test_job_board_tc922  #70
     # JS2 - Job Board Email Page send with fields blank
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     Common.standart_question_null
     $browser.get HomePage::JOB_BOARD_URL
@@ -3076,7 +3077,7 @@ class TestJobBoard < TestBasic
    def test_job_board_tc923  #71
     # JS2 - Job Board Email Page send with invalid email
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     Common.standart_question_null
     $browser.get HomePage::JOB_BOARD_URL
@@ -3113,7 +3114,7 @@ class TestJobBoard < TestBasic
   def test_AddCustomPrivacyPolicy
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     CustomSettings.PrivacyPolicyTextAndDisplay(JobBoardRegisterPage::JOB_BOARD_REGISTER_PRIVACY_POLICY_TEXT, true)
     

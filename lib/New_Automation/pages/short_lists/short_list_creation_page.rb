@@ -5,7 +5,4 @@ class ShortListCreation
   
   SHORT_LIST_NAME_TEXT = "ShortListTest"
   
-  
-  
-  
 end

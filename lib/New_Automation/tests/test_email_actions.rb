@@ -5,6 +5,7 @@ require 'securerandom'
 
 require_relative 'test_basic.rb'
 require_relative 'common.rb'
+require_relative 'users.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
@@ -47,7 +48,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1072 #1
     # Application / Forward Application
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 1 - Click on "Applications" Tab
@@ -82,7 +83,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1073 #2
     # Application / Forward Application, with Template
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Steps
@@ -124,7 +125,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1074 #3
     # Application / Forward Application, with Template and Attachment
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 1 - Click on "Applications" Tab
@@ -170,7 +171,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1075 #4
     # Application / Forward Application, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 1 - Click on "Applications" Tab
@@ -212,7 +213,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1076 #5
     # Submittal / Forward Submittal
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 1 - Click on "Submittals" Tab
@@ -250,7 +251,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1077 #6
     # Submittal / Forward Submittal, with Template 
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 1 - Click on "Submittals" Tab
@@ -295,7 +296,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1078 #7
     # Submittal / Forward Submittal, with Template & Attachment
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 1 - Click on "Submittals" Tab
@@ -341,7 +342,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1079 #8
     # Submittal / Forward Submittal, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 1 - Click on "Submittals" Tab
@@ -374,7 +375,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1080 #9
     # Interview / Forward Interview 
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Interviews" Tab
@@ -413,7 +414,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1081 #10
     # Interview / Forward Interview, with Template
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Interviews" Tab
@@ -459,7 +460,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1082 #11
     # Interview / Forward Interview, with Template & Attachments
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Interviews" Tab
@@ -504,7 +505,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1083 #12
     # Interview / Forward Interview, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Interviews" Tab
@@ -537,7 +538,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1084 #13
     # Offer / Forward Offer 
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Offers" Tab
@@ -575,7 +576,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1085 #14
     # Offer / Forward Offer, with Template
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Offers" Tab
@@ -622,7 +623,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1086 #15
     # Offer / Forward Offer, with Template & Attachments
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Offers" Tab
@@ -669,7 +670,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1087 #16
     # Offer / Forward Offer, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Offers" Tab
@@ -703,7 +704,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1088 #17   
     # Placement / Forward Placement 
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Offers" Tab
@@ -740,7 +741,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1089 #18
     # Placement / Forward Placement, with Template
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Offers" Tab
@@ -786,7 +787,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1090 #19
     # Placement / Forward Placement, with Template & Attachment
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Offers" Tab
@@ -833,7 +834,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1091 #20
     # Placement / Forward Placement, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # Click on "Offers" Tab
@@ -870,7 +871,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1092 #21
     # Contact / Forward Contact 
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 
@@ -904,7 +905,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1093 #22
     # Contact / Forward Contact, with Template 
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 
@@ -950,7 +951,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1094 #23
     # Contact / Forward Contact, with Template & Attachment
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 
@@ -997,7 +998,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1095 #24
     # Contact / Forward Contact, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 
@@ -1035,7 +1036,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1096 #25
     # Short List / Send E-mail 
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Enable Review Email= true
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
     test = [
@@ -1079,7 +1080,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1097 #26
     # Short List / Send E-mail, with Template
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Enable Review Email= true
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
     test = [
@@ -1126,7 +1127,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1098 #27
     # Short List / Send E-mail, with Template & Attachment
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
     test = [
       {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1180,7 +1181,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1099 #28
     # Short List / Send E-mail, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
     test = [
       {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
@@ -1226,7 +1227,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1100 #29 
     # Short List / Review Email - Standard, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Custom Settings -> Short List -> Enable Review Email= true
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
@@ -1249,7 +1250,7 @@ class TestEmailActions < TestBasic
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
-      # Click on "Send E-mail" on the menu
+      # Click on "Review E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
       {"displayed" => ShortListDetailPage::SL_REVIEW_EMAIL_MENU_XPATH},
@@ -1278,7 +1279,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1101 #30    
     # Short List / Review Email - Staffing, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Custom Settings -> Short List -> Review Mode = 3
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
@@ -1361,7 +1362,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1102 #31  
     # Short List / Review Email - Standard, External & Internal
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Custom Settings -> Short List -> Review Mode = 3
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
@@ -1534,7 +1535,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1103 #32    
     # Short List / Review Email - External & Internal, Internal with Template
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
     test = [
@@ -1708,7 +1709,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1104 #33    
     # Short List / Review Email - Standard, External & Internal with Template & Attachment
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
     test = [
@@ -1880,7 +1881,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1105 #34  
     # Applications / Send Email
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     # 
@@ -1912,7 +1913,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1106 #35  
     # Applications / Send Email, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     $browser.get HomePage::APPLICATIONS_TAB_LINK_URL
@@ -1940,7 +1941,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1107 #36  
     # Submittals / Send Email
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     $browser.get HomePage::SUBMITTALS_TAB_LINK_XPATH
@@ -1969,7 +1970,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1108 #37  
     # Submittals / Send Email, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     $browser.get HomePage::SUBMITTALS_TAB_LINK_XPATH
@@ -2000,7 +2001,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1109 #38  
     # Interviews / Send Email
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     $browser.get HomePage::INTERVIEW_TAB_LINK_URL
@@ -2030,7 +2031,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1110 #39 
     # Interviews / Send Email, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     $browser.get HomePage::INTERVIEW_TAB_LINK_URL
@@ -2058,7 +2059,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1111 #40 
     # Offers / Send Email
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
     test = [
       #
@@ -2108,7 +2109,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1112 #41 
     # Offers / Send Email, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Preconditions
     $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
@@ -2166,7 +2167,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1113 #42 
     # Placements / Send Email
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     $browser.get HomePage::PLACEMENT_TAB_LINK_URL
@@ -2196,7 +2197,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1114 #43 
     # Placements / Send Email, Validation
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
     $browser.get HomePage::PLACEMENT_TAB_LINK_URL
@@ -2229,7 +2230,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1138 #44 
     # Send Review email with internal mode, review mode 1
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
     $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
@@ -2301,7 +2302,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1139 #45 
     # Send Review email, internal mode, review mode 2
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
     $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
@@ -2382,7 +2383,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1140 #46 
     # Send Review email, internal mode, review mode 3, default staffing = FALSE
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
     $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
@@ -2457,7 +2458,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1141 #47 
     # Send Review email, internal mode, review mode 3, default staffing = TRUE
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
     $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
@@ -2529,7 +2530,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1142 #48 
     # Send Review email with external mode, review mode 1
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
     $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
@@ -2603,7 +2604,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1143 #49 
     # Send Review email, external mode, review mode 2
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
     $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
@@ -2687,7 +2688,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1144 #50 
     # Send Review email, external mode, review mode 3, default staffing = FALSE
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
     $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
@@ -2761,7 +2762,7 @@ class TestEmailActions < TestBasic
   def test_email_actions_tc1145 #51 
     # Send Review email, external mode 3, default staffing = TRUE
     # Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
     $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL

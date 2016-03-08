@@ -11,6 +11,7 @@ require_relative './pages/board_setup_home_page.rb'
 require_relative './pages/board_setup_detail_page.rb'
 require './New_Automation/pages/applications/applications_detail_page.rb'
 require_relative './pages/requisitions_detail_page.rb'
+require_relative 'users.rb'
 
 class TestURLBuilder < TestBasic
 
@@ -20,7 +21,7 @@ class TestURLBuilder < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # 1 - Click on "Board Setup" Tab
     $browser.get(HomePage::BOARD_SETUP_TAB_LINK_URL)
@@ -87,7 +88,7 @@ class TestURLBuilder < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # 1 - Click on "Board Setup" Tab
     $browser.get(HomePage::BOARD_SETUP_TAB_LINK_URL)
@@ -141,7 +142,7 @@ class TestURLBuilder < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # 1 - Click on "Board Setup" Tab
     $browser.get(HomePage::BOARD_SETUP_TAB_LINK_URL)

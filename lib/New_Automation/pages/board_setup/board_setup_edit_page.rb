@@ -17,7 +17,7 @@ class BoardSetupEditPage
   BOARD_EDIT_ALLOW_REGISTER_ONLY_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[5]/td[1]//*[@type='checkbox']"
   BOARD_EDIT_AUTO_ASSOCIATE_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[5]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_HIDE_RESUME_UPLOAD_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[6]/td[1]//*[@type='checkbox']"
-  BOARD_EDIT_RESUME_REQUIRED_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id44']"
+  BOARD_EDIT_RESUME_REQUIRED_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[6]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_HIDE_RESUME_PASTE_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[7]/td[1]//*[@type='checkbox']"
   BOARD_EDIT_HIDE_EMAIL_THIS_JOB_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[7]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_HIDE_RESUME_BUILDER_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[8]/td[1]//*[@type='checkbox']"
@@ -27,7 +27,7 @@ class BoardSetupEditPage
   BOARD_EDIT_ENABLE_ADDTHIS_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[10]/td[1]//*[@type='checkbox']"
   BOARD_EDIT_HIDE_MOBILE_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[10]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_ADDTHIS_USERNAME_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[11]/td[1]//*[@type='text']"
-  BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH = ".//*[@id='j_id0:frm:PageBlock:j_id32:j_id54']"
+  BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[11]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_HOMEPAGE_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[12]/td[1]//*[@type='text']"
   BOARD_EDIT_HIDE_CONTACT_METHOD_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[12]/td[2]//*[@type='checkbox']"
   BOARD_EDIT_DISABLE_MOBILE_JOB_BOARD_XPATH = "((.//*[@class='detailList'])[1])/tbody/tr[13]/td[1]//*[@type='checkbox']"
@@ -104,7 +104,7 @@ class BoardSetupEditPage
   BOARD_EDIT_INDEED_FEED_DESCRIPTION_XPATH = "((.//*[@class='detailList'])[8])/tbody/tr[1]/td[2]/select"
   
   #EEO TEXT SECTION
-  BOARD_EDIT_EEO_TEXT_XPATH = ".//*[@id='cke_j_id0:frm:PageBlock:j_id212:j_id213:j_id214:textAreaDelegate_ts2__EEO_Text__c']"
+  BOARD_EDIT_EEO_TEXT_XPATH = "((.//*[@class='detailList'])[9]//div)[1]"
   BOARD_EDIT_HIDE_STANDARD_EEO_DISCLAIMER = "((.//*[@class='detailList'])[9])/tbody/tr[3]/td/input"
   
   #EEO QUESTIONS SECTION

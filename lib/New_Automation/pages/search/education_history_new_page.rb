@@ -1,4 +1,5 @@
 class EducationHistoryNewPage
+  
   EDU_HISTORY_NEW_NAME_XPATH = "(.//*[@class='dataCol col02'])[1]/input"
   EDU_HISTORY_NEW_BTN_SAVE = ".//*[@name='save']"
   
@@ -7,4 +8,5 @@ class EducationHistoryNewPage
   
   #DETAIL PAGE
   EDU_HISTORY_DETAIL_BTN_EDIT_XPATH = ".//*[@name='edit']"
+  
 end

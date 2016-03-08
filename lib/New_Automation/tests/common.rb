@@ -26,17 +26,9 @@ require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 
 class Common
-  USER_EMAIL = "naomi@joblabs.com"
-  USER_EMAIL2 = "naomirecruiter@joblabs.com"
-  USER_EMAIL3 = "naomimanager@joblabs.com"
-  
-  USER_AUTOMATION = "oktana@joblabs.com"
-  PASSWORD_AUTOMATION = "Jobscience16"
-  
-  PASSWORD  = "muffin100"
-
   
 
+  
   #LOGIN
   def self.login(username, password)
    #Waits added for Chrome
@@ -711,10 +703,10 @@ class Common
       {"displayed" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
       
-      {"displayed" => BoardSetupDetailPage::SEARCH_URL_NAME_TEXT_XPATH},
-      {"set_text" => BoardSetupDetailPage::SEARCH_URL_NAME_TEXT_XPATH, "text" => url_name},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NAME_XPATH},
+      {"set_text" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NAME_XPATH, "text" => url_name},
       
-      {"click" => BoardSetupDetailPage::SAVE_AND_CLOSE_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_SAVE_CLOSE_XPATH},
       
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
     ]
@@ -742,12 +734,12 @@ class Common
   def self.register_job_board(username, password)
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Common::USER_EMAIL, Users::PASSWORD)
     # Precondition
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},

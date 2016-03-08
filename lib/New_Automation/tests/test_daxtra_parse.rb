@@ -13,6 +13,7 @@ require './New_Automation/pages/resume/add_resume_popup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_login_page.rb'
 require './New_Automation/pages/resume/add_resume_popup_page.rb'
+require_relative 'users.rb'
 
 class TestDaxtraParse < TestBasic
   
@@ -38,7 +39,7 @@ class TestDaxtraParse < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # "Attach Only" on "Add Resume Dupe Prevention"
     CustomSettings.AddResumeDupePrevention("Attach Only")
@@ -122,7 +123,7 @@ class TestDaxtraParse < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # "Attach Only" on "Add Resume Dupe Prevention"
     CustomSettings.AddResumeDupePrevention("Parse Fields")
@@ -204,7 +205,7 @@ class TestDaxtraParse < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
         
     #Set Contact
     self.SetContact
@@ -279,7 +280,7 @@ class TestDaxtraParse < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
         
     #Set Contact
     self.SetContact
@@ -360,7 +361,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact)
@@ -485,7 +486,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact)
@@ -611,7 +612,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact)
@@ -736,7 +737,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact)
@@ -861,7 +862,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact)
@@ -986,7 +987,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact)
@@ -1111,7 +1112,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact)
@@ -1198,7 +1199,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact)
@@ -1281,7 +1282,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
             
     #  Enter "pdf" on "Add Resume Allowed Filetypes"
     CustomSettings.DefineResumeAllowedTypes("pdf")
@@ -1329,7 +1330,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
             
     #  Enter "pdf" on "Add Resume Allowed Filetypes"
     CustomSettings.DefineResumeAllowedTypes(" ")
@@ -1419,7 +1420,7 @@ class TestDaxtraParse < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
         
     #Set Contact
     self.SetContact
@@ -1488,7 +1489,7 @@ class TestDaxtraParse < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
         
     #Set Contact
     self.SetContact
@@ -1565,7 +1566,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact) 
@@ -1648,7 +1649,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact) 
@@ -1731,7 +1732,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact) 
@@ -1815,7 +1816,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact) 
@@ -1898,7 +1899,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact) 
@@ -1980,7 +1981,7 @@ class TestDaxtraParse < TestBasic
     
     #PRECONDITIONS:
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD) 
+    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     Common.CreateAccount(randomContact) 
     Common.CreateContact(randomContact, randomContact) 
