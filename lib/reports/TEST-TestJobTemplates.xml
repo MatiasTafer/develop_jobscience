@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestJobTemplates" tests="6" time="139.96444" failures="0" errors="0" skipped="0" assertions="9" timestamp="2016-03-08T11:25:42-03:00">
+  <testcase name="test_createJobOrder" time="30.115394" assertions="1">
+  </testcase>
+  <testcase name="test_createJobOrderValidation" time="25.069629" assertions="2">
+  </testcase>
+  <testcase name="test_newJobTemplate" time="21.469912" assertions="1">
+  </testcase>
+  <testcase name="test_newJobTemplateMapping" time="25.174875" assertions="1">
+  </testcase>
+  <testcase name="test_newJobTemplateMappingValidation" time="21.07756" assertions="2">
+  </testcase>
+  <testcase name="test_newJobTemplateValidation" time="17.056001" assertions="2">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@id='topButtonRow']/input[5]
+click
+displayed
+.//*[@id='j_id0:formSend:j_id93:j_id114:j_id115']
+click
+
+main
+
+displayed
+.//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[2]/th/a
+click
+displayed
+.//*[@id='topButtonRow']/input[5]
+click
+displayed
+.//*[@id='j_id0:formSend:j_id93:j_id114:j_id115']
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']//*[@class='btn']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@id='hotlist']/table/tbody/tr/td[2]/input
+click
+displayed
+.//*[@id='j_id0:RefreshForm:j_id30:j_id34:j_id35:j_id37']
+set_text
+click
+
+main
+
+displayed
+.//*[@id='hotlist']/table/tbody/tr/td[2]/input
+click
+displayed
+.//*[@id='j_id0:RefreshForm:j_id30:j_id34:j_id35:j_id37']
+click
+
+main
+
+displayed
+.//*[@class='pbButton']//*[@class='btn']
+click
+displayed
+.//*[@id='Name']
+click
+  </system-out>
+</testsuite>
