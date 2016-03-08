@@ -5,17 +5,17 @@ class JobBoardHomePage
   
   REGISTER_LINK_XPATH = ".//*[@id='js-menu-register']/a"
   # REGISTER
-  EMAIL_ADRESS_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:email']"
-  FIRST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:firstName']"
-  LAST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:lastName']"
-  PASSWORD_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:password']"
-  PASSWORD_CONFIRM_XPATH = ".//*[@id='j_id0:j_id1:atsForm:confirmPassword']"
+  EMAIL_ADRESS_TEXT_XPATH = "(.//label[contains(text(),'Email Address')]/ancestor::td[@class='atsFormTdLeft'])/following-sibling::td[1]/div/input"
+  FIRST_NAME_TEXT_XPATH = "(.//label[contains(text(),'First Name')]/ancestor::td[@class='atsFormTdLeft'])/following-sibling::td[1]/div/input"
+  LAST_NAME_TEXT_XPATH = "(.//label[contains(text(),'Last Name')]/ancestor::td[@class='atsFormTdLeft'])/following-sibling::td[1]/div/input"
+  PASSWORD_TEXT_XPATH = "(.//label[not (contains(text(),'Confirm'))][contains(text(),'Password')])/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/input"
+  PASSWORD_CONFIRM_XPATH = ".//label[contains(text(),'Confirm')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/input"
   CONTINUE_BUTTON_XPATH = ".//*[@value='Continue']"
-  UPLOAD_CHECKBOX_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:0']"
-  PASTE_CHECKBOX_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:1']"
-  BUILDER_CHECKBOX_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:2']"
-  JOB_BOARD_DEPARTMENT_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id40:1:searchCtrl']"
-  BROWSE_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeFile']"
+  UPLOAD_CHECKBOX_XPATH = ".//*[@value='Upload']"
+  PASTE_CHECKBOX_XPATH = ".//*[@value='Paste']"
+  BUILDER_CHECKBOX_XPATH = ".//*[@value='Builder']"
+  JOB_BOARD_DEPARTMENT_SELECT_XPATH = "(.//label[contains(text(),'Department:')])/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
+  BROWSE_BUTTON_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input"
   ATTACH_ADDITIONAL_DOC_XPATH = ".//*[@id='j_id0:j_id1:file_upload:j_id70']"
   
   SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:candidateSource']"
@@ -46,15 +46,12 @@ class JobBoardHomePage
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
   JOB_BOARD_INTERNAL_URL = "http://js-recruiting-148857d918a-14910044900.force.com/internal"
   
-  
-  
-  
-  JOB_BOARD_LOCATION_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id40:1:searchCtrl']"
-  JOB_BOARD_LOCATION_LABEL_XPATH = ".//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:j_id82:3:j_id86']"
-  JOB_BOARD_FACILITY_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id40:2:searchCtrl']"
-  JOB_BOARD_JOB_TITLE_LABEL_XPATH = ".//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:j_id82:0:j_id86']"
-  JOB_BOARD_EMPLOYMENT_TYPE_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id40:3:searchCtrl']"
-  JOB_BOARD_BUSINESS_UNIT_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id40:4:searchCtrl']"
+  JOB_BOARD_LOCATION_SELECT_XPATH = "(.//label[contains(text(),'Location:')])/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
+  JOB_BOARD_LOCATION_LABEL_XPATH = "(.//label[contains(text(),'Location:')])"
+  JOB_BOARD_FACILITY_SELECT_XPATH = "(.//label[contains(text(),'Facility:')])/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
+  JOB_BOARD_JOB_TITLE_LABEL_XPATH = ".//*[contains(text(),'Job Title')]"
+  JOB_BOARD_EMPLOYMENT_TYPE_SELECT_XPATH = "(.//label[contains(text(),'Employment Type:')])/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
+  JOB_BOARD_BUSINESS_UNIT_SELECT_XPATH = "(.//label[contains(text(),'Business Unit:')])/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
   JOB_BOARD_UPDATING_INFO_XPATH = ".//*[@id='js-menu-updateinfo']/a"
   JOB_BOARD_UPDATE_YOUR_RESUME_XPATH = ".//*[@id='js-menu-resume']/a"
   # PAGINATION
