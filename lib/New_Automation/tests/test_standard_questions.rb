@@ -88,9 +88,9 @@ class TestStandardQuestions < TestBasic
       $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
     }
     CustomSettings.JobBoardLogin(false)
-    $browser.get JobBoardHomePage::JOB_BOARD_URL
+    $browser.get HomePage::JOB_BOARD_URL
     $wait.until{
-      $browser.current_url.eql?(JobBoardHomePage::JOB_BOARD_URL)
+      $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
     $wait.until{
@@ -216,9 +216,9 @@ class TestStandardQuestions < TestBasic
       $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
     }
     CustomSettings.JobBoardLogin(false)
-    $browser.get JobBoardHomePage::JOB_BOARD_URL
+    $browser.get HomePage::JOB_BOARD_URL
     $wait.until{
-      $browser.current_url.eql?(JobBoardHomePage::JOB_BOARD_URL)
+      $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
     $wait.until{
@@ -279,9 +279,9 @@ class TestStandardQuestions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.QuestionSetHandler("Always")
     CustomSettings.JobBoardLogin(false)
-    $browser.get JobBoardHomePage::JOB_BOARD_URL
+    $browser.get HomePage::JOB_BOARD_URL
     $wait.until{
-      $browser.current_url.eql?(JobBoardHomePage::JOB_BOARD_URL)
+      $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
     $wait.until{
@@ -315,9 +315,9 @@ class TestStandardQuestions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.QuestionSetHandler("Populate")
     CustomSettings.JobBoardLogin(false)
-    $browser.get JobBoardHomePage::JOB_BOARD_URL
+    $browser.get HomePage::JOB_BOARD_URL
     $wait.until{
-      $browser.current_url.eql?(JobBoardHomePage::JOB_BOARD_URL)
+      $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
     $wait.until{
@@ -351,9 +351,9 @@ class TestStandardQuestions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     CustomSettings.QuestionSetHandler("Omit")
     CustomSettings.JobBoardLogin(false)
-    $browser.get JobBoardHomePage::JOB_BOARD_URL
+    $browser.get HomePage::JOB_BOARD_URL
     $wait.until{
-      $browser.current_url.eql?(JobBoardHomePage::JOB_BOARD_URL)
+      $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
     $wait.until{

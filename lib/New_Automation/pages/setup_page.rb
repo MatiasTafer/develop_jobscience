@@ -15,7 +15,7 @@ class SetupEditPage
   ENABLE_CLOSE_JOB_ORDER_WIZARD_CHECKBOX_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Enable_Close_Job_Order_Wizard__c"
   QUESTION_SET_HANDLER_TEXT_ID = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Handler__c"
   QUESTION_SET_DAY_HANDLER = "CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Question_Set_Days_Valid__c'"
-  ATTACH_TO_APPLICATIONS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Attach_to_Applications__c']"
+  ATTACH_TO_APPLICATIONS_XPATH = ".//label[contains(text(),'Attach to Applications')]/../../../child::td/child::input"
   DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Accepted_Exts__c']"
   MAX_NUMBER_ATTACHMENTS_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__Max_Number_of_Attachments__c']"
 

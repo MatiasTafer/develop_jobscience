@@ -22,8 +22,8 @@ require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 class TestJobBoard < TestBasic
 
-  $USER_JOB_BOARD = "ETTTTE@fromthesky.up"
-  $PASSWORD_JOB_BOARD = "otherworld666"
+  $USER_JOB_BOARD = "qwqewqewq@test.up"
+  $PASSWORD_JOB_BOARD = "pass1234"
   $USER_JOB_BOARD2 = "testqa@a.com"
   $PASSWORD_JOB_BOARD2 = "o1234567" 
   
@@ -644,7 +644,7 @@ class TestJobBoard < TestBasic
     
   end
 
-
+=end
 
   def test_job_board_tc868 #19
     # JS2 - Job Search by "Business Unit" field
@@ -662,7 +662,7 @@ class TestJobBoard < TestBasic
       {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
     ]
-    Common.main(test)
+    #Common.main(test)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -675,6 +675,7 @@ class TestJobBoard < TestBasic
     
   end
 
+=begin
   
   def test_job_board_tc870 #20
     # JS2 - Job Search by "Jobs/Projects", "Department" and "Location" fields 
@@ -1038,7 +1039,6 @@ class TestJobBoard < TestBasic
   end
   
 
-=end
   
   def test_job_board_tc881 #30
     # JS2 - Resume Page

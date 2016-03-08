@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestJobBoard" tests="1" time="27.396771" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-03-08T16:19:21-03:00">
+  <testcase name="test_job_board_tc868" time="27.39633" assertions="0">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+set_text
+click
+  </system-out>
+</testsuite>

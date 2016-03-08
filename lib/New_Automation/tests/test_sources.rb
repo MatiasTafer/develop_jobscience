@@ -1263,7 +1263,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     
-    $browser.get JobBoardHomePage::JOB_BOARD_INTERNAL_URL
+    $browser.get HomePage::JOB_BOARD_INTERNAL_URL
     test = [
       {"check_apply" => ""},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
@@ -1305,7 +1305,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     
-    $browser.get JobBoardHomePage::JOB_BOARD_INTERNAL_URL
+    $browser.get HomePage::JOB_BOARD_INTERNAL_URL
     test = [
       {"check_apply" => ""},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
@@ -1342,7 +1342,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     
-    $browser.get JobBoardHomePage::JOB_BOARD_INTERNAL_URL
+    $browser.get HomePage::JOB_BOARD_INTERNAL_URL
     test = [
       {"check_apply" => ""},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},

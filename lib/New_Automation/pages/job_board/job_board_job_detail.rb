@@ -6,24 +6,24 @@ class JobBoardJobDetail
   JOB_BOARD_LINKEDIN_ALLOW_ACCESS_XPATH = ".//*[@value='Allow access']"
   
   #APPLY TO A JOB
-  JOB_BOARD_APPLY_JOB_EMAIL_XPATH = "(.//*[@class='atsInput'])[1]"
-  JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH = "(.//*[@class='atsInput'])[2]"
-  JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH = "(.//*[@class='atsInput'])[3]"
+  JOB_BOARD_APPLY_JOB_EMAIL_XPATH = ".//label[contains(text(),'Email Address')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/div/input"
+  JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH = ".//label[contains(text(),'First Name')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/div/input"
+  JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH = ".//label[contains(text(),'Last Name')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/div/input"
 
-  JOB_BOARD_APPLY_HEAR_ABOUT_US_XPATH = ".//*[@id='j_id0:j_id1:atsForm:candidateSource']"
-  JOB_BOARD_APPLY_COVER_LETTER_XPATH = ".//*[@id='j_id0:j_id1:atsForm:coverLetter']"
+  JOB_BOARD_APPLY_HEAR_ABOUT_US_XPATH = ".//label[contains(text(),'How did you hear about us?')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_COVER_LETTER_XPATH = ".//textarea"
   JOB_BOARD_APPLY_EMAIL_THIS_JOB_XPATH = ".//a[text()[contains(.,'Email this job')]]"
-  JOB_BOARD_APPLY_TO_EMAIL_XPATH = ".//*[@id='j_id0:j_id1:emailJob:toEmail']"
-  JOB_BOARD_APPLY_MESSAGE_XPATH = ".//*[@id='j_id0:j_id1:emailJob:message']"
-  JOB_BOARD_APPLY_SEND_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:emailJob']/table/tbody/tr[8]/td[2]/input"
-  JOB_BOARD_APPLY_FROM_NAME_XPATH = ".//*[@id='j_id0:j_id1:emailJob:inputFromName']"
-  JOB_BOARD_APPLY_FROM_EMAIL_XPATH = ".//*[@id='j_id0:j_id1:emailJob:inputFromEmail']"
+  JOB_BOARD_APPLY_TO_EMAIL_XPATH = ".//label[contains(text(),'To Email:')]/ancestor::tr/child::td[2]/input"
+  JOB_BOARD_APPLY_MESSAGE_XPATH = ".//label[contains(text(),'Message:')]/ancestor::tr/child::td[2]/textarea"
+  JOB_BOARD_APPLY_SEND_BUTTON_XPATH = ".//*[@class='atsButton']"
+  JOB_BOARD_APPLY_FROM_NAME_XPATH = ".//label[contains(text(),'From Name:')]/ancestor::tr/child::td[2]/input"
+  JOB_BOARD_APPLY_FROM_EMAIL_XPATH = ".//label[contains(text(),'From Email:')]/ancestor::tr/child::td[2]/input"
   JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_XPATH = ".//*[@id='HowDidYouHearAboutUs']//select"
 
   
   JOB_BOARD_APPLY_JOB_CONTINUE_XPATH = ".//*[@value='Continue']"
   JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH = ".//*[@id='js-menu-search']/a"
-  JOB_BOARD_APPLY_JOB_DATE_ABAILABLE_XPATH = ".//*[@class='dateInput dateOnlyInput']/input"
+  
   JOB_BOARD_APPLY_JOB_DEGREE_XPATH = "(.//*[@class='atsFormTdTwoColumnLeft'])[5]/select"
   JOB_BOARD_APPLY_JOB_SALES_BACKGROUND = ".//*[@id='j_id0:j_id1:atsForm:j_id92:0:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
   JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id92:2:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"

@@ -69,9 +69,9 @@ $wait
 #require './New_Automation/test_actions_on_record'
 
 
-require './New_Automation/tests/test_board_setup'
+#require './New_Automation/tests/test_board_setup'
 
-#require './New_Automation/tests/test_job_board'
+require './New_Automation/tests/test_job_board'
 
 
 #require './New_Automation/test_applications.rb'
