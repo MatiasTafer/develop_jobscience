@@ -24,7 +24,7 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_CONTINUE_XPATH = ".//*[@value='Continue']"
   JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH = ".//*[@id='js-menu-search']/a"
   
-  JOB_BOARD_APPLY_JOB_DEGREE_XPATH = "(.//*[@class='atsFormTdTwoColumnLeft'])[5]/select"
+  JOB_BOARD_APPLY_JOB_DEGREE_XPATH = ".//select[@class='atsInput']/ancestor::td[@class='atsFormTdTwoColumnLeft']/child::select"
   JOB_BOARD_APPLY_JOB_SALES_BACKGROUND = ".//*[@id='j_id0:j_id1:atsForm:j_id92:0:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
   JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id92:2:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
   JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id92:1:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
