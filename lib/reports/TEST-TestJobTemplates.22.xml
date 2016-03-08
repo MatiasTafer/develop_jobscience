@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestJobTemplates" tests="1" time="30.200811" failures="0" errors="0" skipped="0" assertions="2" timestamp="2016-03-08T19:27:44-03:00">
+  <testcase name="test_createJobOrderValidation" time="30.200474" assertions="2">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+//*[text()[contains(., 'Job Title')]]/../../tr//a[1]
+click
+displayed
+.//*[@title='Create Job Order']
+click
+displayed
+(.//*[@value='Next'])[1]
+set_text
+click
+  </system-out>
+</testsuite>

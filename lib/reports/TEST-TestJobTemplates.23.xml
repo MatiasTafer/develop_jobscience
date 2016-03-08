@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestJobTemplates" tests="6" time="219.399951" failures="0" errors="0" skipped="0" assertions="9" timestamp="2016-03-08T19:31:25-03:00">
+  <testcase name="test_createJobOrder" time="60.894218" assertions="1">
+  </testcase>
+  <testcase name="test_createJobOrderValidation" time="32.345536" assertions="2">
+  </testcase>
+  <testcase name="test_newJobTemplate" time="41.470247" assertions="1">
+  </testcase>
+  <testcase name="test_newJobTemplateMapping" time="32.63545" assertions="1">
+  </testcase>
+  <testcase name="test_newJobTemplateMappingValidation" time="27.572297" assertions="2">
+  </testcase>
+  <testcase name="test_newJobTemplateValidation" time="24.48104" assertions="2">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@title='New']
+click
+displayed
+.//*[@class='requiredInput']/input
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']//*[@class='btn']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+click
+
+main
+
+displayed
+//*[text()[contains(., 'Job Title')]]/../../tr//a[1]
+click
+displayed
+.//*[@title='Create Job Order']
+click
+displayed
+(.//*[@value='Next'])[1]
+click
+
+main
+
+displayed
+//*[text()[contains(., 'Job Title')]]/../../tr//a[1]
+click
+displayed
+.//*[@title='Create Job Order']
+click
+displayed
+(.//*[@value='Next'])[1]
+set_text
+click
+
+main
+
+displayed
+.//*[@title='New']
+click
+displayed
+.//*[@class='requiredInput']/input
+set_text
+click
+
+main
+
+displayed
+.//*[@class='pbButton']//*[@class='btn']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+click
+
+main
+
+displayed
+.//*[@title='New']
+click
+displayed
+.//*[@class='requiredInput']/input
+set_text
+click
+
+main
+
+displayed
+.//*[@title='New']
+click
+displayed
+.//*[@class='requiredInput']/input
+click
+
+main
+
+displayed
+.//*[@class='pbButton']//*[@class='btn']
+click
+displayed
+.//*[@id='Name']
+click
+  </system-out>
+</testsuite>

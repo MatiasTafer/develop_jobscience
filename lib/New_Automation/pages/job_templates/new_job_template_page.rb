@@ -35,9 +35,6 @@ class NewJobTemplate
   ERROR_REQUIRED_FIELDS = ".//*[@class='errorMsg']"
   ERROR_REQUIRED_FIELDS_TEXT = "Error: You must enter a value"
   
-  JOB_TEMPLATE_NAME_TEXT = SecureRandom.hex(5)
-  JOB_TEMPLATE_MAPPING_TEXT = "Job 1 Mapping"
-  
   
   
   

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestJobTemplates" tests="1" time="28.530248" failures="0" errors="0" skipped="0" assertions="1" timestamp="2016-03-08T17:34:23-03:00">
+  <testcase name="test_newJobTemplate" time="28.529873" assertions="1">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@class='pbButton']//*[@class='btn']
+click
+displayed
+.//*[@id='Name']
+set_text
+set_text
+click
+  </system-out>
+</testsuite>

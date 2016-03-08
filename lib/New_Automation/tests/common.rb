@@ -39,7 +39,7 @@ class Common
    $browser.find_element(:id, LoginPage::PASSWORD_TEST_FIELD_ID).send_keys password
    $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).click
    $wait.until {
-     $browser.current_url.eql?(HomePage::HOME_TAB_LINK_URL)
+     $browser.find_element(:id, HomePage::HOME_TAB_ID).displayed?
    } 
  end
     
@@ -778,10 +778,14 @@ class Common
     
   end
   
+  #This method is used to access each tab
+  def self.goToTab(tab)
+    $browser.find_element(:id, HomePage::ALL_TABS_LINK_ID).click
+    $wait.until{
+      $browser.find_element(:xpath, tab).displayed?
+    }
+    $browser.find_element(:xpath, tab).click
+  end
   
-  
-
-  #newWindow= $browser.window_handles.last
-  #$browser.switch_to.window(newWindow)
   
 end
