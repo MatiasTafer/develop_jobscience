@@ -8,8 +8,8 @@ class ProjectsNewProject
   
   #BUTTONS
   PROJECTS_NEW_PROJECT_BTN_SAVE_XPATH = ".//*[@name='save']"
-  PROJECTS_NEW_PROJECT_BTN_SAVE_AND_NEW_XPATH = ".//*[@id='topButtonRow']//*[@name='save_new']"
-  PROJECTS_NEW_PROJECT_BTN_CANCEL_XPATH = ".//*[@id='topButtonRow']//*[@name='cancel']"
+  PROJECTS_NEW_PROJECT_BTN_SAVE_AND_NEW_XPATH = "(.//*[@value='Save & New'])[1]"
+  PROJECTS_NEW_PROJECT_BTN_CANCEL_XPATH = "(.//*[@title='Cancel'])[1]"
   
   #REQUIRED FIELDS
   PROJECTS_NEW_PROJECT_NAME_ID = "Name"

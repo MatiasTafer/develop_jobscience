@@ -1,26 +1,26 @@
 class ContactsHomePage
   
 
-  CONTACT_RECORD_XPATH  = ".//*[@id='bodyCell']/div[3]/div[1]/div/div[2]/table/tbody/tr[11]/th/a"
-  FIRST_CHECKBOX_OF_FIRST_CONTACT_XPATH = ".//*[@ id='003o000000nkTa2_checkbox']/input"
-  SECOND_CHECKBOX_OF_SECOND_CONTACT_XPATH = ".//*[@id='003o000000bIplp_checkbox']/input"
+  CONTACT_RECORD_XPATH  = "(.//*[@class='dataRow odd'])[4]/th/a"
+  FIRST_CHECKBOX_OF_FIRST_CONTACT_XPATH = "(.//*[@class='checkbox'])[1]"
+  SECOND_CHECKBOX_OF_SECOND_CONTACT_XPATH = "(.//*[@class='checkbox'])[2]"
   FIRST_CONTACT_ALL_CONTACT_TAB_XPATH = "(.//*[@class='x-grid3-cell-inner x-grid3-col-FULL_NAME']/a)[1]"
   ADD_TO_LIST_BUTTON_XPATH = ".//*[@class='btn'][2]"
   CONTACT_HOME_PAGE_BTN_NEW = ".//*[@class='pbButton']/input"
-  CONTACT_HOME_VIEW_SELECT_XPATH = ".//*[@id='fcf']"
+  CONTACT_HOME_VIEW_SELECT_XPATH = ".//*[@title='View:']"
   CONTACT_HOME_BTN_GO_XPATH = ".//*[@name='go']"
   CONTACT_HOME_LIST_XPATH = ".//*[@class='list']"
   
   #After pressing "GO" button
-  CONTACT_HOME_CONTACT_LIST_XPATH = ".//*[@id='ext-gen25']"
+  CONTACT_HOME_CONTACT_LIST_XPATH = "((.//*[@class='listBody']/div/div)[2]/div/div/div/div)[2]/div"
   CONTACT_HOME_ADD_SKILL_XPATH = ".//*[@name='ts2__add_skills']"
   CONTACT_HOME_ADD_LIST_XPATH = ".//*[@name='ts2__add_to_list']"
   CONTACT_HOME_ADD_TAGS_XPATH = ".//*[@name='ts2__add_tags']"
   CONTACT_HOME_APPLY_TO_JOB_XPATH = ".//*[@name='ts2__apply_to_job']"
-  CONTACT_HOME_FIRST_VIEW_OPTION_XPATH = ".//*[@id='fcf']/option[1]"
-  CONTACT_HOME_FIRST_ENTRY_GO_XPATH = ".//*[@id='ext-gen25']/div[1]//td[4]//a"
+  CONTACT_HOME_FIRST_VIEW_OPTION_XPATH = "(.//*[@title='View:']/option)[1]"
+  CONTACT_HOME_FIRST_ENTRY_GO_XPATH = "((.//*[@class='listBody']/div/div)[2]/div/div/div/div)[2]/div/div[1]//td[4]//a"
   
-  
+   
   #Add Skill Pop Up Window
   CONTACT_SKILL_POPUP_FIRST_ELEMENT_XPATH = "(.//*[@class='first_level']//input)[1]"
   CONTACT_SKILL_POPUP_SECOND_ELEMENT_XPATH = "(.//*[@class='first_level']//input)[2]"
@@ -44,8 +44,8 @@ class ContactsHomePage
   
   #Add to Short List Pop Up Window
   CONTACT_LIST_POPUP_NAME_INPUT_XPATH = ".//*[@class='lookupInput']/input"
-  CONTACT_LIST_POPUP_NEW_NAME_INPUT_XPATH = ".//*[@id='j_id0:frm:j_id29:pbsMain:j_id41:newlistName']"
-  CONTACT_LIST_POPUP_NEW_DESCRIPTION_INPUT_XPATH = ".//*[@id='j_id0:frm:j_id29:pbsMain:j_id43:newlistDescription']"
+  CONTACT_LIST_POPUP_NEW_NAME_INPUT_XPATH = "(.//*[@type='text'])[2]"
+  CONTACT_LIST_POPUP_NEW_DESCRIPTION_INPUT_XPATH = "(.//*[@type='text'])[3]"
   CONTACT_LIST_POPUP_BTN_ADD_SHORT_LIST_XPATH = ".//*[@class='btn'][1]"
   CONTACT_LIST_POPUP_BTN_CLOSE_XPATH = ".//*[@value='Close']"
   CONTACT_LIST_POPUP_NUMBER_ADDED_XPATH = ".//*[@class='data2Col first last']/span"
@@ -58,7 +58,7 @@ class ContactsHomePage
   CONTACT_JOB_POPUP_BTN_CLOSE_XPATH = ".//*[@title='Close']"
   CONTACT_JOB_POPUP_BTN_CANCEL_XPATH = ".//*[@title='Cancel']"
   CONTACT_JOB_POPUP_BTN_NEXT_XPATH = ".//*[@title='Next']"
-  CONTACT_JOB_POPUP_BTN_APPLY_TO_JOB_XPATH = ".//*[@id='j_id0:frm:applyPb:pbbsMainButtons:j_id30']"
+  
   CONTACT_JOB_POPUP_BTN_GOTO_JOB_XPATH = ".//*[@title='Go To Job']"
   
   CONTACT_JOB_POPUP_RADIO_INVITE_XPATH = "(.//*[@type='radio'])[1]"
@@ -85,18 +85,18 @@ class ContactsHomePage
     CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH = ".//*[@class='dataRow even first last']/td[2]/span"
     
   #Add Tags Pop Up window
-  CONTACT_TAGS_POPUP_PUBLIC_TAGS_XPATH = ".//*[@id='j_id0:frm:j_id29:pbsMain:j_id40:publicTagList']"  
-  CONTACT_TAGS_POPUP_PUBLIC_TAGS_FIRST_OPTION_XPATH = ".//*[@id='j_id0:frm:j_id29:pbsMain:j_id40:publicTagList']/option[2]"
-  CONTACT_TAGS_POPUP_PERSONAL_TAGS_XPATH = ".//*[@id='j_id0:frm:j_id29:pbsMain:j_id37:personalTagList']"
-  CONTACT_TAGS_POPUP_PERSONAL_TAGS_FIRST_OPTION_XPATH = ".//*[@id='j_id0:frm:j_id29:pbsMain:j_id37:personalTagList']/option[2]"
-  CONTACT_TAGS_POPUP_NEW_TAG_XPATH = ".//*[@id='j_id0:frm:j_id29:pbsMain:j_id44:cNewTag']"
-  CONTACT_TAGS_POPUP_TYPE_XPATH = ".//*[@id='j_id0:frm:j_id29:pbsMain:j_id46:cNewTagType']"
+  CONTACT_TAGS_POPUP_PUBLIC_TAGS_XPATH = "(.//*[@class='detailList']/tbody/tr)[4]/td/select"  
+  CONTACT_TAGS_POPUP_PUBLIC_TAGS_FIRST_OPTION_XPATH = "((.//*[@class='detailList']/tbody/tr)[4]/td/select/option)[2]"
+  CONTACT_TAGS_POPUP_PERSONAL_TAGS_XPATH = "(.//*[@class='detailList']/tbody/tr)[3]/td/select"
+  CONTACT_TAGS_POPUP_PERSONAL_TAGS_FIRST_OPTION_XPATH = "((.//*[@class='detailList']/tbody/tr)[3]/td/select/option)[1]"
+  CONTACT_TAGS_POPUP_NEW_TAG_XPATH = "(.//*[@class='detailList']/tbody/tr)[6]/td/input"
+  CONTACT_TAGS_POPUP_TYPE_XPATH = "(.//*[@class='detailList']/tbody/tr)[7]/td/select"
   CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH = ".//*[@title='Add Tags']"
   CONTACT_TAGS_POPUP_BTN_CANCEL_XPATH = ".//*[@title='Cancel']"
   CONTACT_TAGS_POPUP_BTN_CLOSE_XPATH = ".//*[@title='Close']"
   CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH = ".//*[@class='messageCell']/div"
   CONTACT_TAGS_POPUP_SUCCESS_TEXT = "Tags Added Successfully"
-  CONTACT_TAGS_POPUP_TOTAL_TAGS_XPATH = ".//*[@id='j_id0:frm:j_id29:pbsCompleted:j_id80:tagsAdded']"
+  CONTACT_TAGS_POPUP_TOTAL_TAGS_XPATH = "(.//*[@class='detailList']/tbody/tr/td)[2]/span"
   CONTACT_TAGS_POPUP_ERROR_CELL_XPATH = ".//*[@class='messageCell']/div"
   CONTACT_TAGS_POPUP_ERROR_TAGS_TEXT = "Error:\nNo tags selected"
   

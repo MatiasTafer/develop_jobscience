@@ -152,6 +152,16 @@ class SetupEditPage
   CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH = ".//*[@id='thePage:theForm:thePageBlock:thePageBlockButtons:save']"      
   CONFIG_JOB_BOARD_LOGIN_EDIT_XPATH = ".//*[@value='Edit']"
   
+  #SOCIAL SETTINGS
+  SOCIAL_SETTINGS_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0t&isOrg=1"
+  EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
+  APPLY_TO_LINKEDIN_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__LinkedIn_Apply__c']"
+  SAVE_BUTTON_XPATH = ".//*[@value='Save']"
+  
+  
+  
+  
+  
   # MASS MAIL
   ENABLE_MASS_MAIL_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:jsmassmail__EnableMassMailService__c']"
   MASS_MAIL_SERVICE_EDIT_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?CS_list%3ACS_Form%3AtheDetailPageBlock%3AthePageBlockButtons%3Aedit=Edit&CS_list%3ACS_Form=CS_list%3ACS_Form&retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da1l&setupid=CustomSettings&isOrg=1&id=a1lo0000000UeE6&id=a1lo0000000UeE6&com.salesforce.visualforce.ViewStateVersion=201602242157540280&com.salesforce.visualforce.ViewStateCSRF=VmpFPSxNakF4Tmkwd01pMHlPRlF4T1RveU56bzBOUzR3TVRWYSxRM0RpbWN1cnV6T0E0cThKekFaTmhfLFpXWmtNR1Uy"
