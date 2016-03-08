@@ -23,8 +23,8 @@ class CustomSettings
       puts "Error, bad parameter"
     else
       $browser.get(SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL)
-      $browser.find_element(:id => SetupEditPage::QUESTION_SET_HANDLER_TEXT_ID).clear
-      $browser.find_element(:id => SetupEditPage::QUESTION_SET_HANDLER_TEXT_ID).send_keys option
+      $browser.find_element(:xpath => SetupEditPage::QUESTION_SET_HANDLER_TEXT_XPATH).clear
+      $browser.find_element(:xpath => SetupEditPage::QUESTION_SET_HANDLER_TEXT_XPATH).send_keys option
       $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
     end    
    end
