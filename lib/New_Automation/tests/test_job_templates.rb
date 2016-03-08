@@ -16,6 +16,7 @@ require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
 
 class TestJobTemplates < TestBasic
  
+
 #TC969 - New Job Template  
 def test_newJobTemplate
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
