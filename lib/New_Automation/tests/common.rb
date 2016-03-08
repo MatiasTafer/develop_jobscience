@@ -39,7 +39,8 @@ class Common
    $browser.find_element(:id, LoginPage::PASSWORD_TEST_FIELD_ID).send_keys password
    $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).click
    $wait.until {
-     $browser.current_url.eql?(HomePage::HOME_TAB_LINK_URL)
+     #$browser.current_url.eql?(HomePage::HOME_TAB_LINK_URL)
+     $browser.find_element(:xpath, HomePage::HOME_TAB_LINK_URL).displayed?
    } 
  end
     

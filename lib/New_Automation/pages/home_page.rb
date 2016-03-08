@@ -1,7 +1,7 @@
 class HomePage
   
   #TAB LINKS URL
-  HOME_TAB_LINK_URL = "https://na17.salesforce.com/home/home.jsp"
+  HOME_TAB_LINK_URL = ".//*[@href='/home/home.jsp']"
   SHORT_LIST_TAB_LINK_URL = "https://na17.salesforce.com/a0r/o"
   POWER_SEARCH_TAB_LINK_URL = "https://ts2.na17.visual.force.com/apex/JobscienceSearch?sfdc.tabName=01ro0000000WeBj"
   REQUISITION_TAB_LINK_URL = "https://na17.salesforce.com/a0K"
@@ -29,7 +29,7 @@ class HomePage
   LOGIN_URL = "https://login.salesforce.com/"
 
   ALL_CONTACTS_TAB_LINK = "https://na17.salesforce.com/003?fcf=00Bo0000003aqv0"
-
+  
   ACCOUNTS_TAB_LINK_URL = "https://na17.salesforce.com/001/o"
   
   SEARCH_BAR_XPATH = ".//*[@id='phSearchInput']"
