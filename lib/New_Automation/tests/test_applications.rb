@@ -21,6 +21,7 @@ require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
 require './New_Automation/pages/job_board/job_board_login_page.rb'
 require './New_Automation/pages/job_board/job_board_register_page.rb'
+
 require_relative 'users.rb'
 
 
