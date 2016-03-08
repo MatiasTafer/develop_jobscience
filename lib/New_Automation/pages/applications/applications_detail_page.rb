@@ -1,29 +1,31 @@
 class ApplicationsDetailPage
   
-  FORWARD_APPLICATIONS_BUTTON_ID = ".//*[@value='Forward Application']"
-  CREATE_PDF_BUTTON_XPATH = "(.//*[@id='topButtonRow']//*[@class='btn'])[5]"
-  REVERT_STAGE_BTN_XPATH = ".//*[@id='topButtonRow']/input[7]"
+  FORWARD_APPLICATIONS_BUTTON_XPATH = ".//*[@value='Forward Application']"
+  CREATE_PDF_BUTTON_XPATH = "(.//*[@value='Create PDF'])"
+  REVERT_STAGE_BTN_XPATH = ".//*[@value='Revert Stage']"
   PDF_POP_UP_WINDOWS_ELEMENT_XPATH = ".//*[@class='pdfViewer']"
-  APPLICATIONS_DETAIL_JOB_TEXT_XPATH = "(.//*[@class='detailList'])[1]//tr[3]/td[2]"
-  APP_DETAIL_RESUME_UPLOADED_XPATH = "((.//*[@class='detailList'])[1]//tr[8]//div)[1]"
-  APP_DETAIL_MOVE_LINK_XPATH = "(.//*[@class='detailList'])[1]//tr[4]/td[4]//a[1]"
-  APP_DETAIL_OVERALL_STAGE_XPATH = "(.//*[@class='detailList'])[1]//tr[10]/td[4]/div"
+  APPLICATIONS_DETAIL_JOB_TEXT_XPATH = ".//*[text()='Job']/following-sibling::*[1]//a"
+  APP_DETAIL_RESUME_UPLOADED_XPATH = ".//*[text()='Resume Uploaded']/following-sibling::*[1]//div"
+  APP_DETAIL_MOVE_LINK_XPATH = ".//*[@alt='Move']"
+  APP_DETAIL_OVERALL_STAGE_XPATH = ".//*[text()='Overall Stage']/../following-sibling::*[1]//div"
   
   #FIELDS
-  APP_DETAIL_APP_STATUS_XPATH = "(.//*[@class='detailList'])[1]//tr[6]/td[4]/div"
-  APP_DETAIL_STATUS_XPATH = "(.//*[@class='detailList'])[1]//tr[9]/td[4]/div"
+  APP_DETAIL_APP_STATUS_XPATH = ".//*[text()='App Status']/../following-sibling::*[1]//div"
+  APP_DETAIL_STATUS_XPATH = ".//*[text()='Status']/../following-sibling::*[1]//div"
 
-  APP_DETAIL_APPLY_EXCEPTION_CHECKED_XPATH = "(.//*[@class='detailList'])[1]//tr[17]/td[4]/div//*[@title='Checked']"
-  APP_DETAIL_APPLY_EXCEPTION_NOT_CHECKED_XPATH = "(.//*[@class='detailList'])[1]//tr[17]/td[4]/div//*[@title='Not Checked']"
-  APP_DETAIL_EXCEPTION_REASON_XPATH = "(.//*[@class='detailList'])[1]//tr[13]/td[4]/div"
-  APP_DETAIL_EXCEPTION_REASON_OTHER_XPATH = "(.//*[@class='detailList'])[1]//tr[14]/td[4]/div"
+  APP_DETAIL_APPLY_EXCEPTION_CHECKED_XPATH = ".//*[text()='Apply Exception']/following-sibling::*[1]//*[@title='Checked']"
+  APP_DETAIL_APPLY_EXCEPTION_NOT_CHECKED_XPATH = ".//*[text()='Apply Exception']/following-sibling::*[1]//*[@title='Not Checked']"
+  APP_DETAIL_EXCEPTION_REASON_XPATH = ".//*[text()='Exception Reason']/following-sibling::*[1]//div"
+  APP_DETAIL_EXCEPTION_REASON_OTHER_XPATH = ".//*[text()='Exception Reason Other']/following-sibling::*[1]//div"
   
   #PRESCREENS SECTION
-  APPLICATIONS_DETAIL_PRESCREEN_1_XPATH = "(.//*[@class='list'])[11]//tr[2]"
-  APPLICATIONS_DETAIL_PRESCREEN_2_XPATH = "(.//*[@class='list'])[11]//tr[3]"
-  APPLICATIONS_DETAIL_PRESCREEN_3_XPATH = "(.//*[@class='list'])[11]//tr[4]"
-  APPLICATIONS_DETAIL_PRESCREEN_4_XPATH = "(.//*[@class='list'])[11]//tr[5]"
-  
+  APPLICATIONS_DETAIL_PRESCREEN_1_XPATH = ".//*[text()='Prescreen Name']/../../tr[2]"
+  APPLICATIONS_DETAIL_PRESCREEN_2_XPATH = ".//*[text()='Prescreen Name']/../../tr[3]"
+  APPLICATIONS_DETAIL_PRESCREEN_3_XPATH = ".//*[text()='Prescreen Name']/../../tr[4]"
+  APPLICATIONS_DETAIL_PRESCREEN_4_XPATH = ".//*[text()='Prescreen Name']/../../tr[5]"
+  ##################
+  #SEGUIR ACAAAAAAA#
+  ##################
   #MOVE POP UP
   MOVE_POPUP_BTN_CANCEL_XPATH = ".//*[@value='Cancel']"
   MOVE_POPUP_BTN_CLOSE_XPATH = ".//*[@value='Close']"
