@@ -9,7 +9,7 @@ require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
 require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
-require './New_Automation/pages/answers/offers_home_page.rb'
+require './New_Automation/pages/offers/offers_home_page.rb'
 require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
@@ -33,8 +33,7 @@ require_relative 'users.rb'
 
 
 class TestParsingCandidatesFileType < TestBasic
-  @@resume_path = "/New_Automation/files/Job Orders/Job_Order_Upload01.pdf"
-  
+  @@resume_path = "/New_Automation/files/Job Orders/job_order_upload01.pdf"
 
   # TC127 - Resume uploader with incorrect file type
   def test_AddResumeResumeToolsIncorrectFileType
@@ -130,6 +129,8 @@ class TestParsingCandidatesFileType < TestBasic
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
+    CustomSettings.ApplyToLinkedIn(true)
+    
     CustomSettings.DefineResumeAllowedTypesJobBoard("pdf")
     
     CustomSettings.JobBoardLogin(false)
@@ -180,6 +181,8 @@ class TestParsingCandidatesFileType < TestBasic
     #PRECONDITIONS
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    
+    CustomSettings.ApplyToLinkedIn(true)
     
     CustomSettings.DefineResumeAllowedTypesJobBoard("pdf")
     
@@ -379,7 +382,7 @@ class TestParsingCandidatesFileType < TestBasic
       }
     
     file = File.join(Dir.pwd, @@resume_path)
-    
+
     test = [
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH},

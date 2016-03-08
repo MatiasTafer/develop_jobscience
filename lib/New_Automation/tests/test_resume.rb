@@ -1951,8 +1951,8 @@ test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
 Common.main(test)
 $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
-test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-         {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+         {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
 Common.main(test2)
 #Steps
@@ -2016,8 +2016,8 @@ test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
 Common.main(test)
 $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
-test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-         {"unchecked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+         {"unchecked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
 Common.main(test2)
 #Steps
@@ -2080,8 +2080,8 @@ test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
 Common.main(test)
 $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
-test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-         {"unchecked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+test2 = [{"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+         {"unchecked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
          {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
 Common.main(test2)
 #Steps
