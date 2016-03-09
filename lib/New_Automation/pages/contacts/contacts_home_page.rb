@@ -42,19 +42,18 @@ class ContactsHomePage
   CONTACT_SKILL_POPUP_SKILL_LIST_XPATH = ".//*[@class='m-parent m-last']"
   
   #Add to Short List Pop Up Window
-  CONTACT_LIST_POPUP_NAME_INPUT_XPATH = ".//*[@class='lookupInput']/input"
-  CONTACT_LIST_POPUP_NEW_NAME_INPUT_XPATH = "(.//*[@type='text'])[2]"
-  CONTACT_LIST_POPUP_NEW_DESCRIPTION_INPUT_XPATH = "(.//*[@type='text'])[3]"
-  CONTACT_LIST_POPUP_BTN_ADD_SHORT_LIST_XPATH = ".//*[@class='btn'][1]"
+  CONTACT_LIST_POPUP_NAME_INPUT_XPATH = "((//*[text()[contains(., 'Short List')]])[3]/../following-sibling::*//input)[7]"  
+  CONTACT_LIST_POPUP_NEW_NAME_INPUT_XPATH = "(//*[text()[contains(., 'Name')]]/..)[2]/following-sibling::*//input"
+  CONTACT_LIST_POPUP_NEW_DESCRIPTION_INPUT_XPATH = "//*[text()[contains(., 'Description')]]/../..//textarea"
+  CONTACT_LIST_POPUP_BTN_ADD_SHORT_LIST_XPATH = ".//*[@value='Add to Short List']"
   CONTACT_LIST_POPUP_BTN_CLOSE_XPATH = ".//*[@value='Close']"
-  CONTACT_LIST_POPUP_NUMBER_ADDED_XPATH = ".//*[@class='data2Col first last']/span"
+  CONTACT_LIST_POPUP_NUMBER_ADDED_XPATH = "//*[text()='Total Contacts Added']/../..//span"
 
-#aca me quede   
   
   #Apply to Job Pop Up Window
-  CONTACT_JOB_POPUP_JOB_TITLE_XPATH = ".//*[@class='lookupInput']/input"
-  CONTACT_JOB_POPUP_BTN_APPLY_XPATH = ".//*[@class='btn'][1]"
-  CONTACT_JOB_POPUP_TOTAL_APP_XPATH = ".//*[@class='data2Col last']/span"
+  CONTACT_JOB_POPUP_JOB_TITLE_XPATH = "//*[text()[contains(., 'Job Title')]]/../following-sibling::*//input"
+  CONTACT_JOB_POPUP_BTN_APPLY_XPATH = ".//*[@value='Save']"
+  CONTACT_JOB_POPUP_TOTAL_APP_XPATH = "//*[text()='Total Applications Count on Job']/../following-sibling::*//span"
   CONTACT_JOB_POPUP_BTN_CLOSE_XPATH = ".//*[@title='Close']"
   CONTACT_JOB_POPUP_BTN_CANCEL_XPATH = ".//*[@title='Cancel']"
   CONTACT_JOB_POPUP_BTN_NEXT_XPATH = ".//*[@title='Next']"
@@ -72,31 +71,33 @@ class ContactsHomePage
   CONTACT_JOB_POPUP_ERROR_TEXT = "Error:\nJob Title: You must enter a value"
   
     #Invite to apply
-    CONTACT_JOB_POPUP_APPLY_MSG_XPATH = ".//*[@class='data2Col last']/textarea"
+    CONTACT_JOB_POPUP_APPLY_MSG_XPATH = "//*[text()='Message']/../..//textarea"
     
     #Agency
-    CONTACT_JOB_POPUP_AGENCY_XPATH = ".//*[@class='lookupInput']/input"
-    CONTACT_JOB_POPUP_AGENCY_EEO_XPATH = ".//*[@class='data2Col last']/input"
+    CONTACT_JOB_POPUP_AGENCY_XPATH = "//*[text()='Agency']/../following-sibling::*//input"
+    CONTACT_JOB_POPUP_AGENCY_EEO_XPATH = "//*[text()='Request EEO']/../following-sibling::*//input"
     
     #Exception
-    CONTACT_JOB_POPUP_REASON_XPATH = ".//*[@class='requiredInput']/select"
-    CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH = ".//*[@class='requiredInput']/select/option[3]"
-    CONTACT_JOB_POPUP_SUCCESS_APP_XPATH = ".//*[@class='dataRow even first last']/td[1]/label"
-    CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH = ".//*[@class='dataRow even first last']/td[2]/span"
-    
+    CONTACT_JOB_POPUP_REASON_XPATH = "//*[text()='Reason']/../following-sibling::*//select"
+    CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH = "//*[text()='Reason Other']/../..//textarea"
+    CONTACT_JOB_POPUP_SUCCESS_APP_XPATH = "//label[text()[contains(., 'APP')]]"
+    CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH = "//label[text()[contains(., 'APP')]]/../..//td//span"
+     
   #Add Tags Pop Up window
-  CONTACT_TAGS_POPUP_PUBLIC_TAGS_XPATH = "(.//*[@class='detailList']/tbody/tr)[4]/td/select"  
-  CONTACT_TAGS_POPUP_PUBLIC_TAGS_FIRST_OPTION_XPATH = "((.//*[@class='detailList']/tbody/tr)[4]/td/select/option)[2]"
-  CONTACT_TAGS_POPUP_PERSONAL_TAGS_XPATH = "(.//*[@class='detailList']/tbody/tr)[3]/td/select"
-  CONTACT_TAGS_POPUP_PERSONAL_TAGS_FIRST_OPTION_XPATH = "((.//*[@class='detailList']/tbody/tr)[3]/td/select/option)[1]"
-  CONTACT_TAGS_POPUP_NEW_TAG_XPATH = "(.//*[@class='detailList']/tbody/tr)[6]/td/input"
-  CONTACT_TAGS_POPUP_TYPE_XPATH = "(.//*[@class='detailList']/tbody/tr)[7]/td/select"
-  CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH = ".//*[@title='Add Tags']"
+  CONTACT_TAGS_POPUP_PUBLIC_TAGS_XPATH = "//*[text()[contains(., 'Public Tags')]]/../following-sibling::*/select"   
+  CONTACT_TAGS_POPUP_PUBLIC_TAGS_FIRST_OPTION_XPATH = "//*[text()[contains(., 'Public Tags')]]/../following-sibling::*/select//option[1]"
+  CONTACT_TAGS_POPUP_PERSONAL_TAGS_XPATH = "//*[text()[contains(., 'Personal Tags')]]/../following-sibling::*//select"
+  CONTACT_TAGS_POPUP_PERSONAL_TAGS_FIRST_OPTION_XPATH = "//*[text()[contains(., 'Personal Tags')]]/../following-sibling::*//select//option[1]"
+  CONTACT_TAGS_POPUP_NEW_TAG_XPATH = "(//*[text()[contains(., 'New Tag')]])[2]/../following-sibling::*//input"
+  
+  
+  CONTACT_TAGS_POPUP_TYPE_XPATH = "(//*[text()[contains(., 'Type')]]/..)[2]/following-sibling::*//select"
+  CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH = ".//*[@value='Add Tags]"
   CONTACT_TAGS_POPUP_BTN_CANCEL_XPATH = ".//*[@title='Cancel']"
   CONTACT_TAGS_POPUP_BTN_CLOSE_XPATH = ".//*[@title='Close']"
   CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH = ".//*[@class='messageCell']/div"
   CONTACT_TAGS_POPUP_SUCCESS_TEXT = "Tags Added Successfully"
-  CONTACT_TAGS_POPUP_TOTAL_TAGS_XPATH = "(.//*[@class='detailList']/tbody/tr/td)[2]/span"
+  CONTACT_TAGS_POPUP_TOTAL_TAGS_XPATH = "//*[text()[contains(., 'Total Tags Added')]]/../following-sibling::*//span"
   CONTACT_TAGS_POPUP_ERROR_CELL_XPATH = ".//*[@class='messageCell']/div"
   CONTACT_TAGS_POPUP_ERROR_TAGS_TEXT = "Error:\nNo tags selected"
   
