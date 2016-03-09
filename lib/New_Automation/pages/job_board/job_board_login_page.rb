@@ -1,7 +1,7 @@
 class JobBoardLoginPage
-  JOB_BOARD_LOGIN_USERNAME_XPATH = ".//*[@style='margin-top:1em;']/tbody/tr[1]//input"
-  JOB_BOARD_LOGIN_PASSWORD_XPATH = ".//*[@style='margin-top:1em;']/tbody/tr[2]//input"
-  JOB_BOARD_LOGIN_BTN_LOGIN_XPATH = ".//*[@style='margin-top:1em;']/tbody/tr[3]//input"
+  JOB_BOARD_LOGIN_USERNAME_XPATH = ".//label[contains(text(),'Username')]/ancestor::tr[1]/child::td[2]/input"
+  JOB_BOARD_LOGIN_PASSWORD_XPATH = ".//label[contains(text(),'Password')]/ancestor::tr[1]/child::td[2]/input"
+  JOB_BOARD_LOGIN_BTN_LOGIN_XPATH = ".//input[@value='Login']"
   
   #HARD CODE DATA
   JOB_BOARD_USER_TEXT = "test2016@oktana.io"
