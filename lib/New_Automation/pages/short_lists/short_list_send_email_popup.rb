@@ -1,15 +1,14 @@
 class ShortListSendEmailPopup
   
-  ADDITIONAL_TO_TEXT_XPATH = ".//*[@id='j_id0:frm:pbSendEmail:j_id36:j_id45:j_id49']"
-  ADDITIONAL_TO_ICON_XPATH = ".//*[@id='j_id0:frm:pbSendEmail:j_id36:j_id45:j_id49']/following-sibling::a"
-  CC_TEXT_XPATH = ".//*[@id='j_id0:frm:pbSendEmail:j_id36:j_id53:j_id57']"
-  CC_ICON_XPATH = ".//*[@id='j_id0:frm:pbSendEmail:j_id36:j_id53:j_id57']/following-sibling::a"
-  SUBJECT_TEXT_ID = "'j_id0:frm:pbSendEmail:j_id36:j_id69:j_id71"
-  SUBJECT_TEXT_XPATH = ".//*[@name='j_id0:frm:pbSendEmail:j_id36:j_id69:j_id73']"
-  RECORD_ATTACHMENT_XPATH = ".//*[@id='j_id0:frm:pbSendEmail:j_id80:j_id81:0:j_id82']/input"
+  ADDITIONAL_TO_TEXT_XPATH = ".//a[contains(text(),'Additional To:')]/ancestor::tr/td/div/textarea"
+  ADDITIONAL_TO_ICON_XPATH = ".//a[contains(text(),'Additional To:')]/ancestor::tr/td/a"
+  CC_TEXT_XPATH = ".//a[contains(text(),'CC:')]/ancestor::tr/td/div/textarea"
+  CC_ICON_XPATH = ".//a[contains(text(),'CC:')]/ancestor::tr/td/a"
+  SUBJECT_TEXT_XPATH = ".//label[contains(text(),'Subject')]/ancestor::tr/td/div/input"
+  RECORD_ATTACHMENT_XPATH = ".//*[contains(@class,'dataCell')]/input"
   SEND_BUTTON_XPATH = ".//*[@value='Send']"
   SELECT_TEMPLATE_BUTTON_XPATH = ".//*[@value='Select Template***']"
-  CLOSE_SEND_EMAIL_XPATH = ".//*[@id='JobscienceDialog']/div[1]/div/table/tbody/tr/td[3]/div/i"
-  BCC_TEXT_XPATH = ".//*[@id='j_id0:frm:pbSendEmail:j_id36:j_id61:ctrBcc']"
+  CLOSE_SEND_EMAIL_XPATH = ".//*[@value='Close']"
+  BCC_TEXT_XPATH = ".//a[contains(text(),'BCC:')]/ancestor::tr/td/div/textarea"
   
 end
