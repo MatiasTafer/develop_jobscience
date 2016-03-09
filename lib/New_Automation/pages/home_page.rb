@@ -25,7 +25,6 @@ class HomePage
   SUBMITTALS_TAB_LINK_XPATH = ".//a[text()[contains(.,'Submittals')]]"
   CHATTER_TAB_XPATH = ".//a[text()[contains(.,'Chatter')]]"
   
-
   ALL_CONTACTS_TAB_LINK = "https://na17.salesforce.com/003?fcf=00Bo0000003aqv0"
 
   ACCOUNTS_TAB_LINK_URL = ".//a[text()[contains(.,'Accounts')]]"
