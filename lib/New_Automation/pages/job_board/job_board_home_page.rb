@@ -2,7 +2,6 @@ require 'securerandom'
 
 class JobBoardHomePage
 
-  
   REGISTER_LINK_XPATH = ".//*[@id='js-menu-register']/a"
   # REGISTER
   EMAIL_ADRESS_TEXT_XPATH = "(.//label[contains(text(),'Email Address')]/ancestor::td[@class='atsFormTdLeft'])/following-sibling::td[1]/div/input"
@@ -18,7 +17,6 @@ class JobBoardHomePage
   BROWSE_BUTTON_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input"
   ATTACH_ADDITIONAL_DOC_XPATH = ".//*[@type='file']"
   
-
   JOB_BOARD_LOGIN_LINK_XPATH = ".//*[@id='js-menu-login']/a"
   JOB_BOARD_REGISTER_LINK_XPATH = ".//*[@id='js-menu-register']/a"
   JOB_BOARD_LOGOUT_LINK_XPATH = ".//*[@id='js-menu-logout']/a"
