@@ -10,27 +10,27 @@ class RequisitionsDetail
   REQUISITIONS_DETAIL_BTN_ROLLOVER_CONTACTS_XPATH = ".//*[@title='Rollover Contacts']"
   
   #FIELDS
-  REQUISITIONS_DETAIL_PRIMARY_RECRUITER_XPATH = "(.//*[@class='dataCol inlineEditWrite'])[5]"
-  REQUISITIONS_DETAIL_SECONDARY_RECRUITER_XPATH = "(.//*[@class='dataCol inlineEditWrite'])[6]"
-  REQUISITIONS_DETAIL_HIRING_MANAGER_XPATH = "(.//*[@class='dataCol inlineEditWrite'])[7]"
-  REQUISITIONS_DETAIL_EXECUTIVE_APPROVER_XPATH = "(.//*[@class='dataCol inlineEditWrite'])[8]"
-  REQUISITIONS_DETAIL_QUESTION_SET_XPATH = "(.//*[@class='detailList'])[2]//tr[3]/td[4]/span/input"
+  REQUISITIONS_DETAIL_PRIMARY_RECRUITER_XPATH = ".//*[text()='Primary Recruiter']/following-sibling::*[1]"
+  REQUISITIONS_DETAIL_SECONDARY_RECRUITER_XPATH = ".//*[text()='Secondary Recruiter']/following-sibling::*[1]"
+  REQUISITIONS_DETAIL_HIRING_MANAGER_XPATH = ".//*[text()='Hiring Manager']/following-sibling::*[1]"
+  REQUISITIONS_DETAIL_EXECUTIVE_APPROVER_XPATH = ".//*[text()='Executive Approver']/following-sibling::*[1]"
+  REQUISITIONS_DETAIL_QUESTION_SET_XPATH = ".//*[text()='Question Set']/following-sibling::*[1]"
   
-  REQUISITIONS_DETAIL_APP_LIST_XPATH = "(.//*[@class='list'])[2]/tbody"
-  REQUISITIONS_DETAIL_FIRST_APP_LIST_XPATH = "(.//*[@class='list'])[2]/tbody/tr[2]/th[1]/a"
-  REQUISITIONS_DETAIL_SECOND_APP_LIST_XPATH = "(.//*[@class='list'])[2]/tbody/tr[3]/th[1]/a"
+  REQUISITIONS_DETAIL_APP_LIST_XPATH = ".//th[text()='Application']/ancestor::tbody[1]"
+  REQUISITIONS_DETAIL_FIRST_APP_LIST_XPATH = ".//th[text()='Application']/../following-sibling::*[1]//*[contains(.,'APP')]//a"
+  REQUISITIONS_DETAIL_SECOND_APP_LIST_XPATH = ".//th[text()='Application']/../following-sibling::*[2]//*[contains(.,'APP')]//a"
   
-  SITE_URL_XPATH = ".//*[@class='pbBody']//table/tbody/tr[1]/td[5]/a/span"
+  SITE_URL_XPATH = ".//*[text()='Careers']/../../following-sibling::*//span[contains(.,'http')]"
   
   LINK_TO_POSTING_IFRAME_XPATH = ".//iframe[@title='JobOrderJobBoardAssociations']"
 
   #Webpage Search Opening TC965, JS2 Projects
-  FIRST_SEARCH_RESULT_LINK_XPATH = ".//*[@class='atsSearchResultsTable']/tbody/tr[1]/td[1]/a"
+  FIRST_SEARCH_RESULT_LINK_XPATH = ".//*[text()[contains(.,'Job Title')]]/ancestor::table/tbody//tr[1]//a"
   
 
   #ROLLOVER CONTACTS POP UP WINDOW
   
-  REQUISITIONS_ROLLOVER_POPUP_JOB_INPUT_XPATH = ".//*[@class='lookupInput']/input"
+  REQUISITIONS_ROLLOVER_POPUP_JOB_INPUT_XPATH = ".//*[text()[contains(.,'Job')]]/following-sibling::*[1]//span/input"
   REQUISITIONS_ROLLOVER_POPUP_BTN_ROLLOVER_XPATH = ".//*[@value='Rollover']"
   REQUISITIONS_ROLLOVER_POPUP_BTN_CANCEL_XPATH = ".//*[@value='Cancel']"
   REQUISITIONS_ROLLOVER_POPUP_MSG_CELL_XPATH = ".//*[@class='messageCell']/div"

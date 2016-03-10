@@ -1,11 +1,11 @@
 class ShortListDetailPage
   
-  SL_MENU_XPATH = ".//*[@id='JobscienceMainPanel']/div[1]/div/div[2]/i"
-  SL_RECORD_XPATH = ".//*[@id='shortlistGrid']/div/ul/ul/li[1]/div[1]/div/div[2]/div"
-  SL_SEND_EMAIL_MENU_XPATH = "html/body/div[4]/div[9]"
-  SL_REVIEW_EMAIL_MENU_XPATH = "html/body/div[4]/div[8]"
-  SL_UPDATE_STATUS_OPTION_XPATH = "html/body/div[4]/div[2]"
-  SL_REMOVE_CONTACT_XPATH = "html/body/div[4]/div[1]"
+  SL_MENU_XPATH = ".//*[@class='fa fa-bars']"
+  SL_RECORD_XPATH = ".//*[text()='Name']/ancestor::table[1]/following-sibling::*[1]//li[1]//*[@action='selectShortlistCandidate']"
+  SL_SEND_EMAIL_MENU_XPATH = ".//*[text()='Send Email']"
+  SL_REVIEW_EMAIL_MENU_XPATH = ".//div[text()[contains(.,'Review Email')]]"
+  SL_UPDATE_STATUS_OPTION_XPATH = ".//div[text()[contains(.,'Update Status')]]"
+  SL_REMOVE_CONTACT_XPATH = ".//div[text()[contains(.,'Remove Contacts')]]"
   
   #Update Status Pop-Up window
   SELECT_STATUS_DROPDOWN_XPATH = ".//select"
@@ -15,15 +15,15 @@ class ShortListDetailPage
   
   SPEED_REVIEW_ICON_XPATH = ".//*[@class='shortlist-header-tabs-item'][1]"
   CONTACT_NAME_SPEED_REVIEW_PAGE_XPATH = "(.//*[@class='jck-h1-label jck-jcard-header-label']/span)[2]"
-  NAME_FIRST_CONTACT_SPEED_LIST_XPATH = "(.//*[@class='shortlist-candidate-record-list-item-row']/a)[1]"
+  NAME_FIRST_CONTACT_SPEED_LIST_XPATH = "(.//*[text()='Name']/ancestor::table[1]/following-sibling::*[1]//li[1]//a)[1]"
   ADD_CONTACT_ICON_XPATH = ".//*[@action='addShortlistContact']/i[1]"
   DELETE_SHORT_LIST_ICON_XPATH = ".//*[@id='shortlistTitleLabel']/i[2]"
 
   SL_LIST_XPATH = ".//*[@class='wk-list-body']"
   SL_DELETE_LIST_XPATH = ".//*[@action='confirmRemoveShortlist']"
 
-  CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH = ".//*[@id='JobscienceDialog']/div[3]/div[3]/table/tbody/tr/td[3]/div"
-  CONFIRM_DELETE_CONTACT_BUTTON_XPATH = ".//*[@id='JobscienceDialog']/div[3]/div[3]/table/tbody/tr/td[3]/div"
+  CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH = "(.//*[text()[contains(.,'Yes***')]])[2]"
+  CONFIRM_DELETE_CONTACT_BUTTON_XPATH = "(.//*[text()[contains(.,'No***')]])[2]"
   
   SEARCH_BUTTON_XPATH = ".//*[@class='web-sourcing-footer']/div"                                     
   

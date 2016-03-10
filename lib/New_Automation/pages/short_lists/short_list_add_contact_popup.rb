@@ -1,6 +1,6 @@
 class AddContactPopUp
   
-  CONTACT_NAME_TEXTBOX_XPATH = ".//*[@class='lookupInput']/input"
+  CONTACT_NAME_TEXTBOX_XPATH = ".//*[text()='Contact']/../following-sibling::*//span/input"
   ADD_TO_SHORT_LIST_BUTTON_XPATH = ".//*[@title='Add to Short List']"
   CLOSE_BUTTON_XPATH = ".//*[@title='Close']"
   
