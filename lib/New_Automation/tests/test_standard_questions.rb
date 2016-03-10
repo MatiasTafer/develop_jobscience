@@ -45,7 +45,7 @@ class TestStandardQuestions < TestBasic
     $browser.find_element(:xpath, NewStandardQuestion::REQUIRED_BY_APPLICANT_CHECKBOX_XPATH).click
     $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
     assert $wait.until {
-      $browser.current_url.eql?(HomePage::STANDARD_QUESTIONS_TAB_XPATH)
+     $browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).displayed?
     }
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
