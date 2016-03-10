@@ -2,7 +2,7 @@ class HomePage
   
   #TAB LINKS URL
   
-  ALL_TABS_LINK_ID = "AllTab_Tab"
+  ALL_TABS_LINK_XPATH = ".//*[@id='AllTab_Tab']"
   JOB_TEMPLATES_TAB_XPATH = ".//*[text()='Job Templates']"
   JOB_TEMPLATE_MAPPING_TAB_XPATH = ".//*[text()='Job Templates Mapping']"
   HOME_TAB_ID = "home_Tab"
