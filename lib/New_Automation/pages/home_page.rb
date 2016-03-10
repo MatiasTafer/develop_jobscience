@@ -4,6 +4,10 @@ class HomePage
   JOB_TEMPLATES_TAB_XPATH = ".//*[text()='Job Templates']"
   JOB_TEMPLATE_MAPPING_TAB_XPATH = ".//*[text()='Job Templates Mapping']"
   HOME_TAB_ID = "home_Tab"
+  MENU_USER_XPATH = ".//*[@id='userNavLabel']"
+  MENU_USER_SETUP_OPTION_XPATH = ".//*[@id='userNav-menuItems']/a[text()='Setup']"
+  DEVELOP_XPATH = ".//a[text()='Develop']"
+  CUSTOM_SETTINGS_XPATH = ".//*[@id='CustomSettings_font']"
   
   #TAB LINKS URL
   HOME_TAB_LINK_XPATH = ".//a[text()[contains(.,'Home')]]"
@@ -45,6 +49,7 @@ class HomePage
 
   ADD_RESUMES_XPATH = ".//a[text()[contains(.,'Add Resumes')]]"
   
+  # JOB BOARD URL
   JOB_BOARD_URL = "http://js-recruiting-148857d918a-14910044900.force.com/openings"
   JOB_BOARD_INTERNAL_URL = "http://js-recruiting-148857d918a-14910044900.force.com/internal"
                         

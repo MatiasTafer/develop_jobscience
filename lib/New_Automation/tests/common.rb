@@ -89,7 +89,9 @@ class Common
   
   def self.displayed(field)
      #puts field
-     return $browser.find_element(:xpath => field).displayed?
+     $wait.until{
+        return $browser.find_element(:xpath => field).displayed?
+     }
   end
   
   def self.ssleep
@@ -799,6 +801,37 @@ class Common
     #Go to + icon
     self.click_and_load(HomePage::ALL_TABS_LINK_XPATH) 
     self.click_and_load(tab)
+  end
+  
+  def self.custom_settings
+    test = [
+      {"displayed" => HomePage::MENU_USER_XPATH},
+      {"click" => HomePage::MENU_USER_XPATH},
+      {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"displayed" => HomePage::DEVELOP_XPATH},
+      {"click_and_load" => HomePage::DEVELOP_XPATH},
+      {"displayed" => HomePage::CUSTOM_SETTINGS_XPATH},
+      {"click" => HomePage::CUSTOM_SETTINGS_XPATH},
+    ]
+    Common.main(test)
+  end
+  
+  def self.goToCustomSettings(edit=false)
+    
+    self.custom_settings
+    
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//a[@class='actionLink'][1]"}
+      b = {"click" => ".//a[@class='actionLink'][1]"}
+      test << a
+      test << b
+    end
+    Common.main(test)
   end
   
   
