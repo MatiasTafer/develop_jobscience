@@ -1,11 +1,11 @@
 class AdvancedContactSearchHomePage
 
   # Keyword Search Tab
-  KEYWORD_TAB_XPATH = "(.//*[@class='rich-tabhdr-side-cell']/table)[1]"
+  KEYWORD_TAB_XPATH = "//*[text()='Keyword']"
 
-  SEARCH_CANDIDATE_ONLY_CHECKBOX_XPATH = "(.//*[@type='checkbox'])[1]"
+  SEARCH_CANDIDATE_ONLY_CHECKBOX_XPATH = "//*[text()[contains(., 'Search Candidate Only')]]/../following-sibling::*//input"
   CLEAR_K_BUTTON_XPATH = "(.//*[@value='Clear'])[1]"
-  ALL_THESE_WORDS_LABEL_XPATH = "(.//*[@class='data2Col'])[1]/span" 
+  ALL_THESE_WORDS_LABEL_XPATH = "//*[text()[contains(., 'Find people that have...')]]/../following-sibling::* //span" 
   SOME_THESE_WORDS_LABEL_XPATH = "//*[text()[contains(., 'some of these words:')]]/../..//input"
   ANY_THESE_UNWANTED_WORDS_LABEL_XPATH = "//*[text()[contains(., 'any of these unwanted words:')]]/../..//input"
 

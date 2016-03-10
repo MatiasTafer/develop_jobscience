@@ -16,14 +16,24 @@ class NewStandardQuestion
   QUESTION_SIZE_OPTION_3 = "Rich Text (up to 32k)"
   
   SAVE_BUTTON_XPATH = "(.//*[@value='Save'])[1]"
-  SAVE_AND_NEW_BUTTON_XPATH = "(.//*[@class='pbButton ']/input)[2]"
-  CANCEL_BUTTON_XPATH = "(.//*[@class='pbButton ']/input)[3]"
-  CONTACT_FIELD_DROPDOWN_XPATH = "(.//*[@class='detailList']/tbody/tr)[1]/td/select"
-  QUESTION_NAME_TEXT_FIELD_XPATH = "(.//*[@class='data2Col '])[1]/div/input"
-  QUESTION_SIZE_DROPDOWN_XPATH = "(.//*[@class='data2Col '])[2]/select"
-  QUESTION_TEXT_FIELD_XPATH = "(.//*[@class='data2Col '])[3]/span/textarea"
-  QUESTION_LAYOUT_DROPDOWN_XPATH = "(.//*[@class='data2Col '])[4]/div/select"
-  REQUIRED_BY_APPLICANT_CHECKBOX_XPATH = "(.//*[@class='detailList']/tbody/tr)[6]/td/input"
+  
+  
+  
+  SAVE_AND_NEW_BUTTON_XPATH = ".//*[@value='Save & New']"
+  CANCEL_BUTTON_XPATH = ".//*[@value='Cancel']"
+  CONTACT_FIELD_DROPDOWN_XPATH = "//*[text()[contains(., 'Contact Field')]]/../following-sibling::*//select"
+  
+  
+  QUESTION_NAME_TEXT_FIELD_XPATH = "//*[text()='Question Name']/../following-sibling::*//input"
+  
+  
+  QUESTION_SIZE_DROPDOWN_XPATH = "//*[text()='Question Size']/../following-sibling::*//select"
+  QUESTION_TEXT_FIELD_XPATH = "(//*[text()[contains(., 'Question')]]/../..//textarea)[1]"
+  
+  
+  
+  QUESTION_LAYOUT_DROPDOWN_XPATH = "//*[text()='Question Layout']/../following-sibling::*//select"
+  REQUIRED_BY_APPLICANT_CHECKBOX_XPATH = "//*[text()='Required By Applicant']/../following-sibling::*//input"
   ERROR_MESSAGE_XPATH = ".//*[@class='message errorM3']"
   
   

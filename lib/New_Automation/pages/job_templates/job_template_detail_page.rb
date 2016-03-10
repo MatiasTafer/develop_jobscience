@@ -1,6 +1,6 @@
 class JobTemplateDetail
   
-  EDIT_TEMPLATE_BUTTON_XPATH = ".//*[@class='btn'][3]"
+  EDIT_TEMPLATE_BUTTON_XPATH = ".//*[@name='edit']"
 
 
 

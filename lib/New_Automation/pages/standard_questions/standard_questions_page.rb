@@ -1,7 +1,7 @@
 class StandardQuestions
   
-  NEW_BUTTON_XPATH = ".//*[@class='pbButton']//*[@class='btn']"
-  FIRST_QUESTION_NAME_ITEM_XPATH = "(.//*[@class='list']/tbody/tr)[2]/th/a"
+  NEW_BUTTON_XPATH = ".//*[@name='new']"
+  FIRST_QUESTION_NAME_ITEM_XPATH = "(//*[text()='Question Name']/../..//a)[1]"
   
   
   
