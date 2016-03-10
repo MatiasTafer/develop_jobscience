@@ -53,7 +53,7 @@ class TestQuestionSets < TestBasic
       
    
     # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on New button
     $wait.until{
@@ -90,7 +90,7 @@ class TestQuestionSets < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on New button
     $wait.until{
@@ -149,7 +149,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
      
      # Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
@@ -205,7 +205,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_BTN_SAVE_XPATH).click
     
     # Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -231,7 +231,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
     
     # Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -389,7 +389,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
      
      # Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
@@ -445,7 +445,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_BTN_SAVE_XPATH).click
     
     # Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -471,7 +471,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
     
     # Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -629,7 +629,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
      
      # Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
@@ -685,7 +685,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_BTN_SAVE_XPATH).click
     
     # Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -711,7 +711,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
     
     # Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -861,7 +861,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on the Question Set's name previously created from the list
      $wait.until{
@@ -897,7 +897,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on the Question Set's name previously created from the list
      $wait.until{
@@ -982,7 +982,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => QuestionSetsQuestionBuilder::QUESTION_SETS_QUESTION_BUILDER_BTN_NEW_ORDER_XPATH).click
     
     #RESULT
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?  
       }
@@ -1010,7 +1010,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on the Question Set's name previously created from the list
      $wait.until{
@@ -1208,7 +1208,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetWithQuestions(randomName)
     
     #Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -1316,7 +1316,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH).click
     
     #RESULTS
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
       }
@@ -1357,7 +1357,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on the Question Set's name previously created from the list
      $wait.until{
@@ -1404,7 +1404,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
      
     # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on the Question Set's name previously created from the list
      $wait.until{
@@ -1442,7 +1442,7 @@ class TestQuestionSets < TestBasic
     }
     
     # 7 - Click on Tab "Question Sets"
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
       }
@@ -1496,7 +1496,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
     
      #Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -1524,7 +1524,7 @@ class TestQuestionSets < TestBasic
     sleep(2)
     
     # 1 - Click on Tab "Question Sets"
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
       }
@@ -1564,7 +1564,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_OPTIONAL_XPATH + "//*[@title='Checked']") 
    
      # 7 - Click on Tab "Question Sets"
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
       }
@@ -1684,7 +1684,7 @@ class TestQuestionSets < TestBasic
     self.CreateQuestionSetEmpty(randomName)
     
      #Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -1717,7 +1717,7 @@ class TestQuestionSets < TestBasic
     CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     
     # 1 - Click on Tab "Question Sets"
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
       }
@@ -1757,7 +1757,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => QuestionDetailPage::QUESTION_DETAIL_TEXT_XPATH + "//*[@title='Checked']") 
    
      # 7 - Click on Tab "Question Sets"
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
       }
@@ -1928,7 +1928,7 @@ class TestQuestionSets < TestBasic
     $browser.find_element(:xpath => AnswerEditPage::ANSWER_EDIT_BTN_SAVE_XPATH).click
     
     # Create Job with Question Set asociated
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH).displayed?
       }
@@ -2016,7 +2016,7 @@ class TestQuestionSets < TestBasic
       }
     
     # Click on Tab "Question Sets"
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
       }
@@ -2084,7 +2084,7 @@ class TestQuestionSets < TestBasic
     
     # 1 - From Question record, click "New Answer"
     # Click on Tab "Question Sets"
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
       }
@@ -2193,7 +2193,7 @@ class TestQuestionSets < TestBasic
     
     # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
      
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
@@ -2241,7 +2241,7 @@ class TestQuestionSets < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 1 - Click on "Requisitions"
-    $browser.get(HomePage::REQUISITION_TAB_LINK_URL)
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
     
     test= [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH}
@@ -2318,7 +2318,7 @@ class TestQuestionSets < TestBasic
     
     # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
      
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
@@ -2366,7 +2366,7 @@ class TestQuestionSets < TestBasic
     $browser.switch_to.window(newWindow2)
     sleep(2)
     # 1 - Click on "Requisitions"
-    $browser.get(HomePage::REQUISITION_TAB_LINK_URL)
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
     
     test= [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH}
@@ -2406,7 +2406,7 @@ class TestQuestionSets < TestBasic
     newWindow9= $browser.window_handles.first
     $browser.switch_to.window(newWindow9)
     
-    $browser.get(HomePage::REQUISITION_TAB_LINK_URL)
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
     
     test= [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH}
@@ -2488,7 +2488,7 @@ class TestQuestionSets < TestBasic
     
     # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
      
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
@@ -2536,7 +2536,7 @@ class TestQuestionSets < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 1 - Click on "Requisitions"
-    $browser.get(HomePage::REQUISITION_TAB_LINK_URL)
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
     
     test= [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH}
@@ -2585,7 +2585,7 @@ class TestQuestionSets < TestBasic
   def CreateQuestionSetWithQuestions(name)
          
     # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on New button
     $wait.until{
@@ -2766,7 +2766,7 @@ class TestQuestionSets < TestBasic
   
   def CreateQuestionSetEmpty(name)
      # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    Common.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on New button
     $wait.until{
