@@ -402,7 +402,7 @@ class Common
 
 
   def self.standart_question_null
-     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+     $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -425,7 +425,7 @@ class Common
 
   def self.CreateAccount(name)
     #Create an account record with "name" as Account Name
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
+    $browser.get(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH}, 
       {"click" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
@@ -442,7 +442,7 @@ class Common
   
   def self.CreateContact(name, account_name)
     #Create a Contact with name "name", and asociated with the account record with name "account_name"
-     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+     $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
       {"click" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
@@ -466,7 +466,7 @@ class Common
   
   def self.DeleteAccount(name)
     #Delete the account record with name "name", it also will be deleted the contacts asociated with the account
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
+    $browser.get(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
     {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH}
     ]
@@ -483,7 +483,7 @@ class Common
   
   def self.CreateShortList(name)
     #Create a Short List with "name" as its name
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    $browser.get(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
       {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}, 
       {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH},
@@ -497,7 +497,7 @@ class Common
   
   def self.DeleteShortList(name)
     #Delete the Short List with name "name"
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    $browser.get(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
     {"displayed" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH},
     {"set_text" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH, "text" => "All Short List"},
@@ -512,7 +512,7 @@ class Common
   
   def self.DeleteCandidateCreatedToday(name)
     #Delete the Candidate with name "name"
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
     {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -530,7 +530,7 @@ class Common
     #disableEeo=TRUE will check "Disable EEO" checkbox, if it is false it will be unchecked.  
     #questionSet will define the name of the Question Set asosiated with the Job Order, the default value is nil
     
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    $browser.get(HomePage::REQUISITIONS_LINK_XPATH)
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
       {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
@@ -568,7 +568,7 @@ class Common
     #Requisition with name "name" will be deleted
     
     # 1 - Go to "Requisition" Tab
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    $browser.get(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH).displayed?  
       }
@@ -587,7 +587,7 @@ class Common
   
   def self.CreateQuestionSetEmpty(name)
      # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    $browser.get(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on New button
     $wait.until{
@@ -646,7 +646,7 @@ class Common
 
   
   def self.standart_question_set
-     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+     $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -685,7 +685,7 @@ class Common
     # click the magnifying glass next to Choose Source to select a source, click Next, click Next, 
     # then click on the Search URL (if you enter a name and click save it will be saved to the notes  and attachments related list)
     
-    $browser.get HomePage::SOURCE_LINK_URL
+    $browser.get HomePage::SOURCE_LINK_XPATH
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       {"click" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
@@ -731,7 +731,7 @@ class Common
   
   def self.delete_sources(source_name)
     
-    $browser.get HomePage::SOURCE_LINK_URL
+    $browser.get HomePage::SOURCE_LINK_XPATH
     test = [
       # Delete the Source associated with the URL
       {"displayed" => ".//*[text()[contains(., '#{source_name}')]]"},
@@ -752,7 +752,7 @@ class Common
 
     # Precondition
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},

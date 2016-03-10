@@ -25,9 +25,9 @@ class TestShortList < TestBasic
 #TC90 - Successfully Add/Update Status 
 def test_addUpdateStauts
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   $wait.until {
-    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
+    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_XPATH
   }
   test = [{"click" => ShortListHomePage::SHORT_LIST_RECORD_XPATH_2}, 
           {"displayed" => ShortListDetailPage::SL_RECORD_XPATH},
@@ -50,9 +50,9 @@ end
 #TC91 - Open Speed review
 def test_openSpeedReview
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   $wait.until {
-    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
+    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_XPATH
   }
   test = [{"click" => ShortListHomePage::SHORT_LIST_RECORD_XPATH_2},
           {"displayed" => ShortListDetailPage::SL_RECORD_XPATH},
@@ -116,9 +116,9 @@ def test_removeWebSourcing
           {"unchecked" => SetupEditPage::CHECKBOX_WEB_SOURCING_XPATH},
           {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
   Common.main(test)
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   $wait.until {
-    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
+    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_XPATH
   }
   $browser.find_element(:xpath, ShortListHomePage::SHORT_LIST_RECORD_XPATH_2).click
   assert $wait.until {
@@ -193,7 +193,7 @@ end
 def test_addContactShortList
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   #First step: create a new short list
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"click" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"displayed" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH},
@@ -230,7 +230,7 @@ def test_noContactSelected
   #Generate a random string for Short List name
   randomName = SecureRandom.hex(4)
   #First step: create a new short list
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"click" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"displayed" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH},
@@ -257,7 +257,7 @@ def test_addExistingContact
   #Generate a random string for Short List name
   randomName = SecureRandom.hex(4)
   #First step: create a new short list
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"click" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"displayed" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH},
@@ -300,7 +300,7 @@ def test_removeContact
   #Generate a random string for Short List name
   randomName = SecureRandom.hex(4)
   #First step: create a new short list
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"click" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"displayed" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH},
@@ -340,7 +340,7 @@ def test_menuNoContactSelected
   #Generate a random string for Short List name
   randomName = SecureRandom.hex(4)
   #First step: create a new short list
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   test = [{"displayed" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"click" => ShortListHomePage::NEW_SHORT_LIST_BUTTON_XPATH},
           {"displayed" => ShortListCreation::TEXT_BOX_NEW_SHORT_LIST_NAME_XPATH},
@@ -380,9 +380,9 @@ def test_addToOldInterface
           {"unchecked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
           {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
   Common.main(test)
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   $wait.until {
-    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
+    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_XPATH
   }
   test2 = [{"click" => ShortListHomePage::SHORT_LIST_RECORD_XPATH},
            {"displayed" => ShortListDetailOldUi::CHECKBOX_CONTACT_XPATH},
@@ -424,9 +424,9 @@ def test_noContactSelectedOldUi
           {"unchecked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
           {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
   Common.main(test)
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   $wait.until {
-    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
+    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_XPATH
   }
   test2 = [{"click" => ShortListHomePage::SHORT_LIST_RECORD_XPATH},
            {"displayed" => ShortListDetailOldUi::CHECKBOX_CONTACT_XPATH},
@@ -458,9 +458,9 @@ def test_noShortListSelectedoldUi
           {"unchecked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
           {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH}]
   Common.main(test)
-  $browser.get HomePage::SHORT_LIST_TAB_LINK_URL
+  $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
   $wait.until {
-    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_URL
+    $browser.current_url.eql? HomePage::SHORT_LIST_TAB_LINK_XPATH
   }
   test2 = [{"click" => ShortListHomePage::SHORT_LIST_RECORD_XPATH},
            {"displayed" => ShortListDetailOldUi::CHECKBOX_CONTACT_XPATH},

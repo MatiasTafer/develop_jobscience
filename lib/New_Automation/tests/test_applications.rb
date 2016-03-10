@@ -30,7 +30,7 @@ class TestApplications < TestBasic
   #TC1058 - Application / Create PDF
   def test_applicationCreationPdf
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::APPLICATIONS_TAB_LINK_URL
+    $browser.get HomePage::APPLICATIONS_TAB_LINK_XPATH
     $wait.until{
       $browser.find_element(:xpath, ApplicationsHomePage::APPLICATION_OPTION_BAR_XPATH).displayed?
        $browser.find_element(:xpath, ApplicationsHomePage::FIRST_APPLICATION_ON_TABLE_XPATH).displayed?
@@ -104,7 +104,7 @@ class TestApplications < TestBasic
     ]
     Common.main(test)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
     ]
@@ -144,7 +144,7 @@ class TestApplications < TestBasic
     Common.CreateContact(randomContact, randomContact)
     
      # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -188,7 +188,7 @@ class TestApplications < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -294,7 +294,7 @@ class TestApplications < TestBasic
     
     # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
      
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
@@ -339,7 +339,7 @@ class TestApplications < TestBasic
     
     
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
@@ -488,7 +488,7 @@ class TestApplications < TestBasic
     
     # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
      
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
@@ -533,7 +533,7 @@ class TestApplications < TestBasic
     
     
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
@@ -659,7 +659,7 @@ class TestApplications < TestBasic
     
     # Application was moved to any further stage: Submittal, Interview, Offer or Placement.
      
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
@@ -703,7 +703,7 @@ class TestApplications < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 1 - Click on "Contacts" Tab
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},

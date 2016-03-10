@@ -72,9 +72,9 @@ class TestStandardQuestions < TestBasic
     $wait.until {
       $browser.current_url.eql?(HomePage::STANDARD_QUESTIONS_TAB_LINK)
     }
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
     $wait.until {
-      $browser.current_url.eql?(HomePage::BOARD_SETUP_TAB_LINK_URL)
+      $browser.current_url.eql?(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
       $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).displayed?
     }
     $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).click
@@ -216,9 +216,9 @@ class TestStandardQuestions < TestBasic
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_SIZE_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_SIZE_OPTION_1
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_TEXT_FIELD_XPATH).send_keys NewStandardQuestion::QUESTION_NAME
     $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
     $wait.until {
-      $browser.current_url.eql?(HomePage::BOARD_SETUP_TAB_LINK_URL)
+      $browser.current_url.eql?(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
       $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).displayed?
     }
     $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).click

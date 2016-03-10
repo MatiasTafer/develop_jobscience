@@ -45,7 +45,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.AddResumeDupePrevention("Attach Only")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => HomePage::ADD_RESUMES_XPATH},
@@ -129,7 +129,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => HomePage::ADD_RESUMES_XPATH},
@@ -373,7 +373,7 @@ class TestDaxtraParse < TestBasic
     # "Overwrite Address" set to "TRUE"
     CustomSettings.DaxtraParseOverwrite(true, false, false, false)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -498,7 +498,7 @@ class TestDaxtraParse < TestBasic
     # "Overwrite Address" set to "TRUE"
     CustomSettings.DaxtraParseOverwrite(false, false, false, false)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -624,7 +624,7 @@ class TestDaxtraParse < TestBasic
     # "Overwrite Address" set to "TRUE"
     CustomSettings.DaxtraParseOverwrite(false, true, false, false)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -749,7 +749,7 @@ class TestDaxtraParse < TestBasic
     # "Overwrite Address" set to "TRUE"
     CustomSettings.DaxtraParseOverwrite(false, false, false, false)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -874,7 +874,7 @@ class TestDaxtraParse < TestBasic
     # "Overwrite Address" set to "TRUE"
     CustomSettings.DaxtraParseOverwrite(false, false, true, false)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -999,7 +999,7 @@ class TestDaxtraParse < TestBasic
     # "Overwrite Address" set to "TRUE"
     CustomSettings.DaxtraParseOverwrite(false, false, false, false)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -1124,7 +1124,7 @@ class TestDaxtraParse < TestBasic
     # "Include Skills" set to "TRUE"
     CustomSettings.DaxtraParseOverwrite(false, false, false, true)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -1211,7 +1211,7 @@ class TestDaxtraParse < TestBasic
     # "Include Skills" set to "False"
     CustomSettings.DaxtraParseOverwrite(false, false, false, false)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -1288,7 +1288,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
     #The test case specified HomePage but It make an error, so It's autommated from Contacts' Tab
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => HomePage::ADD_RESUMES_XPATH},
@@ -1336,7 +1336,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.DefineResumeAllowedTypes(" ")
     
     #The test case specified HomePage but It make an error, so It's autommated from Contacts' Tab
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => HomePage::ADD_RESUMES_XPATH},  
@@ -1575,7 +1575,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -1658,7 +1658,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -1741,7 +1741,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -1825,7 +1825,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -1908,7 +1908,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  
@@ -1990,7 +1990,7 @@ class TestDaxtraParse < TestBasic
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH).displayed?  

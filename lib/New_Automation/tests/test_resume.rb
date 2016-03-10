@@ -238,7 +238,7 @@ def test_ResumToolAttachOly
    test2 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test2)
-  $browser.get HomePage::HOME_TAB_LINK_URL
+  $browser.get HomePage::HOME_TAB_LINK_XPATH
   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
   Common.main(test3)
@@ -270,7 +270,7 @@ def test_addResumeToolParseFields
    test2 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test2)
-  $browser.get HomePage::HOME_TAB_LINK_URL
+  $browser.get HomePage::HOME_TAB_LINK_XPATH
   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
   Common.main(test3)
@@ -310,7 +310,7 @@ def test_addResumePrivateSharingModel
            {"click" => SetupEditPage::SHARING_SETTINGS_SAVE_BUTTON_XPATH}]
   Common.main(test2)
   #Steps
-  $browser.get HomePage::HOME_TAB_LINK_URL
+  $browser.get HomePage::HOME_TAB_LINK_XPATH
   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
   Common.main(test3)
@@ -418,7 +418,7 @@ def test_addResumeNotShared
            {"click" => SetupEditPage::SHARING_SETTINGS_SAVE_BUTTON_XPATH}]
   Common.main(test2)
   #Steps
-  $browser.get HomePage::HOME_TAB_LINK_URL
+  $browser.get HomePage::HOME_TAB_LINK_XPATH
   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
   Common.main(test3)
@@ -458,7 +458,7 @@ def test_addResumeOneShared
            {"click" => SetupEditPage::SHARING_SETTINGS_SAVE_BUTTON_XPATH}]
   Common.main(test2)
   #Steps
-  $browser.get HomePage::HOME_TAB_LINK_URL
+  $browser.get HomePage::HOME_TAB_LINK_XPATH
   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
   Common.main(test3)
@@ -520,7 +520,7 @@ def test_picklistUSAResumeTools
    test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test)
@@ -540,7 +540,7 @@ def test_picklistUSAResumeTools
       $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "61MeetinghouseRoadWindhamNH03087US")
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test3)
@@ -561,7 +561,7 @@ def test_picklistUSAResumeTools
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "61MeetinghouseRoadWindhamNH03087US")
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "US")
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test7 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test7)
@@ -595,7 +595,7 @@ def test_pickListCanadaResumeTools
    test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test)
@@ -615,7 +615,7 @@ def test_pickListCanadaResumeTools
       $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "10­123MainstMontrealQCH3Z2Y7CA")
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test3)
@@ -636,7 +636,7 @@ def test_pickListCanadaResumeTools
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "10­123MainstMontrealQCH3Z2Y7CA")
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_COUNTRY_XPATH).text, "CA")
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test7 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test7)
@@ -670,7 +670,7 @@ def test_PickListInternationalResumeTool
    test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test)
@@ -704,11 +704,11 @@ def test_ValidationCountryPicklist
             {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test2 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test2)
@@ -742,11 +742,11 @@ def test_nonEnglishPickList
             {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test3)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test2 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test2)
@@ -1613,7 +1613,7 @@ def test_resumeToolInternationalDisable
    test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test)
@@ -1651,7 +1651,7 @@ def test_ValidationResumeToolUpdateResume
             {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test)
@@ -1686,11 +1686,11 @@ def test_noEnglishResumeUpdateDisablePicklist
             {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test3)
-   $browser.get HomePage::HOME_TAB_LINK_URL
+   $browser.get HomePage::HOME_TAB_LINK_XPATH
    test2 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test2)
@@ -2195,7 +2195,7 @@ def test_addResumeOneShared
            {"click" => SetupEditPage::SHARING_SETTINGS_SAVE_BUTTON_XPATH}]
   Common.main(test2)
   #Steps
-  $browser.get HomePage::HOME_TAB_LINK_URL
+  $browser.get HomePage::HOME_TAB_LINK_XPATH
   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
   Common.main(test3)
@@ -2352,7 +2352,7 @@ end
     ]
     Common.main(test)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
     ]
@@ -2389,7 +2389,7 @@ end
    
     CustomSettings.EnableJCardForContact(true)
    
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
@@ -2427,7 +2427,7 @@ def test_addResumeNoshared
            {"click" => SetupEditPage::SHARING_SETTINGS_SAVE_BUTTON_XPATH}]
   Common.main(test2)
   #Steps
-  $browser.get HomePage::HOME_TAB_LINK_URL
+  $browser.get HomePage::HOME_TAB_LINK_XPATH
   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
   Common.main(test3)
