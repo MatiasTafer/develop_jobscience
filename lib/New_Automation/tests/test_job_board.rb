@@ -35,7 +35,7 @@ class TestJobBoard < TestBasic
     # JS2 -  Search jobs by criteria 
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -69,7 +69,7 @@ class TestJobBoard < TestBasic
     # JS2 - Set "Show Search Only" to "TRUE" in Board Setup
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # Preconditions
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -111,7 +111,7 @@ class TestJobBoard < TestBasic
     # JS2 - Edit search criteria fields
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # Steps
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -142,7 +142,7 @@ class TestJobBoard < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Precondition
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -310,7 +310,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -338,7 +338,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::REQUISITION_TAB_LINK_XPATH
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_EDIT_XPATH},
       {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_EDIT_XPATH},
@@ -432,7 +432,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::SOURCE_LINK_XPATH
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       # 3. Click on "New".
@@ -464,7 +464,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -489,7 +489,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::SOURCE_LINK_XPATH
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       # 3. Click on "New".
@@ -520,7 +520,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Jobs/Projects" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -554,7 +554,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Department" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -586,7 +586,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Location" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -618,7 +618,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Employment Type" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -650,7 +650,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Business Unit" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -681,7 +681,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Jobs/Projects", "Department" and "Location" fields 
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -713,7 +713,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Jobs/Projects", "Department", "Location" and "Employment Type" fields
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -748,7 +748,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Jobs/Projects", "Department", "Location", "Employment Type" and "Business Unit" fields
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -887,7 +887,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -935,7 +935,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -2715,7 +2715,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -2786,7 +2786,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -2857,7 +2857,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -2934,7 +2934,7 @@ class TestJobBoard < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},

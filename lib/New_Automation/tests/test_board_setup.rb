@@ -30,7 +30,7 @@ class TestBoardSetup < TestBasic
 
     # PRECONDITIONS
     # open board setup page
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     
     Common.click(BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH)
     
@@ -47,7 +47,7 @@ class TestBoardSetup < TestBasic
     end  
     
     # END PRECONDITIONS
-    $browser.get HomePage::REQUISITION_TAB_LINK_XPATH
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
     # new requisitions button
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH).displayed?
@@ -86,7 +86,7 @@ class TestBoardSetup < TestBasic
     
     # PRECONDITIONS
     # open board setup page
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     $browser.find_element(:xpath => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
@@ -100,7 +100,7 @@ class TestBoardSetup < TestBasic
       $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
     end  
     
-    $browser.get HomePage::REQUISITION_TAB_LINK_XPATH
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
     # new requisitions button
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH).displayed?
@@ -410,7 +410,7 @@ class TestBoardSetup < TestBasic
     # Job Board - Hide Resume Upload / Paste / Builder / Previously Uploaded / Cover Letter
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
 <<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -454,7 +454,7 @@ class TestBoardSetup < TestBasic
     # Job Board - Hide Phone / Hide Mobile / Hide Source Question / Hide Contact Method / will be available
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
 <<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -499,7 +499,7 @@ class TestBoardSetup < TestBasic
     # Job Board - Hide Phone / Hide Mobile / Hide Source Question / Hide Contact Method / will be hidden
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
 <<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -541,7 +541,7 @@ class TestBoardSetup < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -572,7 +572,7 @@ class TestBoardSetup < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
 <<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -613,7 +613,7 @@ class TestBoardSetup < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
 <<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -653,7 +653,7 @@ class TestBoardSetup < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
 <<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -688,7 +688,7 @@ class TestBoardSetup < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
@@ -723,7 +723,7 @@ class TestBoardSetup < TestBasic
     #Need to have pre configured on Setup>Create>Objects>Job Orders>RSS Feed the followings fields: 
     #Login
     Common.login(Common::USER_EMAIL, Common::PASSWORD)
-    $browser.get(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},

@@ -53,7 +53,7 @@ class TestStandardQuestions < TestBasic
   #TC929 - Validation of new standar question, Required By Applicant = true
   def test_validationStandarQuestion
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
-    $browser.get HomePage::STANDARD_QUESTIONS_TAB_LINK
+    Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_LINK
     $wait.until {
       $browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_LINK
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
@@ -72,7 +72,7 @@ class TestStandardQuestions < TestBasic
     $wait.until {
       $browser.current_url.eql?(HomePage::STANDARD_QUESTIONS_TAB_LINK)
     }
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     $wait.until {
       $browser.current_url.eql?(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
       $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).displayed?
@@ -142,7 +142,7 @@ class TestStandardQuestions < TestBasic
   #TC930 - New Standard Question, Field Validation, Required By Applicant = true
   def test_FieldValidationQuestionAplicantTrue
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
-    $browser.get HomePage::STANDARD_QUESTIONS_TAB_LINK
+    Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_LINK
     $wait.until {
       $browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_LINK
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
@@ -161,7 +161,7 @@ class TestStandardQuestions < TestBasic
   #TC931 - New Standard Question, Successfully created, Required By Applicant = false
   def test_NewStandaQuestionRequiredFalse
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
-    $browser.get HomePage::STANDARD_QUESTIONS_TAB_LINK
+    Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_LINK
     $wait.until {
       $browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_LINK
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
@@ -193,7 +193,7 @@ class TestStandardQuestions < TestBasic
   #TC932 - New Standard Question, Adding Standard Questions, Required By Applicant = false
   def test_validationStandarQuestionFalseApplicant
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
-    $browser.get HomePage::STANDARD_QUESTIONS_TAB_LINK
+    Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_LINK
     $wait.until {
       $browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_LINK
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
@@ -216,7 +216,7 @@ class TestStandardQuestions < TestBasic
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_SIZE_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_SIZE_OPTION_1
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_TEXT_FIELD_XPATH).send_keys NewStandardQuestion::QUESTION_NAME
     $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     $wait.until {
       $browser.current_url.eql?(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
       $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).displayed?
@@ -279,7 +279,7 @@ class TestStandardQuestions < TestBasic
   #TC933 - New Standard Question, Field Validation, Required By Applicant = false
   def test_FieldValidationQuestionAplicantFalse
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
-    $browser.get HomePage::STANDARD_QUESTIONS_TAB_LINK
+    Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_LINK
     $wait.until {
       $browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_LINK
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?

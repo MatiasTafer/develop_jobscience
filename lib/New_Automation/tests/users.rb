@@ -44,7 +44,7 @@ class Users
     begin
       Common.login(USER_EMAIL, PASSWORD)
     end
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},

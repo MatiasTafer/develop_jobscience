@@ -44,7 +44,7 @@ class TestParsingCandidatesFileType < TestBasic
     
     CustomSettings.DefineResumeAllowedTypes("txt")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     # 1. Click on "Add Resume" om "Resume Tools" in the sidebar
     test = [
       {"displayed" => HomePage::ADD_RESUMES_XPATH},
@@ -88,7 +88,7 @@ class TestParsingCandidatesFileType < TestBasic
     
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     # 1. Click on "Add Resume" om "Resume Tools" in the sidebar
     test = [
       {"displayed" => HomePage::ADD_RESUMES_XPATH},
@@ -235,7 +235,7 @@ class TestParsingCandidatesFileType < TestBasic
     CustomSettings.DefineResumeAllowedTypes("txt")
     
     # 1. Click on "Contacts"
-    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Click on one record
     test =[
@@ -288,7 +288,7 @@ class TestParsingCandidatesFileType < TestBasic
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
     # 1. Click on "Contacts"
-    $browser.get(HomePage::CONTACTS_TAB_LINK_XPATH)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Click on one record
     test =[
@@ -466,7 +466,7 @@ class TestParsingCandidatesFileType < TestBasic
  
   def DeleteRequisition(name)
     # 1 - Go to "Requisition" Tab
-    $browser.get(HomePage::REQUISITIONS_LINK_XPATH)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH).displayed?  
       }

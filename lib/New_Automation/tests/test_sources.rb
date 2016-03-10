@@ -47,7 +47,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Steps
-    $browser.get HomePage::SOURCE_LINK_XPATH
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       {"click" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
@@ -83,7 +83,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Steps
-    $browser.get HomePage::SOURCE_LINK_XPATH
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH
     test = [
       # 2
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
@@ -125,7 +125,7 @@ class TestSources < TestBasic
     # Precondition
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -197,7 +197,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -280,7 +280,7 @@ class TestSources < TestBasic
     
     # Precondition
     Common.logout_job_board
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -338,7 +338,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -419,7 +419,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -481,7 +481,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -552,7 +552,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -638,7 +638,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -712,7 +712,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -796,7 +796,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -865,7 +865,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -918,7 +918,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -989,7 +989,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -1041,7 +1041,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -1100,7 +1100,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -1176,7 +1176,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -1368,7 +1368,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::REQUISITION_TAB_LINK_XPATH
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
       {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
@@ -1378,7 +1378,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::CHATTER_TAB_XPATH
+    Common.goToTab(HomePage::CHATTER_TAB_XPATH
     test = [
       {"displayed" => ".//*[text()[contains(.,'View Job Posting')]]"},
       {"click" => ".//*[text()[contains(.,'View Job Posting')]]"},

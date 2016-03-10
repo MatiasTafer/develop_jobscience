@@ -52,7 +52,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Applications" Tab
-    $browser.get HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
     test = [
       # 2 - Click on any Application
       {"displayed" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
@@ -88,7 +88,7 @@ class TestEmailActions < TestBasic
     # Steps
     # Steps
     # 1 - Click on "Applications" Tab
-    $browser.get HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
     test = [
       # 2 - Click on any Application
       {"displayed" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
@@ -129,7 +129,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Applications" Tab
-    $browser.get HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
     test = [
       # 2 - Click on any Application
       {"displayed" => ApplicationsHomePage::LABEL_APPLICATION_XPATH},
@@ -175,7 +175,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Applications" Tab
-    $browser.get HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
     test = [
       # 2 - Click on any Application
       #{"displayed" => ApplicationsHomePage::LABEL_APPLICATION_XPATH},
@@ -217,7 +217,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Submittals" Tab
-    $browser.get HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
     test = [
       # Click on any Submittal
       {"displayed" => SubmittalsHomePage::FIRST_SUBMITTALS_RECORD_LIST_XPATH},
@@ -255,7 +255,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Submittals" Tab
-    $browser.get HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
     test = [
       # Click on any Submittal
       {"displayed" => SubmittalsHomePage::FIRST_SUBMITTALS_RECORD_LIST_XPATH},
@@ -300,7 +300,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Submittals" Tab
-    $browser.get HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
     test = [
       # Click on any Submittal
       {"displayed" => SubmittalsHomePage::FIRST_SUBMITTALS_RECORD_LIST_XPATH},
@@ -346,7 +346,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Submittals" Tab
-    $browser.get HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
     test = [
       # Click on any Submittal
       {"displayed" => SubmittalsHomePage::FIRST_SUBMITTALS_RECORD_LIST_XPATH},
@@ -379,7 +379,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Interviews" Tab
-    $browser.get HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
     test = [
       # Click on any Interview
       {"displayed" => InterviewsHomePage::INTERVIEW_RECORD_XPATH},
@@ -418,7 +418,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Interviews" Tab
-    $browser.get HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
     test = [
       # Click on any Interview
       {"displayed" => InterviewsHomePage::INTERVIEW_RECORD_XPATH},
@@ -464,7 +464,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Interviews" Tab
-    $browser.get HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
     test = [
       # Click on any Interview
       {"displayed" => InterviewsHomePage::INTERVIEW_RECORD_XPATH},
@@ -509,7 +509,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Interviews" Tab
-    $browser.get HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
     test = [
       # Click on any Interview
       {"displayed" => InterviewsHomePage::INTERVIEW_RECORD_XPATH},
@@ -542,7 +542,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    $browser.get HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
     test = [
       # Click on any Offer
       {"displayed" => OffersHomePage::OFFERS_RECORD_XPATH},
@@ -580,7 +580,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    $browser.get HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
     test = [
       # Click on any Offer
       {"displayed" => OffersHomePage::OFFERS_RECORD_XPATH},
@@ -627,7 +627,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    $browser.get HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
     test = [
       # Click on any Offer
       {"displayed" => OffersHomePage::OFFERS_RECORD_XPATH},
@@ -674,7 +674,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    $browser.get HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
     test = [
       # Click on any Offer
       {"displayed" => OffersHomePage::OFFERS_RECORD_XPATH},
@@ -708,7 +708,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    $browser.get HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
     test = [
       # Click on "Placements" Tab
       {"displayed" => PlacementsDetailPage::PLACEMENT_RECORD_XPATH},
@@ -745,7 +745,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    $browser.get HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
     test = [
       # Click on "Placements" Tab
       {"displayed" => PlacementsDetailPage::PLACEMENT_RECORD_XPATH},
@@ -791,7 +791,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    $browser.get HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
     test = [
       # Click on "Placements" Tab
       {"displayed" => PlacementsDetailPage::PLACEMENT_RECORD_XPATH},
@@ -838,7 +838,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    $browser.get HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
     test = [
       # Click on "Placements" Tab
       {"displayed" => PlacementsDetailPage::PLACEMENT_RECORD_XPATH},
@@ -875,7 +875,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 
-    $browser.get HomePage::CONTACTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'849e3fec')]]"},
@@ -909,7 +909,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 
-    $browser.get HomePage::CONTACTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'849e3fec')]]"},
@@ -955,7 +955,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 
-    $browser.get HomePage::CONTACTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'849e3fec')]]"},
@@ -1002,7 +1002,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 
-    $browser.get HomePage::CONTACTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'849e3fec')]]"},
@@ -1050,7 +1050,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1095,7 +1095,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1140,7 +1140,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1195,7 +1195,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1242,7 +1242,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1296,7 +1296,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1381,7 +1381,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1431,7 +1431,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1487,7 +1487,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1553,7 +1553,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1603,7 +1603,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1659,7 +1659,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1727,7 +1727,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1777,7 +1777,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1833,7 +1833,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -1885,7 +1885,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 
-    $browser.get HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
     test = [
       # APP-010616-04441, .//span[text()[contains(.,'APP-010616-04441')]] 6d620642
       
@@ -1916,7 +1916,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    $browser.get HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
     test = [
       # Click on "Send E-mail" on the menu
       {"displayed" => ApplicationsHomePage::FIRST_APPLICATION_CHECKBOX_XPATH},
@@ -1944,7 +1944,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    $browser.get HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
     test = [
       #
       {"displayed" => ".//*[@id='a0go0000003k7Gk_00No0000008HtlV']/a[1]/img"},
@@ -1973,7 +1973,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    $browser.get HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
     test = [
       #
       {"displayed" => ".//*[@id='a0go0000003k7Gk_00No0000008HtlV']/a[1]/img"},
@@ -2004,7 +2004,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    $browser.get HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
     test = [
       #
       {"displayed" => InterviewsHomePage::CHECKBOX_FIRST_RECORD_XPATH},
@@ -2034,7 +2034,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    $browser.get HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
     test = [
       #
       {"displayed" => InterviewsHomePage::CHECKBOX_FIRST_RECORD_XPATH},
@@ -2077,7 +2077,7 @@ class TestEmailActions < TestBasic
     
     
     # Steps
-    $browser.get HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
     test = [
       #
       {"displayed" => OffersHomePage::GO_BUTTON_XPATH},
@@ -2129,7 +2129,7 @@ class TestEmailActions < TestBasic
     
     
     # Steps
-    $browser.get HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
     test = [
       #
       {"displayed" => OffersHomePage::GO_BUTTON_XPATH},
@@ -2170,7 +2170,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    $browser.get HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
     test = [
       #
       {"displayed" => PlacementsHomePage::GO_BUTTON_XPATH},
@@ -2200,7 +2200,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    $browser.get HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
     test = [
       #
       {"displayed" => PlacementsHomePage::GO_BUTTON_XPATH},
@@ -2256,7 +2256,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -2328,7 +2328,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -2410,7 +2410,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -2485,7 +2485,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -2557,7 +2557,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -2631,7 +2631,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -2715,7 +2715,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
@@ -2789,7 +2789,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
