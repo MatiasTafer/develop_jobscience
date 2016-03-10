@@ -136,7 +136,7 @@ class TestBoardSetup < TestBasic
     # Set "Show Search Only" to "TRUE" in Board Setup
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToCustomSettings
+    Common.go_to_massmail_service
     # Preconditios open board setup page
     #Common.goToTab(BoardSetupHomePage::CAREERS_URL_XPATH) 
     test = [
