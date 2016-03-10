@@ -89,7 +89,9 @@ class Common
   
   def self.displayed(field)
      #puts field
-     return $browser.find_element(:xpath => field).displayed?
+     $wait.until{
+        return $browser.find_element(:xpath => field).displayed?
+     }
   end
   
   def self.ssleep
@@ -801,5 +803,126 @@ class Common
     self.click_and_load(tab)
   end
   
+  def self.custom_settings
+    test = [
+      {"displayed" => HomePage::MENU_USER_XPATH},
+      {"click" => HomePage::MENU_USER_XPATH},
+      {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"displayed" => HomePage::DEVELOP_XPATH},
+      {"click_and_load" => HomePage::DEVELOP_XPATH},
+      {"displayed" => HomePage::CUSTOM_SETTINGS_XPATH},
+      {"click" => HomePage::CUSTOM_SETTINGS_XPATH},
+    ]
+    Common.main(test)
+  end
   
+  def self.go_to_custom_settings(edit=false)
+    
+    self.custom_settings
+    
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//a[@class='actionLink'][1]"}
+      b = {"click" => ".//a[@class='actionLink'][1]"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
+  
+  def self.go_to_short_list(edit=false)
+    #Short List
+    self.custom_settings
+    
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Short List']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Short List']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//*[@value='Edit']"}
+      b = {"click" => ".//*[@value='Edit']"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
+  
+  def self.go_to_parser_settings(edit=false)
+    #Parser Settings
+    self.custom_settings
+    
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Parser Settings']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Parser Settings']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//*[@value='Edit']"}
+      b = {"click" => ".//*[@value='Edit']"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
+  
+  def self.go_to_social_settings(edit=false)
+    #Social Settings
+    self.custom_settings
+    
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Social Settings']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Social Settings']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//*[@value='Edit']"}
+      b = {"click" => ".//*[@value='Edit']"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
+  
+  def self.go_to_sharing_settings(edit=false)
+    # Security_font
+    test = [
+      {"displayed" => HomePage::MENU_USER_XPATH},
+      {"click" => HomePage::MENU_USER_XPATH},
+      {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"displayed" => HomePage::DEVELOP_XPATH},
+      {"click_and_load" => HomePage::DEVELOP_XPATH},
+      {"displayed" => ".//*[@id='Security_font']"},
+      {"click" => ".//*[@id='Security_font']"},
+      {"displayed" => ".//*[@id='SecuritySharing_font']"},
+      {"click" => ".//*[@id='SecuritySharing_font']"},
+    ]
+    if edit
+      a = {"displayed" => ".//*[@name='edit']"}
+      b = {"click" => ".//*[@name='edit']"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
+  
+  
+  def self.go_to_massmail_service(edit=false)
+    # MassMail Service
+    self.custom_settings
+    
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='MassMail Service']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='MassMail Service']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//a[@class='actionLink'][1]"}
+      b = {"click" => ".//a[@class='actionLink'][1]"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
 end
