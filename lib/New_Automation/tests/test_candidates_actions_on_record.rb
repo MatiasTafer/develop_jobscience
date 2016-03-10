@@ -5,6 +5,7 @@ require 'securerandom'
 
 require './New_Automation/tests/test_basic.rb'
 require './New_Automation/tests/common.rb'
+require './New_Automation/tests/users.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
@@ -25,6 +26,7 @@ require './New_Automation/pages/short_lists/short_list_detail_page.rb'
 require './New_Automation/pages/requisitions/requisitions_home_page.rb'
 require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
+
 
 class TestActionsOnRecord < TestBasic
  
