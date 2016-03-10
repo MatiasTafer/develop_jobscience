@@ -1,7 +1,7 @@
 class EmploymentHistoryNewPage
   
-  EMPLOYMENT_HIST_EMPLOYER_NAME_XPATH = "(.//*[@class='dataCol col02'])[1]/input"
-  EMPLOYMENT_HIST_JOB_TITLE_XPATH = "(.//*[@class='dataCol col02'])[2]/input"
+  EMPLOYMENT_HIST_EMPLOYER_NAME_XPATH = ".//*[text()='Employer Name']/..//following-sibling::*[1]//input"
+  EMPLOYMENT_HIST_JOB_TITLE_XPATH = ".//*[text()='Job Title']/../..//following-sibling::*[1]//input"
   EMPLOYMENT_HIST_BTN_SAVE = ".//*[@name='save']"
   
   #DETAIL PAGE

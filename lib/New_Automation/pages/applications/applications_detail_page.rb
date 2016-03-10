@@ -23,9 +23,7 @@ class ApplicationsDetailPage
   APPLICATIONS_DETAIL_PRESCREEN_2_XPATH = ".//*[text()='Prescreen Name']/../../tr[3]"
   APPLICATIONS_DETAIL_PRESCREEN_3_XPATH = ".//*[text()='Prescreen Name']/../../tr[4]"
   APPLICATIONS_DETAIL_PRESCREEN_4_XPATH = ".//*[text()='Prescreen Name']/../../tr[5]"
-  ##################
-  #SEGUIR ACAAAAAAA#
-  ##################
+
   #MOVE POP UP
   MOVE_POPUP_BTN_CANCEL_XPATH = ".//*[@value='Cancel']"
   MOVE_POPUP_BTN_CLOSE_XPATH = ".//*[@value='Close']"
