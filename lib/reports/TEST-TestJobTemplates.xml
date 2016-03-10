@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestJobTemplates" tests="1" time="42.32397" failures="0" errors="1" skipped="0" assertions="0" timestamp="2016-03-08T17:32:23-03:00">
+  <testcase name="test_newJobTemplate" time="42.323666" assertions="0">
+    <error type="Selenium::WebDriver::Error::TimeOutError" message="timed out after 20 seconds (Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;.//*[@class='pbButton']//*[@class='btn']&quot;})">
+timed out after 20 seconds (Unable to locate element: {"method":"xpath","selector":".//*[@class='pbButton']//*[@class='btn']"}) (Selenium::WebDriver::Error::TimeOutError)
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:76:in `until'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/common.rb:79:in `displayed'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/common.rb:261:in `block in main'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/common.rb:254:in `each'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/common.rb:254:in `main'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/test_job_templates.rb:29:in `test_newJobTemplate'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+.//*[@class='pbButton']//*[@class='btn']
+  </system-out>
+</testsuite>

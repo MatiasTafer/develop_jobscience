@@ -39,7 +39,7 @@ class Common
    $browser.find_element(:id, LoginPage::PASSWORD_TEST_FIELD_ID).send_keys password
    $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).click
    $wait.until {
-     $browser.current_url.eql?(HomePage::HOME_TAB_LINK_URL)
+     $browser.find_element(:id, HomePage::HOME_TAB_ID).displayed?
    } 
  end
     
@@ -70,9 +70,22 @@ class Common
   end
   
   def self.click(field)
-      a = $browser.find_element(:xpath => field).click
+    a = $browser.find_element(:xpath => field).click
+    return a
+  end
+  
+  #Clicks and element and waits for page to load (assuming that the element triggers a page to load)
+  #This method was created because chrome webdriver has a different behaviour
+  def self.click_and_load(field)
+    current = $browser.current_url
+    a = $browser.find_element(:xpath => field).click
+    $wait.until {
+      $browser.current_url != current
+      #$browser.execute_script("return document.readyState;") == "complete" 
+    }
       return a
   end
+  
   
   def self.displayed(field)
      puts field
@@ -357,6 +370,11 @@ class Common
       if i["accept_alert"]
         puts "accept_alert"
         self.accept_alert
+      end
+      
+      if i["click_and_load"]
+        puts "click_and_load"
+        self.click_and_load(i["click_and_load"])
       end
     end
     return true
@@ -778,10 +796,12 @@ class Common
     
   end
   
+  #This method is used to access each tab
+  def self.goToTab(tab)
+    #Go to + icon
+    self.click_and_load(HomePage::ALL_TABS_LINK_XPATH) 
+    self.click_and_load(tab)
+  end
   
-  
-
-  #newWindow= $browser.window_handles.last
-  #$browser.switch_to.window(newWindow)
   
 end
