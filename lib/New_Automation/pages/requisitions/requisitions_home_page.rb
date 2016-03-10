@@ -1,4 +1,5 @@
 class RequisitionsHomePage
+
   
   REQUISITIONS_PAGE_BTN_NEW_XPATH = ".//*[@name='new']"
   REQUISITIONS_PAGE_BTN_TRANSFER_JOBS_XPATH = ".//*[@title='Transfer Jobs']"

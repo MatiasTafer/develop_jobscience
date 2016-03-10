@@ -71,7 +71,7 @@ require './New_Automation/tests/test_job_templates.rb'
 
 #require './New_Automation/tests/test_board_setup'
 
-#require './New_Automation/tests/test_job_board'
+require './New_Automation/tests/test_job_board'
 
 
 #require './New_Automation/tests/test_applications.rb'

@@ -22,7 +22,13 @@ def setup
             puts "ERROR: Wrong browser name!!"
     end
     $browser.get "https://login.salesforce.com/"  
+<<<<<<< HEAD
+
+    $wait = Selenium::WebDriver::Wait.new(:timeout => 30)
+
+=======
     $wait = Selenium::WebDriver::Wait.new(:timeout => 20)
+>>>>>>> develop
 end
  
 # Closing browser after each test 

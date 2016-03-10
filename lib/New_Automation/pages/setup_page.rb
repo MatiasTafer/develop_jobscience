@@ -4,6 +4,7 @@ class SetupEditPage
   # setup > develop > custom settings > manage next to config > edit
     # URL
   CONFIG_SETUP_EDIT_PAGE_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da07&id=a07o00000021XSy"
+
     # Buttons
   CONFIG_SETUP_EDIT_SAVE_BTN_XPATH = ".//*[@value='Save']"
   NEW_CONFIG_BTN_XPATH = ".//*[@value='New']"
@@ -84,7 +85,6 @@ class SetupEditPage
   JOB_BOARD_ALLOWED_FILETYPES_XPATH = ".//*[text()[contains(.,'Job Board Allowed Filetypes')]]/../../following-sibling::*//input"
   ENFORCE_SHARING_CHECKBOX_XPATH = ".//*[text()[contains(.,'Enforce Sharing')]]/../../following-sibling::*//input"
 
-  
   # SOCIAL SETTINGS
   # setup > develop > custom settings > manage next to social settings
     # URL

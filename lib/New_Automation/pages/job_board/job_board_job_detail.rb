@@ -6,42 +6,42 @@ class JobBoardJobDetail
   JOB_BOARD_LINKEDIN_ALLOW_ACCESS_XPATH = ".//*[@value='Allow access']"
   
   #APPLY TO A JOB
-  JOB_BOARD_APPLY_JOB_EMAIL_XPATH = "(.//*[@class='atsInput'])[1]"
-  JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH = "(.//*[@class='atsInput'])[2]"
-  JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH = "(.//*[@class='atsInput'])[3]"
+  JOB_BOARD_APPLY_JOB_EMAIL_XPATH = ".//label[contains(text(),'Email Address')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/div/input"
+  JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH = ".//label[contains(text(),'First Name')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/div/input"
+  JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH = ".//label[contains(text(),'Last Name')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/div/input"
 
-  JOB_BOARD_APPLY_HEAR_ABOUT_US_XPATH = ".//*[@id='j_id0:j_id1:atsForm:candidateSource']"
-  JOB_BOARD_APPLY_COVER_LETTER_XPATH = ".//*[@id='j_id0:j_id1:atsForm:coverLetter']"
+  JOB_BOARD_APPLY_HEAR_ABOUT_US_XPATH = ".//label[contains(text(),'How did you hear about us?')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_COVER_LETTER_XPATH = ".//textarea"
   JOB_BOARD_APPLY_EMAIL_THIS_JOB_XPATH = ".//a[text()[contains(.,'Email this job')]]"
-  JOB_BOARD_APPLY_TO_EMAIL_XPATH = ".//*[@id='j_id0:j_id1:emailJob:toEmail']"
-  JOB_BOARD_APPLY_MESSAGE_XPATH = ".//*[@id='j_id0:j_id1:emailJob:message']"
-  JOB_BOARD_APPLY_SEND_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:emailJob']/table/tbody/tr[8]/td[2]/input"
-  JOB_BOARD_APPLY_FROM_NAME_XPATH = ".//*[@id='j_id0:j_id1:emailJob:inputFromName']"
-  JOB_BOARD_APPLY_FROM_EMAIL_XPATH = ".//*[@id='j_id0:j_id1:emailJob:inputFromEmail']"
+  JOB_BOARD_APPLY_TO_EMAIL_XPATH = ".//label[contains(text(),'To Email:')]/ancestor::tr/child::td[2]/input"
+  JOB_BOARD_APPLY_MESSAGE_XPATH = ".//label[contains(text(),'Message:')]/ancestor::tr/child::td[2]/textarea"
+  JOB_BOARD_APPLY_SEND_BUTTON_XPATH = ".//*[@class='atsButton']"
+  JOB_BOARD_APPLY_FROM_NAME_XPATH = ".//label[contains(text(),'From Name:')]/ancestor::tr/child::td[2]/input"
+  JOB_BOARD_APPLY_FROM_EMAIL_XPATH = ".//label[contains(text(),'From Email:')]/ancestor::tr/child::td[2]/input"
   JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_XPATH = ".//*[@id='HowDidYouHearAboutUs']//select"
 
   
   JOB_BOARD_APPLY_JOB_CONTINUE_XPATH = ".//*[@value='Continue']"
   JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH = ".//*[@id='js-menu-search']/a"
-  JOB_BOARD_APPLY_JOB_DATE_ABAILABLE_XPATH = ".//*[@class='dateInput dateOnlyInput']/input"
-  JOB_BOARD_APPLY_JOB_DEGREE_XPATH = "(.//*[@class='atsFormTdTwoColumnLeft'])[5]/select"
-  JOB_BOARD_APPLY_JOB_SALES_BACKGROUND = ".//*[@id='j_id0:j_id1:atsForm:j_id92:0:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
-  JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id92:2:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
-  JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id92:1:prescreenQuestionTag:prescreenQuestionComponent:answerSelectList']"
-  JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH = ".//*[@id='atsJobDetailsBox']/table/tbody/tr[6]/td/div/a[7]"
-  JOB_BOARD_APPLY_JOB_CURRENT_SALARY_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:0:standardQuestionTag:standardQuestionComponent:answerText']"
-  JOB_BOARD_APPLY_JOB_START_DATE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:1:standardQuestionTag:standardQuestionComponent:answerDate']"
-  JOB_BOARD_APPLY_JOB_TAXONOMY_SKILLS_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:2:standardQuestionTag:standardQuestionComponent:answerTextArea']"
-  JOB_BOARD_APPLY_JOB_EMAIL_2_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:3:standardQuestionTag:standardQuestionComponent:answerText']"
-  JOB_BOARD_APPLY_JOB_HOME_PHONE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:4:standardQuestionTag:standardQuestionComponent:answerText']"
-  JOB_BOARD_APPLY_JOB_LEVEL_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id48:6:standardQuestionTag:standardQuestionComponent:answerSelectList']"
+  
+  JOB_BOARD_APPLY_JOB_DEGREE_XPATH = ".//*[contains(text(),'Job Degree')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_SALES_BACKGROUND = ".//*[contains(text(),'Sales Background')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[contains(text(),'Years Exoerience')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH = ".//*[contains(text(),'Graduate')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH = ".//*[contains(text(),'Refer Candidate')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_CURRENT_SALARY_XPATH = ".//*[contains(text(),'Current Candidate')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_START_DATE_XPATH = ".//*[contains(text(),'Start Date')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_TAXONOMY_SKILLS_XPATH = ".//*[contains(text(),'Taxonomy')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_EMAIL_2_XPATH = ".//*[contains(text(),'Email')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_HOME_PHONE_XPATH = ".//*[contains(text(),'Home Phone')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_LEVEL_XPATH = ".//*[contains(text(),'Level')]/ancestor::td[1]/following-sibling::td[1]/select"
   
   # REFER CANDIDATE
-  REFERREL_EMAIL_XPATH = ".//*[@id='j_id0:j_id1:j_id28:r2_email']"
-  PROSPECT_FIRST_NAME_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_first_name']"
-  PROSPECT_LAST_NAME_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_last_name']"
-  PROSPECT_EMAIL = ".//*[@id='j_id0:j_id1:j_id28:p_email']"
-  PROSPECT_RESUME_BROWSE_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_resume']"
+  REFERREL_EMAIL_XPATH = ".//label[text()[contains(.,'Referrer Email')]]/ancestor::tr/child::td[2]/input"
+  PROSPECT_FIRST_NAME_XPATH = ".//label[text()[contains(.,'Prospect First Name')]]/ancestor::tr/child::td[2]/input"
+  PROSPECT_LAST_NAME_XPATH = ".//label[text()[contains(.,'Prospect Last Name')]]/ancestor::tr/child::td[2]/input"
+  PROSPECT_EMAIL = ".//label[text()[contains(.,'Prospect Email')]]/ancestor::tr/child::td[2]/input"
+  PROSPECT_RESUME_BROWSE_XPATH = ".//label[text()[contains(.,'Prospect Resume')]]/ancestor::tr/child::td[2]/input"
   THANK_YOU_REFERRAL_MESSAGE_XPATH = ".//*[@class='atsThankForReferral']"
   
   JOB_BOARD_APPLY_JOB_QUESTION_1_TR_XPATH = "(.//*[@class='atsPreScreen'])//tr[2]"
@@ -56,11 +56,11 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_QUESTION_NAME_2_XPATH = "(.//*[@class='atsPreScreen']//span)[2]"
   JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH = "(.//*[@type='radio'])[1]"
  
-  JOB_BOARD_APPLY_PREVIOUSLY_UPLOADED_RADIO_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:3']"
-  SELECT_RESUME_DROPDOWN_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeAttachments']"
+  JOB_BOARD_APPLY_PREVIOUSLY_UPLOADED_RADIO_XPATH = ".//input[@value='PreviouslyUploaded']"
+  SELECT_RESUME_DROPDOWN_XPATH = ".//label[text()[contains(.,'Select Resume')]]/ancestor::tr/child::td/select"
   SELECT_RESUME_FIRST_OPTION_XPATH = "(.//*[@id='j_id0:j_id1:atsForm:resumeAttachments']/option)[2]"
   
-  JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeFile']"
+  JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input[@type='file']"
   JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH = ".//*[@id='LinkedInIcon']"
 
   
@@ -95,11 +95,11 @@ class JobBoardJobDetail
   JOB_BOARD_EEO_QUESTIONS_DISABLED_XPATH = ".//*[@id='j_id0:j_id1:atsForm:Disabled']"
   JOB_BOARD_EEO_QUESTIONS_BTN_SUBMIT_XPATH = ".//*[@type='submit']"
   
-  EMAIL_ADDRESS_XPATH = ".//*[@id='j_id0:j_id1:atsForm:email']"
-  PASSWORD_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:password']"
-  CONFIRM_PASSWORD_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:confirmPassword']"
-  FIRST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:firstName']"
-  LAST_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:lastName']"
+  EMAIL_ADDRESS_XPATH = ".//label[contains(text(),'Email Address')]/ancestor::tr/child::td[2]/div/input"
+  PASSWORD_TEXT_XPATH = ".//label[not (contains(text(),'Confirm'))][contains(text(),'Password')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/input"
+  CONFIRM_PASSWORD_TEXT_XPATH = ".//label[contains(text(),'Confirm')]/ancestor::td[@class='atsFormTdLeft']/following-sibling::td[1]/input"
+  FIRST_NAME_TEXT_XPATH = ".//label[contains(text(),'First Name')]/ancestor::tr/child::td[2]/div/input"
+  LAST_NAME_TEXT_XPATH = ".//label[contains(text(),'Last Name')]/ancestor::tr/child::td[2]/div/input"
   
   
   #HARD CORE DATA
@@ -113,39 +113,39 @@ class JobBoardJobDetail
 
   
   #UPDATE YOUR INFO
-  JOB_BOARD_FIRST_NAME_XPATH = ".//*[@id='j_id0:j_id1:atsForm:firstName']"
-  JOB_BOARD_LAST_NAME_XPATH = ".//*[@id='j_id0:j_id1:atsForm:lastName']"
+  JOB_BOARD_FIRST_NAME_XPATH = ".//label[contains(text(),'First Name')]/ancestor::tr/child::td[2]/div/input"
+  JOB_BOARD_LAST_NAME_XPATH = ".//label[contains(text(),'Last Name')]/ancestor::tr/child::td[2]/div/input"
   JOB_BOARD_CONTINUE_BUTTON_XPATH = ".//*[@value='Continue']"
   
   #UPDATE YOUR RESUME
-  UPLOAD_CHECKBOX_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:0']"
-  PASTE_CHECKBOX_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:1']"
-  PASTE_TEXTAREA_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeText']"
-  BUILDER_CHECKBOX_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id53:2']"
-  JOB_BOARD_DEPARTMENT_SELECT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:j_id40:1:searchCtrl']"
+  UPLOAD_CHECKBOX_XPATH = ".//input[@value='Upload']"
+  PASTE_CHECKBOX_XPATH = ".//input[@value='Paste']"
+  PASTE_TEXTAREA_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/textarea"
+  BUILDER_CHECKBOX_XPATH = ".//input[@value='Builder']"
+  JOB_BOARD_DEPARTMENT_SELECT_XPATH = "//*[text()[contains(.,'Department')]]/ancestor::tr/child::td[2]/select"
   CONTINUE_BUTTON_XPATH = ".//*[@value='Continue']"  
   
   # ADD_EMPLOYMENT_HISTORY
-  ADD_EMPLOYMENT_HISTORY_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag']/table[1]/tbody/tr[2]/td/input"
-  REMOVE_EMPLOYMENT_HISTORY_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag']/table[1]/tbody/tr[8]/td/input[2]"
-  REMOVE_EDUCATION_HISTORY_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag']/table[1]/tbody/tr[6]/td/input[2]"
-  ADD_CERTIFICATION_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag']/table[1]/tbody/tr[2]/td/input"
-  ADD_EDUCATION_HISTORY_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag']/table[1]/tbody/tr[2]/td/input"
-  BROWSE_BUTTON_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeFile']"
-  EMPLOYER_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag:j_id65:j_id72:0:dynfield']"
-  LOCATION_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag:j_id65:j_id72:1:dynfield']"
-  JOB_TITLE_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag:j_id65:j_id72:2:dynfield']"
+  ADD_EMPLOYMENT_HISTORY_XPATH = ".//input[@type='submit'][contains(@value,'Add Employment History')]"
+  REMOVE_EMPLOYMENT_HISTORY_XPATH = ".//input[@type='submit'][contains(@value,'Remove Employment History')]"
+  REMOVE_EDUCATION_HISTORY_XPATH = ".//input[@type='submit'][contains(@value,'Remove Education History')]"
+  ADD_CERTIFICATION_XPATH = ".//input[@type='submit'][contains(@value,'Add Certification')]"
+  ADD_EDUCATION_HISTORY_XPATH = ".//input[@type='submit'][contains(@value,'Add Education History')]"
+  BROWSE_BUTTON_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input"
+  EMPLOYER_NAME_TEXT_XPATH = "//*[text()[contains(.,'Employer Name')]]/ancestor::tr/child::td[2]/input"
+  LOCATION_TEXT_XPATH = "//*[text()[contains(.,'Location')]]/ancestor::tr/child::td[2]/input"
+  JOB_TITLE_TEXT_XPATH = "//*[text()[contains(.,'Job Title')]]/ancestor::tr/child::td[2]/input"
   NEXT_BUTTON_XPATH = ".//*[@value='Next']" 
   # ADD EDUCATION HISTORY
-  SCHOOL_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag:j_id65:j_id86:0:dynfield']"
-  MAYOR_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag:j_id65:j_id86:1:dynfield']"
+  SCHOOL_NAME_TEXT_XPATH = "//*[text()[contains(.,'School Name')]]/ancestor::tr/child::td[2]/input"
+  MAYOR_TEXT_XPATH = "//*[text()[contains(.,'Major')]]/ancestor::tr/child::td[2]/input"
   # ADD CERTIFICATION
-  CERTIFICATION_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag:j_id65:j_id100:0:dynfield']"
-  STATE_PROVINCE_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag:j_id65:j_id100:1:dynfield']"
-  REMOVE_CERTIFICATION_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag']/table[1]/tbody/tr[6]/td/input[2]"
+  CERTIFICATION_TEXT_XPATH = "//*[text()[contains(.,'Certification or License Name')]]/ancestor::tr/child::td[2]/input"
+  STATE_PROVINCE_XPATH = "//*[text()[contains(.,'State/Province')]]/ancestor::tr/child::td[2]/input"
+  REMOVE_CERTIFICATION_XPATH = ".//input[@type='submit'][contains(@value,'Remove Certification')]"
   # ADD SKILL
   ADD_SKILL_BUTTON_XPATH = ".//input[@value='Add Skill']"
-  SKILL_NAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:resumeBuilderTag:j_id65:j_id114:1:dynfield']"
+  SKILL_NAME_TEXT_XPATH = "//*[text()[contains(.,'Skill Name')]]/ancestor::tr/child::td[2]/input"
   REMOVE_SKILL_BUTTON_XPATH = ".//input[@value='Remove Skill']" 
   BUILD_RESUME_BUTTON_XPATH = ".//input[@value='Build Resume']"
   
@@ -153,7 +153,7 @@ class JobBoardJobDetail
   JOB_BOARD_LINKEDIN_DATA_PASSWORD_TEXT = "oktanaqa"
 
   # REFERRALS
-  PROSPECT_EMAIL_XPATH = ".//*[@id='j_id0:j_id1:j_id28:p_email']"
+  PROSPECT_EMAIL_XPATH = ".//label[text()[contains(.,'Referrer Email')]]/ancestor::tr/child::td[2]/input"
   
   #MESSAGES
   SUCCESS_UPLOADED_RESUEM_XPATH = ".//*[@id='atsApplicationSubmittedMain']"
