@@ -44,7 +44,7 @@ class Users
     begin
       Common.login(USER_EMAIL, PASSWORD)
     end
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -91,8 +91,8 @@ class Users
       end
       f.close
     rescue
-      File.open("users.txt", "w") do |f|     
-        f.write()   
+      File.open("users.txt", "w") do |d|     
+        d.write()   
       end
     end
     #out_file = File.new("users.txt", "w")

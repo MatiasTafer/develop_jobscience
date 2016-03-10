@@ -402,7 +402,7 @@ class Common
 
 
   def self.standart_question_null
-     Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+     Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -646,7 +646,7 @@ class Common
 
   
   def self.standart_question_set
-     Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+     Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -685,7 +685,7 @@ class Common
     # click the magnifying glass next to Choose Source to select a source, click Next, click Next, 
     # then click on the Search URL (if you enter a name and click save it will be saved to the notes  and attachments related list)
     
-    Common.goToTab(HomePage::SOURCE_LINK_XPATH
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH)
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       {"click" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
@@ -731,7 +731,7 @@ class Common
   
   def self.delete_sources(source_name)
     
-    Common.goToTab(HomePage::SOURCE_LINK_XPATH
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH)
     test = [
       # Delete the Source associated with the URL
       {"displayed" => ".//*[text()[contains(., '#{source_name}')]]"},
@@ -752,7 +752,7 @@ class Common
 
     # Precondition
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},

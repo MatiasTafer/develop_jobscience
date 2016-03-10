@@ -30,7 +30,7 @@ class TestBoardSetup < TestBasic
 
     # PRECONDITIONS
     # open board setup page
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     
     Common.click(BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH)
     
@@ -47,7 +47,7 @@ class TestBoardSetup < TestBasic
     end  
     
     # END PRECONDITIONS
-    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
     # new requisitions button
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH).displayed?

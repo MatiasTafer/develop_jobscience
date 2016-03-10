@@ -1368,7 +1368,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
       {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
@@ -1378,7 +1378,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     
-    Common.goToTab(HomePage::CHATTER_TAB_XPATH
+    Common.goToTab(HomePage::CHATTER_TAB_XPATH)
     test = [
       {"displayed" => ".//*[text()[contains(.,'View Job Posting')]]"},
       {"click" => ".//*[text()[contains(.,'View Job Posting')]]"},

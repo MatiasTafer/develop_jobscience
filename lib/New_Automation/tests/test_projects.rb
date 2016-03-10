@@ -99,7 +99,7 @@ class TestProjects <TestBasic
   #TC965 - Project, New Job Order
   def test_projectNewJobOrder
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }

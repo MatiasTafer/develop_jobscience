@@ -271,7 +271,7 @@ end
 #TC1071 - Job Order / Close Job, Validation
 def test_closeJobOrderValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH) 
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
@@ -286,7 +286,7 @@ def test_closeJobOrderValidation
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT}, 
            {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
   Common.main(test)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test2 = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
           {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_CLOSE_JOB_XPATH},

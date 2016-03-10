@@ -650,7 +650,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Business Unit" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},

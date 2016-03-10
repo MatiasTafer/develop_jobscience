@@ -30,7 +30,7 @@ class TestApplications < TestBasic
   #TC1058 - Application / Create PDF
   def test_applicationCreationPdf
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath, ApplicationsHomePage::APPLICATION_OPTION_BAR_XPATH).displayed?
        $browser.find_element(:xpath, ApplicationsHomePage::FIRST_APPLICATION_ON_TABLE_XPATH).displayed?
