@@ -262,8 +262,10 @@ class TestProjects <TestBasic
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH).send_keys RequisitionsNewAndEdit::LOCATION_TEXT
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH).send_keys RequisitionsNewAndEdit::DEPARTMENT_TEXT
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_JOBS_PROJECTS_FIELD_XPATH).send_keys RequisitionsNewAndEdit::JOB_PROJECTS_TEXT
+    #Line 266 wont work because Client Field doesn't appear
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_CLIENT_FIELD_XPATH).send_keys RequisitionsNewAndEdit::CLIENT_TEXT
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_CONTACT_FIELD_XPATH).send_keys RequisitionsNewAndEdit::CONTACT_TEXT
+    #Line 269 wont work because Travel Field doesn't appear
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITION_TRAVEL_FIELD_XPATH).send_keys RequisitionsNewAndEdit::TRAVEL_WRONG_PERCENT_TEXT
     $browser.find_element(:xpath, RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
     assert $wait.until{

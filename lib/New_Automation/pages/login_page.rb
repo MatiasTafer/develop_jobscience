@@ -5,7 +5,8 @@ class LoginPage
   LOGIN_BUTTON_ID = "Login"
   
   # job board login
-  USERNAME_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:username']"
-  PASSWORD_TEXT_XPATH = ".//*[@id='j_id0:j_id1:atsForm:password']"
+  USERNAME_TEXT_XPATH = ".//*[text()[contains(., 'Username')]]/../..//input"
+  PASSWORD_TEXT_XPATH = ".//*[text()[contains(., 'Password')]]/../..//input"
   LOGIN_BUTTON_XPATH = ".//*[@value='Login']"
+  
 end

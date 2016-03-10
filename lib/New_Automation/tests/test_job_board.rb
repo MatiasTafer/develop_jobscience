@@ -144,7 +144,7 @@ class TestJobBoard < TestBasic
     
     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},
@@ -1200,12 +1200,12 @@ class TestJobBoard < TestBasic
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
       # 6. Checked "Attach to Applications" = true.
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -1250,12 +1250,12 @@ class TestJobBoard < TestBasic
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
       # 6. Checked "Attach to Applications" = true.
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -1274,12 +1274,12 @@ class TestJobBoard < TestBasic
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
       # 6. Checked "Attach to Applications" = true.
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -1335,12 +1335,12 @@ class TestJobBoard < TestBasic
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
       # 6. Checked "Attach to Applications" = true.
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -1404,13 +1404,13 @@ class TestJobBoard < TestBasic
     # Preconditios
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 6. Checked "Attach to Applications" = false.
-      {"unchecked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"unchecked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]

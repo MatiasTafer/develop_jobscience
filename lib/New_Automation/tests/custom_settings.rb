@@ -12,7 +12,30 @@ require './New_Automation/pages/questions/question_set_detail_page.rb'
 require './New_Automation/pages/setup_page.rb'
 
 class CustomSettings
-    
+  
+   
+  def self.ApplyToLinkedIn(booleanOption) 
+    if (booleanOption) then
+      $browser.get SetupEditPage::SOCIAL_SETTINGS_URL
+      test = [{"displayed" => SetupEditPage::EDIT_BUTTON_XPATH},
+              {"click" => SetupEditPage::EDIT_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
+              {"checked" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
+              {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::EDIT_BUTTON_XPATH}]
+      Common.main(test)
+      else if (booleanOption == false) then
+        test2 = [{"displayed" => SetupEditPage::EDIT_BUTTON_XPATH},
+              {"click" => SetupEditPage::EDIT_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
+              {"unchecked" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
+              {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::EDIT_BUTTON_XPATH}]   
+        Common.main(test2)
+      end
+    end  
+  end
+     
   def self.QuestionSetHandler(option)
     #HARD CORE DATA
     always = "Always"
@@ -23,8 +46,8 @@ class CustomSettings
       puts "Error, bad parameter"
     else
       $browser.get(SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL)
-      $browser.find_element(:id => SetupEditPage::QUESTION_SET_HANDLER_TEXT_ID).clear
-      $browser.find_element(:id => SetupEditPage::QUESTION_SET_HANDLER_TEXT_ID).send_keys option
+      $browser.find_element(:xpath => SetupEditPage::QUESTION_SET_HANDLER_TEXT_XPATH).clear
+      $browser.find_element(:xpath => SetupEditPage::QUESTION_SET_HANDLER_TEXT_XPATH).send_keys option
       $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
     end    
    end
@@ -196,6 +219,22 @@ class CustomSettings
       $browser.find_element(:xpath => SetupEditPage::NEW_CONFIG_BTN_XPATH).displayed?
     }
  end 
+ 
+ def self.ResumeRequired(setBool)
+   #If setBool is true "Resume Required" will be checked, if setBool is false it will be unchecked
+    
+   $browser.get(SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL)
+   $wait.until{
+     $browser.find_element(:xpath => SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH).displayed?
+   }
+   
+   Checkbox(SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH, setBool)
+   
+   $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath => SetupEditPage::EDIT_BUTTON_XPATH).displayed?
+    }
+ end
  
  def self.AttachToApplications(setBool)
    #If setBool is true "Attach to Applications" will be checked, if setBool is false it will be unchecked
