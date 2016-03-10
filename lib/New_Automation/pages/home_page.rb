@@ -32,7 +32,7 @@ class HomePage
   
   ALL_CONTACTS_TAB_LINK = "https://na17.salesforce.com/003?fcf=00Bo0000003aqv0"
 
-  ACCOUNTS_TAB_LINK_URL = ".//a[text()[contains(.,'Accounts')]]"
+  ACCOUNTS_TAB_LINK_XPATH = ".//a[text()[contains(.,'Accounts')]]"
   
   SEARCH_BAR_XPATH = ".//*[@id='phSearchInput']"
   SEARCH_BUTTON_XPATH = ".//*[@id='phSearchButton']"

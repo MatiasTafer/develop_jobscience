@@ -28,7 +28,7 @@ class EeoQuestion < TestBasic
 #TC835 - EEO Questions, hidden questions
 def   test_eeoQuestionHiddenQuestion
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
-   $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+   Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
    test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
            {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
            {"displayed" =>  BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -49,7 +49,7 @@ end
 #TC836 - EEO Questions, displayed questions
 def   test_eeoQuestionDisplayedQuestion
    Common.login(Common::USER_EMAIL, Common::PASSWORD)
-   $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+   Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
    test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
            {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
            {"displayed" =>  BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -235,7 +235,7 @@ end
 def test_eeoDisclaimersStandardCustom
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+  Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
   test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
           {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
           {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -283,7 +283,7 @@ def test_eeoDisclaimersOnlyCustom
   #Preconditions
   Common.login(Common::USER_EMAIL, Common::PASSWORD)
   CustomSettings.JobBoardLogin(true)
-  $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+  Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
   test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
           {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
           {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
