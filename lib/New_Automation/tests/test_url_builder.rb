@@ -24,7 +24,7 @@ class TestURLBuilder < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # 1 - Click on "Board Setup" Tab
-    $browser.get(HomePage::BOARD_SETUP_TAB_LINK_URL)
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
@@ -91,7 +91,7 @@ class TestURLBuilder < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # 1 - Click on "Board Setup" Tab
-    $browser.get(HomePage::BOARD_SETUP_TAB_LINK_URL)
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
@@ -145,7 +145,7 @@ class TestURLBuilder < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # 1 - Click on "Board Setup" Tab
-    $browser.get(HomePage::BOARD_SETUP_TAB_LINK_URL)
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     
     test = [
       {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},

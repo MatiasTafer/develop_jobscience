@@ -52,7 +52,7 @@ class TestActions < TestBasic
     
     sleep(15) ### Must have time for asociate record with contact
     
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
    
     test = [
       {"displayed" => HomePage::SEARCH_BAR_XPATH},
@@ -102,7 +102,7 @@ class TestActions < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 9. Click on Short List tab
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
    
     # 10. Click on name of short list created
     $wait.until {
@@ -145,7 +145,7 @@ class TestActions < TestBasic
     
     sleep(15) ### Must have time for asociate record with contact
     
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
    
     test = [
       {"displayed" => HomePage::SEARCH_BAR_XPATH},
@@ -198,7 +198,7 @@ class TestActions < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 9. Click on Short List tab
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
    
     # 10. Click on name of short list created
     $wait.until {
@@ -239,7 +239,7 @@ class TestActions < TestBasic
     
     sleep(15) ### Must have time for asociate record with contact
     
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
    
     test = [
       {"displayed" => HomePage::SEARCH_BAR_XPATH},
@@ -292,7 +292,7 @@ class TestActions < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 9. Click on Short List tab
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
    
     # 10. Click on name of short list created
     $wait.until {
@@ -336,7 +336,7 @@ class TestActions < TestBasic
     
     sleep(15) ### Must have time for asociate record with contact
     
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
    
     test = [
       {"displayed" => HomePage::SEARCH_BAR_XPATH},
@@ -393,7 +393,7 @@ class TestActions < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 9. Click on Short List tab
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
    
     # 10. Click on name of short list created
     $wait.until {
@@ -436,7 +436,7 @@ class TestActions < TestBasic
     
     sleep(20) ### Must have time for asociate record with contact
     
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
    
     test = [
       {"displayed" => HomePage::SEARCH_BAR_XPATH},
@@ -489,7 +489,7 @@ class TestActions < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 9. Click on Short List tab
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
    
     # 10. Click on name of short list created
     $wait.until {
@@ -531,7 +531,7 @@ class TestActions < TestBasic
     
     sleep(20) ### Must have time for asociate record with contact
     
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
    
     test = [
       {"displayed" => HomePage::SEARCH_BAR_XPATH},
@@ -584,7 +584,7 @@ class TestActions < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 9. Click on Short List tab
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
    
     # 10. Click on name of short list created
     $wait.until {
@@ -628,7 +628,7 @@ class TestActions < TestBasic
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
     sleep(15) ### Must have time for asociate record with contact
     
     test = [
@@ -688,7 +688,7 @@ class TestActions < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
         
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
@@ -728,7 +728,7 @@ class TestActions < TestBasic
     #Enable Enhanced Apply to Job" = True
     CustomSettings.EnableEnhancedApplyToJob(true)
     
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
     
     sleep(15)### Must have time for asociate record with contact
     
@@ -789,7 +789,7 @@ class TestActions < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
         
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
@@ -830,7 +830,7 @@ class TestActions < TestBasic
     #Enable Enhanced Apply to Job" = True
     CustomSettings.EnableEnhancedApplyToJob(true)
     
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
     
     sleep(15)### Must have time for asociate record with contact
     
@@ -889,7 +889,7 @@ class TestActions < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
         
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
@@ -926,7 +926,7 @@ class TestActions < TestBasic
     #Contact must have one education history record asociated
     AddEducationRecordToContact(ContactNewEditPage::CONTACT_NEW_DATA_LAST_NAME_TEXT, EducationHistoryNewPage::EDU_HISTORY_DATA_SCHOOL_NAME_TEXT)
             
-    $browser.get(HomePage::HOME_TAB_LINK_URL)
+    Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
     
     sleep(15)
     
@@ -979,7 +979,7 @@ class TestActions < TestBasic
     $browser.switch_to.window($browser.window_handles.first)
     
     # 9. Refresh page and scroll to Skills related list on contact record
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     ]
@@ -1006,7 +1006,7 @@ class TestActions < TestBasic
 
   def CreateAccount(name)
     #Create an account record with "name" as Account Name
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH}, 
       {"click" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
@@ -1022,7 +1022,7 @@ class TestActions < TestBasic
   end
   
   def CreateContact(name, account_name)
-     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
       {"click" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
@@ -1045,7 +1045,7 @@ class TestActions < TestBasic
   
   def AddSkillToContact(contact, skill)
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     begin
       $browser.switch_to.alert.accept 
      rescue 
@@ -1095,7 +1095,7 @@ class TestActions < TestBasic
   
   def AddEducationRecordToContact(contact, school)
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     begin
       $browser.switch_to.alert.accept 
     rescue 
@@ -1129,7 +1129,7 @@ class TestActions < TestBasic
   
   def AddEmploymentRecordToContact(contact, employment, job)
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     begin
       $browser.switch_to.alert.accept 
      rescue 
@@ -1158,7 +1158,7 @@ class TestActions < TestBasic
   
   def CreateShortList(name)
     #Create a Short List with "name" as its name
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
       {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}, 
       {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH},
@@ -1173,7 +1173,7 @@ class TestActions < TestBasic
   def CreateRequisitionPostJob(name, postjob)
     #postjob=TRUE will check "Post Job" checkbox, postjob=false will not check it.
       
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
       {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
