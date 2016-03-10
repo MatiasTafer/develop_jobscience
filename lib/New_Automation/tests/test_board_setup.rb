@@ -292,11 +292,8 @@ class TestBoardSetup < TestBasic
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
-<<<<<<< HEAD
-=======
       {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
