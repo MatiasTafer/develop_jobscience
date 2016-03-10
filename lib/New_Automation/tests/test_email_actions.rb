@@ -58,8 +58,8 @@ class TestEmailActions < TestBasic
       {"displayed" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
       {"click" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
       # 3 - Click on "Forward Application"
-      {"displayed" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_ID},
-      {"click" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_ID},
+      {"displayed" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_XPATH},
+      {"click" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_XPATH},
       # 4 - Click on any look-up from field "Additional To:", "CC:" or "BCC:"
       {"change_window" => ""},
       {"displayed" => ForwardPopup::TO_TEXT_XPATH},
@@ -94,8 +94,8 @@ class TestEmailActions < TestBasic
       {"displayed" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
       {"click" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
       # 3 - Click on "Forward Application"
-      {"displayed" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_ID},
-      {"click" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_ID},
+      {"displayed" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_XPATH},
+      {"click" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_XPATH},
       # 4 - Click on any look-up from field "Additional To:", "CC:" or "BCC:"
       {"change_window" => ""},
       {"displayed" => ForwardPopup::TO_TEXT_XPATH},
@@ -139,8 +139,8 @@ class TestEmailActions < TestBasic
       {"click" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
       
       # 3 - Click on "Forward Application"
-      {"displayed" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_ID},
-      {"click" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_ID},
+      {"displayed" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_XPATH},
+      {"click" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_XPATH},
       # 4 - Click on any look-up from field "Additional To:", "CC:" or "BCC:"
       {"change_window" => ""},
       {"displayed" => ForwardPopup::TO_TEXT_XPATH},
@@ -185,8 +185,8 @@ class TestEmailActions < TestBasic
       {"click" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
       
       # 3 - Click on "Forward Application"
-      {"displayed" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_ID},
-      {"click" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_ID},
+      {"displayed" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_XPATH},
+      {"click" => ApplicationsDetailPage::FORWARD_APPLICATIONS_BUTTON_XPATH},
       # 4 - Leave all the fields blank      
       {"change_window" => ""},
       # 5 - Click on "Send"

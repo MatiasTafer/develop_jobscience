@@ -6,10 +6,9 @@ class RequisitionsCloseJob
   REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH = ".//*[@value='Next']"
   
   #FIELDS
-  REQUISITIONS_CLOSE_JOB_DATE_CLOSED_XPATH = ".//*[@class='dateInput dateOnlyInput']/input"
-  REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH = "(.//select)[1]"
-  REQUISITIONS_CLOSE_JOB_OVERALL_REJECT_REASON_XPATH = "(.//select)[2]"
-  
+  REQUISITIONS_CLOSE_JOB_DATE_CLOSED_XPATH = ".//*[text()='Date Closed']/../following-sibling::*[1]//input"
+  REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH = ".//*[text()='Closed Reason']/../following-sibling::*[1]//select"
+    
   CLOSE_REASON_TEXT = 'Closed'
   
   #Messages

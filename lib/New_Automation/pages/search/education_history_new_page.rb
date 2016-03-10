@@ -1,6 +1,6 @@
 class EducationHistoryNewPage
   
-  EDU_HISTORY_NEW_NAME_XPATH = "(.//*[@class='dataCol col02'])[1]/input"
+  EDU_HISTORY_NEW_NAME_XPATH = ".//*[text()='School Name']/../../following-sibling::*[1]//input"
   EDU_HISTORY_NEW_BTN_SAVE = ".//*[@name='save']"
   
   #HARD CODE DATA
