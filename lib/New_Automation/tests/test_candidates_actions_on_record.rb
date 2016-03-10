@@ -9,7 +9,7 @@ require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
 require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
-require './New_Automation/pages/answers/offers_home_page.rb'
+require './New_Automation/pages/offers/offers_home_page.rb'
 require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
@@ -38,20 +38,22 @@ class TestActionsOnRecord < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_URL)
     
     # 2. In Name column click on a specific contact name
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]"},
     ]
     Common.main(test)
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    
+    #$browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     
     # 3. Click on "Add skills"
     test = [
@@ -71,7 +73,7 @@ class TestActionsOnRecord < TestBasic
       {"click" => ContactsHomePage::CONTACT_SKILL_POPUP_SECOND_ELEMENT_XPATH},
       {"click" => ContactsHomePage::CONTACT_SKILL_POPUP_ARROW_RIGHT_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_SKILL_POPUP_SKILL_LIST_2_ELEMENT_XPATH},
-      {"click" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_SAVE_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_CLOSE_XPATH}
       ]
     Common.main(test)
@@ -80,13 +82,14 @@ class TestActionsOnRecord < TestBasic
     $browser.find_element(:xpath => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH).click
     $browser.switch_to.window($browser.window_handles.first)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_URL)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]"},
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    #$browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
        $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH).displayed? 
      }
@@ -99,7 +102,7 @@ class TestActionsOnRecord < TestBasic
     
 
   end
-
+=begin
   #TC261 - Successfully add/rate new skill to one contact
   def test_SuccessfullyAddRateSkillToContact
     randomContact = SecureRandom.hex(4)
@@ -389,16 +392,16 @@ class TestActionsOnRecord < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
-    CreateRequisitionPostJob(randomReq, false)
+    Common.CreateRequisitionPostJob(randomReq, false)
     
     #Enable Enhanced Apply to Job" = True
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
        
     # 1. Click on "Contacts". 
     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
@@ -468,90 +471,8 @@ class TestActionsOnRecord < TestBasic
       }  
     
   end  
-  
+=end  
 ############### CUSTOM METHODS #####################  
-  def CreateAccount(name)
-    #Create an account record with "name" as Account Name
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
-    test = [
-      {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH}, 
-      {"click" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
-      {"displayed" => AccountsNewEditPage::ACCOUNTS_NEW_RECORD_TYPE_XPATH},
-      {"set_text" => AccountsNewEditPage::ACCOUNTS_NEW_RECORD_TYPE_XPATH, "text" => "Account"},
-      {"click" => AccountsNewEditPage::ACCOUNTS_NEW_CONTINUE_XPATH},
-      {"displayed" => AccountsNewEditPage::ACCOUNTS_NEW_ACCOUNT_NAME_XPATH},
-      {"set_text" =>AccountsNewEditPage::ACCOUNTS_NEW_ACCOUNT_NAME_XPATH, "text" => name},
-      {"click" => AccountsNewEditPage::ACCOUNTS_NEW_BTN_SAVE_XPATH},
-      {"displayed" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
-    ]
-    Common.main(test)  
-  end
-  
-  def CreateContact(name, account_name)
-     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
-    test = [
-      {"displayed" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
-      {"click" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
-      {"displayed" => ContactNewEditPage::CONTACT_NEW_RECORD_TYPE_NEW_XPATH},
-      {"set_text" => ContactNewEditPage::CONTACT_NEW_RECORD_TYPE_NEW_XPATH, "text" => "Contact"},
-      {"click" => ContactNewEditPage::CONTACT_NEW_BTN_CONTINUE_XPATH},
-      {"displayed" => ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH},
-      {"set_text" => ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH, "text" => name},
-      {"set_text" => ContactNewEditPage::CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH, "text" => account_name},
-      {"click" => ContactNewEditPage::CONTACT_NEW_BTN_SAVE_XPATH},
-      {"displayed" => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH}
-    ]
-    Common.main(test)   
-  end
-  
-  def CreateShortList(name)
-  #Create a Short List with "name" as its name
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
-    test = [
-      {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}, 
-      {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH},
-      {"displayed" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH},
-      {"set_text" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH, "text" => name},
-      {"click" => ShortListNewEditPage::SHORT_LIST_NEW_BTN_SAVE_XPATH},
-      {"displayed" => ShortListDetailPage::SL_MENU_XPATH}
-    ]
-    Common.main(test)   
-  end 
-  
-  def CreateRequisitionPostJob(name, postjob)
-    #postjob=TRUE will check "Post Job" checkbox, postjob=false will not check it.
-      
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
-    test = [
-      {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => name},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH},
-    ]
-    Common.main(test)
-    if postjob
-      unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
-        $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
-      end
-    else
-      if $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
-        $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
-      end  
-    end
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
-    
-    $wait.until {
-        $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
-      }
-  end 
-  
   def DeleteRequisition(name)
     # 1 - Go to "Requisition" Tab
     $browser.get(HomePage::REQUISITIONS_LINK_URL)
