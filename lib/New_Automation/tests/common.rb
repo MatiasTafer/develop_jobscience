@@ -89,7 +89,7 @@ class Common
   
   def self.displayed(field)
      #puts field
-     return $browser.find_element(:xpath => field).displayed?
+     return $wait.until {$browser.find_element(:xpath => field).displayed?}
   end
   
   def self.ssleep
@@ -593,8 +593,7 @@ class Common
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
     }
-   
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).click
+    self.click_and_load(QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH)
    
     # 3 - FIll all the fields
     $wait.until{
@@ -604,8 +603,8 @@ class Common
     $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys name
     
     # 4 - Click on "Save" button
-    $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).click
-     $wait.until{
+    self.click_and_load(QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH)
+    $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_QUESTION_BUILDER_XPATH).displayed?
     } 
      

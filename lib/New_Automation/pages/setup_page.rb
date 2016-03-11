@@ -146,13 +146,7 @@ class SetupEditPage
   
   #SOCIAL SETTINGS
   SOCIAL_SETTINGS_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0t&isOrg=1"
-  EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
   APPLY_TO_LINKEDIN_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__LinkedIn_Apply__c']"
-  SAVE_BUTTON_XPATH = ".//*[@value='Save']"
-  
-  
-  
-  
   
   # MASS MAIL
     # URL

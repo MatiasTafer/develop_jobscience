@@ -10,6 +10,7 @@ require './New_Automation/pages/questions/question_sets_home_page.rb'
 require './New_Automation/pages/questions/question_sets_new_page.rb'
 require './New_Automation/pages/questions/question_set_detail_page.rb'
 require './New_Automation/pages/setup_page.rb'
+require './New_Automation/pages/board_setup/board_setup_detail_page.rb'
 
 class CustomSettings
   
@@ -46,9 +47,10 @@ class CustomSettings
       puts "Error, bad parameter"
     else
       $browser.get(SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL)
+      Common.displayed(SetupEditPage::QUESTION_SET_HANDLER_TEXT_XPATH)
       $browser.find_element(:xpath => SetupEditPage::QUESTION_SET_HANDLER_TEXT_XPATH).clear
       $browser.find_element(:xpath => SetupEditPage::QUESTION_SET_HANDLER_TEXT_XPATH).send_keys option
-      $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+      Common.click_and_load(SetupEditPage::SAVE_BUTTON_XPATH)
     end    
    end
    
@@ -159,7 +161,7 @@ class CustomSettings
     Checkbox(SetupEditPage::EEO_QUESTIONS_DISABLE_CHECKBOX_XPATH, disabled) 
     Checkbox(SetupEditPage::EEO_QUESTIONS_REQUIRED_CHECKBOX_XPATH, required)  
     
-    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    Common.click_and_load(SetupEditPage::SAVE_BUTTON_XPATH)
     $wait.until{
       $browser.find_element(:xpath => SetupEditPage::EDIT_BUTTON_XPATH).displayed?
     }
@@ -232,7 +234,7 @@ class CustomSettings
    
    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
     $wait.until{
-      $browser.find_element(:xpath => SetupEditPage::EDIT_BUTTON_XPATH).displayed?
+      $browser.find_element(:xpath => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
     }
  end
  
