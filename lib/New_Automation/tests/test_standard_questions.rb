@@ -50,6 +50,7 @@ class TestStandardQuestions < TestBasic
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
 
+=begin
 
   #TC929 - Validation of new standar question, Required By Applicant = true
   def test_validationStandarQuestion
@@ -496,6 +497,7 @@ end
     end
   end
 
+=end
 
 end
   
