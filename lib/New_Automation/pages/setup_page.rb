@@ -2,12 +2,11 @@ class SetupEditPage
   
   # CONFIG
   # setup > develop > custom settings > manage next to config > edit
-    # URL
-  CONFIG_SETUP_EDIT_PAGE_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da07&id=a07o00000021XSy"
-
+  
     # Buttons
   CONFIG_SETUP_EDIT_SAVE_BTN_XPATH = ".//*[@value='Save']"
   NEW_CONFIG_BTN_XPATH = ".//*[@value='New']"
+  CONFIG_SETUP_EDIT_BTN_XPATH = ".//a[text()='Config']/../preceding-sibling::*//a[text()='Edit']"
     # Fields  
   INVITE_TO_APPLY_CUSTOM_MESSAGE_CHECKBOX_XPATH = ".//*[text()[contains(.,'Invite to Apply Custom Message')]]/../../..//input"
   EEO_QUESTION_HANDLER_TEXT_XPATH = ".//*[text()[contains(.,'EEO Question Handler')]]/../../..//input"
@@ -24,8 +23,6 @@ class SetupEditPage
   
   
   #SHORT LIST
-    # URL
-  SHORT_LIST_CUSTOM_SETINGS_PAGE_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a1A"
     # Buttons
   SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@value='Submit']"
   EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH = ".//*[@value='Edit']"
@@ -69,8 +66,6 @@ class SetupEditPage
 
   
   # PARSE SETTINGS EDIT PAGE
-    # URL 
-  PARSE_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0O"
     # Buttons
   PARSE_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
     # Fields
@@ -87,9 +82,6 @@ class SetupEditPage
 
   # SOCIAL SETTINGS
   # setup > develop > custom settings > manage next to social settings
-    # URL
-  SOCIAL_SETTINGS_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0t"
-  SOCIAL_SETTINGS_EDIT_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?CS_list%3ACS_Form=CS_list%3ACS_Form&CS_list%3ACS_Form%3AtheDetailPageBlock%3AthePageBlockButtons%3Aedit=Edit&retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da0t&isOrg=1&id=a0to000000081HN&id=a0to000000081HN&com.salesforce.visualforce.ViewStateCSRF=VmpFPSxNakF4Tmkwd01pMHdObFF4T0RvME16bzFOUzR4TWpsYSxKVnlvQkhwanVYWmM4Z1pHVEdpTWpCLFpXWmtNR1Uy&com.salesforce.visualforce.ViewStateVersion=201602022000070248" 
     # Buttons
   SOCIAL_SETTINGS_EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
     # Fields
@@ -125,8 +117,6 @@ class SetupEditPage
   
   
   #SHARING SETTINGS
-    # URL
-  SHARING_SETTINGS_URL ="https://na17.salesforce.com/p/own/OrgSharingDetail?setupid=SecuritySharing&retURL=%2Fui%2Fsetup%2FSetup%3Fsetupid%3DSecurity"
     # Buttons
   EDIT_SHARING_SETTINGS_BUTTON_XPATH = ".//*[@name='edit']"
     # Fields
@@ -145,18 +135,9 @@ class SetupEditPage
   
   
   #SOCIAL SETTINGS
-  SOCIAL_SETTINGS_URL = "https://na17.salesforce.com/setup/ui/listCustomSettingsData.apexp?id=a0t&isOrg=1"
-  EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
   APPLY_TO_LINKEDIN_CHECKBOX_XPATH = ".//*[@id='CS_Edit:CS_Form:thePageBlock:thePageBlockSection:ts2__LinkedIn_Apply__c']"
-  SAVE_BUTTON_XPATH = ".//*[@value='Save']"
-  
-  
-  
-  
   
   # MASS MAIL
-    # URL
-  MASS_MAIL_SERVICE_EDIT_URL = "https://na17.salesforce.com/setup/ui/editCustomSettingsData.apexp?CS_list%3ACS_Form%3AtheDetailPageBlock%3AthePageBlockButtons%3Aedit=Edit&CS_list%3ACS_Form=CS_list%3ACS_Form&retURL=%2Fsetup%2Fui%2FlistCustomSettingsData.apexp%3Fid%3Da1l&setupid=CustomSettings&isOrg=1&id=a1lo0000000UeE6&id=a1lo0000000UeE6&com.salesforce.visualforce.ViewStateVersion=201602242157540280&com.salesforce.visualforce.ViewStateCSRF=VmpFPSxNakF4Tmkwd01pMHlPRlF4T1RveU56bzBOUzR3TVRWYSxRM0RpbWN1cnV6T0E0cThKekFaTmhfLFpXWmtNR1Uy"
     # Fields
   ENABLE_MASS_MAIL_CHECKBOX_XPATH = ".//*[text()[contains(.,'EnableMassMailService')]]/../..//input"
   
