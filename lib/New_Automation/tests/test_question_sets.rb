@@ -131,6 +131,7 @@ class TestQuestionSets < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #Must be set on "Custom Settings", Question Set Handler = Always.
+    Common.go_to_custom_settings()
     CustomSettings.QuestionSetHandler("Always")
     
     #Create an empty Question Sets

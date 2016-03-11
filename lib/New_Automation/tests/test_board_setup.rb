@@ -22,7 +22,7 @@ class TestBoardSetup < TestBasic
   $USER_JOB_BOARD = "testing5@fromthesky.up"
   $PASSWORD_JOB_BOARD = "automatable666"
   
-
+=begin
   def test_board_setup_tc1040   #1
     # JS2 - Board Setup - TC1040
     #Login
@@ -77,8 +77,8 @@ class TestBoardSetup < TestBasic
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH).click
        
   end
+#=end
 
-=begin
   def test_board_setup_tc1041 #2
     #  TC1041 - Board Setup - Auto Associate = false 
     #Login
@@ -86,7 +86,7 @@ class TestBoardSetup < TestBasic
     
     # PRECONDITIONS
     # open board setup page
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     $browser.find_element(:xpath => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).click
     $wait.until{
       $browser.find_element(:xpath => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
@@ -100,7 +100,7 @@ class TestBoardSetup < TestBasic
       $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
     end  
     
-    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
     # new requisitions button
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH).displayed?
@@ -130,30 +130,26 @@ class TestBoardSetup < TestBasic
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH).click
     
   end
+=end
 
   def test_board_setup_tc1042 #3
     # Set "Show Search Only" to "TRUE" in Board Setup
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    Common.go_to_massmail_service
     # Preconditios open board setup page
-    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    #Common.goToTab(BoardSetupHomePage::CAREERS_URL_XPATH) 
     test = [
-<<<<<<< HEAD
-=======
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::SHOW_SEARCH_ONLY_CHECKBOX_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    Common.main(test)
+    #Common.main(test)
     # Test case
-    $browser.get HomePage::JOB_BOARD_URL
-    
-    
+    #$browser.get HomePage::JOB_BOARD_URL
   end
-
+=begin
   def test_board_setup_tc1043 #4
     #Set "Show Search Only" to "FALSE" in Board Setup
     #Login
@@ -161,19 +157,15 @@ class TestBoardSetup < TestBasic
     # Preconditios open board setup page
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
-<<<<<<< HEAD
-=======
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => SetupEditPage::SHOW_SEARCH_ONLY_CHECKBOX_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
     Common.main(test)
-    
-    
   end
+  
+=begin
   
 
   def test_board_setup_tc1044 #5
@@ -270,7 +262,7 @@ class TestBoardSetup < TestBasic
     
   end
   
-=end
+
   
   def test_board_setup_tc1047   #8
     # Job Board - Job Board Resume Required = false
