@@ -18,7 +18,7 @@ $wait
 
 #require './New_Automation/tests/test_candidates_action_on_list_view'
 
-# require './New_Automation/tests/test_resume.rb'
+#require './New_Automation/tests/test_resume.rb'
 
 #require './New_Automation/test_email_actions'
 
@@ -58,9 +58,7 @@ require './New_Automation/tests/test_standard_questions'
 
 #require './New_Automation/test_actions_on_record'
 
-
 #require './New_Automation/tests/test_board_setup'
-
 
 #require './New_Automation/tests/test_job_board'
 

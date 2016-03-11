@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestJobTemplates" tests="1" time="37.658325" failures="0" errors="1" skipped="0" assertions="0" timestamp="2016-03-11T16:03:52-03:00">
+  <testcase name="test_newJobTemplate" time="37.657952" assertions="0">
+    <error type="Selenium::WebDriver::Error::ElementNotVisibleError" message="Element is not currently visible and so may not be interacted with">
+Element is not currently visible and so may not be interacted with (Selenium::WebDriver::Error::ElementNotVisibleError)
+[remote server] file:///var/folders/y5/smgr16q14vq3zqr17x_76rwr0000gn/T/webdriver-profile20160311-2291-og7rtc/extensions/fxdriver@googlecode.com/components/command-processor.js:10045:in `fxdriver.preconditions.visible'
+[remote server] file:///var/folders/y5/smgr16q14vq3zqr17x_76rwr0000gn/T/webdriver-profile20160311-2291-og7rtc/extensions/fxdriver@googlecode.com/components/command-processor.js:12597:in `DelayedCommand.prototype.checkPreconditions_'
+[remote server] file:///var/folders/y5/smgr16q14vq3zqr17x_76rwr0000gn/T/webdriver-profile20160311-2291-og7rtc/extensions/fxdriver@googlecode.com/components/command-processor.js:12614:in `DelayedCommand.prototype.executeInternal_/h'
+[remote server] file:///var/folders/y5/smgr16q14vq3zqr17x_76rwr0000gn/T/webdriver-profile20160311-2291-og7rtc/extensions/fxdriver@googlecode.com/components/command-processor.js:12619:in `DelayedCommand.prototype.executeInternal_'
+[remote server] file:///var/folders/y5/smgr16q14vq3zqr17x_76rwr0000gn/T/webdriver-profile20160311-2291-og7rtc/extensions/fxdriver@googlecode.com/components/command-processor.js:12561:in `DelayedCommand.prototype.execute/&lt;'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/response.rb:70:in `assert_ok'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/response.rb:34:in `initialize'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:78:in `new'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:78:in `create_response'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:90:in `request'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:427:in `sendKeysToElement'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/element.rb:145:in `send_keys'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/common.rb:144:in `rescue in set_text'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/common.rb:141:in `set_text'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/common.rb:300:in `block in main'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/common.rb:266:in `each'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/common.rb:266:in `main'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/test_job_templates.rb:32:in `test_newJobTemplate'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+click_and_load
+displayed
+set_text
+click_and_load
+
+main
+
+displayed
+click_and_load
+displayed
+set_text
+set_text
+  </system-out>
+</testsuite>

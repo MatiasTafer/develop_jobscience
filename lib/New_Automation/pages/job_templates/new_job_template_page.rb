@@ -8,7 +8,7 @@ class NewJobTemplate
   CANCEL_BUTTON_XPATH = ".//*[@name='cancel']"
   JOB_TITLE_TEXT_XPATH = ".//*[@id='Name']"
   
-  JOB_TEMPLATE_MAPPING_TEXT_XPATH = "//*[text()='Job Template Mapping']/../..//input"
+  JOB_TEMPLATE_MAPPING_TEXT_XPATH = "//*[text()='Job Template Mapping']/ancestor::td[1]/following-sibling::*//span[@class='lookupInput']/input"
   CUSTOMFIELD_TEXT_XPATH = "//*[text()='Customfield']/../..//input" 
   SOC_CODE_TEXT_XPATH = "//*[text()='SOC code']/../following-sibling::*//input"
   EEO_CODE_DROPDOWN_XPATH = "//*[text()='EEO Code']/../following-sibling::*//select"
