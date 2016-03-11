@@ -33,14 +33,11 @@ class Users
   
   PASSWORD  = "muffin100"
   
-  
   def self.create_user_job_board
-    
+    # .//table[@class='atsError']/tbody/tr/td[text()[contains(.,'The email below is associated with an existing profile within our system.')]]
     random_name = "auto_" + SecureRandom.hex(4)
     username = random_name + "@test.com"
-    
-    username = "testing5@fromthesky.up"
-    
+    #
     begin
       Common.login(USER_EMAIL, PASSWORD)
     end
@@ -60,8 +57,8 @@ class Users
     ]
     Common.main(test)
     #
-    #Common.login_job_board
-    
+    Common.login_job_board
+    #
     $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::REGISTER_LINK_XPATH},
@@ -82,7 +79,7 @@ class Users
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     begin
       f = File.open("users.txt", "r")

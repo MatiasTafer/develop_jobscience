@@ -49,7 +49,7 @@ class SetupEditPage
     # Fields
   AUTO_ASSOCIATE_CHECKBOX_XPATH = ".//*[text()[contains(.,'Auto-Associate')]]/../../following-sibling::*//input"
   SHOW_SEARCH_ONLY_CHECKBOX_XPATH = ".//*[text()[contains(.,'Show Search Only')]]/../../following-sibling::*//input"
-  ALLOW_REGISTER_ONLY_CHECKBOX_XPATH = ".//*[text()[contains(.,'Allow Register Only')]]/../../following-sibling::*//input"
+  ALLOW_REGISTER_ONLY_CHECKBOX_XPATH = ".//*[text()[contains(.,'Allow Register Only')]]/../../following-sibling::td[1]//input"
   RESUME_REQUIRE_CHECKBOX_XPATH = ".//*[text()[contains(.,'Resume Required')]]/../../following-sibling::*//input" 
   HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH = ".//*[text()[contains(.,'Hide Resume Previously Uploaded')]]/../../following-sibling::*//input"
   DISPLAY_PRIVACY_STATEMENT_XPATH = ".//*[text()[contains(.,'Display Privacy Statement')]]/../../following-sibling::*//input"
