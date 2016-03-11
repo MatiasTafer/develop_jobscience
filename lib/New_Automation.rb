@@ -46,7 +46,7 @@ $wait
 
 #require './New_Automation/tests/test_candidates_action_on_list_view'
 
-require './New_Automation/tests/test_question_sets'
+#require './New_Automation/tests/test_question_sets'
 
 #require './New_Automation/test_candidates_actions_on_record'
 

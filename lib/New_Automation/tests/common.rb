@@ -203,7 +203,7 @@ class Common
     c = true
     begin
       while c do
-        path = "(.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:tb']/child::tr/child::td/child::a)[#{$num}]"
+        path = ".//*[contains(@class,'atsSearchResultsData')]/a[#{$num}]"
         a = self.displayed(path)
         self.click(path)
         b = self.displayed(".//*[@id='j_id0:j_id4:j_id128'][text()[contains(.,'You have already applied')]]")
