@@ -28,6 +28,7 @@ class QuestionSetsQuestionBuilder
   QUESTION_SETS_QUESTIONS_LIST_THIRD_XPATH = ".//*[@id='QALIST']/li[3]"
   QUESTION_SETS_QUESTIONS_LIST_FOURTH_XPATH = ".//*[@id='QALIST']/li[4]"
   QUESTION_SETS_QUESTIONS_LIST_FOURTH_v2_XPATH = "(.//*[@style='font-weight:bold;padding-left:20px;padding-top:5px;cursor:pointer;'])[4]"
+  QUESTION_SETS_QUESTION_TEXT_IFRAME_ID = "QApage:Qq:frmQ:theTextarea_frame" 
   
   #HARD CORE DATA
   QUESTION_SETS_QUESTION_NAME_TEXT = "Work"
@@ -45,5 +46,6 @@ class QuestionSetsQuestionBuilder
   QUESTION_SETS_QUESTION_NAME_4_TEXT = "Both"
   QUESTION_SETS_QUESTION_4_TEXT = "Do you like text and optional questions?"
   QUESTION_SETS_QUESTION_ANSWER_4_TEXT = "YES"
+  
   
 end
