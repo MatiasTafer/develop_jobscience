@@ -491,6 +491,7 @@ end
   #TC936 - Standard Question Handler, Standard Question Handler = Omit
   def test_StandardQuestionHandlerOmit
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    Common.go_to_custom_settings
     CustomSettings.QuestionSetHandler("Omit")
     CustomSettings.JobBoardLogin(false)
     $browser.get HomePage::JOB_BOARD_URL
