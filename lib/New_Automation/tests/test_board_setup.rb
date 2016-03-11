@@ -19,7 +19,7 @@ require './New_Automation/pages/job_board/job_board_register_page.rb'
 
 class TestBoardSetup < TestBasic
   
-=begin
+#=begin
   def test_board_setup_tc1040   #1
     # JS2 - Board Setup - TC1040
     #Login
@@ -127,7 +127,7 @@ class TestBoardSetup < TestBasic
     $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH).click
     
   end
-=begin
+#=begin
 
   def test_board_setup_tc1042 #3
     # Set "Show Search Only" to "TRUE" in Board Setup
@@ -219,7 +219,7 @@ class TestBoardSetup < TestBasic
     
   end
 
-=end
+#=end
 
   def test_board_setup_tc1046   #7
     # Job Board - Job Board Resume Required = true
@@ -248,7 +248,7 @@ class TestBoardSetup < TestBasic
     Common.register_job_board($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
   end
   
-=begin
+#=begin
   
   def test_board_setup_tc1047   #8
     # Job Board - Job Board Resume Required = false
@@ -256,7 +256,7 @@ class TestBoardSetup < TestBasic
     
     Users.create_user_job_board
     
-    #Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     $browser.get SetupEditPage::PARSE_SETTINGS_EDIT_URL
     test = [
@@ -267,7 +267,7 @@ class TestBoardSetup < TestBasic
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
       {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
@@ -278,7 +278,7 @@ class TestBoardSetup < TestBasic
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -299,7 +299,7 @@ class TestBoardSetup < TestBasic
   end
 
 
-=begin
+#=begin
   
 
   def test_board_setup_tc1048  #9
@@ -308,11 +308,6 @@ class TestBoardSetup < TestBasic
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
-<<<<<<< HEAD
-=======
-      {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_UPLOAD_XPATH},
@@ -349,11 +344,6 @@ class TestBoardSetup < TestBasic
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
-<<<<<<< HEAD
-=======
-      {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_UPLOAD_XPATH},
@@ -388,15 +378,10 @@ class TestBoardSetup < TestBasic
     # Job Board - Hide Resume Upload / Paste / Builder / Previously Uploaded / Cover Letter
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
-<<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
-=======
-      {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_UPLOAD_XPATH},
@@ -426,21 +411,14 @@ class TestBoardSetup < TestBasic
   end
 
 
-
-
   def test_board_setup_tc1051  #12
     # Job Board - Hide Phone / Hide Mobile / Hide Source Question / Hide Contact Method / will be available
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
-<<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
-=======
-      {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_PHONE_XPATH},
@@ -477,15 +455,10 @@ class TestBoardSetup < TestBasic
     # Job Board - Hide Phone / Hide Mobile / Hide Source Question / Hide Contact Method / will be hidden
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
-<<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
-=======
-      {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_PHONE_XPATH},
@@ -519,7 +492,7 @@ class TestBoardSetup < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -550,16 +523,10 @@ class TestBoardSetup < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
-<<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
-=======
-      {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-      # 2. Click on one record on "Job Board Setup Name" column
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       # 3. Click on "Edit".
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -591,16 +558,10 @@ class TestBoardSetup < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
-<<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
-=======
-      {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-      # 2. Click on one record on "Job Board Setup Name" column
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       # 3. Click on "Edit".
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -624,23 +585,15 @@ class TestBoardSetup < TestBasic
 
 
 
-  
-
   def test_board_setup_tc1056   #17
     # Job Board - Search & Results Jobs Per Page
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
-<<<<<<< HEAD
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
-=======
-      {"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-      # 2. Click on one record on "Job Board Setup Name" column
-      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
->>>>>>> develop
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       # 3. Click on "Edit".
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -658,15 +611,13 @@ class TestBoardSetup < TestBasic
   end
 
 
-
-
   
   def test_board_setup_tc1057
     # Job Board - Job Description Fields
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 1. Click on "Board Setup".
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
@@ -691,9 +642,6 @@ class TestBoardSetup < TestBasic
   end
 
 
-
-
-  #@@job_path = "/Users/admin/Desktop/testing job order.pdf"
   #TC104 - RSS feed customizable fields
   def test_RSSFeddCustomizableFields
     
@@ -736,7 +684,7 @@ class TestBoardSetup < TestBasic
      sleep(5)
    end  
    
-=end
+#=end
 
 end
 
