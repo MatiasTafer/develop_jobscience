@@ -52,10 +52,10 @@ class TestStandardQuestions < TestBasic
     }
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
+=end
 
 
-
-  #TC929 - Validation of new standar question, Required By Applicant = true
+  #TC929 - Validation of new standar question, Required By Applicant = true #CHROME
   def test_validationStandarQuestion
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_XPATH)
@@ -63,7 +63,8 @@ class TestStandardQuestions < TestBasic
       #$browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_XPATH
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    Common.click_and_load(StandardQuestions::NEW_BUTTON_XPATH)
     $wait.until {
       $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).displayed?
     }
@@ -73,7 +74,8 @@ class TestStandardQuestions < TestBasic
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_SIZE_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_SIZE_OPTION_1
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_TEXT_FIELD_XPATH).send_keys NewStandardQuestion::QUESTION_NAME
     $browser.find_element(:xpath, NewStandardQuestion::REQUIRED_BY_APPLICANT_CHECKBOX_XPATH).click
-    $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    Common.click_and_load(NewStandardQuestion::SAVE_BUTTON_XPATH)
     $wait.until {
       #$browser.current_url.eql?(HomePage::STANDARD_QUESTIONS_TAB_XPATH)
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
@@ -83,17 +85,20 @@ class TestStandardQuestions < TestBasic
       #$browser.current_url.eql?(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
       $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).displayed?
     }
-    $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).click
+    #$browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).click
+    Common.click_and_load(BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH)
     $wait.until {
       $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).click
+    Common.click_and_load(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     $wait.until {
       $browser.find_element(:xpath, BoardSetupEditPage::BOARD_EDIT_QUESTION_1_XPATH).displayed?
     }
     questionDrpdown = $browser.find_element(:xpath, BoardSetupEditPage::BOARD_EDIT_QUESTION_1_XPATH)
     Common.selectByIndex(questionDrpdown, 1)
-    $browser.find_element(:xpath, BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH).click
+    Common.click_and_load(BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH)
     $wait.until {
       $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
     }
@@ -102,11 +107,16 @@ class TestStandardQuestions < TestBasic
     $wait.until{
       $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
-    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    #$browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).displayed?
+    }
+    Common.click_and_load(JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
     }
-    $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    #$browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    Common.click_and_load(JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).displayed?
     }
@@ -116,52 +126,60 @@ class TestStandardQuestions < TestBasic
     begin
     $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH).send_keys JobBoardRegisterPage::QUESTION_TEXT   
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
     }
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
-    
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     begin
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     rescue
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
     }
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     end
     
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH).displayed?
     }
-    $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH).click
+    #$browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH).click
+    Common.click_and_load(JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardJobDetail::ERRORS_OF_FIELD_TO_SUBMIT_XPATH).displayed?
     }
     rescue
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click
+    Common.click_and_load(JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
     }
     begin
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     rescue
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
     }
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     end
-    
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH).displayed?
     }
@@ -172,7 +190,7 @@ class TestStandardQuestions < TestBasic
     end  
   end
  
-=end
+
  
 =begin 
   #TC930 - New Standard Question, Field Validation, Required By Applicant = true  ####CHROME
@@ -235,7 +253,7 @@ class TestStandardQuestions < TestBasic
 =end
 
 =begin
-  #TC932 - New Standard Question, Adding Standard Questions, Required By Applicant = false
+  #TC932 - New Standard Question, Adding Standard Questions, Required By Applicant = false #CHORME
   def test_validationStandarQuestionFalseApplicant
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_XPATH)
@@ -243,7 +261,8 @@ class TestStandardQuestions < TestBasic
       #$browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_XPATH
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    Common.click_and_load(StandardQuestions::NEW_BUTTON_XPATH)
     $wait.until {
       $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).displayed?
     }
@@ -260,23 +279,27 @@ class TestStandardQuestions < TestBasic
     $browser.find_element(:xpath, NewStandardQuestion::CONTACT_FIELD_DROPDOWN_XPATH).send_keys NewStandardQuestion::CONTACT_FIELD_OPTION_1
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_SIZE_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_SIZE_OPTION_1
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_TEXT_FIELD_XPATH).send_keys NewStandardQuestion::QUESTION_NAME
-    $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    Common.click_and_load(NewStandardQuestion::SAVE_BUTTON_XPATH)
     Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     $wait.until {
       #$browser.current_url.eql?(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
       $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).displayed?
     }
-    $browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).click
+    #$browser.find_element(:xpath, BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH).click
+    Common.click_and_load(BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH)
     $wait.until {
       $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).click
+    Common.click_and_load(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     $wait.until {
       $browser.find_element(:xpath, BoardSetupEditPage::BOARD_EDIT_QUESTION_1_XPATH).displayed?
     }
     questionDrpdown = $browser.find_element(:xpath, BoardSetupEditPage::BOARD_EDIT_QUESTION_1_XPATH)
     Common.selectByIndex(questionDrpdown, 1)
-    $browser.find_element(:xpath, BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH).click
+    Common.click_and_load(BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH)
     $wait.until {
       $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
     }
@@ -285,11 +308,13 @@ class TestStandardQuestions < TestBasic
     $wait.until{
       $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
-    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    #$browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    Common.click_and_load(JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
     }
-    $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    #$browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    Common.click_and_load(JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).displayed?
     }
@@ -299,47 +324,53 @@ class TestStandardQuestions < TestBasic
     begin
     $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH).send_keys JobBoardRegisterPage::QUESTION_TEXT
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
     }
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     begin
     $wait.until {
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displyed?
     }
     rescue
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::ERRORS_OF_FIELD_TO_SUBMIT_XPATH).displayed?
     }
     end
     rescue
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
     }
     
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     begin
     $wait.until {
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displyed?
     }
     rescue
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).click
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::ERRORS_OF_FIELD_TO_SUBMIT_XPATH).displayed?
     }
     end
   end
 end
+=end
 
-=end  
 
 =begin
   #TC933 - New Standard Question, Field Validation, Required By Applicant = false #CHROME
@@ -487,8 +518,8 @@ end
 =end
 
 
- 
-  #TC936 - Standard Question Handler, Standard Question Handler = Omit
+=begin 
+  #TC936 - Standard Question Handler, Standard Question Handler = Omit #CHROME
   def test_StandardQuestionHandlerOmit
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.go_to_custom_settings
@@ -498,11 +529,16 @@ end
     $wait.until{
       $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
-    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    $wait.until {
+      $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).displayed?
+    }
+    #$browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    Common.click_and_load(JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
     }
-    $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    #$browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    Common.click_and_load(JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).displayed?
     }
@@ -512,7 +548,8 @@ end
     begin
     $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH).send_keys JobBoardRegisterPage::QUESTION_TEXT
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
     begin
     assert $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
@@ -524,7 +561,8 @@ end
     end
     rescue
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
     begin
     assert $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
@@ -536,7 +574,7 @@ end
     end
     end
   end
-
+=end
 
 
 end
