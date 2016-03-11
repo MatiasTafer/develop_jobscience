@@ -5,11 +5,12 @@ require 'securerandom'
 
 require './New_Automation/tests/test_basic.rb'
 require './New_Automation/tests/common.rb'
+require './New_Automation/tests/users.rb'
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
 require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
-require './New_Automation/pages/answers/offers_home_page.rb'
+require './New_Automation/pages/offers/offers_home_page.rb'
 require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
@@ -26,6 +27,7 @@ require './New_Automation/pages/requisitions/requisitions_home_page.rb'
 require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
 
+
 class TestActionsOnRecord < TestBasic
  
   #TC53 - Successfully add new skill to one contact
@@ -38,20 +40,24 @@ class TestActionsOnRecord < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
+
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
+
     
     # 2. In Name column click on a specific contact name
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]"},
     ]
     Common.main(test)
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    
+    #$browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     
     # 3. Click on "Add skills"
     test = [
@@ -71,7 +77,7 @@ class TestActionsOnRecord < TestBasic
       {"click" => ContactsHomePage::CONTACT_SKILL_POPUP_SECOND_ELEMENT_XPATH},
       {"click" => ContactsHomePage::CONTACT_SKILL_POPUP_ARROW_RIGHT_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_SKILL_POPUP_SKILL_LIST_2_ELEMENT_XPATH},
-      {"click" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_SAVE_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_SKILL_POPUP_BTN_CLOSE_XPATH}
       ]
     Common.main(test)
@@ -81,12 +87,14 @@ class TestActionsOnRecord < TestBasic
     $browser.switch_to.window($browser.window_handles.first)
     
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
+
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]"},
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    #$browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
        $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH).displayed? 
      }
@@ -99,7 +107,7 @@ class TestActionsOnRecord < TestBasic
     
 
   end
-
+=begin
   #TC261 - Successfully add/rate new skill to one contact
   def test_SuccessfullyAddRateSkillToContact
     randomContact = SecureRandom.hex(4)
@@ -389,16 +397,16 @@ class TestActionsOnRecord < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
-    CreateRequisitionPostJob(randomReq, false)
+    Common.CreateRequisitionPostJob(randomReq, false)
     
     #Enable Enhanced Apply to Job" = True
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
        
     # 1. Click on "Contacts". 
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
@@ -468,8 +476,9 @@ class TestActionsOnRecord < TestBasic
       }  
     
   end  
-  
+=end  
 ############### CUSTOM METHODS #####################  
+
   def CreateAccount(name)
     #Create an account record with "name" as Account Name
     Common.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
@@ -552,6 +561,7 @@ class TestActionsOnRecord < TestBasic
       }
   end 
   
+
   def DeleteRequisition(name)
     # 1 - Go to "Requisition" Tab
     Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
