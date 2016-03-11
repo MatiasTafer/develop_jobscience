@@ -264,14 +264,17 @@ class CustomSettings
     if $browser.find_element(:xpath => SetupEditPage::SHOW_SEARCH_ONLY_CHECKBOX_XPATH).attribute("checked")
       $browser.find_element(:xpath => SetupEditPage::SHOW_SEARCH_ONLY_CHECKBOX_XPATH).click
     end
-    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
+    Common.click_and_load(SetupEditPage::SAVE_BUTTON_XPATH)
+    
     sleep(1)
   end
 
   def self.DefineEEOQuestions(gender, veteran, race, disabled, required)
     #If each parameter is true, will check the corresponding checkbox.
      
-    $browser.get(SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+    Common.click_and_load(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+    
     $wait.until{
       $browser.find_element(:xpath => SetupEditPage::EEO_QUESTIONS_GENDER_CHECKBOX_XPATH).displayed?
     }
@@ -282,9 +285,7 @@ class CustomSettings
     Checkbox(SetupEditPage::EEO_QUESTIONS_REQUIRED_CHECKBOX_XPATH, required)  
     
     Common.click_and_load(SetupEditPage::SAVE_BUTTON_XPATH)
-    $wait.until{
-      $browser.find_element(:xpath => SetupEditPage::EDIT_BUTTON_XPATH).displayed?
-    }
+    
   end
   
  
@@ -301,10 +302,7 @@ class CustomSettings
    
    Checkbox(SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH, setBool)
    
-   $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
-    }
+   Common.click_and_load(SetupEditPage::SAVE_BUTTON_XPATH)
  end
  
   
@@ -327,11 +325,8 @@ class CustomSettings
     
     $browser.switch_to.window(old_win)
     
-    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ".//*[@name='edit']").displayed?
-    }
-    
+    Common.click_and_load(SetupEditPage::SAVE_BUTTON_XPATH)
+        
   end 
  
   def self.PrivacyPolicyTextAndDisplay(text_pol, setbool)
@@ -353,10 +348,8 @@ class CustomSettings
     
     $browser.switch_to.window(old_win)
     
-    $browser.find_element(:xpath => SetupEditPage::SAVE_BUTTON_XPATH).click
-    $wait.until{
-      $browser.find_element(:xpath => ".//*[@name='edit']").displayed?
-    }
+    Common.click_and_load(SetupEditPage::SAVE_BUTTON_XPATH)
+    
     
   end 
   
@@ -399,7 +392,7 @@ class CustomSettings
     else
       $browser.find_element(:xpath => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH).send_keys "- None -"
     end
-    $browser.find_element(:xpath => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH).click
+    Common.click_and_load(SetupEditPage::CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH)
   end
   
   ### CUSTOM METHOD ###
