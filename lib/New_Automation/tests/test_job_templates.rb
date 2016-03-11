@@ -35,7 +35,6 @@ def test_newJobTemplate
   }
 end
 
-
 #TC970 - New Job Template, Validation
 def test_newJobTemplateValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
