@@ -69,7 +69,7 @@ require './New_Automation/tests/test_standard_questions'
 #require './New_Automation/test_actions_on_record'
 
 
-require './New_Automation/tests/test_board_setup'
+#require './New_Automation/tests/test_board_setup'
 
 #require './New_Automation/tests/test_job_board'
 

@@ -21,7 +21,8 @@ require_relative 'custom_settings.rb'
 
 class TestStandardQuestions < TestBasic
 
-  # TC928 New Standard Question, Successfully created, Required By Applicant = true
+=begin  
+  # TC928 New Standard Question, Successfully created, Required By Applicant = true ### CHROME
   def test_successfullyCreated
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_XPATH)
@@ -29,7 +30,8 @@ class TestStandardQuestions < TestBasic
       #$browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_XPATH
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    Common.click_and_load(StandardQuestions::NEW_BUTTON_XPATH)
     $wait.until {
       $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).displayed?
     }
@@ -43,14 +45,15 @@ class TestStandardQuestions < TestBasic
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_SIZE_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_SIZE_OPTION_1
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_TEXT_FIELD_XPATH).send_keys NewStandardQuestion::QUESTION_NAME
     $browser.find_element(:xpath, NewStandardQuestion::REQUIRED_BY_APPLICANT_CHECKBOX_XPATH).click
-    $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    Common.click_and_load(NewStandardQuestion::SAVE_BUTTON_XPATH)
     assert $wait.until {
      $browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).displayed?
     }
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
 
-=begin
+
 
   #TC929 - Validation of new standar question, Required By Applicant = true
   def test_validationStandarQuestion
@@ -168,9 +171,11 @@ class TestStandardQuestions < TestBasic
     }
     end  
   end
-  
-
-  #TC930 - New Standard Question, Field Validation, Required By Applicant = true
+ 
+=end
+ 
+=begin 
+  #TC930 - New Standard Question, Field Validation, Required By Applicant = true  ####CHROME
   def test_FieldValidationQuestionAplicantTrue
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_XPATH)
@@ -178,7 +183,8 @@ class TestStandardQuestions < TestBasic
       #$browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_XPATH
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    Common.click_and_load(StandardQuestions::NEW_BUTTON_XPATH)
     $wait.until {
       $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).displayed?
     }
@@ -188,8 +194,11 @@ class TestStandardQuestions < TestBasic
       $browser.find_element(:xpath, NewStandardQuestion::ERROR_MESSAGE_XPATH).displayed?
     }
   end
+=end
 
-  #TC931 - New Standard Question, Successfully created, Required By Applicant = false
+
+=begin
+  #TC931 - New Standard Question, Successfully created, Required By Applicant = false #CHROME
   def test_NewStandaQuestionRequiredFalse
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_XPATH)
@@ -197,7 +206,8 @@ class TestStandardQuestions < TestBasic
       #$browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_XPATH
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    Common.click_and_load(StandardQuestions::NEW_BUTTON_XPATH)
     $wait.until {
     $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).displayed?
     }
@@ -214,15 +224,17 @@ class TestStandardQuestions < TestBasic
     $browser.action.move_to($browser.find_element(:xpath, NewStandardQuestion::QUESTION_SIZE_DROPDOWN_XPATH)).perform
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_SIZE_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_SIZE_OPTION_1
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_TEXT_FIELD_XPATH).send_keys NewStandardQuestion::QUESTION_NAME
-    $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
+    Common.click_and_load(NewStandardQuestion::SAVE_BUTTON_XPATH)
     assert $wait.until {
       #$browser.current_url.eql?(HomePage::STANDARD_QUESTIONS_TAB_XPATH)
       $browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).displayed?
     }
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
+=end
 
-
+=begin
   #TC932 - New Standard Question, Adding Standard Questions, Required By Applicant = false
   def test_validationStandarQuestionFalseApplicant
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
@@ -327,8 +339,10 @@ class TestStandardQuestions < TestBasic
   end
 end
 
-  
-  #TC933 - New Standard Question, Field Validation, Required By Applicant = false
+=end  
+
+=begin
+  #TC933 - New Standard Question, Field Validation, Required By Applicant = false #CHROME
   def test_FieldValidationQuestionAplicantFalse
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     Common.goToTab(HomePage::STANDARD_QUESTIONS_TAB_XPATH)
@@ -336,15 +350,18 @@ end
       #$browser.current_url.eql? HomePage::STANDARD_QUESTIONS_TAB_XPATH
       $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).displayed?
     }
-    $browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    #$browser.find_element(:xpath, StandardQuestions::NEW_BUTTON_XPATH).click
+    Common.click_and_load(StandardQuestions::NEW_BUTTON_XPATH)
     $wait.until {
-    $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).displayed?
+      $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).displayed?
     }
     $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).click
     assert $wait.until {
       $browser.find_element(:xpath, NewStandardQuestion::ERROR_MESSAGE_XPATH).displayed?
     } 
   end
+=end
+
 
 
   #TC934 - Standard Question Handler, Standard Question Handler = Always
@@ -356,11 +373,13 @@ end
     $wait.until{
       $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
-    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    #$browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).click
+    Common.click_and_load(JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
     }
-    $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    #$browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).click
+    Common.click_and_load(JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_EMAIL_XPATH).displayed?
     }
@@ -370,7 +389,8 @@ end
     begin
     $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH).send_keys JobBoardRegisterPage::QUESTION_TEX 
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
     begin
     assert $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
@@ -385,7 +405,8 @@ end
     #}
     rescue
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
-    $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    #$browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH).click 
+    Common.click_and_load( JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
     begin
     assert $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
@@ -401,6 +422,7 @@ end
     end
   end
 
+=begin
  #TC935 - Standard Question Handler, Standard Question Handler = Populate
   def test_StandardQuestionHandlerPopulate
     Common.login(Users::USER_EMAIL, Users::PASSWORD)

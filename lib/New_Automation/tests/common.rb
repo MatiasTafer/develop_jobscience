@@ -800,6 +800,9 @@ class Common
   def self.goToTab(tab)
     #Go to + icon
     self.click_and_load(HomePage::ALL_TABS_LINK_XPATH) 
+    $wait.until{
+      $browser.find_element(:xpath, tab).displayed?
+    }
     self.click_and_load(tab)
   end
   
