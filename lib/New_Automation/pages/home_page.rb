@@ -7,6 +7,9 @@ class HomePage
   
   JOB_TEMPLATES_TAB_XPATH = ".//*[text()='Job Templates']"
   JOB_TEMPLATE_MAPPING_TAB_XPATH = ".//*[text()='Job Templates Mapping']"
+
+  MENU_USER_XPATH = ".//*[@id='userNavLabel']"
+  MENU_USER_SETUP_OPTION_XPATH = ".//*[@id='userNav-menuItems']/a[text()='Setup']"
   
   HOME_TAB_LINK_XPATH = ".//a[text()[contains(.,'Home')]]"
   SHORT_LIST_TAB_LINK_XPATH = ".//a[text()[contains(.,'Short Lists')]]"

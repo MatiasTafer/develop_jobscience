@@ -25,9 +25,9 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH = ".//*[@id='js-menu-search']/a"
   
   JOB_BOARD_APPLY_JOB_DEGREE_XPATH = ".//*[contains(text(),'Job Degree')]/ancestor::td[1]/following-sibling::td[1]/select"
-  JOB_BOARD_APPLY_JOB_SALES_BACKGROUND = ".//*[contains(text(),'Sales Background')]/ancestor::td[1]/following-sibling::td[1]/select"
-  JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[contains(text(),'Years Exoerience')]/ancestor::td[1]/following-sibling::td[1]/select"
-  JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH = ".//*[contains(text(),'Graduate')]/ancestor::td[1]/following-sibling::td[1]/select"
+  JOB_BOARD_APPLY_JOB_SALES_BACKGROUND = ".//*[@class='atsPreScreen']/tbody/tr/td/label/span[text()='Do you have a sales background?']/ancestor::tr[1]/following-sibling::tr[1]/td/select"
+  JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[@class='atsPreScreen']/tbody/tr/td/label/span[text()='How many years of experience do you have?']/ancestor::tr[1]/following-sibling::tr[1]/td/select"
+  JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH = ".//*[@class='atsPreScreen']/tbody/tr/td/label/label[contains(text(),'Did you graduate College?')]/ancestor::tr[1]/following-sibling::tr[1]/td/select"
   JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH = ".//*[contains(text(),'Refer Candidate')]/ancestor::td[1]/following-sibling::td[1]/select"
   JOB_BOARD_APPLY_JOB_CURRENT_SALARY_XPATH = ".//*[contains(text(),'Current Candidate')]/ancestor::td[1]/following-sibling::td[1]/select"
   JOB_BOARD_APPLY_JOB_START_DATE_XPATH = ".//*[contains(text(),'Start Date')]/ancestor::td[1]/following-sibling::td[1]/select"

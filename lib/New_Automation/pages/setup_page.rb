@@ -125,8 +125,6 @@ class SetupEditPage
   
   
   #JOB BOARD LOGIN OPTIONS
-    # URL
-  CONFIG_JOB_BOARD_LOGIN_URL = "https://na17.salesforce.com/udd/Site/editSiteLoginSettings.apexp?id=0DMo00000005Nzk"
     # Buttons
   CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH = ".//*[@value='Save']"      
   CONFIG_JOB_BOARD_LOGIN_EDIT_XPATH = ".//*[@value='Edit']"
@@ -140,5 +138,13 @@ class SetupEditPage
   # MASS MAIL
     # Fields
   ENABLE_MASS_MAIL_CHECKBOX_XPATH = ".//*[text()[contains(.,'EnableMassMailService')]]/../..//input"
+  
+  # SETUP
+  DEVELOP_XPATH = ".//a[text()='Develop']"
+  OPENINGS_XPATH = ".//a[text()='openings']"
+  SITES_XPATH = ".//a[text()='Sites']"
+  LOGIN_SETTINGS_BUTTON_XPATH = ".//*[@value='Login Settings']"
+  EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
+  CUSTOM_SETTINGS_XPATH = ".//*[@id='CustomSettings_font']"
   
 end
