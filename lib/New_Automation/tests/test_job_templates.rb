@@ -105,6 +105,8 @@ end
 #TC974 - Create Job Order, Validation 
 def test_createJobOrderValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
+  #Precondition: have created a JobTemplate
+  createJobTemplate
   Common.goToTab(HomePage::JOB_TEMPLATES_TAB_XPATH)
   test = [{"displayed" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},
           {"click_and_load" => JobTemplates::FIRST_JOB_TEMPLATE_IN_LIST_XPATH},
