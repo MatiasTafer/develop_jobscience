@@ -24,8 +24,8 @@ $PASSWORD_LINKEDIN = "oktanaqa"
 class EeoQuestion < TestBasic
   
 
-  
-#TC835 - EEO Questions, hidden questions
+=begin  
+#TC835 - EEO Questions, hidden questions #FIREFOX
 def   test_eeoQuestionHiddenQuestion
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
@@ -45,10 +45,12 @@ def   test_eeoQuestionHiddenQuestion
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
    } 
 end
+=end
 
-#TC836 - EEO Questions, displayed questions
+=begin
+#TC836 - EEO Questions, displayed questions #FIREFOX
 def   test_eeoQuestionDisplayedQuestion
-   Common.login(Common::USER_EMAIL, Common::PASSWORD)
+   Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
    test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
            {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
@@ -66,13 +68,16 @@ def   test_eeoQuestionDisplayedQuestion
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
    } 
 end
+=end
 
-#TC837 - EEO Commit Default
+=begin
+#TC837 - EEO Commit Default #FIREFOX
 def test_eeoCommitDefault
   #Preconditions
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    CustomSettings.JobBoardLogin(true)
-   $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
+   #$browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
+   Common.go_to_custom_settings(true)
    test = [{"displayed" => SetupEditPage::COMMIT_EEO_DEFAULT_VALUE_CHECKBOX_XPATH},
            {"checked" => SetupEditPage::COMMIT_EEO_DEFAULT_VALUE_CHECKBOX_XPATH},
            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
@@ -110,11 +115,14 @@ def test_eeoCommitDefault
      $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click  
    end
 end
+=end
 
-#TC838 - EEO Question Handler, Always
+=begin
+#TC838 - EEO Question Handler, Always #FIREFOX
 def test_eeoQuestionHandlerAlways
    #Preconditions
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
+   Common.go_to_custom_settings
    CustomSettings.QuestionSetHandler("Always")
    CustomSettings.JobBoardLogin(true)
    #Steps
@@ -150,11 +158,14 @@ def test_eeoQuestionHandlerAlways
      $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
    end
 end
+=end
 
-#TC839 - EEO Question Handler, Populate
+=begin
+#TC839 - EEO Question Handler, Populate #FIREFOX
 def test_eeoQuestionHandlerPopulate
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
+  Common.go_to_custom_settings
   CustomSettings.QuestionSetHandler("Populate")
   CustomSettings.JobBoardLogin(true)
   #Steps
@@ -171,16 +182,18 @@ def test_eeoQuestionHandlerPopulate
          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH}]
   Common.main(test)   
   begin   
-    test= [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+    test2= [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH}, #Button continue on second Page
            {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
            {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
-    Common.main(test)
+    Common.main(test2)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
     }
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click   
-  rescue
+  rescue     
     test= [{"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
            {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
     Common.main(test)
@@ -190,6 +203,8 @@ def test_eeoQuestionHandlerPopulate
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
   end
 end
+=end
+
 
 #TC840 - EEO Question Handler, Omit
 def test_eeoQuestionHandlerOmit
@@ -231,6 +246,7 @@ def test_eeoQuestionHandlerOmit
   end
 end
 
+=begin
 #TC841 - Standard and Custom EEO Disclaimers, standard & custom
 def test_eeoDisclaimersStandardCustom
   #Preconditions
@@ -397,6 +413,6 @@ def test_eeoApplyWithLinkedInEeoDisable
     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_CLOSE_POPUP_XPATH).displayed?
   }  
 end
-
+=end
 
 end

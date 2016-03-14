@@ -22,7 +22,7 @@ $wait
 
 #require './New_Automation/test_email_actions'
 
-#require './New_Automation/test_eeo_question.rb'
+require './New_Automation/tests/test_eeo_question.rb'
 
 #require './New_Automation/test_requisition.rb'
 
@@ -36,7 +36,7 @@ $wait
 
 #require './New_Automation/tests/test_candidates_actions_on_record'
 
-require './New_Automation/tests/test_job_templates.rb'
+#require './New_Automation/tests/test_job_templates.rb'
 
 #require './New_Automation/test_short_list.rb'
 
