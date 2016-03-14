@@ -7,16 +7,18 @@ require './New_Automation/tests/test_basic.rb'
 require './New_Automation/tests/common.rb'
 require_relative 'users.rb'
 require './New_Automation/pages/home_page.rb'
+
 require './New_Automation/pages/contacts/contacts_home_page.rb'
+
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
 require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
-require_relative './pages/applications_detail_page.rb'
-require_relative './pages/applications_home_page.rb'
-require_relative './pages/answer_detail_page.rb'
-require_relative './pages/setup_page.rb'
+require './New_Automation/pages/applications/applications_detail_page.rb'
+require './New_Automation/pages/applications/applications_home_page.rb'
+
+require './New_Automation/pages/answers/answer_detail_page.rb'
+require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
-require_relative './pages/job_board_job_detail.rb'
-require_relative './pages/applications_detail_page.rb'
+require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/contacts/contacts_home_page.rb'
@@ -54,7 +56,7 @@ class TestActionsOnListView < TestBasic
     CreateAccount(randomAccount)
     
     # 1. Click on "Contacts" 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Click on "New".
     Common.displayed(ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW)
@@ -99,7 +101,7 @@ class TestActionsOnListView < TestBasic
     CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Select a Contact List View and click Go
     test = [
@@ -133,7 +135,7 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     $browser.switch_to.window($browser.window_handles.first)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
@@ -165,7 +167,7 @@ class TestActionsOnListView < TestBasic
     Common.CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Select a Contact List View and click Go
     test = [
@@ -217,7 +219,7 @@ class TestActionsOnListView < TestBasic
     CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Select a Contact List View and click Go
     test = [
@@ -267,7 +269,7 @@ class TestActionsOnListView < TestBasic
     #RESULTS
     # Skill record should be created, skill record should show rating
     $browser.switch_to.window($browser.window_handles.first)
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
@@ -289,7 +291,7 @@ class TestActionsOnListView < TestBasic
     Common.main(test) 
     assert_equal("10", $browser.find_element(:xpath => SkillDetailPage::SKILL_DETAIL_RATING_XPATH).text)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
@@ -329,7 +331,7 @@ class TestActionsOnListView < TestBasic
     CreateContact(randomContact2, randomContact2)
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Select a Contact List View and click Go
     test = [
@@ -389,7 +391,7 @@ class TestActionsOnListView < TestBasic
     CreateShortList(randomList)
         
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Select a Contact List View and click Go
     test = [
@@ -424,7 +426,7 @@ class TestActionsOnListView < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
     # 7. Click on Short List tab
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
    
     # 8. Click on name of used short list
     $wait.until {
@@ -459,7 +461,7 @@ class TestActionsOnListView < TestBasic
     CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Select a Contact List View and click Go
     test = [
@@ -494,7 +496,7 @@ class TestActionsOnListView < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
     # 7. Click on Short List tab
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
    
     # 8. Click on name of used short list
     $wait.until {
@@ -537,7 +539,7 @@ class TestActionsOnListView < TestBasic
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -573,7 +575,7 @@ class TestActionsOnListView < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -617,7 +619,7 @@ class TestActionsOnListView < TestBasic
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -653,7 +655,7 @@ class TestActionsOnListView < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -696,7 +698,7 @@ class TestActionsOnListView < TestBasic
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -735,7 +737,7 @@ class TestActionsOnListView < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -777,7 +779,7 @@ class TestActionsOnListView < TestBasic
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -850,7 +852,7 @@ class TestActionsOnListView < TestBasic
     CreateAgencyAccount(randomAgy)
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -892,7 +894,7 @@ class TestActionsOnListView < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -940,7 +942,7 @@ class TestActionsOnListView < TestBasic
     CreateAgencyAccount(randomAgy)
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -982,7 +984,7 @@ class TestActionsOnListView < TestBasic
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
     
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -1026,7 +1028,7 @@ class TestActionsOnListView < TestBasic
     CreateContact(randomContact, randomContact)
         
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1071,7 +1073,7 @@ class TestActionsOnListView < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 10. Go to contact record of contact who was applied
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -1115,7 +1117,7 @@ class TestActionsOnListView < TestBasic
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1160,7 +1162,7 @@ class TestActionsOnListView < TestBasic
     $browser.switch_to.window(newWindow2)
     
     # 10. Go to contact record of contact who was applied
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -1208,7 +1210,7 @@ class TestActionsOnListView < TestBasic
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1274,7 +1276,7 @@ class TestActionsOnListView < TestBasic
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1376,7 +1378,7 @@ class TestActionsOnListView < TestBasic
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1469,7 +1471,7 @@ class TestActionsOnListView < TestBasic
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1539,7 +1541,7 @@ class TestActionsOnListView < TestBasic
 def CreateRequisitionPostJob(name, postjob)
     #postjob=TRUE will check "Post Job" checkbox, postjob=false will not check it.
       
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
       {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
@@ -1587,7 +1589,7 @@ def CreateRequisitionPostJob(name, postjob)
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1649,7 +1651,7 @@ def CreateRequisitionPostJob(name, postjob)
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1713,7 +1715,7 @@ def CreateRequisitionPostJob(name, postjob)
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1779,7 +1781,7 @@ def CreateRequisitionPostJob(name, postjob)
     
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1837,7 +1839,7 @@ def CreateRequisitionPostJob(name, postjob)
       
     
     # 1. Click on "Contacts". 
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     
     test = [
@@ -1883,7 +1885,7 @@ def CreateRequisitionPostJob(name, postjob)
   ######### CUSTOM METHODS ##########
   def CreateAgencyAccount(name)
     #Create a Agency with "name" as its name
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH}, 
       {"click" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
@@ -1900,7 +1902,7 @@ def CreateRequisitionPostJob(name, postjob)
   end
   def CreateShortList(name)
     #Create a Short List with "name" as its name
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
       {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}, 
       {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH},
@@ -1913,7 +1915,7 @@ def CreateRequisitionPostJob(name, postjob)
   end      
   def CreateAccount(name)
     #Create an account record with "name" as Account Name
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
+    Common.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH}, 
       {"click" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
@@ -1929,7 +1931,7 @@ def CreateRequisitionPostJob(name, postjob)
   end
   
   def CreateContact(name, account_name)
-     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
       {"click" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},

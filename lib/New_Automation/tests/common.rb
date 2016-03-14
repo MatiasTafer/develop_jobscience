@@ -27,8 +27,6 @@ require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 class Common
   
-
-  
   #LOGIN
   def self.login(username, password)
    #Waits added for Chrome
@@ -39,8 +37,7 @@ class Common
    $browser.find_element(:id, LoginPage::PASSWORD_TEST_FIELD_ID).send_keys password
    $browser.find_element(:id, LoginPage::LOGIN_BUTTON_ID).click
    $wait.until {
-     #$browser.current_url.eql?(HomePage::HOME_TAB_LINK_URL)
-     $browser.find_element(:xpath, HomePage::HOME_TAB_LINK_URL).displayed?
+     $browser.find_element(:id, HomePage::HOME_TAB_ID).displayed?
    } 
  end
     
@@ -71,15 +68,30 @@ class Common
   end
   
   def self.click(field)
-      a = $browser.find_element(:xpath => field).click
+    a = $browser.find_element(:xpath => field).click
+    return a
+  end
+  
+  #Clicks and element and waits for page to load (assuming that the element triggers a page to load)
+  #This method was created because chrome webdriver has a different behaviour
+  def self.click_and_load(field)
+    current = $browser.current_url
+    a = $browser.find_element(:xpath => field).click
+    $wait.until {
+      $browser.current_url != current
+      #$browser.execute_script("return document.readyState;") == "complete" 
+    }
       return a
   end
   
+  
   def self.displayed(field)
-     puts field
-      $wait.until{
+     #puts field
+
+     $wait.until{
         return $browser.find_element(:xpath => field).displayed?
-      }
+     }
+
   end
   
   def self.ssleep
@@ -98,8 +110,9 @@ class Common
   end
   
   def self.hassert(field)
-    return assert $browser.find_element(:xpath, field).displayed?
- 
+    $wait.until{
+      assert $browser.find_element(:xpath, field).displayed?
+    }
   end
   
   def self.hassert_equal(text, text2)
@@ -142,8 +155,6 @@ class Common
       puts "error in set_text_exist"
     end
   end
-  
-  
   
   
   def self.upload(field, file)
@@ -359,6 +370,11 @@ class Common
         puts "accept_alert"
         self.accept_alert
       end
+      
+      if i["click_and_load"]
+        puts "click_and_load"
+        self.click_and_load(i["click_and_load"])
+      end
     end
     return true
   end
@@ -388,7 +404,7 @@ class Common
 
 
   def self.standart_question_null
-     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+     self.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -411,7 +427,7 @@ class Common
 
   def self.CreateAccount(name)
     #Create an account record with "name" as Account Name
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
+    self.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH}, 
       {"click" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
@@ -428,7 +444,7 @@ class Common
   
   def self.CreateContact(name, account_name)
     #Create a Contact with name "name", and asociated with the account record with name "account_name"
-     $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+     self.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
       {"click" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
@@ -452,9 +468,9 @@ class Common
   
   def self.DeleteAccount(name)
     #Delete the account record with name "name", it also will be deleted the contacts asociated with the account
-    $browser.get(HomePage::ACCOUNTS_TAB_LINK_URL)
+    self.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
-    {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH}
+      {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH}
     ]
     Common.main(test)
     $browser.find_element(:xpath => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
@@ -469,7 +485,7 @@ class Common
   
   def self.CreateShortList(name)
     #Create a Short List with "name" as its name
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    self.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
       {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}, 
       {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH},
@@ -483,7 +499,7 @@ class Common
   
   def self.DeleteShortList(name)
     #Delete the Short List with name "name"
-    $browser.get(HomePage::SHORT_LIST_TAB_LINK_URL)
+    self.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
     {"displayed" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH},
     {"set_text" => ShortListHomePage::SHORT_LIST_HOME_VIEW_SELECT_XPATH, "text" => "All Short List"},
@@ -498,7 +514,7 @@ class Common
   
   def self.DeleteCandidateCreatedToday(name)
     #Delete the Candidate with name "name"
-    $browser.get(HomePage::CONTACTS_TAB_LINK_URL)
+    self.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
     {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
     {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
@@ -516,7 +532,7 @@ class Common
     #disableEeo=TRUE will check "Disable EEO" checkbox, if it is false it will be unchecked.  
     #questionSet will define the name of the Question Set asosiated with the Job Order, the default value is nil
     
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    self.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
       {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
@@ -554,7 +570,7 @@ class Common
     #Requisition with name "name" will be deleted
     
     # 1 - Go to "Requisition" Tab
-    $browser.get(HomePage::REQUISITIONS_LINK_URL)
+    self.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     $wait.until{
       $browser.find_element(:xpath => RequisitionsHomePage::REQUISITIONS_PAGE_LIST_XPATH).displayed?  
       }
@@ -573,14 +589,13 @@ class Common
   
   def self.CreateQuestionSetEmpty(name)
      # 1 - Go to "Question Sets" Tab
-    $browser.get(HomePage::QUESTION_SETS_LINK_URL)
+    self.goToTab(HomePage::QUESTION_SETS_LINK_XPATH)
    
     # 2 - Click on New button
     $wait.until{
       $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).displayed?
     }
-   
-    $browser.find_element(:xpath => QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH).click
+    self.click_and_load(QuestionSetsHomePage::QUESTION_SETS_HOME_BTN_NEW_XPATH)
    
     # 3 - FIll all the fields
     $wait.until{
@@ -590,17 +605,16 @@ class Common
     $browser.find_element(:id => QuestionSetsNew::QUESTION_SETS_NEW_NAME_ID).send_keys name
     
     # 4 - Click on "Save" button
-    $browser.find_element(:xpath => QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH).click
-     $wait.until{
+    self.click_and_load(QuestionSetsNew::QUESTION_SETS_NEW_BTN_SAVE_XPATH)
+    $wait.until{
       $browser.find_element(:xpath => QuestionSetsDetail::QUESTION_SETS_DETAIL_QUESTION_BUILDER_XPATH).displayed?
     } 
      
   end
   
   def self.CreateUserJobBoard(email, password, fname="a", lname="b")
-    
     # Login for JobBoard enable
-    #CustomSettings.JobBoardLogin(true)
+    CustomSettings.JobBoardLogin(true)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -623,16 +637,13 @@ class Common
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain']"},
       {"hassert_equal" => ".//*[@id='atsApplicationSubmittedMain']", 
       "text" => "You have successfully registered.  Your information has been added to our system."},
-     
     ]
     Common.main(test)
-    
   end
 
-
-  
   def self.standart_question_set
-     $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    #
+    self.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -652,7 +663,6 @@ class Common
     Common.main(test)
   end
   
-
   def self.Checkbox(checkbox, boolean)
     if boolean
       unless $browser.find_element(:xpath => checkbox).attribute("checked")
@@ -671,7 +681,7 @@ class Common
     # click the magnifying glass next to Choose Source to select a source, click Next, click Next, 
     # then click on the Search URL (if you enter a name and click save it will be saved to the notes  and attachments related list)
     
-    $browser.get HomePage::SOURCE_LINK_URL
+    self.goToTab(HomePage::SOURCE_LINK_XPATH)
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       {"click" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
@@ -704,20 +714,19 @@ class Common
       {"displayed" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::NEXT_BUTTON_XPATH},
       
-      {"displayed" => BoardSetupDetailPage::SEARCH_URL_NAME_TEXT_XPATH},
-      {"set_text" => BoardSetupDetailPage::SEARCH_URL_NAME_TEXT_XPATH, "text" => url_name},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NAME_XPATH},
+      {"set_text" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_NAME_XPATH, "text" => url_name},
       
-      {"click" => BoardSetupDetailPage::SAVE_AND_CLOSE_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_SAVE_CLOSE_XPATH},
       
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
     ]
     Common.main(test)
-    
   end
   
   def self.delete_sources(source_name)
-    
-    $browser.get HomePage::SOURCE_LINK_URL
+    #
+    self.goToTab(HomePage::SOURCE_LINK_XPATH)
     test = [
       # Delete the Source associated with the URL
       {"displayed" => ".//*[text()[contains(., '#{source_name}')]]"},
@@ -725,22 +734,17 @@ class Common
       
       {"displayed" => SourceNewEdit::SOURCE_EDIT_BTN_DELETE_XPATH},
       {"click" => SourceNewEdit::SOURCE_EDIT_BTN_DELETE_XPATH},
-      
       {"accept_alert" => ""},
     ]
     Common.main(test)
-    
   end
   
   def self.register_job_board(username, password)
-    
-    #Login
-    Common.login(Common::USER_EMAIL, Users::PASSWORD)
+    #Common.login(Common::USER_EMAIL, Common::PASSWORD)
     # Precondition
-    
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    self.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},
@@ -749,11 +753,14 @@ class Common
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_BUILDER_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_COVER_LETTER_XPATH},
+      {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
     Common.main(test)
     #
     Common.login_job_board
+    #
+    randomContact = SecureRandom.hex(4)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -776,13 +783,134 @@ class Common
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
     ]
     Common.main(test)
-    
   end
   
+  #This method is used to access each tab
+  def self.goToTab(tab)
+    #Go to + icon
+    self.click_and_load(HomePage::ALL_TABS_LINK_XPATH) 
+    $wait.until{
+      $browser.find_element(:xpath => tab).displayed?
+    }
+    self.click_and_load(tab)
+  end
   
+  def self.custom_settings
+    test = [
+      {"displayed" => HomePage::MENU_USER_XPATH},
+      {"click" => HomePage::MENU_USER_XPATH},
+      {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"displayed" => HomePage::DEVELOP_XPATH},
+      {"click_and_load" => HomePage::DEVELOP_XPATH},
+      {"displayed" => HomePage::CUSTOM_SETTINGS_XPATH},
+      {"click" => HomePage::CUSTOM_SETTINGS_XPATH},
+    ]
+    Common.main(test)
+  end
   
-
-  #newWindow= $browser.window_handles.last
-  #$browser.switch_to.window(newWindow)
+  def self.go_to_custom_settings(edit=false)
+    #
+    self.custom_settings
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//a[@class='actionLink'][1]"}
+      b = {"click" => ".//a[@class='actionLink'][1]"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
   
+  def self.go_to_short_list(edit=false)
+    #Short List
+    self.custom_settings
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Short List']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Short List']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//*[@value='Edit']"}
+      b = {"click" => ".//*[@value='Edit']"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
+  
+  def self.go_to_parser_settings(edit=false)
+    #Parser Settings
+    self.custom_settings
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Parser Settings']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Parser Settings']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//*[@value='Edit']"}
+      b = {"click" => ".//*[@value='Edit']"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
+  
+  def self.go_to_social_settings(edit=false)
+    #Social Settings
+    self.custom_settings
+    
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Social Settings']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Social Settings']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//*[@value='Edit']"}
+      b = {"click" => ".//*[@value='Edit']"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
+  
+  def self.go_to_sharing_settings(edit=false)
+    # Security_font
+    test = [
+      {"displayed" => HomePage::MENU_USER_XPATH},
+      {"click" => HomePage::MENU_USER_XPATH},
+      {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"displayed" => HomePage::DEVELOP_XPATH},
+      {"click_and_load" => HomePage::DEVELOP_XPATH},
+      {"displayed" => ".//*[@id='Security_font']"},
+      {"click" => ".//*[@id='Security_font']"},
+      {"displayed" => ".//*[@id='SecuritySharing_font']"},
+      {"click" => ".//*[@id='SecuritySharing_font']"},
+    ]
+    if edit
+      a = {"displayed" => ".//*[@name='edit']"}
+      b = {"click" => ".//*[@name='edit']"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
+  
+  def self.go_to_massmail_service(edit=false)
+    # MassMail Service
+    self.custom_settings
+    
+    test = [
+      {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='MassMail Service']/ancestor::tr[1]/td[1]/a"},
+      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='MassMail Service']/ancestor::tr[1]/td[1]/a"},
+    ]
+    if edit
+      a = {"displayed" => ".//a[@class='actionLink'][1]"}
+      b = {"click" => ".//a[@class='actionLink'][1]"}
+      test << a
+      test << b
+    end
+    Common.main(test)
+  end
 end

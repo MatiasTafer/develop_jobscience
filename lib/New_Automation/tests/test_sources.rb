@@ -28,8 +28,9 @@ require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 class TestSources < TestBasic
   #
-  $USER_JOB_BOARD = "ETTTE@fromthesky.up"
-  $PASSWORD_JOB_BOARD = "otherworld666"
+  $USER_JOB_BOARD = "test2@fromthesky.up"
+  $PASSWORD_JOB_BOARD = "automatable666"
+  #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
   
 =begin
   def test_sources_tc937 #1
@@ -46,7 +47,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Steps
-    $browser.get HomePage::SOURCE_LINK_URL
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       {"click" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
@@ -82,7 +83,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Steps
-    $browser.get HomePage::SOURCE_LINK_URL
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH
     test = [
       # 2
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
@@ -120,12 +121,13 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
+    Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
     # Precondition
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},
@@ -195,9 +197,9 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -278,9 +280,9 @@ class TestSources < TestBasic
     
     # Precondition
     Common.logout_job_board
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -336,9 +338,9 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -417,9 +419,9 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -479,9 +481,9 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
@@ -550,23 +552,23 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     source_name = 'source_test21'
     url_name = 'url_name' + source_name
     
-    #Common.create_sources(source_name)
+    Common.create_sources(source_name)
     
-    #Common.delete_sources(source_name)
+    Common.delete_sources(source_name)
     
     #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
     
@@ -636,9 +638,9 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -710,25 +712,23 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     source_name = 'source_test21'
     url_name = 'url_name' + source_name
     
-    #Common.create_sources(source_name)
+    Common.create_sources(source_name)
     
-    #Common.delete_sources(source_name)
-    
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    Common.delete_sources(source_name)
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
@@ -796,9 +796,9 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
@@ -865,9 +865,9 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
@@ -918,25 +918,23 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     source_name = 'source_test21'
     url_name = 'url_name' + source_name
     
-    #Common.create_sources(source_name)
+    Common.create_sources(source_name)
     
-    #Common.delete_sources(source_name)
-    
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    Common.delete_sources(source_name)
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
@@ -991,9 +989,9 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
@@ -1043,9 +1041,9 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
@@ -1102,25 +1100,23 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_SOURCE_QUESTION_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     
     source_name = 'source_test21'
     url_name = 'url_name' + source_name
     
-    #Common.create_sources(source_name)
+    Common.create_sources(source_name)
     
-    #Common.delete_sources(source_name)
-    
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    Common.delete_sources(source_name)
     
     $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
@@ -1180,9 +1176,9 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"unchecked" => BoardSetupEditPage::BOARD_EDIT_RESUME_REQUIRED_XPATH},
@@ -1267,7 +1263,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     
-    $browser.get JobBoardHomePage::JOB_BOARD_INTERNAL_URL
+    $browser.get HomePage::JOB_BOARD_INTERNAL_URL
     test = [
       {"check_apply" => ""},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
@@ -1309,7 +1305,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     
-    $browser.get JobBoardHomePage::JOB_BOARD_INTERNAL_URL
+    $browser.get HomePage::JOB_BOARD_INTERNAL_URL
     test = [
       {"check_apply" => ""},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
@@ -1346,7 +1342,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     
-    $browser.get JobBoardHomePage::JOB_BOARD_INTERNAL_URL
+    $browser.get HomePage::JOB_BOARD_INTERNAL_URL
     test = [
       {"check_apply" => ""},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
@@ -1372,7 +1368,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::REQUISITION_TAB_LINK_URL
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
       {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
@@ -1382,7 +1378,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::CHATTER_TAB_URL
+    Common.goToTab(HomePage::CHATTER_TAB_XPATH)
     test = [
       {"displayed" => ".//*[text()[contains(.,'View Job Posting')]]"},
       {"click" => ".//*[text()[contains(.,'View Job Posting')]]"},

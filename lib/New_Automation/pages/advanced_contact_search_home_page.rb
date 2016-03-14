@@ -1,89 +1,78 @@
 class AdvancedContactSearchHomePage
 
-  ADVANCED_CONTACT_SEARCH_ID = "sbsearch'"
-
   # Keyword Search Tab
-  KEYWORD_TAB_ID = "ssPg:topFm:booleanTab_lbl"
+  KEYWORD_TAB_XPATH = "//*[text()='Keyword']"
 
-  SEARCH_CANDIDATE_ONLY_CHECKBOX_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:searchCandidateLfF"
-  SEARCH_K_BUTTON_ID = "ssPg:topFm:booleanSearchPb:booleanSearchPbBtns:booleanSearchBtn"
-  CLEAR_K_BUTTON_ID = "ssPg:topFm:booleanSearchPb:booleanSearchPbBtns:booleanClearBtn"
-  ALL_THESE_WORDS_LABEL_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:allwordsLf"
-  SOME_THESE_WORDS_LABEL_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:somewordsLf"
-  ANY_THESE_UNWANTED_WORDS_LABEL_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:unwantedwordsLf"
+  SEARCH_CANDIDATE_ONLY_CHECKBOX_XPATH = "//*[text()[contains(., 'Search Candidate Only')]]/../following-sibling::*//input"
+  CLEAR_K_BUTTON_XPATH = "(.//*[@value='Clear'])[1]"
+  ALL_THESE_WORDS_LABEL_XPATH = "//*[text()[contains(., 'Find people that have...')]]/../following-sibling::* //span" 
+  SOME_THESE_WORDS_LABEL_XPATH = "//*[text()[contains(., 'some of these words:')]]/../..//input"
+  ANY_THESE_UNWANTED_WORDS_LABEL_XPATH = "//*[text()[contains(., 'any of these unwanted words:')]]/../..//input"
 
   # Keyword Search Tab - Additional Search Criteria
-  FIRST_NAME_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:fnameLf"
-  LAST_NAME_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:lnameLf"
-  EMAIL_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:emailLf"
-  LOCATION_SELECT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:locationLf"
-  COUNTRY_SELECT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:countrylLf"
-  STATEPROVINCE_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:statelLf"
-  CITY_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:CityLf"
-  ZIP_POSTAL_CODE_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:CityLf"
-  WITHIN_SELECT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:withinlLf"
-  TITLE_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:etitleLf"
-  COMPANY_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:companyLf"
-  SCHOOL_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:schoolLf"
-  DATE_AVAILABLE_TEXT_ID = "ssPg:topFm:booleanSearchPb:boolComp:boolCompPg:dtavaillLf"
+  FIRST_NAME_TEXT_XPATH = "(//*[text()[contains(., 'First Name')]]/../..//input)[1]"
+  LAST_NAME_TEXT_XPATH = "(//*[text()[contains(., 'Last Name')]]/../..//input)[1]"
+  EMAIL_TEXT_XPATH = "((.//*[@class='detailList']//tr)[9]//input)[1]"
+  LOCATION_SELECT_XPATH = "//*[text()[contains(., 'Location')]]/../..//select"
+  COUNTRY_SELECT_XPATH = "//*[text()[contains(., 'Country')]]/../..//select"
+  STATEPROVINCE_TEXT_XPATH = "//*[text()[contains(., 'State/Province')]]/../..//input"
+  CITY_TEXT_XPATH = "(.//*[@class='dataCol col02'])[7]//input"
+  ZIP_POSTAL_CODE_TEXT_XPATH = "(.//*[@class='dataCol col02'])[8]//input"
+  WITHIN_SELECT_XPATH = "(.//*[@class='dataCol col02'])[9]//select"
+  TITLE_TEXT_XPATH = "(//*[text()[contains(., 'Title')]]/../..)[2]//input"
+  COMPANY_TEXT_XPATH = "((//*[text()[contains(., 'Company')]]/../..)//input)[2]"
+  SCHOOL_TEXT_XPATH = "((//*[text()[contains(., 'School')]]/../..)//input)[2]"
+  DATE_AVAILABLE_TEXT_XPATH = ".//*[@class='dateInput dateOnlyInput']//input"
 
   # Quick Boolean Tab
-  QUICK_BOOLEAN_TAB_ID = "ssPg:topFm:basicTab_lbl"
+  QUICK_BOOLEAN_TAB_XPATH = "//*[text()[contains(., 'Quick Boolean')]]" 
 
-  SEARCH_Q_BUTTON_ID = "ssPg:topFm:basicSearchPb:basicSearchPbBtns:basicSearchBtn"
-  CLEAR_Q_BUTTON_ID = "ssPg:topFm:basicSearchPb:basicSearchPbBtns:basicClearBtn"
-  KEYWORD_TEXT_ID = "ssPg:topFm:basicSearchPb:keywordComp:kwComp:keywordIf"
+  SEARCH_Q_BUTTON_XPATH = "(.//*[@class='pbButton']//input)[3]"
+  CLEAR_Q_BUTTON_XPATH = "(.//*[@class='pbButton']//input)[4]"
+  KEYWORD_TEXT_XPATH = "(//*[text()[contains(., 'Keyword')]])[3]/../..//input"
 
   # Skills Tab
-  SKILLS_TAB_ID = "ssPg:topFm:intelTab_lbl"
-  SEARCH_S_BUTTON_ID = "ssPg:topFm:intelSearchPb:j_id190:intelSearchBtn"
-  CLEAR_S_BUTTON_ID = "ssPg:topFm:intelSearchPb:j_id190:intelClearBtn"
+  SKILLS_TAB_XPATH = "(//*[text()[contains(., 'Skills')]])[1]"
+  SEARCH_S_BUTTON_XPATH = "(.//*[@class='pbButton']//input)[5]"
+  CLEAR_S_BUTTON_XPATH = "(.//*[@class='pbButton']//input)[6]"
 
-  ICON_SEARCH1_SKILLS_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:j_id191:0:rowSkillImg"
-  TAXONOMY_CHECKBOX_ID = "a0ho0000000J8Y4AAK"
 
-  ICON_SEARCH2_SKILLS_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:j_id191:1:rowSkillImg"
+  MIN_YEARS1_SELECT_XPATH = "(//*[text()[contains(., 'Min Years')]]/../../../..//tr//select)[1]"
+  MIN_YEARS2_SELECT_XPATH = "(//*[text()[contains(., 'Min Years')]]/../../../..//tr//select)[3]"
 
-  MIN_YEARS1_SELECT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:j_id191:0:rowMinIf"
-  MIN_YEARS2_SELECT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:j_id191:1:rowMinIf"
+  MAX_YEARS1_XPATH = "(//*[text()[contains(., 'Max Years')]]/../../../..//select)[2]"
+  MAX_YEARS2_XPATH = "(//*[text()[contains(., 'Max Years')]]/../../../..//select)[4]"
 
-  MAX_YEARS1_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:j_id191:0:rowMaxIf"
-  MAX_YEARS2_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:j_id191:1:rowMaxIf"
+  RECENT1_CHECKBOX_ID = "(//*[text()[contains(., 'Recent')]]/../../../..//td)[5]//input"
 
-  RECENT1_CHECKBOX_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:j_id191:0:rowRecIf"
-  RECENT2_CHECKBOX_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:j_id191:1:rowRecIf"
-
-  ALL_SKILLS_REQUIRED_CHECKBOX_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:reqIf"
-  TITLE_TEXT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:titleIf"
-  COMPANY_TEXT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:compIf"
-  IN_WORKFORCE_FROM_SELECT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:workFmIf"
-  IN_WORKFORCE_TO_SELECT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:workToIf"
-  IN_MANAGEMENT_FROM_SELECT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:mgmFmIf']"
-  IN_MANAGEMENT_TO_SELECT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:mgmToIf"
-  MINIMUM_DEGREE_SELECT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:degreeIf"
-  GPA_SELECT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:gpaIf"
-  LANGUAGE_SELECT_ID = "ssPg:topFm:intelSearchPb:intelComp:intelCompPg:langIf"
+  ALL_SKILLS_REQUIRED_CHECKBOX_XPATH = "(.//*[@type='checkbox'])[7]"
+  TITLE_TEXT_XPATH = "(//*[text()[contains(., 'Title')]]/..)[3]/..//input"
+  COMPANY_TEXT_XPATH = "(//*[text()[contains(., 'Company')]])[2]/../..//input"
+  IN_WORKFORCE_FROM_SELECT_XPATH = "(//*[text()[contains(., 'In Workforce From')]]/../..//select)[1]"
+  IN_WORKFORCE_TO_SELECT_XPATH = "(//*[text()[contains(., 'In Workforce From')]]/../..//select)[2]"
+  IN_MANAGEMENT_FROM_SELECT_ID = "(//*[text()[contains(., 'In Management From')]]/../..//select)[1]"
+  IN_MANAGEMENT_TO_SELECT_ID = "(//*[text()[contains(., 'In Management From')]]/../..//select)[2]"
+  MINIMUM_DEGREE_SELECT_ID = "(//*[text()[contains(., 'Minimum Degree')]]/../../..//td//select)[1]"
+  GPA_SELECT_ID = "(//*[text()[contains(., 'Minimum Degree')]]/../../..//td//select)[2]"
+  LANGUAGE_SELECT_ID = "(//*[text()[contains(., 'Minimum Degree')]]/../../..//td//select)[3]"
 
   # Match Tab
-  MATCH_TAB_ID = "ssPg:topFm:matchTab_lbl"
-  CLEAR_M_BUTTON_ID = "ssPg:topFm:matchSearchPb:matchSearchPbBtns:matchClearBtn"
+  MATCH_TAB_ID = "(//*[text()[contains(., 'Match')]])[2]"
+  CLEAR_M_BUTTON_ID = "(.//*[@value='Clear'])[7]"
 
-  JOB_TEXT_ID = "ssPg:topFm:matchSearchPb:matchComp:matchComp:jobMatchIf"
-  JOB_ICON_ID = "ssPg:topFm:matchSearchPb:matchComp:matchComp:jobMatchIf_lkwgt"
-  JOB_MATCH_SEARCH_BUTTON_ID = "ssPg:topFm:matchSearchPb:matchComp:matchComp:jobSearchBtn"
+  JOB_TEXT_ID = "((//*[text()[contains(., 'Job')]])[6]/../..//input)[7]"
+  JOB_MATCH_SEARCH_BUTTON_ID = "((//*[text()[contains(., 'Job')]])[6]/../..//input)[8]"
 
-  CANDIDATE_TEXT_ID = "ssPg:topFm:matchSearchPb:matchComp:matchComp:resumeMatchIf"
-  CANDIDATE_ICON_ID = "ssPg:topFm:matchSearchPb:matchComp:matchComp:resumeMatchIf_lkwgt"
+  CANDIDATE_TEXT_ID = "((//*[text()[contains(., 'Candidate')]])[2]/../..//input)[7]"
   RESUME_MATCH_SEARCH_BUTTON_ID = "ssPg:topFm:matchSearchPb:matchComp:matchComp:resumeSearchBtn"
 
-  PROJECT_TEXT_ID = "ssPg:topFm:matchSearchPb:matchComp:matchComp:projectMatchIf"
-  PROJECT_ICON_ID = "ssPg:topFm:matchSearchPb:matchComp:matchComp:projectMatchIf_lkwgt"
-  PROJECT_MATCH_SEARCH_BUTTON_ID = "ssPg:topFm:matchSearchPb:matchComp:matchComp:projectSearchBtn"
+  PROJECT_TEXT_ID = "(//*[text()[contains(., 'Project')]]/../..//input)[7]"
+  PROJECT_MATCH_SEARCH_BUTTON_ID = "(//*[text()[contains(., 'Project')]]/../..//input)[8]"
 
   # Saved Tab
-  SAVED_TAB_ID = "ssPg:topFm:namedTab_lbl"
+  SAVED_TAB_ID = "(//*[text()[contains(., 'Saved')]])[1]"
 
   # History Tab
-  HISTORY_TAB_ID = "ssPg:topFm:histTab_lbl"
+  HISTORY_TAB_ID = "(//*[text()[contains(., 'History')]])[1]"
 
 end

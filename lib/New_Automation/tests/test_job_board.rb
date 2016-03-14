@@ -22,8 +22,8 @@ require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 class TestJobBoard < TestBasic
 
-  $USER_JOB_BOARD = "ETTTE@fromthesky.up"
-  $PASSWORD_JOB_BOARD = "otherworld666"
+  $USER_JOB_BOARD = "qwqewqewq@test.up"
+  $PASSWORD_JOB_BOARD = "pass1234"
   $USER_JOB_BOARD2 = "testqa@a.com"
   $PASSWORD_JOB_BOARD2 = "o1234567" 
   
@@ -35,7 +35,7 @@ class TestJobBoard < TestBasic
     # JS2 -  Search jobs by criteria 
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -69,7 +69,7 @@ class TestJobBoard < TestBasic
     # JS2 - Set "Show Search Only" to "TRUE" in Board Setup
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # Preconditions
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -111,7 +111,7 @@ class TestJobBoard < TestBasic
     # JS2 - Edit search criteria fields
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # Steps
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -142,9 +142,9 @@ class TestJobBoard < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Precondition
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},
@@ -310,7 +310,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -338,7 +338,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::REQUISITION_TAB_LINK_URL
+    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_EDIT_XPATH},
       {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_EDIT_XPATH},
@@ -432,7 +432,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::SOURCE_LINK_URL
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       # 3. Click on "New".
@@ -464,7 +464,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -489,7 +489,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::SOURCE_LINK_URL
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       # 3. Click on "New".
@@ -520,7 +520,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Jobs/Projects" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -554,7 +554,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Department" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -586,7 +586,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Location" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -618,7 +618,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Employment Type" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -644,13 +644,13 @@ class TestJobBoard < TestBasic
     
   end
 
-
+=end
 
   def test_job_board_tc868 #19
     # JS2 - Job Search by "Business Unit" field
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -662,7 +662,7 @@ class TestJobBoard < TestBasic
       {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
     ]
-    Common.main(test)
+    #Common.main(test)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -675,12 +675,13 @@ class TestJobBoard < TestBasic
     
   end
 
+=begin
   
   def test_job_board_tc870 #20
     # JS2 - Job Search by "Jobs/Projects", "Department" and "Location" fields 
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -712,7 +713,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Jobs/Projects", "Department", "Location" and "Employment Type" fields
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -747,7 +748,7 @@ class TestJobBoard < TestBasic
     # JS2 - Job Search by "Jobs/Projects", "Department", "Location", "Employment Type" and "Business Unit" fields
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     # set Search & Results criteria 1, 2 and 3.
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -886,7 +887,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -934,7 +935,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -1038,7 +1039,6 @@ class TestJobBoard < TestBasic
   end
   
 
-=end
   
   def test_job_board_tc881 #30
     # JS2 - Resume Page
@@ -1200,12 +1200,12 @@ class TestJobBoard < TestBasic
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
       # 6. Checked "Attach to Applications" = true.
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -1250,12 +1250,12 @@ class TestJobBoard < TestBasic
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
       # 6. Checked "Attach to Applications" = true.
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -1274,12 +1274,12 @@ class TestJobBoard < TestBasic
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
       # 6. Checked "Attach to Applications" = true.
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -1335,12 +1335,12 @@ class TestJobBoard < TestBasic
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
       # 6. Checked "Attach to Applications" = true.
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
-      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
+      {"checked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -1404,13 +1404,13 @@ class TestJobBoard < TestBasic
     # Preconditios
     $browser.get SetupEditPage::CONFIG_SETUP_EDIT_PAGE_URL
     test = [
-      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"displayed" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 6. Checked "Attach to Applications" = false.
-      {"unchecked" => SetupEditPage::ATTACH_TO_APPLICATIONS_XPATH},
+      {"unchecked" => SetupEditPage::ATTACH_TO_APPLICATIONS_CHECKBOX_XPATH},
       # 7. Fill the field "Accepted Document Types for Attachments".
       {"set_text" => SetupEditPage::DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH, "text" => "docx, doc, pdf, rtf, html, txt"},
       # 8. Fill field "Max Number of Attachments" with a number greater than 1.
-      {"set_text" => SetupEditPage::MAX_NUMBER_ATTACHMENTS_XPATH, "text" => "2"},
+      {"set_text" => SetupEditPage::MAX_NUMB_ATTACHMENTS_INPUT_XPATH, "text" => "2"},
       # 9. Click on "Save".
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
@@ -2715,7 +2715,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -2786,7 +2786,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -2857,7 +2857,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -2934,7 +2934,7 @@ class TestJobBoard < TestBasic
     ]
     Common.main(test)
     
-    $browser.get HomePage::BOARD_SETUP_TAB_LINK_URL
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
