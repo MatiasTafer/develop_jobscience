@@ -163,7 +163,7 @@ class TestStandardQuestions < TestBasic
     }
     end  
   end
-=begin 
+
   #TC930 - New Standard Question, Field Validation, Required By Applicant = true
   def test_FieldValidationQuestionAplicantTrue
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
@@ -487,5 +487,5 @@ end
     end
     end
   end
-=end
+
 end
