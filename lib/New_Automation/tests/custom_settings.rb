@@ -383,7 +383,7 @@ class CustomSettings
   def self.JobBoardLogin(enable)
     #If enable=true login is needed
     
-    $browser.get(SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL)
+    Common.go_to_openings
     $wait.until{
       $browser.find_element(:xpath => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH).displayed?
       }

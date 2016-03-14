@@ -203,7 +203,7 @@ class Common
     c = true
     begin
       while c do
-        path = "(.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:tb']/child::tr/child::td/child::a)[#{$num}]"
+        path = ".//*[contains(@class,'atsSearchResultsData')]/a[#{$num}]"
         a = self.displayed(path)
         self.click(path)
         b = self.displayed(".//*[@id='j_id0:j_id4:j_id128'][text()[contains(.,'You have already applied')]]")
@@ -381,7 +381,7 @@ class Common
   
   
   def self.login_job_board
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -392,7 +392,7 @@ class Common
   end
   
   def self.logout_job_board
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "-"},
@@ -801,10 +801,30 @@ class Common
       {"click" => HomePage::MENU_USER_XPATH},
       {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
       {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
-      {"displayed" => HomePage::DEVELOP_XPATH},
-      {"click_and_load" => HomePage::DEVELOP_XPATH},
-      {"displayed" => HomePage::CUSTOM_SETTINGS_XPATH},
-      {"click" => HomePage::CUSTOM_SETTINGS_XPATH},
+      {"displayed" => SetupEditPage::DEVELOP_XPATH},
+      {"click_and_load" => SetupEditPage::DEVELOP_XPATH},
+      {"displayed" => SetupEditPage::CUSTOM_SETTINGS_XPATH},
+      {"click" => SetupEditPage::CUSTOM_SETTINGS_XPATH},
+    ]
+    Common.main(test)
+  end
+  
+  def self.go_to_openings
+    test = [
+      {"displayed" => HomePage::MENU_USER_XPATH},
+      {"click" => HomePage::MENU_USER_XPATH},
+      {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"displayed" => SetupEditPage::DEVELOP_XPATH},
+      {"click_and_load" => SetupEditPage::DEVELOP_XPATH},
+      {"displayed" => SetupEditPage::SITES_XPATH},
+      {"click_and_load" => SetupEditPage::SITES_XPATH},
+      {"displayed" => SetupEditPage::OPENINGS_XPATH},
+      {"click" => SetupEditPage::OPENINGS_XPATH},
+      {"displayed" => SetupEditPage::LOGIN_SETTINGS_BUTTON_XPATH},
+      {"click" => SetupEditPage::LOGIN_SETTINGS_BUTTON_XPATH},
+      {"displayed" => SetupEditPage::EDIT_BUTTON_XPATH},
+      {"click" => SetupEditPage::EDIT_BUTTON_XPATH},
     ]
     Common.main(test)
   end
@@ -881,8 +901,8 @@ class Common
       {"click" => HomePage::MENU_USER_XPATH},
       {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
       {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
-      {"displayed" => HomePage::DEVELOP_XPATH},
-      {"click_and_load" => HomePage::DEVELOP_XPATH},
+      {"displayed" => SetupEditPage::DEVELOP_XPATH},
+      {"click_and_load" => SetupEditPage::DEVELOP_XPATH},
       {"displayed" => ".//*[@id='Security_font']"},
       {"click" => ".//*[@id='Security_font']"},
       {"displayed" => ".//*[@id='SecuritySharing_font']"},

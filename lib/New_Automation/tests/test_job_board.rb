@@ -188,7 +188,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Precondition
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -1677,7 +1677,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -1730,7 +1730,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -1762,7 +1762,7 @@ class TestJobBoard < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 9. Repeat steps 1-8 with unauthenticated job board
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "-"},
@@ -1793,7 +1793,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -1827,7 +1827,7 @@ class TestJobBoard < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # 9. Repeat steps 1-8 with unauthenticated job board
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "-"},
@@ -1861,7 +1861,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -1899,7 +1899,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -1937,7 +1937,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -1977,7 +1977,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -2023,7 +2023,7 @@ class TestJobBoard < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
     # Unauthenticated job board
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "-"},
@@ -2073,7 +2073,7 @@ class TestJobBoard < TestBasic
       {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
     ]
     Common.main(test)
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -2121,7 +2121,7 @@ class TestJobBoard < TestBasic
       {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
     ]
     Common.main(test)
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -2171,7 +2171,7 @@ class TestJobBoard < TestBasic
       {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
     ]
     Common.main(test)
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -2476,7 +2476,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -2525,7 +2525,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "-"},
@@ -2563,7 +2563,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "-"},
@@ -2594,7 +2594,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -2925,7 +2925,7 @@ class TestJobBoard < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Preconditions
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
