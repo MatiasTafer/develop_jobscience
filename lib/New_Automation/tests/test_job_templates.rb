@@ -15,7 +15,7 @@ require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
 
 class TestJobTemplates < TestBasic
-=begin
+
 #TC969 - New Job Template  
 def test_newJobTemplate
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -101,7 +101,7 @@ def test_createJobOrder
     $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_EDIT_XPATH).displayed?  
   }         
 end
-=end
+
 #TC974 - Create Job Order, Validation 
 def test_createJobOrderValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
