@@ -27,8 +27,6 @@ require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 class Common
   
-
-  
   #LOGIN
   def self.login(username, password)
    #Waits added for Chrome
@@ -205,7 +203,7 @@ class Common
     c = true
     begin
       while c do
-        path = "(.//*[@id='j_id0:j_id1:atsForm:atsSearchResultsTable:tb']/child::tr/child::td/child::a)[#{$num}]"
+        path = ".//*[contains(@class,'atsSearchResultsData')]/a[#{$num}]"
         a = self.displayed(path)
         self.click(path)
         b = self.displayed(".//*[@id='j_id0:j_id4:j_id128'][text()[contains(.,'You have already applied')]]")
@@ -383,7 +381,7 @@ class Common
   
   
   def self.login_job_board
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "Customer Portal: Jobseeker Portal"},
@@ -394,7 +392,7 @@ class Common
   end
   
   def self.logout_job_board
-    $browser.get SetupEditPage::CONFIG_JOB_BOARD_LOGIN_URL
+    Common.go_to_openings
     test = [
       {"displayed" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH},
       {"set_text" => SetupEditPage::CONFIG_JOB_BOARD_LOGIN_ENABLE_XPATH, "text" => "-"},
@@ -472,7 +470,7 @@ class Common
     #Delete the account record with name "name", it also will be deleted the contacts asociated with the account
     self.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
-    {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH}
+      {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH}
     ]
     Common.main(test)
     $browser.find_element(:xpath => AccountsHomePage::ACCOUNTS_HOME_PAGE_LIST_XPATH + "//*[text()[contains(.,'" + name + "')]]").click
@@ -617,7 +615,6 @@ class Common
   end
   
   def self.CreateUserJobBoard(email, password, fname="a", lname="b")
-    
     # Login for JobBoard enable
     CustomSettings.JobBoardLogin(true)
     
@@ -642,16 +639,13 @@ class Common
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain']"},
       {"hassert_equal" => ".//*[@id='atsApplicationSubmittedMain']", 
       "text" => "You have successfully registered.  Your information has been added to our system."},
-     
     ]
     Common.main(test)
-    
   end
 
-
-  
   def self.standart_question_set
-     self.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    #
+    self.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -671,7 +665,6 @@ class Common
     Common.main(test)
   end
   
-
   def self.Checkbox(checkbox, boolean)
     if boolean
       unless $browser.find_element(:xpath => checkbox).attribute("checked")
@@ -731,11 +724,10 @@ class Common
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
     ]
     Common.main(test)
-    
   end
   
   def self.delete_sources(source_name)
-    
+    #
     self.goToTab(HomePage::SOURCE_LINK_XPATH)
     test = [
       # Delete the Source associated with the URL
@@ -744,19 +736,14 @@ class Common
       
       {"displayed" => SourceNewEdit::SOURCE_EDIT_BTN_DELETE_XPATH},
       {"click" => SourceNewEdit::SOURCE_EDIT_BTN_DELETE_XPATH},
-      
       {"accept_alert" => ""},
     ]
     Common.main(test)
-    
   end
   
   def self.register_job_board(username, password)
-    
     #Common.login(Common::USER_EMAIL, Common::PASSWORD)
-
     # Precondition
-    
     self.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
@@ -774,6 +761,8 @@ class Common
     Common.main(test)
     #
     Common.login_job_board
+    #
+    randomContact = SecureRandom.hex(4)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -796,7 +785,6 @@ class Common
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
     ]
     Common.main(test)
-    
   end
   
   #This method is used to access each tab
@@ -815,18 +803,37 @@ class Common
       {"click" => HomePage::MENU_USER_XPATH},
       {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
       {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
-      {"displayed" => HomePage::DEVELOP_XPATH},
-      {"click_and_load" => HomePage::DEVELOP_XPATH},
-      {"displayed" => HomePage::CUSTOM_SETTINGS_XPATH},
-      {"click" => HomePage::CUSTOM_SETTINGS_XPATH},
+      {"displayed" => SetupEditPage::DEVELOP_XPATH},
+      {"click_and_load" => SetupEditPage::DEVELOP_XPATH},
+      {"displayed" => SetupEditPage::CUSTOM_SETTINGS_XPATH},
+      {"click" => SetupEditPage::CUSTOM_SETTINGS_XPATH},
+    ]
+    Common.main(test)
+  end
+  
+  def self.go_to_openings
+    test = [
+      {"displayed" => HomePage::MENU_USER_XPATH},
+      {"click" => HomePage::MENU_USER_XPATH},
+      {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
+      {"displayed" => SetupEditPage::DEVELOP_XPATH},
+      {"click_and_load" => SetupEditPage::DEVELOP_XPATH},
+      {"displayed" => SetupEditPage::SITES_XPATH},
+      {"click_and_load" => SetupEditPage::SITES_XPATH},
+      {"displayed" => SetupEditPage::OPENINGS_XPATH},
+      {"click" => SetupEditPage::OPENINGS_XPATH},
+      {"displayed" => SetupEditPage::LOGIN_SETTINGS_BUTTON_XPATH},
+      {"click" => SetupEditPage::LOGIN_SETTINGS_BUTTON_XPATH},
+      {"displayed" => SetupEditPage::EDIT_BUTTON_XPATH},
+      {"click" => SetupEditPage::EDIT_BUTTON_XPATH},
     ]
     Common.main(test)
   end
   
   def self.go_to_custom_settings(edit=false)
-    
+    #
     self.custom_settings
-    
     test = [
       {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
       {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
@@ -843,7 +850,6 @@ class Common
   def self.go_to_short_list(edit=false)
     #Short List
     self.custom_settings
-    
     test = [
       {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Short List']/ancestor::tr[1]/td[1]/a"},
       {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Short List']/ancestor::tr[1]/td[1]/a"},
@@ -860,7 +866,6 @@ class Common
   def self.go_to_parser_settings(edit=false)
     #Parser Settings
     self.custom_settings
-    
     test = [
       {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Parser Settings']/ancestor::tr[1]/td[1]/a"},
       {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Parser Settings']/ancestor::tr[1]/td[1]/a"},
@@ -898,8 +903,8 @@ class Common
       {"click" => HomePage::MENU_USER_XPATH},
       {"displayed" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
       {"click_and_load" => HomePage::MENU_USER_SETUP_OPTION_XPATH},
-      {"displayed" => HomePage::DEVELOP_XPATH},
-      {"click_and_load" => HomePage::DEVELOP_XPATH},
+      {"displayed" => SetupEditPage::DEVELOP_XPATH},
+      {"click_and_load" => SetupEditPage::DEVELOP_XPATH},
       {"displayed" => ".//*[@id='Security_font']"},
       {"click" => ".//*[@id='Security_font']"},
       {"displayed" => ".//*[@id='SecuritySharing_font']"},
@@ -913,7 +918,6 @@ class Common
     end
     Common.main(test)
   end
-  
   
   def self.go_to_massmail_service(edit=false)
     # MassMail Service
