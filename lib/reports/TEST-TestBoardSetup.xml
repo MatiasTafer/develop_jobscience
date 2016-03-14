@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<testsuite name="TestBoardSetup" tests="1" time="54.509707" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-03-11T11:27:56-02:00">
+  <testcase name="test_board_setup_tc1042">
+=======
 <testsuite name="TestBoardSetup" tests="2" time="28.675112" failures="0" errors="2" skipped="0" assertions="0" timestamp="2016-03-11T15:52:44-03:00">
   <testcase name="test_RSSFeddCustomizableFields" time="13.923152" assertions="0">
     <error type="NameError" message="uninitialized constant Common::USER_EMAIL">
@@ -74,5 +78,6 @@ Connection refused - connect(2) for "127.0.0.1" port 7056 (Errno::ECONNREFUSED)
 /Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
 /Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
 /Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+>>>>>>> develop
   </testcase>
 </testsuite>
