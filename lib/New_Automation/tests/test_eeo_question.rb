@@ -205,11 +205,12 @@ def test_eeoQuestionHandlerPopulate
 end
 =end
 
-
-#TC840 - EEO Question Handler, Omit
+=begin
+#TC840 - EEO Question Handler, Omit #FIREFOX
 def test_eeoQuestionHandlerOmit
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
+  Common.go_to_custom_settings
   CustomSettings.QuestionSetHandler("Omit")
   CustomSettings.JobBoardLogin(true)
   #Steps
@@ -228,6 +229,8 @@ def test_eeoQuestionHandlerOmit
    begin
      test= [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
            {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
     Common.main(test)
@@ -245,9 +248,10 @@ def test_eeoQuestionHandlerOmit
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
   end
 end
+=end
 
-=begin
-#TC841 - Standard and Custom EEO Disclaimers, standard & custom
+
+#TC841 - Standard and Custom EEO Disclaimers, standard & custom #FIREFOX
 def test_eeoDisclaimersStandardCustom
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -294,6 +298,7 @@ def test_eeoDisclaimersStandardCustom
   end
 end
 
+=begin
 #TC842 - Standard and Custom EEO Disclaimers, Only custom
 def test_eeoDisclaimersOnlyCustom
   #Preconditions
