@@ -78,10 +78,9 @@ class Common
     current = $browser.current_url
     a = $browser.find_element(:xpath => field).click
     $wait.until {
-      $browser.current_url != current
-      #$browser.execute_script("return document.readyState;") == "complete" 
+      $browser.current_url != current 
     }
-      return a
+    return a
   end
   
   
