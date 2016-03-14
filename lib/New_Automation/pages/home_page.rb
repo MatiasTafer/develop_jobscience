@@ -6,8 +6,6 @@ class HomePage
   HOME_TAB_ID = "home_Tab"
   MENU_USER_XPATH = ".//*[@id='userNavLabel']"
   MENU_USER_SETUP_OPTION_XPATH = ".//*[@id='userNav-menuItems']/a[text()='Setup']"
-  DEVELOP_XPATH = ".//a[text()='Develop']"
-  CUSTOM_SETTINGS_XPATH = ".//*[@id='CustomSettings_font']"
   
   #TAB LINKS URL
   HOME_TAB_LINK_XPATH = ".//a[text()[contains(.,'Home')]]"

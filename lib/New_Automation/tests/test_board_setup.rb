@@ -128,25 +128,26 @@ class TestBoardSetup < TestBasic
     
   end
 
-
+=end
   def test_board_setup_tc1042 #3
     # Set "Show Search Only" to "TRUE" in Board Setup
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    Common.go_to_openings
     # Preconditios open board setup page
-    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    #$browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::SHOW_SEARCH_ONLY_CHECKBOX_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    Common.main(test)
+    #Common.main(test)
     # Test case
-    $browser.get HomePage::JOB_BOARD_URL
+    #$browser.get HomePage::JOB_BOARD_URL
   end
   
-
+=begin
   def test_board_setup_tc1043 #4
     #Set "Show Search Only" to "FALSE" in Board Setup
     #Login
@@ -342,7 +343,6 @@ class TestBoardSetup < TestBasic
     Common.main(test)
   end
 
-=end
 
 
 
@@ -382,7 +382,7 @@ class TestBoardSetup < TestBasic
     
   end
 
-=begin
+#end
 
 
   def test_board_setup_tc1050  #11
@@ -423,6 +423,7 @@ class TestBoardSetup < TestBasic
     
   end
 
+#=end
 
   def test_board_setup_tc1051  #12
     # Job Board - Hide Phone / Hide Mobile / Hide Source Question / Hide Contact Method / will be available
@@ -453,7 +454,7 @@ class TestBoardSetup < TestBasic
       {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => username},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "test"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "test"},
-      {"set_text" => JobBoardRegisterPage::PHONE_TEXT_XPATH, "text" => "5555555"},
+      {"set_text_exist" => JobBoardRegisterPage::PHONE_TEXT_XPATH, "text" => "5555555"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
@@ -627,7 +628,7 @@ class TestBoardSetup < TestBasic
 
   end
 
-
+#=end
   
   def test_board_setup_tc1057
     # Job Board - Job Description Fields
@@ -636,12 +637,12 @@ class TestBoardSetup < TestBasic
     # 1. Click on "Board Setup".
     Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
-      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
+      {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
+      {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       
-      {"set_text" => BoardSetupEditPage::BOARD_EDIT_JOB_DESCRIPTION_1_XPATH, "text" => "Location"},
+      {"set_text" => BoardSetupEditPage::BOARD_EDIT_SEARCH_CRITERIA_1_XPATH, "text" => "Location"},
       {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
     ]
@@ -651,21 +652,20 @@ class TestBoardSetup < TestBasic
     $browser.get HomePage::JOB_BOARD_URL
     test = [
       # 6. Perform search with keyword search.
-      {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
-      {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+      {"check_apply" => ""},
     ]
     Common.main(test)
 
   end
 
-
+#=begin
   #TC104 - RSS feed customizable fields
   def test_RSSFeddCustomizableFields
     
     #PRECONDITIONS
     #Need to have pre configured on Setup>Create>Objects>Job Orders>RSS Feed the followings fields: 
     #Login
-    Common.login(Common::USER_EMAIL, Common::PASSWORD)
+    Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -702,6 +702,7 @@ class TestBoardSetup < TestBasic
    end  
    
 =end
+
 
 end
 
