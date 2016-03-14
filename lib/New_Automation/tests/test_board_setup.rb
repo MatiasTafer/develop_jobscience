@@ -19,7 +19,7 @@ require './New_Automation/pages/job_board/job_board_register_page.rb'
 
 class TestBoardSetup < TestBasic 
   
-=begin
+#=begin
   def test_board_setup_tc1040   #1
     # JS2 - Board Setup - TC1040
     #Login
@@ -128,26 +128,26 @@ class TestBoardSetup < TestBasic
     
   end
 
-=end
+#=end
   def test_board_setup_tc1042 #3
     # Set "Show Search Only" to "TRUE" in Board Setup
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.go_to_openings
+    
     # Preconditios open board setup page
-    #$browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::SHOW_SEARCH_ONLY_CHECKBOX_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     # Test case
-    #$browser.get HomePage::JOB_BOARD_URL
+    $browser.get HomePage::JOB_BOARD_URL
   end
   
-=begin
+#=begin
   def test_board_setup_tc1043 #4
     #Set "Show Search Only" to "FALSE" in Board Setup
     #Login
@@ -701,7 +701,7 @@ class TestBoardSetup < TestBasic
      sleep(5)
    end  
    
-=end
+#=end
 
 
 end
