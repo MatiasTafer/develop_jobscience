@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<testsuite name="TestBoardSetup" tests="1" time="54.509707" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-03-11T11:27:56-02:00">
+  <testcase name="test_board_setup_tc1042">
+=======
+<testsuite name="TestBoardSetup" tests="2" time="28.675112" failures="0" errors="2" skipped="0" assertions="0" timestamp="2016-03-11T15:52:44-03:00">
+  <testcase name="test_RSSFeddCustomizableFields" time="13.923152" assertions="0">
+    <error type="NameError" message="uninitialized constant Common::USER_EMAIL">
+uninitialized constant Common::USER_EMAIL (NameError)
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/test_board_setup.rb:651:in `test_RSSFeddCustomizableFields'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <testcase name="test_board_setup_tc1040">
+    <error type="Errno::ECONNREFUSED" message="Connection refused - connect(2) for &quot;127.0.0.1&quot; port 7056">
+Connection refused - connect(2) for "127.0.0.1" port 7056 (Errno::ECONNREFUSED)
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:879:in `initialize'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:879:in `open'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:879:in `block in connect'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/timeout.rb:74:in `timeout'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:878:in `connect'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:1453:in `begin_transport'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:1410:in `transport_request'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:1384:in `request'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:1377:in `block in request'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:853:in `start'
+/Users/admin/.rvm/rubies/ruby-2.2.1/lib/ruby/2.2.0/net/http.rb:1375:in `request'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:107:in `response_for'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:58:in `request'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:222:in `close'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/driver.rb:183:in `close'
+/Users/admin/Desktop/job-automation/jobscience/lib/New_Automation/tests/test_basic.rb:33:in `teardown'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:202:in `block in run_fixture_callback'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:207:in `call'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:207:in `run_fixture_callback'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:190:in `block in run_fixture'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:189:in `each'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:189:in `run_fixture'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:223:in `run_teardown'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:439:in `ensure in run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:438:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Users/admin/.rvm/gems/ruby-2.2.1/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+>>>>>>> develop
+  </testcase>
+</testsuite>
