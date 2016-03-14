@@ -42,7 +42,7 @@ class Users
     #    username = line
     #  end
     #end
-    f.close
+    #f.close
     if not username
       random_name = "auto_" + SecureRandom.hex(4)
       username = random_name + "@test.com"  

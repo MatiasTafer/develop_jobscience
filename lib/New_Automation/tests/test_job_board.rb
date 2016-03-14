@@ -35,8 +35,7 @@ class TestJobBoard < TestBasic
     # JS2 -  Search jobs by criteria 
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
-    # set Search & Results criteria 1, 2 and 3.
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
       {"click" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -69,7 +68,7 @@ class TestJobBoard < TestBasic
     # JS2 - Set "Show Search Only" to "TRUE" in Board Setup
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     # Preconditions
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -111,7 +110,7 @@ class TestJobBoard < TestBasic
     # JS2 - Edit search criteria fields
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     # Steps
     test = [
       {"displayed" => BoardSetupHomePage::CAREERS_LINK_LIST_XPATH},
@@ -142,7 +141,7 @@ class TestJobBoard < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Precondition
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
