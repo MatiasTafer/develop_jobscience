@@ -51,7 +51,7 @@ class ContactsHomePage
 
   
   #Apply to Job Pop Up Window
-  CONTACT_JOB_POPUP_JOB_TITLE_XPATH = "//*[text()[contains(., 'Job Title')]]/../following-sibling::*//input"
+  CONTACT_JOB_POPUP_JOB_TITLE_XPATH = "//*[text()[contains(., 'Job Title')]]/../following-sibling::*//span/input"
   CONTACT_JOB_POPUP_BTN_APPLY_XPATH = ".//*[@value='Save']"
   CONTACT_JOB_POPUP_TOTAL_APP_XPATH = "//*[text()='Total Applications Count on Job']/../following-sibling::*//span"
   CONTACT_JOB_POPUP_BTN_CLOSE_XPATH = ".//*[@title='Close']"
@@ -79,7 +79,7 @@ class ContactsHomePage
     
     #Exception
     CONTACT_JOB_POPUP_REASON_XPATH = "//*[text()='Reason']/../following-sibling::*//select"
-    CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH = "//*[text()='Reason Other']/../..//textarea"
+    CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH = "//*[text()='New']"
     CONTACT_JOB_POPUP_SUCCESS_APP_XPATH = "//label[text()[contains(., 'APP')]]"
     CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH = "//label[text()[contains(., 'APP')]]/../..//td//span"
      

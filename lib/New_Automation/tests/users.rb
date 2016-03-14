@@ -33,6 +33,8 @@ class Users
   
   PASSWORD  = "muffin100"
   
+  EMAIL_DOMAIN = "oktana.io"
+  
   
   def self.create_user_job_board
     
