@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="EeoQuestion" tests="1" time="39.080312" failures="0" errors="2" skipped="0" assertions="0" timestamp="2016-03-15T16:49:51-03:00">
+  <testcase name="test_eeoCommitDefault" time="39.079975" assertions="0">
+    <error type="Selenium::WebDriver::Error::NoSuchWindowError" message="no such window: target window already closed...">
+no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=49.0.2623.87)
+  (Driver info: chromedriver=2.9.248307,platform=Mac OS X 10.10.5 x86_64) (Selenium::WebDriver::Error::NoSuchWindowError)
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/response.rb:70:in `assert_ok'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/response.rb:34:in `initialize'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:78:in `new'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:78:in `create_response'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:90:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:186:in `getCurrentUrl'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/driver.rb:147:in `current_url'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:81:in `block in click_and_load'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:58:in `until'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:80:in `click_and_load'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:376:in `block in main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:266:in `each'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:266:in `main'
+/Users/admin/jobscience/lib/New_Automation/tests/test_eeo_question.rb:106:in `test_eeoCommitDefault'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:691:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:431:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+    <error type="Selenium::WebDriver::Error::NoSuchWindowError" message="no such window: target window already closed...">
+no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=49.0.2623.87)
+  (Driver info: chromedriver=2.9.248307,platform=Mac OS X 10.10.5 x86_64) (Selenium::WebDriver::Error::NoSuchWindowError)
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/response.rb:70:in `assert_ok'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/response.rb:34:in `initialize'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:78:in `new'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:78:in `create_response'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/default.rb:90:in `request'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/http/common.rb:59:in `call'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:645:in `raw_execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:623:in `execute'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/remote/bridge.rb:222:in `close'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/driver.rb:183:in `close'
+/Users/admin/jobscience/lib/New_Automation/tests/test_basic.rb:33:in `teardown'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:202:in `block in run_fixture_callback'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:207:in `call'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:207:in `run_fixture_callback'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:190:in `block in run_fixture'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:189:in `each'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:189:in `run_fixture'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/fixture.rb:223:in `run_teardown'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testcase.rb:439:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:121:in `run_test'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/testsuite.rb:53:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:65:in `run_suite'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:44:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:100:in `with_listener'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnermediator.rb:40:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:40:in `start_mediator'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunner.rb:25:in `start'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/ui/testrunnerutilities.rb:24:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:409:in `block in run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:465:in `change_work_directory'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:408:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit/autorunner.rb:59:in `run'
+/Library/Ruby/Gems/2.0.0/gems/test-unit-2.5.5/lib/test/unit.rb:502:in `block (2 levels) in &lt;top (required)&gt;'    </error>
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+click
+displayed
+click_and_load
+displayed
+click_and_load
+displayed
+click
+
+main
+
+displayed
+click_and_load
+displayed
+click_and_load
+
+main
+
+displayed
+checked
+click_and_load
+
+main
+
+displayed
+click_and_load
+displayed
+set_text
+set_text
+click_and_load
+displayed
+click
+displayed
+click_and_load
+  </system-out>
+</testsuite>
