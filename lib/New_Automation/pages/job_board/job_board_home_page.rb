@@ -62,4 +62,6 @@ class JobBoardHomePage
   JOB_BOARD_UPLOAD_RESUME_BROWSE_TEXT_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input"
   JOB_BOARD_UPLOAD_RESUME_ALL_TYPES_TEXT = "docx, doc, pdf, rtf, html, txt"
   
+
+  
 end

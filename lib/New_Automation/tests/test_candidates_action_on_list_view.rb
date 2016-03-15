@@ -53,21 +53,21 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #An account must be created for the contact
-    CreateAccount(randomAccount)
+    Common.CreateAccount(randomAccount)
     
     # 1. Click on "Contacts" 
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
     # 2. Click on "New".
     Common.displayed(ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW)
-    Common.click(ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW)
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW)
     
     # 3. On "Select Contact Record Type" select the option "contact".
     Common.displayed(ContactNewEditPage::CONTACT_NEW_RECORD_TYPE_NEW_XPATH)
     Common.set_text(ContactNewEditPage::CONTACT_NEW_RECORD_TYPE_NEW_XPATH, "Contact")
     
     # 4. Click on button "Continue".
-    Common.click(ContactNewEditPage::CONTACT_NEW_BTN_CONTINUE_XPATH)
+    Common.click_and_load(ContactNewEditPage::CONTACT_NEW_BTN_CONTINUE_XPATH)
     
     # 5. Complete the text box (required): "Last name" an "Account Name".
     Common.displayed(ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH)
@@ -76,7 +76,7 @@ class TestActionsOnListView < TestBasic
     
     #6. Complete the fields (optional).
     #7. Click on "Save".
-    Common.click(ContactNewEditPage::CONTACT_NEW_BTN_SAVE_XPATH)
+    Common.click_and_load(ContactNewEditPage::CONTACT_NEW_BTN_SAVE_XPATH)
     
     #RESULT
     #Redirects to "Contact Detail" page.
@@ -85,20 +85,20 @@ class TestActionsOnListView < TestBasic
     assert_equal($browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text, randomContact)
     
   end
-=begin  
+
   #TC48 - Successfully Add Skill
   def test_SuccessfullyAddSkill
-    randomContact = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
 
     #PRECONDITIONS
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
@@ -107,13 +107,13 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
     # 3. Select (doing click on checkbox) one or more contacts
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input").click
+    Common.click(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input")
     
     # 4. Click on "Add skills"
     Common.click(ContactsHomePage::CONTACT_HOME_ADD_SKILL_XPATH)
@@ -139,12 +139,13 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
+    
     assert $wait.until {
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH).displayed? 
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH).displayed?   
@@ -154,7 +155,7 @@ class TestActionsOnListView < TestBasic
   
   #TC857 - Add Skills, Validation
   def test_AddSkillValidation
-    randomContact = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
     
     #PRECONDITIONS
     #Login
@@ -173,7 +174,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -204,19 +205,19 @@ class TestActionsOnListView < TestBasic
     Common.main(test)
     $browser.switch_to.window($browser.window_handles.first)
   end    
-   
+  
   #TC253 - Successfully Add and Rate Skill
   def test_SuccessfullyAddRateSkill
-    randomContact = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
     
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
@@ -225,7 +226,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -235,7 +236,7 @@ class TestActionsOnListView < TestBasic
     
     # 4. Click on "Add skills"
     Common.click(ContactsHomePage::CONTACT_HOME_ADD_SKILL_XPATH)
-    sleep(6)
+    sleep(3)
     
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
@@ -273,19 +274,19 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
     assert $wait.until {
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH).displayed? 
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH).displayed?   
     
     }
     test = [
-      {"click" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_FIRST_XPATH},
+      {"click_and_load" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_FIRST_XPATH},
       {"displayed" => SkillDetailPage::SKILL_DETAIL_RATING_XPATH}
     ]
     Common.main(test) 
@@ -295,16 +296,16 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
     
     test = [
     {"displayed" => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH},
-    {"click" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_SECOND_XPATH},
+    {"click_and_load" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_SECOND_XPATH},
     {"displayed" => SkillDetailPage::SKILL_DETAIL_RATING_XPATH}
      ]
      
@@ -316,19 +317,19 @@ class TestActionsOnListView < TestBasic
    
   #TC254 - Adding and Rating Skills for multiple contacts
   def test_AddRateSkillMultipleContacts
-    randomContact = SecureRandom.hex(4)
-    randomContact2 = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomContact2 = "0" + SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least two account must exist
-    CreateAccount(randomContact) 
-    CreateAccount(randomContact2)
+    Common.CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact2)
     
     #At least two contact must exist 
-    CreateContact(randomContact, randomContact)
-    CreateContact(randomContact2, randomContact2)
+    Common.CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact2, randomContact2)
     
     # 1. Click on "Contacts". 
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
@@ -337,7 +338,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -349,7 +350,7 @@ class TestActionsOnListView < TestBasic
     
     # 4. Click on "Add skills"
     Common.click(ContactsHomePage::CONTACT_HOME_ADD_SKILL_XPATH)
-    sleep(6)
+    sleep(3)
     
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
@@ -370,26 +371,34 @@ class TestActionsOnListView < TestBasic
     
     assert_equal($browser.find_element(:xpath => ContactsHomePage::CONTACT_SKILL_POPUP_ERROR_OUTPUT_XPATH).text, "Error:")
     
+    Common.click(ContactsHomePage::CONTACT_SKILL_POPUP_BTN_CANCEL_XPATH)
+    
+    newWindow= $browser.window_handles.first
+    $browser.switch_to.window(newWindow) 
+    
    end
- 
+
   #TC49 - Successfully Add to Existing Short List
   def test_SuccessfullyAddToExistingList
-    randomContact = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
     randomList = SecureRandom.hex(4)
     
     #PRECONDITIONS
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
+    url_home = $browser.current_url
+    
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
         
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     #At least one short list must exist 
-    CreateShortList(randomList)
-        
+    Common.CreateShortList(randomList)
+    
+    $browser.get(url_home)    
     # 1. Click on "Contacts". 
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
@@ -397,7 +406,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -432,7 +441,7 @@ class TestActionsOnListView < TestBasic
     $wait.until {
       $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH).displayed?
     }
-    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + randomList + "')]]").click
+    Common.click_and_load(ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + randomList + "')]]")
    
     test = [
       {"displayed" => ShortListDetailPage::SL_LIST_XPATH},
@@ -447,7 +456,7 @@ class TestActionsOnListView < TestBasic
 
  #TC255 - Successfully Add to New Short List
   def test_SuccessfullyAddToNewList
-    randomContact = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
     randomList = SecureRandom.hex(4)
     
     #PRECONDITIONS
@@ -455,10 +464,10 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
         
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     # 1. Click on "Contacts". 
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
@@ -467,7 +476,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -502,7 +511,7 @@ class TestActionsOnListView < TestBasic
     $wait.until {
       $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH).displayed?
     }
-    $browser.find_element(:xpath => ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + randomList + "')]]").click
+    Common.click_and_load(ShortListHomePage::SHORT_LIST_RECORDS_LIST_XPATH + "//*[text()[contains(.,'" + randomList + "')]]")
    
     test = [
       {"displayed" => ShortListDetailPage::SL_LIST_XPATH},
@@ -517,8 +526,8 @@ class TestActionsOnListView < TestBasic
 
   #TC50 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = FALSE
   def test_ApplyUnpostedJobEnableEnhancedApplyToJobFalse  
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
   
     #PRECONDITIONS:
     
@@ -526,16 +535,17 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False. 
-    CreateRequisitionPostJob(randomReq, false)
+    Common.CreateRequisitionPostJob(randomReq, false)
     
     #Enable Enhanced Apply to Job" = FALSE
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(false)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     
     # 1. Click on "Contacts". 
@@ -545,7 +555,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -579,12 +589,12 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
@@ -597,8 +607,8 @@ class TestActionsOnListView < TestBasic
     
   #TC256 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = FALSE
   def test_ApplyPostedJobEnableEnhancedApplyFalsePostTrue  
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
     
     #PRECONDITIONS:
     
@@ -606,16 +616,17 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = True. 
-    CreateRequisitionPostJob(randomReq, true)
+    Common.CreateRequisitionPostJob(randomReq, true)
     
     #Enable Enhanced Apply to Job" = FALSE
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(false)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     
     # 1. Click on "Contacts". 
@@ -625,7 +636,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -659,12 +670,12 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
@@ -676,8 +687,8 @@ class TestActionsOnListView < TestBasic
 
   #TC51 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Invite to Apply
   def test_ApplyPostedJobEnableEnhancedApplyTrueInvite 
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
     
     #PRECONDITIONS:
     
@@ -685,16 +696,17 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = True
-    CreateRequisitionPostJob(randomReq, true)
+    Common.CreateRequisitionPostJob(randomReq, true)
     
     #Enable Enhanced Apply to Job" = True
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     
     # 1. Click on "Contacts". 
@@ -704,7 +716,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -741,12 +753,12 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
@@ -757,8 +769,8 @@ class TestActionsOnListView < TestBasic
 
   #TC52 - Try to Invite to Apply with "Post job" = False
   def test_TryToInvitePostJobFalse 
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
     
     #PRECONDITIONS:
     
@@ -766,16 +778,17 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = false
-    CreateRequisitionPostJob(randomReq, false)
+    Common.CreateRequisitionPostJob(randomReq, false)
     
     #Enable Enhanced Apply to Job" = True
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     
     # 1. Click on "Contacts". 
@@ -785,7 +798,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -827,8 +840,8 @@ class TestActionsOnListView < TestBasic
 
   #TC257 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Agency
   def test_ApplyPostedJobEnableEnhancedApplyTrueAgency 
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
     randomAgy = SecureRandom.hex(4)
     
     #PRECONDITIONS:
@@ -837,16 +850,17 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = True
-    CreateRequisitionPostJob(randomReq, true)
+    Common.CreateRequisitionPostJob(randomReq, true)
     
     #Enable Enhanced Apply to Job" = True
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     #At least one agency must exist
     CreateAgencyAccount(randomAgy)
@@ -914,11 +928,11 @@ class TestActionsOnListView < TestBasic
     
   end
 
-  
+
   #TC258 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Agency
   def test_ApplyUnpostedJobEnableEnhancedApplyTrueAgency 
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
     randomAgy = SecureRandom.hex(4)
     
     #PRECONDITIONS:
@@ -927,16 +941,17 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
-    CreateRequisitionPostJob(randomReq, false)
+    Common.CreateRequisitionPostJob(randomReq, false)
     
     #Enable Enhanced Apply to Job" = True
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     #At least one agency must exist
     CreateAgencyAccount(randomAgy)
@@ -948,7 +963,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -970,7 +985,7 @@ class TestActionsOnListView < TestBasic
       {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_JOB_TITLE_XPATH, "text" => randomReq},
     # 6. Click "Next" 
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_NEXT_XPATH},
-      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_INVITE_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_AGENCY_XPATH},
     # 7. Click on Agency   
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_AGENCY_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_AGENCY_XPATH},
@@ -988,12 +1003,12 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
@@ -1003,11 +1018,11 @@ class TestActionsOnListView < TestBasic
       }  
     
   end
-  
+   
   #TC259 - Successfully Apply to posted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
   def test_ApplyPostedJobEnableEnhancedApplyTrueException
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
     randomAgy = SecureRandom.hex(4)
     
     #PRECONDITIONS:
@@ -1016,16 +1031,17 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = true
-    CreateRequisitionPostJob(randomReq, true)
+    Common.CreateRequisitionPostJob(randomReq, true)
     
     #Enable Enhanced Apply to Job" = True
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
         
     # 1. Click on "Contacts". 
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
@@ -1034,7 +1050,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1077,12 +1093,12 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
@@ -1095,8 +1111,8 @@ class TestActionsOnListView < TestBasic
   
   #TC260 - Successfully Apply to unposted job with "Enable Enhanced Apply to Job" = TRUE, Apply via Exception
   def test_ApplyUnpostedJobEnableEnhancedApplyTrueException
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
       
     #PRECONDITIONS:
     
@@ -1104,16 +1120,17 @@ class TestActionsOnListView < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # Job with "Post job" = False
-    CreateRequisitionPostJob(randomReq, false)
+    Common.CreateRequisitionPostJob(randomReq, false)
     
     #Enable Enhanced Apply to Job" = True
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
-    CreateAccount(randomContact) 
+    Common.CreateAccount(randomContact) 
           
     #At least one contact must exist 
-    CreateContact(randomContact, randomContact)
+    Common.CreateContact(randomContact, randomContact)
     
     
     # 1. Click on "Contacts". 
@@ -1123,7 +1140,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1166,12 +1183,12 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "Candidates - New Today"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
+    Common.click_and_load(ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
     $wait.until {
           $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH).displayed?
         }
@@ -1182,21 +1199,18 @@ class TestActionsOnListView < TestBasic
     
   end
 
-  
+
   #TC855 - Apply to Jobs, Validation
   def test_ApplyToJobsValidation  
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
-  
+    randomContact = "0" + SecureRandom.hex(4)
+      
     #PRECONDITIONS:
     
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
-    
-    # Job with "Post job" = False. 
-    Common.CreateRequisitionPostJob(randomReq, false)
-    
+        
     #Enable Enhanced Apply to Job" = True
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #Custom Settings > Config > Invite to Apply Custom Message = true
@@ -1216,7 +1230,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1246,12 +1260,13 @@ class TestActionsOnListView < TestBasic
     ]
     Common.main(test)
     $browser.switch_to.window($browser.window_handles.first)
+    
   end  
-  
+   
   #TC852 - Apply To Jobs, Disable EEO = false
   def test_ApplyToJobsDisableEEOFalse
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
       
     #PRECONDITIONS:
     
@@ -1263,6 +1278,7 @@ class TestActionsOnListView < TestBasic
     Common.CreateRequisitionPostJob(randomReq, false, false)
     
     #Custom Settings > Config > Invite to Apply Custom Message = true
+    Common.go_to_custom_settings()
     CustomSettings.InviteToApplyCustomMessage(true)
     
     #Enable Enhanced Apply to Job" = True
@@ -1282,7 +1298,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1334,7 +1350,7 @@ class TestActionsOnListView < TestBasic
       $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
     
-    $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../th[1]/a").click
+    Common.click_and_load(RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../th[1]/a")
     test = [
       {"displayed" => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH}
     ]
@@ -1346,14 +1362,14 @@ class TestActionsOnListView < TestBasic
     assert $wait.until {
         $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_APPLY_EXCEPTION_CHECKED_XPATH).displayed?
       }  
-    assert_equal("Referral", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_XPATH).text)
+    assert_equal("New", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_XPATH).text)
     assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_OTHER_XPATH).text)
   end
-  
+ 
   #TC853 - Apply To Jobs, Disable EEO = true
   def test_ApplyToJobsDisableEEOTrue
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
       
     #PRECONDITIONS:
     
@@ -1365,6 +1381,7 @@ class TestActionsOnListView < TestBasic
     Common.CreateRequisitionPostJob(randomReq, false, true)
     
     #Custom Settings > Config > Invite to Apply Custom Message = true
+    Common.go_to_custom_settings()
     CustomSettings.InviteToApplyCustomMessage(true)
     
     #Enable Enhanced Apply to Job" = True
@@ -1384,7 +1401,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1426,8 +1443,7 @@ class TestActionsOnListView < TestBasic
     assert $wait.until {
       $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
-    
-    $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../th[1]/a").click
+    Common.click_and_load(RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../th[1]/a")
     test = [
       {"displayed" => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH}
     ]
@@ -1442,11 +1458,11 @@ class TestActionsOnListView < TestBasic
     assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_XPATH).text)
     assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_OTHER_XPATH).text)
   end
-  
+   
   #TC854 - Apply To Jobs, Enable Enhanced Apply to Job = false & Disable EEO = false
   def test_ApplyToJobsDisableEEOFalseEnableEnhancedFalse
-    randomContact = SecureRandom.hex(4)
-    randomReq = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
+    randomReq = "0" + SecureRandom.hex(4)
       
     #PRECONDITIONS:
     
@@ -1458,6 +1474,7 @@ class TestActionsOnListView < TestBasic
     Common.CreateRequisitionPostJob(randomReq, false, false)
     
     #Custom Settings > Config > Invite to Apply Custom Message = true
+    Common.go_to_custom_settings()
     CustomSettings.InviteToApplyCustomMessage(true)
     
     #Enable Enhanced Apply to Job" = False
@@ -1477,7 +1494,7 @@ class TestActionsOnListView < TestBasic
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1519,8 +1536,7 @@ class TestActionsOnListView < TestBasic
     assert $wait.until {
       $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").displayed?
     }
-    
-    $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../th[1]/a").click
+    Common.click_and_load(RequisitionsDetail::REQUISITIONS_DETAIL_APP_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../th[1]/a")
     test = [
       {"displayed" => ApplicationsDetailPage::APP_DETAIL_APP_STATUS_XPATH}
     ]
@@ -1535,46 +1551,13 @@ class TestActionsOnListView < TestBasic
     assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_XPATH).text)
     assert_equal(" ", $browser.find_element(:xpath => ApplicationsDetailPage::APP_DETAIL_EXCEPTION_REASON_OTHER_XPATH).text)
   end     
-
-################### CUSTOM METHODS #####################
-
-def CreateRequisitionPostJob(name, postjob)
-    #postjob=TRUE will check "Post Job" checkbox, postjob=false will not check it.
-      
-    Common.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
-    test = [
-      {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => name},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
-      {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATA_MAX_SALARY_TEXT},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH},
-    ]
-    Common.main(test)
-    if postjob
-      unless $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
-        $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
-      end
-    else
-      if $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).attribute("checked")
-        $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_POST_JOB_BOX_XPATH).click
-      end  
-    end
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
-    
-    $wait.until {
-        $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
-      }
-  end 
-  
+ 
   #TC847 - Add Tags, Public Tag
   def test_AddTagsPublicTag
-    randomContact = SecureRandom.hex(4)
+    
+    ##Must have at least one Public tag created for working
+    
+    randomContact = "0" + SecureRandom.hex(4)
       
     #PRECONDITIONS:
     
@@ -1595,7 +1578,7 @@ def CreateRequisitionPostJob(name, postjob)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1636,7 +1619,10 @@ def CreateRequisitionPostJob(name, postjob)
  
   #TC848 - Add Tags, Personal Tag
   def test_AddTagsPersonalTag
-    randomContact = SecureRandom.hex(4)
+    
+    ##Must have at least one Personal tag created for working
+    
+    randomContact = "0" + SecureRandom.hex(4)
       
     #PRECONDITIONS:
     
@@ -1657,7 +1643,7 @@ def CreateRequisitionPostJob(name, postjob)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1696,10 +1682,10 @@ def CreateRequisitionPostJob(name, postjob)
     $browser.switch_to.window($browser.window_handles.first) 
   end 
 
-  
+
   #TC849 - Add Tags, New Public Tag
   def test_AddTagsNewPublicTag
-    randomContact = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
     randomTag = SecureRandom.hex(2)
       
     #PRECONDITIONS:
@@ -1721,7 +1707,7 @@ def CreateRequisitionPostJob(name, postjob)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1765,7 +1751,7 @@ def CreateRequisitionPostJob(name, postjob)
   
   #TC850 - Add Tags, New Personal Tag
   def test_AddTagsNewPersonalTag
-    randomContact = SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
     randomTag = SecureRandom.hex(2)
       
     #PRECONDITIONS:
@@ -1787,7 +1773,7 @@ def CreateRequisitionPostJob(name, postjob)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
     Common.main(test)
@@ -1837,18 +1823,27 @@ def CreateRequisitionPostJob(name, postjob)
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
       
-    
     # 1. Click on "Contacts". 
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
-    
-    test = [
+    #Some error ocurr when clicking the "Go" button. This is not happened in other test cases
+    if $browser.browser.to_s == "chrome"
+      test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
       {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
-      {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
-    ]
-    Common.main(test)
+      ]
+      Common.main(test)
+    else
+      test = [
+      {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+      ]
+      Common.main(test)
+    end
+    
     
     # 2. Select (doing click on checkbox) one or more contacts
     $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_FIRST_ENTRY_GO_XPATH + "/../../../..//td[1]//input").click
@@ -1880,7 +1875,6 @@ def CreateRequisitionPostJob(name, postjob)
     $browser.switch_to.window($browser.window_handles.first) 
   end
 
-=end  
 
   ######### CUSTOM METHODS ##########
   def CreateAgencyAccount(name)
@@ -1888,62 +1882,18 @@ def CreateRequisitionPostJob(name, postjob)
     Common.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH}, 
-      {"click" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
+      {"click_and_load" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
       {"displayed" => AccountsNewEditPage::ACCOUNTS_NEW_CONTINUE_XPATH},
       {"set_text" => AccountsNewEditPage::ACCOUNTS_NEW_RECORD_TYPE_XPATH, "text" => "Account"},
-      {"click" => AccountsNewEditPage::ACCOUNTS_NEW_CONTINUE_XPATH},
+      {"click_and_load" => AccountsNewEditPage::ACCOUNTS_NEW_CONTINUE_XPATH},
       {"displayed" => AccountsNewEditPage::ACCOUNTS_NEW_ACCOUNT_NAME_XPATH},
       {"set_text" => AccountsNewEditPage::ACCOUNTS_NEW_ACCOUNT_NAME_XPATH, "text" => name},
-      {"click" => AccountsNewEditPage::ACCOUNTS_NEW_BTN_SAVE_XPATH},
+      {"click_and_load" => AccountsNewEditPage::ACCOUNTS_NEW_BTN_SAVE_XPATH},
       {"displayed" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
     ]
     Common.main(test)   
     
   end
-  def CreateShortList(name)
-    #Create a Short List with "name" as its name
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
-    test = [
-      {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}, 
-      {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH},
-      {"displayed" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH},
-      {"set_text" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH, "text" => name},
-      {"click" => ShortListNewEditPage::SHORT_LIST_NEW_BTN_SAVE_XPATH},
-      {"displayed" => ShortListDetailPage::SL_MENU_XPATH}
-    ]
-    Common.main(test)   
-  end      
-  def CreateAccount(name)
-    #Create an account record with "name" as Account Name
-    Common.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
-    test = [
-      {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH}, 
-      {"click" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
-      {"displayed" => AccountsNewEditPage::ACCOUNTS_NEW_RECORD_TYPE_XPATH},
-      {"set_text" => AccountsNewEditPage::ACCOUNTS_NEW_RECORD_TYPE_XPATH, "text" => "Account"},
-      {"click" => AccountsNewEditPage::ACCOUNTS_NEW_CONTINUE_XPATH},
-      {"displayed" => AccountsNewEditPage::ACCOUNTS_NEW_ACCOUNT_NAME_XPATH},
-      {"set_text" =>AccountsNewEditPage::ACCOUNTS_NEW_ACCOUNT_NAME_XPATH, "text" => name},
-      {"click" => AccountsNewEditPage::ACCOUNTS_NEW_BTN_SAVE_XPATH},
-      {"displayed" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
-    ]
-    Common.main(test)  
-  end
-  
-  def CreateContact(name, account_name)
-     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
-    test = [
-      {"displayed" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
-      {"click" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
-      {"displayed" => ContactNewEditPage::CONTACT_NEW_RECORD_TYPE_NEW_XPATH},
-      {"set_text" => ContactNewEditPage::CONTACT_NEW_RECORD_TYPE_NEW_XPATH, "text" => "Contact"},
-      {"click" => ContactNewEditPage::CONTACT_NEW_BTN_CONTINUE_XPATH},
-      {"displayed" => ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH},
-      {"set_text" => ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH, "text" => name},
-      {"set_text" => ContactNewEditPage::CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH, "text" => account_name},
-      {"click" => ContactNewEditPage::CONTACT_NEW_BTN_SAVE_XPATH},
-      {"displayed" => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH}
-    ]
-    Common.main(test)   
-  end
+     
+
 end
