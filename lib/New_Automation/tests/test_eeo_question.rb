@@ -25,21 +25,21 @@ class EeoQuestion < TestBasic
   
 
 =begin  
-#TC835 - EEO Questions, hidden questions #FIREFOX
+#TC835 - EEO Questions, hidden questions #FIREFOX #CHORME
 def   test_eeoQuestionHiddenQuestion
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
    test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-           {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
+           {"click_and_load" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
            {"displayed" =>  BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
-           {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+           {"click_and_load" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
            {"displayed" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_GENDER_XPATH},
            {"unchecked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_GENDER_XPATH},
            {"unchecked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_VETERAN_XPATH},
            {"unchecked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_REQUIRED_XPATH},
            {"unchecked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_RACE_XPATH},
            {"unchecked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_DISABLED_XPATH},
-           {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH}]
+           {"click_and_load" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH}]
    Common.main(test)
    assert $wait.until {
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
@@ -47,28 +47,35 @@ def   test_eeoQuestionHiddenQuestion
 end
 =end
 
-=begin
+
 #TC836 - EEO Questions, displayed questions #FIREFOX
 def   test_eeoQuestionDisplayedQuestion
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
    test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-           {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
+           {"click_and_load" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
            {"displayed" =>  BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
-           {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+           {"click_and_load" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
            {"displayed" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_GENDER_XPATH},
            {"checked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_GENDER_XPATH},
            {"checked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_VETERAN_XPATH},
-           {"checked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_REQUIRED_XPATH},
-           {"checked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_RACE_XPATH},
-           {"checked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_DISABLED_XPATH},
-           {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH}]
+           {"checked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_REQUIRED_XPATH}
+           ]
    Common.main(test)
+   begin
+   sleep 3
+   $browser.switch_to.alert.accept
+   rescue
+   end
+   test2 = [{"checked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_RACE_XPATH},
+           {"checked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_DISABLED_XPATH},
+           {"click_and_load" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH}]
+   Common.main(test2)
    assert $wait.until {
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
    } 
 end
-=end
+
 
 =begin
 #TC837 - EEO Commit Default #FIREFOX
@@ -390,7 +397,7 @@ def test_eeoApplyWithLinkedInEeoEnable
 end
 =end
 
-
+=begin
 #TC1224 - Apply To A Job With LinkedIn EEO Questions Disable
 def test_eeoApplyWithLinkedInEeoDisable
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -428,6 +435,6 @@ def test_eeoApplyWithLinkedInEeoDisable
     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_CLOSE_POPUP_XPATH).displayed?
   }  
 end
-
+=end
 
 end
