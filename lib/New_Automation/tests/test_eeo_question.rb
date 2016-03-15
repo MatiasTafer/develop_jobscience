@@ -127,7 +127,7 @@ def test_eeoCommitDefault
 end
 =end
 
-
+=begin
 #TC838 - EEO Question Handler, Always #FIREFOX #CHROME
 def test_eeoQuestionHandlerAlways
    #Preconditions
@@ -174,10 +174,10 @@ def test_eeoQuestionHandlerAlways
      $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
    end
 end
-
+=end
 
 =begin
-#TC839 - EEO Question Handler, Populate #FIREFOX
+#TC839 - EEO Question Handler, Populate #FIREFOX #CHROME
 def test_eeoQuestionHandlerPopulate
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -187,23 +187,25 @@ def test_eeoQuestionHandlerPopulate
   #Steps
   $browser.get HomePage::JOB_BOARD_URL
   test =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-         {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+         {"click_and_load" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWORD},
-         {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"click_and_load" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"displayed" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
+         {"click" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
          {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
-         {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+         {"click_and_load" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH}]
   Common.main(test)   
   begin   
     test2= [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH}, #Button continue on second Page
-           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
     Common.main(test2)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
@@ -211,7 +213,7 @@ def test_eeoQuestionHandlerPopulate
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click   
   rescue     
     test= [{"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
     Common.main(test)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
@@ -222,7 +224,7 @@ end
 =end
 
 =begin
-#TC840 - EEO Question Handler, Omit #FIREFOX
+#TC840 - EEO Question Handler, Omit #FIREFOX #CHROME
 def test_eeoQuestionHandlerOmit
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -232,31 +234,33 @@ def test_eeoQuestionHandlerOmit
   #Steps
   $browser.get HomePage::JOB_BOARD_URL
   test =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-         {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+         {"click_and_load" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWORD},
-         {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"click_and_load" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"displayed" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
+         {"click" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
          {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
-         {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+         {"click_and_load" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH}]
-   Common.main(test)
-   begin
-     test= [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-           {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+  Common.main(test)   
+  begin   
+    test2= [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH}, #Button continue on second Page
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
-    Common.main(test)
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+    Common.main(test2)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
     }
-    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click 
-  rescue
+    $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click   
+  rescue     
     test= [{"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
     Common.main(test)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
@@ -264,49 +268,55 @@ def test_eeoQuestionHandlerOmit
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
   end
 end
+end
 =end
 
 =begin
-#TC841 - Standard and Custom EEO Disclaimers, standard & custom #FIREFOX
+#TC841 - Standard and Custom EEO Disclaimers, standard & custom #FIREFOX #CHROME
 def test_eeoDisclaimersStandardCustom
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
   test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-          {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
+          {"click_and_load" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
           {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
-          {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+          {"click_and_load" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
           {"displayed" => BoardSetupEditPage::BOARD_EDIT_EEO_TEXT_XPATH},
           {"set_text" => BoardSetupEditPage::BOARD_EDIT_EEO_TEXT_XPATH, "text" => "eeo text"},
           {"unchecked" => BoardSetupEditPage::BOARD_EDIT_HIDE_STANDARD_EEO_DISCLAIMER},
-          {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH}]
+          {"click_and_load" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH}]
   Common.main(test)
   #Steps
   $browser.get HomePage::JOB_BOARD_URL
   test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-         {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+         {"click_and_load" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWORD},
-         {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"click_and_load" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"displayed" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
+         {"click" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
          {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
-         {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+         {"click_and_load" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
          {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH}]
+   Common.main(test2)
   begin     
-    test = [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+    test3=[{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
-    Common.main(test2)
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+    Common.main(test3)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
     }
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click 
   rescue
-    test =[{"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
-    Common.main(test2)
+    test4 =[{"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+    Common.main(test4)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
     }
@@ -315,42 +325,44 @@ def test_eeoDisclaimersStandardCustom
 end
 =end
 
-=begin
-#TC842 - Standard and Custom EEO Disclaimers, Only custom #FIREFOX
+
+#TC842 - Standard and Custom EEO Disclaimers, Only custom #FIREFOX #CHROME
 def test_eeoDisclaimersOnlyCustom
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   CustomSettings.JobBoardLogin(true)
   Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
   test = [{"displayed" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
-          {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
+          {"click_and_load" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
           {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
-          {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+          {"click_and_load" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
           {"displayed" => BoardSetupEditPage::BOARD_EDIT_EEO_TEXT_XPATH},
           {"set_text" => BoardSetupEditPage::BOARD_EDIT_EEO_TEXT_XPATH, "text" => "eeo text"},
           {"checked" => BoardSetupEditPage::BOARD_EDIT_HIDE_STANDARD_EEO_DISCLAIMER},
-          {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH}]
+          {"click_and_load" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH}]
   Common.main(test)
   #Steps
   $browser.get HomePage::JOB_BOARD_URL
   test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-         {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+         {"click_and_load" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => $EMAIL},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => $PASSWORD},
-         {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"click_and_load" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"displayed" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
+         {"click" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
          {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
-         {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+         {"click_and_load" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
-         {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH}]
+         {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH}]
   Common.main(test2)
   begin
     test3 =[{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
     Common.main(test3)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
@@ -358,7 +370,7 @@ def test_eeoDisclaimersOnlyCustom
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
   rescue
     test3 =[{"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
-           {"click" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
+           {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
     Common.main(test3)
     assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_EEO_QUESTIONS_GENDER2_XPATH).displayed?
@@ -366,7 +378,7 @@ def test_eeoDisclaimersOnlyCustom
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
   end
 end
-=end
+
 
 =begin
 #TC131 - Apply To A Job With LinkedIn EEO Questions Enable #FIREFOX
