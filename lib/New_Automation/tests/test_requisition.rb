@@ -262,11 +262,12 @@ def test_closeJobOrder
   }
   $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).send_keys RequisitionsCloseJob::CLOSE_REASON_TEXT
   $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH).click
+  
   $wait.until {
     $browser.find_element(:xpath, RequisitionsCloseJob::CONFIRM_DELETED_MESSAGE_XPATH).displayed?
   }
 end  
-=end  
+ 
   
 #TC1071 - Job Order / Close Job, Validation
 def test_closeJobOrderValidation
@@ -345,6 +346,9 @@ end
     }
     
   end  
+  
+  
+=end
   
 end  
   

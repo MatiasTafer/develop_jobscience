@@ -36,7 +36,8 @@ class RequisitionsDetail
   REQUISITIONS_ROLLOVER_POPUP_MSG_CELL_XPATH = ".//*[@class='messageCell']/div"
   REQUISITIONS_ROLLOVER_POPUP_MSG_WARNING_TEXT = "The Job Order you selected does not have the same Question Set as the Job Order you are performing Rollover action from. Click the Invite to Apply button if you would like to apply contacts to the Job."
   REQUISITIONS_ROLLOVER_POPUP_MSG_SUCCESS_TEXT = "The Rollover Process has been completed. Applications Rolled Over: 2."
-  
+  REQUISITIONS_ROLLOVER_POPUP_BTN_OK_XPATH = ".//*[@value='OK']"
+
 
   RE_CHAR_BUTTON_XPATH = ".//*[@title='Re-Chat']"
 

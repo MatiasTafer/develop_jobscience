@@ -358,8 +358,8 @@ class CustomSettings
   def self.ApplyToLinkedIn(booleanOption) 
     if (booleanOption) then
       test = [
-              {"displayed" => BoardSetupDetailPage::SOCIAL_SETTINGS_EDIT_BUTTON_XPATH},
-              {"click_and_load" => BoardSetupDetailPage::SOCIAL_SETTINGS_EDIT_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::SOCIAL_SETTINGS_EDIT_BUTTON_XPATH},
+              {"click_and_load" => SetupEditPage::SOCIAL_SETTINGS_EDIT_BUTTON_XPATH},
               {"displayed" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
               {"checked" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
               {"click_and_load" => SetupEditPage::SAVE_BUTTON_XPATH}
@@ -367,8 +367,8 @@ class CustomSettings
       Common.main(test)
       else if (booleanOption == false) then
         test2 = [
-              {"displayed" => BoardSetupDetailPage::SOCIAL_SETTINGS_EDIT_BUTTON_XPATH},
-              {"click_and_load" => BoardSetupDetailPage::SOCIAL_SETTINGS_EDIT_BUTTON_XPATH},
+              {"displayed" => SetupEditPage::SOCIAL_SETTINGS_EDIT_BUTTON_XPATH},
+              {"click_and_load" => SetupEditPage::SOCIAL_SETTINGS_EDIT_BUTTON_XPATH},
               {"displayed" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
               {"unchecked" => SetupEditPage::APPLY_TO_LINKEDIN_CHECKBOX_XPATH},
               {"click_and_load" => SetupEditPage::SAVE_BUTTON_XPATH}

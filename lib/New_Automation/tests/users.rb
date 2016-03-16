@@ -24,19 +24,23 @@ require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 class Users
   
+  #NAOMI'S ORG----------------------
   USER_EMAIL = "naomi@joblabs.com"
+  PASSWORD  = "muffin100"
+  
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
   USER_EMAIL3 = "naomimanager@joblabs.com"
   
   PASSWORD_JOB_BOARD = "1234567a"
-  
+
   USER_AUTOMATION = "oktana@joblabs.com"
   PASSWORD_AUTOMATION = "Jobscience16"
+
+  EMAIL_DOMAIN = "oktana.io"
   
+
   $USER_LINKEDIN = "automationoktana@gmail.com"
   $PASSWORD_LINKEDIN = "oktanaqa"
-  
-  PASSWORD  = "muffin100"
   
   def self.create_user_job_board
     #  
