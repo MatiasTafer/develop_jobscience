@@ -19,16 +19,16 @@ class TestRequisition < TestBasic
   @@JobBoard01 = "/New_Automation/files/Job Orders/job_order_upload01.pdf"
   
 
-#TC1059 - New Job Order #FIREFOX
+#TC1059 - New Job Order #FIREFOX #CHROME
 def test_newJobOrder
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
    test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"click_and_load" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
            {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
            {"displayed" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
-           {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
+           {"click_and_load" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
            {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
@@ -36,7 +36,7 @@ def test_newJobOrder
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT}, 
-           {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
+           {"click_and_load" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
     Common.main(test)
     assert $wait.until {
       $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed? 
