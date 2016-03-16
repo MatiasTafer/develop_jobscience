@@ -46,7 +46,7 @@ $wait
 
 #require './New_Automation/test_short_list.rb'
 
-require './New_Automation/tests/test_standard_questions'
+#require './New_Automation/tests/test_standard_questions'
 
 #require './New_Automation/test_projects'
 
@@ -70,7 +70,7 @@ require './New_Automation/tests/test_standard_questions'
 
 #require './New_Automation/tests/test_applications.rb'
 
-#require './New_Automation/test_url_builder.rb'
+require './New_Automation/tests/test_url_builder.rb'
 
 #require './New_Automation/test_daxtra_parse.rb'
 

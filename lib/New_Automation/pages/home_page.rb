@@ -27,7 +27,6 @@ class HomePage
   SOURCE_LINK_XPATH = ".//a[text()[contains(.,'Sources')]]"
   JOB_TEMPLATES_TAB_LINK_XPATH = ".//a[text()[contains(.,'Job Templates')]][not (contains(.,'Mapping'))]"
   STANDARD_QUESTIONS_TAB_XPATH = ".//a[text()[contains(.,'Standard Questions')]]"
-  JOB_TEMPLATE_MAPPING_TAB_XPATH = ".//a[text()[contains(.,'Job Templates Mapping')]]"
   SUBMITTALS_TAB_LINK_XPATH = ".//a[text()[contains(.,'Submittals')]]"
   CHATTER_TAB_XPATH = ".//a[text()[contains(.,'Chatter')]]"
   ACCOUNTS_TAB_LINK_XPATH = ".//a[text()[contains(.,'Accounts')]]"

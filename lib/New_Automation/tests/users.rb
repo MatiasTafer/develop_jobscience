@@ -33,17 +33,26 @@ class Users
   
   PASSWORD  = "Jobscience16"
   
+  
+  
   def self.create_user_job_board
     # .//table[@class='atsError']/tbody/tr/td[text()[contains(.,'The email below is associated with an existing profile within our system.')]]
-    random_name = "auto_" + SecureRandom.hex(4)
-    username = random_name + "@test.com"
-    #
-    begin
-      Common.login(USER_EMAIL, PASSWORD)
+    username = false
+    #f = File.open("users.txt", "r")
+    #f.each_line do |line|
+    #  if line
+    #    username = line
+    #  end
+    #end
+    f.close
+    if not username
+      random_name = "auto_" + SecureRandom.hex(4)
+      username = random_name + "@test.com"  
     end
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    password = "1234567a"
+    #
+    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
     test = [
-      {"click" => BoardSetupDetailPage::BOARD_DETAIL_FIRSTRECORD_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       {"checked" => SetupEditPage::ALLOW_REGISTER_ONLY_CHECKBOX_XPATH},
@@ -67,8 +76,8 @@ class Users
       # 7. Fill the fields (required)
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
       {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => username},
-      {"set_text" => JobBoardJobDetail::PASSWORD_TEXT_XPATH, "text" => PASSWORD},
-      {"set_text" => JobBoardJobDetail::CONFIRM_PASSWORD_TEXT_XPATH, "text" => PASSWORD},
+      {"set_text" => JobBoardJobDetail::PASSWORD_TEXT_XPATH, "text" => password},
+      {"set_text" => JobBoardJobDetail::CONFIRM_PASSWORD_TEXT_XPATH, "text" => password},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -81,20 +90,23 @@ class Users
     ]
     Common.main(test)
     
-    begin
-      f = File.open("users.txt", "r")
-      f.each_line do |line|
-        puts line
-      end
-      f.close
-    rescue
-      File.open("users.txt", "w") do |d|     
-        d.write()   
-      end
+    
+    File.open("users.txt", "w") do |d|     
+      d.write(username)   
     end
     #out_file = File.new("users.txt", "w")
     #out_file.puts(random_name + "@test.com")
     #out_file.close
+  end
+  
+  def self.user_job_board
+    f = File.open("users.txt", "r")
+    f.each_line do |line|
+       username = line
+       puts username
+       return username
+    end
+    
   end
   
 end

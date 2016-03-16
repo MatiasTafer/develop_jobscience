@@ -41,7 +41,6 @@ class SetupEditPage
   JOB_BOARD_SETUP_EDIT_PAGE_URL = "https://ts2.na17.visual.force.com/apex/JobBoardSetup?retURL=%2Fa0Go00000080Tcp&scontrolCaching=1&sfdc.override=1&id=a0Go00000080Tcp"
   JOB_BOARD_SETUP_EDIT_PAGE_INTERNAL_XPATH = "https://ts2.na17.visual.force.com/apex/JobBoardSetup?retURL=%2Fa0Go000001Ij584&scontrolCaching=1&sfdc.override=1&id=a0Go000001Ij584"
     # Buttons
-  EDIT_BUTTON_XPATH = ".//*[@name='edit']"
   SAVE_BUTTON_XPATH = ".//*[@value='Save']"  
     # Fields
   AUTO_ASSOCIATE_CHECKBOX_XPATH = ".//*[text()[contains(.,'Auto-Associate')]]/../../following-sibling::*//input"
@@ -125,8 +124,6 @@ class SetupEditPage
   
   
   #JOB BOARD LOGIN OPTIONS
-    # URL
-  CONFIG_JOB_BOARD_LOGIN_URL = "https://na17.salesforce.com/udd/Site/editSiteLoginSettings.apexp?id=0DMo00000005Nzk"
     # Buttons
   CONFIG_JOB_BOARD_LOGIN_SAVE_XPATH = ".//*[@value='Save']"      
   CONFIG_JOB_BOARD_LOGIN_EDIT_XPATH = ".//*[@value='Edit']"
@@ -140,5 +137,13 @@ class SetupEditPage
   # MASS MAIL
     # Fields
   ENABLE_MASS_MAIL_CHECKBOX_XPATH = ".//*[text()[contains(.,'EnableMassMailService')]]/../..//input"
+  
+  # SETUP
+  DEVELOP_XPATH = ".//a[text()='Develop']"
+  OPENINGS_XPATH = ".//a[text()='openings']"
+  SITES_XPATH = ".//a[text()='Sites']"
+  LOGIN_SETTINGS_BUTTON_XPATH = ".//*[@value='Login Settings']"
+  EDIT_BUTTON_XPATH = ".//*[@value='Edit']"
+  CUSTOM_SETTINGS_XPATH = ".//*[@id='CustomSettings_font']"
   
 end
