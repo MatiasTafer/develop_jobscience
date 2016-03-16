@@ -62,7 +62,7 @@ class RequisitionsNewAndEdit
   CLIENT_TEXT = "Candidates"
   CONTACT_TEXT = "Charlie Day2"
   TRAVEL_WRONG_PERCENT_TEXT = "wrongPercent"
-  REQUISITION_NAME = SecureRandom.hex(5)
+  REQUISITION_NAME = "000"+ SecureRandom.hex(5)
   DATE_WRONG_TEXT = "WrongDate"
   CURRENCY_TEXT = "USD - U.S. Dollar"
     
