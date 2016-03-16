@@ -49,7 +49,7 @@ class RequisitionsNewAndEdit
   RECORD_TYPE_OF_NEW_RECORD_TEXT = "Corporate" 
   RECORD_TYPE_OF_NEW_RECORD_TEXT_2 = "Internship"
   JOB_TITLE_TEXT =  "JobTitle"
-  PRIMARY_RECRUITER_TEXT = "Martin Da Silva"
+  PRIMARY_RECRUITER_TEXT = "Naomi Kihara"
   LOCATION_TEXT = "San Francisco, CA"
   DEPARTMENT_TEXT = "Dept ABC"
   MIN_SALARY_TEXT = "1000"
