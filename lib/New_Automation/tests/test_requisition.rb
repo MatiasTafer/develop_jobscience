@@ -278,6 +278,7 @@ def test_closeJobOrder
 end  
 =end
 
+=begin
 #TC1071 - Job Order / Close Job, Validation #FIREFOX
 def test_closeJobOrderValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -317,10 +318,10 @@ def test_closeJobOrderValidation
     $browser.find_element(:xpath, RequisitionsCloseJob::ERROR_REQUIRED_FIELDS_XPATH).displayed?
   }
 end  
+=end
 
 
-=begin
-#TC103 - Add Job Order from Uploading File
+#TC103 - Add Job Order from Uploading File #FIREFOX
   def test_AddJobOrderFromUploading
     
     #PRECONDITIONS
@@ -360,7 +361,7 @@ end
   end  
   
   
-=end  
+ 
   
   
 end  

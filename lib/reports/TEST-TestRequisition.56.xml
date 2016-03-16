@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestRequisition" tests="1" time="60.029743" failures="0" errors="0" skipped="0" assertions="1" timestamp="2016-03-16T15:13:41-03:00">
+  <testcase name="test_AddJobOrderFromUploading" time="60.029138" assertions="1">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+click
+
+main
+
+displayed
+upload
+https://ts2.na17.visual.force.com/apex/JobOrderAddUpdateBackend?id=005o0000001NWrs
+upload
+click
+  </system-out>
+</testsuite>
