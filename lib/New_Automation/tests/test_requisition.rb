@@ -18,7 +18,6 @@ require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 class TestRequisition < TestBasic
   @@JobBoard01 = "/New_Automation/files/Job Orders/job_order_upload01.pdf"
   
-=begin
 #TC1059 - New Job Order #FIREFOX #CHROME
 def test_newJobOrder
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -42,9 +41,7 @@ def test_newJobOrder
       $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed? 
     }      
 end  
-=end
 
-=begin
 #TC1060 - New Job Order, Validation #FIREFOX #CHROME
 def test_newJobOrderValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -121,11 +118,8 @@ def test_newJobOrderValidation
   }
   assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_INVALID_NUMBER_TEXT)
 end
-=end
 
 
-
-=begin
 #TC1061 - Transfer Jobs  #FIREFOX #CHROME
 def test_transferJobs
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -142,9 +136,7 @@ def test_transferJobs
      $browser.find_element(:xpath, RequisitionMassTransfer::BACK_TO_LIST_BUTTON_ON_SUCCSESS_PAGE).displayed?
   }
 end  
-=end
 
-=begin
 #TC1062 - Transfer Jobs, Validation #FIREFOX
 def test_transferJobVlaidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -160,9 +152,7 @@ def test_transferJobVlaidation
      $browser.find_element(:xpath, RequisitionMassTransfer::ERROR_RECRUITER_MUST_BE_SELECTED_XPATH).displayed?
   }
 end
-=end
 
-=begin
 #TC1064 - Change Priority #FIREFOX
 def test_changePriority
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -178,9 +168,7 @@ def test_changePriority
     $browser.find_element(:xpath, RequisitionsChangePriority::BACK_TO_LIST_BUTTON_ON_SUCCESS_PAGE_XPATH).displayed?
   } 
 end
-=end
 
-=begin
 #TC1065 - Change Priority, Validation  #FIREFOX
 def test_changePriorityValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -195,9 +183,7 @@ def test_changePriorityValidation
     $browser.find_element(:xpath, RequisitionsChangePriority::ERROR_PRIORITY_MUST_BE_SELECTED).displayed?
   }  
 end
-=end
 
-=begin
 #TC1067 - Change Status #FIREFOX
 def test_changeStatus
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -213,9 +199,7 @@ def test_changeStatus
     $browser.find_element(:xpath, RequisitionsChangeStatus::BACK_TO_LIST_BUTTON_SUCCESS_PAGE_XPATH).displayed?
   }  
 end
-=end
 
-=begin
 #TC1068 - Change Status, Validation #FIREFOX
 def test_changeStatusValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -230,9 +214,7 @@ def test_changeStatusValidation
     $browser.find_element(:xpath, RequisitionsChangeStatus::ERROR_STATUS_MUST_BE_SELECTED).displayed?
   }
 end
-=end
 
-=begin
 #TC1070 - Job Order / Close Job #FIREFOX
 def test_closeJobOrder
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -276,9 +258,7 @@ def test_closeJobOrder
     $browser.find_element(:xpath, RequisitionsCloseJob::CONFIRM_DELETED_MESSAGE_XPATH).displayed?
   }
 end  
-=end
 
-=begin
 #TC1071 - Job Order / Close Job, Validation #FIREFOX
 def test_closeJobOrderValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -318,7 +298,7 @@ def test_closeJobOrderValidation
     $browser.find_element(:xpath, RequisitionsCloseJob::ERROR_REQUIRED_FIELDS_XPATH).displayed?
   }
 end  
-=end
+
 
 
 #TC103 - Add Job Order from Uploading File #FIREFOX
