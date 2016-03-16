@@ -8,5 +8,6 @@ class EducationHistoryNewPage
   
   #DETAIL PAGE
   EDU_HISTORY_DETAIL_BTN_EDIT_XPATH = ".//*[@name='edit']"
+  EDU_HISTORY_DETAIL_SCHOOL_RECORD_XPATH = ".//*[text()='School Record']/following-sibling::*[1]/div"
   
 end

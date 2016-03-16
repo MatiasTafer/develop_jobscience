@@ -41,7 +41,10 @@ class Users
   #AUTOMATION ORG-------------------
   USER_AUTOMATION = "oktana@joblabs.com"
   PASSWORD_AUTOMATION = "Jobscience16"
+
+  EMAIL_DOMAIN = "oktana.io"
   
+
   def self.create_user_job_board
     # .//table[@class='atsError']/tbody/tr/td[text()[contains(.,'The email below is associated with an existing profile within our system.')]]
     username = false
