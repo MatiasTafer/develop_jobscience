@@ -22,7 +22,7 @@ $wait
 
 #require './New_Automation/test_email_actions'
 
-#require './New_Automation/test_eeo_question.rb'
+require './New_Automation/tests/test_eeo_question.rb'
 
 #require './New_Automation/test_requisition.rb'
 
@@ -64,7 +64,7 @@ require './New_Automation/tests/test_candidates_actions'
 
 #require './New_Automation/tests/test_applications.rb'
 
-#require './New_Automation/test_url_builder.rb'
+require './New_Automation/tests/test_url_builder.rb'
 
 #require './New_Automation/test_daxtra_parse.rb'
 

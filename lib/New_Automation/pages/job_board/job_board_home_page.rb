@@ -16,6 +16,7 @@ class JobBoardHomePage
   JOB_BOARD_DEPARTMENT_SELECT_XPATH = "(.//label[contains(text(),'Department:')])/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
   BROWSE_BUTTON_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input"
   ATTACH_ADDITIONAL_DOC_XPATH = ".//*[@type='file']"
+  SEARCH_BUTTON_XPATH = ".//*[@value='Search']"
   
   JOB_BOARD_LOGIN_LINK_XPATH = ".//*[@id='js-menu-login']/a"
   JOB_BOARD_REGISTER_LINK_XPATH = ".//*[@id='js-menu-register']/a"
@@ -30,6 +31,7 @@ class JobBoardHomePage
   JOB_BOARD_RETURN_TO_SEARCH_XPATH = ".//*[@id='js-menu-search']/a"
   JOB_BOARD_YOUR_JOB_APPLICATION_XPATH = ".//*[@id='js-menu-apps']/a"
   JOB_BOARD_JOB_LIST_XPATH = ".//*[@class='atsSearchResultsData ']"
+  JOB_BOARD_JOB_LIST_XPATH2 = ".//*[text()='Job Title']/ancestor::thead/following-sibling::*"
   JOB_BOARD_SEARCH_BY_KEYWORD_XPATH = ".//label[contains(text(),'Search by Keyword:')]/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/input[1]"
   JOB_BOARD_SEARCH_BY_KEYWORD_SECOND_TEXT_XPATH = ".//label[contains(text(),'Search by Keyword:')]/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/input[2]"
   JOB_BOARD_SEARCH_BY_KEYWORD_THIRD_TEXT_XPATH = ".//label[contains(text(),'Search by Keyword:')]/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/input[3]"
