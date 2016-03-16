@@ -23,7 +23,7 @@ require './New_Automation/pages/sources/source_home_page.rb'
 
 class TestJobBoard < TestBasic 
   
-=begin
+#=begin
   def test_job_board_tc64 #1 #OK
     # JS2 -  Search jobs by criteria 
     # Login
@@ -325,7 +325,7 @@ class TestJobBoard < TestBasic
     
   end
 
-=begin
+#=begin
   
   def test_job_board_tc74 #10
     # JS2 - Successfully applicant updating info
@@ -1341,7 +1341,7 @@ class TestJobBoard < TestBasic
   end
 
 
-  def test_job_board_tc886 #34     CORREGIRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+  def test_job_board_tc886 #34     
     # JS2 - Resume Attachments Page with attach the required number of documents with proper filetype.
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -1413,7 +1413,7 @@ class TestJobBoard < TestBasic
 
 
 
-  def test_job_board_tc887 #35    CORREGIRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+  def test_job_board_tc887 #35    
     # JS2 - Resume Attachments Page with "Attach to Applications" = false.
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -2949,7 +2949,7 @@ class TestJobBoard < TestBasic
   end
 
   
-=end
+#=end
 
   def test_job_board_tc918  #68
     # JS2 - Successfully Questions Page Save

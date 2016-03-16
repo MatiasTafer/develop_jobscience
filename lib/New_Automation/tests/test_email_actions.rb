@@ -10,7 +10,7 @@ require './New_Automation/pages/home_page.rb'
 require './New_Automation/pages/contacts/contacts_home_page.rb'
 require './New_Automation/pages/contacts/contacts_detail_page.rb'
 require './New_Automation/pages/contacts/contacts_new_edit_page.rb'
-require './New_Automation/pages/answers/offers_home_page.rb'
+require './New_Automation/pages/offers/offers_home_page.rb'
 require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
@@ -52,7 +52,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Applications" Tab
-    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH)
     test = [
       # 2 - Click on any Application
       {"displayed" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
@@ -88,7 +88,7 @@ class TestEmailActions < TestBasic
     # Steps
     # Steps
     # 1 - Click on "Applications" Tab
-    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH)
     test = [
       # 2 - Click on any Application
       {"displayed" => ApplicationsHomePage::FIRST_APPLICATION_RECORD_LIST_XPATH},
@@ -122,6 +122,7 @@ class TestEmailActions < TestBasic
    
   end
 
+
   def test_email_actions_tc1074 #3
     # Application / Forward Application, with Template and Attachment
     # Login
@@ -129,7 +130,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Applications" Tab
-    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH)
     test = [
       # 2 - Click on any Application
       {"displayed" => ApplicationsHomePage::LABEL_APPLICATION_XPATH},
@@ -168,6 +169,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
+=end
   def test_email_actions_tc1075 #4
     # Application / Forward Application, Validation
     # Login
@@ -175,7 +177,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Applications" Tab
-    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH)
     test = [
       # 2 - Click on any Application
       #{"displayed" => ApplicationsHomePage::LABEL_APPLICATION_XPATH},
@@ -217,7 +219,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Submittals" Tab
-    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH)
     test = [
       # Click on any Submittal
       {"displayed" => SubmittalsHomePage::FIRST_SUBMITTALS_RECORD_LIST_XPATH},
@@ -255,7 +257,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Submittals" Tab
-    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH)
     test = [
       # Click on any Submittal
       {"displayed" => SubmittalsHomePage::FIRST_SUBMITTALS_RECORD_LIST_XPATH},
@@ -292,7 +294,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-
+=begin
   def test_email_actions_tc1078 #7
     # Submittal / Forward Submittal, with Template & Attachment
     # Login
@@ -455,7 +457,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-  
+=begin  
   
   def test_email_actions_tc1082 #11
     # Interview / Forward Interview, with Template & Attachments

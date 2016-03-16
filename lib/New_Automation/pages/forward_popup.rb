@@ -8,7 +8,7 @@ class ForwardPopup
   CONTACT_TO_TEXT_XPATH = ".//*[contains(text(),'To')]/ancestor::tr[1]/td/div/span/input"
   CONTACT_SUBJECT_TEXT_XPATH = ".//label[contains(text(),'Subject')]/ancestor::tr[1]/td/div/input"
   
-  ATTACHMENTS_CHECKBOX_XPATH = ".//*[@class='dataCell']/ancestor::tr[1]/td[1]/input"
+  ATTACHMENTS_CHECKBOX_XPATH = "(.//*[@type='checkbox'])[1]"
   CONTACT_ATTACHMENTS_CHECKBOX_XPATH = ".//*[@class='dataCell']/ancestor::tr[1]/td[1]/input"
   
   SEND_BUTTON_XPATH = ".//*[@value='Send']"
