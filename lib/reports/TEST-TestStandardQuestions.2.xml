@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestStandardQuestions" tests="1" time="33.663098" failures="0" errors="0" skipped="0" assertions="2" timestamp="2016-03-14T13:28:33-03:00">
-  <testcase name="test_successfullyCreated" time="33.662385" assertions="2">
-  </testcase>
-</testsuite>
