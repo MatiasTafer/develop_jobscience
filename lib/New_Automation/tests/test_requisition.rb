@@ -144,8 +144,8 @@ def test_transferJobs
 end  
 =end
 
-
-#TC1062 - Transfer Jobs, Validation
+=begin
+#TC1062 - Transfer Jobs, Validation #FIREFOX
 def test_transferJobVlaidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
@@ -160,13 +160,13 @@ def test_transferJobVlaidation
      $browser.find_element(:xpath, RequisitionMassTransfer::ERROR_RECRUITER_MUST_BE_SELECTED_XPATH).displayed?
   }
 end
-
+=end
 
 =begin
-#TC1064 - Change Priority
+#TC1064 - Change Priority #FIREFOX
 def test_changePriority
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_PRIORITY_JOBS_XPATH},
@@ -181,10 +181,10 @@ end
 =end
 
 =begin
-#TC1065 - Change Priority, Validation  
+#TC1065 - Change Priority, Validation  #FIREFOX
 def test_changePriorityValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_PRIORITY_JOBS_XPATH},
@@ -195,13 +195,13 @@ def test_changePriorityValidation
     $browser.find_element(:xpath, RequisitionsChangePriority::ERROR_PRIORITY_MUST_BE_SELECTED).displayed?
   }  
 end
-=end 
+=end
 
-=begin 
+
 #TC1067 - Change Status
 def test_changeStatus
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_STATUS_JOBS_XPATH},
@@ -213,7 +213,7 @@ def test_changeStatus
     $browser.find_element(:xpath, RequisitionsChangeStatus::BACK_TO_LIST_BUTTON_SUCCESS_PAGE_XPATH).displayed?
   }  
 end
-=end
+
 
 =begin
 #TC1068 - Change Status, Validation
