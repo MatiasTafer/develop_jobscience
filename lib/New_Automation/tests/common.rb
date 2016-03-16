@@ -25,7 +25,7 @@ require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 
 
-class Common
+class Common  
   
   #LOGIN
   def self.login(username, password)
@@ -78,10 +78,9 @@ class Common
     current = $browser.current_url
     a = $browser.find_element(:xpath => field).click
     $wait.until {
-      $browser.current_url != current
-      #$browser.execute_script("return document.readyState;") == "complete" 
+      $browser.current_url != current 
     }
-      return a
+    return a
   end
   
   
@@ -535,9 +534,9 @@ class Common
     self.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+      {"click_and_load" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
       {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
+      {"click_and_load" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
       {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
       {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => name},
       {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
@@ -559,7 +558,7 @@ class Common
     end
     Checkbox(RequisitionsNewAndEdit::REQUISITIONS_DISABLE_EEO_CHECKBOX_XPATH, disableEeo)
     
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
+    Common.click_and_load(RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH)
     
     $wait.until {
         $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
@@ -580,7 +579,7 @@ class Common
     $wait.until{
       $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?  
       }
-     # 3 - Click on Delete 
+     # 3 - Click on Delete
     $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).click
      sleep(1)
     # 4 - Confirm

@@ -33,6 +33,8 @@ class Users
   
   PASSWORD  = "muffin100"
   
+  
+  
   def self.create_user_job_board
     # .//table[@class='atsError']/tbody/tr/td[text()[contains(.,'The email below is associated with an existing profile within our system.')]]
     username = false
