@@ -23,9 +23,7 @@ $PASSWORD_LINKEDIN = "oktanaqa"
 
 class EeoQuestion < TestBasic
   
-
-=begin  
-#TC835 - EEO Questions, hidden questions #FIREFOX #CHORME
+#TC835 - EEO Questions, hidden questions
 def   test_eeoQuestionHiddenQuestion
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
@@ -33,7 +31,7 @@ def   test_eeoQuestionHiddenQuestion
            {"click_and_load" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
            {"displayed" =>  BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
            {"click_and_load" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
-           {"displayed" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_GENDER_XPATH},p
+           {"displayed" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_GENDER_XPATH},
            {"unchecked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_GENDER_XPATH},
            {"unchecked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_VETERAN_XPATH},
            {"unchecked" => BoardSetupEditPage::BOARD_EDIT_EEO_QUESTION_CHECKBOX_REQUIRED_XPATH},
@@ -45,10 +43,8 @@ def   test_eeoQuestionHiddenQuestion
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
    } 
 end
-=end
 
-=begin
-#TC836 - EEO Questions, displayed questions #FIREFOX #CHROME
+#TC836 - EEO Questions, displayed questions
 def   test_eeoQuestionDisplayedQuestion
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
@@ -75,10 +71,10 @@ def   test_eeoQuestionDisplayedQuestion
      $browser.find_element(:xpath, BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH).displayed?
    } 
 end
-=end
 
-=begin
-#TC837 - EEO Commit Default #FIREFOX #CHROME
+
+
+#TC837 - EEO Commit Default
 def test_eeoCommitDefault
   #Preconditions
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -125,10 +121,8 @@ def test_eeoCommitDefault
      $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click  
    end
 end
-=end
 
-=begin
-#TC838 - EEO Question Handler, Always #FIREFOX #CHROME
+#TC838 - EEO Question Handler, Always
 def test_eeoQuestionHandlerAlways
    #Preconditions
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -174,10 +168,8 @@ def test_eeoQuestionHandlerAlways
      $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
    end
 end
-=end
 
-=begin
-#TC839 - EEO Question Handler, Populate #FIREFOX #CHROME
+#TC839 - EEO Question Handler, Populate
 def test_eeoQuestionHandlerPopulate
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -221,10 +213,8 @@ def test_eeoQuestionHandlerPopulate
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
   end
 end
-=end
 
-=begin
-#TC840 - EEO Question Handler, Omit #FIREFOX #CHROME
+#TC840 - EEO Question Handler, Omit
 def test_eeoQuestionHandlerOmit
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -268,11 +258,8 @@ def test_eeoQuestionHandlerOmit
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
   end
 end
-end
-=end
 
-=begin
-#TC841 - Standard and Custom EEO Disclaimers, standard & custom #FIREFOX #CHROME
+#TC841 - Standard and Custom EEO Disclaimers, standard & custom
 def test_eeoDisclaimersStandardCustom
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -323,9 +310,7 @@ def test_eeoDisclaimersStandardCustom
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click 
   end
 end
-=end
 
-=begin
 #TC842 - Standard and Custom EEO Disclaimers, Only custom #FIREFOX #CHROME
 def test_eeoDisclaimersOnlyCustom
   #Preconditions
@@ -378,8 +363,6 @@ def test_eeoDisclaimersOnlyCustom
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click
   end
 end
-=end
-
 
 #TC131 - Apply To A Job With LinkedIn EEO Questions Enable #FIREFOX
 def test_eeoApplyWithLinkedInEeoEnable
@@ -419,7 +402,7 @@ def test_eeoApplyWithLinkedInEeoEnable
   }  
 end
 
-=begin
+
 #TC1224 - Apply To A Job With LinkedIn EEO Questions Disable #FIREFOX
 def test_eeoApplyWithLinkedInEeoDisable
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -459,6 +442,6 @@ def test_eeoApplyWithLinkedInEeoDisable
     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_CLOSE_POPUP_XPATH).displayed?
   }  
 end
-=end
+
 
 end
