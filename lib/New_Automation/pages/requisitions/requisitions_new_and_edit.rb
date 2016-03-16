@@ -24,9 +24,9 @@ class RequisitionsNewAndEdit
   REQUISITIONS_NEW_MAX_SALARY_XPATH = ".//*[text()='Max Salary']/../../following-sibling::*[1]//input"
   REQUISITIONS_NEW_DEPARTAMENT_XPATH = ".//*[text()='Department']/../following-sibling::*[1]//select"
   REQUISITIONS_NEW_DEPARTAMENT_OPTION_XPATH = ".//*[text()='Department']/../following-sibling::*[1]//select/option[2]"
-  REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH = ".//*[@name='save']"
+  REQUISITIONS_NEW_BTN_SAVE_EDIT_XPATH = ".//*[@title='Save']"
   REQUISITIONS_JOBS_PROJECTS_FIELD_XPATH = ".//*[text()='Jobs/Projects']/../following-sibling::*[1]//select"
-  
+  REQUISITION_CURRENCY_SELECT_XPATH =".//*[text()='Currency']/../following-sibling::*//select"
   
   REQUISITIONS_CLIENT_FIELD_XPATH = ".//*[text()='Client']/../following-sibling::*[1]//span/input"
   
@@ -64,6 +64,7 @@ class RequisitionsNewAndEdit
   TRAVEL_WRONG_PERCENT_TEXT = "wrongPercent"
   REQUISITION_NAME = SecureRandom.hex(5)
   DATE_WRONG_TEXT = "WrongDate"
+  CURRENCY_TEXT = "USD - U.S. Dollar"
     
   #OTHER FIELDS
   REQUISITIONS_NEW_QUESTIONS_SET_XPATH = ".//*[text()='Question Set']/../following-sibling::*[1]//span/input"
