@@ -40,6 +40,7 @@ class JobBoardHomePage
   JOB_BOARD_CONTACT_LABEL_XPATH = "//*[text()[contains(.,'Contact:')]]"
   JOB_BOARD_SEARCH_FIRST_KEYWORD_XPATH = ".//label[contains(text(),'Search by Keyword:')]/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/input[1]"
   
+  JOB_BOARD_JOB_PROJECTS_SELECT_XPATH = ".//label[contains(text(),'Jobs/Projects:')]/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
   JOB_BOARD_LOCATION_SELECT_XPATH = ".//label[contains(text(),'Location:')]/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
   JOB_BOARD_LOCATION_LABEL_XPATH = ".//label[contains(text(),'Location:')]"
   JOB_BOARD_FACILITY_SELECT_XPATH = ".//label[contains(text(),'Facility:')]/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"

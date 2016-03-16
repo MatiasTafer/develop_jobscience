@@ -14,7 +14,7 @@ class SetupEditPage
   QUESTION_SET_HANDLER_TEXT_XPATH = ".//*[text()[contains(.,'Question Set Handler')]]/../../..//input"
   DOCUMENT_TYPES_FOR_ATTACHMENTS_XPATH = ".//*[text()[contains(.,'Accepted Document Types for Attachments')]]/../../..//input"
   ENABLE_ENHANCED_APPLY_TO_JOB_XPATH = ".//*[text()[contains(.,'Enable Enhanced Apply to Job')]]/../..//input"
-  ALLOW_DUPLICATE_APPS_CHECKBOX_XPATH = ".//*[text()[contains(.,'Allow Duplicate Apps')]]/../../following-sibling::*//input"
+  ALLOW_DUPLICATE_APPS_CHECKBOX_XPATH = ".//*[text()[contains(.,'Allow Duplicate Apps')]]/ancestor::tr[1]/child::td/input"
   ALLOW_DUPLICATE_APPS_DAYS_INPUT_XPATH = ".//*[text()[contains(.,'Allow Duplicate Application Days')]]/../../..//input"
   ENABLE_JCARD_FOR_CONTACT_XPATH = ".//*[text()[contains(.,'Enable JCard for Contact')]]/../../..//input"
   MAX_NUMB_ATTACHEMNT_INPUT_XPATH = ".//*[text()[contains(.,'Max Number of Attachments')]]/../../..//input"

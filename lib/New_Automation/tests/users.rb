@@ -28,13 +28,18 @@ class Users
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
   USER_EMAIL3 = "naomimanager@joblabs.com"
   
+  PASSWORD_JOB_BOARD = "1234567a"
+  
   USER_AUTOMATION = "oktana@joblabs.com"
   PASSWORD_AUTOMATION = "Jobscience16"
+  
+  $USER_LINKEDIN = "automationoktana@gmail.com"
+  $PASSWORD_LINKEDIN = "oktanaqa"
   
   PASSWORD  = "muffin100"
   
   def self.create_user_job_board
-    # .//table[@class='atsError']/tbody/tr/td[text()[contains(.,'The email below is associated with an existing profile within our system.')]]
+    #  
     username = false
     #f = File.open("users.txt", "r")
     #f.each_line do |line|
@@ -84,7 +89,7 @@ class Users
       {"displayed" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 11. Click on "Continue"
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
+      #{"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
     ]
     Common.main(test)
     
