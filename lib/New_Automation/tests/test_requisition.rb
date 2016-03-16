@@ -18,15 +18,16 @@ require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 class TestRequisition < TestBasic
   @@JobBoard01 = "/New_Automation/files/Job Orders/job_order_upload01.pdf"
   
-=begin  
-#TC1059 - New Job Order 
+
+#TC1059 - New Job Order #FIREFOX
 def test_newJobOrder
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
-   Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+   Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
    test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
            {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
+           {"displayed" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
            {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
            {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
@@ -41,7 +42,7 @@ def test_newJobOrder
       $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed? 
     }      
 end  
-=end
+
 
 =begin
 #TC1060 - New Job Order, Validation
@@ -266,7 +267,7 @@ def test_closeJobOrder
     $browser.find_element(:xpath, RequisitionsCloseJob::CONFIRM_DELETED_MESSAGE_XPATH).displayed?
   }
 end  
-=end  
+ 
   
 #TC1071 - Job Order / Close Job, Validation
 def test_closeJobOrderValidation
@@ -345,6 +346,10 @@ end
     }
     
   end  
+  
+  
+=end  
+  
   
 end  
   

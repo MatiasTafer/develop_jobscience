@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestRequisition" tests="1" time="39.263732" failures="0" errors="0" skipped="0" assertions="1" timestamp="2016-03-15T21:33:26-03:00">
+  <testcase name="test_newJobOrder" time="39.263041" assertions="1">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+click
+displayed
+set_text
+displayed
+click
+displayed
+set_text
+set_text
+set_text
+set_text
+set_text
+set_text
+click
+  </system-out>
+</testsuite>
