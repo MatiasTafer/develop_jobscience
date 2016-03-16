@@ -24,17 +24,27 @@ require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 class Users
   
-  USER_EMAIL = "oktana@joblabs.com"
+  #NAOMI'S ORG----------------------
+  USER_EMAIL = "naomi@joblabs.com"
+  PASSWORD  = "muffin100"
+  
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
   USER_EMAIL3 = "naomimanager@joblabs.com"
   
+  USER_JOB_BOARD =  "testrodrigo4@gmail.com"
+  USER_PASSWORD_JOB_BOARD = "password123"
+  
+  USER_LINKEDIN = "automationoktana@gmail.com"
+  PASSWORD_LINKEDIN = "oktanaqa" 
+  
+ 
+  #AUTOMATION ORG-------------------
   USER_AUTOMATION = "oktana@joblabs.com"
   PASSWORD_AUTOMATION = "Jobscience16"
+
+  EMAIL_DOMAIN = "oktana.io"
   
-  PASSWORD  = "Jobscience16"
-  
-  
-  
+
   def self.create_user_job_board
     # .//table[@class='atsError']/tbody/tr/td[text()[contains(.,'The email below is associated with an existing profile within our system.')]]
     username = false

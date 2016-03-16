@@ -16,6 +16,7 @@ class JobBoardHomePage
   JOB_BOARD_DEPARTMENT_SELECT_XPATH = "(.//label[contains(text(),'Department:')])/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
   BROWSE_BUTTON_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input"
   ATTACH_ADDITIONAL_DOC_XPATH = ".//*[@type='file']"
+  SEARCH_BUTTON_XPATH = ".//*[@value='Search']"
   
   JOB_BOARD_LOGIN_LINK_XPATH = ".//*[@id='js-menu-login']/a"
   JOB_BOARD_REGISTER_LINK_XPATH = ".//*[@id='js-menu-register']/a"
@@ -62,5 +63,7 @@ class JobBoardHomePage
   JOB_BOARD_UPLOAD_RESUME_ERROR_TYPE_TEXT = "Wrong file type. The following file types are allowed: pdf"
   JOB_BOARD_UPLOAD_RESUME_BROWSE_TEXT_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input"
   JOB_BOARD_UPLOAD_RESUME_ALL_TYPES_TEXT = "docx, doc, pdf, rtf, html, txt"
+  
+
   
 end

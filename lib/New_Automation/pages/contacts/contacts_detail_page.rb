@@ -1,7 +1,7 @@
 class ContactDetailPage
   
   FORWARD_CONTACT_BUTTON_XPATH = ".//*[@value='Forward Contact']"
-  CONTACT_DETAIL_NAME_XPATH = "//td[text()[starts-with(., 'Name')]]"
+  CONTACT_DETAIL_NAME_XPATH = "//td[text()[starts-with(., 'Name')]]/following-sibling::*[1]/div"
   CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH = "(//*[text()[contains(., 'SKL')]]/../..)[1]"
   CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH = "(//*[text()[contains(., 'SKL')]]/../..)[2]"
   CONTACT_DETAIL_RECORD_SKILL_LIST_FIRST_XPATH = "(//a[text()[contains(., 'SKL')]])[1]"

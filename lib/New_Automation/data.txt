@@ -3,6 +3,9 @@
 
 #Things and data that must be changed and set when swtiching to a new org
 
+*********** USERS ************
+users.rb have hardcoded users that needs to be created or replaced
+
 
 *********** ORG SETTINGS ***********
 JOB BOARD SETUP detail page: you must add the "Notes and Attachments" related list.
