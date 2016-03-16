@@ -264,6 +264,9 @@ class TestActions < TestBasic
       $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH).displayed?
     }
     Common.set_text(SearchResultsPage::SEARCH_RESULT_FILTER_CONTACT_XPATH, randomContact)
+    $wait.until {
+      $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH).displayed?
+    }
     Common.click(SearchResultsPage::SEACRH_RESULT_APPLY_FILTERS_XPATH)
     $wait.until {
       $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").displayed?
@@ -372,6 +375,9 @@ class TestActions < TestBasic
     }
     Common.set_text(SearchResultsPage::SEARCH_RESULT_FILTER_CONTACT_XPATH, randomContact)
     Common.click(SearchResultsPage::SEACRH_RESULT_APPLY_FILTERS_XPATH)
+    $wait.until {
+      $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH).displayed?
+    }
     $wait.until {
       $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").displayed?
     }
