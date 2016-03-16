@@ -197,8 +197,8 @@ def test_changePriorityValidation
 end
 =end
 
-
-#TC1067 - Change Status
+=begin
+#TC1067 - Change Status #FIREFOX
 def test_changeStatus
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
@@ -213,13 +213,13 @@ def test_changeStatus
     $browser.find_element(:xpath, RequisitionsChangeStatus::BACK_TO_LIST_BUTTON_SUCCESS_PAGE_XPATH).displayed?
   }  
 end
-
+=end
 
 =begin
-#TC1068 - Change Status, Validation
+#TC1068 - Change Status, Validation #FIREFOX
 def test_changeStatusValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_STATUS_JOBS_XPATH},
@@ -232,11 +232,11 @@ def test_changeStatusValidation
 end
 =end
 
-=begin
+
 #TC1070 - Job Order / Close Job 
 def test_closeJobOrder
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
@@ -246,12 +246,13 @@ def test_closeJobOrder
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
+           {"set_text" => RequisitionsNewAndEdit::REQUISITION_CURRENCY_SELECT_XPATH, "text" => RequisitionsNewAndEdit::CURRENCY_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT}, 
            {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
   Common.main(test)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test2 = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
           {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_CLOSE_JOB_XPATH},
@@ -267,13 +268,14 @@ def test_closeJobOrder
     $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).displayed?
   }
   $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).send_keys RequisitionsCloseJob::CLOSE_REASON_TEXT
+  $browser.find_element(:xpath, RequisitionsCloseJob::OVERALL_REJECTED_REASON_SELECT_XPATH).send_keys RequisitionsCloseJob::OVERALL_TEXT
   $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH).click
-  $wait.until {
+  assert $wait.until {
     $browser.find_element(:xpath, RequisitionsCloseJob::CONFIRM_DELETED_MESSAGE_XPATH).displayed?
   }
 end  
  
-  
+=begin  
 #TC1071 - Job Order / Close Job, Validation
 def test_closeJobOrderValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -308,7 +310,7 @@ def test_closeJobOrderValidation
     $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).displayed?
   }
   $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH).click
-  $wait.until {
+  assert $wait.until {
     $browser.find_element(:xpath, RequisitionsCloseJob::ERROR_REQUIRED_FIELDS_XPATH).displayed?
   }
 end  
