@@ -16,6 +16,7 @@ class JobBoardHomePage
   JOB_BOARD_DEPARTMENT_SELECT_XPATH = "(.//label[contains(text(),'Department:')])/ancestor::td[@class='atsSearchTdLeft']/following-sibling::td[1]/select"
   BROWSE_BUTTON_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input"
   ATTACH_ADDITIONAL_DOC_XPATH = ".//*[@type='file']"
+  SEARCH_BUTTON_XPATH = ".//*[@value='Search']"
   
   JOB_BOARD_LOGIN_LINK_XPATH = ".//*[@id='js-menu-login']/a"
   JOB_BOARD_REGISTER_LINK_XPATH = ".//*[@id='js-menu-register']/a"

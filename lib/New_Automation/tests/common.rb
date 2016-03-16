@@ -833,11 +833,11 @@ class Common
     self.custom_settings
     test = [
       {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
-      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
+      {"click_and_load" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
     ]
     if edit
       a = {"displayed" => ".//a[@class='actionLink'][1]"}
-      b = {"click" => ".//a[@class='actionLink'][1]"}
+      b = {"click_and_load" => ".//a[@class='actionLink'][1]"}
       test << a
       test << b
     end
