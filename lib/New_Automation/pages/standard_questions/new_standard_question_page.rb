@@ -21,7 +21,7 @@ class NewStandardQuestion
   
   SAVE_AND_NEW_BUTTON_XPATH = ".//*[@value='Save & New']"
   CANCEL_BUTTON_XPATH = ".//*[@value='Cancel']"
-  CONTACT_FIELD_DROPDOWN_XPATH = "//*[text()[contains(., 'Contact Field')]]/../following-sibling::*//select"
+  CONTACT_FIELD_DROPDOWN_XPATH = "//*[text()[contains(., 'Candidate Field')]]/../following-sibling::*//select"
   
   
   QUESTION_NAME_TEXT_FIELD_XPATH = "//*[text()='Question Name']/../following-sibling::*//input"
@@ -35,7 +35,5 @@ class NewStandardQuestion
   QUESTION_LAYOUT_DROPDOWN_XPATH = "//*[text()='Question Layout']/../following-sibling::*//select"
   REQUIRED_BY_APPLICANT_CHECKBOX_XPATH = "//*[text()='Required By Applicant']/../following-sibling::*//input"
   ERROR_MESSAGE_XPATH = ".//*[@class='message errorM3']"
-  
-  
-  
+   
 end

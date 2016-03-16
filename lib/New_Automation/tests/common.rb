@@ -25,7 +25,7 @@ require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 
 
-class Common
+class Common  
   
   #LOGIN
   def self.login(username, password)
@@ -78,10 +78,9 @@ class Common
     current = $browser.current_url
     a = $browser.find_element(:xpath => field).click
     $wait.until {
-      $browser.current_url != current
-      #$browser.execute_script("return document.readyState;") == "complete" 
+      $browser.current_url != current 
     }
-      return a
+    return a
   end
   
   
@@ -563,6 +562,7 @@ class Common
     Checkbox(RequisitionsNewAndEdit::REQUISITIONS_DISABLE_EEO_CHECKBOX_XPATH, disableEeo)
     
     Common.click_and_load(RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH)
+
     $wait.until {
         $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
       }
@@ -582,7 +582,7 @@ class Common
     $wait.until{
       $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?  
       }
-     # 3 - Click on Delete 
+     # 3 - Click on Delete
     $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).click
      sleep(1)
     # 4 - Confirm
@@ -836,11 +836,11 @@ class Common
     self.custom_settings
     test = [
       {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
-      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
+      {"click_and_load" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
     ]
     if edit
       a = {"displayed" => ".//a[@class='actionLink'][1]"}
-      b = {"click" => ".//a[@class='actionLink'][1]"}
+      b = {"click_and_load" => ".//a[@class='actionLink'][1]"}
       test << a
       test << b
     end
