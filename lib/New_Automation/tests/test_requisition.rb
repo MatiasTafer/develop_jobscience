@@ -233,7 +233,7 @@ end
 =end
 
 
-#TC1070 - Job Order / Close Job 
+#TC1070 - Job Order / Close Job #FIREFOX
 def test_closeJobOrder
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
@@ -247,7 +247,7 @@ def test_closeJobOrder
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITION_CURRENCY_SELECT_XPATH, "text" => RequisitionsNewAndEdit::CURRENCY_TEXT},
-           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
+           {"set_text_exist" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT}, 
            {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
@@ -267,8 +267,11 @@ def test_closeJobOrder
   $wait.until {
     $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).displayed?
   }
-  $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).send_keys RequisitionsCloseJob::CLOSE_REASON_TEXT
-  $browser.find_element(:xpath, RequisitionsCloseJob::OVERALL_REJECTED_REASON_SELECT_XPATH).send_keys RequisitionsCloseJob::OVERALL_TEXT
+  $wait.until {
+    $browser.find_element(:xpath, RequisitionsCloseJob::OVERALL_REJECTED_REASON_SELECT_XPATH).displayed?
+  }
+  Common.set_text_exist(RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH, RequisitionsCloseJob::CLOSE_REASON_TEXT)
+  Common.set_text_exist(RequisitionsCloseJob::OVERALL_REJECTED_REASON_SELECT_XPATH, RequisitionsCloseJob::OVERALL_TEXT)
   $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH).click
   assert $wait.until {
     $browser.find_element(:xpath, RequisitionsCloseJob::CONFIRM_DELETED_MESSAGE_XPATH).displayed?
