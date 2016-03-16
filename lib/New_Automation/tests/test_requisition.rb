@@ -248,6 +248,8 @@ def test_closeJobOrder
   $wait.until {
     $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).displayed?
   }
+  $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).send_keys RequisitionsCloseJob::CLOSE_REASON_TEXT
+  $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH).click
   $wait.until {
     $browser.find_element(:xpath, RequisitionsCloseJob::OVERALL_REJECTED_REASON_SELECT_XPATH).displayed?
   }
@@ -258,6 +260,7 @@ def test_closeJobOrder
     $browser.find_element(:xpath, RequisitionsCloseJob::CONFIRM_DELETED_MESSAGE_XPATH).displayed?
   }
 end  
+
 
 #TC1071 - Job Order / Close Job, Validation #FIREFOX
 def test_closeJobOrderValidation
@@ -341,8 +344,7 @@ end
   end  
   
   
- 
-  
+
   
 end  
   

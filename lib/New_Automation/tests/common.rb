@@ -25,7 +25,7 @@ require './New_Automation/pages/job_board/job_board_job_detail.rb'
 
 
 
-class Common
+class Common  
   
   #LOGIN
   def self.login(username, password)
@@ -78,10 +78,9 @@ class Common
     current = $browser.current_url
     a = $browser.find_element(:xpath => field).click
     $wait.until {
-      $browser.current_url != current
-      #$browser.execute_script("return document.readyState;") == "complete" 
+      $browser.current_url != current 
     }
-      return a
+    return a
   end
   
   
@@ -430,13 +429,13 @@ class Common
     self.goToTab(HomePage::ACCOUNTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH}, 
-      {"click" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
+      {"click_and_load" => AccountsHomePage::ACCOUNTS_HOME_PAGE_BTN_NEW_XPATH},
       {"displayed" => AccountsNewEditPage::ACCOUNTS_NEW_RECORD_TYPE_XPATH},
       {"set_text" => AccountsNewEditPage::ACCOUNTS_NEW_RECORD_TYPE_XPATH, "text" => "Account"},
-      {"click" => AccountsNewEditPage::ACCOUNTS_NEW_CONTINUE_XPATH},
+      {"click_and_load" => AccountsNewEditPage::ACCOUNTS_NEW_CONTINUE_XPATH},
       {"displayed" => AccountsNewEditPage::ACCOUNTS_NEW_ACCOUNT_NAME_XPATH},
       {"set_text" =>AccountsNewEditPage::ACCOUNTS_NEW_ACCOUNT_NAME_XPATH, "text" => name},
-      {"click" => AccountsNewEditPage::ACCOUNTS_NEW_BTN_SAVE_XPATH},
+      {"click_and_load" => AccountsNewEditPage::ACCOUNTS_NEW_BTN_SAVE_XPATH},
       {"displayed" => AccountsDetailPage::ACCOUNTS_DETAIL_BTN_DELETE_XPATH}
     ]
     Common.main(test)  
@@ -447,10 +446,10 @@ class Common
      self.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
-      {"click" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
+      {"click_and_load" => ContactsHomePage::CONTACT_HOME_PAGE_BTN_NEW},
       {"displayed" => ContactNewEditPage::CONTACT_NEW_RECORD_TYPE_NEW_XPATH},
       {"set_text" => ContactNewEditPage::CONTACT_NEW_RECORD_TYPE_NEW_XPATH, "text" => "Contact"},
-      {"click" => ContactNewEditPage::CONTACT_NEW_BTN_CONTINUE_XPATH},
+      {"click_and_load" => ContactNewEditPage::CONTACT_NEW_BTN_CONTINUE_XPATH},
       {"displayed" => ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH},
       {"displayed" => ContactNewEditPage::CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH},
       {"displayed" => ContactNewEditPage::CONTACT_NEW_FIELD_LISTS_XPATH}
@@ -460,7 +459,7 @@ class Common
     test = [ 
       {"set_text" => ContactNewEditPage::CONTACT_NEW_LAST_NAME_INPUT_XPATH, "text" => name},
       {"set_text" => ContactNewEditPage::CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH, "text" => account_name},
-      {"click" => ContactNewEditPage::CONTACT_NEW_BTN_SAVE_XPATH},
+      {"click_and_load" => ContactNewEditPage::CONTACT_NEW_BTN_SAVE_XPATH},
       {"displayed" => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH}
     ]
     Common.main(test)   
@@ -488,10 +487,10 @@ class Common
     self.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
       {"displayed" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH}, 
-      {"click" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH},
+      {"click_and_load" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH},
       {"displayed" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH},
       {"set_text" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH, "text" => name},
-      {"click" => ShortListNewEditPage::SHORT_LIST_NEW_BTN_SAVE_XPATH},
+      {"click_and_load" => ShortListNewEditPage::SHORT_LIST_NEW_BTN_SAVE_XPATH},
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH}
     ]
     Common.main(test)   
@@ -535,10 +534,13 @@ class Common
     self.goToTab(HomePage::REQUISITIONS_LINK_XPATH)
     test = [
       {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-      {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+      {"click_and_load" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
       {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
-      {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
+      {"click_and_load" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_CONTINUE_XPATH},
       {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
+      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH},
+      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH},
+      {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH},
       {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => name},
       {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
       {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
@@ -559,8 +561,8 @@ class Common
     end
     Checkbox(RequisitionsNewAndEdit::REQUISITIONS_DISABLE_EEO_CHECKBOX_XPATH, disableEeo)
     
-    $browser.find_element(:xpath => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH).click
-    
+    Common.click_and_load(RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH)
+
     $wait.until {
         $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?
       }
@@ -580,7 +582,7 @@ class Common
     $wait.until{
       $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed?  
       }
-     # 3 - Click on Delete 
+     # 3 - Click on Delete
     $browser.find_element(:xpath => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).click
      sleep(1)
     # 4 - Confirm
@@ -834,11 +836,11 @@ class Common
     self.custom_settings
     test = [
       {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
-      {"click" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
+      {"click_and_load" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
     ]
     if edit
       a = {"displayed" => ".//a[@class='actionLink'][1]"}
-      b = {"click" => ".//a[@class='actionLink'][1]"}
+      b = {"click_and_load" => ".//a[@class='actionLink'][1]"}
       test << a
       test << b
     end
