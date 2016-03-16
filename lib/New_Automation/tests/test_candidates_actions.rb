@@ -373,7 +373,7 @@ class TestActions < TestBasic
     Common.set_text(SearchResultsPage::SEARCH_RESULT_FILTER_CONTACT_XPATH, randomContact)
     Common.click(SearchResultsPage::SEACRH_RESULT_APPLY_FILTERS_XPATH)
     $wait.until {
-      $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input").displayed?
+      $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").displayed?
     }
     # 4. Select one or more contact doing click on checkbox on column "Action".
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").click
