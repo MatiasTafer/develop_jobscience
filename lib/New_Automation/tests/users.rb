@@ -44,6 +44,13 @@ class Users
 
   EMAIL_DOMAIN = "oktana.io"
   
+  #Job Board User
+  #This User must have a resume already uploaded
+  JOB_BOARD_USER_TEXT = "test2016@oktana.io"
+  JOB_BOARD_USER_NAME_TEXT = "test2016"
+  JOB_BOARD_PASSWORD_TEXT = "hola12345"
+  JOB_BOARD_USER_PROFILE_URL = "https://na17.salesforce.com/003o000000pMzEW"
+  
 
   def self.create_user_job_board
     # .//table[@class='atsError']/tbody/tr/td[text()[contains(.,'The email below is associated with an existing profile within our system.')]]

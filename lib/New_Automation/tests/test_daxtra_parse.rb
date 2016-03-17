@@ -13,6 +13,9 @@ require './New_Automation/pages/resume/add_resume_popup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_login_page.rb'
 require './New_Automation/pages/resume/add_resume_popup_page.rb'
+require './New_Automation/pages/board_setup/board_setup_home_page.rb'
+require './New_Automation/pages/board_setup/board_setup_detail_page.rb' 
+require './New_Automation/pages/board_setup/board_setup_edit_page.rb'
 require_relative 'users.rb'
 
 class TestDaxtraParse < TestBasic
@@ -35,13 +38,14 @@ class TestDaxtraParse < TestBasic
 
   #TC148 - Add resume with "Add Resume Dupe Prevention" set to "Attach Only"
   def test_AddResumeDupePreventionAttachOnly
-    
+  
     #PRECONDITIONS:
     
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # "Attach Only" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.AddResumeDupePrevention("Attach Only")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -64,12 +68,21 @@ class TestDaxtraParse < TestBasic
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 2 - Click Browse  
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-    # 3 - Locate Resume and click Add Resume  
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
-      #{"not_displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test) 
+    # 3 - Locate Resume and click Add Resume 
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -92,12 +105,21 @@ class TestDaxtraParse < TestBasic
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 6 - Click Browse  
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2},
-    # 7 - Locate updated resume and click Add Resume 
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
-      #{"not_displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2}
     ]
     Common.main(test) 
+     # 7 - Locate updated resume and click Add Resume 
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -110,8 +132,6 @@ class TestDaxtraParse < TestBasic
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NOTES_ATTACH_LIST_FIRST_XPATH).displayed?
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NOTES_ATTACH_LIST_SECOND_XPATH).displayed?
     }
-    
-    Common.DeleteCandidateCreatedToday("Manolo, Manuel")
     
     $browser.close
     
@@ -126,6 +146,7 @@ class TestDaxtraParse < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
     
     # "Attach Only" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -148,12 +169,22 @@ class TestDaxtraParse < TestBasic
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 2 - Click Browse  
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-    # 3 - Locate Resume and click Add Resume  
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
-      #{"not_displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
-    ]
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
+      ]
     Common.main(test) 
+    
+    # 3 - Locate Resume and click Add Resume  
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -176,18 +207,28 @@ class TestDaxtraParse < TestBasic
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 6 - Click Browse  
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2},
-    # 7 - Locate updated resume and click Add Resume 
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
-      #{"not_displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2}
     ]
     Common.main(test) 
+    
+    # 7 - Locate updated resume and click Add Resume 
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
     # RESULTS
     # Contact page should refresh. Fields on contact record should repopulate with changed values, unless custom settings specify otherwise.
-    assert_equal("Manuel Gonzales", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
+    assert_equal(ContactDetailPage::CONTACT_NAME_1_TEXT, $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
     
     # Both resume versions should be attached to the contact record
     assert $wait.until {
@@ -195,8 +236,14 @@ class TestDaxtraParse < TestBasic
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NOTES_ATTACH_LIST_SECOND_XPATH).displayed?
     }
     
-    Common.DeleteCandidateCreatedToday("Gonzales, Manuel")
-  
+    test = [
+      {"click" => ContactDetailPage::CONTACT_DETAIL_BTN_DELETE_XPATH}
+    ]
+    Common.main(test)
+    sleep(1)
+    $browser.switch_to.alert.accept
+    Common.displayed(ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH)
+      
   end
 
   #TC150 - Upload resume in Job Board with "Job Board Dupe Prevention" set to "Attach Only"
@@ -210,10 +257,16 @@ class TestDaxtraParse < TestBasic
     #Set Contact
     self.SetContact
     
-    CustomSettings.JobBoardLogin(true)
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     CustomSettings.BoardSetupInit
     
+    CustomSettings.JobBoardLogin(true)
+        
     # "Attach Only" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Attach Only")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -227,8 +280,8 @@ class TestDaxtraParse < TestBasic
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},  
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_USER_TEXT},
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_PASSWORD_TEXT}, 
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::JOB_BOARD_USER_TEXT},
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::JOB_BOARD_PASSWORD_TEXT}, 
       {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
       {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
     # 6 - Click on "Update Your Resume"  
@@ -255,13 +308,13 @@ class TestDaxtraParse < TestBasic
     Common.main(test)
     assert_equal(JobBoardHomePage::JOB_BOARD_UPLOAD_RESUME_SUCCESS_TEXT, $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_UPLOAD_RESUME_SUCCESS_OUTPUT_XPATH).text) 
     
-    $browser.get(JobBoardLoginPage::JOB_BOARD_USER_PROFILE_URL)
+    $browser.get(Users::JOB_BOARD_USER_PROFILE_URL)
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).displayed?
     }
     # RESULTS
     # Contact page should refresh. Fields on contact record should repopulate with changed values, unless custom settings specify otherwise.
-    assert_equal("test2016 Manolo", $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
+    assert_equal(ContactDetailPage::CONTACT_NAME_FROM_FILES_1_TEXT, $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).text)
     
     # Both resume versions should be attached to the contact record
     assert $wait.until {
@@ -273,7 +326,7 @@ class TestDaxtraParse < TestBasic
     self.SetContact
     
   end
-  
+
   #TC151 - Upload resume in Job Board with "Job Board Dupe Prevention" set to "Parse Fields"
   def test_UploadResumeJobBoardDupePreventionParseFields
     
@@ -286,9 +339,15 @@ class TestDaxtraParse < TestBasic
     self.SetContact
     
     CustomSettings.JobBoardLogin(true)
+    
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     CustomSettings.BoardSetupInit
     
     # "Attach Only" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -302,8 +361,8 @@ class TestDaxtraParse < TestBasic
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},  
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_USER_TEXT},
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_PASSWORD_TEXT}, 
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::JOB_BOARD_USER_TEXT},
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::JOB_BOARD_PASSWORD_TEXT}, 
       {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
       {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
     # 6 - Click on "Update Your Resume"  
@@ -330,11 +389,11 @@ class TestDaxtraParse < TestBasic
     Common.main(test)
     assert_equal(JobBoardHomePage::JOB_BOARD_UPLOAD_RESUME_SUCCESS_TEXT, $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_UPLOAD_RESUME_SUCCESS_OUTPUT_XPATH).text) 
     sleep(7)
-    $browser.get(JobBoardLoginPage::JOB_BOARD_USER_PROFILE_URL)
+    $browser.get(Users::JOB_BOARD_USER_PROFILE_URL)
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).displayed?
     }
-    $browser.get(JobBoardLoginPage::JOB_BOARD_USER_PROFILE_URL)
+    $browser.get(Users::JOB_BOARD_USER_PROFILE_URL)
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).displayed?
     }
@@ -367,6 +426,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact)
         
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
    
@@ -402,10 +462,20 @@ class TestDaxtraParse < TestBasic
     file = File.join(Dir.pwd, @@Daxtra03)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow2= $browser.window_handles.first
@@ -442,10 +512,20 @@ class TestDaxtraParse < TestBasic
     file2 = File.join(Dir.pwd, @@Daxtra04)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow3= $browser.window_handles.first
@@ -482,7 +562,7 @@ class TestDaxtraParse < TestBasic
 
   #TC153 - Upload resume with "Overwrite Address" set to "FALSE"
   def test_UploadResumeOverwriteAddressFalse
-    randomContact = "a" + SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
     
     #PRECONDITIONS:
     #Login
@@ -492,10 +572,11 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact)
         
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
    
-    # "Overwrite Address" set to "TRUE"
+    # "Overwrite Address" set to "False"
     CustomSettings.DaxtraParseOverwrite(false, false, false, false)
     
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
@@ -527,10 +608,20 @@ class TestDaxtraParse < TestBasic
     file = File.join(Dir.pwd, @@Daxtra03)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
         
     sleep(1)
     newWindow2= $browser.window_handles.first
@@ -568,10 +659,20 @@ class TestDaxtraParse < TestBasic
     file2 = File.join(Dir.pwd, @@Daxtra04)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow3= $browser.window_handles.first
@@ -605,7 +706,7 @@ class TestDaxtraParse < TestBasic
     
   end    
  
-  
+
   #TC154 - Upload resume with "Overwrite Employment" set to "TRUE"
   def test_UploadResumeOverwriteEmploymentTrue
     randomContact = "a" + SecureRandom.hex(4)
@@ -618,6 +719,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact)
         
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
    
@@ -693,10 +795,20 @@ class TestDaxtraParse < TestBasic
     file2 = File.join(Dir.pwd, @@Daxtra06)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow3= $browser.window_handles.first
@@ -730,10 +842,10 @@ class TestDaxtraParse < TestBasic
     
     
   end
- 
+
   #TC155 - Upload resume with "Overwrite Employment" set to "FALSE"
   def test_UploadResumeOverwriteEmploymentFalse
-    randomContact = "a" + SecureRandom.hex(4)
+    randomContact = "0" + SecureRandom.hex(4)
     
     #PRECONDITIONS:
     #Login
@@ -743,6 +855,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact)
         
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings
     CustomSettings.JobBoardDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
    
@@ -779,10 +892,20 @@ class TestDaxtraParse < TestBasic
     file = File.join(Dir.pwd, @@Daxtra05)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow2= $browser.window_handles.first
@@ -819,10 +942,20 @@ class TestDaxtraParse < TestBasic
     file2 = File.join(Dir.pwd, @@Daxtra06)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow3= $browser.window_handles.first
@@ -868,6 +1001,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact)
         
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
    
@@ -903,10 +1037,20 @@ class TestDaxtraParse < TestBasic
     file = File.join(Dir.pwd, @@Daxtra07)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow2= $browser.window_handles.first
@@ -943,10 +1087,20 @@ class TestDaxtraParse < TestBasic
     file2 = File.join(Dir.pwd, @@Daxtra08)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow3= $browser.window_handles.first
@@ -980,7 +1134,7 @@ class TestDaxtraParse < TestBasic
     
     
   end
-  
+ 
   #TC157 - Upload resume with "Overwrite Education" set to "FALSE"
   def test_UploadResumeOverwriteEducationFalse
     randomContact = "a" + SecureRandom.hex(4)
@@ -993,6 +1147,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact)
         
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
    
@@ -1028,10 +1183,20 @@ class TestDaxtraParse < TestBasic
     file = File.join(Dir.pwd, @@Daxtra07)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow2= $browser.window_handles.first
@@ -1068,10 +1233,20 @@ class TestDaxtraParse < TestBasic
     file2 = File.join(Dir.pwd, @@Daxtra08)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow3= $browser.window_handles.first
@@ -1118,6 +1293,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact)
         
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
    
@@ -1153,10 +1329,20 @@ class TestDaxtraParse < TestBasic
     file = File.join(Dir.pwd, @@Daxtra09)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow2= $browser.window_handles.first
@@ -1205,6 +1391,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact)
         
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
    
@@ -1240,10 +1427,20 @@ class TestDaxtraParse < TestBasic
     file = File.join(Dir.pwd, @@Daxtra09)
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(1)
     newWindow2= $browser.window_handles.first
@@ -1285,6 +1482,7 @@ class TestDaxtraParse < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
             
     #  Enter "pdf" on "Add Resume Allowed Filetypes"
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
     #The test case specified HomePage but It make an error, so It's autommated from Contacts' Tab
@@ -1305,11 +1503,20 @@ class TestDaxtraParse < TestBasic
     
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
-    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+  
     assert_equal(AddResumePopUpPage::ADD_RESUME_POPUP_ERROR_WRONG_TYPE_TEXT, $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_ERROR_MESSAGE_XPATH).text)
     
     test = [
@@ -1333,6 +1540,7 @@ class TestDaxtraParse < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
             
     #  Enter "pdf" on "Add Resume Allowed Filetypes"
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypes(" ")
     
     #The test case specified HomePage but It make an error, so It's autommated from Contacts' Tab
@@ -1354,12 +1562,22 @@ class TestDaxtraParse < TestBasic
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # Click Browse  
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-    # Locate Pdf Resume and click Add Resume  
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
-      
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
-    Common.main(test) 
+    Common.main(test)
+    
+    # Locate Pdf Resume and click Add Resume  
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+     
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -1381,11 +1599,21 @@ class TestDaxtraParse < TestBasic
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # Browse  
       {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file2},
-    # Locate Doc resume and click Add Resume 
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
-      #{"not_displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
     ]
     Common.main(test) 
+    
+    # Locate Doc resume and click Add Resume 
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -1426,9 +1654,15 @@ class TestDaxtraParse < TestBasic
     self.SetContact
     
     CustomSettings.JobBoardLogin(true)
+    
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     CustomSettings.BoardSetupInit
     
     #  Enter "pdf" on "Job Board Allowed Filetypes"
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypesJobBoard("pdf")
     
     # 5 - Click on "Site URL" for "openings"
@@ -1442,8 +1676,8 @@ class TestDaxtraParse < TestBasic
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},  
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_USER_TEXT},
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_PASSWORD_TEXT}, 
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::JOB_BOARD_USER_TEXT},
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::JOB_BOARD_PASSWORD_TEXT}, 
       {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
       {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
     # 6 - Click on "Update Your Resume"  
@@ -1470,7 +1704,7 @@ class TestDaxtraParse < TestBasic
     Common.main(test)
     assert_equal(JobBoardHomePage::JOB_BOARD_UPLOAD_RESUME_ERROR_TYPE_TEXT, $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_UPLOAD_RESUME_ERROR_TYPE_XPATH).text) 
     
-    $browser.get(JobBoardLoginPage::JOB_BOARD_USER_PROFILE_URL)
+    $browser.get(Users::JOB_BOARD_USER_PROFILE_URL)
     #RESULT
     # pdf should be added.
     
@@ -1482,7 +1716,7 @@ class TestDaxtraParse < TestBasic
     self.SetContact
     
   end
- 
+
   #TC165 - Upload resume by Job Board "Job Board Allowed Filetypes" set to blank
   def test_UploadResumeJobBoardAllowedFiletypesBlank
     
@@ -1495,8 +1729,14 @@ class TestDaxtraParse < TestBasic
     self.SetContact
     
     CustomSettings.JobBoardLogin(true)
+    
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     CustomSettings.BoardSetupInit
     
+    Common.go_to_parser_settings()
     CustomSettings.JobBoardDupePrevention("Attach Only")
     
     # Leave blank on "Job Board Allowed Filetypes"
@@ -1512,8 +1752,8 @@ class TestDaxtraParse < TestBasic
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},  
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_USER_TEXT},
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_PASSWORD_TEXT}, 
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::JOB_BOARD_USER_TEXT},
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::JOB_BOARD_PASSWORD_TEXT}, 
       {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
       {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
     # 6 - Click on "Update Your Resume"  
@@ -1544,7 +1784,7 @@ class TestDaxtraParse < TestBasic
     Common.main(test)
     assert_equal(JobBoardHomePage::JOB_BOARD_UPLOAD_RESUME_SUCCESS_TEXT, $browser.find_element(:xpath => JobBoardHomePage::JOB_BOARD_UPLOAD_RESUME_SUCCESS_OUTPUT_XPATH).text) 
     
-    $browser.get(JobBoardLoginPage::JOB_BOARD_USER_PROFILE_URL)
+    $browser.get(Users::JOB_BOARD_USER_PROFILE_URL)
     $wait.until{
       $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_NAME_XPATH).displayed?
     }
@@ -1572,6 +1812,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact) 
     
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -1607,10 +1848,20 @@ class TestDaxtraParse < TestBasic
     
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
@@ -1655,6 +1906,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact) 
     
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -1690,11 +1942,21 @@ class TestDaxtraParse < TestBasic
     
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
-    ]
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
+    ]  
     Common.main(test)
-   
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -1726,6 +1988,7 @@ class TestDaxtraParse < TestBasic
   
   end
   
+  
   #TC168 - Upload a resume in Canadian French
   def test_UploadResumeCanadianFrench
     randomContact = "a" + SecureRandom.hex(4)
@@ -1738,6 +2001,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact) 
     
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -1773,11 +2037,21 @@ class TestDaxtraParse < TestBasic
     
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
-   
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -1809,7 +2083,6 @@ class TestDaxtraParse < TestBasic
   
   end
 
-
   #TC169 - Upload a resume in Spanish
   def test_UploadResumeSpanish
     randomContact = "a" + SecureRandom.hex(4)
@@ -1822,6 +2095,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact) 
     
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -1857,11 +2131,21 @@ class TestDaxtraParse < TestBasic
     
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
-   
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -1905,6 +2189,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact) 
     
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -1940,11 +2225,21 @@ class TestDaxtraParse < TestBasic
     
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
-   
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -1987,6 +2282,7 @@ class TestDaxtraParse < TestBasic
     Common.CreateContact(randomContact, randomContact) 
     
     # "Parse Fields" on "Add Resume Dupe Prevention"
+    Common.go_to_parser_settings()
     CustomSettings.AddResumeDupePrevention("Parse Fields")
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
@@ -2022,11 +2318,21 @@ class TestDaxtraParse < TestBasic
     
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test)
-   
+    
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(2)
     $browser.switch_to.window($browser.window_handles.first)
     
@@ -2062,7 +2368,7 @@ class TestDaxtraParse < TestBasic
 ####### CUSTOM METHODS ######
 def SetContact
   #Set Contact
-    $browser.get(JobBoardLoginPage::JOB_BOARD_USER_PROFILE_URL)
+    $browser.get(Users::JOB_BOARD_USER_PROFILE_URL)
     test = [
       {"displayed" => ContactDetailPage::CONTACT_DETAIL_BTN_EDIT_XPATH},
     ]
