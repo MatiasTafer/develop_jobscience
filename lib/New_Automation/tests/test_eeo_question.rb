@@ -17,8 +17,7 @@ require './New_Automation/pages/board_setup/board_setup_home_page.rb'
 require_relative 'users.rb'
 
 class EeoQuestion < TestBasic
-  
-#TC835 - EEO Questions, hidden questions
+#TC835 - EEO Questions, hidden questions 
 def   test_eeoQuestionHiddenQuestion
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
@@ -39,7 +38,7 @@ def   test_eeoQuestionHiddenQuestion
    } 
 end
 
-#TC836 - EEO Questions, displayed questions
+#TC836 - EEO Questions, displayed questions 
 def   test_eeoQuestionDisplayedQuestion
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
@@ -67,9 +66,7 @@ def   test_eeoQuestionDisplayedQuestion
    } 
 end
 
-
-
-#TC837 - EEO Commit Default
+#TC837 - EEO Commit Default 
 def test_eeoCommitDefault
   #Preconditions
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -98,6 +95,8 @@ def test_eeoCommitDefault
    begin
      test3=[{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
             {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+            {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
+            {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
             {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
             {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
      Common.main(test3)
@@ -117,7 +116,7 @@ def test_eeoCommitDefault
    end
 end
 
-#TC838 - EEO Question Handler, Always
+#TC838 - EEO Question Handler, Always 
 def test_eeoQuestionHandlerAlways
    #Preconditions
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -164,7 +163,7 @@ def test_eeoQuestionHandlerAlways
    end
 end
 
-#TC839 - EEO Question Handler, Populate
+#TC839 - EEO Question Handler, Populate 
 def test_eeoQuestionHandlerPopulate
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -189,7 +188,7 @@ def test_eeoQuestionHandlerPopulate
   begin   
     test2= [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-           {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH}, #Button continue on second Page
+           {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH}, 
            {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
            {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
@@ -209,7 +208,7 @@ def test_eeoQuestionHandlerPopulate
   end
 end
 
-#TC840 - EEO Question Handler, Omit
+#TC840 - EEO Question Handler, Omit 
 def test_eeoQuestionHandlerOmit
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -234,7 +233,7 @@ def test_eeoQuestionHandlerOmit
   begin   
     test2= [{"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-           {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH}, #Button continue on second Page
+           {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
            {"displayed" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH},
            {"click_and_load" => JobBoardJobDetail::JOB_BOARD_QUESTIONS_SET_BTN_SUBMIT_XPATH}]
@@ -254,7 +253,8 @@ def test_eeoQuestionHandlerOmit
   end
 end
 
-#TC841 - Standard and Custom EEO Disclaimers, standard & custom
+
+#TC841 - Standard and Custom EEO Disclaimers, standard & custom 
 def test_eeoDisclaimersStandardCustom
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -306,7 +306,8 @@ def test_eeoDisclaimersStandardCustom
   end
 end
 
-#TC842 - Standard and Custom EEO Disclaimers, Only custom #FIREFOX #CHROME
+
+#TC842 - Standard and Custom EEO Disclaimers, Only custom 
 def test_eeoDisclaimersOnlyCustom
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -359,7 +360,9 @@ def test_eeoDisclaimersOnlyCustom
   end
 end
 
-#TC131 - Apply To A Job With LinkedIn EEO Questions Enable #FIREFOX
+
+
+#TC131 - Apply To A Job With LinkedIn EEO Questions Enable 
 def test_eeoApplyWithLinkedInEeoEnable
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   CustomSettings.JobBoardLogin(true)
@@ -367,17 +370,17 @@ def test_eeoApplyWithLinkedInEeoEnable
   CustomSettings.ApplyToLinkedIn(true)
   $browser.get HomePage::JOB_BOARD_URL
   test =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-         {"click_and_load" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+         {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-         {"click_and_load" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
          {"displayed" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
          {"click" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
          {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
-         {"click_and_load" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+         {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH},
-         {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH}] 
+         {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH}] 
   Common.main(test)
   $wait.until{
     windowsNumer = $browser.window_handles.size
@@ -388,7 +391,7 @@ def test_eeoApplyWithLinkedInEeoEnable
   test2= [{"displayed" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_EMAIL_XPATH},
           {"set_text" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_EMAIL_XPATH, "text" => Users::USER_LINKEDIN},
           {"set_text" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_PASSWORD_XPATH, "text" => Users::PASSWORD_LINKEDIN},
-          {"click_and_load" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_ALLOW_XPATH }]
+          {"click" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_ALLOW_XPATH }]
   Common.main(test2)
   newWindow= $browser.window_handles[0]
   $browser.switch_to.window(newWindow)  
@@ -398,7 +401,8 @@ def test_eeoApplyWithLinkedInEeoEnable
 end
 
 
-#TC1224 - Apply To A Job With LinkedIn EEO Questions Disable #FIREFOX
+
+#TC1224 - Apply To A Job With LinkedIn EEO Questions Disable 
 def test_eeoApplyWithLinkedInEeoDisable
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   CustomSettings.JobBoardLogin(true)
@@ -408,17 +412,17 @@ def test_eeoApplyWithLinkedInEeoDisable
   CustomSettings.ApplyToLinkedIn(true)
   $browser.get HomePage::JOB_BOARD_URL
   test =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-         {"click_and_load" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+         {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-         {"click_and_load" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+         {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
          {"displayed" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
          {"click" => JobBoardHomePage::SEARCH_BUTTON_XPATH},
          {"displayed" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
-         {"click_and_load" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
+         {"click" => JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH},
          {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH},
-         {"click_and_load" => JobBoardJobDetail::JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH}] 
+         {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_WITH_LINKEDIN_XPATH}] 
   Common.main(test)
   $wait.until{
     windowsNumer = $browser.window_handles.size
@@ -429,7 +433,7 @@ def test_eeoApplyWithLinkedInEeoDisable
   test2= [{"displayed" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_EMAIL_XPATH},
           {"set_text" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_EMAIL_XPATH, "text" => Users::USER_LINKEDIN},
           {"set_text" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_PASSWORD_XPATH, "text" => Users::PASSWORD_LINKEDIN},
-          {"click_and_load" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_ALLOW_XPATH }]
+          {"click" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_ALLOW_XPATH }]
   Common.main(test2)
   newWindow= $browser.window_handles[0]
   $browser.switch_to.window(newWindow)  
