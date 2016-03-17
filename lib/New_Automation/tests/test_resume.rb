@@ -400,6 +400,7 @@ end
 =end
 
 
+
 #TC992 - Contact Update Resume Successfully, Parse Fields
 def test_contactUpdateResumeParseFields
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
