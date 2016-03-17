@@ -17,7 +17,10 @@ $wait
 
 #require './New_Automation/tests/test_job_templates.rb'
 
-require './New_Automation/tests/test_candidates_actions_on_record'
+#require './New_Automation/tests/test_candidates_actions_on_record'
+
+require './New_Automation/tests/test_candidates_actions'
+
 
 
 #Pending Jenkins-------------
@@ -59,8 +62,6 @@ require './New_Automation/tests/test_candidates_actions_on_record'
 #require './New_Automation/tests/test_question_sets'
 
 #require './New_Automation/tests/test_candidates_actions_on_record'
-
-#require './New_Automation/tests/test_candidates_actions'
 
 #require './New_Automation/tests/test_candidates_parsing_candidates_file_types'
 
