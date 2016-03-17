@@ -34,7 +34,7 @@ $wait
 
 #require './New_Automation/test_projects'
 
-#require './New_Automation/tests/test_candidates_actions_on_record'
+require './New_Automation/tests/test_candidates_actions_on_record'
 
 #require './New_Automation/tests/test_job_templates.rb'
 
@@ -63,6 +63,8 @@ $wait
 #require './New_Automation/tests/test_applications.rb'
 
 #require './New_Automation/tests/test_url_builder.rb'
+
+#require './New_Automation/test_daxtra_parse.rb'
 
 require './New_Automation/tests/test_daxtra_parse.rb'
 

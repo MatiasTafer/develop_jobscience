@@ -10,7 +10,7 @@ class ContactNewEditPage
   
   
   
-  CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH = "//*[text()='Account Name']/../..//input"
+  CONTACT_NEW_ACCOUNT_NAME_INPUT_XPATH = "//*[text()='Account Name']/../..//span/input"
   CONTACT_NEW_FIELD_LISTS_XPATH = "//*[text()='Account Name']/../../.."
   
   #BUTTONS

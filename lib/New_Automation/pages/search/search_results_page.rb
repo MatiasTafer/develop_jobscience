@@ -9,6 +9,9 @@ class SearchResultsPage
   SEARCH_RESULT_ADD_SKILLS_XPATH = ".//*[@title='Add Skills']"
   SEARCH_RESULT_RESULT_LIST_FIRST_ELEM_XPATH = ".//th[text()[contains(.,'Action')]]/../following-sibling::*[1]"
   SEARCH_RESULT_RESULT_LIST_FIRST_CHECKBOX_XPATH = ".//th[text()[contains(.,'Action')]]/../following-sibling::*[1]//input"
+  SEARCH_RESULT_NEXT_PAGE_XPATH = ".//*[text()='Next Page']"
+  SEARCH_RESULT_FILTER_CONTACT_XPATH = ".//label[text()='Contact']/../following-sibling::*[1]//input"
+  SEACRH_RESULT_APPLY_FILTERS_XPATH = ".//*[@title='Apply Filters']"
   
   #HARD CODE DATA
   SEARCH_DATA_SKILL_ARCH_TEXT = "Architecture"

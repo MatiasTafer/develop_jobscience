@@ -12,7 +12,7 @@ def setup
             $browser = Selenium::WebDriver.for(:firefox, :http_client => client)
         when "chrome"
             #Adding capability to run in chrome
-            caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--test-type" ]})
+            caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--test-type", "--disable-popup-blocking" ]})
             $browser = Selenium::WebDriver.for(:chrome, :http_client => client, :desired_capabilities => caps)
         when "safari"
             $browser = Selenium::WebDriver.for(:safari, :http_client => client)

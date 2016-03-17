@@ -51,8 +51,8 @@ class ContactsHomePage
 
   
   #Apply to Job Pop Up Window
-  CONTACT_JOB_POPUP_JOB_TITLE_XPATH = "//*[text()[contains(., 'Job Title')]]/../following-sibling::*//input"
-  CONTACT_JOB_POPUP_BTN_APPLY_XPATH = ".//*[@value='Save']"
+  CONTACT_JOB_POPUP_JOB_TITLE_XPATH = "//*[text()[contains(., 'Job Title')]]/../following-sibling::*//span/input"
+  CONTACT_JOB_POPUP_BTN_APPLY_XPATH = ".//*[@value='Apply To Position']"
   CONTACT_JOB_POPUP_TOTAL_APP_XPATH = "//*[text()='Total Applications Count on Job']/../following-sibling::*//span"
   CONTACT_JOB_POPUP_BTN_CLOSE_XPATH = ".//*[@title='Close']"
   CONTACT_JOB_POPUP_BTN_CANCEL_XPATH = ".//*[@title='Cancel']"
@@ -74,25 +74,26 @@ class ContactsHomePage
     CONTACT_JOB_POPUP_APPLY_MSG_XPATH = "//*[text()='Message']/../..//textarea"
     
     #Agency
-    CONTACT_JOB_POPUP_AGENCY_XPATH = "//*[text()='Agency']/../following-sibling::*//input"
+    CONTACT_JOB_POPUP_AGENCY_XPATH = "//*[text()='Agency']/../following-sibling::*//span/input"
     CONTACT_JOB_POPUP_AGENCY_EEO_XPATH = "//*[text()='Request EEO']/../following-sibling::*//input"
     
     #Exception
     CONTACT_JOB_POPUP_REASON_XPATH = "//*[text()='Reason']/../following-sibling::*//select"
-    CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH = "//*[text()='Reason Other']/../..//textarea"
+    CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH = "//*[text()='Other']"
+    CONTACT_JOB_POPUP_REASON_OTHER_XPATH = "//label[text()[contains(., 'Reason Other')]]/../following-sibling::*/textarea"
     CONTACT_JOB_POPUP_SUCCESS_APP_XPATH = "//label[text()[contains(., 'APP')]]"
     CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH = "//label[text()[contains(., 'APP')]]/../..//td//span"
      
   #Add Tags Pop Up window
   CONTACT_TAGS_POPUP_PUBLIC_TAGS_XPATH = "//*[text()[contains(., 'Public Tags')]]/../following-sibling::*/select"   
-  CONTACT_TAGS_POPUP_PUBLIC_TAGS_FIRST_OPTION_XPATH = "//*[text()[contains(., 'Public Tags')]]/../following-sibling::*/select//option[1]"
+  CONTACT_TAGS_POPUP_PUBLIC_TAGS_FIRST_OPTION_XPATH = "//*[text()[contains(., 'Public Tags')]]/../following-sibling::*/select//option[2]"
   CONTACT_TAGS_POPUP_PERSONAL_TAGS_XPATH = "//*[text()[contains(., 'Personal Tags')]]/../following-sibling::*//select"
-  CONTACT_TAGS_POPUP_PERSONAL_TAGS_FIRST_OPTION_XPATH = "//*[text()[contains(., 'Personal Tags')]]/../following-sibling::*//select//option[1]"
+  CONTACT_TAGS_POPUP_PERSONAL_TAGS_FIRST_OPTION_XPATH = "//*[text()[contains(., 'Personal Tags')]]/../following-sibling::*//select//option[2]"
   CONTACT_TAGS_POPUP_NEW_TAG_XPATH = "(//*[text()[contains(., 'New Tag')]])[2]/../following-sibling::*//input"
   
   
   CONTACT_TAGS_POPUP_TYPE_XPATH = "(//*[text()[contains(., 'Type')]]/..)[2]/following-sibling::*//select"
-  CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH = ".//*[@value='Add Tags]"
+  CONTACT_TAGS_POPUP_BTN_ADD_TAGS_XPATH = ".//*[@value='Add Tags']"
   CONTACT_TAGS_POPUP_BTN_CANCEL_XPATH = ".//*[@title='Cancel']"
   CONTACT_TAGS_POPUP_BTN_CLOSE_XPATH = ".//*[@title='Close']"
   CONTACT_TAGS_POPUP_SUCCESS_OUTPUT_XPATH = ".//*[@class='messageCell']/div"
