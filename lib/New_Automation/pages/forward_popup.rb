@@ -12,6 +12,11 @@ class ForwardPopup
   CONTACT_ATTACHMENTS_CHECKBOX_XPATH = ".//*[@class='dataCell']/ancestor::tr[1]/td[1]/input"
   
   SEND_BUTTON_XPATH = ".//*[@value='Send']"
+  SKIP_TO_EMAIL = ".//*[@value='Skip to Email']"
+  RESUME_UPDATE_XPATH = ".//*[@value='Resume Update']"
+  UPDATE_RESUME_XPATH = ".//*[@value='Update Resume']"
+  ADD_RESUME_XPATH = ".//*[@value='Add Resume']"
+  BROWSE_XPATH = ".//*[@type='file']"
   CLOSE_BUTTON_XPATH = ".//*[@value='Close']"
   CANCEL_BUTTON_XPATH = ".//*[@value='Cancel']"
   SELECT_TEMPLATE_BUTTON_XPATH = ".//input[@title='Select Template***']"

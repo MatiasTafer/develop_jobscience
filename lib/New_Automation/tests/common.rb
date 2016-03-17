@@ -75,7 +75,8 @@ class Common
   def self.click_if_exist(field)
     begin
       a = $browser.find_element(:xpath => field).click
-      return a
+    rescue
+      puts "error"
     end
   end
   
@@ -92,12 +93,19 @@ class Common
   
   
   def self.displayed(field)
-     #puts field
-
      $wait.until{
         return $browser.find_element(:xpath => field).displayed?
      }
-
+  end
+  
+  def self.displayed_if_exist(field)
+    begin
+     $wait.until{
+        return $browser.find_element(:xpath => field).displayed?
+     }
+    rescue
+      puts "error in displayed"
+    end
   end
   
   def self.ssleep
@@ -271,6 +279,23 @@ class Common
     puts cookie
   end
   
+  def self.resume_update
+    test = [ 
+      {"displayed" => ForwardPopup::RESUME_UPDATE_XPATH},
+      {"click" => ForwardPopup::RESUME_UPDATE_XPATH},
+      
+      {"change_window" => ""},
+      
+      {"displayed_if_exist" => ForwardPopup::ADD_RESUME_XPATH},
+      {"displayed_if_exist" => ForwardPopup::UPDATE_RESUME_XPATH},
+      {"upload" => ForwardPopup::BROWSE_XPATH, "file" => "/New_Automation/files/Daxtra/DaxtraResume01.pdf"},
+      {"click_if_exist" => ForwardPopup::ADD_RESUME_XPATH},
+      {"click_if_exist" => ForwardPopup::UPDATE_RESUME_XPATH},
+      
+      {"change_window" => ""},
+    ]
+    Common.main(test)
+  end
 
   
   def self.main(arr)
@@ -285,6 +310,10 @@ class Common
       if i["displayed"]
         puts "displayed"
         self.displayed(i["displayed"])
+      end
+      
+      if i["displayed_if_exist"]
+        self.displayed_if_exist(i["displayed_if_exist"])
       end
       if i["not_displayed"]
         puts "not displayed"
@@ -395,6 +424,10 @@ class Common
       
       if i["click_if_exist"]
         self.click_if_exist(i["click_if_exist"])
+      end
+      
+      if i["resume_update"]
+        self.resume_update
       end
     end
     return true

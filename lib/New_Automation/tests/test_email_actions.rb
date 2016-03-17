@@ -169,7 +169,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-=end
+
   def test_email_actions_tc1075 #4
     # Application / Forward Application, Validation
     # Login
@@ -294,7 +294,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-=begin
+#=end
   def test_email_actions_tc1078 #7
     # Submittal / Forward Submittal, with Template & Attachment
     # Login
@@ -302,7 +302,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Submittals" Tab
-    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH)
     test = [
       # Click on any Submittal
       {"displayed" => SubmittalsHomePage::FIRST_SUBMITTALS_RECORD_LIST_XPATH},
@@ -348,7 +348,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 1 - Click on "Submittals" Tab
-    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH)
     test = [
       # Click on any Submittal
       {"displayed" => SubmittalsHomePage::FIRST_SUBMITTALS_RECORD_LIST_XPATH},
@@ -381,7 +381,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Interviews" Tab
-    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH)
     test = [
       # Click on any Interview
       {"displayed" => InterviewsHomePage::INTERVIEW_RECORD_XPATH},
@@ -420,7 +420,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Interviews" Tab
-    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH)
     test = [
       # Click on any Interview
       {"displayed" => InterviewsHomePage::INTERVIEW_RECORD_XPATH},
@@ -457,7 +457,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-=begin  
+
   
   def test_email_actions_tc1082 #11
     # Interview / Forward Interview, with Template & Attachments
@@ -466,7 +466,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Interviews" Tab
-    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH)
     test = [
       # Click on any Interview
       {"displayed" => InterviewsHomePage::INTERVIEW_RECORD_XPATH},
@@ -511,7 +511,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Interviews" Tab
-    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH)
     test = [
       # Click on any Interview
       {"displayed" => InterviewsHomePage::INTERVIEW_RECORD_XPATH},
@@ -536,7 +536,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-  
+   
   def test_email_actions_tc1084 #13
     # Offer / Forward Offer 
     # Login
@@ -544,7 +544,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH)
     test = [
       # Click on any Offer
       {"displayed" => OffersHomePage::OFFERS_RECORD_XPATH},
@@ -574,7 +574,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-
+#=end
   def test_email_actions_tc1085 #14
     # Offer / Forward Offer, with Template
     # Login
@@ -582,7 +582,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH)
     test = [
       # Click on any Offer
       {"displayed" => OffersHomePage::OFFERS_RECORD_XPATH},
@@ -629,7 +629,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH)
     test = [
       # Click on any Offer
       {"displayed" => OffersHomePage::OFFERS_RECORD_XPATH},
@@ -667,7 +667,7 @@ class TestEmailActions < TestBasic
   end
   
   
-
+#=end
   
   def test_email_actions_tc1087 #16
     # Offer / Forward Offer, Validation
@@ -676,7 +676,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH)
     test = [
       # Click on any Offer
       {"displayed" => OffersHomePage::OFFERS_RECORD_XPATH},
@@ -710,7 +710,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH)
     test = [
       # Click on "Placements" Tab
       {"displayed" => PlacementsDetailPage::PLACEMENT_RECORD_XPATH},
@@ -747,7 +747,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH)
     test = [
       # Click on "Placements" Tab
       {"displayed" => PlacementsDetailPage::PLACEMENT_RECORD_XPATH},
@@ -793,7 +793,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH)
     test = [
       # Click on "Placements" Tab
       {"displayed" => PlacementsDetailPage::PLACEMENT_RECORD_XPATH},
@@ -822,7 +822,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      #{"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      #{"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"displayed" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
@@ -840,7 +840,7 @@ class TestEmailActions < TestBasic
    
     # Steps
     # Click on "Offers" Tab
-    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH)
     test = [
       # Click on "Placements" Tab
       {"displayed" => PlacementsDetailPage::PLACEMENT_RECORD_XPATH},
@@ -853,7 +853,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pageMessages:j_id9:j_id10:0:j_id11:j_id12:j_id14'][text()[contains(.,'You must select the Contact')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must select the Contact')]]"},
       
       {"displayed" => ForwardPopup::TO_TEXT_XPATH},
       {"set_text" => ForwardPopup::TO_TEXT_XPATH, "text" => "John Smith"},
@@ -868,7 +868,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-  
+#=end
   
   def test_email_actions_tc1092 #21
     # Contact / Forward Contact 
@@ -877,16 +877,19 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 
-    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       # 
-      {"displayed" => ".//a[text()[contains(.,'849e3fec')]]"},
-      {"click" => ".//a[text()[contains(.,'849e3fec')]]"},
+      {"displayed" => ContactsHomePage::CONTACT_LIST_RECORD_XPATH},
+      {"click" => ContactsHomePage::CONTACT_LIST_RECORD_XPATH},
       # 
       {"displayed" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       {"click" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       
       {"change_window" => ""},
+      
+      {"displayed_if_exist" => ForwardPopup::SKIP_TO_EMAIL},
+      {"click_if_exist" => ForwardPopup::SKIP_TO_EMAIL},
       
       {"displayed" => ForwardPopup::CONTACT_TO_TEXT_XPATH},
       {"set_text" => ForwardPopup::CONTACT_TO_TEXT_XPATH, "text" => "John Smith"},
@@ -902,7 +905,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-
+=end
   
   def test_email_actions_tc1093 #22
     # Contact / Forward Contact, with Template 
@@ -911,16 +914,21 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 
-    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       # 
-      {"displayed" => ".//a[text()[contains(.,'849e3fec')]]"},
-      {"click" => ".//a[text()[contains(.,'849e3fec')]]"},
+      {"displayed" => ContactsHomePage::CONTACT_LIST_RECORD_XPATH},
+      {"click" => ContactsHomePage::CONTACT_LIST_RECORD_XPATH},
       # 
+      {"resume_update" => ""},
+      
       {"displayed" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       {"click" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       
       {"change_window" => ""},
+      
+      {"displayed_if_exist" => ForwardPopup::SKIP_TO_EMAIL},
+      {"click_if_exist" => ForwardPopup::SKIP_TO_EMAIL},
       
       {"displayed" => ForwardPopup::CONTACT_TO_TEXT_XPATH},
       {"set_text" => ForwardPopup::CONTACT_TO_TEXT_XPATH, "text" => "John Smith"},
@@ -948,7 +956,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-
+=begin
 
   def test_email_actions_tc1094 #23
     # Contact / Forward Contact, with Template & Attachment
@@ -957,16 +965,19 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 
-    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       # 
-      {"displayed" => ".//a[text()[contains(.,'849e3fec')]]"},
-      {"click" => ".//a[text()[contains(.,'849e3fec')]]"},
+      {"displayed" => ".//a[text()[contains(.,'Body, et')]]"},
+      {"click" => ".//a[text()[contains(.,'Body, et')]]"},
       # 
       {"displayed" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       {"click" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       
       {"change_window" => ""},
+      
+      {"displayed_if_exist" => ForwardPopup::SKIP_TO_EMAIL},
+      {"click_if_exist" => ForwardPopup::SKIP_TO_EMAIL},
       
       {"displayed" => ForwardPopup::CONTACT_TO_TEXT_XPATH},
       {"set_text" => ForwardPopup::CONTACT_TO_TEXT_XPATH, "text" => "John Smith"},
@@ -986,7 +997,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      #{"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"displayed" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
@@ -1004,20 +1015,23 @@ class TestEmailActions < TestBasic
    
     # Steps
     # 
-    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       # 
-      {"displayed" => ".//a[text()[contains(.,'849e3fec')]]"},
-      {"click" => ".//a[text()[contains(.,'849e3fec ')]]"},
+      {"displayed" => ".//a[text()[contains(.,'Body, et')]]"},
+      {"click" => ".//a[text()[contains(.,'Body, et')]]"},
       # 
       {"displayed" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       {"click" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       
       {"change_window" => ""},
+      
+      {"displayed_if_exist" => ForwardPopup::SKIP_TO_EMAIL},
+      {"click_if_exist" => ForwardPopup::SKIP_TO_EMAIL},
             
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id21:j_id22:frm:pageMessages:j_id29:j_id30:0:j_id31:j_id32:j_id34'][text()[contains(.,'You must select the Contact')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must select the Contact')]]"},
       
       {"displayed" => ForwardPopup::CONTACT_TO_TEXT_XPATH},
       {"set_text" => ForwardPopup::CONTACT_TO_TEXT_XPATH, "text" => "John Smith"},
@@ -1033,7 +1047,7 @@ class TestEmailActions < TestBasic
   end
   
 
-  
+=begin  
   
   def test_email_actions_tc1096 #25
     # Short List / Send E-mail 
@@ -1052,7 +1066,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
       # 
       {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
