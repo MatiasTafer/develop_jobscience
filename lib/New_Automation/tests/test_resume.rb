@@ -281,14 +281,17 @@ def test_ResumToolAttachOly
 end
 =end
 
-
-#TC985 - Add Resume with the Add Resume Tool, Parse Fields
+=begin
+#TC985 - Add Resume with the Add Resume Tool, Parse Fields #FIREFOX OK
 def test_addResumeToolParseFields
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   Common.go_to_parser_settings(false)
    test = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
    Common.main(test)     
+   $wait.until{
+     $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+   }
    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
    test2 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
@@ -305,7 +308,7 @@ def test_addResumeToolParseFields
   $browser.switch_to.window(newWindow)
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
-           {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+           {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH}]
   Common.main(test4)
   newWindow= $browser.window_handles[0]
   $browser.switch_to.window(newWindow)
@@ -313,10 +316,10 @@ def test_addResumeToolParseFields
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }   
 end
-
+=end
 
 =begin
-#TC986 - Add resume , De-Duplication in a Private Sharing Model, New Candidate
+#TC986 - Add resume , De-Duplication in a Private Sharing Model, New Candidate #FIREFOX
 def test_addResumePrivateSharingModel
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -335,7 +338,7 @@ def test_addResumePrivateSharingModel
            {"click" => SetupEditPage::SHARING_SETTINGS_SAVE_BUTTON_XPATH}]
   Common.main(test2)
   #Steps
-  Common.goToTab(HomePage::HOME_TAB_LINK_XPATH
+  Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
   test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
   Common.main(test3)
@@ -355,19 +358,24 @@ def test_addResumePrivateSharingModel
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }  
 end
+=end
 
-#TC991 - Contact Update Resume Successfully, Attach Onlydef 
+=begin
+#TC991 - Contact Update Resume Successfully, Attach Onlydef  #FIREFOX OK
 def test_contactUpdateResumeAttachOnly
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
  Common.go_to_parser_settings(false)
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
+   Common.main(test5)
+   $wait.until{
+     $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+   }     
    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
    test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-  Common.goToTab(HomePage::ALL_CONTACTS_TAB_LINK
+  Common.goToTab(HomePage::ALL_CONTACTS_TAB_LINK)
   test2 = [{"displayed" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
           {"click" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
           {"displayed" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH},
@@ -389,6 +397,8 @@ def test_contactUpdateResumeAttachOnly
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   } 
 end
+=end
+
 
 #TC992 - Contact Update Resume Successfully, Parse Fields
 def test_contactUpdateResumeParseFields
@@ -396,12 +406,27 @@ def test_contactUpdateResumeParseFields
   Common.go_to_parser_settings(false)
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
+   Common.main(test5)    
+   $wait.until{
+     $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+   } 
    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
    test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
-  Common.goToTab(HomePage::ALL_CONTACTS_TAB_LINK
+  Common.main(test6)
+  
+  #Common.goToTab(HomePage::ALL_CONTACTS_TAB_LINK)  #### substituir esta linea en todos los test por las 9 lineas siguientes 
+  Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH) 
+  $wait.until{ #ESTO
+    $browser.find_element(:xpath, ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH).displayed?
+  }
+  $browser.find_element(:xpath, ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH).send_keys ContactsHomePage::CANDIDATES_ALL_OPTION_TEXT
+  $wait.until{
+    $browser.find_element(:xpath, ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH).displayed?
+  }
+  $browser.find_element(:xpath, ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH).click
+  
+  
   test2 = [{"displayed" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
           {"click" => ContactsHomePage::FIRST_CONTACT_ALL_CONTACT_TAB_XPATH},
           {"displayed" => ContactDetailPage::CONTACT_DETAIL_BTN_NEW_UPDATE_RESUME_XPATH},
@@ -424,6 +449,7 @@ def test_contactUpdateResumeParseFields
   }   
 end
 
+=begin
 #TC987 - Add resume , De-Duplication in a Private Sharing Model, Duplicate candidate not shared
 def test_addResumeNotShared
   #Preconditions
