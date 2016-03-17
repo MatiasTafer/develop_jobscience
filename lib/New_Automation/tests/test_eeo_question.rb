@@ -253,7 +253,6 @@ def test_eeoQuestionHandlerOmit
   end
 end
 
-
 #TC841 - Standard and Custom EEO Disclaimers, standard & custom 
 def test_eeoDisclaimersStandardCustom
   #Preconditions
@@ -305,7 +304,6 @@ def test_eeoDisclaimersStandardCustom
     $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH).click 
   end
 end
-
 
 #TC842 - Standard and Custom EEO Disclaimers, Only custom 
 def test_eeoDisclaimersOnlyCustom
@@ -360,8 +358,6 @@ def test_eeoDisclaimersOnlyCustom
   end
 end
 
-
-
 #TC131 - Apply To A Job With LinkedIn EEO Questions Enable 
 def test_eeoApplyWithLinkedInEeoEnable
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -399,8 +395,6 @@ def test_eeoApplyWithLinkedInEeoEnable
     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_CLOSE_POPUP_XPATH).displayed?
   }  
 end
-
-
 
 #TC1224 - Apply To A Job With LinkedIn EEO Questions Disable 
 def test_eeoApplyWithLinkedInEeoDisable
@@ -441,6 +435,5 @@ def test_eeoApplyWithLinkedInEeoDisable
     $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_LINKEDIN_BTN_CLOSE_POPUP_XPATH).displayed?
   }  
 end
-
 
 end
