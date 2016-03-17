@@ -18,16 +18,16 @@ require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 class TestRequisition < TestBasic
   @@JobBoard01 = "/New_Automation/files/Job Orders/job_order_upload01.pdf"
   
-=begin  
-#TC1059 - New Job Order 
+#TC1059 - New Job Order #FIREFOX #CHROME
 def test_newJobOrder
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
-   Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+   Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
    test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"click_and_load" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
            {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
-           {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
+           {"displayed" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
+           {"click_and_load" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
            {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
@@ -35,37 +35,35 @@ def test_newJobOrder
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT}, 
-           {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
+           {"click_and_load" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
     Common.main(test)
     assert $wait.until {
       $browser.find_element(:xpath, RequisitionsDetail::REQUISITIONS_DETAIL_BTN_DELETE_XPATH).displayed? 
     }      
 end  
-=end
 
-=begin
-#TC1060 - New Job Order, Validation
+#TC1060 - New Job Order, Validation #FIREFOX #CHROME
 def test_newJobOrderValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"click_and_load" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
            {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
-           {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
+           {"click_and_load" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
            {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
-           {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}]
+           {"click_and_load" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}]
   Common.main(test)
   assert $wait.until {
     $browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).displayed?
   }
   assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_REQUIRED_FIELDS_TEXT)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test2 = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"click_and_load" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
            {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
-           {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
+           {"click_and_load" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
            {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
@@ -74,18 +72,18 @@ def test_newJobOrderValidation
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT}, 
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DATE_POSTED_XPATH, "text" => RequisitionsNewAndEdit::DATE_WRONG_TEXT},  
-           {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
+           {"click_and_load" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
   Common.main(test2)
   assert $wait.until {
   $browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).displayed?
   }
   assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_INVALID_DATE_TEXT)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test3 = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"click_and_load" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
            {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
-           {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
+           {"click_and_load" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
            {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
@@ -93,18 +91,18 @@ def test_newJobOrderValidation
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_WRONG_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_WRONG_TEXT}, 
-           {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}]
+           {"click_and_load" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}]
   Common.main(test3)
   assert $wait.until {
   $browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).displayed?
   }
   assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_INVALID_CURRENCY_TEXT)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test4 = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"click_and_load" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
            {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
-           {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
+           {"click_and_load" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
            {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
@@ -113,22 +111,23 @@ def test_newJobOrderValidation
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT}, 
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_OPENINGS_XPATH, "text" => RequisitionsNewAndEdit::OPENINGS_WRONG_TEXT},
-           {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}]
+           {"click_and_load" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}]
   Common.main(test4)
   assert $wait.until {
   $browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).displayed?
   }
   assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit:: ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_INVALID_NUMBER_TEXT)
 end
-=end
-=begin
-#TC1061 - Transfer Jobs  
+
+
+#TC1061 - Transfer Jobs  #FIREFOX #CHROME
 def test_transferJobs
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
-          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
-          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_TRANSFER_JOBS_XPATH},
+          {"checked" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_TRANSFER_JOBS_XPATH},
+          {"click_and_load" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_TRANSFER_JOBS_XPATH},
           {"displayed" => RequisitionMassTransfer::REQUISITIONS_MASS_TRANSFER_TRANSFER_TO_RECRUITER_XPATH },
           {"set_text" => RequisitionMassTransfer::REQUISITIONS_MASS_TRANSFER_TRANSFER_TO_RECRUITER_XPATH, "text" => RequisitionMassTransfer::RECRUITER_TO_TRANSFER_TEXT},
           {"click" => RequisitionMassTransfer::REQUISITIONS_MASS_TRANSFER_BTN_TRANSFER_XPATH}]
@@ -137,15 +136,14 @@ def test_transferJobs
      $browser.find_element(:xpath, RequisitionMassTransfer::BACK_TO_LIST_BUTTON_ON_SUCCSESS_PAGE).displayed?
   }
 end  
-=end  
 
-=begin
-#TC1062 - Transfer Jobs, Validation
+#TC1062 - Transfer Jobs, Validation #FIREFOX
 def test_transferJobVlaidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
-          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"checked" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
+          {"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_TRANSFER_JOBS_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_TRANSFER_JOBS_XPATH},
           {"displayed" => RequisitionMassTransfer::REQUISITIONS_MASS_TRANSFER_TRANSFER_TO_RECRUITER_XPATH },
           {"click" => RequisitionMassTransfer::REQUISITIONS_MASS_TRANSFER_BTN_TRANSFER_XPATH}]
@@ -154,13 +152,11 @@ def test_transferJobVlaidation
      $browser.find_element(:xpath, RequisitionMassTransfer::ERROR_RECRUITER_MUST_BE_SELECTED_XPATH).displayed?
   }
 end
-=end
 
-=begin
-#TC1064 - Change Priority
+#TC1064 - Change Priority #FIREFOX
 def test_changePriority
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_PRIORITY_JOBS_XPATH},
@@ -172,13 +168,11 @@ def test_changePriority
     $browser.find_element(:xpath, RequisitionsChangePriority::BACK_TO_LIST_BUTTON_ON_SUCCESS_PAGE_XPATH).displayed?
   } 
 end
-=end
 
-=begin
-#TC1065 - Change Priority, Validation  
+#TC1065 - Change Priority, Validation  #FIREFOX
 def test_changePriorityValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_PRIORITY_JOBS_XPATH},
@@ -189,13 +183,11 @@ def test_changePriorityValidation
     $browser.find_element(:xpath, RequisitionsChangePriority::ERROR_PRIORITY_MUST_BE_SELECTED).displayed?
   }  
 end
-=end 
 
-=begin 
-#TC1067 - Change Status
+#TC1067 - Change Status #FIREFOX
 def test_changeStatus
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_STATUS_JOBS_XPATH},
@@ -207,13 +199,11 @@ def test_changeStatus
     $browser.find_element(:xpath, RequisitionsChangeStatus::BACK_TO_LIST_BUTTON_SUCCESS_PAGE_XPATH).displayed?
   }  
 end
-=end
 
-=begin
-#TC1068 - Change Status, Validation
+#TC1068 - Change Status, Validation #FIREFOX
 def test_changeStatusValidation
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH},
           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_CHANGE_STATUS_JOBS_XPATH},
@@ -224,65 +214,21 @@ def test_changeStatusValidation
     $browser.find_element(:xpath, RequisitionsChangeStatus::ERROR_STATUS_MUST_BE_SELECTED).displayed?
   }
 end
-=end
 
-=begin
-#TC1070 - Job Order / Close Job 
+#TC1070 - Job Order / Close Job #FIREFOX
 def test_closeJobOrder
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
   test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
            {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
            {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
-           {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
-           {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
+           {"click_and_load" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
-           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
-           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
-           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT}, 
-           {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
-  Common.main(test)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH
-  test2 = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
-          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
-          {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_CLOSE_JOB_XPATH},
-          {"click" =>  RequisitionsDetail::REQUISITIONS_DETAIL_BTN_CLOSE_JOB_XPATH}]
-  Common.main(test2)
-  $wait.until{
-    windowsNumer = $browser.window_handles.size
-    windowsNumer > 1
-  }
-  newWindow= $browser.window_handles[1]
-  $browser.switch_to.window(newWindow) 
-  $wait.until {
-    $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).displayed?
-  }
-  $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).send_keys RequisitionsCloseJob::CLOSE_REASON_TEXT
-  $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH).click
-  
-  $wait.until {
-    $browser.find_element(:xpath, RequisitionsCloseJob::CONFIRM_DELETED_MESSAGE_XPATH).displayed?
-  }
-end  
- 
-  
-#TC1071 - Job Order / Close Job, Validation
-def test_closeJobOrderValidation
-  Common.login(Users::USER_EMAIL, Users::PASSWORD)
-  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH) 
-  test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
-           {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
-           {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
-           {"click" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH},
-           {"displayed" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH},
-           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
-           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
-           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
-           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
+           {"set_text" => RequisitionsNewAndEdit::REQUISITION_CURRENCY_SELECT_XPATH, "text" => RequisitionsNewAndEdit::CURRENCY_TEXT},
+           {"set_text_exist" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
            {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT}, 
            {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
@@ -302,13 +248,63 @@ def test_closeJobOrderValidation
   $wait.until {
     $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).displayed?
   }
+  $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).send_keys RequisitionsCloseJob::CLOSE_REASON_TEXT
   $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH).click
   $wait.until {
+    $browser.find_element(:xpath, RequisitionsCloseJob::OVERALL_REJECTED_REASON_SELECT_XPATH).displayed?
+  }
+  Common.set_text_exist(RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH, RequisitionsCloseJob::CLOSE_REASON_TEXT)
+  Common.set_text_exist(RequisitionsCloseJob::OVERALL_REJECTED_REASON_SELECT_XPATH, RequisitionsCloseJob::OVERALL_TEXT)
+  $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH).click
+  assert $wait.until {
+    $browser.find_element(:xpath, RequisitionsCloseJob::CONFIRM_DELETED_MESSAGE_XPATH).displayed?
+  }
+end  
+
+
+#TC1071 - Job Order / Close Job, Validation #FIREFOX
+def test_closeJobOrderValidation
+  Common.login(Users::USER_EMAIL, Users::PASSWORD)
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH) 
+  test = [{"displayed" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_BTN_NEW_XPATH},
+           {"displayed" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH},
+           {"set_text" => RequisitionsHomePage::NEW_RECORD_TYPE_DROPDOWN_XPATH, "text" => RequisitionsHomePage::RECORD_TYPE_REQUISITION_TEXT},
+           {"click_and_load" => RequisitionsHomePage::CONTINUE_BUTTON_XPATH}]         
+  Common.main(test)         
+  test2 = [{"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_JOB_TITLE_XPATH, "text" => RequisitionsNewAndEdit::REQUISITION_NAME},
+           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_PRIMARY_RECRUITER_TEXT_XPATH, "text" => RequisitionsNewAndEdit::PRIMARY_RECRUITER_TEXT},
+           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_LOCATION_XPATH, "text" => RequisitionsNewAndEdit::LOCATION_TEXT},
+           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT},
+           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MIN_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MIN_SALARY_TEXT},
+           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_MAX_SALARY_XPATH, "text" => RequisitionsNewAndEdit::MAX_SALARY_TEXT},
+           {"set_text" => RequisitionsNewAndEdit::REQUISITIONS_NEW_DEPARTAMENT_XPATH, "text" => RequisitionsNewAndEdit::DEPARTMENT_TEXT}, 
+           {"click" => RequisitionsNewAndEdit::REQUISITIONS_NEW_BTN_SAVE_XPATH}] 
+  Common.main(test2)
+  Common.goToTab(HomePage::REQUISITION_TAB_LINK_XPATH)
+  test2 = [{"displayed" =>RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
+          {"click" => RequisitionsHomePage::REQUISITIONS_PAGE_FIRST_ENTRY_LIST_TITLE_XPATH},
+          {"displayed" => RequisitionsDetail::REQUISITIONS_DETAIL_BTN_CLOSE_JOB_XPATH},
+          {"click" =>  RequisitionsDetail::REQUISITIONS_DETAIL_BTN_CLOSE_JOB_XPATH}]
+  Common.main(test2)
+  $wait.until{
+    windowsNumer = $browser.window_handles.size
+    windowsNumer > 1
+  }
+  newWindow= $browser.window_handles[1]
+  $browser.switch_to.window(newWindow) 
+  $wait.until {
+    $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH).displayed?
+  }
+  $browser.find_element(:xpath, RequisitionsCloseJob::REQUISITIONS_CLOSE_JOB_SUCCESS_BTN_XPATH).click
+  assert $wait.until {
     $browser.find_element(:xpath, RequisitionsCloseJob::ERROR_REQUIRED_FIELDS_XPATH).displayed?
   }
 end  
 
-#TC103 - Add Job Order from Uploading File
+
+
+#TC103 - Add Job Order from Uploading File #FIREFOX
   def test_AddJobOrderFromUploading
     
     #PRECONDITIONS
@@ -348,7 +344,7 @@ end
   end  
   
   
-=end
+
   
 end  
   

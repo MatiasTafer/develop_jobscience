@@ -24,7 +24,7 @@ $wait
 
 #require './New_Automation/tests/test_eeo_question.rb'
 
-#require './New_Automation/test_requisition.rb'
+require './New_Automation/tests/test_requisition.rb'
 
 #require './New_Automation/test_email_actions'
 
