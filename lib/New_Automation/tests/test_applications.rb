@@ -177,7 +177,7 @@ class TestApplications < TestBasic
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # 8. Select Referral in picklist  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
     # 9. Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -326,7 +326,7 @@ class TestApplications < TestBasic
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # Select Referral in picklist  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
     # Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -520,7 +520,7 @@ class TestApplications < TestBasic
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # Select Referral in picklist  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
     # Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -691,7 +691,7 @@ class TestApplications < TestBasic
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # Select Referral in picklist  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
     # Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
