@@ -165,8 +165,8 @@ class CustomSettings
   def self.DefineResumeAllowedTypes(types)
     #"types" must be a string with extensions separated with a comma, like "pdf, doc, txt"
     
-    Common.displayed(SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH)
-    Common.click_and_load(SetupEditPage::CONFIG_SETUP_EDIT_BTN_XPATH)
+    Common.displayed(SetupEditPage::EDIT_BUTTON_XPATH)
+    Common.click_and_load(SetupEditPage::EDIT_BUTTON_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => SetupEditPage::ADD_RESUME_ALLOWED_FILETYPES_XPATH).displayed?
@@ -182,8 +182,8 @@ class CustomSettings
   def self.DefineResumeAllowedTypesJobBoard(types)
     #"types" must be a string with extensions separated with a comma, like "pdf, doc, txt"
     
-    Common.displayed(SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH)
-    Common.click_and_load(SetupEditPage::CONFIG_SETUP_EDIT_BTN_XPATH)
+    Common.displayed(SetupEditPage::EDIT_BUTTON_XPATH)
+    Common.click_and_load(SetupEditPage::EDIT_BUTTON_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => SetupEditPage::JOB_BOARD_ALLOWED_FILETYPES_XPATH).displayed?
@@ -197,8 +197,8 @@ class CustomSettings
   
   def self.AddResumeDupePrevention(option)
     
-    Common.displayed(SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH)
-    Common.click_and_load(SetupEditPage::CONFIG_SETUP_EDIT_BTN_XPATH)
+    Common.displayed(SetupEditPage::EDIT_BUTTON_XPATH)
+    Common.click_and_load(SetupEditPage::EDIT_BUTTON_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => SetupEditPage::ADD_RESUME_DUPE_PREVENTION_XPATH).displayed?
@@ -213,8 +213,8 @@ class CustomSettings
   
   def self.JobBoardDupePrevention(option)
     
-    Common.displayed(SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH)
-    Common.click_and_load(SetupEditPage::CONFIG_SETUP_EDIT_BTN_XPATH)
+    Common.displayed(SetupEditPage::EDIT_BUTTON_XPATH)
+    Common.click_and_load(SetupEditPage::EDIT_BUTTON_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
@@ -229,8 +229,8 @@ class CustomSettings
   
   def self.DaxtraParseOverwrite(address=false, employment=false, education=false, skills=false)
     
-    Common.displayed(SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH)
-    Common.click_and_load(SetupEditPage::CONFIG_SETUP_EDIT_BTN_XPATH)
+    Common.displayed(SetupEditPage::EDIT_BUTTON_XPATH)
+    Common.click_and_load(SetupEditPage::EDIT_BUTTON_XPATH)
     
     $wait.until{
       $browser.find_element(:xpath => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH).displayed?

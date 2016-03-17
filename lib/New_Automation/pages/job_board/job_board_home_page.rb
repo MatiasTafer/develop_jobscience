@@ -61,7 +61,7 @@ class JobBoardHomePage
   JOB_BOARD_UPLOAD_RESUME_SUCCESS_TEXT = "Your resume was successfully added / updated."
   JOB_BOARD_UPLOAD_RESUME_ERROR_TYPE_XPATH = ".//*[@class='atsError'][contains(.,'Wrong file type')]"
   JOB_BOARD_UPLOAD_RESUME_ERROR_TYPE_TEXT = "Wrong file type. The following file types are allowed: pdf"
-  JOB_BOARD_UPLOAD_RESUME_BROWSE_TEXT_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input"
+  JOB_BOARD_UPLOAD_RESUME_BROWSE_TEXT_XPATH = ".//*[@class='atsFormTdTwoColumnLeft']/input/.."
   JOB_BOARD_UPLOAD_RESUME_ALL_TYPES_TEXT = "docx, doc, pdf, rtf, html, txt"
   
 
