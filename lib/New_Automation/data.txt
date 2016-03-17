@@ -15,3 +15,21 @@ JOB BOARD SETUP detail page: you must add the "Notes and Attachments" related li
 
 PRIMARY_RECRUITER_TEXT = put here an existing user name on your org
 
+
+
+Special Notes:
+- We notice that in the AUTOMATION ORG the following tabs has different names in the orgs.
+In order to proceed with the migration, I renamed them to the same name in  Naomi's org, so:
+Naomi's Org: "Accounts" is displayed as "Companies" in Automation org, renamed to "Accounts"
+Naomi's Org: "Contacts" is displayed as "Candidates" in Automation org, renamed to "Contacts"
+
+- Contacts detail page needs to have the following buttons:
+-- Button: Add skills
+-- Button: Apply to job
+-- Button: Add to List
+
+- Contacts detail page needs the following related lists:
+-- skills related list to contact detail page
+-- education history to contacts detail page
+-- employment history to contacts detail page
+-- Applications, add column "Application" to the related list

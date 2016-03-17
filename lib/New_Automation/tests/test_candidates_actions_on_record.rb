@@ -34,10 +34,10 @@ class TestActionsOnRecord < TestBasic
   def test_AddNewSkillToContact
     randomContact = SecureRandom.hex(4)
     
-    
+   
     #PRECONDITIONS
     #Login
-    Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    Common.login(Users::USER_AUTOMATION, Users::PASSWORD_AUTOMATION)
     
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -104,14 +104,14 @@ class TestActionsOnRecord < TestBasic
     
 
   end
-
+=begin
   #TC261 - Successfully add/rate new skill to one contact
   def test_SuccessfullyAddRateSkillToContact
     randomContact = SecureRandom.hex(4)
     
     #PRECONDITIONS
     #Login
-    Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    Common.login(Users::USER_AUTOMATION, Users::PASSWORD_AUTOMATION)
     
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -188,16 +188,14 @@ class TestActionsOnRecord < TestBasic
     ]
     Common.main(test)
     Common.click_and_load(ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
-        
+       
     assert $wait.until {
-      $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_FIRST_XPATH).displayed? 
-      $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH).displayed?   
-    
+      $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_FIRST_XPATH).displayed?
     }
     test = [
       {"click_and_load" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_FIRST_XPATH}
     ]
-    Common.main(test) 
+    Common.main(test)
 
      test = [ 
       {"displayed" => SkillDetailPage::SKILL_DETAIL_RATING_XPATH}
@@ -213,17 +211,16 @@ class TestActionsOnRecord < TestBasic
     Common.click_and_load(ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
      
     test = [
-    {"displayed" => ContactDetailPage::CONTACT_DETAIL_SKILL_LIST_SECOND_XPATH},
+    {"displayed" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_SECOND_XPATH},
     {"click_and_load" => ContactDetailPage::CONTACT_DETAIL_RECORD_SKILL_LIST_SECOND_XPATH},
     {"displayed" => SkillDetailPage::SKILL_DETAIL_RATING_XPATH}
      ]
      
     Common.main(test)
     assert_equal("10", $browser.find_element(:xpath => SkillDetailPage::SKILL_DETAIL_RATING_XPATH).text)
-    
-    
+        
   end  
-
+=begin
   #TC54 - Successfully Add to List (Existing) one contact
   def test_SuccessfullyAddToExistingListContact
     randomContact = SecureRandom.hex(4)
@@ -231,7 +228,7 @@ class TestActionsOnRecord < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    Common.login(Users::USER_AUTOMATION, Users::PASSWORD_AUTOMATION)
     home_url = $browser.current_url
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -305,7 +302,7 @@ class TestActionsOnRecord < TestBasic
         
   end
 
- 
+
   #TC262 - Successfully Add to List (New) one contact
   def test_SuccessfullyAddToNewListContact
     randomContact = SecureRandom.hex(4)
@@ -313,7 +310,7 @@ class TestActionsOnRecord < TestBasic
     
     #PRECONDITIONS
     #Login
-    Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    Common.login(Users::USER_AUTOMATION, Users::PASSWORD_AUTOMATION)
     
     #At least one account must exist
     Common.CreateAccount(randomContact) 
@@ -332,7 +329,7 @@ class TestActionsOnRecord < TestBasic
     $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]").click
     $wait.until {
         $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
-      } 
+    } 
     
     # 3. Click on "Add to List"
     Common.click(ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH)
@@ -382,7 +379,7 @@ class TestActionsOnRecord < TestBasic
     }
     
   end      
- 
+
   #TC55 - Successfully Apply to Jobs
   def test_ApplyToJobContact
     randomContact = SecureRandom.hex(4)
@@ -391,7 +388,7 @@ class TestActionsOnRecord < TestBasic
     #PRECONDITIONS:
     
     #Login
-    Common.login(Users::USER_EMAIL, Users::PASSWORD) 
+    Common.login(Users::USER_AUTOMATION, Users::PASSWORD_AUTOMATION) 
     
     # Job with "Post job" = False
     Common.CreateRequisitionPostJob(randomReq, false)
@@ -425,7 +422,7 @@ class TestActionsOnRecord < TestBasic
     #A pop up window will be disaplyed
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
-    sleep(2)
+    sleep(5)
     
     test = [
     # 4. Select the created Job
@@ -438,7 +435,8 @@ class TestActionsOnRecord < TestBasic
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # 7. Select Referral in picklist  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_XPATH, "text" => "Reason"},
     # 8. Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH}
@@ -473,6 +471,6 @@ class TestActionsOnRecord < TestBasic
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
-  end  
-    
+  end
+=end       
 end
