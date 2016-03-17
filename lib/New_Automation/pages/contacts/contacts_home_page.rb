@@ -79,7 +79,8 @@ class ContactsHomePage
     
     #Exception
     CONTACT_JOB_POPUP_REASON_XPATH = "//*[text()='Reason']/../following-sibling::*//select"
-    CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH = "//*[text()='New']"
+    CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH = "//*[text()='Other']"
+    CONTACT_JOB_POPUP_REASON_OTHER_XPATH = "//label[text()[contains(., 'Reason Other')]]/../following-sibling::*/textarea"
     CONTACT_JOB_POPUP_SUCCESS_APP_XPATH = "//label[text()[contains(., 'APP')]]"
     CONTACT_JOB_POPUP_SUCCESS_CANDIDATE_XPATH = "//label[text()[contains(., 'APP')]]/../..//td//span"
      
