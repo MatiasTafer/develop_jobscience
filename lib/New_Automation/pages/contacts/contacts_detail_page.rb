@@ -34,9 +34,12 @@ class ContactDetailPage
   CONTACT_DETAIL_EMPLOYMENT_LIST_XPATH = "//*[text()='Assessment']/../.."
   CONTACT_DETAIL_EMPLOYMENT_LIST_FIRST_NAME_XPATH = "(//*[text()[contains(., 'EMP')]])[1]"
   CONTACT_DETAIL_EDUCATION_LIST_FIRST_XPATH = "(//*[text()[contains(., 'SCH')]])[1]"
-  CONTACT_DETAIL_EMPLOYMENT_TITLE_1_XPATH = "((//*[text()[contains(., 'EMP')]])[1]/../..//td)[2]"
-  CONTACT_DETAIL_DEGREE_NAME_1_XPATH = "//*[text()='Degree Name']/../..//tr[2]//th/a"
+  CONTACT_DETAIL_EMPLOYMENT_TITLE_1_XPATH = "((//*[text()[contains(., 'EMP')]])[1]/../..//td)[3]"
+  CONTACT_DETAIL_DEGREE_NAME_1_XPATH = "//*[text()='Education Degree Name 1']/following-sibling::*[1]/div"
   
+  #CONTACT NAMES CREATED FROM PARSING RESUMES
+  CONTACT_NAME_1_TEXT = "Manuel Gonzales"
+  CONTACT_NAME_FROM_FILES_1_TEXT = "test2016 Manolo"
   
   
   

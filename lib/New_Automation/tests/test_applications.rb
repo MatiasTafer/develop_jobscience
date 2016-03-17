@@ -73,8 +73,8 @@ class TestApplications < TestBasic
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},  
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_USER_TEXT},
-      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => JobBoardLoginPage::JOB_BOARD_PASSWORD_TEXT}, 
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::JOB_BOARD_USER_TEXT},
+      {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::JOB_BOARD_PASSWORD_TEXT}, 
       {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOGOUT_LINK_XPATH}  
     ]
@@ -110,7 +110,7 @@ class TestApplications < TestBasic
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + JobBoardLoginPage::JOB_BOARD_USER_NAME_TEXT + "')]]").click
+    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + Users::JOB_BOARD_USER_NAME_TEXT + "')]]").click
     
     test = [
       {"displayed" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_XPATH},

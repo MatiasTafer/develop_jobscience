@@ -382,7 +382,7 @@ class TestActionsOnRecord < TestBasic
     }
     
   end      
- 
+
   #TC55 - Successfully Apply to Jobs
   def test_ApplyToJobContact
     randomContact = SecureRandom.hex(4)
@@ -473,6 +473,5 @@ class TestActionsOnRecord < TestBasic
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
-  end  
-    
+  end     
 end
