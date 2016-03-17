@@ -49,6 +49,7 @@ class TestStandardQuestions < TestBasic
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
 
+=begin
   #TC929 - Validation of new standar question, Required By Applicant = true
   def test_validationStandarQuestion
     Common.login(Users::USER_EMAIL, Users::PASSWORD) 
@@ -94,6 +95,10 @@ class TestStandardQuestions < TestBasic
       $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
     $wait.until{
+      $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).click
+    $wait.until{
       $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).displayed?
     }
     Common.click_and_load(JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH)
@@ -138,7 +143,7 @@ class TestStandardQuestions < TestBasic
     }
     rescue
     $browser.action.move_to($browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)).perform
-    Common.click_and_load(JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
+    Common.click_and_load(JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardRegisterPage::JOB_BOARD_REGISTER_BTN_CONTINUE_TWO_XPATH).displayed?
     }
@@ -261,6 +266,13 @@ class TestStandardQuestions < TestBasic
     $wait.until{
       $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).click
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).displayed?
+    }
     Common.click_and_load(JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH)
     $wait.until{
       $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH).displayed?
@@ -343,6 +355,10 @@ end
       $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
     $wait.until{
+      $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).click
+    $wait.until{
       $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).displayed?
     }
     Common.click_and_load(JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH)
@@ -395,6 +411,10 @@ end
       $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
     $wait.until{
+      $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).click
+    $wait.until{
       $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).displayed?
     }
     Common.click_and_load(JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH)
@@ -446,6 +466,10 @@ end
     $wait.until{
       $browser.current_url.eql?(HomePage::JOB_BOARD_URL)
     }
+    $wait.until{
+      $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).displayed?
+    }
+    $browser.find_element(:xpath, JobBoardHomePage::SEARCH_BUTTON_XPATH).click
     $wait.until {
       $browser.find_element(:xpath, JobBoardHomePage::JOB_BOARD_FIRST_ELEMENT_LIST_XPATH).displayed?
     }
@@ -487,5 +511,5 @@ end
     end
     end
   end
-
+=end
 end
