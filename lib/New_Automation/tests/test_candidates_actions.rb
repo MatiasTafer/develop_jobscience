@@ -96,7 +96,7 @@ class TestActions < TestBasic
     assert_equal("1", $browser.find_element(:xpath => ContactsHomePage::CONTACT_LIST_POPUP_NUMBER_ADDED_XPATH).text)
  
     test = [ 
-    # 8. Click "Close"     
+    # 8. Click "Close"
       {"click" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_CLOSE_XPATH}
     ]
     Common.main(test)
