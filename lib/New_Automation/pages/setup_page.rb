@@ -136,7 +136,7 @@ class SetupEditPage
   
   # MASS MAIL
     # Fields
-  ENABLE_MASS_MAIL_CHECKBOX_XPATH = ".//*[text()[contains(.,'EnableMassMailService')]]/../..//input"
+  ENABLE_MASS_MAIL_CHECKBOX_XPATH = ".//*[text()[contains(.,'Enable MassMail Service')]]/../..//input"
   
   # SETUP
   DEVELOP_XPATH = ".//a[text()='Develop']"

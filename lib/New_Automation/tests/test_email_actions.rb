@@ -44,7 +44,7 @@ require './New_Automation/pages/placements/placements_detail_page.rb'
 require './New_Automation/pages/placements/placements_home_page.rb'
 
 class TestEmailActions < TestBasic
-=begin
+#=begin
   def test_email_actions_tc1072 #1
     # Application / Forward Application
     # Login
@@ -71,7 +71,7 @@ class TestEmailActions < TestBasic
       
       # 10 - Click on "Send"
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
     ]
@@ -114,7 +114,7 @@ class TestEmailActions < TestBasic
       # 10 - Click on "Send"
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
     ]
@@ -162,7 +162,7 @@ class TestEmailActions < TestBasic
       # 10 - Click on "Send"
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
     ]
@@ -241,7 +241,7 @@ class TestEmailActions < TestBasic
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
       
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
     ]
@@ -286,7 +286,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      #{"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      #{"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"displayed" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
@@ -331,7 +331,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      #{"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      #{"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"displayed" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
@@ -361,7 +361,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pageMessages:j_id9:j_id10:0:j_id11:j_id12:j_id14'][text()[contains(.,'You must select the Contact')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must select the Contact')]]"},
       
       {"displayed" => ForwardPopup::TO_TEXT_XPATH},
       {"set_text" => ForwardPopup::TO_TEXT_XPATH, "text" => "1234"},
@@ -402,7 +402,7 @@ class TestEmailActions < TestBasic
       
       # 10 - Click on "Send"
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
       
@@ -449,7 +449,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      #{"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      #{"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"displayed" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
@@ -495,7 +495,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      #{"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      #{"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"displayed" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
@@ -524,7 +524,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pageMessages:j_id9:j_id10:0:j_id11:j_id12:j_id14'][text()[contains(.,'You must select the Contact')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must select the Contact')]]"},
       
       {"displayed" => ForwardPopup::TO_TEXT_XPATH},
       {"set_text" => ForwardPopup::TO_TEXT_XPATH, "text" => "1234"},
@@ -565,7 +565,7 @@ class TestEmailActions < TestBasic
       
       # 10 - Click on "Send"
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
       
@@ -611,7 +611,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      #{"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      #{"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"displayed" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
@@ -658,7 +658,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      #{"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      #{"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"displayed" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
@@ -689,7 +689,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pageMessages:j_id9:j_id10:0:j_id11:j_id12:j_id14'][text()[contains(.,'You must select the Contact')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must select the Contact')]]"},
       
       {"displayed" => ForwardPopup::TO_TEXT_XPATH},
       {"set_text" => ForwardPopup::TO_TEXT_XPATH, "text" => "1234"},
@@ -723,7 +723,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pageMessages:j_id9:j_id10:0:j_id11:j_id12:j_id14'][text()[contains(.,'You must select the Contact')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must select the Contact')]]"},
       
       {"displayed" => ForwardPopup::TO_TEXT_XPATH},
       {"set_text" => ForwardPopup::TO_TEXT_XPATH, "text" => "John Smith"},
@@ -776,7 +776,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      #{"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      #{"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"displayed" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
@@ -1276,7 +1276,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
  
-
+#=end
 
   
   def test_email_actions_tc1101 #30    *
@@ -1285,7 +1285,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Custom Settings -> Short List -> Review Mode = 3
-    #Common.go_to_short_list(edit=true)
+    Common.go_to_short_list(edit=true)
     test = [
       # 
       {"displayed" => SetupEditPage::REVIEW_MODE_XPATH},
@@ -1294,7 +1294,7 @@ class TestEmailActions < TestBasic
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH},
     ]
-    #Common.main(test)
+    Common.main(test)
     # Steps
     # 
     Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
@@ -1499,9 +1499,9 @@ class TestEmailActions < TestBasic
       {"change_frame" => ""},
       
       {"displayed" => ShortListReviewEmailPopup::SUBJECT_TEXT_REVIEW_EMAIL_XPATH},
-      {"set_text" => ShortListReviewEmailPopup::SUBJECT_TEXT_REVIEW_EMAIL_XPATH, "text" => "test"},
+      {"set_text_exist" => ShortListReviewEmailPopup::SUBJECT_TEXT_REVIEW_EMAIL_XPATH, "text" => "test"},
       # 
-      {"set_text" => ShortListReviewEmailPopup::TO_USER_TEXT_XPATH, "text" => "Naomi Kihara"},
+      {"set_text_exist" => ShortListReviewEmailPopup::TO_USER_TEXT_XPATH, "text" => "Naomi Kihara"},
       {"set_text" => ShortListReviewEmailPopup::TO_CONTACT_TEXT_XPATH, "text" => "maggie simpson"},
       {"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
       {"click" => ShortListSendEmailPopup::SELECT_TEMPLATE_BUTTON_XPATH},
@@ -1524,7 +1524,7 @@ class TestEmailActions < TestBasic
     
   end
  
-
+#=begin
 
   
   def test_email_actions_tc1103 #32    *
@@ -1564,7 +1564,8 @@ class TestEmailActions < TestBasic
       {"change_frame" => ""},
       
       {"displayed" => ShortListReviewEmailPopup::SUBJECT_TEXT_XPATH},
-      {"set_text" => ShortListReviewEmailPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
+      {"set_text_exist" => ShortListReviewEmailPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
+      {"set_text" => ShortListReviewEmailPopup::TO_CONTACT_TEXT_XPATH, "text" => "maggie simpson"},
       {"click" => ShortListSendEmailPopup::SELECT_TEMPLATE_BUTTON_XPATH},
       # 
       {"change_window" => ""},
@@ -1578,10 +1579,15 @@ class TestEmailActions < TestBasic
       {"displayed" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
       {"click" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
       
+      {"displayed" => ShortListDetailPage::CLOSE_BUTTON_XPATH},
+      {"click" => ShortListDetailPage::CLOSE_BUTTON_XPATH},
+      {"change_window" => ""},
       {"change_frame" => ""},
+      
     ]
     Common.main(test)
     
+    Common.goToTab(HomePage::HOME_TAB_ID)
     Common.go_to_short_list(edit=true)
     test = [
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
@@ -1613,7 +1619,8 @@ class TestEmailActions < TestBasic
       {"displayed" => ShortListReviewEmailPopup::SUBJECT_TEXT_REVIEW_EMAIL_XPATH},
       {"set_text" => ShortListReviewEmailPopup::SUBJECT_TEXT_REVIEW_EMAIL_XPATH, "text" => "test"},
       # 
-      {"set_text" => ShortListReviewEmailPopup::TO_USER_TEXT_XPATH, "text" => "Naomi Kihara"},
+      {"set_text_exist" => ShortListReviewEmailPopup::TO_USER_TEXT_XPATH, "text" => "Naomi Kihara"},
+      {"set_text" => ShortListReviewEmailPopup::TO_CONTACT_TEXT_XPATH, "text" => "maggie simpson"},
       {"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
       {"click" => ShortListSendEmailPopup::SELECT_TEMPLATE_BUTTON_XPATH},
       # 
@@ -1636,9 +1643,6 @@ class TestEmailActions < TestBasic
     
     Common.go_to_short_list(edit=true)
     test = [
-      #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -1694,7 +1698,7 @@ class TestEmailActions < TestBasic
   
 
 
-
+#=begin
   
 
   def test_email_actions_tc1104 #33    *
@@ -2200,7 +2204,7 @@ class TestEmailActions < TestBasic
   end
   
 
-=end
+
   
   def test_email_actions_tc1138 #44 
     # Send Review email with internal mode, review mode 1
@@ -2220,8 +2224,6 @@ class TestEmailActions < TestBasic
     Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2239,6 +2241,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -2251,7 +2254,7 @@ class TestEmailActions < TestBasic
       {"set_text" => ShortListReviewEmailPopup::SUBJECT_TEXT_REVIEW_EMAIL_XPATH, "text" => "test"},
       # 
       {"set_text" => ShortListReviewEmailPopup::TO_USER_TEXT_XPATH, "text" => "Naomi Kihara"},
-      {"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
+      #{"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
       {"click" => ShortListSendEmailPopup::SELECT_TEMPLATE_BUTTON_XPATH},
       
       {"change_window" => ""},
@@ -2272,36 +2275,34 @@ class TestEmailActions < TestBasic
     
   end
   
-=begin
   
-  def test_email_actions_tc1139 #45 
+  def test_email_actions_tc1139 #45    
     # Send Review email, internal mode, review mode 2
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
-    Common.go_to_massmail_service(edit=true)
+    #Common.go_to_massmail_service(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
       {"unchecked" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    Common.main(test)
+    #Common.main(test)
     # 
-    Common.go_to_short_list(edit=true)
+    #Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
+      {"checked" => SetupEditPage::CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH},
       {"set_text" => SetupEditPage::REVIEW_MODE_XPATH, "text" => "2"},
       {"set_text" => SetupEditPage::ENABLE_EMAIL_SEND_OPTIONS_XPATH, "text" => "INTERNAL"},
       {"click" => SetupEditPage::SAVE_BUTTON_XPATH},
     ]
-    Common.main(test)
+    #Common.main(test)
     # Steps
     Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
@@ -2331,10 +2332,10 @@ class TestEmailActions < TestBasic
       {"change_window" => ""},
       {"change_frame" => ""},
       
-      
       {"displayed" => ShortListReviewEmailPopup::ADD_CANDIDATE_BUTTON_XPATH},
       {"click" => ShortListReviewEmailPopup::ADD_CANDIDATE_BUTTON_XPATH},
       
+      {"change_frame" => ""},
       {"change_window" => ""},
       
       {"set_text" => ShortListReviewEmailPopup::CONTACT_ADD_CANDIDATE_XPATH, "text" => "maggie simpson"},
@@ -2344,7 +2345,7 @@ class TestEmailActions < TestBasic
       {"change_frame" => ""},
       
       {"displayed" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
-      {"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
+      #{"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
       {"click" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
       
       {"change_frame" => ""},
@@ -2354,6 +2355,7 @@ class TestEmailActions < TestBasic
     
   end
 
+#=begin
 
   def test_email_actions_tc1140 #46 
     # Send Review email, internal mode, review mode 3, default staffing = FALSE
@@ -2373,8 +2375,6 @@ class TestEmailActions < TestBasic
     Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2405,7 +2405,7 @@ class TestEmailActions < TestBasic
       {"set_text" => ShortListReviewEmailPopup::SUBJECT_TEXT_REVIEW_EMAIL_XPATH, "text" => "test"},
       # 
       {"set_text" => ShortListReviewEmailPopup::TO_USER_TEXT_XPATH, "text" => "Naomi Kihara"},
-      {"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
+      #{"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
       {"click" => ShortListSendEmailPopup::SELECT_TEMPLATE_BUTTON_XPATH},
       # 
       {"change_window" => ""},
@@ -2427,7 +2427,7 @@ class TestEmailActions < TestBasic
     
   end
   
-  
+
 
   
   def test_email_actions_tc1141 #47 
@@ -2487,7 +2487,7 @@ class TestEmailActions < TestBasic
       {"change_frame" => ""},
       
       {"displayed" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
-      {"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
+      #{"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
       {"click" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
       
       {"change_frame" => ""},
@@ -2560,7 +2560,7 @@ class TestEmailActions < TestBasic
       {"change_frame" => ""},
       
       {"displayed" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
-      {"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
+      #{"checked" => ShortListReviewEmailPopup::ATTACHMENT_CHECKBOX_XPATH},
       {"click" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
       
       {"change_frame" => ""},
@@ -2674,7 +2674,6 @@ class TestEmailActions < TestBasic
     Common.go_to_short_list(edit=true)
     test = [
       #
-      
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2797,5 +2796,5 @@ class TestEmailActions < TestBasic
     
   end
   
-=end
+#=end
 end
