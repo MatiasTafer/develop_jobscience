@@ -2272,7 +2272,7 @@ class TestEmailActions < TestBasic
     
   end
   
-
+=begin
   
   def test_email_actions_tc1139 #45 
     # Send Review email, internal mode, review mode 2
@@ -2797,5 +2797,5 @@ class TestEmailActions < TestBasic
     
   end
   
-#=end
+=end
 end

@@ -984,8 +984,8 @@ class Common
       {"click" => ".//*[contains(@class,'dataCell')]/a[text()='MassMail Service']/ancestor::tr[1]/td[1]/a"},
     ]
     if edit
-      a = {"displayed" => ".//a[@class='actionLink'][1]"}
-      b = {"click" => ".//a[@class='actionLink'][1]"}
+      a = {"displayed" => ".//*[@value='Edit']"}
+      b = {"click" => ".//*[@value='Edit']"}
       test << a
       test << b
     end
