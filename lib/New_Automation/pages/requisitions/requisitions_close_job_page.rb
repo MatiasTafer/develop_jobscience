@@ -8,8 +8,10 @@ class RequisitionsCloseJob
   #FIELDS
   REQUISITIONS_CLOSE_JOB_DATE_CLOSED_XPATH = ".//*[text()='Date Closed']/../following-sibling::*[1]//input"
   REQUISITIONS_CLOSE_JOB_CLOSED_REASON_XPATH = ".//*[text()='Closed Reason']/../following-sibling::*[1]//select"
+  OVERALL_REJECTED_REASON_SELECT_XPATH = ".//*[text()='Overall Reject Reason']/../..//select"
     
   CLOSE_REASON_TEXT = 'Closed'
+  OVERALL_TEXT = "More Qualified Candidate selected/interview"
   
   #Messages
   CONFIRM_DELETED_MESSAGE_XPATH = ".//*[@class='message confirmM3']"

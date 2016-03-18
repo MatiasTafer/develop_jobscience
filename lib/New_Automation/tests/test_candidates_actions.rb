@@ -268,8 +268,12 @@ class TestActions < TestBasic
       $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH).displayed?
     }
     Common.click(SearchResultsPage::SEACRH_RESULT_APPLY_FILTERS_XPATH)
+    sleep(1)
     $wait.until {
       $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").displayed?
+    }
+    $wait.until {
+      $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").enabled?
     }
     # 4. Select one or more contact doing click on checkbox on column "Action".
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").click
@@ -375,11 +379,15 @@ class TestActions < TestBasic
     }
     Common.set_text(SearchResultsPage::SEARCH_RESULT_FILTER_CONTACT_XPATH, randomContact)
     Common.click(SearchResultsPage::SEACRH_RESULT_APPLY_FILTERS_XPATH)
+    sleep(1)
     $wait.until {
       $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH).displayed?
     }
     $wait.until {
       $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").displayed?
+    }
+    $wait.until {
+      $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").enabled?
     }
     # 4. Select one or more contact doing click on checkbox on column "Action".
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + recordEdu + "')]]/../..//input").click
@@ -478,11 +486,16 @@ class TestActions < TestBasic
     }
     Common.set_text(SearchResultsPage::SEARCH_RESULT_FILTER_CONTACT_XPATH, randomContact)
     Common.click(SearchResultsPage::SEACRH_RESULT_APPLY_FILTERS_XPATH)
+    sleep(1)
     $wait.until {
       $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH).displayed?
     }
     
     Common.displayed(SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]")
+   
+    $wait.until {
+      $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input").enabled?
+    }
     
     # 4. Select one or more contact doing click on checkbox on column "Action".
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input").click
@@ -582,9 +595,14 @@ class TestActions < TestBasic
     }
     Common.set_text(SearchResultsPage::SEARCH_RESULT_FILTER_CONTACT_XPATH, randomContact)
     Common.click(SearchResultsPage::SEACRH_RESULT_APPLY_FILTERS_XPATH)
+    sleep(1)
     $wait.until {
       $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input").displayed?
     }
+    $wait.until {
+      $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input").enabled?
+    }
+    
     # 4. Select one or more contact doing click on checkbox on column "Action".
     $browser.find_element(:xpath => SearchResultsPage::SEARCH_RESULTS_RESULT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../..//input").click
     
@@ -708,7 +726,7 @@ class TestActions < TestBasic
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # 9. Select Referral in picklist  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
     # 10. Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -811,7 +829,7 @@ class TestActions < TestBasic
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # 9. Select Referral in picklist  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
     # 10. Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -920,7 +938,7 @@ class TestActions < TestBasic
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # 9. Select Referral in picklist  
-      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OPTION_3_XPATH},
+      {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
     # 10. Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},

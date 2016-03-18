@@ -24,7 +24,7 @@ require './New_Automation/tests/test_email_actions'
 
 #require './New_Automation/tests/test_eeo_question.rb'
 
-#require './New_Automation/test_requisition.rb'
+#require './New_Automation/tests/test_requisition.rb'
 
 #require './New_Automation/test_email_actions'
 
@@ -56,8 +56,6 @@ require './New_Automation/tests/test_email_actions'
 
 #require './New_Automation/test_candidates_misc'
 
-#require './New_Automation/test_actions_on_record'
-
 #require './New_Automation/tests/test_board_setup'
 
 #require './New_Automation/tests/test_job_board'
@@ -65,8 +63,6 @@ require './New_Automation/tests/test_email_actions'
 #require './New_Automation/tests/test_applications.rb'
 
 #require './New_Automation/tests/test_url_builder.rb'
-
-#require './New_Automation/test_daxtra_parse.rb'
 
 #require './New_Automation/test_daxtra_parse.rb'
 

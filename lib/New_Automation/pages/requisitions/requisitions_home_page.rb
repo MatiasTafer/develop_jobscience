@@ -19,6 +19,6 @@ class RequisitionsHomePage
   #Record Type Page
   NEW_RECORD_TYPE_DROPDOWN_XPATH = ".//*[text()='Record Type of new record']/../following-sibling::*//select"
   RECORD_TYPE_REQUISITION_TEXT = "Corporate"
-  CONTINUE_BUTTON_XPATH = ".//*[@name='save']"
+  CONTINUE_BUTTON_XPATH = ".//*[@value='Continue']"
   
 end
