@@ -31,6 +31,9 @@ class Users
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
   USER_EMAIL3 = "naomimanager@joblabs.com"
   
+  USER_JOB_BOARD =  "testrodrigo4@gmail.com"
+  USER_PASSWORD_JOB_BOARD = "password123"
+  
   PASSWORD_JOB_BOARD = "1234567a"
 
   USER_AUTOMATION = "oktana@joblabs.com"
