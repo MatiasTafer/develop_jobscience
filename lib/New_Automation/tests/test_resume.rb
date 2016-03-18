@@ -788,7 +788,7 @@ def test_PickListInternationalResumeTool
 end
 =end
 
-
+=begin
 #TC997 - State and Country Picklists feature, validation with State and Country picklists - Resume Tools #FIREFOX OK
 def test_ValidationCountryPicklist
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -808,10 +808,6 @@ def test_ValidationCountryPicklist
    test7 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test7)
-   #Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
-   #test2 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
-         #  {"click" => HomePage::ADD_RESUMES_XPATH}]
-   #Common.main(test2)
    $wait.until{
      windowsNumer = $browser.window_handles.size
      windowsNumer > 1
@@ -829,28 +825,32 @@ def test_ValidationCountryPicklist
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")
 end
+=end
 
 =begin
-#TC998 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Tools
+#TC998 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Tools #FIREFOX OK
 def test_nonEnglishPickList
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   Common.go_to_parser_settings(false)
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
+   Common.main(test5)
+   $wait.until{
+     $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+   }     
    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
    test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   Common.goToTab(HomePage::HOME_TAB_LINK_XPATH
+   Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
    test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test3)
-   Common.goToTab(HomePage::HOME_TAB_LINK_XPATH
-   test2 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
-           {"click" => HomePage::ADD_RESUMES_XPATH}]
-   Common.main(test2)
+   #Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
+   #test2 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+           #{"click" => HomePage::ADD_RESUMES_XPATH}]
+   #Common.main(test2)
    $wait.until{
      windowsNumer = $browser.window_handles.size
      windowsNumer > 1
@@ -859,7 +859,7 @@ def test_nonEnglishPickList
    $browser.switch_to.window(newWindow)
    test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
             {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@AdressInSpanish},
-            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}]
+            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH}]
    Common.main(test4)
    newWindow= $browser.window_handles[0]
    $browser.switch_to.window(newWindow)
@@ -868,18 +868,23 @@ def test_nonEnglishPickList
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")
 end
+=end
 
-#TC1004 - State and Country Picklists feature, USA with State and Country picklists - Resume Update feature
+=begin
+#TC1004 - State and Country Picklists feature, USA with State and Country picklists - Resume Update feature #FIREFOX OK
 def test_resumUpdateCountryPickList
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   Common.go_to_parser_settings(false)
-   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
-   $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
-   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+  test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
+  Common.main(test5)
+  $wait.until{
+     $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+  }     
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
+  Common.main(test6)
   Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH) 
   $wait.until{ 
     $browser.find_element(:xpath, ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH).displayed?
@@ -971,8 +976,10 @@ def test_resumUpdateCountryPickList
   } 
   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "61MeetinghouseRoadWindhamNH03087US") 
 end
+=end
 
-#TC1005 - State and Country Picklists feature, Canada with State and Country picklists - Resume Update feature
+=begin
+#TC1005 - State and Country Picklists feature, Canada with State and Country picklists - Resume Update feature #FIREFOX OK
 def test_resumeUpdateCountryPicklistCanada
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
  Common.go_to_parser_settings(false)
@@ -1072,18 +1079,23 @@ def test_resumeUpdateCountryPicklistCanada
   } 
   assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "10­123MainstMontrealQCH3Z2Y7CA")
 end
+=end
 
-#TC1006 - State and Country Picklists feature, International with State and Country picklists - Resume Update feature  
+=begin
+#TC1006 - State and Country Picklists feature, International with State and Country picklists - Resume Update feature  #FIREFOX OK
 def test_resumeUpdateInternational
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   Common.go_to_parser_settings(false)
-   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+  test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
-   $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
-   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+  Common.main(test5)    
+  $wait.until{
+     $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+  }   
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
+  Common.main(test6)
   Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH) 
   $wait.until{ 
     $browser.find_element(:xpath, ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH).displayed?
@@ -1113,22 +1125,27 @@ def test_resumeUpdateInternational
   assert $wait.until{
       $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).displayed?
   } 
-  assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "8ArdaghRdLimerickIE")  
+  assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_XPATH).text.delete!("\n").delete(' ').delete(','), "8ArdaghRdMontrealLimerickH3Z2Y7IE")  
 end
+=end
 
-#TC1007 - State and Country Picklists feature, validation with State and Country picklists - Resume Update feature
+=begin
+#TC1007 - State and Country Picklists feature, validation with State and Country picklists - Resume Update feature #FIREFOX OK
 def test_stateContryPicklistUpdateResumeValidation
    Common.login(Users::USER_EMAIL, Users::PASSWORD)
    Common.go_to_parser_settings(false)
    test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
+   Common.main(test5)  
+   $wait.until{
+     $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+   }   
    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
    test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
-   Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH) 
+  Common.main(test6)
+  Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH) 
   $wait.until{ 
     $browser.find_element(:xpath, ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH).displayed?
   }
@@ -1159,20 +1176,25 @@ def test_stateContryPicklistUpdateResumeValidation
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")
 end
+=end
 
-#TC1008 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Update feature
+=begin
+#TC1008 - State and Country Picklists feature, non-English language with State and Country picklists - Resume Update feature #FIREFOX OK
 def test_nonEnglishUpdateResum
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-   Common.go_to_parser_settings(false)
-   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+  Common.go_to_parser_settings(false)
+  test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
             {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
-   $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
-   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
-            {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
-            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
-   Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH) 
+  Common.main(test5)
+  $wait.until{
+     $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+  }     
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
+           {"checked" => SetupEditPage::OVERWRITE_ADDRESS_CHECKBOX_XPATH},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test6)
+  Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH) 
   $wait.until{ 
     $browser.find_element(:xpath, ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH).displayed?
   }
@@ -1203,272 +1225,301 @@ def test_nonEnglishUpdateResum
    } 
    assert_equal($browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_MAILING_ADDRESS_IE_XPATH).text, "")  
 end
+=end
 
-
-#TC1014 - State and Country Picklists feature, USA with State and Country picklists - Job Board
+=begin
+#TC1014 - State and Country Picklists feature, USA with State and Country picklists - Job Board #FIREFOX OK
 def test_updateResumePickListJobBoard
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    CustomSettings.JobBoardLogin(true)
-   Common.go_to_parser_settings(false)
-   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
-   $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
-   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
-            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
-    $browser.get HomePage::JOB_BOARD_URL
-    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressOnly},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test2) 
-    assert $wait.until {
-      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    }
-    $browser.get HomePage::JOB_BOARD_URL
-    test3 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUnitedStates},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test3) 
-    assert $wait.until {
-      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    } 
-    $browser.get HomePage::JOB_BOARD_URL
-    test4 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUsa},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test4) 
-    assert $wait.until {
-      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    } 
+  CustomSettings.JobBoardLogin(true)
+  Common.go_to_parser_settings(false)
+  test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
+  Common.main(test5) 
+  $wait.until{
+    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+  }    
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test6)
+  $browser.get HomePage::JOB_BOARD_URL
+  test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+           {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+           {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+           {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+           {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+           {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+           {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+           {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+           {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressOnly},
+           {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test2) 
+  assert $wait.until {
+     $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+  }
+  $browser.get HomePage::JOB_BOARD_URL
+  test3 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUnitedStates},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test3) 
+  assert $wait.until {
+    $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+  } 
+  $browser.get HomePage::JOB_BOARD_URL
+  test4 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUsa},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test4) 
+  assert $wait.until {
+     $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+  } 
 end
+=end
 
-
-#TC1015 - State and Country Picklists feature, Canada with State and Country picklists - Job Board
+=begin
+#TC1015 - State and Country Picklists feature, Canada with State and Country picklists - Job Board #FIREFOX OK
 def test_updateResumePickListJobBoardCanada
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    CustomSettings.JobBoardLogin(true)
-    Common.go_to_parser_settings(false)   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
-   $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
-   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
-            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
-    $browser.get HomePage::JOB_BOARD_URL
-    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressOnly},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test2) 
-    assert $wait.until {
+  CustomSettings.JobBoardLogin(true)
+  Common.go_to_parser_settings(false) 
+  test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
+  Common.main(test5)
+  $wait.until{
+    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+  }     
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test6)
+  $browser.get HomePage::JOB_BOARD_URL
+  test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressOnly},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test2) 
+  assert $wait.until {
+     $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+  }
+  $browser.get HomePage::JOB_BOARD_URL
+  test3 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressCanada},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test3) 
+  assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    }
-    $browser.get HomePage::JOB_BOARD_URL
-    test3 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressCanada},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test3) 
-    assert $wait.until {
+  } 
+  $browser.get HomePage::JOB_BOARD_URL
+  test4 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressCA},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test4) 
+  assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    } 
-    $browser.get HomePage::JOB_BOARD_URL
-    test4 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@CAAdressCA},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test4) 
-    assert $wait.until {
-      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    } 
+  } 
 end
+=end
 
-#TC1016 - State and Country Picklists feature, International with State and Country picklists - Job Board
+=begin
+#TC1016 - State and Country Picklists feature, International with State and Country picklists - Job Board #FIREFOX OK
 def test_updateResumePickListJobBoardIntenational
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    CustomSettings.JobBoardLogin(true)
-    Common.go_to_parser_settings(false)
-   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
-   $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
-   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
-            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
-
-    $browser.get HomePage::JOB_BOARD_URL
-    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@internationalAdress},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test2) 
-    assert $wait.until {
+  CustomSettings.JobBoardLogin(true)
+  Common.go_to_parser_settings(false)
+  test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
+  Common.main(test5) 
+  $wait.until{
+    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+  }    
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test6)
+  $browser.get HomePage::JOB_BOARD_URL
+  test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@internationalAdress},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test2) 
+  assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    }
+  }
 end
+=end
 
-#TC1017 - State and Country Picklists feature, validation with State and Country picklists - Job Board
+=begin
+#TC1017 - State and Country Picklists feature, validation with State and Country picklists - Job Board #FIREFOX OK
 def test_validationResumePickList
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    CustomSettings.JobBoardLogin(true)
-    Common.go_to_parser_settings(false)
-   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
-   $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
-   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
-            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
-    $browser.get HomePage::JOB_BOARD_URL
-    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usPostalCode},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test2) 
-    assert $wait.until {
+  CustomSettings.JobBoardLogin(true)
+  Common.go_to_parser_settings(false)
+  test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
+  Common.main(test5) 
+  $wait.until{
+    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+  }    
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test6)
+  $browser.get HomePage::JOB_BOARD_URL
+  test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usPostalCode},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test2) 
+  assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    }
+  }
 end
+=end
 
+=begin
 #TC1018 - State and Country Picklists feature, non-English language with State and Country picklists - Job Board
 def test_updateResumeJobBoardNoEnglish
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    CustomSettings.JobBoardLogin(true)
-    Common.go_to_parser_settings(false)
-   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
-   $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
-   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
-            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
-    $browser.get HomePage::JOB_BOARD_URL
-    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@AdressInSpanish},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test2) 
-    assert $wait.until {
+  CustomSettings.JobBoardLogin(true)
+  Common.go_to_parser_settings(false)
+  test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
+  Common.main(test5)     
+  $wait.until{
+    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+  } 
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test6)
+  $browser.get HomePage::JOB_BOARD_URL
+  test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@AdressInSpanish},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test2) 
+  assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    }  
+  }  
 end
+=end
 
-#TC1019 - State and Country Picklists feature, USA without State and Country picklists - Job Board
+=begin
+#TC1019 - State and Country Picklists feature, USA without State and Country picklists - Job Board #FIREFOX OK
 def test_USAUpdateResumePicklistDisable
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    CustomSettings.JobBoardLogin(true)
-    Common.go_to_parser_settings(false)
-   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
-   Common.main(test5)     
-   $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
-   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
-            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
-   Common.main(test6)
-    $browser.get HomePage::JOB_BOARD_URL
-    test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressOnly},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test2) 
-    assert $wait.until {
+  CustomSettings.JobBoardLogin(true)
+  Common.go_to_parser_settings(false)
+  test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
+           {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
+  Common.main(test5)  
+  $wait.until{
+    $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
+  }   
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Attach Only"},
+           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
+  Common.main(test6)
+  $browser.get HomePage::JOB_BOARD_URL
+  test2 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressOnly},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test2) 
+  assert $wait.until {
+     $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
+  }
+  $browser.get HomePage::JOB_BOARD_URL
+  test3 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUnitedStates},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test3) 
+  assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    }
-    $browser.get HomePage::JOB_BOARD_URL
-    test3 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUnitedStates},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test3) 
-    assert $wait.until {
+  } 
+  $browser.get HomePage::JOB_BOARD_URL
+  test4 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
+          {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
+          {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
+          {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
+          {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
+          {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUsa},
+          {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
+  Common.main(test4) 
+  assert $wait.until {
       $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    } 
-    $browser.get HomePage::JOB_BOARD_URL
-    test4 =[{"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
-            {"displayed" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_USERNAME_XPATH, "text" => Users::USER_JOB_BOARD},
-            {"set_text" => JobBoardLoginPage::JOB_BOARD_LOGIN_PASSWORD_XPATH, "text" => Users::USER_PASSWORD_JOB_BOARD},
-            {"click" => JobBoardLoginPage::JOB_BOARD_LOGIN_BTN_LOGIN_XPATH},
-            {"displayed" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"click" => JobBoardHomePage::JOB_BOARD_UPDATE_YOUR_RESUME_XPATH},
-            {"upload" => JobBoardJobDetail::BROWSE_BUTTON_XPATH, "file" => @@usaAdressUsa},
-            {"click" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH}]    
-    Common.main(test4) 
-    assert $wait.until {
-      $browser.find_element(:xpath, JobBoardJobDetail::SUCCESS_UPLOADED_RESUEM_XPATH).displayed?
-    }   
+  }   
 end
+=end
 
 #TC1020 - State and Country Picklists feature, Canada without State and Country picklists - Job Board
 def test_CanadaUpdateResumePickListDisable
@@ -1529,6 +1580,7 @@ def test_CanadaUpdateResumePickListDisable
     }  
 end
 
+=begin
 #TC1021 - State and Country Picklists feature, International without State and Country picklists - Job Board
 def test_InternationalUpdateResumeDisable
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -1833,7 +1885,7 @@ def test_resumeToolInternationalDisable
    test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
             {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
    Common.main(test6)
-   Common.goToTab(HomePage::HOME_TAB_LINK_XPATH
+   Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
    test = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
    Common.main(test)
