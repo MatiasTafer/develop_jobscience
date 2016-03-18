@@ -24,6 +24,6 @@ class ForwardPopup
   
   FIRST_ELEMENT_SELECT_TEMPLATE_XPATH = ".//*[contains(@class, 'dataCell')][1]/a"
   
-  BCC_TEXT_XPATH = ".//*[contains(text(),'BCC')]/ancestor::tr[1]/td/div/textarea"
-  BCC_EMAIL_CANDIDATE_XPATH = ".//*[contains(text(),'BCC')]/ancestor::tr[1]/td/div/textarea"
+  BCC_TEXT_XPATH = ".//*[contains(text(),'BCC')]/ancestor::tr[1]/child::td/span/input"
+  BCC_EMAIL_CANDIDATE_XPATH = ".//*[contains(text(),'BCC')]/ancestor::tr[1]/child::td/span/input"
 end

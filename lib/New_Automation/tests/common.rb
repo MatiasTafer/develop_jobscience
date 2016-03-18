@@ -280,6 +280,9 @@ class Common
   end
   
   def self.resume_update
+    filename = "/New_Automation/files/Resumes/document.pdf"
+    file = File.join(Dir.pwd, filename)
+    
     test = [ 
       {"displayed" => ForwardPopup::RESUME_UPDATE_XPATH},
       {"click" => ForwardPopup::RESUME_UPDATE_XPATH},
@@ -288,7 +291,7 @@ class Common
       
       {"displayed_if_exist" => ForwardPopup::ADD_RESUME_XPATH},
       {"displayed_if_exist" => ForwardPopup::UPDATE_RESUME_XPATH},
-      {"upload" => ForwardPopup::BROWSE_XPATH, "file" => "/New_Automation/files/Daxtra/DaxtraResume01.pdf"},
+      {"upload" => ForwardPopup::BROWSE_XPATH, "file" => file},
       {"click_if_exist" => ForwardPopup::ADD_RESUME_XPATH},
       {"click_if_exist" => ForwardPopup::UPDATE_RESUME_XPATH},
       

@@ -24,13 +24,13 @@ class SetupEditPage
   
   #SHORT LIST
     # Buttons
-  SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@value='Submit']"
+  SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@value='Save']"
   EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH = ".//*[@value='Edit']"
     # Fields
   CHECKBOX_SPEEDREVIEW_XPATH = ".//*[text()[contains(.,'Enable Speed Review')]]/../../..//input"
   CHECKBOX_WEB_SOURCING_XPATH = ".//*[text()[contains(.,'Enable Web Sourcing')]]/../../..//input"
   CHECKBOX_ENABLE_JOBSCIENCE_UI_XPATH =".//*[text()[contains(.,'Enable Jobscience UI')]]/../../..//input"
-  ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH = "(.//*[not (contains(text(), 'Edits'))])[text()[contains(.,'Enable Review Email')]]"
+  ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH = "(.//*[not (contains(text(), 'Edits'))])[text()[contains(.,'Enable Review Email')]]/ancestor::tr[1]/child::td/input"
   REVIEW_MODE_XPATH = ".//*[text()[starts-with(.,'Review Mode')]]/../../..//input"
   ENABLE_EMAIL_SEND_OPTIONS_XPATH = ".//*[text()[contains(.,'Review Email Send Options')]]/../../..//input"
   DEFAULT_STAFFING_REVIEW_XPATH = ".//*[text()[contains(.,'Default Staffing Review')]]/../../..//input"

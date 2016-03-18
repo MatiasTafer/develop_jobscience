@@ -25,7 +25,9 @@ class ShortListDetailPage
   CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH = "(.//*[text()[contains(.,'Yes***')]])[2]"
   CONFIRM_DELETE_CONTACT_BUTTON_XPATH = "(.//*[text()[contains(.,'No***')]])[2]"
   
-  SEARCH_BUTTON_XPATH = ".//*[@class='web-sourcing-footer']/div"                                     
+  SEARCH_BUTTON_XPATH = ".//*[@class='web-sourcing-footer']/div"      
+  
+  CHECKBOX_ELEMENT_XPATH = ".//*[contains(@class, 'shortlist-candidate-record-list-item-selector')]"                   
   
 end
                   

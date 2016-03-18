@@ -905,7 +905,6 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-=end
   
   def test_email_actions_tc1093 #22
     # Contact / Forward Contact, with Template 
@@ -934,7 +933,7 @@ class TestEmailActions < TestBasic
       {"set_text" => ForwardPopup::CONTACT_TO_TEXT_XPATH, "text" => "John Smith"},
       {"set_text" => ForwardPopup::CONTACT_SUBJECT_TEXT_XPATH, "text" => "2020"},
       
-      {"checked" => ForwardPopup::CONTACT_ATTACHMENTS_CHECKBOX_XPATH},
+      {"checked" => ForwardPopup::ATTACHMENTS_CHECKBOX_XPATH},
       {"displayed" => ForwardPopup::CONTACT_SELECT_TEMPLATE_BUTTON_XPATH},
       {"click" => ForwardPopup::CONTACT_SELECT_TEMPLATE_BUTTON_XPATH},
       
@@ -956,7 +955,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-=begin
+
 
   def test_email_actions_tc1094 #23
     # Contact / Forward Contact, with Template & Attachment
@@ -968,8 +967,10 @@ class TestEmailActions < TestBasic
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       # 
-      {"displayed" => ".//a[text()[contains(.,'Body, et')]]"},
-      {"click" => ".//a[text()[contains(.,'Body, et')]]"},
+      {"displayed" => ContactsHomePage::CONTACT_LIST_RECORD_XPATH},
+      {"click" => ContactsHomePage::CONTACT_LIST_RECORD_XPATH},
+      # 
+      {"resume_update" => ""},
       # 
       {"displayed" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       {"click" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
@@ -983,7 +984,7 @@ class TestEmailActions < TestBasic
       {"set_text" => ForwardPopup::CONTACT_TO_TEXT_XPATH, "text" => "John Smith"},
       {"set_text" => ForwardPopup::CONTACT_SUBJECT_TEXT_XPATH, "text" => "2020"},
       
-      {"checked" => ForwardPopup::CONTACT_ATTACHMENTS_CHECKBOX_XPATH},
+      {"checked" => ForwardPopup::ATTACHMENTS_CHECKBOX_XPATH},
       {"displayed" => ForwardPopup::CONTACT_SELECT_TEMPLATE_BUTTON_XPATH},
       {"click" => ForwardPopup::CONTACT_SELECT_TEMPLATE_BUTTON_XPATH},
       
@@ -1018,8 +1019,10 @@ class TestEmailActions < TestBasic
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       # 
-      {"displayed" => ".//a[text()[contains(.,'Body, et')]]"},
-      {"click" => ".//a[text()[contains(.,'Body, et')]]"},
+      {"displayed" => ContactsHomePage::CONTACT_LIST_RECORD_XPATH},
+      {"click" => ContactsHomePage::CONTACT_LIST_RECORD_XPATH},
+      # 
+      {"resume_update" => ""},
       # 
       {"displayed" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
       {"click" => ContactDetailPage::FORWARD_CONTACT_BUTTON_XPATH},
@@ -1047,18 +1050,15 @@ class TestEmailActions < TestBasic
   end
   
 
-=begin  
+  
   
   def test_email_actions_tc1096 #25
     # Short List / Send E-mail 
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Enable Review Email= true
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
-      {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-      {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-      
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       
@@ -1068,13 +1068,12 @@ class TestEmailActions < TestBasic
     # Steps
     Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       # Click on "Send E-mail" on the menu
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
       {"displayed" => ShortListDetailPage::SL_SEND_EMAIL_MENU_XPATH},
@@ -1084,25 +1083,19 @@ class TestEmailActions < TestBasic
       {"displayed" => ShortListSendEmailPopup::SUBJECT_TEXT_XPATH},
       {"set_text" => ShortListSendEmailPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
       {"click" => ShortListSendEmailPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:frm:pageMessages:j_id6:j_id7:0:j_id8:j_id9:j_id11'][text()[contains(.,'Your emails have been queued for sending.')]]"},
-     
+      {"displayed" => ".//*[text()[contains(.,'Your emails have been queued for sending.')]]"},
     ]
     Common.main(test)
   end
   
-
-
 
   def test_email_actions_tc1097 #26
     # Short List / Send E-mail, with Template
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Enable Review Email= true
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
-      {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-      {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-      
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       
@@ -1111,14 +1104,14 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1128,9 +1121,9 @@ class TestEmailActions < TestBasic
       {"change_frame" => ""},
       {"displayed" => ShortListSendEmailPopup::SUBJECT_TEXT_XPATH},
       {"set_text" => ShortListSendEmailPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
-      {"checked" => ShortListSendEmailPopup::RECORD_ATTACHMENT_XPATH},
+      #{"checked" => ShortListSendEmailPopup::RECORD_ATTACHMENT_XPATH},
       {"click" => ShortListSendEmailPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:frm:pageMessages:j_id6:j_id7:0:j_id8:j_id9:j_id11'][text()[contains(.,'Your emails have been queued for sending.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Your emails have been queued for sending.')]]"},
      
     ]
     Common.main(test)
@@ -1144,11 +1137,9 @@ class TestEmailActions < TestBasic
     # Short List / Send E-mail, with Template & Attachment
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    
+    Common.go_to_short_list(edit=true)
     test = [
-      {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-      {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-      
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       
@@ -1156,14 +1147,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1173,7 +1164,7 @@ class TestEmailActions < TestBasic
       {"change_frame" => ""},
       {"displayed" => ShortListSendEmailPopup::SUBJECT_TEXT_XPATH},
       {"set_text" => ShortListSendEmailPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
-      {"checked" => ShortListSendEmailPopup::RECORD_ATTACHMENT_XPATH},
+      #{"checked" => ShortListSendEmailPopup::RECORD_ATTACHMENT_XPATH},
       {"click" => ShortListSendEmailPopup::SELECT_TEMPLATE_BUTTON_XPATH},
       {"change_window" => ""},
       
@@ -1185,7 +1176,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ShortListSendEmailPopup::SEND_BUTTON_XPATH},
       {"click" => ShortListSendEmailPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:frm:pageMessages:j_id6:j_id7:0:j_id8:j_id9:j_id11'][text()[contains(.,'Your emails have been queued for sending.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Your emails have been queued for sending.')]]"},
      
     ]
     Common.main(test)
@@ -1198,11 +1189,9 @@ class TestEmailActions < TestBasic
     # Short List / Send E-mail, Validation
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    
+    Common.go_to_short_list(edit=true)
     test = [
-      {"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-      {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
-      
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       
@@ -1211,14 +1200,14 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1229,7 +1218,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ShortListSendEmailPopup::SEND_BUTTON_XPATH},
       {"click" => ShortListSendEmailPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:frm:pageMessages:j_id6:j_id7:0:j_id8:j_id9:j_id11'][text()[contains(.,'You must enter the Subject')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must enter the Subject')]]"},
      
     ]
     Common.main(test)
@@ -1246,11 +1235,9 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Custom Settings -> Short List -> Enable Review Email= true
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       # 
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH},
@@ -1258,14 +1245,14 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Review E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1278,12 +1265,12 @@ class TestEmailActions < TestBasic
       {"checked" => ShortListReviewEmailPopup::STANDART_CHECKBOX_XPATH},
       # Click on "Send Email"
       {"click" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:frm:pageMessages:j_id6:j_id7:0:j_id8:j_id9:j_id11'][text()[contains(.,'You must enter the Subject')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must enter the Subject')]]"},
       {"set_text" => ShortListReviewEmailPopup::TO_CONTACT_TEXT_XPATH, "text" => "00eb46d1"},
       {"set_text" => ShortListReviewEmailPopup::SUBJECT_TEXT_XPATH, "text" => "00eb46d1"},
       
       {"click" => ShortListReviewEmailPopup::SEND_EMAIL_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:frm:pageMessages:j_id6:j_id7:0:j_id8:j_id9:j_id11'][text()[contains(.,'You must enter the Subject')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must enter the Subject')]]"},
       #
     ]
     Common.main(test)
@@ -1292,34 +1279,32 @@ class TestEmailActions < TestBasic
 
 
   
-  def test_email_actions_tc1101 #30    
+  def test_email_actions_tc1101 #30    *
     # Short List / Review Email - Staffing, Validation
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Custom Settings -> Short List -> Review Mode = 3
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    #Common.go_to_short_list(edit=true)
     test = [
       # 
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       {"displayed" => SetupEditPage::REVIEW_MODE_XPATH},
       {"set_text" => SetupEditPage::REVIEW_MODE_XPATH, "text" => "3"},
       {"checked" => SetupEditPage::DEFAULT_STAFFING_REVIEW_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"click" => SetupEditPage::SAVE_BUTTON_SHORT_LIST_XPATH},
     ]
-    Common.main(test)
+    #Common.main(test)
     # Steps
     # 
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1349,7 +1334,7 @@ class TestEmailActions < TestBasic
       {"click" => ShortListReviewEmailPopup::ADD_TO_REVIEW_XPATH},
       
       {"change_window" => ""},
-      {"change_frame" => ""},
+      #{"change_frame" => ""},
       
       {"displayed" => ShortListReviewEmailPopup::ADD_CANDIDATE_BUTTON_XPATH},
       {"click" => ShortListReviewEmailPopup::ADD_CANDIDATE_BUTTON_XPATH},
@@ -1375,17 +1360,15 @@ class TestEmailActions < TestBasic
 
 
   
-  def test_email_actions_tc1102 #31  
+  def test_email_actions_tc1102 #31       *
     # Short List / Review Email - Standard, External & Internal
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     # Custom Settings -> Short List -> Review Mode = 3
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -1397,14 +1380,14 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1432,11 +1415,9 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
-      #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+      
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -1447,14 +1428,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1487,11 +1468,9 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -1503,14 +1482,14 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1548,16 +1527,14 @@ class TestEmailActions < TestBasic
 
 
   
-  def test_email_actions_tc1103 #32    
+  def test_email_actions_tc1103 #32    *
     # Short List / Review Email - External & Internal, Internal with Template
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -1569,14 +1546,15 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1604,11 +1582,8 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
-      #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -1619,14 +1594,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1659,7 +1634,7 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
@@ -1675,14 +1650,14 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1719,19 +1694,16 @@ class TestEmailActions < TestBasic
   
 
 
- 
+
   
 
-  def test_email_actions_tc1104 #33    
+  def test_email_actions_tc1104 #33    *
     # Short List / Review Email - Standard, External & Internal with Template & Attachment
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
-      #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -1743,14 +1715,14 @@ class TestEmailActions < TestBasic
     Common.main(test)
     # Steps
     # 
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1778,11 +1750,8 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
-      #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -1793,14 +1762,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1833,11 +1802,8 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
-      #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -1849,14 +1815,14 @@ class TestEmailActions < TestBasic
     Common.main(test)
     
     
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -1898,10 +1864,9 @@ class TestEmailActions < TestBasic
     # Applications / Send Email
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-   
     # Steps
     # 
-    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH)
     test = [
       # APP-010616-04441, .//span[text()[contains(.,'APP-010616-04441')]] 6d620642
       
@@ -1916,7 +1881,7 @@ class TestEmailActions < TestBasic
       {"set_text" => ForwardPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
       
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       {"change_window" => ""},
       #
@@ -1932,7 +1897,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::APPLICATIONS_TAB_LINK_XPATH)
     test = [
       # Click on "Send E-mail" on the menu
       {"displayed" => ApplicationsHomePage::FIRST_APPLICATION_CHECKBOX_XPATH},
@@ -1943,7 +1908,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pageMessages:j_id9:j_id10:0:j_id11:j_id12:j_id14'][text()[contains(.,'You must enter the Subject')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must enter the Subject')]]"},
       {"click" => ForwardPopup::CANCEL_BUTTON_XPATH},
       #{"change_window" => ""},
       {"change_window" => ""},
@@ -1954,17 +1919,17 @@ class TestEmailActions < TestBasic
   
 
   
-  def test_email_actions_tc1107 #36  
+  def test_email_actions_tc1107 #36   *
     # Submittals / Send Email
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH)
     test = [
       #
-      {"displayed" => ".//*[@id='a0go0000003k7Gk_00No0000008HtlV']/a[1]/img"},
-      {"click" => ".//*[@id='a0go0000003k7Gk_00No0000008HtlV']/a[1]/img"},
+      {"displayed" => SubmittalsHomePage::SEND_EMAIL_XPATH},
+      {"click" => SubmittalsHomePage::SEND_EMAIL_XPATH},
       
       {"change_window" => ""},
       
@@ -1980,16 +1945,16 @@ class TestEmailActions < TestBasic
     Common.main(test)
   end
   
-  
+
 
   
-  def test_email_actions_tc1108 #37  
+  def test_email_actions_tc1108 #37    *
     # Submittals / Send Email, Validation
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SUBMITTALS_TAB_LINK_XPATH)
     test = [
       #
       {"displayed" => ".//*[@id='a0go0000003k7Gk_00No0000008HtlV']/a[1]/img"},
@@ -2020,7 +1985,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH)
     test = [
       #
       {"displayed" => InterviewsHomePage::CHECKBOX_FIRST_RECORD_XPATH},
@@ -2032,7 +1997,7 @@ class TestEmailActions < TestBasic
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"set_text" => ForwardPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       {"click" => ForwardPopup::CLOSE_BUTTON_XPATH},
       
       {"change_window" => ""},
@@ -2050,7 +2015,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH
+    Common.goToTab(HomePage::INTERVIEW_TAB_LINK_XPATH)
     test = [
       #
       {"displayed" => InterviewsHomePage::CHECKBOX_FIRST_RECORD_XPATH},
@@ -2061,7 +2026,7 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pageMessages:j_id9:j_id10:0:j_id11:j_id12:j_id14'][text()[contains(.,'You must enter the Subject')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must enter the Subject')]]"},
       {"click" => ForwardPopup::CANCEL_BUTTON_XPATH},
       
       {"change_window" => ""},
@@ -2076,11 +2041,9 @@ class TestEmailActions < TestBasic
     # Offers / Send Email
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2093,7 +2056,7 @@ class TestEmailActions < TestBasic
     
     
     # Steps
-    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH)
     test = [
       #
       {"displayed" => OffersHomePage::GO_BUTTON_XPATH},
@@ -2105,8 +2068,8 @@ class TestEmailActions < TestBasic
       
       {"change_window" => ""},
       
-      {"displayed" => ForwardPopup::BCC_TEXT_XPATH},
-      {"set_text" => ForwardPopup::BCC_TEXT_XPATH, "text" => " "},
+      #{"displayed_if_exist" => ForwardPopup::BCC_TEXT_XPATH},
+      #{"set_text" => ForwardPopup::BCC_TEXT_XPATH, "text" => " "},
       {"displayed" => ForwardPopup::SUBJECT_TEXT_XPATH},
       {"set_text" => ForwardPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
@@ -2121,18 +2084,15 @@ class TestEmailActions < TestBasic
   
 
   
-  
   def test_email_actions_tc1112 #41 
     # Offers / Send Email, Validation
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Preconditions
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2143,9 +2103,8 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     
-    
     # Steps
-    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::OFFERS_TAB_LINK_XPATH)
     test = [
       #
       {"displayed" => OffersHomePage::GO_BUTTON_XPATH},
@@ -2159,9 +2118,9 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pageMessages:j_id9:j_id10:0:j_id11:j_id12:j_id14'][text()[contains(.,'You must enter the Subject')]]"},
-      {"displayed" => ForwardPopup::BCC_TEXT_XPATH},
-      {"set_text" => ForwardPopup::BCC_TEXT_XPATH, "text" => ""},
+      {"displayed" => ".//*[text()[contains(.,'You must enter the Subject')]]"},
+      #{"displayed" => ForwardPopup::BCC_TEXT_XPATH},
+      #{"set_text" => ForwardPopup::BCC_TEXT_XPATH, "text" => ""},
       {"displayed" => ForwardPopup::SUBJECT_TEXT_XPATH},
       {"set_text" => ForwardPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
@@ -2186,7 +2145,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH)
     test = [
       #
       {"displayed" => PlacementsHomePage::GO_BUTTON_XPATH},
@@ -2200,7 +2159,7 @@ class TestEmailActions < TestBasic
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"set_text" => ForwardPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       
       {"change_window" => ""},
       #
@@ -2216,7 +2175,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
    
     # Steps
-    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PLACEMENT_TAB_LINK_XPATH)
     test = [
       #
       {"displayed" => PlacementsHomePage::GO_BUTTON_XPATH},
@@ -2229,10 +2188,10 @@ class TestEmailActions < TestBasic
       
       {"displayed" => ForwardPopup::SEND_BUTTON_XPATH},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pageMessages:j_id9:j_id10:0:j_id11:j_id12:j_id14'][text()[contains(.,'You must enter the Subject')]]"},
+      {"displayed" => ".//*[text()[contains(.,'You must enter the Subject')]]"},
       {"set_text" => ForwardPopup::SUBJECT_TEXT_XPATH, "text" => "test"},
       {"click" => ForwardPopup::SEND_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id2:frm:pbSendEmail:pbsCompleted:j_id94:j_id95:j_id97'][text()[contains(.,'Email(s) have been sent successfully.')]]"},
+      {"displayed" => ".//*[text()[contains(.,'Email(s) have been sent successfully.')]]"},
       
       {"change_window" => ""},
       #
@@ -2241,7 +2200,7 @@ class TestEmailActions < TestBasic
   end
   
 
-  
+=end
   
   def test_email_actions_tc1138 #44 
     # Send Review email with internal mode, review mode 1
@@ -2249,7 +2208,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
-    $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
+    Common.go_to_massmail_service(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
@@ -2258,7 +2217,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # 
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
@@ -2272,14 +2231,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -2321,7 +2280,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
-    $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
+    Common.go_to_massmail_service(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
@@ -2330,7 +2289,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # 
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
@@ -2344,14 +2303,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -2402,7 +2361,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
-    $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
+    Common.go_to_massmail_service(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
@@ -2411,7 +2370,7 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # 
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
@@ -2426,14 +2385,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -2477,7 +2436,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
-    $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
+    Common.go_to_massmail_service(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
@@ -2486,11 +2445,9 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # 
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2501,14 +2458,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -2549,7 +2506,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
-    $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
+    Common.go_to_massmail_service(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
@@ -2558,11 +2515,10 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # 
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+      
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2573,14 +2529,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -2623,7 +2579,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
-    $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
+    Common.go_to_massmail_service(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
@@ -2632,11 +2588,10 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # 
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+      
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2647,14 +2602,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -2707,7 +2662,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
-    $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
+    Common.go_to_massmail_service(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
@@ -2716,11 +2671,10 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # 
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+      
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2731,14 +2685,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -2781,7 +2735,7 @@ class TestEmailActions < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # PRECONDITIONS
     # MassMail custom setting must be DISABLED
-    $browser.get SetupEditPage::MASS_MAIL_SERVICE_EDIT_URL
+    Common.go_to_massmail_service(edit=true)
     test = [
       #
       {"displayed" => SetupEditPage::ENABLE_MASS_MAIL_CHECKBOX_XPATH},
@@ -2790,11 +2744,10 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # 
-    $browser.get SetupEditPage::SHORT_LIST_CUSTOM_SETINGS_PAGE_URL
+    Common.go_to_short_list(edit=true)
     test = [
       #
-      {"displayed" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
-      {"click" => SetupEditPage::EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH},
+      
       # REVIEW EMAIL SEND OPTIONS = INTERNAL
       {"displayed" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
       {"checked" => SetupEditPage::ENABLE_REVIEW_EMAIL_CHECKBOX_XPATH},
@@ -2805,14 +2758,14 @@ class TestEmailActions < TestBasic
     ]
     Common.main(test)
     # Steps
-    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH
+    Common.goToTab(HomePage::SHORT_LIST_TAB_LINK_XPATH)
     test = [
-      # 
-      {"displayed" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
-      {"click" => ".//a[text()[contains(.,'MATIAS TEST')]]"},
       # 
       {"displayed" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
       {"click" => ShortListHomePage::FIRST_RECORD_CHECKBOX_XPATH},
+      
+      {"displayed" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
+      {"click" => ShortListDetailPage::CHECKBOX_ELEMENT_XPATH},
       # Click on "Send E-mail" on the menu
       {"displayed" => ShortListDetailPage::SL_MENU_XPATH},
       {"click" => ShortListDetailPage::SL_MENU_XPATH},
@@ -2844,5 +2797,5 @@ class TestEmailActions < TestBasic
     
   end
   
-=end
+#=end
 end
