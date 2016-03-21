@@ -7,7 +7,9 @@ class BoardSetupDetailPage
   BOARD_DETAIL_SEARCH_URLBUILDER_BUTTON_XPATH = ".//*[@title='Search URL Builder']"
   BOARD_DETAIL_NEW_JOB_ORDER_ASSOCIATION_BUTTON_XPATH = ".//*[@value='New Job Order Job Board Association']"
   BOARD_DETAIL_NOTES_ATTACH_LIST_XPATH = ".//h3[text()='Notes & Attachments']/ancestor::div[1]/following-sibling::*[1]//tbody"
-
+  BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH = ".//h3[text()='Notes & Attachments']/ancestor::div[1]/following-sibling::*[1]//a[text()[contains(., 'Search Url:')]]"
+  BOARD_DETAIL_SEARCH_URL_XPATH = ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"
+  
   #SEARCH URL BUILDER STEPS
   URL_BUILDER_URL_XPATH = "https://ts2.na17.visual.force.com/apex/ScontrolAMSREplace?scontrolCaching=1&id=a0Go00000080Tcp"
   BOARD_DETAIL_SEARCH_URL_NEXT_XPATH = ".//*[@title='Next']"
