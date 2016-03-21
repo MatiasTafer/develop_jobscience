@@ -32,6 +32,7 @@ class TestSources < TestBasic
   $PASSWORD_JOB_BOARD = "1234567a"
   #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
   
+=begin
   def test_sources_tc937 #1
     # New Source, Successfully Created
     # Preconditions:
@@ -1332,6 +1333,7 @@ class TestSources < TestBasic
     Common.main(test)
   end 
   
+=end  
   
   def test_sources_tc959 #21 
     # Refering candidate with tracking source, existing candidate, Clear Source Tracking for Internal Referrals 
@@ -1339,16 +1341,19 @@ class TestSources < TestBasic
     # Preconditions
     $browser.get BoardSetupHomePage::INTERNAL_URL
     test = [
-      {"displayed" => ".//*[@name='edit']"},
-      {"click" => ".//*[@name='edit']"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
       
       {"displayed" => BoardSetupEditPage::BOARD_EDIT_APPLY_REFERRAL_IMMEDIATELY_XPATH},
       {"checked" => BoardSetupEditPage::BOARD_EDIT_APPLY_REFERRAL_IMMEDIATELY_XPATH},
       {"set_text" => BoardSetupEditPage::BOARD_EDIT_SOURCE_TRACKING_FOR_INTERNAL_REFERRAL_XPATH, "text" => " "},
       
-      {"click" => ".//*[@value='Save']"},
+      {"click" => BoardSetupEditPage::BOARD_EDIT_SAVE_BUTTON_XPATH},
     ]
     Common.main(test)
+    
+    username = Users.user_job_board
+    username2 = Users::USER_JOB_BOARD
     
     $browser.get HomePage::JOB_BOARD_INTERNAL_URL
     test = [
@@ -1356,20 +1361,24 @@ class TestSources < TestBasic
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH},
       
-      {"displayed" => ".//*[@id='j_id0:j_id1:j_id28:r2_email']"},
-      {"set_text" => ".//*[@id='j_id0:j_id1:j_id28:r2_email']", "text" => "matiast@oktana.io"},
-      {"click" => ".//*[@value='Continue']"},
+      {"displayed" => JobBoardJobDetail::REFERREL_EMAIL_XPATH},
+      {"set_text" => JobBoardJobDetail::REFERREL_EMAIL_XPATH, "text" => username},
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       
       {"displayed" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH},
       {"set_text" => JobBoardJobDetail::PROSPECT_FIRST_NAME_XPATH, "text" => "a"},
       {"set_text" => JobBoardJobDetail::PROSPECT_LAST_NAME_XPATH, "text" => "b"},
-      {"set_text" => JobBoardJobDetail::PROSPECT_EMAIL_XPATH, "text" => "matiast@oktana.io"},
-      {"click" => ".//*[@value='Submit']"},
+      {"set_text_exist" => JobBoardJobDetail::PROSPECT_EMAIL_XPATH, "text" => username2 },
+      {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
     ]
     Common.main(test)
+    
+    assert $browser.find_element(:xpath, JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH).displayed?
+    
   end 
   
 
+=begin
 
   def test_sources_tc962 #22 
     # Chatter Source Tracking
@@ -1413,15 +1422,18 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH},
+    
       {"change_window" => ""},
       {"change_window" => ""},
     ]
     Common.main(test)
+    
+    assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
+    
   end
   
-
+=end
 end    
 
 
