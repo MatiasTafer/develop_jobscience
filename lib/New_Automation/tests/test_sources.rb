@@ -196,7 +196,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -279,7 +279,7 @@ class TestSources < TestBasic
     
     # Precondition
     Common.logout_job_board
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -337,7 +337,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -418,7 +418,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -480,7 +480,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -551,7 +551,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
