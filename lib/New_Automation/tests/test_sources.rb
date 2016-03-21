@@ -28,9 +28,8 @@ require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 class TestSources < TestBasic
   #
-  $USER_JOB_BOARD = "test2@fromthesky.up"
-  $PASSWORD_JOB_BOARD = "automatable666"
-  #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+  
+  #Common.CreateUserJobBoard(Users::USER_SOURCES, Users::PASSWORD_SOURCES)
   
 =begin
   def test_sources_tc937 #1 #FIREFOX OK
@@ -100,9 +99,9 @@ class TestSources < TestBasic
   end
 =end  
 
-
-  def test_sources_tc939 #3
-    # Applying to the Job, New Candidate, non-authenticated
+=begin
+  def test_sources_tc939 #3   #FIREFOX OK
+    # Applying to the Job, New Candidate, non-authenticated 
     # Preconditions:
     # Must have link to job board with source prepopulated (click on a Search URL from Notes & Attachments list on Board Setup tab)
     
@@ -114,8 +113,8 @@ class TestSources < TestBasic
     
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    
-    Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    user_email = Users::USER_RANDOM_EMAIL
+    Common.CreateUserJobBoard( Users::USER_RANDOM_EMAIL, Users::PASSWORD_SOURCES)
     # Precondition
     Common.logout_job_board
     
@@ -134,7 +133,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get "http://js-recruiting-148857d918a-14910044900.force.com/openings?nostate=1&tSource=a0eo00000036CYQAA2"
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOCATION_SELECT_XPATH},
       # 6. Click on a job title.
@@ -143,7 +142,7 @@ class TestSources < TestBasic
       # 7. Click on green link "Apply for the ..." depending of the job selected.
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text_exist" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text_exist" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => user_email},
       {"set_text_exist" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "test"},
       {"set_text_exist" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "test"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -153,10 +152,7 @@ class TestSources < TestBasic
       {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 10. In the additional attachments step, Attach the required number of documents with proper filetype.
-      #{"displayed" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH},
-      #{"upload" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
       # 11. Click on "Continue".
-      #{"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
@@ -166,9 +162,9 @@ class TestSources < TestBasic
     Common.main(test)
     
   end
- 
+=end 
 
-=begin
+
   def test_sources_tc940 #4  
     # Applying to the Job, New Candidate, Hide Source Question = false, non-authenticated, deleted tSource
     
@@ -191,7 +187,7 @@ class TestSources < TestBasic
     
     Common.logout_job_board
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -209,9 +205,13 @@ class TestSources < TestBasic
     
     Common.delete_sources(source_name)
     
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    #Common.CreateUserJobBoard(Users::USER_SOURCES, Users::PASSWORD_SOURCES)
     
-    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+    Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
       {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
@@ -230,7 +230,7 @@ class TestSources < TestBasic
       
       # Fill the Questions form.
       {"displayed" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH},
-      {"set_text" => JobBoardJobDetail::EMAIL_ADDRESS_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardJobDetail::EMAIL_ADDRESS_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardJobDetail::FIRST_NAME_TEXT_XPATH, "text" => "a"},
       {"set_text" => JobBoardJobDetail::LAST_NAME_TEXT_XPATH, "text" => "s"},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_HEAR_ABOUT_US_XPATH, "text" => "c"},
@@ -256,7 +256,7 @@ class TestSources < TestBasic
   end
   
 
-
+=begin
   def test_sources_tc941 #5 
     # Applying to the Job, New Candidate, Hide Source Question = false, Blank tSource, non-authenticated
     # Preconditions:
@@ -295,7 +295,7 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::REGISTER_LINK_XPATH},
       # 7. Fill the fields (required)
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -350,9 +350,13 @@ class TestSources < TestBasic
     
     Common.delete_sources(source_name)
     
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    #Common.CreateUserJobBoard(Users::USER_SOURCES, Users::PASSWORD_SOURCES)
     
-    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+    Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
       {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
@@ -371,7 +375,7 @@ class TestSources < TestBasic
       
       # Fill the Questions form.
       {"displayed" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH},
-      {"set_text" => JobBoardJobDetail::EMAIL_ADDRESS_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardJobDetail::EMAIL_ADDRESS_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardJobDetail::FIRST_NAME_TEXT_XPATH, "text" => "a"},
       {"set_text" => JobBoardJobDetail::LAST_NAME_TEXT_XPATH, "text" => "s"},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_HEAR_ABOUT_US_XPATH, "text" => "c"},
@@ -435,7 +439,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
   
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -494,8 +498,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -564,9 +568,13 @@ class TestSources < TestBasic
     
     Common.delete_sources(source_name)
     
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    #Common.CreateUserJobBoard(Users::USER_SOURCES, Users::PASSWORD_SOURCES)
     
-    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+    Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
       {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
@@ -583,8 +591,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -652,8 +660,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -741,8 +749,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -810,8 +818,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -878,7 +886,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
   
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -947,7 +955,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       #
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -1003,7 +1011,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
   
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -1054,8 +1062,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -1129,8 +1137,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -1189,8 +1197,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -1383,7 +1391,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
   
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
