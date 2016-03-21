@@ -104,7 +104,7 @@ class TestActionsOnRecord < TestBasic
     
 
   end
-=begin
+
   #TC261 - Successfully add/rate new skill to one contact
   def test_SuccessfullyAddRateSkillToContact
     randomContact = SecureRandom.hex(4)
@@ -220,7 +220,7 @@ class TestActionsOnRecord < TestBasic
     assert_equal("10", $browser.find_element(:xpath => SkillDetailPage::SKILL_DETAIL_RATING_XPATH).text)
         
   end  
-=begin
+
   #TC54 - Successfully Add to List (Existing) one contact
   def test_SuccessfullyAddToExistingListContact
     randomContact = SecureRandom.hex(4)
@@ -471,6 +471,7 @@ class TestActionsOnRecord < TestBasic
         $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_APPLICATIONS_LIST_XPATH + "//*[text()[contains(.,'" + randomReq + "')]]").displayed?
       }  
     
-  end
-=end       
+
+  end     
+
 end

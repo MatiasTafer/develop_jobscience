@@ -31,7 +31,7 @@ class Users
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
   USER_EMAIL3 = "naomimanager@joblabs.com"
   
-  USER_JOB_BOARD =  "testrodrigo4@gmail.com"
+  USER_JOB_BOARD =  "test6@gmail.com" #"testrodrigo4@gmail.com" 
   USER_PASSWORD_JOB_BOARD = "password123"
   
   USER_LINKEDIN = "automationoktana@gmail.com"
@@ -43,6 +43,13 @@ class Users
   PASSWORD_AUTOMATION = "Jobscience16"
 
   EMAIL_DOMAIN = "oktana.io"
+  
+  #Job Board User
+  #This User must have a resume already uploaded
+  JOB_BOARD_USER_TEXT = "test2016@oktana.io"
+  JOB_BOARD_USER_NAME_TEXT = "test2016"
+  JOB_BOARD_PASSWORD_TEXT = "hola12345"
+  JOB_BOARD_USER_PROFILE_URL = "https://na17.salesforce.com/003o000000pMzEW"
   
 
   def self.create_user_job_board

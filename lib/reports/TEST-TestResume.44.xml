@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestResume" tests="1" time="56.502883" failures="1" errors="0" skipped="0" assertions="2" timestamp="2016-03-18T14:47:57-03:00">
+  <testcase name="test_nonEnglishUpdateResum" time="56.502491" assertions="2">
+    <failure type="Test::Unit::AssertionFailedError" message="&lt;&quot;8 Ardagh Rd\nMontreal, Limerick H3Z 2Y7\nIE&quot;&gt; expected but was...">
+&lt;"8 Ardagh Rd\nMontreal, Limerick H3Z 2Y7\nIE"&gt; expected but was
+&lt;""&gt;.
+
+diff:
+- 8 Ardagh Rd
+- Montreal, Limerick H3Z 2Y7
+- IE (Test::Unit::AssertionFailedError)
+/Users/admin/jobscience/lib/New_Automation/tests/test_resume.rb:1226:in `test_nonEnglishUpdateResum'    </failure>
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+click
+displayed
+click_and_load
+displayed
+click_and_load
+displayed
+click
+
+main
+
+displayed
+click
+
+main
+
+displayed
+click
+
+main
+
+set_text
+checked
+click
+
+main
+
+displayed
+click
+displayed
+click
+
+main
+
+displayed
+upload
+https://ts2.na17.visual.force.com/apex/ResumeAddUpdateBackend?scontrolCaching=1&amp;id=003o000000q4LmL
+upload
+click
+  </system-out>
+</testsuite>
