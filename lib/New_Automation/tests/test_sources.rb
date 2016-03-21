@@ -208,7 +208,6 @@ class TestSources < TestBasic
     Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
     Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
     Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
-    Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
@@ -354,7 +353,6 @@ class TestSources < TestBasic
     Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
     Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
     Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
-    Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
@@ -530,7 +528,7 @@ class TestSources < TestBasic
 =end  
 
 
-  def test_sources_tc945 #9 
+  def test_sources_tc945 #9  #FIREFOX OK
     # Applying to the Job, New Candidate, Hide Source Question = false, Authenticated, deleted tSource
     # Preconditions:
     # Job Board Setup -> Hide Source Question = false
@@ -566,21 +564,18 @@ class TestSources < TestBasic
     Common.create_sources(source_name)
     
     Common.delete_sources(source_name)
-    
-    #Common.CreateUserJobBoard(Users::USER_SOURCES, Users::PASSWORD_SOURCES)
-    
+        
     Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
     Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
     Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
-    Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
-      {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
-      {"click" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
       
-      {"displayed" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
-      {"click" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
       
       {"change_window" => ""},
       
@@ -594,7 +589,7 @@ class TestSources < TestBasic
       {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      {"displayed" => JobBoardJobDetail::LOGGED_IN_AS_XPATH},
       # END LOGIN
       {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
       {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
