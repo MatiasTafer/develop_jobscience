@@ -60,7 +60,7 @@ require './New_Automation/tests/test_resume.rb'
 
 #require './New_Automation/tests/test_job_board'
 
-require './New_Automation/tests/test_applications.rb'
+#require './New_Automation/tests/test_applications.rb'
 
 #require './New_Automation/tests/test_url_builder.rb'
 
