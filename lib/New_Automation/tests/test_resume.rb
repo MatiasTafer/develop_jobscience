@@ -2264,7 +2264,11 @@ def test_PreviouslyUploadResume
 Common.login(Users::USER_EMAIL, Users::PASSWORD)
 CustomSettings.JobBoardLogin(true)
 
-$browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
+Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+
 test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"unchecked" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
@@ -2330,7 +2334,12 @@ def test_UploadResumeAttachAppFalse
 #Preconditions
 Common.login(Users::USER_EMAIL, Users::PASSWORD)
 CustomSettings.JobBoardLogin(true)
-$browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
+
+Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+    
 test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"unchecked" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
@@ -2392,7 +2401,12 @@ end
 def test_PreviouslyUploadedResumeTrue
 Common.login(Users::USER_EMAIL, Users::PASSWORD)
 CustomSettings.JobBoardLogin(true)
-$browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
+
+Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+
 test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"checked" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
@@ -2438,7 +2452,12 @@ def test_ResumeDaysValid
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   CustomSettings.JobBoardLogin(true)
-  $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
+  
+  Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+  Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+  Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+  Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+  
   test = [{"displayed" => SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
           {"checked" =>  SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
@@ -2581,7 +2600,12 @@ def test_ResumeDaysValidationBlank
    #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   CustomSettings.JobBoardLogin(true)
-  $browser.get SetupEditPage::JOB_BOARD_SETUP_EDIT_PAGE_URL
+  
+  Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+  Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+  Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+  Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+  
   test = [{"displayed" => SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
           {"checked" =>  SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
           {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
