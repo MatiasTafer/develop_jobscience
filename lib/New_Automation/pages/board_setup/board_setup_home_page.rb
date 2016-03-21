@@ -6,5 +6,5 @@ class BoardSetupHomePage
   CAREERS_LINK_LIST_XPATH = ".//*[text()='Careers']"
   CAREERS_URL_XPATH = "https://na17.salesforce.com/a0Go00000080Tcp" # NO DELETE
   INTERNAL_URL = "https://na17.salesforce.com/a0Go000001Ij584"   # NO DELETE
-  
+  APPLY_MESSAGE_XPATH = ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"
 end

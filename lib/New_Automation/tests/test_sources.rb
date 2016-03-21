@@ -19,7 +19,7 @@ require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
 require_relative 'users.rb'
-require './New_Automation/pages/custom_settings.rb'
+require './New_Automation/tests/custom_settings.rb'
 
 require './New_Automation/pages/sources/source_home_page.rb'
 require './New_Automation/pages/sources/source_new_edit_page.rb'
@@ -1100,7 +1100,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -1118,14 +1118,18 @@ class TestSources < TestBasic
     
     Common.delete_sources(source_name)
     
-    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+    
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
-      {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
-      {"click" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
       
-      {"displayed" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
-      {"click" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
       
       {"change_window" => ""},
       
@@ -1152,19 +1156,27 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
       
       # 9. Fill the field...
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
-      
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
-    
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH},
+   ]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
+   
+   $browser.close
+   
+   $browser.switch_to.window($browser.window_handles.first) 
+     
   end
-  
-
+ 
+=end 
   
   
   def test_sources_tc954 #18 
@@ -1176,7 +1188,7 @@ class TestSources < TestBasic
     
     Common.login_job_board
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -1187,7 +1199,7 @@ class TestSources < TestBasic
     Common.main(test)
     
     # Steps
-    $browser.get "http://js-recruiting-148857d918a-14910044900.force.com/openings?nostate=1&tSource=a0eo00000036CYQAA2"
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       # LOGIN
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
@@ -1219,15 +1231,17 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
-    
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}
+   ]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
+   
+   $browser.close
+   $browser.switch_to.window($browser.window_handles.first) 
   end
   
-
+=begin
 
   def test_sources_tc955   NO AUTOMATABLE
     #  Assign Source to Candidate via Email-to-Parse
@@ -1361,7 +1375,7 @@ class TestSources < TestBasic
     Common.main(test)
   end 
   
-=end
+
 
   def test_sources_tc962 #22 
     # Chatter Source Tracking
@@ -1418,7 +1432,7 @@ class TestSources < TestBasic
     
   end
   
-  
+=end 
 end    
 
 
