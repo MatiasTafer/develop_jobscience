@@ -29,26 +29,21 @@ $wait
 
 #require './New_Automation/tests/test_standard_questions'
 
-
 #Pending Jenkins-------------
 
-#require './New_Automation/tests/test_sources'
-
-#require './New_Automation/test_sources'
+require './New_Automation/tests/test_sources.rb'
 
 #require './New_Automation/tests/test_resume.rb'
 
-require './New_Automation/tests/test_email_actions'
+#require './New_Automation/tests/test_email_actions'
 
 #require './New_Automation/tests/test_eeo_question.rb'
-
 
 #require './New_Automation/tests/test_requisition.rb'
 
 #require './New_Automation/test_email_actions'
 
 #require './New_Automation/test_job_board'
-
 
 #require './New_Automation/tests/test_standard_questions'
 
@@ -71,7 +66,6 @@ require './New_Automation/tests/test_email_actions'
 #require './New_Automation/tests/test_applications.rb'
 
 #require './New_Automation/test_daxtra_parse.rb'
-
 
 #require './New_Automation/tests/test_daxtra_parse.rb'
 
