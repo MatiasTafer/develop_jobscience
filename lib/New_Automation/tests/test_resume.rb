@@ -2268,6 +2268,7 @@ Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
 Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
 Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
 Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
 
 test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"unchecked" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
@@ -2339,6 +2340,7 @@ Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
 Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
 Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
 Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     
 test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"unchecked" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
@@ -2406,6 +2408,7 @@ Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
 Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
 Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
 Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
 
 test = [{"displayed" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
         {"checked" => SetupEditPage::HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH},
@@ -2457,6 +2460,7 @@ def test_ResumeDaysValid
   Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
   Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
   Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+  Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
   
   test = [{"displayed" => SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
           {"checked" =>  SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
@@ -2605,6 +2609,7 @@ def test_ResumeDaysValidationBlank
   Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
   Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
   Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
+  Common.click(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
   
   test = [{"displayed" => SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
           {"checked" =>  SetupEditPage::RESUME_REQUIRE_CHECKBOX_XPATH},
