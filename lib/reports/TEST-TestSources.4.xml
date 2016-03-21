@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSources" tests="1" time="27.492138" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-03-21T12:58:34-03:00">
+  <testcase name="test_sources_tc938" time="27.491766" assertions="0">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+click
+displayed
+set_text
+set_text
+set_text
+click
+  </system-out>
+</testsuite>

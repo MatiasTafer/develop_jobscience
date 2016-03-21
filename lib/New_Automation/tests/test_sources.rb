@@ -19,7 +19,7 @@ require './New_Automation/pages/setup_page.rb'
 require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
 require_relative 'users.rb'
-require './New_Automation/pages/custom_settings.rb'
+require './New_Automation/tests/custom_settings.rb'
 
 require './New_Automation/pages/sources/source_home_page.rb'
 require './New_Automation/pages/sources/source_new_edit_page.rb'
@@ -33,7 +33,7 @@ class TestSources < TestBasic
   #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
   
 =begin
-  def test_sources_tc937 #1
+  def test_sources_tc937 #1 #FIREFOX OK
     # New Source, Successfully Created
     # Preconditions:
     # Must be logged in.
@@ -47,7 +47,7 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Steps
-    Common.goToTab(HomePage::SOURCE_LINK_XPATH
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH)
     test = [
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       {"click" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
@@ -56,17 +56,17 @@ class TestSources < TestBasic
       {"set_text" => SourceNewEdit::SOURCE_EDIT_SOURCE_NAME_XPATH, "text" => "MATIAS TEST2"},
       {"set_text" => SourceNewEdit::GENERAL_SOURCE_TYPE_XPATH, "text" => "Other"},
       {"set_text" => SourceNewEdit::TYPE_SELECT_XPATH, "text" => "s"},
-      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH},
-      
-      {"displayed" => SourceNewEdit::SOURCE_EDIT_BTN_EDIT_XPATH},
-    ]
+      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH}]
     Common.main(test)
+    assert $wait.until {
+      $browser.find_element(:xpath, SourceNewEdit::SOURCE_EDIT_BTN_EDIT_XPATH).displayed?
+    }
     
   end
-  
+=end  
 
-
-  def test_sources_tc938 #2
+=begin
+  def test_sources_tc938 #2 #FIREFOX OK
     # New Source, Fields Validation
     # Preconditions:
     # Must be logged in.
@@ -83,30 +83,24 @@ class TestSources < TestBasic
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     # Steps
-    Common.goToTab(HomePage::SOURCE_LINK_XPATH
+    Common.goToTab(HomePage::SOURCE_LINK_XPATH)
     test = [
-      # 2
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       {"click" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
-      # 4
-      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH},
-      {"displayed" => ".//*[text()[contains(.,'You must enter a value')]]"},
-      
-      # 5
       {"displayed" => SourceNewEdit::SOURCE_EDIT_SOURCE_NAME_XPATH},
       {"set_text" => SourceNewEdit::SOURCE_EDIT_SOURCE_NAME_XPATH, "text" => "MATIAS TEST2"},
       {"set_text" => SourceNewEdit::SOURCE_EDIT_START_DATE, "text" => "90/26/2015"},
       {"set_text" => SourceNewEdit::SOURCE_EDIT_END_DATE, "text" => "90/26/2015"},
-      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH},
-      
-      {"displayed" => ".//*[text()[contains(.,'Invalid Date')]]"},
+      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH}#,
     ]
     Common.main(test)
-    
+    assert $wait.until{
+      $browser.find_element(:xpath, SourceHomePage::INVALID_NAME_XPATH).displayed?
+    }
   end
-  
+=end  
 
-  
+
   def test_sources_tc939 #3
     # Applying to the Job, New Candidate, non-authenticated
     # Preconditions:
@@ -125,7 +119,7 @@ class TestSources < TestBasic
     # Precondition
     Common.logout_job_board
     
-    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
     test = [
       {"click" => BoardSetupHomePage::FIRST_ELEMENT_BOARD_LIST_XPATH},
       {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH},
@@ -174,7 +168,7 @@ class TestSources < TestBasic
   end
  
 
-
+=begin
   def test_sources_tc940 #4  
     # Applying to the Job, New Candidate, Hide Source Question = false, non-authenticated, deleted tSource
     
@@ -1361,7 +1355,7 @@ class TestSources < TestBasic
     Common.main(test)
   end 
   
-=end
+
 
   def test_sources_tc962 #22 
     # Chatter Source Tracking
@@ -1419,6 +1413,8 @@ class TestSources < TestBasic
   end
   
   
+=end  
+ 
 end    
 
 
