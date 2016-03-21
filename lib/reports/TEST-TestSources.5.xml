@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSources" tests="1" time="45.303985" failures="1" errors="0" skipped="0" assertions="0" timestamp="2016-03-21T14:14:49-03:00">
+  <testcase name="test_sources_tc939" time="45.303726" assertions="0">
+    <failure type="Test::Unit::AssertionFailedError" message="&lt;&quot;You have successfully registered. Your information has been added to our system.&quot;&gt; expected but was...">
+&lt;"You have successfully registered. Your information has been added to our system."&gt; expected but was
+&lt;"You have successfully registered.  Your information has been added to our system."&gt;.
+
+diff:
+- You have successfully registered. Your information has been added to our system.
++ You have successfully registered.  Your information has been added to our system.
+?                                   +
+
+folded diff:
+- You have successfully registered. Your information has been added to our syste
+?                                                                              -
++ You have successfully registered.  Your information has been added to our syst
+?                                   +
+- m.
++ em.
+? + (Test::Unit::AssertionFailedError)
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:119:in `block in hassert_equal'
+/Library/Ruby/Gems/2.0.0/gems/selenium-webdriver-2.52.0/lib/selenium/webdriver/common/wait.rb:58:in `until'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:118:in `hassert_equal'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:315:in `block in main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:265:in `each'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:265:in `main'
+/Users/admin/jobscience/lib/New_Automation/tests/common.rb:643:in `CreateUserJobBoard'
+/Users/admin/jobscience/lib/New_Automation/tests/test_sources.rb:117:in `test_sources_tc939'    </failure>
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+click
+displayed
+click_and_load
+displayed
+click_and_load
+displayed
+click_and_load
+displayed
+click
+displayed
+click
+displayed
+click
+
+main
+
+displayed
+click
+displayed
+set_text
+set_text
+set_text
+set_text
+set_text
+set_text_exist
+click
+displayed
+click
+displayed
+assert equal
+  </system-out>
+</testsuite>
