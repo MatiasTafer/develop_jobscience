@@ -452,10 +452,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-    ]
-    Common.main(test)
+     {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
 =end  
@@ -518,11 +518,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
 =end  
@@ -608,9 +607,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -679,11 +679,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -766,9 +765,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -837,11 +837,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -896,9 +895,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
 
@@ -965,11 +965,12 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      {"change_window" => ""},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH},
+    
+      {"change_window" => ""}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -1021,9 +1022,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -1079,11 +1081,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -1154,9 +1155,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -1215,11 +1217,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -1319,7 +1320,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
   end 
-  
+=end  
   
   def test_sources_tc959 #21 
     # Refering candidate with tracking source, existing candidate, Clear Source Tracking for Internal Referrals 
@@ -1358,7 +1359,7 @@ class TestSources < TestBasic
   end 
   
 
-
+=begin
   def test_sources_tc962 #22 
     # Chatter Source Tracking
     # Login
@@ -1401,18 +1402,17 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH},
       {"change_window" => ""},
-      {"change_window" => ""},
-    ]
-    Common.main(test)
-    
-    
-    
-    
-    
+      {"change_window" => ""}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed? 
   end
+  
+  
+  
+  
   
   
 =end  
