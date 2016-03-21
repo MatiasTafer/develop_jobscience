@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSources" tests="1" time="93.755484" failures="0" errors="0" skipped="0" assertions="0" timestamp="2016-03-21T17:08:38-03:00">
+  <testcase name="test_sources_tc944" time="93.755102" assertions="0">
+  </testcase>
+  <system-out>
+
+main
+
+displayed
+click
+displayed
+click_and_load
+displayed
+click_and_load
+displayed
+click_and_load
+displayed
+click
+displayed
+click
+displayed
+click
+
+main
+
+displayed
+set_text
+click
+displayed
+
+main
+
+click
+displayed
+click
+unchecked
+click
+
+main
+
+displayed
+click
+displayed
+set_text
+set_text
+click
+displayed
+displayed
+click
+
+displayed
+click
+displayed
+click
+displayed
+set_text_exist
+set_text_exist
+set_text_exist
+click
+displayed
+  </system-out>
+</testsuite>
