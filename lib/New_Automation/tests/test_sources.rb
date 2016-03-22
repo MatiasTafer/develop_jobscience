@@ -32,7 +32,7 @@ class TestSources < TestBasic
   $PASSWORD_JOB_BOARD = "1234567a"
   #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
   
-=begin
+
   def test_sources_tc937 #1
     # New Source, Successfully Created
     # Preconditions:
@@ -1333,7 +1333,6 @@ class TestSources < TestBasic
     Common.main(test)
   end 
   
-=end  
   
   def test_sources_tc959 #21 
     # Refering candidate with tracking source, existing candidate, Clear Source Tracking for Internal Referrals 
@@ -1378,7 +1377,6 @@ class TestSources < TestBasic
   end 
   
 
-=begin
 
   def test_sources_tc962 #22 
     # Chatter Source Tracking
@@ -1433,7 +1431,7 @@ class TestSources < TestBasic
     
   end
   
-=end
+
 end    
 
 
