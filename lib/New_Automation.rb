@@ -23,6 +23,8 @@ $wait
 
 #require './New_Automation/tests/test_candidates_action_on_list_view'
 
+#require './New_Automation/tests/test_resume.rb'
+
 #require './New_Automation/tests/test_daxtra_parse.rb'
 
 #require './New_Automation/test_requisition.rb'
@@ -48,15 +50,19 @@ $wait
 
 #require './New_Automation/tests/test_standard_questions'
 
-require './New_Automation/tests/test_projects'
+#require './New_Automation/tests/test_projects'
 
 #require './New_Automation/tests/test_candidates_actions_on_record'
 
 #require './New_Automation/tests/test_job_templates.rb'
 
-#require './New_Automation/test_short_list.rb'
+#require './New_Automation/tests/test_candidates_actions_on_record'
 
-#require './New_Automation/test_projects'
+#require './New_Automation/tests/test_job_templates.rb'
+
+#require './New_Automation/tests/test_short_list.rb'
+
+#require './New_Automation/test_short_list.rb'
 
 #require './New_Automation/tests/test_question_sets'
 
@@ -71,6 +77,3 @@ require './New_Automation/tests/test_projects'
 #require './New_Automation/tests/test_applications.rb'
 
 #require './New_Automation/tests/test_daxtra_parse.rb'
-
-
-
