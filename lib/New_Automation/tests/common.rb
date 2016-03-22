@@ -73,6 +73,14 @@ class Common
     return a
   end
   
+  def self.click_if_exist(field)
+    begin
+      a = $browser.find_element(:xpath => field).click
+    rescue
+      puts "error"
+    end
+  end
+  
   #Clicks and element and waits for page to load (assuming that the element triggers a page to load)
   #This method was created because chrome webdriver has a different behaviour
   def self.click_and_load(field)
@@ -86,12 +94,19 @@ class Common
   
   
   def self.displayed(field)
-     #puts field
-
      $wait.until{
         return $browser.find_element(:xpath => field).displayed?
      }
-
+  end
+  
+  def self.displayed_if_exist(field)
+    begin
+     $wait.until{
+        return $browser.find_element(:xpath => field).displayed?
+     }
+    rescue
+      puts "error in displayed"
+    end
   end
   
   def self.ssleep
@@ -203,10 +218,10 @@ class Common
     c = true
     begin
       while c do
-        path = ".//*[contains(@class,'atsSearchResultsData')]/a[#{$num}]"
+        path = "(.//*[contains(@class,'atsSearchResultsData')]/ancestor::tr[1]/child::td/child::a[1])[#{$num}]"
         a = self.displayed(path)
         self.click(path)
-        b = self.displayed(".//*[@id='j_id0:j_id4:j_id128'][text()[contains(.,'You have already applied')]]")
+        b = self.displayed(".//form[text()[contains(.,'You have already applied')]]")
         if b
           $num += 1
           self.click(".//*[@id='js-menu-search']/a")
@@ -217,6 +232,14 @@ class Common
     rescue
       puts "\n"
     end
+  end
+  
+  def self.check_apply_name(name)
+    # apply on job board
+    $num = 1
+    c = true
+    self.displayed("//*[text()[contains(.,'" + name + "')]]")
+    self.click("//*[text()[contains(.,'" + name + "')]]")
   end
   
   def self.accept_alert
@@ -257,6 +280,26 @@ class Common
     puts cookie
   end
   
+  def self.resume_update
+    filename = "/New_Automation/files/Resumes/document.pdf"
+    file = File.join(Dir.pwd, filename)
+    
+    test = [ 
+      {"displayed" => ForwardPopup::RESUME_UPDATE_XPATH},
+      {"click" => ForwardPopup::RESUME_UPDATE_XPATH},
+      
+      {"change_window" => ""},
+      
+      {"displayed_if_exist" => ForwardPopup::ADD_RESUME_XPATH},
+      {"displayed_if_exist" => ForwardPopup::UPDATE_RESUME_XPATH},
+      {"upload" => ForwardPopup::BROWSE_XPATH, "file" => file},
+      {"click_if_exist" => ForwardPopup::ADD_RESUME_XPATH},
+      {"click_if_exist" => ForwardPopup::UPDATE_RESUME_XPATH},
+      
+      {"change_window" => ""},
+    ]
+    Common.main(test)
+  end
 
   
   def self.main(arr)
@@ -271,6 +314,10 @@ class Common
       if i["displayed"]
         puts "displayed"
         self.displayed(i["displayed"])
+      end
+      
+      if i["displayed_if_exist"]
+        self.displayed_if_exist(i["displayed_if_exist"])
       end
       if i["not_displayed"]
         puts "not displayed"
@@ -340,6 +387,9 @@ class Common
       if i["check_apply"]
         self.check_apply
       end
+      if i["check_apply_name"]
+        self.check_apply_name(i["check_apply_name"])
+      end
       if i["select_by_text"]
         puts "select by text"
         self.selectByText(i["select_by_text"], i["option_text"])
@@ -374,6 +424,14 @@ class Common
       if i["click_and_load"]
         puts "click_and_load"
         self.click_and_load(i["click_and_load"])
+      end
+      
+      if i["click_if_exist"]
+        self.click_if_exist(i["click_if_exist"])
+      end
+      
+      if i["resume_update"]
+        self.resume_update
       end
     end
     return true
@@ -769,8 +827,6 @@ class Common
     Common.main(test)
     #
     Common.login_job_board
-    #
-    randomContact = SecureRandom.hex(4)
     
     $browser.get HomePage::JOB_BOARD_URL
     test = [
@@ -790,7 +846,7 @@ class Common
       {"displayed" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 11. Click on "Continue"
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
+      #{"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
     ]
     Common.main(test)
   end
@@ -840,7 +896,7 @@ class Common
   end
   
   def self.go_to_custom_settings(edit=false)
-    #
+    # CONFIG
     self.custom_settings
     test = [
       {"displayed" => ".//*[contains(@class,'dataCell')]/a[text()='Config']/ancestor::tr[1]/td[1]/a"},
@@ -936,8 +992,8 @@ class Common
       {"click" => ".//*[contains(@class,'dataCell')]/a[text()='MassMail Service']/ancestor::tr[1]/td[1]/a"},
     ]
     if edit
-      a = {"displayed" => ".//a[@class='actionLink'][1]"}
-      b = {"click" => ".//a[@class='actionLink'][1]"}
+      a = {"displayed" => ".//*[@value='Edit']"}
+      b = {"click" => ".//*[@value='Edit']"}
       test << a
       test << b
     end

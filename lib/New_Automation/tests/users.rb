@@ -34,6 +34,8 @@ class Users
   USER_JOB_BOARD =  "test6@gmail.com"
   USER_PASSWORD_JOB_BOARD = "password123"
   
+  PASSWORD_JOB_BOARD = "1234567a"
+
   USER_LINKEDIN = "automationoktana@gmail.com"
   PASSWORD_LINKEDIN = "oktanaqa" 
   
@@ -58,8 +60,11 @@ class Users
   JOB_BOARD_USER_PROFILE_URL = "https://na17.salesforce.com/003o000000pMzEW"
   
 
+  $USER_LINKEDIN = "automationoktana@gmail.com"
+  $PASSWORD_LINKEDIN = "oktanaqa"
+  
   def self.create_user_job_board
-    # .//table[@class='atsError']/tbody/tr/td[text()[contains(.,'The email below is associated with an existing profile within our system.')]]
+    #  
     username = false
     #f = File.open("users.txt", "r")
     #f.each_line do |line|
@@ -67,7 +72,7 @@ class Users
     #    username = line
     #  end
     #end
-    f.close
+    #f.close
     if not username
       random_name = "auto_" + SecureRandom.hex(4)
       username = random_name + "@test.com"  
@@ -109,7 +114,7 @@ class Users
       {"displayed" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 11. Click on "Continue"
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
+      #{"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'You have successfully registered')]]"},
     ]
     Common.main(test)
     

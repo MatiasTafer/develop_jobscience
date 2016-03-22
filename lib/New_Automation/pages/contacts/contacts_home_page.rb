@@ -9,6 +9,7 @@ class ContactsHomePage
   CONTACT_HOME_VIEW_SELECT_XPATH = ".//*[@title='View:']"
   CONTACT_HOME_BTN_GO_XPATH = ".//*[@name='go']"
   CONTACT_HOME_LIST_XPATH = ".//*[@class='list']"
+  CONTACT_LIST_RECORD_XPATH = "(.//*[contains(@class, 'dataCell')][1]/a)[1]"
   
   #After pressing "GO" button
   CONTACT_HOME_CONTACT_LIST_XPATH = "(//*[text()='Del'])[2]/../../../../../../../../.."

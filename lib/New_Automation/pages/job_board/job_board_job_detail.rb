@@ -28,7 +28,7 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_SALES_BACKGROUND = ".//*[@class='atsPreScreen']/tbody/tr/td/label/span[text()='Do you have a sales background?']/ancestor::tr[1]/following-sibling::tr[1]/td/select"
   JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[@class='atsPreScreen']/tbody/tr/td/label/span[text()='How many years of experience do you have?']/ancestor::tr[1]/following-sibling::tr[1]/td/select"
   JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH = ".//*[@class='atsPreScreen']/tbody/tr/td/label/label[contains(text(),'Did you graduate College?')]/ancestor::tr[1]/following-sibling::tr[1]/td/select"
-  JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH = ".//*[text()='Refer Candidate']"
+  JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH = ".//a[contains(text(),'Refer Candidate')]"
 
   JOB_BOARD_APPLY_JOB_CURRENT_SALARY_XPATH = ".//*[contains(text(),'Current Candidate')]/ancestor::td[1]/following-sibling::td[1]/select"
   JOB_BOARD_APPLY_JOB_START_DATE_XPATH = ".//*[contains(text(),'Start Date')]/ancestor::td[1]/following-sibling::td[1]/select"
@@ -36,7 +36,7 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_EMAIL_2_XPATH = ".//*[contains(text(),'Email')]/ancestor::td[1]/following-sibling::td[1]/select"
   JOB_BOARD_APPLY_JOB_HOME_PHONE_XPATH = ".//*[contains(text(),'Home Phone')]/ancestor::td[1]/following-sibling::td[1]/select"
   JOB_BOARD_APPLY_JOB_LEVEL_XPATH = ".//*[contains(text(),'Level')]/ancestor::td[1]/following-sibling::td[1]/select"
-  JOB_BOARD_APPLY_REFERRER_EMAIL_XPATH = ".//*[text()[contains(.,'Referrer Email')]]/../following-sibling::*/input"
+  JOB_BOARD_APPLY_AVAILABLE_TO_START = ".//*[@class='atsInput']"
   
   # REFER CANDIDATE
   REFERREL_EMAIL_XPATH = ".//label[text()[contains(.,'Referrer Email')]]/ancestor::tr/child::td[2]/input"
