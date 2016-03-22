@@ -14,11 +14,12 @@ require './New_Automation/pages/projects/project_edit_page.rb'
 
 
 class TestProjects <TestBasic
-=begin
-  #TC963 - New Project Successfully Created
+
+
+  #TC963 - New Project Successfully Created 
   def test_projectSuccessCreated
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -35,10 +36,11 @@ class TestProjects <TestBasic
   end
 
 
-  #TC1151 - New Project Fields Validation with blank fields
+
+  #TC1151 - New Project Fields Validation with blank fields 
   def test_allFieldBlankVerification
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -54,10 +56,11 @@ class TestProjects <TestBasic
 
   end
  
-  #TC1152 - New Project Fields Validation with invalid currency
+
+  #TC1152 - New Project Fields Validation with invalid currency 
   def test_invalidCurrencyValidation
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -73,11 +76,11 @@ class TestProjects <TestBasic
     }
     assert_equal($browser.find_element(:xpath, ProjectsNewProject::ERROR).text, ProjectsNewProject::INVALID_CURRENCY_ERROR)
   end
-  
-  #TC1153 - New Project Fields Validation with a invalid date
+
+  #TC1153 - New Project Fields Validation with a invalid date 
   def test_invalidDateValidation
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -93,10 +96,8 @@ class TestProjects <TestBasic
     }
     assert_equal($browser.find_element(:xpath, ProjectsNewProject::ERROR).text, ProjectsNewProject::INVALID_DATE_ERROR)
   end
-=end
 
-
-  #TC965 - Project, New Job Order
+  #TC965 - Project, New Job Order 
   def test_projectNewJobOrder
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
@@ -134,12 +135,12 @@ class TestProjects <TestBasic
       $browser.find_element(:xpath, RequisitionsDetail::FIRST_SEARCH_RESULT_LINK_XPATH).displayed?
     }
   end
-=begin
 
-  #TC966 - Project, New Job Order Required Field Validation
+
+  #TC966 - Project, New Job Order Required Field Validation 
   def test_projectRequiredValidation
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -163,12 +164,10 @@ class TestProjects <TestBasic
     assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit::ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_REQUIRED_FIELDS_TEXT)
   end
 
-
-
-  #TC1157 - Project, New Job Order Validation invalid currency
+  #TC1157 - Project, New Job Order Validation invalid currency 
   def test_projectInvalidCurrency
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -197,12 +196,12 @@ class TestProjects <TestBasic
     }
     assert_equal($browser.find_element(:xpath, RequisitionsNewAndEdit::ERROR_MESSAGE_FIELD_XPATH).text, RequisitionsNewAndEdit::ERROR_INVALID_CURRENCY_TEXT)
   end
+ 
 
-  
-  #TC1158 - Project, New Job Order Validation Invalid Number
+  #TC1158 - Project, New Job Order Validation Invalid Number 
   def test_projectInvalidNumber
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -235,12 +234,10 @@ class TestProjects <TestBasic
   end
 
 
-
-  
-  #TC1159 - Project, New Job Order Validation Invalid Percent
+  #TC1159 - Project, New Job Order Validation Invalid Percent 
   def test_projectInvalidPercent
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -275,10 +272,10 @@ class TestProjects <TestBasic
   end
 
 
-  #TC967 - Clone Project
+  #TC967 - Clone Project 
   def test_cloneProject
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -292,11 +289,11 @@ class TestProjects <TestBasic
     }
   end
 
-  
+
   #TC968 - Delete Project
   def test_deleteProject
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -306,7 +303,7 @@ class TestProjects <TestBasic
     }
     $browser.find_element(:id, ProjectsNewProject::PROJECTS_NEW_PROJECT_NAME_ID).send_keys ProjectsNewProject::PROJECT_NAME
     $browser.find_element(:xpath, ProjectsNewProject::PROJECTS_NEW_PROJECT_BTN_SAVE_XPATH).click
-    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH
+    Common.goToTab(HomePage::PROJECTS_TAB_LINK_XPATH)
     $wait.until {
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     }
@@ -320,7 +317,7 @@ class TestProjects <TestBasic
       $browser.find_element(:xpath, ProjectsHomePage::PROJECTS_HOME_BTN_NEW_XPATH).displayed?
     } 
   end
-=end
+
   
   
   
