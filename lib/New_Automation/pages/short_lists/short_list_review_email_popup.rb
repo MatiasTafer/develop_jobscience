@@ -17,7 +17,7 @@ class ShortListReviewEmailPopup
   RECORD_ATTACHMENTS_XPATH = ".//*[@class='dataCell'][1]/input[1]"
   ATTACHMENT_CHECKBOX_XPATH = ".//*[@class='dataCell'][1]/input[1]"
   
-  CONTACT_ADD_CANDIDATE_XPATH = ".//*[@value='Add Candidate']"
+  CONTACT_ADD_CANDIDATE_XPATH = ".//label[contains(text(),'Contact')]/ancestor::tr/child::td/div/span/input"
   ADD_TO_REVIEW_XPATH = ".//*[@value='Add to Review']"
   
 end

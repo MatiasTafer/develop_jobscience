@@ -12,7 +12,7 @@ class RequisitionsHomePage
   REQUISITIONS_PAGE_FIRST_ENTRY_SELECT_XPATH = "((.//*[text()='Del'])[1]/ancestor::td[1]/preceding-sibling::*)//input"
   REQUISITIONS_PAGE_FIRST_SELECT_ALL_BOX_ID = "allBox"
 
-  REQUISITIONS_PAGE_FIRST_ENTRY_LIST_EDIT_XPATH = "(.//*[text()='Del'])[1]/../..//*[contains(.,'Edit')]//span"
+  REQUISITIONS_PAGE_FIRST_ENTRY_LIST_EDIT_XPATH = ".//span[text()='Edit']/ancestor::a[1]"
 
   REQUISITIONS_PAGE_LIST_XPATH = ".//*[@class='listBody']"
 

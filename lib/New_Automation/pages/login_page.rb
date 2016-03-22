@@ -9,4 +9,6 @@ class LoginPage
   PASSWORD_TEXT_XPATH = ".//*[text()[contains(., 'Password')]]/../..//input"
   LOGIN_BUTTON_XPATH = ".//*[@value='Login']"
   
+  MESSAGE_XPATH = ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"
+  
 end
