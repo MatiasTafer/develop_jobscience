@@ -28,12 +28,17 @@ require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
 require './New_Automation/pages/search/search_results_page.rb'
 require './New_Automation/pages/search/education_history_new_page.rb'
 require './New_Automation/pages/search/employment_history_new_page.rb'
-require './New_Automation/pages/accounts/add_resume_popup_page.rb'
+require './New_Automation/pages/resume/add_resume_popup_page.rb'
+require './New_Automation/pages/job_board/job_board_home_page.rb'
+require './New_Automation/pages/job_board/job_board_login_page.rb'
+require './New_Automation/pages/board_setup/board_setup_home_page.rb'
+require './New_Automation/pages/board_setup/board_setup_detail_page.rb' 
+require './New_Automation/pages/board_setup/board_setup_edit_page.rb'
 require_relative 'users.rb'
 
 
 class TestParsingCandidatesFileType < TestBasic
-  @@resume_path = "/New_Automation/files/Job Orders/job_order_upload01.pdf"
+  @@resume_path = "/New_Automation/files/Daxtra/DaxtraResume01.pdf"
 
   # TC127 - Resume uploader with incorrect file type
   def test_AddResumeResumeToolsIncorrectFileType
@@ -42,6 +47,7 @@ class TestParsingCandidatesFileType < TestBasic
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypes("txt")
     
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
@@ -62,12 +68,23 @@ class TestParsingCandidatesFileType < TestBasic
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 2. Click on "Browse ..." to upload a file with type added in preconditions
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-    # 3. Click on "Add Resume"  
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
-      {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test) 
+   
+    # 3. Click on "Add Resume" 
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
+    Common.displayed(AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH)
     
     #Result
     assert_equal("Error:\nWrong file type. The following file types are allowed: txt", $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_ERROR_MESSAGE_XPATH).text)
@@ -86,6 +103,7 @@ class TestParsingCandidatesFileType < TestBasic
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
@@ -106,11 +124,22 @@ class TestParsingCandidatesFileType < TestBasic
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 2. Click on "Browse ..." to upload a file with type added in preconditions
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-    # 3. Click on "Add Resume"  
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH}
-      ]
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
+    ]
     Common.main(test) 
+    
+    # 3. Click on "Add Resume"  
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
     sleep(5)
     newWindow= $browser.window_handles.first
     $browser.switch_to.window(newWindow)
@@ -121,21 +150,29 @@ class TestParsingCandidatesFileType < TestBasic
     
     
   end 
-  
+
   # TC131 - Apply to a job with linkedin
   def test_ApplyToAJobWithLinkedInEEOQuestionsEnable
-    randomName = SecureRandom.hex(4)
+    randomName = "0" + SecureRandom.hex(4)
     #PRECONDITIONS
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
+    Common.go_to_social_settings()
     CustomSettings.ApplyToLinkedIn(true)
     
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypesJobBoard("pdf")
     
     CustomSettings.JobBoardLogin(false)
+    
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     CustomSettings.BoardSetupInit
     CustomSettings.DefineEEOQuestions(true, true, true, true, false)
+    
     Common.CreateRequisitionPostJob(randomName, true)
     
     # 1 - Go to Job Board
@@ -182,13 +219,21 @@ class TestParsingCandidatesFileType < TestBasic
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
+    Common.go_to_social_settings()
     CustomSettings.ApplyToLinkedIn(true)
     
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypesJobBoard("pdf")
     
     CustomSettings.JobBoardLogin(false)
+    
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     CustomSettings.BoardSetupInit
     CustomSettings.DefineEEOQuestions(false, false, false, false, false)
+    
     Common.CreateRequisitionPostJob(randomName, true)
     
     # 1 - Go to Job Board
@@ -224,7 +269,7 @@ class TestParsingCandidatesFileType < TestBasic
       }
   end 
     
-
+ 
   # TC132 - Resume update with incorrect file type
   def test_ResumeUpdateIncorrectFileType
     
@@ -232,6 +277,7 @@ class TestParsingCandidatesFileType < TestBasic
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypes("txt")
     
     # 1. Click on "Contacts"
@@ -261,12 +307,23 @@ class TestParsingCandidatesFileType < TestBasic
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 4. Click on "Browse ..." to upload a file with type added in preconditions
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-    # 5. Click on "Add Resume"  
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
-      {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH}
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
     ]
     Common.main(test) 
+    
+    # 5. Click on "Add Resume" 
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
+    
+    Common.displayed(AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH)
     
     #Result
     assert_equal("Error:\nWrong file type. The following file types are allowed: txt", $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_ERROR_MESSAGE_XPATH).text)
@@ -277,7 +334,7 @@ class TestParsingCandidatesFileType < TestBasic
     $browser.switch_to.window(newWindow)
     
   end
-  
+ 
   # TC133 - Resume update with correct file type
   def test_ResumeUpdateCorrectFileType
     
@@ -285,6 +342,7 @@ class TestParsingCandidatesFileType < TestBasic
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypes("pdf")
     
     # 1. Click on "Contacts"
@@ -314,11 +372,21 @@ class TestParsingCandidatesFileType < TestBasic
     test = [
       {"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
     # 4. Click on "Browse ..." to upload a file with type added in preconditions
-      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file},
-    # 5. Click on "Add Resume"  
-      {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH},
+      {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => file}
       ]
     Common.main(test) 
+    
+    # 5. Click on "Add Resume" 
+    begin
+      button = $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).displayed?
+    rescue 
+      button = false 
+    end
+    if button
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUEM_XPATH).click
+    else
+      $browser.find_element(:xpath => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH).click
+    end
     
     sleep(5)
     newWindow= $browser.window_handles.first
@@ -341,10 +409,17 @@ class TestParsingCandidatesFileType < TestBasic
     #PRECONDITIONS
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    CustomSettings.DefineResumeAllowedTypesJobBoard("txt")
-    CustomSettings.JobBoardLogin(false)
+    
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     CustomSettings.BoardSetupInit
     
+    Common.go_to_parser_settings()
+    CustomSettings.DefineResumeAllowedTypesJobBoard("txt")
+    
+    CustomSettings.JobBoardLogin(false)
     
     # 1 - Go to Job Board
     $browser.get(HomePage::JOB_BOARD_URL)
@@ -362,7 +437,7 @@ class TestParsingCandidatesFileType < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + Users::EMAIL_DOMAIN
     $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
     $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
@@ -406,10 +481,20 @@ class TestParsingCandidatesFileType < TestBasic
     #PRECONDITIONS
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    home_url = $browser.current_url
+    
+    Common.go_to_parser_settings()
     CustomSettings.DefineResumeAllowedTypesJobBoard("pdf")
+    
     CustomSettings.JobBoardLogin(false)
+    
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     CustomSettings.DefineEEOQuestions(false, false, false, false, false)
     CustomSettings.BoardSetupInit
+    
     Common.CreateRequisitionPostJob(randomJob, true)
     
     # 1 - Go to Job Board
@@ -428,7 +513,7 @@ class TestParsingCandidatesFileType < TestBasic
     $wait.until{
       $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).displayed?
       }
-    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + "@oktana.io"
+    $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_EMAIL_XPATH).send_keys randomEmail + Users::EMAIL_DOMAIN
     $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_FIRST_NAME_XPATH).send_keys randomEmail
     $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LAST_NAME_XPATH).send_keys randomLastName
     
@@ -454,12 +539,26 @@ class TestParsingCandidatesFileType < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_RADIO_XPATH},
       {"upload" => JobBoardJobDetail::JOB_BOARD_APPLY_UPLOAD_RESUME_BROWSE_XPATH, "file" => file},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH},
-      {"displayed" => JobBoardJobDetail::JOB_BOARD_LINKEDIN_SUCCESS_MSG_XPATH}
+      {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH},
     ]
     Common.main(test)
     
+    begin
+      continue_button = $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH).displayed?
+    rescue
+      continue_button = false
+    end  
+    if continue_button
+      test = [
+        {"click_and_load" =>  JobBoardJobDetail::JOB_BOARD_APPLY_JOB_CONTINUE_XPATH}
+      ] 
+      Common.main(test) 
+    end
+    
+    Common.displayed(JobBoardJobDetail::JOB_BOARD_LINKEDIN_SUCCESS_MSG_XPATH)
     assert_equal("Your application for the "+ randomJob +" position was submitted successfully." , $browser.find_element(:xpath => JobBoardJobDetail::JOB_BOARD_LINKEDIN_SUCCESS_MSG_XPATH).text)
     
+    $browser.get(home_url)
     DeleteRequisition(randomJob)
     
   end 

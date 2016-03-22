@@ -19,7 +19,7 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_FROM_NAME_XPATH = ".//label[contains(text(),'From Name:')]/ancestor::tr/child::td[2]/input"
   JOB_BOARD_APPLY_FROM_EMAIL_XPATH = ".//label[contains(text(),'From Email:')]/ancestor::tr/child::td[2]/input"
   JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_XPATH = ".//*[@id='HowDidYouHearAboutUs']//select"
-
+  LOGGED_IN_AS_XPATH = ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"
   
   JOB_BOARD_APPLY_JOB_CONTINUE_XPATH = ".//*[@value='Continue']"
   JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH = ".//*[@id='js-menu-search']/a"
@@ -29,6 +29,7 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[@class='atsPreScreen']/tbody/tr/td/label/span[text()='How many years of experience do you have?']/ancestor::tr[1]/following-sibling::tr[1]/td/select"
   JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH = ".//*[@class='atsPreScreen']/tbody/tr/td/label/label[contains(text(),'Did you graduate College?')]/ancestor::tr[1]/following-sibling::tr[1]/td/select"
   JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH = ".//a[contains(text(),'Refer Candidate')]"
+
   JOB_BOARD_APPLY_JOB_CURRENT_SALARY_XPATH = ".//*[contains(text(),'Current Candidate')]/ancestor::td[1]/following-sibling::td[1]/select"
   JOB_BOARD_APPLY_JOB_START_DATE_XPATH = ".//*[contains(text(),'Start Date')]/ancestor::td[1]/following-sibling::td[1]/select"
   JOB_BOARD_APPLY_JOB_TAXONOMY_SKILLS_XPATH = ".//*[contains(text(),'Taxonomy')]/ancestor::td[1]/following-sibling::td[1]/select"

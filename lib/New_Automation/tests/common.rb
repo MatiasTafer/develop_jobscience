@@ -14,6 +14,7 @@ require './New_Automation/pages/search/skill_detail_page.rb'
 require './New_Automation/pages/short_lists/short_list_home_page.rb'
 require './New_Automation/pages/short_lists/short_list_new_edit_page.rb'
 require './New_Automation/pages/short_lists/short_list_detail_page.rb'
+require './New_Automation/pages/short_lists/short_list_detail_old_ui_page.rb'
 require './New_Automation/pages/requisitions/requisitions_home_page.rb'
 require './New_Automation/pages/requisitions/requisitions_new_and_edit.rb'
 require './New_Automation/pages/requisitions/requisitions_detail_page.rb'
@@ -548,10 +549,17 @@ class Common
       {"click_and_load" => ShortListHomePage::SHORT_LIST_HOME_BTN_NEW_XPATH},
       {"displayed" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH},
       {"set_text" => ShortListNewEditPage::SHORT_LIST_NEW_NAME_XPATH, "text" => name},
-      {"click_and_load" => ShortListNewEditPage::SHORT_LIST_NEW_BTN_SAVE_XPATH},
-      {"displayed" => ShortListDetailPage::SL_MENU_XPATH}
+      {"click_and_load" => ShortListNewEditPage::SHORT_LIST_NEW_BTN_SAVE_XPATH}
+      
     ]
-    Common.main(test)   
+    Common.main(test)
+    if Common.not_displayed(ShortListDetailPage::SL_MENU_XPATH)
+      $wait.until {
+      $browser.find_element(:xpath => ShortListDetailOldUi::EDIT_BUTTON_XPATH).displayed?
+    }
+    
+    end
+       
   end  
   
   def self.DeleteShortList(name)

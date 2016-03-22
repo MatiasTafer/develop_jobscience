@@ -103,4 +103,7 @@ class ContactsHomePage
   CONTACT_TAGS_POPUP_ERROR_CELL_XPATH = ".//*[@class='messageCell']/div"
   CONTACT_TAGS_POPUP_ERROR_TAGS_TEXT = "Error:\nNo tags selected"
   
+  #Hard Coded information
+  CANDIDATES_ALL_OPTION_TEXT = "Candidates - All"
+  
 end
