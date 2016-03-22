@@ -24,7 +24,7 @@ class SetupEditPage
   
   #SHORT LIST
     # Buttons
-  SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@value='Submit']"
+  SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@value='Save']"
   EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH = ".//*[@value='Edit']"
     # Fields
   CHECKBOX_SPEEDREVIEW_XPATH = ".//*[text()[contains(.,'Enable Speed Review')]]/../../..//input"
@@ -47,7 +47,7 @@ class SetupEditPage
   SHOW_SEARCH_ONLY_CHECKBOX_XPATH = ".//*[text()[contains(.,'Show Search Only')]]/../../following-sibling::*//input"
   ALLOW_REGISTER_ONLY_CHECKBOX_XPATH = ".//*[text()[contains(.,'Allow Register Only')]]/../../following-sibling::td[1]//input"
   RESUME_REQUIRE_CHECKBOX_XPATH = ".//*[text()[contains(.,'Resume Required')]]/../../following-sibling::*//input" 
-  HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH = ".//*[text()[contains(.,'Hide Resume Previously Uploaded')]]/../../following-sibling::*//input"
+  HIDE_RESUME_PREVIOUSLY_UPLOADED_XPATH = ".//*[text()[contains(.,'Hide Resume Previously Uploaded')]]/../../following-sibling::*[1]//input"
   DISPLAY_PRIVACY_STATEMENT_XPATH = ".//*[text()[contains(.,'Display Privacy Statement')]]/../../following-sibling::*//input"
   
   STANDARD_QUESTION_1_OPTION_1_XPATH = "(.//*[text()[contains(.,'Question 1')]]/../..)[1]//option[1]"
