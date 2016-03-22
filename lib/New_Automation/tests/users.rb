@@ -37,6 +37,10 @@ class Users
   USER_LINKEDIN = "automationoktana@gmail.com"
   PASSWORD_LINKEDIN = "oktanaqa" 
   
+  USER_SOURCES = "test2@fromthesky.up"
+  PASSWORD_SOURCES = "automatable666"
+  
+  USER_RANDOM_EMAIL = SecureRandom.hex(3) + "@gmail.com"
   
   #AUTOMATION ORG-------------------
   USER_AUTOMATION = "oktana@joblabs.com"

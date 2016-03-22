@@ -19,7 +19,7 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_FROM_NAME_XPATH = ".//label[contains(text(),'From Name:')]/ancestor::tr/child::td[2]/input"
   JOB_BOARD_APPLY_FROM_EMAIL_XPATH = ".//label[contains(text(),'From Email:')]/ancestor::tr/child::td[2]/input"
   JOB_BOARD_APPLY_JOB_HEAR_ABOUT_US_XPATH = ".//*[@id='HowDidYouHearAboutUs']//select"
-
+  LOGGED_IN_AS_XPATH = ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"
   
   JOB_BOARD_APPLY_JOB_CONTINUE_XPATH = ".//*[@value='Continue']"
   JOB_BOARD_APPLY_JOB_RETURN_JOBSEARCH_XPATH = ".//*[@id='js-menu-search']/a"
