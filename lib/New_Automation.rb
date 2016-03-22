@@ -23,6 +23,8 @@ $wait
 
 #require './New_Automation/tests/test_candidates_action_on_list_view'
 
+#require './New_Automation/tests/test_resume.rb'
+
 #require './New_Automation/tests/test_daxtra_parse.rb'
 
 #require './New_Automation/test_requisition.rb'
@@ -35,21 +37,17 @@ $wait
 
 #require './New_Automation/tests/test_candidates_parsing_candidates_file_types'
 
+#require './New_Automation/tests/test_sources'
+
+#require './New_Automation/test_short_list.rb'
+
+#require './New_Automation/tests/test_resume.rb'
+
 
 
 #Pending Jenkins-------------
 
-#require './New_Automation/tests/test_sources'
-
-#require './New_Automation/tests/test_resume.rb'
-
 #require './New_Automation/test_email_actions'
-
-#require './New_Automation/test_email_actions'
-
-#require './New_Automation/test_job_board'
-
-#require './New_Automation/test_short_list.rb'
 
 #require './New_Automation/tests/test_question_sets'
 
@@ -60,7 +58,3 @@ $wait
 #require './New_Automation/tests/test_job_board'
 
 #require './New_Automation/tests/test_applications.rb'
-
-
-
-
