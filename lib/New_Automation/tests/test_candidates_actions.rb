@@ -96,7 +96,7 @@ class TestActions < TestBasic
     assert_equal("1", $browser.find_element(:xpath => ContactsHomePage::CONTACT_LIST_POPUP_NUMBER_ADDED_XPATH).text)
  
     test = [ 
-    # 8. Click "Close"     
+    # 8. Click "Close"
       {"click" => ContactsHomePage::CONTACT_LIST_POPUP_BTN_CLOSE_XPATH}
     ]
     Common.main(test)
@@ -727,6 +727,7 @@ class TestActions < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # 9. Select Referral in picklist  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_XPATH, "text" => "some text"},
     # 10. Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -830,6 +831,7 @@ class TestActions < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # 9. Select Referral in picklist  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_XPATH, "text" => "some text"},
     # 10. Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -939,6 +941,7 @@ class TestActions < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # 9. Select Referral in picklist  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_XPATH, "text" => "some text"},
     # 10. Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},

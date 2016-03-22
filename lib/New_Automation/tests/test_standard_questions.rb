@@ -33,10 +33,10 @@ class TestStandardQuestions < TestBasic
       $browser.find_element(:xpath, NewStandardQuestion::SAVE_BUTTON_XPATH).displayed?
     }
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_NAME_TEXT_FIELD_XPATH).send_keys NewStandardQuestion::QUESTION_NAME
-    $wait.until {
-      $browser.find_element(:xpath, NewStandardQuestion::QUESTION_LAYOUT_DROPDOWN_XPATH).displayed?
-    }
-    $browser.action.move_to($browser.find_element(:xpath, NewStandardQuestion::QUESTION_LAYOUT_DROPDOWN_XPATH)).perform
+    #$wait.until {
+     # $browser.find_element(:xpath, NewStandardQuestion::QUESTION_LAYOUT_DROPDOWN_XPATH).displayed?
+    #}
+    #$browser.action.move_to($browser.find_element(:xpath, NewStandardQuestion::QUESTION_LAYOUT_DROPDOWN_XPATH)).perform
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_LAYOUT_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_LAYOUT_OPTION_1 
     $browser.find_element(:xpath, NewStandardQuestion::CONTACT_FIELD_DROPDOWN_XPATH).send_keys NewStandardQuestion::CONTACT_FIELD_OPTION_1
     $browser.find_element(:xpath, NewStandardQuestion::QUESTION_SIZE_DROPDOWN_XPATH).send_keys NewStandardQuestion::QUESTION_SIZE_OPTION_1
@@ -48,6 +48,7 @@ class TestStandardQuestions < TestBasic
     }
     assert_equal($browser.find_element(:xpath => StandardQuestions::FIRST_QUESTION_NAME_ITEM_XPATH).text, NewStandardQuestion::QUESTION_NAME)
   end
+
 
   #TC929 - Validation of new standar question, Required By Applicant = true #FIREFOX OK
   def test_validationStandarQuestion
@@ -512,5 +513,4 @@ end
     end
     end
   end
-
 end

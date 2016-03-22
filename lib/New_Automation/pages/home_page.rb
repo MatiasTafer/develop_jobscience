@@ -52,5 +52,7 @@ class HomePage
   
   #This will be deleted after we review standard questions and resume suites
   ALL_CONTACTS_TAB_LINK = "https://na17.salesforce.com/003?fcf=00Bo0000003aqv0"
+  
+  
                         
 end

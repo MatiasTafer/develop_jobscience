@@ -120,7 +120,9 @@ def test_createJobOrderValidation
     $browser.find_element(:xpath, JobTemplates::ERROR_REQUIRED_FIELD_XPATH).displayed?  
   } 
   assert_equal($browser.find_element(:xpath, JobTemplates::ERROR_REQUIRED_FIELD_XPATH).text, JobTemplates::ERROR_REQUIRED_FIELD_TEXT)
-end 
+
+end  
+  
 
 #*********************************
   def createJobTemplateMapping
@@ -153,5 +155,6 @@ end
     $browser.find_element(:xpath, JobTemplateDetail::EDIT_TEMPLATE_BUTTON_XPATH).displayed?
   }  
   end
+
 
 end
