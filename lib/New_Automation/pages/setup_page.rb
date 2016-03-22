@@ -24,7 +24,7 @@ class SetupEditPage
   
   #SHORT LIST
     # Buttons
-  SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@value='Submit']"
+  SAVE_BUTTON_SHORT_LIST_XPATH = ".//*[@value='Save']"
   EDIT_BUTTON_ON_SHORT_LIST_SETUP_XPATH = ".//*[@value='Edit']"
     # Fields
   CHECKBOX_SPEEDREVIEW_XPATH = ".//*[text()[contains(.,'Enable Speed Review')]]/../../..//input"

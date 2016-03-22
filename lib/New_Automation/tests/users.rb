@@ -42,7 +42,7 @@ class Users
   USER_AUTOMATION = "oktana@joblabs.com"
   PASSWORD_AUTOMATION = "Jobscience16"
 
-  EMAIL_DOMAIN = "oktana.io"
+  EMAIL_DOMAIN = "@oktana.io"
   
   #Job Board User
   #This User must have a resume already uploaded
