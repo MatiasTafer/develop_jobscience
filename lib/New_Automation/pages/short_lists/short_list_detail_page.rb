@@ -25,7 +25,12 @@ class ShortListDetailPage
   CONFIRM_DELETE_SHORT_LIST_BUTTON_XPATH = "(.//*[text()[contains(.,'Yes***')]])[2]"
   CONFIRM_DELETE_CONTACT_BUTTON_XPATH = "(.//*[text()[contains(.,'No***')]])[2]"
   
-  SEARCH_BUTTON_XPATH = ".//*[@class='web-sourcing-footer']/div"                                     
+  SEARCH_BUTTON_XPATH = ".//*[@class='web-sourcing-footer']/div"   
+  
+  #ADD CONTACT POP UP
+  SL_CONTACT_POPUP_CONTACT_NAME_XPATH = ".//*[text()='Contact']/../following-sibling::*//span/input"
+  SL_CONTACT_POPUP_BTN_ADD_TO_SL_XPATH = ".//*[@title='Add to Short List']"
+  SL_CONTACT_POPUP_BTN_CLOSE_XPATH = ".//*[@title='Close']"                                  
   
 end
                   

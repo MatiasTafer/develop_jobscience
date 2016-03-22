@@ -23,6 +23,7 @@ class ContactDetailPage
   CONTACT_DETAIL_APP_LIST_SECOND_XPATH = "(//*[text()[contains(., 'APP')]]/../..//th/a)[2]"
   CONTACT_DETAIL_APP_LIST_XPATH = "//*[text()[contains(., 'APP')]]/../../../../../../.."
   CONTACT_DETAIL_JCARD_XPATH = ".//*[@class='jck-panel-header']"
+  CONTACT_DETAIL_JCARD_SOCIAL_XPATH = ".//*[text()='Social Profiles']"
   CONTACT_DETAIL_RESUME_IFRAME_ID = ".//*[@title='flash_resume']"
   CONTACT_DETAIL_APP_LIST_FIRST_APP_XPATH = "(//*[text()[contains(., 'APP')]])[1]"
   CONTACT_DETAIL_NOTES_ATTACH_LIST_XPATH = "//*[text()='Attachment']/../.."

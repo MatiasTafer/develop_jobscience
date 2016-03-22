@@ -28,7 +28,8 @@ class JobBoardJobDetail
   JOB_BOARD_APPLY_JOB_SALES_BACKGROUND = ".//*[@class='atsPreScreen']/tbody/tr/td/label/span[text()='Do you have a sales background?']/ancestor::tr[1]/following-sibling::tr[1]/td/select"
   JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH = ".//*[@class='atsPreScreen']/tbody/tr/td/label/span[text()='How many years of experience do you have?']/ancestor::tr[1]/following-sibling::tr[1]/td/select"
   JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH = ".//*[@class='atsPreScreen']/tbody/tr/td/label/label[contains(text(),'Did you graduate College?')]/ancestor::tr[1]/following-sibling::tr[1]/td/select"
-  JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH = ".//*[contains(text(),'Refer Candidate')]"
+  JOB_BOARD_APPLY_JOB_REFER_CANDIDATE_XPATH = ".//*[text()='Refer Candidate']"
+
   JOB_BOARD_APPLY_JOB_CURRENT_SALARY_XPATH = ".//*[contains(text(),'Current Candidate')]/ancestor::td[1]/following-sibling::td[1]/select"
   JOB_BOARD_APPLY_JOB_START_DATE_XPATH = ".//*[contains(text(),'Start Date')]/ancestor::td[1]/following-sibling::td[1]/select"
   JOB_BOARD_APPLY_JOB_TAXONOMY_SKILLS_XPATH = ".//*[contains(text(),'Taxonomy')]/ancestor::td[1]/following-sibling::td[1]/select"

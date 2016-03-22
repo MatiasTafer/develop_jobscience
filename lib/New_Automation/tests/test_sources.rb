@@ -1239,7 +1239,6 @@ class TestSources < TestBasic
    $browser.switch_to.window($browser.window_handles.first) 
   end
   
-
   def test_sources_tc955   #NO AUTOMATABLE
     #  Assign Source to Candidate via Email-to-Parse
   end 
