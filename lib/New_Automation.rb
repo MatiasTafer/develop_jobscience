@@ -34,9 +34,7 @@ $wait
 
 #Pending Jenkins-------------
 
-#require './New_Automation/tests/test_sources'
-
-#require './New_Automation/test_sources'
+require './New_Automation/tests/test_sources.rb'
 
 #require './New_Automation/tests/test_resume.rb'
 
