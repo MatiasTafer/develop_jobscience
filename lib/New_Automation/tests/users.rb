@@ -31,18 +31,24 @@ class Users
   USER_EMAIL2 = "naomirecruiter@joblabs.com"
   USER_EMAIL3 = "naomimanager@joblabs.com"
   
-  USER_JOB_BOARD =  "test6@gmail.com" #"testrodrigo4@gmail.com" 
+  USER_JOB_BOARD =  "test6@gmail.com"
   USER_PASSWORD_JOB_BOARD = "password123"
   
   USER_LINKEDIN = "automationoktana@gmail.com"
   PASSWORD_LINKEDIN = "oktanaqa" 
   
- 
+  USER_SOURCES = "test2@fromthesky.up"
+  PASSWORD_SOURCES = "automatable666"
+  
+  USER_RANDOM_EMAIL = SecureRandom.hex(3) + "@gmail.com"
+  
+
   #AUTOMATION ORG-------------------
   USER_AUTOMATION = "oktana@joblabs.com"
   PASSWORD_AUTOMATION = "Jobscience16"
 
   EMAIL_DOMAIN = "@oktana.io"
+  
   
   #Job Board User
   #This User must have a resume already uploaded

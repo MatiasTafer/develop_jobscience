@@ -27,13 +27,8 @@ require './New_Automation/pages/sources/source_new_edit_page.rb'
 
 
 class TestSources < TestBasic
-  #
-  $USER_JOB_BOARD = "test2@fromthesky.up"
-  $PASSWORD_JOB_BOARD = "automatable666"
-  #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
-  
-
-  def test_sources_tc937 #1
+ 
+  def test_sources_tc937
     # New Source, Successfully Created
     # Preconditions:
     # Must be logged in.
@@ -56,17 +51,17 @@ class TestSources < TestBasic
       {"set_text" => SourceNewEdit::SOURCE_EDIT_SOURCE_NAME_XPATH, "text" => "MATIAS TEST2"},
       {"set_text" => SourceNewEdit::GENERAL_SOURCE_TYPE_XPATH, "text" => "Other"},
       {"set_text" => SourceNewEdit::TYPE_SELECT_XPATH, "text" => "s"},
-      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH},
-      
-      {"displayed" => SourceNewEdit::SOURCE_EDIT_BTN_EDIT_XPATH},
-    ]
+      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH}]
     Common.main(test)
+    assert $wait.until {
+      $browser.find_element(:xpath, SourceNewEdit::SOURCE_EDIT_BTN_EDIT_XPATH).displayed?
+    }
     
   end
-  
+ 
 
 
-  def test_sources_tc938 #2
+  def test_sources_tc938 #2 #FIREFOX OK
     # New Source, Fields Validation
     # Preconditions:
     # Must be logged in.
@@ -85,30 +80,23 @@ class TestSources < TestBasic
     # Steps
     Common.goToTab(HomePage::SOURCE_LINK_XPATH)
     test = [
-      # 2
       {"displayed" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
       {"click" => SourceHomePage::SOURCE_HOME_PAGE_BTN_NEW_XPATH},
-      # 4
-      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH},
-      {"displayed" => ".//*[text()[contains(.,'You must enter a value')]]"},
-      
-      # 5
       {"displayed" => SourceNewEdit::SOURCE_EDIT_SOURCE_NAME_XPATH},
       {"set_text" => SourceNewEdit::SOURCE_EDIT_SOURCE_NAME_XPATH, "text" => "MATIAS TEST2"},
       {"set_text" => SourceNewEdit::SOURCE_EDIT_START_DATE, "text" => "90/26/2015"},
       {"set_text" => SourceNewEdit::SOURCE_EDIT_END_DATE, "text" => "90/26/2015"},
-      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH},
-      
-      {"displayed" => ".//*[text()[contains(.,'Invalid Date')]]"},
+      {"click" => SourceNewEdit::SOURCE_EDIT_BTN_SAVE_XPATH}#,
     ]
     Common.main(test)
-    
+    assert $wait.until{
+      $browser.find_element(:xpath, SourceHomePage::INVALID_NAME_XPATH).displayed?
+    }
   end
-  
 
-  
-  def test_sources_tc939 #3
-    # Applying to the Job, New Candidate, non-authenticated
+
+  def test_sources_tc939 #3   #FIREFOX OK
+    # Applying to the Job, New Candidate, non-authenticated 
     # Preconditions:
     # Must have link to job board with source prepopulated (click on a Search URL from Notes & Attachments list on Board Setup tab)
     
@@ -120,8 +108,8 @@ class TestSources < TestBasic
     
     # Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
-    
-    Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    user_email = Users::USER_RANDOM_EMAIL
+    Common.CreateUserJobBoard( Users::USER_RANDOM_EMAIL, Users::PASSWORD_SOURCES)
     # Precondition
     Common.logout_job_board
     
@@ -140,7 +128,7 @@ class TestSources < TestBasic
     ]
     Common.main(test)
     # Steps
-    $browser.get "http://js-recruiting-148857d918a-14910044900.force.com/openings?nostate=1&tSource=a0eo00000036CYQAA2"
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOCATION_SELECT_XPATH},
       # 6. Click on a job title.
@@ -149,7 +137,7 @@ class TestSources < TestBasic
       # 7. Click on green link "Apply for the ..." depending of the job selected.
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text_exist" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text_exist" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => user_email},
       {"set_text_exist" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "test"},
       {"set_text_exist" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "test"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -159,10 +147,7 @@ class TestSources < TestBasic
       {"upload" => JobBoardHomePage::BROWSE_BUTTON_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
       {"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       # 10. In the additional attachments step, Attach the required number of documents with proper filetype.
-      #{"displayed" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH},
-      #{"upload" => JobBoardHomePage::ATTACH_ADDITIONAL_DOC_XPATH, "file" => "/Users/admin/Desktop/document.pdf"},
       # 11. Click on "Continue".
-      #{"click" => JobBoardHomePage::CONTINUE_BUTTON_XPATH},
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_GRADUATE_COLLEGE_XPATH, "text" => "Y"},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SALES_BACKGROUND, "text" => "Y"},
@@ -172,10 +157,8 @@ class TestSources < TestBasic
     Common.main(test)
     
   end
- 
 
-
-  def test_sources_tc940 #4  
+  def test_sources_tc940 #4   #FIREFOX OK
     # Applying to the Job, New Candidate, Hide Source Question = false, non-authenticated, deleted tSource
     
     # Preconditions:
@@ -213,18 +196,18 @@ class TestSources < TestBasic
     
     Common.create_sources(source_name)
     
-    Common.delete_sources(source_name)
-    
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
-    
-    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    Common.delete_sources(source_name)    
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
-      {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
-      {"click" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
       
-      {"displayed" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
-      {"click" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
       
       {"change_window" => ""},
       
@@ -236,7 +219,7 @@ class TestSources < TestBasic
       
       # Fill the Questions form.
       {"displayed" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH},
-      {"set_text" => JobBoardJobDetail::EMAIL_ADDRESS_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardJobDetail::EMAIL_ADDRESS_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardJobDetail::FIRST_NAME_TEXT_XPATH, "text" => "a"},
       {"set_text" => JobBoardJobDetail::LAST_NAME_TEXT_XPATH, "text" => "s"},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_HEAR_ABOUT_US_XPATH, "text" => "c"},
@@ -260,10 +243,8 @@ class TestSources < TestBasic
     Common.main(test)
     
   end
-  
 
-
-  def test_sources_tc941 #5 
+  def test_sources_tc941 #5  FIREFOX OK
     # Applying to the Job, New Candidate, Hide Source Question = false, Blank tSource, non-authenticated
     # Preconditions:
     #  Job Board Setup -> Hide Source Question = false
@@ -292,7 +273,8 @@ class TestSources < TestBasic
     Common.main(test)
     
     # Steps
-    $browser.get "http://js-recruiting-148857d918a-14910044900.force.com/openings?nostate=1&tSource=a0eo00000036CYQAA2"
+    user_email = Users::USER_RANDOM_EMAIL
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"check_apply" => ""},
       {"delete_cookie" => ""},
@@ -301,7 +283,7 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::REGISTER_LINK_XPATH},
       # 7. Fill the fields (required)
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => user_email},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -317,10 +299,8 @@ class TestSources < TestBasic
     Common.main(test)
     
   end
-  
 
-  
-  def test_sources_tc942 #6 
+  def test_sources_tc942 #6 #FIREFOX OK
     # Applying to the Job, New Candidate, Hide Source Question = true, non-authenticated, deleted tSource
     # Preconditions:
     # Job Board Setup -> Hide Source Question = false
@@ -356,16 +336,19 @@ class TestSources < TestBasic
     
     Common.delete_sources(source_name)
     
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
+    #Common.CreateUserJobBoard(Users::USER_SOURCES, Users::PASSWORD_SOURCES)
     
-    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
-      {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
-      {"click" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
       
-      {"displayed" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
-      {"click" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
       
       {"change_window" => ""},
       
@@ -377,7 +360,7 @@ class TestSources < TestBasic
       
       # Fill the Questions form.
       {"displayed" => JobBoardJobDetail::CONTINUE_BUTTON_XPATH},
-      {"set_text" => JobBoardJobDetail::EMAIL_ADDRESS_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardJobDetail::EMAIL_ADDRESS_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardJobDetail::FIRST_NAME_TEXT_XPATH, "text" => "a"},
       {"set_text" => JobBoardJobDetail::LAST_NAME_TEXT_XPATH, "text" => "s"},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_HEAR_ABOUT_US_XPATH, "text" => "c"},
@@ -401,9 +384,7 @@ class TestSources < TestBasic
     
   end
 
-  
-  
-  def test_sources_tc943 #7 
+  def test_sources_tc943 #7 #FIREFOX OK
     # Applying to the Job, New Candidate, Hide Source Question = true, Blank tSource, non-authenticated
     # Preconditions:
     # Job Board Setup -> Hide Source Question = true
@@ -431,7 +412,8 @@ class TestSources < TestBasic
     Common.main(test)
     
     # Steps
-    $browser.get "http://js-recruiting-148857d918a-14910044900.force.com/openings?nostate=1&tSource=a0eo00000036CYQAA2"
+    user_email = Users::USER_RANDOM_EMAIL
+    $browser.get HomePage::JOB_BOARD_URL
     test = [
       {"delete_cookie" => ""},
       
@@ -441,7 +423,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
   
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => user_email},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -457,16 +439,14 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-    ]
-    Common.main(test)
+     {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
-  
-
-
-  def test_sources_tc944 #8 
+ 
+  def test_sources_tc944 #8 #FIREFOX OK
     # Applying to the Job, New Candidate, Authenticated
     # Preconditions:
     # Must have link to job board with source prepopulated (click on a Search URL from Notes & Attachments list on Board Setup tab)
@@ -492,7 +472,7 @@ class TestSources < TestBasic
     Common.main(test)
     
     # Steps
-    $browser.get "http://js-recruiting-148857d918a-14910044900.force.com/openings?nostate=1&tSource=a0eo00000036CYQAA2"
+   $browser.get HomePage::JOB_BOARD_URL
     test = [
       # LOGIN
       {"displayed" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
@@ -500,11 +480,11 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      {"displayed" => JobBoardJobDetail::LOGGED_IN_AS_XPATH},
       # END LOGIN
       {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
       {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
@@ -523,17 +503,15 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
-  end
-  
+  end 
 
 
-  def test_sources_tc945 #9 
+  def test_sources_tc945 #9  #FIREFOX OK
     # Applying to the Job, New Candidate, Hide Source Question = false, Authenticated, deleted tSource
     # Preconditions:
     # Job Board Setup -> Hide Source Question = false
@@ -569,17 +547,18 @@ class TestSources < TestBasic
     Common.create_sources(source_name)
     
     Common.delete_sources(source_name)
-    
-    #Common.CreateUserJobBoard($USER_JOB_BOARD, $PASSWORD_JOB_BOARD)
-    
-    $browser.get BoardSetupHomePage::CAREERS_URL_XPATH
+        
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     test = [
       # Click on the Saved URL in Notes & Attachments section on Board Setup
-      {"displayed" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
-      {"click" => ".//*[@id='a0Go00000080Tcp_RelatedNoteList_body']//a[text()[contains(., 'Search Url: #{url_name}')]]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_NOTES_ATTACH_LIST_TITLE_URL_XPATH},
       
-      {"displayed" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
-      {"click" => ".//*[@class='detailList']/child::tbody/child::tr[5]/child::td[2]/child::a[1]"},
+      {"displayed" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
+      {"click" => BoardSetupDetailPage::BOARD_DETAIL_SEARCH_URL_XPATH},
       
       {"change_window" => ""},
       
@@ -589,11 +568,11 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
-      {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
+      {"displayed" => JobBoardJobDetail::LOGGED_IN_AS_XPATH},
       # END LOGIN
       {"displayed" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
       {"click" => JobBoardHomePage::JOB_BOARD_SEARCH_BUTTON_XPATH},
@@ -612,14 +591,13 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
-  
-
-  
+   
   def test_sources_tc946 #10 
     # Applying to the Job, New Candidate, Hide Source Question = false, Blank tSource, Authenticated
     # Preconditions:
@@ -658,8 +636,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -683,15 +661,12 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
-  
-
   
   def test_sources_tc947 #11 
     # Applying to the Job, New Candidate, Hide Source Question = true, Authenticated, deleted tSource
@@ -747,8 +722,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -770,9 +745,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -816,8 +792,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -841,11 +817,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -884,7 +859,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
   
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -900,9 +875,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
 
@@ -953,7 +929,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
       #
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -969,11 +945,12 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      {"change_window" => ""},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH},
+    
+      {"change_window" => ""}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -1009,7 +986,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
   
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -1025,9 +1002,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -1060,8 +1038,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -1083,11 +1061,10 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
-      
-    ]
-    Common.main(test)
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
     
   end
   
@@ -1139,8 +1116,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -1164,14 +1141,11 @@ class TestSources < TestBasic
       {"displayed" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH},
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
-      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH},
-   ]
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH}]
    Common.main(test)
    
    assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
-   
    $browser.close
-   
    $browser.switch_to.window($browser.window_handles.first) 
      
   end
@@ -1204,8 +1178,8 @@ class TestSources < TestBasic
       {"click" => JobBoardHomePage::JOB_BOARD_LOGIN_LINK_XPATH},
       {"displayed" => LoginPage::USERNAME_TEXT_XPATH},
       # 7. Fill the required fields: "Username" and "Password".
-      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => $USER_JOB_BOARD},
-      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => $PASSWORD_JOB_BOARD},
+      {"set_text" => LoginPage::USERNAME_TEXT_XPATH, "text" => Users::USER_SOURCES},
+      {"set_text" => LoginPage::PASSWORD_TEXT_XPATH, "text" => Users::PASSWORD_SOURCES},
       # 8. Click in "Login".
       {"click" => LoginPage::LOGIN_BUTTON_XPATH},
       {"displayed" => ".//*[@id='js-loggedin-legend'][text()[contains(.,'Logged in as')]]"},
@@ -1234,9 +1208,9 @@ class TestSources < TestBasic
    Common.main(test)
    
    assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed?
-   
    $browser.close
    $browser.switch_to.window($browser.window_handles.first) 
+
   end
   
   def test_sources_tc955   #NO AUTOMATABLE
@@ -1344,8 +1318,7 @@ class TestSources < TestBasic
     assert $browser.find_element(:xpath, JobBoardJobDetail::THANK_YOU_REFERRAL_MESSAGE_XPATH).displayed?
      
   end 
-  
- 
+
   def test_sources_tc959 #21 
     # Refering candidate with tracking source, existing candidate, Clear Source Tracking for Internal Referrals 
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
@@ -1385,7 +1358,6 @@ class TestSources < TestBasic
   end 
   
 
-
   def test_sources_tc962 #22 
     # Chatter Source Tracking
     # Login
@@ -1412,7 +1384,7 @@ class TestSources < TestBasic
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_LINK_XPATH},
   
       {"displayed" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH},
-      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => $USER_JOB_BOARD},
+      {"set_text" => JobBoardHomePage::EMAIL_ADRESS_TEXT_XPATH, "text" => Users::USER_SOURCES},
       {"set_text" => JobBoardHomePage::FIRST_NAME_TEXT_XPATH, "text" => "et"},
       {"set_text" => JobBoardHomePage::LAST_NAME_TEXT_XPATH, "text" => "extra"},
       {"set_text_exist" => JobBoardRegisterPage::JOB_BOARD_REGISTER_QUESTION_XPATH, "text" => "c"},
@@ -1428,27 +1400,12 @@ class TestSources < TestBasic
       {"set_text_exist" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_YEARS_EXPERIENCE_XPATH, "text" => "1"},
       {"click" => JobBoardJobDetail::JOB_BOARD_APPLY_JOB_SUBMIT_XPATH},
       
-      {"displayed" => ".//*[@id='atsApplicationSubmittedMain'][text()[contains(.,'Your application for')]]"},
-      
+      {"displayed" => BoardSetupHomePage::APPLY_MESSAGE_XPATH},
       {"change_window" => ""},
-      {"change_window" => ""},
-    ]
-    Common.main(test)
-    
-    
-    
-    
-    
+      {"change_window" => ""}]
+   Common.main(test)
+   
+   assert $browser.find_element(:xpath, BoardSetupHomePage::APPLY_MESSAGE_XPATH).displayed? 
   end
   
- 
-end    
-
-
-
-
-
-
-
-
-
+end
