@@ -33,6 +33,9 @@ $wait
 
 #require './New_Automation/tests/test_projects'
 
+#require './New_Automation/tests/test_candidates_parsing_candidates_file_types'
+
+
 
 #Pending Jenkins-------------
 
@@ -49,8 +52,6 @@ $wait
 #require './New_Automation/test_short_list.rb'
 
 #require './New_Automation/tests/test_question_sets'
-
-#require './New_Automation/tests/test_candidates_parsing_candidates_file_types'
 
 #require './New_Automation/test_candidates_misc'
 
