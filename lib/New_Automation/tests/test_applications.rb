@@ -21,6 +21,9 @@ require './New_Automation/pages/job_board/job_board_home_page.rb'
 require './New_Automation/pages/job_board/job_board_job_detail.rb'
 require './New_Automation/pages/job_board/job_board_login_page.rb'
 require './New_Automation/pages/job_board/job_board_register_page.rb'
+require './New_Automation/pages/board_setup/board_setup_home_page.rb'
+require './New_Automation/pages/board_setup/board_setup_detail_page.rb' 
+require './New_Automation/pages/board_setup/board_setup_edit_page.rb'
 
 require_relative 'users.rb'
 
@@ -45,28 +48,40 @@ class TestApplications < TestBasic
     assert $wait.until{
       $browser.find_element(:xpath, ApplicationsDetailPage::PDF_POP_UP_WINDOWS_ELEMENT_XPATH).displayed?
     }
+    $browser.close
+    newWindow= $browser.window_handles[0]
+    $browser.switch_to.window(newWindow) 
   end 
   
   #TC105 - Allow Duplicate Applications
   def test_AllowDuplicateApp
-    randomName = SecureRandom.hex(4)
+    randomName = "0" + SecureRandom.hex(4)
 
     #PRECONDITIONS
     #Login
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
+    home_url = $browser.current_url
     
     # Mark the field Allow Duplicate Apps = TRUE
     # In Allow Duplicate Application Days enter: 0
+    Common.go_to_custom_settings()
     CustomSettings.AllowDuplicateApplcation(true)
     
+    Common.goToTab(HomePage::BOARD_SETUP_TAB_LINK_XPATH)
+    Common.displayed(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.click_and_load(BoardSetupHomePage::CAREERS_LINK_LIST_XPATH)
+    Common.displayed(BoardSetupDetailPage::BOARD_DETAIL_EDIT_BUTTON_XPATH)
     CustomSettings.BoardSetupInit
-    CustomSettings.JobBoardLogin(true)
     CustomSettings.DefineEEOQuestions(false, false, false, false, false)
+    
+    Common.go_to_custom_settings()
     CustomSettings.MaxNumberOfAttachments(0)    
+    CustomSettings.JobBoardLogin(true)
+    
     Common.CreateRequisitionPostJob(randomName, true)
         
     # 1. Go to Board Setup tab
-    Common.goToTab(HomePage::JOB_BOARD_URL)
+    $browser.get(HomePage::JOB_BOARD_URL)
      
     # 6. Click Login
     test = [
@@ -104,25 +119,24 @@ class TestApplications < TestBasic
     ]
     Common.main(test)
     
+    $browser.get(home_url)
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
     ]
     Common.main(test)
     
-    $browser.find_element(:xpath => ContactsHomePage::CONTACT_HOME_LIST_XPATH + "//*[text()[contains(.,'" + Users::JOB_BOARD_USER_NAME_TEXT + "')]]").click
-    
+    $browser.get(Users::JOB_BOARD_USER_PROFILE_URL)    
     test = [
       {"displayed" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_XPATH},
       {"displayed" => ContactDetailPage::CONTACT_DETAIL_APP_LIST_SECOND_XPATH}
     ]
     Common.main(test)
     
-    assert_equal(randomName, $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_APP_LIST_FIRST_XPATH).text)
-    assert_equal(randomName, $browser.find_element(:xpath => ContactDetailPage::CONTACT_DETAIL_APP_LIST_SECOND_XPATH).text)
-    
-    
-  end
+    assert Common.displayed("(//*[text()[contains(., 'APP')]]/../..//*[text()[contains(.,'"+ randomName + "')]])[1]")
+    assert Common.displayed("(//*[text()[contains(., 'APP')]]/../..//*[text()[contains(.,'"+ randomName + "')]])[2]")
+  
+end
   
   #TC110 - Revert button on record in Job Orders
   def test_RevertButtonOnJobOrders
@@ -134,7 +148,8 @@ class TestApplications < TestBasic
     Common.login(Users::USER_EMAIL, Users::PASSWORD)
     
     Common.CreateRequisitionPostJob(randomName, true)
-  
+    
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
@@ -149,7 +164,7 @@ class TestApplications < TestBasic
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts Created Today"},
       {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
@@ -178,6 +193,7 @@ class TestApplications < TestBasic
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
     # 8. Select Referral in picklist  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_XPATH, "text" => "some text"},
     # 9. Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -212,14 +228,21 @@ class TestApplications < TestBasic
     
     $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH).click
     
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
+    
     newWindow3= $browser.window_handles.last
     $browser.switch_to.window(newWindow3)   
-    sleep(6)
-    
+    #sleep(6)
+    Common.displayed(ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH)
+    $browser.action.move_to($browser.find_element(:xpath, ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH)).perform
     test = [
       {"displayed" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
       {"click" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
-      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CLOSE_XPATH},
+      {"click" => ApplicationsDetailPage::MOVE_POPUP_BTN_CLOSE_XPATH},
     ]
     Common.main(test) 
     sleep(2)
@@ -234,13 +257,17 @@ class TestApplications < TestBasic
     test = [
       {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
+ 
     ]
     Common.main(test) 
     
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     newWindow5= $browser.window_handles.last
     $browser.switch_to.window(newWindow5)
     
-    sleep(3)
     
     test = [
       {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH},
@@ -284,6 +311,7 @@ class TestApplications < TestBasic
     
     Common.CreateRequisitionPostJob(randomName, true)
     
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
@@ -298,9 +326,9 @@ class TestApplications < TestBasic
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts Created Today"},
       {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
-      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
+      {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH + "//*[text()[contains(.,'" + randomContact + "')]]/../../../..//td[1]//input"}
     ]
     Common.main(test)
     
@@ -309,11 +337,14 @@ class TestApplications < TestBasic
     
     # Click on "Apply to jobs"
     Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
-    sleep(3)
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     #A pop up window will be disaplyed
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
-    sleep(4)
+    
     
     test = [
     # Select a job
@@ -325,8 +356,9 @@ class TestApplications < TestBasic
     # Click on Exception   
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
-    # Select Referral in picklist  
+    # Select Other in picklist  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_XPATH, "text" => "some text"},
     # Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -365,15 +397,19 @@ class TestApplications < TestBasic
     currentUrl = $browser.current_url
     
     $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH).click
-    sleep(2)
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     newWindow3= $browser.window_handles.last
     $browser.switch_to.window(newWindow3)   
-    sleep(4)
+    
     
     test = [
       {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
       {"click" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
-      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CLOSE_XPATH},
+      {"click" => ApplicationsDetailPage::MOVE_POPUP_BTN_CLOSE_XPATH},
     ]
     Common.main(test) 
     sleep(2)
@@ -381,15 +417,18 @@ class TestApplications < TestBasic
     newWindow4= $browser.window_handles.first
     $browser.switch_to.window(newWindow4)
     
-    sleep(6)
+    
     $browser.get(currentUrl)
     
     #
     $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH).click
-    sleep(3)
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     newWindow5= $browser.window_handles.last
     $browser.switch_to.window(newWindow5)   
-    sleep(6)
+    
     
     test = [
       {"displayed" => ApplicationsDetailPage::MOVE_POPUP_CS1_STAGE_XPATH},
@@ -403,7 +442,7 @@ class TestApplications < TestBasic
     newWindow6= $browser.window_handles.first
     $browser.switch_to.window(newWindow6)
     
-    sleep(6)
+    
     $browser.get(currentUrl)
     
     test = [
@@ -412,12 +451,15 @@ class TestApplications < TestBasic
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
     ]
     Common.main(test) 
-    sleep(1)
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     
     newWindow7= $browser.window_handles.last
     $browser.switch_to.window(newWindow7)
     
-    sleep(3)
+   
     
     test = [
       {"displayed" => ApplicationsDetailPage::REVERT_STAGE_BTN_NEXT_XPATH},
@@ -453,7 +495,7 @@ class TestApplications < TestBasic
     
     newWindow9= $browser.window_handles.first
     $browser.switch_to.window(newWindow9)
-    sleep(3)
+    
     $browser.get(currentUrl)
     
     test = [
@@ -478,6 +520,7 @@ class TestApplications < TestBasic
     
     Common.CreateRequisitionPostJob(randomName, true)
     
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
@@ -492,7 +535,7 @@ class TestApplications < TestBasic
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts Created Today"},
       {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
@@ -503,11 +546,14 @@ class TestApplications < TestBasic
     
     # Click on "Apply to jobs"
     Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
-    sleep(3)
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     #A pop up window will be disaplyed
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
-    sleep(4)
+    
     
     test = [
     # Select a job
@@ -519,19 +565,18 @@ class TestApplications < TestBasic
     # Click on Exception   
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
-    # Select Referral in picklist  
+    # Select Other in picklist  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_XPATH, "text" => "some text"},
     # Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
-      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
+      {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH},
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_BTN_CLOSE_XPATH} 
       ]
     Common.main(test)
     
     newWindow2= $browser.window_handles.first
     $browser.switch_to.window(newWindow2)
-    
-    
     
     Common.goToTab(HomePage::CONTACTS_TAB_LINK_XPATH)
     
@@ -560,23 +605,27 @@ class TestApplications < TestBasic
     
     $browser.find_element(:xpath, ApplicationsDetailPage::APP_DETAIL_MOVE_LINK_XPATH).click
     
-    sleep(2)
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     newWindow3= $browser.window_handles.last
     $browser.switch_to.window(newWindow3)   
-    sleep(4)
+    
     
     test = [
       {"displayed" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
       {"click" => ApplicationsDetailPage::MOVE_POPUP_SUBMITTAL_STAGE_XPATH},
-      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CANCEL_XPATH},
+      {"displayed" => ApplicationsDetailPage::MOVE_POPUP_BTN_CLOSE_XPATH},
+      {"click" => ApplicationsDetailPage::MOVE_POPUP_BTN_CLOSE_XPATH},
     ]
     Common.main(test) 
-    sleep(2)
+    
     
     newWindow4= $browser.window_handles.first
     $browser.switch_to.window(newWindow4)
     
-    sleep(6)
+    
     $browser.get(currentUrl)
     
     test = [
@@ -585,12 +634,13 @@ class TestApplications < TestBasic
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH},
     ]
     Common.main(test) 
-    sleep(1)
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     
     newWindow7= $browser.window_handles.last
     $browser.switch_to.window(newWindow7)
-    
-    sleep(3)
     
     test = [
       {"displayed" => ApplicationsDetailPage::REVERT_STAGE_SEND_EMAIL_BOX_XPATH},
@@ -605,7 +655,7 @@ class TestApplications < TestBasic
     
     # 8 - Click on "OK"
     $browser.switch_to.alert.accept
-    sleep(5)
+    sleep(2)
     
     test = [
       {"displayed" => ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_XPATH},
@@ -624,7 +674,7 @@ class TestApplications < TestBasic
         
     newWindow9= $browser.window_handles.first
     $browser.switch_to.window(newWindow9)
-    sleep(3)
+    
     $browser.get(currentUrl)
     
     test = [
@@ -649,6 +699,7 @@ class TestApplications < TestBasic
     
     Common.CreateRequisitionPostJob(randomName, true)
     
+    Common.go_to_custom_settings()
     CustomSettings.EnableEnhancedApplyToJob(true)
     
     #At least one account must exist
@@ -663,7 +714,7 @@ class TestApplications < TestBasic
     
     test = [
       {"displayed" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH},
-      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts - All"},
+      {"set_text" => ContactsHomePage::CONTACT_HOME_VIEW_SELECT_XPATH, "text" => "CRM Contacts Created Today"},
       {"click" => ContactsHomePage::CONTACT_HOME_BTN_GO_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_HOME_CONTACT_LIST_XPATH}
     ]
@@ -674,11 +725,14 @@ class TestApplications < TestBasic
     
     # Click on "Apply to jobs"
     Common.click(ContactsHomePage::CONTACT_HOME_APPLY_TO_JOB_XPATH)
-    sleep(3)
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     #A pop up window will be disaplyed
     newWindow= $browser.window_handles.last
     $browser.switch_to.window(newWindow)
-    sleep(4)
+    
     
     test = [
     # Select a job
@@ -690,8 +744,9 @@ class TestApplications < TestBasic
     # Click on Exception   
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_RADIO_EXCEP_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_XPATH},
-    # Select Referral in picklist  
+    # Select Other in picklist  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_OPTION_XPATH},
+      {"set_text" => ContactsHomePage::CONTACT_JOB_POPUP_REASON_OTHER_XPATH, "text" => "some text"},
     # Click "Save"  
       {"click" => ContactsHomePage::CONTACT_JOB_POPUP_SAVE_XPATH},
       {"displayed" => ContactsHomePage::CONTACT_JOB_POPUP_TOTAL_APP_XPATH},
@@ -727,13 +782,14 @@ class TestApplications < TestBasic
       {"click" => ApplicationsDetailPage::REVERT_STAGE_BTN_XPATH}
     ]
     Common.main(test)
-    sleep(3)
+    $wait.until{
+      windowsNumer = $browser.window_handles.size
+      windowsNumer > 1
+    }
     # RESULT
     # Pop-up window will be opened.
     newWindow7= $browser.window_handles.last
     $browser.switch_to.window(newWindow7)
-    
-    sleep(3)
     
     test = [
       {"displayed" => ApplicationsDetailPage::REVERT_STAGE_SUCCESS_MSG_XPATH}

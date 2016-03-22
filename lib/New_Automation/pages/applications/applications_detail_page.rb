@@ -27,7 +27,8 @@ class ApplicationsDetailPage
   #MOVE POP UP
   MOVE_POPUP_BTN_CANCEL_XPATH = ".//*[@value='Cancel']"
   MOVE_POPUP_BTN_CLOSE_XPATH = ".//*[@value='Close']"
-  MOVE_POPUP_SUBMITTAL_STAGE_XPATH = ".//*[@title='Submittal'][2]"
+  MOVE_POPUP_SUBMITTAL_STAGE_XPATH = ".//a[@title='Submittal']"
+  MOVE_POPUP_SUBMITTAL_STAGE_SUB_XPATH = "(.//a[text()[contains(., 'Awaiting')]])[1]"
   MOVE_POPUP_CS1_STAGE_XPATH = ".//*[@title='CS1'][2]"
   
   #REVERT STAGE POP UP
