@@ -40,7 +40,10 @@ class HomePage
   SEARCH_BUTTON_XPATH = ".//*[@id='phSearchButton']"
   ADD_JOB_ORDERS_XPATH = ".//*[text()[contains(.,'Add Job Orders')]]"
   ADVANCED_CONTACT_SEARCH_SIDEBAR_LINK_XPATH = ".//*[text()[contains(.,'Advanced Contact Search...')]]"
+  
+  #Add Resumes from home page - left hand nav
   ADD_RESUMES_XPATH = ".//a[text()[contains(.,'Add Resumes')]]"
+  PIN_INDICATOR_ID = ".//*[@id='pinIndicator']"
   
   #UPLOAD JOB ORDER
   UPLOAD_BTN_BROWSE_XPATH = ".//*[@type='file']"

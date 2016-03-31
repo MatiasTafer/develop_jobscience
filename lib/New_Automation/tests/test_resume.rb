@@ -27,7 +27,6 @@ require './New_Automation/tests/users.rb'
 require './New_Automation/pages/setup_page.rb'
 
 
-
 $DOCUMENT_PDF = "/New_Automation/files/Resumes/document.pdf"
 $DOCUMENT_PNG = "/New_Automation/files/Resumes/document.png"
 $ADRESS_IN_SPANISH = "/New_Automation/files/Resumes/AdressInSpanish.pdf"
@@ -484,25 +483,34 @@ def test_addResumeOneShared
   #Preconditions
   Common.login(Users::USER_EMAIL, Users::PASSWORD)
   Common.go_to_parser_settings(false)
+  
   test5 = [{"displayed" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH},
            {"click" => SetupEditPage::PARSE_SETTINGS_EDIT_BUTTON_XPATH}]
   Common.main(test5)   
   $wait.until{
      $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).displayed?
   }    
-  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear   
+  $browser.find_element(:xpath, SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH).clear  
+  
+  #Allow Parsing of Fields 
   test6 = [{"set_text" => SetupEditPage::JOB_BOARD_DUPE_PREVENTION_XPATH, "text" => "Parse Fields"},
            {"click" => SetupEditPage::SAVE_BUTTON_XPATH}]
   Common.main(test6)
+  
+  #Establish Private Setting
   Common.go_to_sharing_settings(false)
   test2 = [{"displayed" => SetupEditPage::EDIT_SHARING_SETTINGS_BUTTON_XPATH},
            {"click" => SetupEditPage::EDIT_SHARING_SETTINGS_BUTTON_XPATH},
            {"set_text" => SetupEditPage::CONTACT_PICKLIST_XPATH, "text" => "Private"},
            {"click" => SetupEditPage::SHARING_SETTINGS_SAVE_BUTTON_XPATH}]
   Common.main(test2)
-  #Steps
+  
+  #Add Resume - from home page - click left hand nav pin
   Common.goToTab(HomePage::HOME_TAB_LINK_XPATH)
-  test3 = [{"displayed" => HomePage::ADD_RESUMES_XPATH},
+  test3 = [
+    {"displayed" => HomePage::PIN_INDICATOR_ID},
+    {"click" => HomePage::PIN_INDICATOR_ID},
+    {"displayed" => HomePage::ADD_RESUMES_XPATH},
            {"click" => HomePage::ADD_RESUMES_XPATH}]
   Common.main(test3)
   $wait.until{
@@ -511,6 +519,8 @@ def test_addResumeOneShared
   }
   newWindow= $browser.window_handles[1]
   $browser.switch_to.window(newWindow)
+  
+  #upload resume
   test4 = [{"displayed" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH},
            {"upload" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_BROWSE_XPATH, "file" => @@documentPdf},
            {"click" => AddResumePopUpPage::ADD_RESUME_POPUP_BTN_ADD_RESUME_2_XPATH}]
@@ -2830,7 +2840,4 @@ def test_addResumeNoshared
     $browser.find_element(:xpath, ContactDetailPage::CONTACT_DETAIL_BTN_ADD_TO_LIST_XPATH).displayed?
   }  
   end
-
-
-
 end
